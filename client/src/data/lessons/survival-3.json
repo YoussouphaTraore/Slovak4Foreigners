@@ -1,0 +1,220 @@
+{
+  "id": "survival-3",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "About Me",
+  "description": "Name, origin, height and where you come from",
+  "icon": "🙋",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Describing Yourself",
+      "rows": [
+        { "label": "Name",       "slovak": "Volám sa...",            "english": "My name is..." },
+        { "label": "Origin",     "slovak": "Som z...",               "english": "I am from..." },
+        { "label": "Origin alt", "slovak": "Pochádzam z...",         "english": "I come from..." },
+        { "label": "Ask name",   "slovak": "Ako sa voláte?",         "english": "What is your name?" },
+        { "label": "Ask where",  "slovak": "Odkiaľ ste?",            "english": "Where are you from?" },
+        { "label": "Meet",       "slovak": "Teší ma.",               "english": "Nice to meet you." },
+        { "label": "Man",        "slovak": "Som muž.",               "english": "I am a man." },
+        { "label": "Woman",      "slovak": "Som žena.",              "english": "I am a woman." },
+        { "label": "White",      "slovak": "Som biely. / biela.",    "english": "I am white. (m/f)" },
+        { "label": "Black",      "slovak": "Som čierny. / čierna.",  "english": "I am Black. (m/f)" },
+        { "label": "Tall",       "slovak": "Som vysoký. / vysoká.",  "english": "I am tall. (m/f)" },
+        { "label": "Short",      "slovak": "Som nízky. / nízka.",    "english": "I am short. (m/f)" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Countries — I am from...",
+      "rows": [
+        { "label": "Hungary",       "slovak": "Som z Maďarska.",              "english": "I am from Hungary." },
+        { "label": "Vietnam",       "slovak": "Som z Vietnamu.",              "english": "I am from Vietnam." },
+        { "label": "Morocco",       "slovak": "Som z Maroka.",                "english": "I am from Morocco." },
+        { "label": "Nigeria",       "slovak": "Som z Nigérie.",               "english": "I am from Nigeria." },
+        { "label": "Algeria",       "slovak": "Som z Alžírska.",              "english": "I am from Algeria." },
+        { "label": "Côte d'Ivoire", "slovak": "Som z Pobr. slonoviny.",       "english": "I am from Côte d'Ivoire." },
+        { "label": "Guinea",        "slovak": "Som z Guiney.",                "english": "I am from Guinea." },
+        { "label": "Cameroon",      "slovak": "Som z Kamerunu.",              "english": "I am from Cameroon." },
+        { "label": "Tunisia",       "slovak": "Som z Tuniska.",               "english": "I am from Tunisia." },
+        { "label": "Georgia",       "slovak": "Som z Gruzínska.",             "english": "I am from Georgia." },
+        { "label": "India",         "slovak": "Som z Indie.",                 "english": "I am from India." },
+        { "label": "China",         "slovak": "Som z Číny.",                  "english": "I am from China." },
+        { "label": "Brazil",        "slovak": "Som z Brazílie.",              "english": "I am from Brazil." },
+        { "label": "Colombia",      "slovak": "Som z Kolumbie.",              "english": "I am from Colombia." },
+        { "label": "Argentina",     "slovak": "Som z Argentíny.",             "english": "I am from Argentina." },
+        { "label": "Cuba",          "slovak": "Som z Kuby.",                  "english": "I am from Cuba." },
+        { "label": "USA",           "slovak": "Som zo Spojených štátov.",     "english": "I am from the United States." },
+        { "label": "Germany",       "slovak": "Som z Nemecka.",               "english": "I am from Germany." },
+        { "label": "Italy",         "slovak": "Som z Talianska.",             "english": "I am from Italy." },
+        { "label": "Austria",       "slovak": "Som z Rakúska.",               "english": "I am from Austria." },
+        { "label": "France",        "slovak": "Som z Francúzska.",            "english": "I am from France." },
+        { "label": "Romania",       "slovak": "Som z Rumunska.",              "english": "I am from Romania." }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Nemecko",   "english": "Germany" },
+        { "slovak": "Čína",      "english": "China" },
+        { "slovak": "India",     "english": "India" },
+        { "slovak": "Brazília",  "english": "Brazil" },
+        { "slovak": "Maďarsko",  "english": "Hungary" },
+        { "slovak": "Francúzsko","english": "France" },
+        { "slovak": "Vysoký",    "english": "Tall" },
+        { "slovak": "Nízky",     "english": "Short" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Nemecko",   "english": "Germany" },
+        { "slovak": "Čína",      "english": "China" },
+        { "slovak": "India",     "english": "India" },
+        { "slovak": "Brazília",  "english": "Brazil" },
+        { "slovak": "Maďarsko",  "english": "Hungary" },
+        { "slovak": "Francúzsko","english": "France" },
+        { "slovak": "Vysoký",    "english": "Tall" },
+        { "slovak": "Nízky",     "english": "Short" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are a tall man. What do you say about your height?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som nízky.", "Som vysoký.", "Som biely.", "Som žena."],
+          "answer": "Som vysoký.",
+          "answerMeaning": "I am tall. (male form)"
+        },
+        {
+          "situation": "You are a short woman. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som nízky.", "Som vysoká.", "Som nízka.", "Som vysoký."],
+          "answer": "Som nízka.",
+          "answerMeaning": "I am short. (female form)"
+        },
+        {
+          "situation": "Someone asks where you're from. You're from Germany. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som z Nemecka.", "Som z Talianska.", "Som z Francúzska.", "Som z Maďarska."],
+          "answer": "Som z Nemecka.",
+          "answerMeaning": "I am from Germany."
+        },
+        {
+          "situation": "You want to say you come from India.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Pochádzam z Číny.", "Pochádzam z Brazílie.", "Pochádzam z Indie.", "Pochádzam z Kolumbie."],
+          "answer": "Pochádzam z Indie.",
+          "answerMeaning": "I come from India."
+        },
+        {
+          "situation": "Someone is from the United States. They say...",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som zo Spojených štátov.", "Som z Kuby.", "Som z Argentíny.", "Som z Kanady."],
+          "answer": "Som zo Spojených štátov.",
+          "answerMeaning": "I am from the United States."
+        },
+        {
+          "situation": "You are a tall woman describing yourself. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som vysoký.", "Som nízka.", "Som vysoká.", "Som nízky."],
+          "answer": "Som vysoká.",
+          "answerMeaning": "I am tall. (female form)"
+        },
+        {
+          "situation": "Someone is from Nigeria. They say...",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som z Guiney.", "Som z Nigérie.", "Som z Kamerunu.", "Som z Alžírska."],
+          "answer": "Som z Nigérie.",
+          "answerMeaning": "I am from Nigeria."
+        },
+        {
+          "situation": "Someone is from France. They say...",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som z Nemecka.", "Som z Rakúska.", "Som z Rumunska.", "Som z Francúzska."],
+          "answer": "Som z Francúzska.",
+          "answerMeaning": "I am from France."
+        },
+        {
+          "situation": "Someone is from Cuba. They say...",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som z Brazílie.", "Som z Argentíny.", "Som z Kolumbie.", "Som z Kuby."],
+          "answer": "Som z Kuby.",
+          "answerMeaning": "I am from Cuba."
+        },
+        {
+          "situation": "Someone is from China. They say...",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som z Vietnamu.", "Som z Indie.", "Som z Číny.", "Som z Gruzínska."],
+          "answer": "Som z Číny.",
+          "answerMeaning": "I am from China."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "WORD_MATCH_REVIEW"
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Som ___. Hrám basketbal.",
+          "translation": "I am ___. I play basketball.",
+          "choices": ["nízky", "vysoký", "vysoká", "nízka"],
+          "answer": "vysoký"
+        },
+        {
+          "sentence": "Ona je ___. Je menšia ako ostatní.",
+          "translation": "She is ___. She is smaller than the others.",
+          "choices": ["nízky", "nízka", "vysoký", "vysoká"],
+          "answer": "nízka"
+        },
+        {
+          "sentence": "Som z ___. Hovorím nemecky.",
+          "translation": "I am from ___. I speak German.",
+          "choices": ["Talianska", "Rakúska", "Nemecka", "Maďarska"],
+          "answer": "Nemecka"
+        },
+        {
+          "sentence": "Pochádzam z ___. Milujeme sambу.",
+          "translation": "I come from ___. We love samba.",
+          "choices": ["Argentíny", "Kolumbie", "Brazílie", "Kuby"],
+          "answer": "Brazílie"
+        },
+        {
+          "sentence": "Ona je z ___. Hovorí po francúzsky.",
+          "translation": "She is from ___. She speaks French.",
+          "choices": ["Nemecka", "Rakúska", "Rumunska", "Francúzska"],
+          "answer": "Francúzska"
+        },
+        {
+          "sentence": "Pochádzam ___ Indie.",
+          "translation": "I come ___ India.",
+          "choices": ["z", "v", "na", "do"],
+          "answer": "z"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "UNSCRAMBLE",
+      "items": [
+        { "word": "Kuba",    "context": "An island nation in the Caribbean." },
+        { "word": "Čína",    "context": "The most populous country in the world." },
+        { "word": "Maroko",  "context": "A North African country just across the sea from Spain." },
+        { "word": "Vysoký",  "context": "The opposite of short (male form)." },
+        { "word": "Nízky",   "context": "The opposite of tall (male form)." }
+      ]
+    }
+  ]
+}

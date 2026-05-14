@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green: #58CC02;
+  --color-brand-red: #FF4B4B;
+  --color-brand-blue: #1CB0F6;
+  --color-brand-gold: #FFC800;
+  --color-brand-gray: #727A6A;
+
+  --animate-shake: shake 0.4s ease-in-out;
+  --animate-slide-up: slide-up 0.25s ease-out;
+  --animate-bounce-once: bounce-once 0.4s ease-out;
+  --animate-fade-in: fade-in 0.2s ease-in;
+  --animate-slide-in-right: slide-in-right 0.3s ease-out;
+  --animate-celebrate-pop: celebrate-pop 0.45s cubic-bezier(0.34,1.56,0.64,1) both;
+  --animate-particle-float: particle-float 1s ease-out both;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%       { transform: translateX(-8px); }
+  40%       { transform: translateX(8px); }
+  60%       { transform: translateX(-6px); }
+  80%       { transform: translateX(6px); }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes bounce-once {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slide-in-right {
+  from { transform: translateX(60px); opacity: 0; }
+  to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes celebrate-pop {
+  from { transform: scale(0.4); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+@keyframes particle-float {
+  0%   { transform: translateY(0)     scale(1);   opacity: 1; }
+  100% { transform: translateY(-60px) scale(1.4); opacity: 0; }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  background: #E8F4DC;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100svh;
+}

@@ -1,0 +1,267 @@
+{
+  "id": "survival-6",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Directions & Positions",
+  "description": "Find your way, describe locations, and never get lost",
+  "icon": "🧭",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Directions",
+      "headers": ["Direction", "Slovak", "English"],
+      "rows": [
+        { "label": "Up",       "slovak": "Hore",    "english": "Up / Upstairs" },
+        { "label": "Down",     "slovak": "Dole",    "english": "Down / Downstairs" },
+        { "label": "Left",     "slovak": "Vľavo",   "english": "Left / To the left" },
+        { "label": "Right",    "slovak": "Vpravo",  "english": "Right / To the right" },
+        { "label": "Straight", "slovak": "Priamo",  "english": "Straight ahead" },
+        { "label": "Here",     "slovak": "Tu",      "english": "Here" },
+        { "label": "There",    "slovak": "Tam",     "english": "There / Over there" },
+        { "label": "Near",     "slovak": "Blízko",  "english": "Near / Close" },
+        { "label": "Far",      "slovak": "Ďaleko",  "english": "Far / Away" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Positions",
+      "headers": ["Position", "Slovak", "English"],
+      "rows": [
+        { "label": "Inside",    "slovak": "Vnútri",  "english": "Inside" },
+        { "label": "Outside",   "slovak": "Vonku",   "english": "Outside" },
+        { "label": "In front",  "slovak": "Pred",    "english": "In front of" },
+        { "label": "Behind",    "slovak": "Za",      "english": "Behind / After" },
+        { "label": "Next to",   "slovak": "Vedľa",   "english": "Next to / Beside" },
+        { "label": "Opposite",  "slovak": "Naproti", "english": "Opposite / Across from" },
+        { "label": "Above",     "slovak": "Nad",     "english": "Above / Over" },
+        { "label": "Below",     "slovak": "Pod",     "english": "Below / Under" },
+        { "label": "Between",   "slovak": "Medzi",   "english": "Between" },
+        { "label": "At / By",   "slovak": "Pri",     "english": "At / By / Right next to" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Getting Around Phrases",
+      "headers": ["When", "Slovak", "English"],
+      "rows": [
+        { "label": "Asking",      "slovak": "Kde je...?",          "english": "Where is...?" },
+        { "label": "Go right",    "slovak": "Choďte vpravo.",      "english": "Go right / Turn right." },
+        { "label": "Go left",     "slovak": "Choďte vľavo.",       "english": "Go left / Turn left." },
+        { "label": "Go straight", "slovak": "Choďte priamo.",      "english": "Go straight ahead." },
+        { "label": "It's here",   "slovak": "Je to tu.",           "english": "It's here." },
+        { "label": "It's there",  "slovak": "Je to tam.",          "english": "It's over there." },
+        { "label": "It's near",   "slovak": "Je to blízko.",       "english": "It's nearby." },
+        { "label": "It's far",    "slovak": "Je to ďaleko.",       "english": "It's far away." },
+        { "label": "I'm at...",   "slovak": "Som pri...",          "english": "I'm at / right by..." }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Hore",    "english": "Up" },
+        { "slovak": "Dole",    "english": "Down" },
+        { "slovak": "Vľavo",   "english": "Left" },
+        { "slovak": "Vpravo",  "english": "Right" },
+        { "slovak": "Blízko",  "english": "Near" },
+        { "slovak": "Ďaleko",  "english": "Far" },
+        { "slovak": "Vnútri",  "english": "Inside" },
+        { "slovak": "Vonku",   "english": "Outside" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Kde je...?",        "english": "Where is...?" },
+        { "slovak": "Choďte priamo.",    "english": "Go straight ahead." },
+        { "slovak": "Choďte vľavo.",     "english": "Go left." },
+        { "slovak": "Choďte vpravo.",    "english": "Go right." },
+        { "slovak": "Je to blízko.",     "english": "It's nearby." },
+        { "slovak": "Je to ďaleko.",     "english": "It's far away." },
+        { "slovak": "Vedľa banky.",      "english": "Next to the bank." },
+        { "slovak": "Naproti banke.",    "english": "Opposite the bank." }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "At the hospital (Nemocnica), the receptionist says the doctor's office is 'vpravo, druhé dvere.' Which way do you go?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Hore", "Vľavo", "Vpravo", "Dole"],
+          "answer": "Vpravo",
+          "answerMeaning": "Vpravo = Right — useful when navigating the Nemocnica from Lesson 4! (druhé dvere = second door)"
+        },
+        {
+          "situation": "You need a pharmacy. A passer-by says 'Je to blízko, päť minút pešo.' Do you need a taxi?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Áno, je to ďaleko.", "Nie, je to blízko.", "Neviem.", "Pomoc!"],
+          "answer": "Nie, je to blízko.",
+          "answerMeaning": "No, it's nearby. — päť minút pešo = five minutes on foot. Blízko = near, ďaleko = far."
+        },
+        {
+          "situation": "A tourist asks where the Policajná stanica is. It's straight ahead. What do you tell them?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Choďte vľavo.", "Choďte vpravo.", "Choďte priamo.", "Je to ďaleko."],
+          "answer": "Choďte priamo.",
+          "answerMeaning": "Go straight ahead. — Policajná stanica = Police station (from Lesson 4). Priamo = straight."
+        },
+        {
+          "situation": "You call 155 and need to tell the dispatcher you're standing outside the building. Which word do you use?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Vnútri", "Vonku", "Hore", "Vedľa"],
+          "answer": "Vonku",
+          "answerMeaning": "Vonku = Outside — critical when calling emergency services and giving your position (Lesson 4)!"
+        },
+        {
+          "situation": "Your friend texts: 'Čakám pred nemocnicou.' Where are they waiting?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Inside the hospital", "Behind the hospital", "In front of the hospital", "Above the hospital"],
+          "answer": "In front of the hospital",
+          "answerMeaning": "Pred = in front of — Nemocnica = hospital (Lesson 4). Pred nemocnicou = in front of the hospital."
+        },
+        {
+          "situation": "You want to meet someone at the café directly across from the bank. How do you say 'opposite the bank'?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Vedľa banky", "Naproti banke", "Pred bankou", "Za bankou"],
+          "answer": "Naproti banke",
+          "answerMeaning": "Naproti = opposite / across from — one of the most useful meeting-point words in Slovak."
+        },
+        {
+          "situation": "At the supermarket checkout (Lesson 5), you remember your card is in the car outside. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Platím kartou.", "Karta je vonku.", "Je to blízko.", "Zadarmo!"],
+          "answer": "Karta je vonku.",
+          "answerMeaning": "The card is outside. — vonku = outside (this lesson) + karta = card (Lesson 5). Two lessons in one sentence!"
+        },
+        {
+          "situation": "The police need your exact location. You're standing between the pharmacy and the post office. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som pred lekárňou.", "Som za poštou.", "Som medzi lekárňou a poštou.", "Som vedľa banky."],
+          "answer": "Som medzi lekárňou a poštou.",
+          "answerMeaning": "I am between the pharmacy and the post office. — medzi = between. Perfect for Lesson 4's call script (Volám sa... Som na...)!"
+        },
+        {
+          "situation": "The lift is broken. The doctor's office is on the third floor. Which direction must you go?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Dole", "Vonku", "Vpravo", "Hore"],
+          "answer": "Hore",
+          "answerMeaning": "Hore = Up / Upstairs — when the lift (výťah) is out of order, you will hear this a lot!"
+        },
+        {
+          "situation": "You are on the second floor of the hospital. The pharmacy (lekáreň) is on the ground floor. The nurse points and says you need to go...",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Hore", "Vonku", "Vpravo", "Dole"],
+          "answer": "Dole",
+          "answerMeaning": "Dole = Down / Downstairs — prízemie (ground floor) is always dole from any upper floor."
+        },
+        {
+          "situation": "The shopping centre map shows 'Lekáreň: nad reštauráciou.' Where is the pharmacy?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Below the restaurant", "Next to the restaurant", "Above the restaurant", "Behind the restaurant"],
+          "answer": "Above the restaurant",
+          "answerMeaning": "Nad = above / over. Reštaurácia = restaurant. Nad reštauráciou = above the restaurant."
+        },
+        {
+          "situation": "Your colleague says the storage room is 'pod schodmi, vľavo.' Where should you look?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Above the stairs", "To the right of the stairs", "Below / under the stairs", "Opposite the stairs"],
+          "answer": "Below / under the stairs",
+          "answerMeaning": "Pod = below / under. Schody = stairs. Pod schodmi = under the stairs — very common in Slovak buildings!"
+        },
+        {
+          "situation": "You walked past the café entrance and are now on the other side. Your friend calls asking where you are. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som pred kaviarňou.", "Som za kaviarňou.", "Som vedľa kaviarne.", "Som naproti kaviarni."],
+          "answer": "Som za kaviarňou.",
+          "answerMeaning": "Za = behind / past. Som za kaviarňou = I'm behind/past the café. Easy to overshoot your stop!"
+        },
+        {
+          "situation": "The ambulance dispatcher asks exactly where you are. You are at that very spot. What do you say to confirm you are right there?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som tam.", "Som tu.", "Som blízko.", "Som vonku."],
+          "answer": "Som tu.",
+          "answerMeaning": "Tu = here. Som tu = I am here — use tu for your own position. Tam = over there (for pointing to something away from you)."
+        },
+        {
+          "situation": "You are giving someone directions over the phone. You can see the building they are looking for from where you stand. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Je to tu.", "Je to tam.", "Je to blízko.", "Je to ďaleko."],
+          "answer": "Je to tam.",
+          "answerMeaning": "Tam = there / over there. Je to tam = it's over there. Use tam when pointing to something away from you."
+        },
+        {
+          "situation": "You call 155 (Lesson 4) and need to give a precise landmark. You can see the pharmacy right next to you. What do you tell the dispatcher?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som vnútri lekárne.", "Som pred lekárňou.", "Som pri lekárni.", "Som za lekárňou."],
+          "answer": "Som pri lekárni.",
+          "answerMeaning": "Pri = at / right next to. Som pri lekárni = I am right at the pharmacy — more precise than pred (in front of) when pinpointing your location for emergency services!"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Choďte ___. Potom odbočte vpravo.",
+          "translation": "Go ___. Then turn right.",
+          "choices": ["priamo", "vľavo", "blízko", "vonku"],
+          "answer": "priamo"
+        },
+        {
+          "sentence": "Bankomat je ___, nie vonku.",
+          "translation": "The ATM is ___, not outside.",
+          "choices": ["vnútri", "hore", "vedľa", "tam"],
+          "answer": "vnútri"
+        },
+        {
+          "sentence": "Policajná stanica je ___ nemocnice.",
+          "translation": "The police station is ___ the hospital.",
+          "choices": ["vedľa", "medzi", "vonku", "hore"],
+          "answer": "vedľa"
+        },
+        {
+          "sentence": "Stretávame sa ___ nemocnice o tretej.",
+          "translation": "We're meeting ___ the hospital at three.",
+          "choices": ["pred", "za", "nad", "medzi"],
+          "answer": "pred"
+        },
+        {
+          "sentence": "Lekáreň je ___ odtiaľto. Choďte taxíkom.",
+          "translation": "The pharmacy is ___ from here. Take a taxi.",
+          "choices": ["ďaleko", "blízko", "vnútri", "tu"],
+          "answer": "ďaleko"
+        },
+        {
+          "sentence": "Som ___ lekárne a pošty. Ste na správnom mieste!",
+          "translation": "I'm ___ the pharmacy and the post office. You're in the right place!",
+          "choices": ["medzi", "pred", "nad", "za"],
+          "answer": "medzi"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "UNSCRAMBLE",
+      "items": [
+        { "word": "Vpravo",  "context": "Turn this way when something is on your right." },
+        { "word": "Vľavo",   "context": "Turn this way when something is on your left." },
+        { "word": "Priamo",  "context": "Not left, not right — just keep going this way." },
+        { "word": "Blízko",  "context": "Not far at all — maybe a short walk." },
+        { "word": "Vedľa",   "context": "Right beside something." },
+        { "word": "Naproti", "context": "Directly across the street from something." }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

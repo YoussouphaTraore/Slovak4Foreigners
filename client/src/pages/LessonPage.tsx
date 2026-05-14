@@ -1,0 +1,225 @@
+import { useState, useRef } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getLessonById } from '../data/lessons';
+import { useProgressStore } from '../store/useProgressStore';
+import { ExerciseShell } from '../components/exercises/ExerciseShell';
+import { ProgressBar } from '../components/ui/ProgressBar';
+import { ConfirmModal } from '../components/ui/ConfirmModal';
+import { ExerciseCelebration } from '../components/ui/ExerciseCelebration';
+
+const MAX_TOTAL    = 5;
+const MAX_CONSEC   = 3;
+const RESTART_CONSEC = 5;
+
+type PenaltyInfo = { title: string; sub: string } | null;
+
+export function LessonPage() {
+  const { lessonId } = useParams<{ lessonId: string }>();
+  const navigate = useNavigate();
+  const store = useProgressStore();
+
+  const lesson = lessonId ? getLessonById(lessonId) : undefined;
+
+  const [exerciseIndex, setExerciseIndex] = useState(0);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [showExit, setShowExit] = useState(false);
+  const [exerciseKey, setExerciseKey] = useState(0);
+  const [celebrating, setCelebrating] = useState(false);
+  const [penalty, setPenalty] = useState<PenaltyInfo>(null);
+
+  const strikesRef   = useRef({ total: 0, consecutive: 0 });
+  const [strikesDisplay, setStrikesDisplay] = useState({ total: 0, consecutive: 0 });
+  const penaltyRef   = useRef(false);
+  const failedWordsRef = useRef<{ slovak: string; english: string }[]>([]);
+
+  if (!lesson) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[#E8F4DC]">
+        <p className="text-gray-500">Lesson not found.</p>
+      </div>
+    );
+  }
+
+  const exercises = lesson.exercises;
+  const currentExercise = exercises[exerciseIndex];
+  const xpPerExercise = Math.round(lesson.xpReward / exercises.length);
+
+  const resetStrikes = () => {
+    strikesRef.current = { total: 0, consecutive: 0 };
+    setStrikesDisplay({ total: 0, consecutive: 0 });
+  };
+
+  const bumpExerciseKey = () => setExerciseKey((k) => k + 1);
+
+  const advance = () => {
+    resetStrikes();
+    setExerciseIndex((i) => i + 1);
+    bumpExerciseKey();
+  };
+
+  const finishLesson = (earned: number) => {
+    store.addXP(earned);
+    store.completeLesson(lesson.id);
+    store.checkAndUpdateStreak();
+    navigate(`/celebration/${lesson.id}`, { state: { xpEarned: earned, totalXP: lesson.xpReward } });
+  };
+
+  const handleFailed = (words: { slovak: string; english: string }[]) => {
+    const existing = new Set(failedWordsRef.current.map((w) => w.slovak));
+    const novel = words.filter((w) => !existing.has(w.slovak));
+    failedWordsRef.current = [...failedWordsRef.current, ...novel];
+  };
+
+  const triggerPenalty = (info: NonNullable<PenaltyInfo>, doNav: () => void) => {
+    penaltyRef.current = true;
+    setPenalty(info);
+    setTimeout(() => {
+      resetStrikes();
+      setPenalty(null);
+      penaltyRef.current = false;
+      doNav();
+      bumpExerciseKey();
+    }, 3500);
+  };
+
+  const handleAnswer = (correct: boolean) => {
+    if (penaltyRef.current) return;
+
+    if (correct) {
+      strikesRef.current.consecutive = 0;
+      setStrikesDisplay((prev) => ({ ...prev, consecutive: 0 }));
+      return;
+    }
+
+    strikesRef.current.total      += 1;
+    strikesRef.current.consecutive += 1;
+    const { total, consecutive } = strikesRef.current;
+    setStrikesDisplay({ total, consecutive });
+
+    if (consecutive >= RESTART_CONSEC) {
+      triggerPenalty(
+        { title: '5 in a row!', sub: "Let's Restart From The Beginning!" },
+        () => setExerciseIndex(0),
+      );
+    } else if (consecutive >= MAX_CONSEC || total >= MAX_TOTAL) {
+      const capturedIdx = exerciseIndex;
+      triggerPenalty(
+        { title: '', sub: "Let's Review The Last Exercise" },
+        () => setExerciseIndex(Math.max(0, capturedIdx - 1)),
+      );
+    }
+  };
+
+  const handleComplete = (correct: boolean) => {
+    if (penaltyRef.current) return;
+    const isLast = exerciseIndex === exercises.length - 1;
+
+    if (correct) {
+      const nc = correctCount + 1;
+      setCorrectCount(nc);
+      if (isLast) { finishLesson(nc * xpPerExercise); return; }
+      const nextEx = exercises[exerciseIndex + 1];
+      if (nextEx?.type === 'WORD_MATCH_REVIEW' && failedWordsRef.current.length === 0) {
+        finishLesson(nc * xpPerExercise);
+        return;
+      }
+      setCelebrating(true);
+    } else {
+      if (isLast) { finishLesson(correctCount * xpPerExercise); return; }
+      advance();
+    }
+  };
+
+  return (
+    <div className="h-dvh flex flex-col bg-[#E8F4DC]">
+      {/* Header */}
+      <div className="flex-none flex items-center gap-3 px-4 py-3">
+        <button
+          type="button"
+          onClick={() => setShowExit(true)}
+          className="w-9 h-9 border-2 border-dashed border-brand-gray rounded-lg flex items-center justify-center text-brand-gray hover:border-gray-600 hover:text-gray-600 cursor-pointer transition-colors shrink-0"
+        >
+          ✕
+        </button>
+        <ProgressBar current={exerciseIndex} total={exercises.length} />
+        <div className="flex items-center gap-1 font-bold text-orange-500 shrink-0">
+          <span className="text-lg">🔥</span>
+          <span className="text-sm">{store.streak}</span>
+        </div>
+      </div>
+
+      {/* Strike indicators */}
+      <div className="flex-none flex items-center justify-end gap-1.5 px-4 pb-1">
+        <span className="text-xs text-gray-400 mr-1">strikes</span>
+        {Array.from({ length: MAX_TOTAL }).map((_, i) => (
+          <div
+            key={i}
+            className={`w-3 h-3 rounded-full border-2 transition-all duration-300 ${
+              i < strikesDisplay.total
+                ? 'bg-red-500 border-red-500 scale-110'
+                : 'bg-transparent border-gray-300'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* DEV jump bar */}
+      {import.meta.env.DEV && (
+        <div className="flex-none flex items-center gap-1.5 px-4 pb-1 flex-wrap">
+          {exercises.map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => {
+                setCelebrating(false);
+                resetStrikes();
+                setExerciseIndex(i);
+                bumpExerciseKey();
+              }}
+              className={`w-7 h-7 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                i === exerciseIndex
+                  ? 'bg-brand-blue text-white'
+                  : 'bg-white/70 text-gray-500 hover:bg-white'
+              }`}
+            >
+              {i + 1}
+            </button>
+          ))}
+          <span className="text-xs text-gray-400 ml-1">dev</span>
+        </div>
+      )}
+
+      {/* Exercise */}
+      <div className="flex-1 min-h-0 flex flex-col max-w-lg mx-auto w-full px-4 pt-2 pb-3">
+        <ExerciseShell
+          key={exerciseKey}
+          exercise={currentExercise}
+          exerciseIndex={exerciseIndex}
+          onComplete={handleComplete}
+          onFailed={handleFailed}
+          onAnswer={handleAnswer}
+          reviewPairs={failedWordsRef.current}
+        />
+      </div>
+
+      {showExit && (
+        <ConfirmModal onConfirm={() => navigate('/')} onCancel={() => setShowExit(false)} />
+      )}
+
+      {celebrating && (
+        <ExerciseCelebration onDone={() => { setCelebrating(false); advance(); }} />
+      )}
+
+      {/* Penalty overlay */}
+      {penalty && (
+        <div className="fixed inset-0 z-50 bg-black/75 flex items-center justify-center px-6">
+          <div className="bg-white rounded-3xl px-8 py-10 max-w-xs w-full text-center shadow-2xl">
+            <img src="/snailAngry.png" alt="" className="w-28 h-28 object-contain mx-auto mb-3" />
+            <p className="text-xl font-extrabold text-gray-800 mb-1">You Are Not Focus!</p>
+            <p className="text-sm text-gray-500">{penalty.sub}</p>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
