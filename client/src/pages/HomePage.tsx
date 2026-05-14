@@ -37,8 +37,9 @@ export function HomePage() {
       <div className="bg-white border-b border-gray-100 px-4 py-4">
         <div className="flex items-center justify-between mb-1">
           <div>
-            <h1 className="text-xl font-bold text-gray-800 leading-tight">
-              🇸🇰 Slovak for Foreigners
+            <h1 className="text-xl font-bold text-gray-800 leading-tight flex items-center gap-2">
+              <img src="/snail.png" alt="" className="w-8 h-8 object-contain" />
+              Slovak for Foreigners
             </h1>
             <p className="text-xs text-gray-400 mt-0.5">Live in Slovakia. Speak like a local.</p>
           </div>
