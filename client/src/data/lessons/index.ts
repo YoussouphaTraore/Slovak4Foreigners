@@ -5,6 +5,7 @@ import survival3 from './survival-3.json';
 import survival4 from './survival-4.json';
 import survival5 from './survival-5.json';
 import survival6 from './survival-6.json';
+import settling1 from './settling-1.json';
 
 export const lessons: Lesson[] = [
   survival1 as unknown as Lesson,
@@ -13,6 +14,7 @@ export const lessons: Lesson[] = [
   survival4 as unknown as Lesson,
   survival5 as unknown as Lesson,
   survival6 as unknown as Lesson,
+  settling1 as unknown as Lesson,
 ];
 
 export function getLessonById(id: string): Lesson | undefined {

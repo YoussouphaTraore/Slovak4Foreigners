@@ -1,0 +1,200 @@
+{
+  "id": "settling-1",
+  "stageId": "settling",
+  "stageName": "Stage 2 · Settling In",
+  "title": "Know Your Address",
+  "description": "Regions, streets, floors and how to give your address",
+  "icon": "🏠",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Parts of a Slovak Address",
+      "headers": ["Part", "Slovak", "English"],
+      "rows": [
+        { "label": "Country",    "slovak": "Krajina",      "english": "Country" },
+        { "label": "Region",     "slovak": "Kraj",         "english": "Region / County" },
+        { "label": "City / Town","slovak": "Mesto",        "english": "City / Town" },
+        { "label": "Village",    "slovak": "Obec",         "english": "Village / Municipality (also used on official forms for cities)" },
+        { "label": "Street",     "slovak": "Ulica",        "english": "Street" },
+        { "label": "Square",     "slovak": "Námestie",     "english": "Square / Plaza (very common in Slovak addresses)" },
+        { "label": "House No.",  "slovak": "Číslo domu",   "english": "House / Building number" },
+        { "label": "Entrance",   "slovak": "Vchod",        "english": "Entrance / Staircase (A, B, C in large blocks)" },
+        { "label": "Floor",      "slovak": "Poschodie",    "english": "Floor / Storey" },
+        { "label": "Grd. Floor", "slovak": "Prízemie",     "english": "Ground floor (floor 0 — not '1. poschodie'!)" },
+        { "label": "Flat",       "slovak": "Byt",          "english": "Flat / Apartment" },
+        { "label": "Flat No.",   "slovak": "Číslo bytu",   "english": "Flat number" },
+        { "label": "Post Code",  "slovak": "PSČ",          "english": "Postal code (5 digits, e.g. 811 01)" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "The 8 Regions of Slovakia",
+      "headers": ["Region", "Slovak", "English"],
+      "rows": [
+        { "label": "Bratislava", "slovak": "Bratislavský kraj",       "english": "Bratislava Region (capital)" },
+        { "label": "Trnava",     "slovak": "Trnavský kraj",           "english": "Trnava Region" },
+        { "label": "Trenčín",    "slovak": "Trenčiansky kraj",        "english": "Trenčín Region" },
+        { "label": "Nitra",      "slovak": "Nitriansky kraj",         "english": "Nitra Region" },
+        { "label": "Žilina",     "slovak": "Žilinský kraj",           "english": "Žilina Region" },
+        { "label": "B. Bystrica","slovak": "Banskobystrický kraj",    "english": "Banská Bystrica Region" },
+        { "label": "Prešov",     "slovak": "Prešovský kraj",          "english": "Prešov Region" },
+        { "label": "Košice",     "slovak": "Košický kraj",            "english": "Košice Region" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Address Phrases",
+      "headers": ["When", "Slovak", "English"],
+      "rows": [
+        { "label": "Your address",  "slovak": "Moja adresa je...",          "english": "My address is..." },
+        { "label": "Your street",   "slovak": "Bývam na ulici...",          "english": "I live on ... street." },
+        { "label": "Your city",     "slovak": "Bývam v meste...",           "english": "I live in the city of..." },
+        { "label": "Your floor",    "slovak": "Bývam na treťom poschodí.", "english": "I live on the 3rd floor." },
+        { "label": "Post code",     "slovak": "Moje PSČ je...",             "english": "My postal code is..." },
+        { "label": "Someone asks",  "slovak": "Aká je vaša adresa?",        "english": "What is your address?" },
+        { "label": "Spelling",      "slovak": "Môžem to zopakovať?",        "english": "Can I repeat that?" },
+        { "label": "Write it",      "slovak": "Napíšte to, prosím.",        "english": "Please write it down." }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Ulica",      "english": "Street" },
+        { "slovak": "Mesto",      "english": "City" },
+        { "slovak": "Kraj",       "english": "Region" },
+        { "slovak": "Byt",        "english": "Flat / Apartment" },
+        { "slovak": "Vchod",      "english": "Entrance / Staircase" },
+        { "slovak": "Poschodie",  "english": "Floor" },
+        { "slovak": "Prízemie",   "english": "Ground floor" },
+        { "slovak": "Adresa",     "english": "Address" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Moja adresa je...",       "english": "My address is..." },
+        { "slovak": "Aká je vaša adresa?",     "english": "What is your address?" },
+        { "slovak": "Bývam na ulici...",       "english": "I live on ... street." },
+        { "slovak": "Bývam v meste...",        "english": "I live in the city of..." },
+        { "slovak": "Číslo bytu",              "english": "Flat number" },
+        { "slovak": "PSČ",                     "english": "Postal code" },
+        { "slovak": "Prízemie",                "english": "Ground floor" },
+        { "slovak": "Napíšte to, prosím.",     "english": "Please write it down." }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "A government registration form has a field labelled 'PSČ' next to the city name. What do you fill in?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Your full name", "Your 5-digit postal code", "Your phone number", "Your ID number"],
+          "answer": "Your 5-digit postal code",
+          "answerMeaning": "PSČ = Poštové smerovacie číslo = Postal code. Always 5 digits in Slovakia, e.g. 811 01 for central Bratislava."
+        },
+        {
+          "situation": "You live in Slovakia's capital city. Which kraj do you write on the form?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Nitriansky kraj", "Trnavský kraj", "Bratislavský kraj", "Košický kraj"],
+          "answer": "Bratislavský kraj",
+          "answerMeaning": "The capital Bratislava is in Bratislavský kraj — the smallest but most populated region in Slovakia."
+        },
+        {
+          "situation": "Emergency services ask 'Aká je vaša adresa?' (from Lesson 4). What do they need from you?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Your name", "Your nationality", "Your full address", "Your phone number"],
+          "answer": "Your full address",
+          "answerMeaning": "Aká je vaša adresa? = What is your address? — now you can give a complete answer: street, house number, city and PSČ!"
+        },
+        {
+          "situation": "Your large apartment block has three staircases. The form asks for 'Vchod'. What does it mean?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Flat number", "Floor", "Entrance / Staircase", "Building name"],
+          "answer": "Entrance / Staircase",
+          "answerMeaning": "Vchod = entrance / staircase. In Slovak paneláky (panel blocks) you often say 'vchod A' or 'vchod 1' to identify the right door."
+        },
+        {
+          "situation": "You live on what English speakers call the '2nd floor.' What do Slovaks call it?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Prízemie", "Druhé poschodie", "Prvé poschodie", "Nulté poschodie"],
+          "answer": "Prvé poschodie",
+          "answerMeaning": "1. poschodie = what English speakers call the 2nd floor. Slovak ground floor = Prízemie (floor 0), so every floor is counted one lower than in the UK/US!"
+        },
+        {
+          "situation": "The form field says 'Obec'. You live in Košice, a large city. What do you write?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Košický kraj", "Slovensko", "Košice", "040 01"],
+          "answer": "Košice",
+          "answerMeaning": "Obec literally means village, but on Slovak forms it refers to your municipality — cities count too. Write 'Košice', not the region."
+        },
+        {
+          "situation": "Your flat number is 7 (sedem — from Lesson 5). How do you say your flat number in Slovak?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Číslo bytu je päť.", "Číslo bytu je šesť.", "Číslo bytu je sedem.", "Číslo bytu je osem."],
+          "answer": "Číslo bytu je sedem.",
+          "answerMeaning": "Flat number seven. — sedem = 7 (from Lesson 5 — Numbers!). Now you can state any flat number in Slovak."
+        },
+        {
+          "situation": "A delivery driver calls and asks for your address. You want to say 'My address is Hlavná 15, Bratislava.' How do you start?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Aká je vaša adresa?", "Moja adresa je...", "Bývam v meste...", "Napíšte to, prosím."],
+          "answer": "Moja adresa je...",
+          "answerMeaning": "Moja adresa je... = My address is... — then give the street, house number, and city. Simple and clear!"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Moje ___ je 831 01.",
+          "translation": "My ___ is 831 01.",
+          "choices": ["PSČ", "číslo bytu", "poschodie", "kraj"],
+          "answer": "PSČ"
+        },
+        {
+          "sentence": "Bývam na treťom ___.",
+          "translation": "I live on the third ___.",
+          "choices": ["poschodí", "ulici", "meste", "byte"],
+          "answer": "poschodí"
+        },
+        {
+          "sentence": "Prízemie nie je ___ poschodie. Je to nula.",
+          "translation": "The ground floor is not the ___ floor. It is zero.",
+          "choices": ["prvé", "druhé", "tretie", "štvrté"],
+          "answer": "prvé"
+        },
+        {
+          "sentence": "___ je 'Hlavná ulica 15, Bratislava'.",
+          "translation": "___ is 'Hlavná ulica 15, Bratislava'.",
+          "choices": ["Adresa", "Krajina", "PSČ", "Poschodie"],
+          "answer": "Adresa"
+        },
+        {
+          "sentence": "Bývam v ___. Je to hlavné mesto Slovenska.",
+          "translation": "I live in ___. It is the capital of Slovakia.",
+          "choices": ["Bratislave", "Košiciach", "Žiline", "Nitre"],
+          "answer": "Bratislave"
+        },
+        {
+          "sentence": "Náš blok má tri ___. Ja bývam vo vchode B.",
+          "translation": "Our block has three ___. I live in entrance B.",
+          "choices": ["vchody", "poschodia", "byty", "ulice"],
+          "answer": "vchody"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}
