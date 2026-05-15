@@ -11,31 +11,117 @@
       "id": "ex1",
       "type": "LISTEN_AND_PICK",
       "words": [
-        { "slovak": "Áno", "english": "Yes" },
-        { "slovak": "Nie", "english": "No" },
-        { "slovak": "Prosím", "english": "Please / You're welcome" },
-        { "slovak": "Ďakujem", "english": "Thank you" },
-        { "slovak": "Prepáčte", "english": "Excuse me / Sorry" },
-        { "slovak": "Neviem", "english": "I don't know" },
-        { "slovak": "Pomoc!", "english": "Help!" },
-        { "slovak": "Rozumiete?", "english": "Do you understand?" }
+        {
+          "slovak": "Áno",
+          "english": "Yes"
+        },
+        {
+          "slovak": "Nie",
+          "english": "No"
+        },
+        {
+          "slovak": "Prosím",
+          "english": "Please / You're welcome"
+        },
+        {
+          "slovak": "Ďakujem",
+          "english": "Thank you"
+        },
+        {
+          "slovak": "Prepáčte",
+          "english": "Excuse me / Sorry"
+        },
+        {
+          "slovak": "Neviem",
+          "english": "I don't know"
+        },
+        {
+          "slovak": "Pomoc!",
+          "english": "Help!"
+        },
+        {
+          "slovak": "Rozumiete?",
+          "english": "Do you understand?"
+        }
+      ]
+    },
+    {
+      "id": "ex1b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Áno",
+          "english": "Yes"
+        },
+        {
+          "slovak": "Nie",
+          "english": "No"
+        },
+        {
+          "slovak": "Prosím",
+          "english": "Please / You're welcome"
+        },
+        {
+          "slovak": "Ďakujem",
+          "english": "Thank you"
+        },
+        {
+          "slovak": "Prepáčte",
+          "english": "Excuse me / Sorry"
+        },
+        {
+          "slovak": "Neviem",
+          "english": "I don't know"
+        },
+        {
+          "slovak": "Pomoc!",
+          "english": "Help!"
+        },
+        {
+          "slovak": "Rozumiete?",
+          "english": "Do you understand?"
+        }
       ]
     },
     {
       "id": "ex2",
       "type": "PICK_TRANSLATION",
       "words": [
-        { "slovak": "Áno", "english": "Yes" },
-        { "slovak": "Nie", "english": "No" },
-        { "slovak": "Prosím", "english": "Please / You're welcome" },
-        { "slovak": "Ďakujem", "english": "Thank you" },
-        { "slovak": "Prepáčte", "english": "Excuse me / Sorry" },
-        { "slovak": "Neviem", "english": "I don't know" },
-        { "slovak": "Pomoc!", "english": "Help!" },
-        { "slovak": "Rozumiete?", "english": "Do you understand?" }
+        {
+          "slovak": "Áno",
+          "english": "Yes"
+        },
+        {
+          "slovak": "Nie",
+          "english": "No"
+        },
+        {
+          "slovak": "Prosím",
+          "english": "Please / You're welcome"
+        },
+        {
+          "slovak": "Ďakujem",
+          "english": "Thank you"
+        },
+        {
+          "slovak": "Prepáčte",
+          "english": "Excuse me / Sorry"
+        },
+        {
+          "slovak": "Neviem",
+          "english": "I don't know"
+        },
+        {
+          "slovak": "Pomoc!",
+          "english": "Help!"
+        },
+        {
+          "slovak": "Rozumiete?",
+          "english": "Do you understand?"
+        }
       ]
-    }
-    ,
+    },
     {
       "id": "ex3",
       "type": "SITUATIONAL_CHOICE",
@@ -43,56 +129,96 @@
         {
           "situation": "Someone bumps into you on the street. What do you say?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Ďakujem", "Áno", "Prepáčte", "Neviem"],
+          "choices": [
+            "Ďakujem",
+            "Áno",
+            "Prepáčte",
+            "Neviem"
+          ],
           "answer": "Prepáčte",
           "answerMeaning": "Excuse me / Sorry"
         },
         {
           "situation": "The waiter brings your coffee. What do you say?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Nie", "Ďakujem", "Pomoc!", "Rozumiete?"],
+          "choices": [
+            "Nie",
+            "Ďakujem",
+            "Pomoc!",
+            "Rozumiete?"
+          ],
           "answer": "Ďakujem",
           "answerMeaning": "Thank you"
         },
         {
           "situation": "Your neighbor asks: 'Do you want to join us for dinner?' You'd love to. What do you say?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Nie", "Neviem", "Áno", "Prepáčte"],
+          "choices": [
+            "Nie",
+            "Neviem",
+            "Áno",
+            "Prepáčte"
+          ],
           "answer": "Áno",
           "answerMeaning": "Yes"
         },
         {
           "situation": "A street vendor offers you a flyer. You don't want it. What do you say?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Áno", "Nie", "Ďakujem", "Rozumiete?"],
+          "choices": [
+            "Áno",
+            "Nie",
+            "Ďakujem",
+            "Rozumiete?"
+          ],
           "answer": "Nie",
           "answerMeaning": "No"
         },
         {
           "situation": "You want the baker to hand you a loaf of bread. What do you say politely?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Pomoc!", "Áno", "Neviem", "Prosím"],
+          "choices": [
+            "Pomoc!",
+            "Áno",
+            "Neviem",
+            "Prosím"
+          ],
           "answer": "Prosím",
           "answerMeaning": "Please / You're welcome"
         },
         {
           "situation": "A tourist asks you how to get to the castle but you have no idea. What do you say?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Rozumiete?", "Áno", "Neviem", "Prosím"],
+          "choices": [
+            "Rozumiete?",
+            "Áno",
+            "Neviem",
+            "Prosím"
+          ],
           "answer": "Neviem",
           "answerMeaning": "I don't know"
         },
         {
           "situation": "You see someone's bag being snatched on the street. What do you shout?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Prosím", "Ďakujem", "Nie", "Pomoc!"],
+          "choices": [
+            "Prosím",
+            "Ďakujem",
+            "Nie",
+            "Pomoc!"
+          ],
           "answer": "Pomoc!",
           "answerMeaning": "Help!"
         },
         {
           "situation": "You just explained the bus route to an elderly lady in Slovak. What do you ask to check she understood?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Neviem", "Áno", "Prepáčte", "Rozumiete?"],
+          "choices": [
+            "Neviem",
+            "Áno",
+            "Prepáčte",
+            "Rozumiete?"
+          ],
           "answer": "Rozumiete?",
           "answerMeaning": "Do you understand?"
         }
@@ -105,28 +231,114 @@
     {
       "id": "ex5",
       "type": "LISTEN_AND_IDENTIFY",
-      "wordPool": ["Áno", "Nie", "Prosím", "Ďakujem", "Prepáčte", "Neviem", "Pomoc!", "Rozumiete?"],
+      "wordPool": [
+        "Áno",
+        "Nie",
+        "Prosím",
+        "Ďakujem",
+        "Prepáčte",
+        "Neviem",
+        "Pomoc!",
+        "Rozumiete?"
+      ],
       "items": [
-        { "sentence": "Áno, prosím.", "targetWords": ["Áno", "Prosím"] },
-        { "sentence": "Ďakujem.", "targetWords": ["Ďakujem"] },
-        { "sentence": "Nie, neviem.", "targetWords": ["Nie", "Neviem"] },
-        { "sentence": "Prepáčte, prosím.", "targetWords": ["Prepáčte", "Prosím"] },
-        { "sentence": "Pomoc!", "targetWords": ["Pomoc!"] },
-        { "sentence": "Nie, ďakujem.", "targetWords": ["Nie", "Ďakujem"] }
+        {
+          "sentence": "Áno, prosím.",
+          "targetWords": [
+            "Áno",
+            "Prosím"
+          ]
+        },
+        {
+          "sentence": "Ďakujem.",
+          "targetWords": [
+            "Ďakujem"
+          ]
+        },
+        {
+          "sentence": "Nie, neviem.",
+          "targetWords": [
+            "Nie",
+            "Neviem"
+          ]
+        },
+        {
+          "sentence": "Prepáčte, prosím.",
+          "targetWords": [
+            "Prepáčte",
+            "Prosím"
+          ]
+        },
+        {
+          "sentence": "Pomoc!",
+          "targetWords": [
+            "Pomoc!"
+          ]
+        },
+        {
+          "sentence": "Nie, ďakujem.",
+          "targetWords": [
+            "Nie",
+            "Ďakujem"
+          ]
+        }
       ]
     },
     {
       "id": "ex6",
       "type": "LISTEN_AND_IDENTIFY",
       "speechLang": "en-US",
-      "wordPool": ["Áno", "Nie", "Prosím", "Ďakujem", "Prepáčte", "Neviem", "Pomoc!", "Rozumiete?"],
+      "wordPool": [
+        "Áno",
+        "Nie",
+        "Prosím",
+        "Ďakujem",
+        "Prepáčte",
+        "Neviem",
+        "Pomoc!",
+        "Rozumiete?"
+      ],
       "items": [
-        { "sentence": "Yes, please.", "targetWords": ["Áno", "Prosím"] },
-        { "sentence": "Thank you.", "targetWords": ["Ďakujem"] },
-        { "sentence": "No, I don't know.", "targetWords": ["Nie", "Neviem"] },
-        { "sentence": "Excuse me, please.", "targetWords": ["Prepáčte", "Prosím"] },
-        { "sentence": "Help!", "targetWords": ["Pomoc!"] },
-        { "sentence": "No, thank you.", "targetWords": ["Nie", "Ďakujem"] }
+        {
+          "sentence": "Yes, please.",
+          "targetWords": [
+            "Áno",
+            "Prosím"
+          ]
+        },
+        {
+          "sentence": "Thank you.",
+          "targetWords": [
+            "Ďakujem"
+          ]
+        },
+        {
+          "sentence": "No, I don't know.",
+          "targetWords": [
+            "Nie",
+            "Neviem"
+          ]
+        },
+        {
+          "sentence": "Excuse me, please.",
+          "targetWords": [
+            "Prepáčte",
+            "Prosím"
+          ]
+        },
+        {
+          "sentence": "Help!",
+          "targetWords": [
+            "Pomoc!"
+          ]
+        },
+        {
+          "sentence": "No, thank you.",
+          "targetWords": [
+            "Nie",
+            "Ďakujem"
+          ]
+        }
       ]
     },
     {
@@ -136,37 +348,67 @@
         {
           "sentence": "— Hovoríte po anglicky? — ___, nehovorím.",
           "translation": "Do you speak English? — ___, I don't.",
-          "choices": ["Áno", "Nie", "Prosím", "Neviem"],
+          "choices": [
+            "Áno",
+            "Nie",
+            "Prosím",
+            "Neviem"
+          ],
           "answer": "Nie"
         },
         {
           "sentence": "— Chcete kávu? — ___, ďakujem.",
           "translation": "Do you want coffee? — ___, thank you.",
-          "choices": ["Nie", "Áno", "Neviem", "Pomoc!"],
+          "choices": [
+            "Nie",
+            "Áno",
+            "Neviem",
+            "Pomoc!"
+          ],
           "answer": "Áno"
         },
         {
           "sentence": "Priniesli mi jedlo. ___!",
           "translation": "They brought me food. ___!",
-          "choices": ["Prosím", "Prepáčte", "Ďakujem", "Neviem"],
+          "choices": [
+            "Prosím",
+            "Prepáčte",
+            "Ďakujem",
+            "Neviem"
+          ],
           "answer": "Ďakujem"
         },
         {
           "sentence": "___, môžem si sadnúť?",
           "translation": "___, may I sit down?",
-          "choices": ["Áno", "Ďakujem", "Prepáčte", "Prosím"],
+          "choices": [
+            "Áno",
+            "Ďakujem",
+            "Prepáčte",
+            "Prosím"
+          ],
           "answer": "Prepáčte"
         },
         {
           "sentence": "Kde je záchod? — ___.",
           "translation": "Where is the bathroom? — ___.",
-          "choices": ["Áno", "Neviem", "Nie", "Rozumiete?"],
+          "choices": [
+            "Áno",
+            "Neviem",
+            "Nie",
+            "Rozumiete?"
+          ],
           "answer": "Neviem"
         },
         {
           "sentence": "Niekto mi berie tašku! ___!",
           "translation": "Someone is taking my bag! ___!",
-          "choices": ["Prosím", "Ďakujem", "Pomoc!", "Áno"],
+          "choices": [
+            "Prosím",
+            "Ďakujem",
+            "Pomoc!",
+            "Áno"
+          ],
           "answer": "Pomoc!"
         }
       ]
@@ -175,12 +417,30 @@
       "id": "ex8",
       "type": "UNSCRAMBLE",
       "items": [
-        { "word": "Nie",      "context": "When you refuse, you say it." },
-        { "word": "Áno",      "context": "When you agree, you say it." },
-        { "word": "Prosím",   "context": "You say it to ask for something politely, or to say you're welcome." },
-        { "word": "Neviem",   "context": "You say it when you have no idea about something." },
-        { "word": "Ďakujem",  "context": "You say it when someone does something nice for you." },
-        { "word": "Prepáčte", "context": "You say it when you bump into someone or want to get their attention." }
+        {
+          "word": "Nie",
+          "context": "When you refuse, you say it."
+        },
+        {
+          "word": "Áno",
+          "context": "When you agree, you say it."
+        },
+        {
+          "word": "Prosím",
+          "context": "You say it to ask for something politely, or to say you're welcome."
+        },
+        {
+          "word": "Neviem",
+          "context": "You say it when you have no idea about something."
+        },
+        {
+          "word": "Ďakujem",
+          "context": "You say it when someone does something nice for you."
+        },
+        {
+          "word": "Prepáčte",
+          "context": "You say it when you bump into someone or want to get their attention."
+        }
       ]
     }
   ]

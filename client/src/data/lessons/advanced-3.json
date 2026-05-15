@@ -11,100 +11,398 @@
       "id": "ex1",
       "type": "VOCABULARY_TABLE",
       "title": "Days of the Week",
-      "headers": ["Day", "Slovak", "English"],
+      "headers": [
+        "Day",
+        "Slovak",
+        "English"
+      ],
       "rows": [
-        { "label": "Monday",      "slovak": "Pondelok",      "english": "Monday" },
-        { "label": "Tuesday",     "slovak": "Utorok",        "english": "Tuesday" },
-        { "label": "Wednesday",   "slovak": "Streda",        "english": "Wednesday" },
-        { "label": "Thursday",    "slovak": "Štvrtok",       "english": "Thursday" },
-        { "label": "Friday",      "slovak": "Piatok",        "english": "Friday" },
-        { "label": "Saturday",    "slovak": "Sobota",        "english": "Saturday" },
-        { "label": "Sunday",      "slovak": "Nedeľa",        "english": "Sunday" },
-        { "label": "Weekend",     "slovak": "Víkend",        "english": "Weekend" },
-        { "label": "Weekday",     "slovak": "Pracovný deň",  "english": "Working day / Weekday" },
-        { "label": "Public hol.", "slovak": "Sviatok",       "english": "Public holiday" }
+        {
+          "label": "Monday",
+          "slovak": "Pondelok",
+          "english": "Monday"
+        },
+        {
+          "label": "Tuesday",
+          "slovak": "Utorok",
+          "english": "Tuesday"
+        },
+        {
+          "label": "Wednesday",
+          "slovak": "Streda",
+          "english": "Wednesday"
+        },
+        {
+          "label": "Thursday",
+          "slovak": "Štvrtok",
+          "english": "Thursday"
+        },
+        {
+          "label": "Friday",
+          "slovak": "Piatok",
+          "english": "Friday"
+        },
+        {
+          "label": "Saturday",
+          "slovak": "Sobota",
+          "english": "Saturday"
+        },
+        {
+          "label": "Sunday",
+          "slovak": "Nedeľa",
+          "english": "Sunday"
+        },
+        {
+          "label": "Weekend",
+          "slovak": "Víkend",
+          "english": "Weekend"
+        },
+        {
+          "label": "Weekday",
+          "slovak": "Pracovný deň",
+          "english": "Working day / Weekday"
+        },
+        {
+          "label": "Public hol.",
+          "slovak": "Sviatok",
+          "english": "Public holiday"
+        }
       ]
     },
     {
       "id": "ex2",
       "type": "VOCABULARY_TABLE",
       "title": "Months of the Year",
-      "headers": ["Month", "Slovak", "English"],
+      "headers": [
+        "Month",
+        "Slovak",
+        "English"
+      ],
       "rows": [
-        { "label": "January",   "slovak": "Január",    "english": "January" },
-        { "label": "February",  "slovak": "Február",   "english": "February" },
-        { "label": "March",     "slovak": "Marec",     "english": "March" },
-        { "label": "April",     "slovak": "Apríl",     "english": "April" },
-        { "label": "May",       "slovak": "Máj",       "english": "May" },
-        { "label": "June",      "slovak": "Jún",       "english": "June" },
-        { "label": "July",      "slovak": "Júl",       "english": "July" },
-        { "label": "August",    "slovak": "August",    "english": "August" },
-        { "label": "September", "slovak": "September", "english": "September" },
-        { "label": "October",   "slovak": "Október",   "english": "October" },
-        { "label": "November",  "slovak": "November",  "english": "November" },
-        { "label": "December",  "slovak": "December",  "english": "December" }
+        {
+          "label": "January",
+          "slovak": "Január",
+          "english": "January"
+        },
+        {
+          "label": "February",
+          "slovak": "Február",
+          "english": "February"
+        },
+        {
+          "label": "March",
+          "slovak": "Marec",
+          "english": "March"
+        },
+        {
+          "label": "April",
+          "slovak": "Apríl",
+          "english": "April"
+        },
+        {
+          "label": "May",
+          "slovak": "Máj",
+          "english": "May"
+        },
+        {
+          "label": "June",
+          "slovak": "Jún",
+          "english": "June"
+        },
+        {
+          "label": "July",
+          "slovak": "Júl",
+          "english": "July"
+        },
+        {
+          "label": "August",
+          "slovak": "August",
+          "english": "August"
+        },
+        {
+          "label": "September",
+          "slovak": "September",
+          "english": "September"
+        },
+        {
+          "label": "October",
+          "slovak": "Október",
+          "english": "October"
+        },
+        {
+          "label": "November",
+          "slovak": "November",
+          "english": "November"
+        },
+        {
+          "label": "December",
+          "slovak": "December",
+          "english": "December"
+        }
       ]
     },
     {
       "id": "ex3",
       "type": "VOCABULARY_TABLE",
       "title": "Calendar & Telling Time",
-      "headers": ["Topic", "Slovak", "English"],
+      "headers": [
+        "Topic",
+        "Slovak",
+        "English"
+      ],
       "rows": [
-        { "label": "Today",         "slovak": "Dnes",                         "english": "Today" },
-        { "label": "Tomorrow",      "slovak": "Zajtra",                       "english": "Tomorrow" },
-        { "label": "Yesterday",     "slovak": "Včera",                        "english": "Yesterday" },
-        { "label": "Next week",     "slovak": "Budúci týždeň",                "english": "Next week" },
-        { "label": "Last week",     "slovak": "Minulý týždeň",                "english": "Last week" },
-        { "label": "Next year",     "slovak": "Budúci rok",                   "english": "Next year" },
-        { "label": "What time?",    "slovak": "Koľko je hodín?",              "english": "What time is it?" },
-        { "label": "At what time?", "slovak": "O koľkej?",                   "english": "At what time?" },
-        { "label": "1 o'clock",     "slovak": "Je jedna hodina.",             "english": "It's one o'clock." },
-        { "label": "Half past 1",   "slovak": "Je pol druhej.",               "english": "It's half past one." },
-        { "label": "5 past 2",      "slovak": "Je päť minút po druhej.",      "english": "It's five past two." },
-        { "label": "5 to 3",        "slovak": "Je päť minút pred treťou.",    "english": "It's five to three." }
+        {
+          "label": "Today",
+          "slovak": "Dnes",
+          "english": "Today"
+        },
+        {
+          "label": "Tomorrow",
+          "slovak": "Zajtra",
+          "english": "Tomorrow"
+        },
+        {
+          "label": "Yesterday",
+          "slovak": "Včera",
+          "english": "Yesterday"
+        },
+        {
+          "label": "Next week",
+          "slovak": "Budúci týždeň",
+          "english": "Next week"
+        },
+        {
+          "label": "Last week",
+          "slovak": "Minulý týždeň",
+          "english": "Last week"
+        },
+        {
+          "label": "Next year",
+          "slovak": "Budúci rok",
+          "english": "Next year"
+        },
+        {
+          "label": "What time?",
+          "slovak": "Koľko je hodín?",
+          "english": "What time is it?"
+        },
+        {
+          "label": "At what time?",
+          "slovak": "O koľkej?",
+          "english": "At what time?"
+        },
+        {
+          "label": "1 o'clock",
+          "slovak": "Je jedna hodina.",
+          "english": "It's one o'clock."
+        },
+        {
+          "label": "Half past 1",
+          "slovak": "Je pol druhej.",
+          "english": "It's half past one."
+        },
+        {
+          "label": "5 past 2",
+          "slovak": "Je päť minút po druhej.",
+          "english": "It's five past two."
+        },
+        {
+          "label": "5 to 3",
+          "slovak": "Je päť minút pred treťou.",
+          "english": "It's five to three."
+        }
       ]
     },
     {
       "id": "ex4",
       "type": "LISTEN_AND_PICK",
       "words": [
-        { "slovak": "Pondelok", "english": "Monday" },
-        { "slovak": "Utorok",   "english": "Tuesday" },
-        { "slovak": "Streda",   "english": "Wednesday" },
-        { "slovak": "Štvrtok",  "english": "Thursday" },
-        { "slovak": "Piatok",   "english": "Friday" },
-        { "slovak": "Sobota",   "english": "Saturday" },
-        { "slovak": "Nedeľa",   "english": "Sunday" },
-        { "slovak": "Víkend",   "english": "Weekend" }
+        {
+          "slovak": "Pondelok",
+          "english": "Monday"
+        },
+        {
+          "slovak": "Utorok",
+          "english": "Tuesday"
+        },
+        {
+          "slovak": "Streda",
+          "english": "Wednesday"
+        },
+        {
+          "slovak": "Štvrtok",
+          "english": "Thursday"
+        },
+        {
+          "slovak": "Piatok",
+          "english": "Friday"
+        },
+        {
+          "slovak": "Sobota",
+          "english": "Saturday"
+        },
+        {
+          "slovak": "Nedeľa",
+          "english": "Sunday"
+        },
+        {
+          "slovak": "Víkend",
+          "english": "Weekend"
+        }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Pondelok",
+          "english": "Monday"
+        },
+        {
+          "slovak": "Utorok",
+          "english": "Tuesday"
+        },
+        {
+          "slovak": "Streda",
+          "english": "Wednesday"
+        },
+        {
+          "slovak": "Štvrtok",
+          "english": "Thursday"
+        },
+        {
+          "slovak": "Piatok",
+          "english": "Friday"
+        },
+        {
+          "slovak": "Sobota",
+          "english": "Saturday"
+        },
+        {
+          "slovak": "Nedeľa",
+          "english": "Sunday"
+        },
+        {
+          "slovak": "Víkend",
+          "english": "Weekend"
+        }
       ]
     },
     {
       "id": "ex5",
       "type": "LISTEN_AND_PICK",
       "words": [
-        { "slovak": "Január",    "english": "January" },
-        { "slovak": "Február",   "english": "February" },
-        { "slovak": "Apríl",     "english": "April" },
-        { "slovak": "Jún",       "english": "June" },
-        { "slovak": "August",    "english": "August" },
-        { "slovak": "September", "english": "September" },
-        { "slovak": "Október",   "english": "October" },
-        { "slovak": "December",  "english": "December" }
+        {
+          "slovak": "Január",
+          "english": "January"
+        },
+        {
+          "slovak": "Február",
+          "english": "February"
+        },
+        {
+          "slovak": "Apríl",
+          "english": "April"
+        },
+        {
+          "slovak": "Jún",
+          "english": "June"
+        },
+        {
+          "slovak": "August",
+          "english": "August"
+        },
+        {
+          "slovak": "September",
+          "english": "September"
+        },
+        {
+          "slovak": "Október",
+          "english": "October"
+        },
+        {
+          "slovak": "December",
+          "english": "December"
+        }
+      ]
+    },
+    {
+      "id": "ex5b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Január",
+          "english": "January"
+        },
+        {
+          "slovak": "Február",
+          "english": "February"
+        },
+        {
+          "slovak": "Apríl",
+          "english": "April"
+        },
+        {
+          "slovak": "Jún",
+          "english": "June"
+        },
+        {
+          "slovak": "August",
+          "english": "August"
+        },
+        {
+          "slovak": "September",
+          "english": "September"
+        },
+        {
+          "slovak": "Október",
+          "english": "October"
+        },
+        {
+          "slovak": "December",
+          "english": "December"
+        }
       ]
     },
     {
       "id": "ex6",
       "type": "PICK_TRANSLATION",
       "words": [
-        { "slovak": "Budúci týždeň",               "english": "Next week" },
-        { "slovak": "Minulý rok",                   "english": "Last year" },
-        { "slovak": "Koľko je hodín?",              "english": "What time is it?" },
-        { "slovak": "Je pol tretej.",               "english": "It's half past two." },
-        { "slovak": "Uvidíme sa zajtra.",           "english": "See you tomorrow." },
-        { "slovak": "Mám voľno v piatok.",          "english": "I'm free on Friday." },
-        { "slovak": "Narodil som sa v roku 1994.",  "english": "I was born in 1994." },
-        { "slovak": "Mám narodeniny v máji.",       "english": "My birthday is in May." }
+        {
+          "slovak": "Budúci týždeň",
+          "english": "Next week"
+        },
+        {
+          "slovak": "Minulý rok",
+          "english": "Last year"
+        },
+        {
+          "slovak": "Koľko je hodín?",
+          "english": "What time is it?"
+        },
+        {
+          "slovak": "Je pol tretej.",
+          "english": "It's half past two."
+        },
+        {
+          "slovak": "Uvidíme sa zajtra.",
+          "english": "See you tomorrow."
+        },
+        {
+          "slovak": "Mám voľno v piatok.",
+          "english": "I'm free on Friday."
+        },
+        {
+          "slovak": "Narodil som sa v roku 1994.",
+          "english": "I was born in 1994."
+        },
+        {
+          "slovak": "Mám narodeniny v máji.",
+          "english": "My birthday is in May."
+        }
       ]
     },
     {
@@ -114,56 +412,96 @@
         {
           "situation": "You want to say that today is Monday.",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Dnes je pondelok.", "Dnes je utorok.", "Zajtra je pondelok.", "Včera bol pondelok."],
+          "choices": [
+            "Dnes je pondelok.",
+            "Dnes je utorok.",
+            "Zajtra je pondelok.",
+            "Včera bol pondelok."
+          ],
           "answer": "Dnes je pondelok.",
           "answerMeaning": "Today is Monday."
         },
         {
           "situation": "Slovak counts time toward the next hour. 2:30 is 'half of the third hour'. How do you say it's 2:30?",
           "instruction": "Choose the correct phrase",
-          "choices": ["Je pol druhej.", "Je pol tretej.", "Sú dve hodiny.", "Je dve a pol."],
+          "choices": [
+            "Je pol druhej.",
+            "Je pol tretej.",
+            "Sú dve hodiny.",
+            "Je dve a pol."
+          ],
           "answer": "Je pol tretej.",
           "answerMeaning": "It's half past two. (literally: half of the third hour)"
         },
         {
           "situation": "You want to ask a colleague what time it is.",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Koľko je hodín?", "O koľkej je?", "Aký je čas?", "Kedy je teraz?"],
+          "choices": [
+            "Koľko je hodín?",
+            "O koľkej je?",
+            "Aký je čas?",
+            "Kedy je teraz?"
+          ],
           "answer": "Koľko je hodín?",
           "answerMeaning": "What time is it?"
         },
         {
           "situation": "The meeting is on Thursday. Slovak uses 'vo' (not 'v') before 'štvrtok'.",
           "instruction": "Choose the correct form",
-          "choices": ["Stretnutie je v štvrtok.", "Stretnutie je vo štvrtok.", "Stretnutie je na štvrtok.", "Stretnutie je štvrtok."],
+          "choices": [
+            "Stretnutie je v štvrtok.",
+            "Stretnutie je vo štvrtok.",
+            "Stretnutie je na štvrtok.",
+            "Stretnutie je štvrtok."
+          ],
           "answer": "Stretnutie je vo štvrtok.",
           "answerMeaning": "The meeting is on Thursday. ('vo' is used before štvrtok)"
         },
         {
           "situation": "Your birthday is on May 15th. Slovak dates use the genitive form of ordinal numbers.",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Mám narodeniny pätnásteho mája.", "Mám narodeniny 15 máj.", "Mám narodeniny v pätnásty máj.", "Mám narodeniny pätnásť mája."],
+          "choices": [
+            "Mám narodeniny pätnásteho mája.",
+            "Mám narodeniny 15 máj.",
+            "Mám narodeniny v pätnásty máj.",
+            "Mám narodeniny pätnásť mája."
+          ],
           "answer": "Mám narodeniny pätnásteho mája.",
           "answerMeaning": "My birthday is on May 15th. (genitive ordinal + genitive month)"
         },
         {
           "situation": "You (male) were born in 1994. Say it in Slovak.",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Narodil som sa v roku 1994.", "Bol som narodený rok 1994.", "Narodil som sa roku 1994.", "Som z roku 1994."],
+          "choices": [
+            "Narodil som sa v roku 1994.",
+            "Bol som narodený rok 1994.",
+            "Narodil som sa roku 1994.",
+            "Som z roku 1994."
+          ],
           "answer": "Narodil som sa v roku 1994.",
           "answerMeaning": "I was born in 1994."
         },
         {
           "situation": "You want to tell someone 'See you next week'.",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Uvidíme sa budúci týždeň.", "Uvidíme sa minulý týždeň.", "Uvidíme sa tento týždeň.", "Uvidíme sa v týždeň."],
+          "choices": [
+            "Uvidíme sa budúci týždeň.",
+            "Uvidíme sa minulý týždeň.",
+            "Uvidíme sa tento týždeň.",
+            "Uvidíme sa v týždeň."
+          ],
           "answer": "Uvidíme sa budúci týždeň.",
           "answerMeaning": "See you next week."
         },
         {
           "situation": "Someone asks 'Kedy máš voľno?' You want to say you're free on Friday afternoon.",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Mám voľno v piatok poobede.", "Mám voľno piatok poobede.", "Mám voľno na piatok poobede.", "Mám voľno vo štvrtok poobede."],
+          "choices": [
+            "Mám voľno v piatok poobede.",
+            "Mám voľno piatok poobede.",
+            "Mám voľno na piatok poobede.",
+            "Mám voľno vo štvrtok poobede."
+          ],
           "answer": "Mám voľno v piatok poobede.",
           "answerMeaning": "I'm free on Friday afternoon."
         }
@@ -176,49 +514,89 @@
         {
           "sentence": "Dnes je ___. Zajtra bude streda.",
           "translation": "Today is ___. Tomorrow will be Wednesday.",
-          "choices": ["utorok", "štvrtok", "piatok", "pondelok"],
+          "choices": [
+            "utorok",
+            "štvrtok",
+            "piatok",
+            "pondelok"
+          ],
           "answer": "utorok"
         },
         {
           "sentence": "Mám narodeniny ___ januára.",
           "translation": "My birthday is on the ___ of January.",
-          "choices": ["pätnásteho", "pätnásť", "januári", "január"],
+          "choices": [
+            "pätnásteho",
+            "pätnásť",
+            "januári",
+            "január"
+          ],
           "answer": "pätnásteho"
         },
         {
           "sentence": "Je pol ___. Sú presne dve hodiny tridsať minút.",
           "translation": "It's ___ thirty. It's exactly two thirty.",
-          "choices": ["tretej", "druhej", "štvrtej", "piatej"],
+          "choices": [
+            "tretej",
+            "druhej",
+            "štvrtej",
+            "piatej"
+          ],
           "answer": "tretej"
         },
         {
           "sentence": "Stretnutie je ___ štvrtok o jednej.",
           "translation": "The meeting is ___ Thursday at one.",
-          "choices": ["vo", "v", "na", "za"],
+          "choices": [
+            "vo",
+            "v",
+            "na",
+            "za"
+          ],
           "answer": "vo"
         },
         {
           "sentence": "Uvidíme sa ___ týždeň, v utorok.",
           "translation": "See you ___ week, on Tuesday.",
-          "choices": ["budúci", "minulý", "tento", "každý"],
+          "choices": [
+            "budúci",
+            "minulý",
+            "tento",
+            "každý"
+          ],
           "answer": "budúci"
         },
         {
           "sentence": "Narodil som sa ___ roku 1994.",
           "translation": "I was born ___ 1994.",
-          "choices": ["v", "z", "na", "do"],
+          "choices": [
+            "v",
+            "z",
+            "na",
+            "do"
+          ],
           "answer": "v"
         },
         {
           "sentence": "Koľko je ___? Je päť minút po druhej.",
           "translation": "What ___ is it? It's five past two.",
-          "choices": ["hodín", "minút", "dní", "rokov"],
+          "choices": [
+            "hodín",
+            "minút",
+            "dní",
+            "rokov"
+          ],
           "answer": "hodín"
         },
         {
           "sentence": "___ je pondelok. Dnes je krásna nedeľa.",
           "translation": "___ is Monday. Today is a lovely Sunday.",
-          "choices": ["Zajtra", "Dnes", "Včera", "Budúci"],
+          "choices": [
+            "Zajtra",
+            "Dnes",
+            "Včera",
+            "Budúci"
+          ],
           "answer": "Zajtra"
         }
       ]
@@ -229,42 +607,82 @@
       "items": [
         {
           "sentence": "Dnes je ___. Zajtra bude streda.",
-          "choices": ["utorok", "štvrtok", "piatok", "pondelok"],
+          "choices": [
+            "utorok",
+            "štvrtok",
+            "piatok",
+            "pondelok"
+          ],
           "answer": "utorok"
         },
         {
           "sentence": "Mám narodeniny ___ januára.",
-          "choices": ["pätnásteho", "pätnásť", "januári", "január"],
+          "choices": [
+            "pätnásteho",
+            "pätnásť",
+            "januári",
+            "január"
+          ],
           "answer": "pätnásteho"
         },
         {
           "sentence": "Je pol ___. Sú presne dve hodiny tridsať minút.",
-          "choices": ["tretej", "druhej", "štvrtej", "piatej"],
+          "choices": [
+            "tretej",
+            "druhej",
+            "štvrtej",
+            "piatej"
+          ],
           "answer": "tretej"
         },
         {
           "sentence": "Stretnutie je ___ štvrtok o jednej.",
-          "choices": ["vo", "v", "na", "za"],
+          "choices": [
+            "vo",
+            "v",
+            "na",
+            "za"
+          ],
           "answer": "vo"
         },
         {
           "sentence": "Uvidíme sa ___ týždeň, v utorok.",
-          "choices": ["budúci", "minulý", "tento", "každý"],
+          "choices": [
+            "budúci",
+            "minulý",
+            "tento",
+            "každý"
+          ],
           "answer": "budúci"
         },
         {
           "sentence": "Narodil som sa ___ roku 1994.",
-          "choices": ["v", "z", "na", "do"],
+          "choices": [
+            "v",
+            "z",
+            "na",
+            "do"
+          ],
           "answer": "v"
         },
         {
           "sentence": "Koľko je ___? Je päť minút po druhej.",
-          "choices": ["hodín", "minút", "dní", "rokov"],
+          "choices": [
+            "hodín",
+            "minút",
+            "dní",
+            "rokov"
+          ],
           "answer": "hodín"
         },
         {
           "sentence": "___ je pondelok. Dnes je krásna nedeľa.",
-          "choices": ["Zajtra", "Dnes", "Včera", "Budúci"],
+          "choices": [
+            "Zajtra",
+            "Dnes",
+            "Včera",
+            "Budúci"
+          ],
           "answer": "Zajtra"
         }
       ]
@@ -278,45 +696,105 @@
           "snailMessage": "Ahoj! Chcela by som sa s tebou stretnúť na káve. Kedy máš voľno tento týždeň?",
           "snailMessageEnglish": "Hi! I'd like to meet you for a coffee. When are you free this week?",
           "choices": [
-            { "slovak": "Mám voľno v stredu alebo v piatok. Čo ti vyhovuje?", "english": "I'm free on Wednesday or Friday. What suits you?", "isCorrect": true },
-            { "slovak": "Mám narodeniny v januári.", "english": "My birthday is in January.", "isCorrect": false },
-            { "slovak": "Minulý rok som bol na dovolenke.", "english": "Last year I was on holiday.", "isCorrect": false }
+            {
+              "slovak": "Mám voľno v stredu alebo v piatok. Čo ti vyhovuje?",
+              "english": "I'm free on Wednesday or Friday. What suits you?",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Mám narodeniny v januári.",
+              "english": "My birthday is in January.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Minulý rok som bol na dovolenke.",
+              "english": "Last year I was on holiday.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Streda mi vyhovuje. O koľkej?",
           "snailReplyEnglish": "Wednesday works for me. What time?"
         },
         {
           "choices": [
-            { "slovak": "Čo tak o pol jednej? Na obedňajšej prestávke.", "english": "How about half past twelve? During the lunch break.", "isCorrect": true },
-            { "slovak": "Neviem koľko je hodín.", "english": "I don't know what time it is.", "isCorrect": false },
-            { "slovak": "V sobotu ráno o siedmej.", "english": "On Saturday morning at seven.", "isCorrect": false }
+            {
+              "slovak": "Čo tak o pol jednej? Na obedňajšej prestávke.",
+              "english": "How about half past twelve? During the lunch break.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Neviem koľko je hodín.",
+              "english": "I don't know what time it is.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "V sobotu ráno o siedmej.",
+              "english": "On Saturday morning at seven.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Pol jednej je skvelé! Kde sa stretneme?",
           "snailReplyEnglish": "Half past twelve is great! Where shall we meet?"
         },
         {
           "choices": [
-            { "slovak": "V kaviarni na Obchodnej ulici? Je to blízko kancelárie.", "english": "At the café on Obchodná Street? It's close to the office.", "isCorrect": true },
-            { "slovak": "Neviem kde.", "english": "I don't know where.", "isCorrect": false },
-            { "slovak": "Dnes je utorok, nie streda.", "english": "Today is Tuesday, not Wednesday.", "isCorrect": false }
+            {
+              "slovak": "V kaviarni na Obchodnej ulici? Je to blízko kancelárie.",
+              "english": "At the café on Obchodná Street? It's close to the office.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Neviem kde.",
+              "english": "I don't know where.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Dnes je utorok, nie streda.",
+              "english": "Today is Tuesday, not Wednesday.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Perfektné! Dám to do kalendára — streda, pol jednej, Obchodná. Správne?",
           "snailReplyEnglish": "Perfect! I'll put it in the calendar — Wednesday, half past twelve, Obchodná. Correct?"
         },
         {
           "choices": [
-            { "slovak": "Áno, správne! Teším sa. Ak sa niečo zmení, napíšem ti.", "english": "Yes, correct! Looking forward to it. If anything changes, I'll text you.", "isCorrect": true },
-            { "slovak": "Nie, je to v pondelok.", "english": "No, it's on Monday.", "isCorrect": false },
-            { "slovak": "Budúci rok je lepší.", "english": "Next year is better.", "isCorrect": false }
+            {
+              "slovak": "Áno, správne! Teším sa. Ak sa niečo zmení, napíšem ti.",
+              "english": "Yes, correct! Looking forward to it. If anything changes, I'll text you.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Nie, je to v pondelok.",
+              "english": "No, it's on Monday.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Budúci rok je lepší.",
+              "english": "Next year is better.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Skvelé! Do videnia v stredu o pol jednej!",
           "snailReplyEnglish": "Great! See you on Wednesday at half past twelve!"
         },
         {
           "choices": [
-            { "slovak": "Čau, Zuzana! Dobrý zvyšok dňa!", "english": "Bye, Zuzana! Have a good rest of the day!", "isCorrect": true },
-            { "slovak": "Kedy je streda?", "english": "When is Wednesday?", "isCorrect": false },
-            { "slovak": "Zajtra je piatok.", "english": "Tomorrow is Friday.", "isCorrect": false }
+            {
+              "slovak": "Čau, Zuzana! Dobrý zvyšok dňa!",
+              "english": "Bye, Zuzana! Have a good rest of the day!",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Kedy je streda?",
+              "english": "When is Wednesday?",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Zajtra je piatok.",
+              "english": "Tomorrow is Friday.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Aj tebe! Do stredy!",
           "snailReplyEnglish": "You too! See you Wednesday!"
@@ -332,41 +810,86 @@
         {
           "snailMessage": "Ahoj! Chcela by som sa s tebou stretnúť na káve. Kedy máš voľno tento týždeň?",
           "choices": [
-            { "slovak": "Mám voľno v stredu alebo v piatok. Čo ti vyhovuje?", "isCorrect": true },
-            { "slovak": "Mám narodeniny v januári.", "isCorrect": false },
-            { "slovak": "Minulý rok som bol na dovolenke.", "isCorrect": false }
+            {
+              "slovak": "Mám voľno v stredu alebo v piatok. Čo ti vyhovuje?",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Mám narodeniny v januári.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Minulý rok som bol na dovolenke.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Streda mi vyhovuje. O koľkej?"
         },
         {
           "choices": [
-            { "slovak": "Čo tak o pol jednej? Na obedňajšej prestávke.", "isCorrect": true },
-            { "slovak": "Neviem koľko je hodín.", "isCorrect": false },
-            { "slovak": "V sobotu ráno o siedmej.", "isCorrect": false }
+            {
+              "slovak": "Čo tak o pol jednej? Na obedňajšej prestávke.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Neviem koľko je hodín.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "V sobotu ráno o siedmej.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Pol jednej je skvelé! Kde sa stretneme?"
         },
         {
           "choices": [
-            { "slovak": "V kaviarni na Obchodnej ulici? Je to blízko kancelárie.", "isCorrect": true },
-            { "slovak": "Neviem kde.", "isCorrect": false },
-            { "slovak": "Dnes je utorok, nie streda.", "isCorrect": false }
+            {
+              "slovak": "V kaviarni na Obchodnej ulici? Je to blízko kancelárie.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Neviem kde.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Dnes je utorok, nie streda.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Perfektné! Dám to do kalendára — streda, pol jednej, Obchodná. Správne?"
         },
         {
           "choices": [
-            { "slovak": "Áno, správne! Teším sa. Ak sa niečo zmení, napíšem ti.", "isCorrect": true },
-            { "slovak": "Nie, je to v pondelok.", "isCorrect": false },
-            { "slovak": "Budúci rok je lepší.", "isCorrect": false }
+            {
+              "slovak": "Áno, správne! Teším sa. Ak sa niečo zmení, napíšem ti.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Nie, je to v pondelok.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Budúci rok je lepší.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Skvelé! Do videnia v stredu o pol jednej!"
         },
         {
           "choices": [
-            { "slovak": "Čau, Zuzana! Dobrý zvyšok dňa!", "isCorrect": true },
-            { "slovak": "Kedy je streda?", "isCorrect": false },
-            { "slovak": "Zajtra je piatok.", "isCorrect": false }
+            {
+              "slovak": "Čau, Zuzana! Dobrý zvyšok dňa!",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Kedy je streda?",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Zajtra je piatok.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Aj tebe! Do stredy!"
         }

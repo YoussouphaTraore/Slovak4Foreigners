@@ -1,0 +1,789 @@
+{
+  "id": "advanced-4",
+  "stageId": "advanced",
+  "stageName": "Stage 3 · Settling In (Advanced)",
+  "title": "At the Coffee Shop",
+  "description": "Order coffee, read the menu and pay the bill",
+  "icon": "☕",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Drinks & Items",
+      "headers": [
+        "Item",
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "label": "Coffee",
+          "slovak": "Káva",
+          "english": "Coffee"
+        },
+        {
+          "label": "Espresso",
+          "slovak": "Espresso",
+          "english": "Espresso"
+        },
+        {
+          "label": "Cappuccino",
+          "slovak": "Cappuccino",
+          "english": "Cappuccino"
+        },
+        {
+          "label": "Tea",
+          "slovak": "Čaj",
+          "english": "Tea"
+        },
+        {
+          "label": "Water",
+          "slovak": "Voda",
+          "english": "Water"
+        },
+        {
+          "label": "Juice",
+          "slovak": "Džús",
+          "english": "Juice"
+        },
+        {
+          "label": "Milk",
+          "slovak": "Mlieko",
+          "english": "Milk"
+        },
+        {
+          "label": "Sugar",
+          "slovak": "Cukor",
+          "english": "Sugar"
+        },
+        {
+          "label": "Cup",
+          "slovak": "Šálka",
+          "english": "Cup"
+        },
+        {
+          "label": "Glass",
+          "slovak": "Pohár",
+          "english": "Glass"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Café Phrases",
+      "headers": [
+        "Topic",
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "label": "I'd like",
+          "slovak": "Prosím si...",
+          "english": "I would like..."
+        },
+        {
+          "label": "I'll have",
+          "slovak": "Dám si...",
+          "english": "I'll have..."
+        },
+        {
+          "label": "Waiter",
+          "slovak": "Čo si dáte?",
+          "english": "What will you have?"
+        },
+        {
+          "label": "Menu",
+          "slovak": "Môžem vidieť jedálny lístok?",
+          "english": "Can I see the menu?"
+        },
+        {
+          "label": "How much?",
+          "slovak": "Koľko to stojí?",
+          "english": "How much does it cost?"
+        },
+        {
+          "label": "Bill",
+          "slovak": "Môžem dostať účet?",
+          "english": "Can I have the bill?"
+        },
+        {
+          "label": "By card",
+          "slovak": "Platím kartou.",
+          "english": "I'm paying by card."
+        },
+        {
+          "label": "Cash",
+          "slovak": "Platím hotovosťou.",
+          "english": "I'm paying with cash."
+        },
+        {
+          "label": "With milk",
+          "slovak": "S mliekom, prosím.",
+          "english": "With milk, please."
+        },
+        {
+          "label": "No sugar",
+          "slovak": "Bez cukru, prosím.",
+          "english": "Without sugar, please."
+        },
+        {
+          "label": "Keep change",
+          "slovak": "Nechajte si zvyšok.",
+          "english": "Keep the change."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Káva",
+          "english": "Coffee"
+        },
+        {
+          "slovak": "Cappuccino",
+          "english": "Cappuccino"
+        },
+        {
+          "slovak": "Čaj",
+          "english": "Tea"
+        },
+        {
+          "slovak": "Voda",
+          "english": "Water"
+        },
+        {
+          "slovak": "Cukor",
+          "english": "Sugar"
+        },
+        {
+          "slovak": "Mlieko",
+          "english": "Milk"
+        },
+        {
+          "slovak": "Džús",
+          "english": "Juice"
+        },
+        {
+          "slovak": "Šálka",
+          "english": "Cup"
+        }
+      ]
+    },
+    {
+      "id": "ex3b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Káva",
+          "english": "Coffee"
+        },
+        {
+          "slovak": "Cappuccino",
+          "english": "Cappuccino"
+        },
+        {
+          "slovak": "Čaj",
+          "english": "Tea"
+        },
+        {
+          "slovak": "Voda",
+          "english": "Water"
+        },
+        {
+          "slovak": "Cukor",
+          "english": "Sugar"
+        },
+        {
+          "slovak": "Mlieko",
+          "english": "Milk"
+        },
+        {
+          "slovak": "Džús",
+          "english": "Juice"
+        },
+        {
+          "slovak": "Šálka",
+          "english": "Cup"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Čo si dáte?",
+          "english": "What will you have?"
+        },
+        {
+          "slovak": "Prosím si cappuccino.",
+          "english": "I would like a cappuccino."
+        },
+        {
+          "slovak": "Koľko to stojí?",
+          "english": "How much does it cost?"
+        },
+        {
+          "slovak": "Môžem dostať účet?",
+          "english": "Can I have the bill?"
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "I'm paying by card."
+        },
+        {
+          "slovak": "Nechajte si zvyšok.",
+          "english": "Keep the change."
+        },
+        {
+          "slovak": "S mliekom, prosím.",
+          "english": "With milk, please."
+        },
+        {
+          "slovak": "Bez cukru, prosím.",
+          "english": "Without sugar, please."
+        }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Čo si dáte?",
+          "english": "What will you have?"
+        },
+        {
+          "slovak": "Prosím si cappuccino.",
+          "english": "I would like a cappuccino."
+        },
+        {
+          "slovak": "Koľko to stojí?",
+          "english": "How much does it cost?"
+        },
+        {
+          "slovak": "Môžem dostať účet?",
+          "english": "Can I have the bill?"
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "I'm paying by card."
+        },
+        {
+          "slovak": "Nechajte si zvyšok.",
+          "english": "Keep the change."
+        },
+        {
+          "slovak": "S mliekom, prosím.",
+          "english": "With milk, please."
+        },
+        {
+          "slovak": "Bez cukru, prosím.",
+          "english": "Without sugar, please."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Jedálny lístok",
+          "english": "Menu"
+        },
+        {
+          "slovak": "Účet",
+          "english": "Bill"
+        },
+        {
+          "slovak": "Čašník",
+          "english": "Waiter"
+        },
+        {
+          "slovak": "Hotovosť",
+          "english": "Cash"
+        },
+        {
+          "slovak": "Zvyšok",
+          "english": "Change (money)"
+        },
+        {
+          "slovak": "Prosím si cappuccino.",
+          "english": "I would like a cappuccino."
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "I'm paying by card."
+        },
+        {
+          "slovak": "Bez cukru, prosím.",
+          "english": "Without sugar, please."
+        },
+        {
+          "slovak": "Koľko to stojí?",
+          "english": "How much does it cost?"
+        },
+        {
+          "slovak": "Nechajte si zvyšok.",
+          "english": "Keep the change."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The waiter asks 'Čo si dáte?' You want a cappuccino.",
+          "instruction": "Choose the most appropriate reply",
+          "choices": [
+            "Dám si cappuccino, prosím.",
+            "Môžem dostať účet?",
+            "Nechajte si zvyšok.",
+            "Koľko to stojí?"
+          ],
+          "answer": "Dám si cappuccino, prosím.",
+          "answerMeaning": "I'll have a cappuccino, please."
+        },
+        {
+          "situation": "You just sat down at a café table and want to see the menu.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Môžem vidieť jedálny lístok?",
+            "Dám si kávu.",
+            "Koľko to stojí?",
+            "Platím kartou."
+          ],
+          "answer": "Môžem vidieť jedálny lístok?",
+          "answerMeaning": "Can I see the menu?"
+        },
+        {
+          "situation": "You want your coffee without sugar.",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Bez cukru, prosím.",
+            "S cukrom, prosím.",
+            "S mliekom, prosím.",
+            "Bez mlieka, prosím."
+          ],
+          "answer": "Bez cukru, prosím.",
+          "answerMeaning": "Without sugar, please."
+        },
+        {
+          "situation": "You want to know how much your espresso costs.",
+          "instruction": "Choose the most appropriate question",
+          "choices": [
+            "Koľko to stojí?",
+            "Môžem dostať účet?",
+            "Čo si dáte?",
+            "Prosím si čaj."
+          ],
+          "answer": "Koľko to stojí?",
+          "answerMeaning": "How much does it cost?"
+        },
+        {
+          "situation": "You've finished your coffee and want to pay. How do you ask for the bill?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Môžem dostať účet, prosím?",
+            "Dám si ešte jeden.",
+            "S mliekom, prosím.",
+            "Nechajte si zvyšok."
+          ],
+          "answer": "Môžem dostať účet, prosím?",
+          "answerMeaning": "Can I have the bill, please?"
+        },
+        {
+          "situation": "The waiter asks how you want to pay. You are paying by card.",
+          "instruction": "Choose the correct reply",
+          "choices": [
+            "Platím kartou.",
+            "Platím hotovosťou.",
+            "Nechajte si zvyšok.",
+            "Ďakujem, dovidenia."
+          ],
+          "answer": "Platím kartou.",
+          "answerMeaning": "I'm paying by card."
+        },
+        {
+          "situation": "The waiter gives you your change. You want them to keep it.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Nechajte si zvyšok.",
+            "Môžem dostať účet?",
+            "Platím kartou.",
+            "Ďakujem."
+          ],
+          "answer": "Nechajte si zvyšok.",
+          "answerMeaning": "Keep the change."
+        },
+        {
+          "situation": "You want to order a coffee with milk.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Prosím si kávu s mliekom.",
+            "Prosím si kávu bez mlieka.",
+            "Dám si čaj s cukrom.",
+            "Môžem dostať účet?"
+          ],
+          "answer": "Prosím si kávu s mliekom.",
+          "answerMeaning": "I would like a coffee with milk."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Čo si ___?",
+          "translation": "What will you ___?",
+          "choices": [
+            "dáte",
+            "máte",
+            "robíte",
+            "ste"
+          ],
+          "answer": "dáte"
+        },
+        {
+          "sentence": "Prosím si ___, bez cukru.",
+          "translation": "I would like a ___, without sugar.",
+          "choices": [
+            "cappuccino",
+            "čaj",
+            "mlieko",
+            "vodu"
+          ],
+          "answer": "cappuccino"
+        },
+        {
+          "sentence": "___ to stojí toto espresso?",
+          "translation": "___ does this espresso cost?",
+          "choices": [
+            "Koľko",
+            "Kde",
+            "Kedy",
+            "Ako"
+          ],
+          "answer": "Koľko"
+        },
+        {
+          "sentence": "Môžem dostať ___?",
+          "translation": "Can I have the ___?",
+          "choices": [
+            "účet",
+            "jedálny lístok",
+            "cappuccino",
+            "pohár"
+          ],
+          "answer": "účet"
+        },
+        {
+          "sentence": "Platím ___.",
+          "translation": "I'm paying by ___.",
+          "choices": [
+            "kartou",
+            "hotovosťou",
+            "cukor",
+            "mlieko"
+          ],
+          "answer": "kartou"
+        },
+        {
+          "sentence": "___ si zvyšok.",
+          "translation": "___ the change.",
+          "choices": [
+            "Nechajte",
+            "Dajte",
+            "Dám",
+            "Prosím"
+          ],
+          "answer": "Nechajte"
+        },
+        {
+          "sentence": "Dám si cappuccino ___ mliekom.",
+          "translation": "I'll have a cappuccino ___ milk.",
+          "choices": [
+            "s",
+            "bez",
+            "na",
+            "za"
+          ],
+          "answer": "s"
+        },
+        {
+          "sentence": "___ lístok, prosím.",
+          "translation": "The ___, please.",
+          "choices": [
+            "Jedálny",
+            "Kartou",
+            "Účet",
+            "Zvyšok"
+          ],
+          "answer": "Jedálny"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Prosím si ___, bez cukru, s mliekom.",
+          "choices": [
+            "cappuccino",
+            "čaj",
+            "džús",
+            "vodu"
+          ],
+          "answer": "cappuccino"
+        },
+        {
+          "sentence": "Môžem vidieť ___ lístok?",
+          "choices": [
+            "jedálny",
+            "zvyšok",
+            "účet",
+            "kartou"
+          ],
+          "answer": "jedálny"
+        },
+        {
+          "sentence": "Platím ___.",
+          "choices": [
+            "hotovosťou",
+            "kartou",
+            "cukrom",
+            "mliekom"
+          ],
+          "answer": "hotovosťou"
+        },
+        {
+          "sentence": "___ si dáte?",
+          "choices": [
+            "Čo",
+            "Kde",
+            "Kedy",
+            "Prečo"
+          ],
+          "answer": "Čo"
+        },
+        {
+          "sentence": "Kávu ___ mliekom, prosím.",
+          "choices": [
+            "s",
+            "bez",
+            "na",
+            "za"
+          ],
+          "answer": "s"
+        },
+        {
+          "sentence": "Nechajte si ___.",
+          "choices": [
+            "zvyšok",
+            "mlieko",
+            "cukor",
+            "pohár"
+          ],
+          "answer": "zvyšok"
+        },
+        {
+          "sentence": "___ to stojí?",
+          "choices": [
+            "Koľko",
+            "Čo",
+            "Kde",
+            "Prečo"
+          ],
+          "answer": "Koľko"
+        },
+        {
+          "sentence": "Môžem dostať ___?",
+          "choices": [
+            "účet",
+            "cappuccino",
+            "jedálny",
+            "pohár"
+          ],
+          "answer": "účet"
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "SMS_DIALOGUE",
+      "scenario": "You're at Kávička Café in Bratislava. The barista takes your order.",
+      "turns": [
+        {
+          "snailMessage": "Dobrý deň! Čo si dáte?",
+          "snailMessageEnglish": "Good day! What will you have?",
+          "choices": [
+            {
+              "slovak": "Dám si cappuccino, prosím.",
+              "english": "I'll have a cappuccino, please.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Môžem dostať účet?",
+              "english": "Can I have the bill?",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Koľko to stojí?",
+              "english": "How much does it cost?",
+              "isCorrect": false
+            }
+          ],
+          "snailReply": "Výborne! S mliekom alebo bez?",
+          "snailReplyEnglish": "Excellent! With milk or without?"
+        },
+        {
+          "choices": [
+            {
+              "slovak": "S mliekom, prosím. A bez cukru.",
+              "english": "With milk, please. And without sugar.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Nechajte si zvyšok.",
+              "english": "Keep the change.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Platím kartou.",
+              "english": "I'm paying by card.",
+              "isCorrect": false
+            }
+          ],
+          "snailReply": "Dobre! Bude to tri eurá päťdesiat.",
+          "snailReplyEnglish": "Okay! That will be three euros fifty."
+        },
+        {
+          "choices": [
+            {
+              "slovak": "Tu máte. Platím kartou.",
+              "english": "Here you go. I'm paying by card.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Môžem dostať účet?",
+              "english": "Can I have the bill?",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Dám si ešte jeden cappuccino.",
+              "english": "I'll have another cappuccino.",
+              "isCorrect": false
+            }
+          ],
+          "snailReply": "Ďakujem! Nech sa páči, vaše cappuccino.",
+          "snailReplyEnglish": "Thank you! Here is your cappuccino."
+        },
+        {
+          "choices": [
+            {
+              "slovak": "Ďakujem. Vyzerá skvele!",
+              "english": "Thank you. Looks great!",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Koľko to stojí?",
+              "english": "How much does it cost?",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Bez cukru, prosím.",
+              "english": "Without sugar, please.",
+              "isCorrect": false
+            }
+          ],
+          "snailReply": "Dobrú chuť! Ak niečo potrebujete, dajte vedieť.",
+          "snailReplyEnglish": "Enjoy! If you need anything, let us know."
+        },
+        {
+          "choices": [
+            {
+              "slovak": "Ďakujem, dovidenia!",
+              "english": "Thank you, goodbye!",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Môžem dostať ďalšiu?",
+              "english": "Can I have another one?",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Nechajte si zvyšok.",
+              "english": "Keep the change.",
+              "isCorrect": false
+            }
+          ],
+          "snailReply": "Dovidenia! Príďte znova!",
+          "snailReplyEnglish": "Goodbye! Come again!"
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "SMS_DIALOGUE",
+      "autoSpeak": true,
+      "scenario": "Ste v kaviarni Kávička v Bratislave. Čašník berie vašu objednávku.",
+      "turns": [
+        {
+          "snailMessage": "Dobrý deň! Čo si dáte?",
+          "choices": [
+            { "slovak": "Dám si cappuccino, prosím.", "isCorrect": true },
+            { "slovak": "Môžem dostať účet?", "isCorrect": false },
+            { "slovak": "Koľko to stojí?", "isCorrect": false }
+          ],
+          "snailReply": "Výborne! S mliekom alebo bez?"
+        },
+        {
+          "choices": [
+            { "slovak": "S mliekom, prosím. A bez cukru.", "isCorrect": true },
+            { "slovak": "Nechajte si zvyšok.", "isCorrect": false },
+            { "slovak": "Platím kartou.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre! Bude to tri eurá päťdesiat."
+        },
+        {
+          "choices": [
+            { "slovak": "Tu máte. Platím kartou.", "isCorrect": true },
+            { "slovak": "Môžem dostať účet?", "isCorrect": false },
+            { "slovak": "Dám si ešte jeden cappuccino.", "isCorrect": false }
+          ],
+          "snailReply": "Ďakujem! Nech sa páči, vaše cappuccino."
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem. Vyzerá skvele!", "isCorrect": true },
+            { "slovak": "Koľko to stojí?", "isCorrect": false },
+            { "slovak": "Bez cukru, prosím.", "isCorrect": false }
+          ],
+          "snailReply": "Dobrú chuť! Ak niečo potrebujete, dajte vedieť."
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem, dovidenia!", "isCorrect": true },
+            { "slovak": "Môžem dostať ďalšiu?", "isCorrect": false },
+            { "slovak": "Nechajte si zvyšok.", "isCorrect": false }
+          ],
+          "snailReply": "Dovidenia! Príďte znova!"
+        }
+      ]
+    },
+    {
+      "id": "ex11",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

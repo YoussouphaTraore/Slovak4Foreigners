@@ -11,72 +11,251 @@
       "id": "ex1",
       "type": "VOCABULARY_TABLE",
       "title": "Emergency People & Places",
-      "headers": ["Person / Place", "Slovak", "English"],
+      "headers": [
+        "Person / Place",
+        "Slovak",
+        "English"
+      ],
       "rows": [
-        { "label": "Doctor (m)",    "slovak": "Doktor",            "english": "Doctor (male)" },
-        { "label": "Doctor (f)",    "slovak": "Doktorka",          "english": "Doctor (female)" },
-        { "label": "Policeman",     "slovak": "Policajt",          "english": "Policeman" },
-        { "label": "Policewoman",   "slovak": "Policajtka",        "english": "Policewoman" },
-        { "label": "Paramedic",     "slovak": "Záchranár",         "english": "Paramedic" },
-        { "label": "Ambulance",     "slovak": "Sanitka",           "english": "Ambulance (vehicle)" },
-        { "label": "Clinic",        "slovak": "Ambulancia",        "english": "Doctor's office / Clinic" },
-        { "label": "Hospital",      "slovak": "Nemocnica",         "english": "Hospital" },
-        { "label": "Police St.",    "slovak": "Policajná stanica", "english": "Police Station" },
-        { "label": "Fire Dept.",    "slovak": "Hasiči",            "english": "Fire Department" }
+        {
+          "label": "Doctor (m)",
+          "slovak": "Doktor",
+          "english": "Doctor (male)"
+        },
+        {
+          "label": "Doctor (f)",
+          "slovak": "Doktorka",
+          "english": "Doctor (female)"
+        },
+        {
+          "label": "Policeman",
+          "slovak": "Policajt",
+          "english": "Policeman"
+        },
+        {
+          "label": "Policewoman",
+          "slovak": "Policajtka",
+          "english": "Policewoman"
+        },
+        {
+          "label": "Paramedic",
+          "slovak": "Záchranár",
+          "english": "Paramedic"
+        },
+        {
+          "label": "Ambulance",
+          "slovak": "Sanitka",
+          "english": "Ambulance (vehicle)"
+        },
+        {
+          "label": "Clinic",
+          "slovak": "Ambulancia",
+          "english": "Doctor's office / Clinic"
+        },
+        {
+          "label": "Hospital",
+          "slovak": "Nemocnica",
+          "english": "Hospital"
+        },
+        {
+          "label": "Police St.",
+          "slovak": "Policajná stanica",
+          "english": "Police Station"
+        },
+        {
+          "label": "Fire Dept.",
+          "slovak": "Hasiči",
+          "english": "Fire Department"
+        }
       ]
     },
     {
       "id": "ex2",
       "type": "VOCABULARY_TABLE",
       "title": "Emergency Numbers",
-      "headers": ["Number", "In Slovak", "Use when"],
+      "headers": [
+        "Number",
+        "In Slovak",
+        "Use when"
+      ],
       "rows": [
-        { "label": "112", "slovak": "sto dvanásť",         "english": "Any emergency — fire, medical or crime (all EU)" },
-        { "label": "155", "slovak": "sto päťdesiatpäť",    "english": "Medical — injury, illness, heart attack" },
-        { "label": "158", "slovak": "sto päťdesiatosem",   "english": "Police — theft, crime, violence" },
-        { "label": "150", "slovak": "sto päťdesiat",       "english": "Fire — fire, explosion, gas leak" },
-        { "label": "156", "slovak": "sto päťdesiatšesť",   "english": "City Police — parking, local disputes" }
+        {
+          "label": "112",
+          "slovak": "sto dvanásť",
+          "english": "Any emergency — fire, medical or crime (all EU)"
+        },
+        {
+          "label": "155",
+          "slovak": "sto päťdesiatpäť",
+          "english": "Medical — injury, illness, heart attack"
+        },
+        {
+          "label": "158",
+          "slovak": "sto päťdesiatosem",
+          "english": "Police — theft, crime, violence"
+        },
+        {
+          "label": "150",
+          "slovak": "sto päťdesiat",
+          "english": "Fire — fire, explosion, gas leak"
+        },
+        {
+          "label": "156",
+          "slovak": "sto päťdesiatšesť",
+          "english": "City Police — parking, local disputes"
+        }
       ]
     },
     {
       "id": "ex3",
       "type": "VOCABULARY_TABLE",
       "title": "What to Say When Calling",
-      "headers": ["Calling", "Say in Slovak", "English"],
+      "headers": [
+        "Calling",
+        "Say in Slovak",
+        "English"
+      ],
       "rows": [
-        { "label": "Any call →",  "slovak": "Volám sa [meno]. Som na [ulica].",       "english": "My name is [name]. I am on [street]." },
-        { "label": "Call 112 →",  "slovak": "Je to núdza! Potrebujem pomoc!",          "english": "It's an emergency! I need help!" },
-        { "label": "Call 155 →",  "slovak": "Niekto je zranený! Pošlite záchranku!",  "english": "Someone is injured! Send an ambulance!" },
-        { "label": "Call 158 →",  "slovak": "Ukradli mi peňaženku! Potrebujem políciu!", "english": "They stole my wallet! I need the police!" },
-        { "label": "Call 150 →",  "slovak": "Je tu požiar! Adresa je...",              "english": "There's a fire here! The address is..." }
+        {
+          "label": "Any call →",
+          "slovak": "Volám sa [meno]. Som na [ulica].",
+          "english": "My name is [name]. I am on [street]."
+        },
+        {
+          "label": "Call 112 →",
+          "slovak": "Je to núdza! Potrebujem pomoc!",
+          "english": "It's an emergency! I need help!"
+        },
+        {
+          "label": "Call 155 →",
+          "slovak": "Niekto je zranený! Pošlite záchranku!",
+          "english": "Someone is injured! Send an ambulance!"
+        },
+        {
+          "label": "Call 158 →",
+          "slovak": "Ukradli mi peňaženku! Potrebujem políciu!",
+          "english": "They stole my wallet! I need the police!"
+        },
+        {
+          "label": "Call 150 →",
+          "slovak": "Je tu požiar! Adresa je...",
+          "english": "There's a fire here! The address is..."
+        }
       ]
     },
     {
       "id": "ex4",
       "type": "LISTEN_AND_PICK",
       "words": [
-        { "slovak": "Doktor",     "english": "Doctor (male)" },
-        { "slovak": "Doktorka",   "english": "Doctor (female)" },
-        { "slovak": "Policajt",   "english": "Policeman" },
-        { "slovak": "Záchranár",  "english": "Paramedic" },
-        { "slovak": "Nemocnica",  "english": "Hospital" },
-        { "slovak": "Požiar",     "english": "Fire!" },
-        { "slovak": "Nehoda",     "english": "Accident!" },
-        { "slovak": "Zlodej",     "english": "Thief!" }
+        {
+          "slovak": "Doktor",
+          "english": "Doctor (male)"
+        },
+        {
+          "slovak": "Doktorka",
+          "english": "Doctor (female)"
+        },
+        {
+          "slovak": "Policajt",
+          "english": "Policeman"
+        },
+        {
+          "slovak": "Záchranár",
+          "english": "Paramedic"
+        },
+        {
+          "slovak": "Nemocnica",
+          "english": "Hospital"
+        },
+        {
+          "slovak": "Požiar",
+          "english": "Fire!"
+        },
+        {
+          "slovak": "Nehoda",
+          "english": "Accident!"
+        },
+        {
+          "slovak": "Zlodej",
+          "english": "Thief!"
+        }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Doktor",
+          "english": "Doctor (male)"
+        },
+        {
+          "slovak": "Doktorka",
+          "english": "Doctor (female)"
+        },
+        {
+          "slovak": "Policajt",
+          "english": "Policeman"
+        },
+        {
+          "slovak": "Záchranár",
+          "english": "Paramedic"
+        },
+        {
+          "slovak": "Nemocnica",
+          "english": "Hospital"
+        },
+        {
+          "slovak": "Požiar",
+          "english": "Fire!"
+        },
+        {
+          "slovak": "Nehoda",
+          "english": "Accident!"
+        },
+        {
+          "slovak": "Zlodej",
+          "english": "Thief!"
+        }
       ]
     },
     {
       "id": "ex5",
       "type": "PICK_TRANSLATION",
       "words": [
-        { "slovak": "Doktor",     "english": "Doctor (male)" },
-        { "slovak": "Doktorka",   "english": "Doctor (female)" },
-        { "slovak": "Policajt",   "english": "Policeman" },
-        { "slovak": "Záchranár",  "english": "Paramedic" },
-        { "slovak": "Nemocnica",  "english": "Hospital" },
-        { "slovak": "Požiar",     "english": "Fire!" },
-        { "slovak": "Nehoda",     "english": "Accident!" },
-        { "slovak": "Zlodej",     "english": "Thief!" }
+        {
+          "slovak": "Doktor",
+          "english": "Doctor (male)"
+        },
+        {
+          "slovak": "Doktorka",
+          "english": "Doctor (female)"
+        },
+        {
+          "slovak": "Policajt",
+          "english": "Policeman"
+        },
+        {
+          "slovak": "Záchranár",
+          "english": "Paramedic"
+        },
+        {
+          "slovak": "Nemocnica",
+          "english": "Hospital"
+        },
+        {
+          "slovak": "Požiar",
+          "english": "Fire!"
+        },
+        {
+          "slovak": "Nehoda",
+          "english": "Accident!"
+        },
+        {
+          "slovak": "Zlodej",
+          "english": "Thief!"
+        }
       ]
     },
     {
@@ -86,70 +265,120 @@
         {
           "situation": "Smoke is pouring out of your neighbour's window. You call 150. What do you say first?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Dobrý deň!", "Je tu požiar! Adresa je...", "Ukradli mi peňaženku!", "Potrebujem doktora!"],
+          "choices": [
+            "Dobrý deň!",
+            "Je tu požiar! Adresa je...",
+            "Ukradli mi peňaženku!",
+            "Potrebujem doktora!"
+          ],
           "answer": "Je tu požiar! Adresa je...",
           "answerMeaning": "There's a fire here! The address is... (always give your address first!)"
         },
         {
           "situation": "Someone collapses on the street. You call 155. What do you say?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Je tu požiar!", "Ukradli mi tašku!", "Niekto je zranený! Pošlite záchranku!", "Potrebujem políciu!"],
+          "choices": [
+            "Je tu požiar!",
+            "Ukradli mi tašku!",
+            "Niekto je zranený! Pošlite záchranku!",
+            "Potrebujem políciu!"
+          ],
           "answer": "Niekto je zranený! Pošlite záchranku!",
           "answerMeaning": "Someone is injured! Send an ambulance!"
         },
         {
           "situation": "Your wallet was pickpocketed on the tram. Which number do you call?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["155", "150", "158", "112"],
+          "choices": [
+            "155",
+            "150",
+            "158",
+            "112"
+          ],
           "answer": "158",
           "answerMeaning": "Police — 158 (crime and theft)"
         },
         {
           "situation": "The police dispatcher picks up. The first thing they need from you is...",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Je to núdza!", "Volám sa Peter. Som na Hlavnej ulici.", "Dobrý deň!", "Zavolajte doktora!"],
+          "choices": [
+            "Je to núdza!",
+            "Volám sa Peter. Som na Hlavnej ulici.",
+            "Dobrý deň!",
+            "Zavolajte doktora!"
+          ],
           "answer": "Volám sa Peter. Som na Hlavnej ulici.",
           "answerMeaning": "My name is Peter. I am on Hlavná street. (from Lesson 3 — name + location first!)"
         },
         {
           "situation": "You witness a road crash — there are injured people and a car on fire. You need police, ambulance and fire. Which single number reaches all three at once?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["155", "158", "150", "112"],
+          "choices": [
+            "155",
+            "158",
+            "150",
+            "112"
+          ],
           "answer": "112",
           "answerMeaning": "112 — the general emergency number that dispatches police, ambulance and fire together"
         },
         {
           "situation": "It's 2pm. You walk into the ambulancia to see the doctor. How do you greet the receptionist?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Ahoj!", "Dobré ráno!", "Dobrý deň!", "Dovidenia!"],
+          "choices": [
+            "Ahoj!",
+            "Dobré ráno!",
+            "Dobrý deň!",
+            "Dovidenia!"
+          ],
           "answer": "Dobrý deň!",
           "answerMeaning": "Good day! (formal daytime greeting — from Lesson 2)"
         },
         {
           "situation": "The doctor's report describes you as a man, but you are a woman. How do you correct them?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Som muž.", "Som chorá.", "Som žena.", "Som vysoká."],
+          "choices": [
+            "Som muž.",
+            "Som chorá.",
+            "Som žena.",
+            "Som vysoká."
+          ],
           "answer": "Som žena.",
           "answerMeaning": "I am a woman. (from Lesson 3)"
         },
         {
           "situation": "The doctor asks how you feel. You feel very unwell. What do you say?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Je mi dobre.", "Som vysoký.", "Je mi zle.", "Teší ma."],
+          "choices": [
+            "Je mi dobre.",
+            "Som vysoký.",
+            "Je mi zle.",
+            "Teší ma."
+          ],
           "answer": "Je mi zle.",
           "answerMeaning": "I feel unwell."
         },
         {
           "situation": "Police need your nationality for their report. You are from India. What do you say?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Teší ma.", "Som z Indie.", "Som chorý.", "Dovidenia."],
+          "choices": [
+            "Teší ma.",
+            "Som z Indie.",
+            "Som chorý.",
+            "Dovidenia."
+          ],
           "answer": "Som z Indie.",
           "answerMeaning": "I am from India. (from Lesson 3)"
         },
         {
           "situation": "Someone snatches your bag and runs. What do you shout? (You learned a better word than Pomoc! in this lesson.)",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Požiar!", "Nehoda!", "Záchranár!", "Zlodej!"],
+          "choices": [
+            "Požiar!",
+            "Nehoda!",
+            "Záchranár!",
+            "Zlodej!"
+          ],
           "answer": "Zlodej!",
           "answerMeaning": "Thief! (more specific than Pomoc! from Lesson 1)"
         }
@@ -166,37 +395,67 @@
         {
           "sentence": "___ ! Dom horí! Zavolajte 150!",
           "translation": "___ ! The house is on fire! Call 150!",
-          "choices": ["Záchranár", "Zlodej", "Požiar", "Nehoda"],
+          "choices": [
+            "Záchranár",
+            "Zlodej",
+            "Požiar",
+            "Nehoda"
+          ],
           "answer": "Požiar"
         },
         {
           "sentence": "Niekto skolaboval. Zavolajte ___!",
           "translation": "Someone collapsed. Call ___!",
-          "choices": ["150", "158", "156", "155"],
+          "choices": [
+            "150",
+            "158",
+            "156",
+            "155"
+          ],
           "answer": "155"
         },
         {
           "sentence": "Ukradli mi tašku! Potrebujem ___!",
           "translation": "They stole my bag! I need ___!",
-          "choices": ["záchranku", "hasičov", "políciu", "doktora"],
+          "choices": [
+            "záchranku",
+            "hasičov",
+            "políciu",
+            "doktora"
+          ],
           "answer": "políciu"
         },
         {
           "sentence": "___ deň, doktorka. Mám stretnutie o tretej.",
           "translation": "___ day, doctor. I have an appointment at three.",
-          "choices": ["Dobrý", "Dobrá", "Dobré", "Ahoj"],
+          "choices": [
+            "Dobrý",
+            "Dobrá",
+            "Dobré",
+            "Ahoj"
+          ],
           "answer": "Dobrý"
         },
         {
           "sentence": "Je mi zle. Som ___.",
           "translation": "I feel sick. I am ___.",
-          "choices": ["vysoký", "zranený", "chorý", "biely"],
+          "choices": [
+            "vysoký",
+            "zranený",
+            "chorý",
+            "biely"
+          ],
           "answer": "chorý"
         },
         {
           "sentence": "Zavolajte ___ ! Platí v celej EÚ.",
           "translation": "Call ___ ! It works across the whole EU.",
-          "choices": ["150", "158", "112", "156"],
+          "choices": [
+            "150",
+            "158",
+            "112",
+            "156"
+          ],
           "answer": "112"
         }
       ]
@@ -207,27 +466,52 @@
       "items": [
         {
           "number": "112",
-          "choices": ["sto dvanásť", "sto päťdesiat", "sto päťdesiatpäť", "sto päťdesiatosem"],
+          "choices": [
+            "sto dvanásť",
+            "sto päťdesiat",
+            "sto päťdesiatpäť",
+            "sto päťdesiatosem"
+          ],
           "answer": "sto dvanásť"
         },
         {
           "number": "155",
-          "choices": ["sto dvanásť", "sto päťdesiatpäť", "sto päťdesiatosem", "sto päťdesiat"],
+          "choices": [
+            "sto dvanásť",
+            "sto päťdesiatpäť",
+            "sto päťdesiatosem",
+            "sto päťdesiat"
+          ],
           "answer": "sto päťdesiatpäť"
         },
         {
           "number": "158",
-          "choices": ["sto päťdesiatšesť", "sto päťdesiatpäť", "sto päťdesiatosem", "sto dvanásť"],
+          "choices": [
+            "sto päťdesiatšesť",
+            "sto päťdesiatpäť",
+            "sto päťdesiatosem",
+            "sto dvanásť"
+          ],
           "answer": "sto päťdesiatosem"
         },
         {
           "number": "150",
-          "choices": ["sto päťdesiat", "sto päťdesiatpäť", "sto päťdesiatšesť", "sto dvanásť"],
+          "choices": [
+            "sto päťdesiat",
+            "sto päťdesiatpäť",
+            "sto päťdesiatšesť",
+            "sto dvanásť"
+          ],
           "answer": "sto päťdesiat"
         },
         {
           "number": "156",
-          "choices": ["sto päťdesiatosem", "sto päťdesiat", "sto päťdesiatšesť", "sto päťdesiatpäť"],
+          "choices": [
+            "sto päťdesiatosem",
+            "sto päťdesiat",
+            "sto päťdesiatšesť",
+            "sto päťdesiatpäť"
+          ],
           "answer": "sto päťdesiatšesť"
         }
       ]
@@ -236,12 +520,30 @@
       "id": "ex9",
       "type": "UNSCRAMBLE",
       "items": [
-        { "word": "Požiar",    "context": "What you shout when a building is burning." },
-        { "word": "Nehoda",    "context": "What happens when cars crash into each other." },
-        { "word": "Zlodej",    "context": "Someone who steals from you." },
-        { "word": "Hasiči",    "context": "They fight fires and rescue people. Dial 150." },
-        { "word": "Sanitka",   "context": "The vehicle that rushes injured people to hospital." },
-        { "word": "Doktorka",  "context": "A female doctor." }
+        {
+          "word": "Požiar",
+          "context": "What you shout when a building is burning."
+        },
+        {
+          "word": "Nehoda",
+          "context": "What happens when cars crash into each other."
+        },
+        {
+          "word": "Zlodej",
+          "context": "Someone who steals from you."
+        },
+        {
+          "word": "Hasiči",
+          "context": "They fight fires and rescue people. Dial 150."
+        },
+        {
+          "word": "Sanitka",
+          "context": "The vehicle that rushes injured people to hospital."
+        },
+        {
+          "word": "Doktorka",
+          "context": "A female doctor."
+        }
       ]
     }
   ]

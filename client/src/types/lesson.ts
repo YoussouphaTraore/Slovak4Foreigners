@@ -25,6 +25,7 @@ export interface BaseExercise {
 export interface ListenAndPickExercise extends BaseExercise {
   type: 'LISTEN_AND_PICK';
   words: { slovak: string; english: string }[];
+  speakLanguage?: 'sk' | 'en';
 }
 
 export interface PickTranslationExercise extends BaseExercise {

@@ -27,7 +27,7 @@ export function LessonPage() {
   const [celebrating, setCelebrating] = useState(false);
   const [penalty, setPenalty] = useState<PenaltyInfo>(null);
 
-  const strikesRef   = useRef({ total: 0, consecutive: 0 });
+  const strikesRef   = useRef({ total: 0, consecutive: 0, lessonTotal: 0 });
   const [strikesDisplay, setStrikesDisplay] = useState({ total: 0, consecutive: 0 });
   const penaltyRef   = useRef(false);
   const failedWordsRef = useRef<{ slovak: string; english: string }[]>([]);
@@ -42,10 +42,10 @@ export function LessonPage() {
 
   const exercises = lesson.exercises;
   const currentExercise = exercises[exerciseIndex];
-  const xpPerExercise = Math.round(lesson.xpReward / exercises.length);
 
   const resetStrikes = () => {
-    strikesRef.current = { total: 0, consecutive: 0 };
+    const lessonTotal = strikesRef.current.lessonTotal;
+    strikesRef.current = { total: 0, consecutive: 0, lessonTotal };
     setStrikesDisplay({ total: 0, consecutive: 0 });
   };
 
@@ -57,11 +57,14 @@ export function LessonPage() {
     bumpExerciseKey();
   };
 
-  const finishLesson = (earned: number) => {
-    store.addXP(earned);
-    store.completeLesson(lesson.id);
+  const finishLesson = () => {
+    const { xpEarned } = store.completeLesson(
+      lesson.id,
+      strikesRef.current.lessonTotal,
+      exercises.length
+    );
     store.checkAndUpdateStreak();
-    navigate(`/celebration/${lesson.id}`, { state: { xpEarned: earned, totalXP: lesson.xpReward } });
+    navigate(`/celebration/${lesson.id}`, { state: { xpEarned, totalXP: lesson.xpReward } });
   };
 
   const handleFailed = (words: { slovak: string; english: string }[]) => {
@@ -91,8 +94,9 @@ export function LessonPage() {
       return;
     }
 
-    strikesRef.current.total      += 1;
-    strikesRef.current.consecutive += 1;
+    strikesRef.current.total        += 1;
+    strikesRef.current.consecutive  += 1;
+    strikesRef.current.lessonTotal  += 1;
     const { total, consecutive } = strikesRef.current;
     setStrikesDisplay({ total, consecutive });
 
@@ -127,15 +131,15 @@ export function LessonPage() {
       }
       const nc = correctCount + 1;
       setCorrectCount(nc);
-      if (isLast) { finishLesson(nc * xpPerExercise); return; }
+      if (isLast) { finishLesson(); return; }
       const nextEx = exercises[exerciseIndex + 1];
       if (nextEx?.type === 'WORD_MATCH_REVIEW' && failedWordsRef.current.length === 0) {
-        finishLesson(nc * xpPerExercise);
+        finishLesson();
         return;
       }
       setCelebrating(true);
     } else {
-      if (isLast) { finishLesson(correctCount * xpPerExercise); return; }
+      if (isLast) { finishLesson(); return; }
       advance();
     }
   };

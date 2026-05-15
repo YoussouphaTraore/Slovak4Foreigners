@@ -23,11 +23,11 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function speak(text: string) {
+function speak(text: string, lang: 'sk-SK' | 'en-US' = 'sk-SK') {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
   const u = new SpeechSynthesisUtterance(cleanForSpeech(text));
-  u.lang = 'sk-SK';
+  u.lang = lang;
   window.speechSynthesis.speak(u);
 }
 
@@ -38,6 +38,9 @@ interface Props {
 }
 
 export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
+  const isEnglishMode = exercise.speakLanguage === 'en';
+  const lang: 'sk-SK' | 'en-US' = isEnglishMode ? 'en-US' : 'sk-SK';
+  const getSpokenText = (w: WordEntry) => isEnglishMode ? w.english : w.slovak;
 
   // Stable shuffled orders set once on mount
   const [cards] = useState<WordEntry[]>(() =>
@@ -63,7 +66,7 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
   useEffect(() => {
     if (phase !== 'listening') return;
 
-    speak(currentWord.slovak);
+    speak(getSpokenText(currentWord), lang);
     setTimeLeft(COUNTDOWN);
 
     const id = setInterval(() => {
@@ -156,7 +159,7 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
   return (
     <div className="flex flex-col flex-1 min-h-0 gap-2">
       {/* Mascot instruction */}
-      <MascotSpeech message="Tap the word you hear!" />
+      <MascotSpeech message={isEnglishMode ? 'Tap the Slovak word you hear in English!' : 'Tap the word you hear!'} />
 
       {/* Countdown ring + word counter + replay */}
       <div className="flex items-center gap-3 flex-none">
@@ -189,7 +192,7 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
         {/* Replay button */}
         <button
           type="button"
-          onClick={() => speak(currentWord.slovak)}
+          onClick={() => speak(getSpokenText(currentWord), lang)}
           className="w-10 h-10 rounded-full bg-brand-blue flex items-center justify-center text-white shrink-0 hover:opacity-80 active:scale-90 cursor-pointer transition-all"
         >
           🔊
@@ -210,9 +213,11 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
               <span className="text-lg font-bold text-gray-800 text-center leading-tight">
                 {card.slovak}
               </span>
-              <span className="text-xs text-gray-400 mt-0.5 text-center leading-tight">
-                {card.english}
-              </span>
+              {!isEnglishMode && (
+                <span className="text-xs text-gray-400 mt-0.5 text-center leading-tight">
+                  {card.english}
+                </span>
+              )}
             </button>
           ))}
         </div>

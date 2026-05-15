@@ -12,35 +12,122 @@
       "type": "VOCABULARY_TABLE",
       "title": "Slovak Greetings",
       "rows": [
-        { "label": "Morning",  "slovak": "Dobré ráno",  "english": "Good morning" },
-        { "label": "Daytime",  "slovak": "Dobrý deň",   "english": "Good day (formal)" },
-        { "label": "Evening",  "slovak": "Dobrý večer", "english": "Good evening" },
-        { "label": "Casual",   "slovak": "Ahoj / Čau",  "english": "Hi / Bye (informal)" },
-        { "label": "Goodbye",  "slovak": "Dovidenia",   "english": "Goodbye (formal)" }
+        {
+          "label": "Morning",
+          "slovak": "Dobré ráno",
+          "english": "Good morning"
+        },
+        {
+          "label": "Daytime",
+          "slovak": "Dobrý deň",
+          "english": "Good day (formal)"
+        },
+        {
+          "label": "Evening",
+          "slovak": "Dobrý večer",
+          "english": "Good evening"
+        },
+        {
+          "label": "Casual",
+          "slovak": "Ahoj / Čau",
+          "english": "Hi / Bye (informal)"
+        },
+        {
+          "label": "Goodbye",
+          "slovak": "Dovidenia",
+          "english": "Goodbye (formal)"
+        }
       ]
     },
     {
       "id": "ex2",
       "type": "LISTEN_AND_PICK",
       "words": [
-        { "slovak": "Dobré ráno",  "english": "Good morning" },
-        { "slovak": "Dobrý deň",   "english": "Good day" },
-        { "slovak": "Dobrý večer", "english": "Good evening" },
-        { "slovak": "Ahoj",        "english": "Hi (informal)" },
-        { "slovak": "Čau",         "english": "Bye (informal)" },
-        { "slovak": "Dovidenia",   "english": "Goodbye (formal)" }
+        {
+          "slovak": "Dobré ráno",
+          "english": "Good morning"
+        },
+        {
+          "slovak": "Dobrý deň",
+          "english": "Good day"
+        },
+        {
+          "slovak": "Dobrý večer",
+          "english": "Good evening"
+        },
+        {
+          "slovak": "Ahoj",
+          "english": "Hi (informal)"
+        },
+        {
+          "slovak": "Čau",
+          "english": "Bye (informal)"
+        },
+        {
+          "slovak": "Dovidenia",
+          "english": "Goodbye (formal)"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Dobré ráno",
+          "english": "Good morning"
+        },
+        {
+          "slovak": "Dobrý deň",
+          "english": "Good day"
+        },
+        {
+          "slovak": "Dobrý večer",
+          "english": "Good evening"
+        },
+        {
+          "slovak": "Ahoj",
+          "english": "Hi (informal)"
+        },
+        {
+          "slovak": "Čau",
+          "english": "Bye (informal)"
+        },
+        {
+          "slovak": "Dovidenia",
+          "english": "Goodbye (formal)"
+        }
       ]
     },
     {
       "id": "ex3",
       "type": "PICK_TRANSLATION",
       "words": [
-        { "slovak": "Dobré ráno",  "english": "Good morning" },
-        { "slovak": "Dobrý deň",   "english": "Good day" },
-        { "slovak": "Dobrý večer", "english": "Good evening" },
-        { "slovak": "Ahoj",        "english": "Hi (informal)" },
-        { "slovak": "Čau",         "english": "Bye (informal)" },
-        { "slovak": "Dovidenia",   "english": "Goodbye (formal)" }
+        {
+          "slovak": "Dobré ráno",
+          "english": "Good morning"
+        },
+        {
+          "slovak": "Dobrý deň",
+          "english": "Good day"
+        },
+        {
+          "slovak": "Dobrý večer",
+          "english": "Good evening"
+        },
+        {
+          "slovak": "Ahoj",
+          "english": "Hi (informal)"
+        },
+        {
+          "slovak": "Čau",
+          "english": "Bye (informal)"
+        },
+        {
+          "slovak": "Dovidenia",
+          "english": "Goodbye (formal)"
+        }
       ]
     },
     {
@@ -50,42 +137,72 @@
         {
           "situation": "You pass your neighbour at 7 am on the way out. What do you say?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Dobrý deň", "Dobré ráno", "Dovidenia", "Dobrý večer"],
+          "choices": [
+            "Dobrý deň",
+            "Dobré ráno",
+            "Dovidenia",
+            "Dobrý večer"
+          ],
           "answer": "Dobré ráno",
           "answerMeaning": "Good morning"
         },
         {
           "situation": "You walk into a shop at noon. How do you greet the shopkeeper?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Dobré ráno", "Ahoj", "Dobrý deň", "Dobrý večer"],
+          "choices": [
+            "Dobré ráno",
+            "Ahoj",
+            "Dobrý deň",
+            "Dobrý večer"
+          ],
           "answer": "Dobrý deň",
           "answerMeaning": "Good day (formal)"
         },
         {
           "situation": "You meet a friend on the street. What's the casual greeting?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Dobrý deň", "Dovidenia", "Dobré ráno", "Ahoj"],
+          "choices": [
+            "Dobrý deň",
+            "Dovidenia",
+            "Dobré ráno",
+            "Ahoj"
+          ],
           "answer": "Ahoj",
           "answerMeaning": "Hi (informal)"
         },
         {
           "situation": "You're leaving the office at 7 pm. How do you greet a colleague you pass?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Dobré ráno", "Dobrý deň", "Dobrý večer", "Ahoj"],
+          "choices": [
+            "Dobré ráno",
+            "Dobrý deň",
+            "Dobrý večer",
+            "Ahoj"
+          ],
           "answer": "Dobrý večer",
           "answerMeaning": "Good evening"
         },
         {
           "situation": "You're wrapping up a formal meeting and heading out. What do you say?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Ahoj", "Čau", "Dovidenia", "Dobré ráno"],
+          "choices": [
+            "Ahoj",
+            "Čau",
+            "Dovidenia",
+            "Dobré ráno"
+          ],
           "answer": "Dovidenia",
           "answerMeaning": "Goodbye (formal)"
         },
         {
           "situation": "You're texting a close friend to end the conversation. What do you write?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Dovidenia", "Dobrý deň", "Čau", "Dobré ráno"],
+          "choices": [
+            "Dovidenia",
+            "Dobrý deň",
+            "Čau",
+            "Dobré ráno"
+          ],
           "answer": "Čau",
           "answerMeaning": "Bye (informal)"
         }
@@ -102,31 +219,56 @@
         {
           "sentence": "___, pán Novák. Ako sa máte?",
           "translation": "___, Mr. Novák. How are you?",
-          "choices": ["Ahoj", "Dobrý deň", "Dovidenia", "Dobré ráno"],
+          "choices": [
+            "Ahoj",
+            "Dobrý deň",
+            "Dovidenia",
+            "Dobré ráno"
+          ],
           "answer": "Dobrý deň"
         },
         {
           "sentence": "Vstávam o šiestej. ___!",
           "translation": "I get up at six. ___!",
-          "choices": ["Dobrý večer", "Dovidenia", "Dobré ráno", "Čau"],
+          "choices": [
+            "Dobrý večer",
+            "Dovidenia",
+            "Dobré ráno",
+            "Čau"
+          ],
           "answer": "Dobré ráno"
         },
         {
           "sentence": "Stretol som kamaráta. Povedal som ___.",
           "translation": "I met a friend. I said ___.",
-          "choices": ["Dovidenia", "Dobrý deň", "Ahoj", "Dobrý večer"],
+          "choices": [
+            "Dovidenia",
+            "Dobrý deň",
+            "Ahoj",
+            "Dobrý večer"
+          ],
           "answer": "Ahoj"
         },
         {
           "sentence": "Odchádzam z práce. ___!",
           "translation": "I'm leaving work. ___!",
-          "choices": ["Ahoj", "Dobré ráno", "Dobrý deň", "Dovidenia"],
+          "choices": [
+            "Ahoj",
+            "Dobré ráno",
+            "Dobrý deň",
+            "Dovidenia"
+          ],
           "answer": "Dovidenia"
         },
         {
           "sentence": "Slnko zapadá. Hovorím ___.",
           "translation": "The sun is setting. I say ___.",
-          "choices": ["Dobré ráno", "Dobrý deň", "Dobrý večer", "Čau"],
+          "choices": [
+            "Dobré ráno",
+            "Dobrý deň",
+            "Dobrý večer",
+            "Čau"
+          ],
           "answer": "Dobrý večer"
         }
       ]
@@ -135,9 +277,18 @@
       "id": "ex7",
       "type": "UNSCRAMBLE",
       "items": [
-        { "word": "Ahoj",      "context": "The casual Slovak hello — you'd say it to a friend." },
-        { "word": "Čau",       "context": "Informal goodbye — borrowed from Italian ciao." },
-        { "word": "Dovidenia", "context": "The formal way to say goodbye." }
+        {
+          "word": "Ahoj",
+          "context": "The casual Slovak hello — you'd say it to a friend."
+        },
+        {
+          "word": "Čau",
+          "context": "Informal goodbye — borrowed from Italian ciao."
+        },
+        {
+          "word": "Dovidenia",
+          "context": "The formal way to say goodbye."
+        }
       ]
     }
   ]

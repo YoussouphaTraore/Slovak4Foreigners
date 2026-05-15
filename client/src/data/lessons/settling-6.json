@@ -11,78 +11,316 @@
       "id": "ex1",
       "type": "VOCABULARY_TABLE",
       "title": "Zelenina — Vegetables",
-      "headers": ["Vegetable", "Slovak", "English"],
+      "headers": [
+        "Vegetable",
+        "Slovak",
+        "English"
+      ],
       "rows": [
-        { "label": "Potato",    "slovak": "Zemiaky",   "english": "Potatoes (plural — almost always bought in bulk; zemiakový šalát = potato salad, a Slovak party staple)" },
-        { "label": "Carrot",    "slovak": "Mrkva",     "english": "Carrot — eaten raw, in soups and stews. Mrkva is the base of many Slovak broths alongside cibuľa and cesnak" },
-        { "label": "Onion",     "slovak": "Cibuľa",    "english": "Onion — a backbone of Slovak cooking. Goes into practically every savoury dish: guláš, kapustnica, polievky (soups)" },
-        { "label": "Garlic",    "slovak": "Cesnak",    "english": "Garlic — used heavily in Slovak cooking. Cesnak + cibuľa = the flavour base of most Slovak hot dishes" },
-        { "label": "Pepper",    "slovak": "Paprika",   "english": "Pepper / Sweet pepper — also refers to the ground red spice. Paprika (the vegetable) is eaten raw or stuffed (plnená paprika)" },
-        { "label": "Tomato",    "slovak": "Paradajka", "english": "Tomato — used in salads, sauces and stews. In Slovak markets you weigh loose paradajky yourself at the váha" },
-        { "label": "Cucumber",  "slovak": "Uhorka",    "english": "Cucumber — eaten fresh in salads or pickled (nakladaná uhorka = pickled cucumber). Very popular as a snack" },
-        { "label": "Lettuce",   "slovak": "Šalát",     "english": "Lettuce / Salad leaves — šalát means both the vegetable and the prepared salad dish" },
-        { "label": "Cabbage",   "slovak": "Kapusta",   "english": "Cabbage — central to Slovak cuisine. Sauerkraut (kyslá kapusta) is the key ingredient in kapustnica soup" },
-        { "label": "Broccoli",  "slovak": "Brokolica", "english": "Broccoli — widely available in Slovak supermarkets; also used in cream soups (brokolicová polievka)" }
+        {
+          "label": "Potato",
+          "slovak": "Zemiaky",
+          "english": "Potatoes (plural — almost always bought in bulk; zemiakový šalát = potato salad, a Slovak party staple)"
+        },
+        {
+          "label": "Carrot",
+          "slovak": "Mrkva",
+          "english": "Carrot — eaten raw, in soups and stews. Mrkva is the base of many Slovak broths alongside cibuľa and cesnak"
+        },
+        {
+          "label": "Onion",
+          "slovak": "Cibuľa",
+          "english": "Onion — a backbone of Slovak cooking. Goes into practically every savoury dish: guláš, kapustnica, polievky (soups)"
+        },
+        {
+          "label": "Garlic",
+          "slovak": "Cesnak",
+          "english": "Garlic — used heavily in Slovak cooking. Cesnak + cibuľa = the flavour base of most Slovak hot dishes"
+        },
+        {
+          "label": "Pepper",
+          "slovak": "Paprika",
+          "english": "Pepper / Sweet pepper — also refers to the ground red spice. Paprika (the vegetable) is eaten raw or stuffed (plnená paprika)"
+        },
+        {
+          "label": "Tomato",
+          "slovak": "Paradajka",
+          "english": "Tomato — used in salads, sauces and stews. In Slovak markets you weigh loose paradajky yourself at the váha"
+        },
+        {
+          "label": "Cucumber",
+          "slovak": "Uhorka",
+          "english": "Cucumber — eaten fresh in salads or pickled (nakladaná uhorka = pickled cucumber). Very popular as a snack"
+        },
+        {
+          "label": "Lettuce",
+          "slovak": "Šalát",
+          "english": "Lettuce / Salad leaves — šalát means both the vegetable and the prepared salad dish"
+        },
+        {
+          "label": "Cabbage",
+          "slovak": "Kapusta",
+          "english": "Cabbage — central to Slovak cuisine. Sauerkraut (kyslá kapusta) is the key ingredient in kapustnica soup"
+        },
+        {
+          "label": "Broccoli",
+          "slovak": "Brokolica",
+          "english": "Broccoli — widely available in Slovak supermarkets; also used in cream soups (brokolicová polievka)"
+        }
       ]
     },
     {
       "id": "ex2",
       "type": "VOCABULARY_TABLE",
       "title": "Ovocie — Fruits",
-      "headers": ["Fruit", "Slovak", "English"],
+      "headers": [
+        "Fruit",
+        "Slovak",
+        "English"
+      ],
       "rows": [
-        { "label": "Apple",      "slovak": "Jablko",    "english": "Apple — Slovak orchards produce excellent apples. Jablkový závin (apple strudel) is a beloved dessert" },
-        { "label": "Pear",       "slovak": "Hruška",    "english": "Pear — also means 'light bulb' in Slovak (same word)! Eaten fresh or in jams (lekvár)" },
-        { "label": "Banana",     "slovak": "Banán",     "english": "Banana — high in potassium. One of the most bought fruits in Slovak supermarkets year-round" },
-        { "label": "Orange",     "slovak": "Pomaranč",  "english": "Orange — popular for vitamin C. Pomarančový džús = orange juice. Widely sold at trhnice (market stalls)" },
-        { "label": "Strawberry", "slovak": "Jahoda",    "english": "Strawberry — a summer favourite. Slovak june markets overflow with fresh jahody at great prices" },
-        { "label": "Cherry",     "slovak": "Čerešňa",   "english": "Cherry — dark sweet čerešne are a summer treat. Slovak cherry season is June–July" },
-        { "label": "Plum",       "slovak": "Slivka",    "english": "Plum — gives its name to the famous Slovak spirit slivovica (plum brandy). Abundant in village gardens" },
-        { "label": "Peach",      "slovak": "Broskyňa",  "english": "Peach — grown in warmer Slovak regions. Best bought at summer trhnica (market) stalls" },
-        { "label": "Grapes",     "slovak": "Hrozno",    "english": "Grapes — Slovakia has a long winemaking tradition. Vinič (grape vine) grows across the south and east" },
-        { "label": "Lemon",      "slovak": "Citrón",    "english": "Lemon — used for lemonade, in teas and cooking. Rich in vitamin C. Citrusové ovocie = citrus fruit" }
+        {
+          "label": "Apple",
+          "slovak": "Jablko",
+          "english": "Apple — Slovak orchards produce excellent apples. Jablkový závin (apple strudel) is a beloved dessert"
+        },
+        {
+          "label": "Pear",
+          "slovak": "Hruška",
+          "english": "Pear — also means 'light bulb' in Slovak (same word)! Eaten fresh or in jams (lekvár)"
+        },
+        {
+          "label": "Banana",
+          "slovak": "Banán",
+          "english": "Banana — high in potassium. One of the most bought fruits in Slovak supermarkets year-round"
+        },
+        {
+          "label": "Orange",
+          "slovak": "Pomaranč",
+          "english": "Orange — popular for vitamin C. Pomarančový džús = orange juice. Widely sold at trhnice (market stalls)"
+        },
+        {
+          "label": "Strawberry",
+          "slovak": "Jahoda",
+          "english": "Strawberry — a summer favourite. Slovak june markets overflow with fresh jahody at great prices"
+        },
+        {
+          "label": "Cherry",
+          "slovak": "Čerešňa",
+          "english": "Cherry — dark sweet čerešne are a summer treat. Slovak cherry season is June–July"
+        },
+        {
+          "label": "Plum",
+          "slovak": "Slivka",
+          "english": "Plum — gives its name to the famous Slovak spirit slivovica (plum brandy). Abundant in village gardens"
+        },
+        {
+          "label": "Peach",
+          "slovak": "Broskyňa",
+          "english": "Peach — grown in warmer Slovak regions. Best bought at summer trhnica (market) stalls"
+        },
+        {
+          "label": "Grapes",
+          "slovak": "Hrozno",
+          "english": "Grapes — Slovakia has a long winemaking tradition. Vinič (grape vine) grows across the south and east"
+        },
+        {
+          "label": "Lemon",
+          "slovak": "Citrón",
+          "english": "Lemon — used for lemonade, in teas and cooking. Rich in vitamin C. Citrusové ovocie = citrus fruit"
+        }
       ]
     },
     {
       "id": "ex3",
       "type": "LISTEN_AND_PICK",
       "words": [
-        { "slovak": "Zemiaky",   "english": "Potatoes" },
-        { "slovak": "Mrkva",     "english": "Carrot" },
-        { "slovak": "Cibuľa",   "english": "Onion" },
-        { "slovak": "Cesnak",   "english": "Garlic" },
-        { "slovak": "Paprika",  "english": "Pepper" },
-        { "slovak": "Paradajka","english": "Tomato" },
-        { "slovak": "Uhorka",   "english": "Cucumber" },
-        { "slovak": "Šalát",    "english": "Lettuce" }
+        {
+          "slovak": "Zemiaky",
+          "english": "Potatoes"
+        },
+        {
+          "slovak": "Mrkva",
+          "english": "Carrot"
+        },
+        {
+          "slovak": "Cibuľa",
+          "english": "Onion"
+        },
+        {
+          "slovak": "Cesnak",
+          "english": "Garlic"
+        },
+        {
+          "slovak": "Paprika",
+          "english": "Pepper"
+        },
+        {
+          "slovak": "Paradajka",
+          "english": "Tomato"
+        },
+        {
+          "slovak": "Uhorka",
+          "english": "Cucumber"
+        },
+        {
+          "slovak": "Šalát",
+          "english": "Lettuce"
+        }
+      ]
+    },
+    {
+      "id": "ex3b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Zemiaky",
+          "english": "Potatoes"
+        },
+        {
+          "slovak": "Mrkva",
+          "english": "Carrot"
+        },
+        {
+          "slovak": "Cibuľa",
+          "english": "Onion"
+        },
+        {
+          "slovak": "Cesnak",
+          "english": "Garlic"
+        },
+        {
+          "slovak": "Paprika",
+          "english": "Pepper"
+        },
+        {
+          "slovak": "Paradajka",
+          "english": "Tomato"
+        },
+        {
+          "slovak": "Uhorka",
+          "english": "Cucumber"
+        },
+        {
+          "slovak": "Šalát",
+          "english": "Lettuce"
+        }
       ]
     },
     {
       "id": "ex4",
       "type": "LISTEN_AND_PICK",
       "words": [
-        { "slovak": "Kapusta",   "english": "Cabbage" },
-        { "slovak": "Brokolica", "english": "Broccoli" },
-        { "slovak": "Jablko",    "english": "Apple" },
-        { "slovak": "Hruška",    "english": "Pear" },
-        { "slovak": "Banán",     "english": "Banana" },
-        { "slovak": "Pomaranč",  "english": "Orange" },
-        { "slovak": "Jahoda",    "english": "Strawberry" },
-        { "slovak": "Čerešňa",   "english": "Cherry" }
+        {
+          "slovak": "Kapusta",
+          "english": "Cabbage"
+        },
+        {
+          "slovak": "Brokolica",
+          "english": "Broccoli"
+        },
+        {
+          "slovak": "Jablko",
+          "english": "Apple"
+        },
+        {
+          "slovak": "Hruška",
+          "english": "Pear"
+        },
+        {
+          "slovak": "Banán",
+          "english": "Banana"
+        },
+        {
+          "slovak": "Pomaranč",
+          "english": "Orange"
+        },
+        {
+          "slovak": "Jahoda",
+          "english": "Strawberry"
+        },
+        {
+          "slovak": "Čerešňa",
+          "english": "Cherry"
+        }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Kapusta",
+          "english": "Cabbage"
+        },
+        {
+          "slovak": "Brokolica",
+          "english": "Broccoli"
+        },
+        {
+          "slovak": "Jablko",
+          "english": "Apple"
+        },
+        {
+          "slovak": "Hruška",
+          "english": "Pear"
+        },
+        {
+          "slovak": "Banán",
+          "english": "Banana"
+        },
+        {
+          "slovak": "Pomaranč",
+          "english": "Orange"
+        },
+        {
+          "slovak": "Jahoda",
+          "english": "Strawberry"
+        },
+        {
+          "slovak": "Čerešňa",
+          "english": "Cherry"
+        }
       ]
     },
     {
       "id": "ex5",
       "type": "PICK_TRANSLATION",
       "words": [
-        { "slovak": "Cibuľa",   "english": "Onion" },
-        { "slovak": "Cesnak",   "english": "Garlic" },
-        { "slovak": "Uhorka",   "english": "Cucumber" },
-        { "slovak": "Mrkva",    "english": "Carrot" },
-        { "slovak": "Jahoda",   "english": "Strawberry" },
-        { "slovak": "Čerešňa",  "english": "Cherry" },
-        { "slovak": "Slivka",   "english": "Plum" },
-        { "slovak": "Broskyňa", "english": "Peach" }
+        {
+          "slovak": "Cibuľa",
+          "english": "Onion"
+        },
+        {
+          "slovak": "Cesnak",
+          "english": "Garlic"
+        },
+        {
+          "slovak": "Uhorka",
+          "english": "Cucumber"
+        },
+        {
+          "slovak": "Mrkva",
+          "english": "Carrot"
+        },
+        {
+          "slovak": "Jahoda",
+          "english": "Strawberry"
+        },
+        {
+          "slovak": "Čerešňa",
+          "english": "Cherry"
+        },
+        {
+          "slovak": "Slivka",
+          "english": "Plum"
+        },
+        {
+          "slovak": "Broskyňa",
+          "english": "Peach"
+        }
       ]
     },
     {
@@ -92,56 +330,96 @@
         {
           "situation": "You want to make the traditional Slovak Christmas soup kapustnica. Which vegetable is the key ingredient?",
           "instruction": "Choose the correct ingredient",
-          "choices": ["Brokolica", "Mrkva", "Kapusta", "Cesnak"],
+          "choices": [
+            "Brokolica",
+            "Mrkva",
+            "Kapusta",
+            "Cesnak"
+          ],
           "answer": "Kapusta",
           "answerMeaning": "Kapustnica is made from kapusta (sauerkraut / fermented cabbage) — hence the name! The soup also contains klobása (sausage), smoked meat, mushrooms and spices. It's a staple at Slovak Christmas celebrations."
         },
         {
           "situation": "Slovakia's famous plum brandy is called slivovica. Which fruit gives it its name?",
           "instruction": "Choose the correct fruit",
-          "choices": ["Čerešňa", "Broskyňa", "Citrón", "Slivka"],
+          "choices": [
+            "Čerešňa",
+            "Broskyňa",
+            "Citrón",
+            "Slivka"
+          ],
           "answer": "Slivka",
           "answerMeaning": "Slivka = plum. Slivovica (plum brandy) takes its name directly from slivka! The -ovica suffix turns a fruit into a spirit. Slovakia produces excellent slivovica, especially in village homesteads in rural areas."
         },
         {
           "situation": "At the summer market you see a sign: 'Čerstvé jahody — 3€/kg'. What is being sold?",
           "instruction": "Choose the correct meaning",
-          "choices": ["Fresh cherries", "Fresh grapes", "Fresh plums", "Fresh strawberries"],
+          "choices": [
+            "Fresh cherries",
+            "Fresh grapes",
+            "Fresh plums",
+            "Fresh strawberries"
+          ],
           "answer": "Fresh strawberries",
           "answerMeaning": "Jahoda = strawberry. Čerstvé = fresh. /kg = per kilogram. Slovak summer markets overflow with seasonal jahody in June — along with čerešne (cherries) and broskyňe (peaches) at very good prices."
         },
         {
           "situation": "You want to squeeze fresh juice rich in vitamin C. Which fruit do you pick?",
           "instruction": "Choose the correct fruit",
-          "choices": ["Uhorka", "Zemiaky", "Šalát", "Citrón"],
+          "choices": [
+            "Uhorka",
+            "Zemiaky",
+            "Šalát",
+            "Citrón"
+          ],
           "answer": "Citrón",
           "answerMeaning": "Citrón = lemon — packed with vitamin C. Pomaranč (orange) is also excellent for vitamin C. Both are available year-round in Slovak supermarkets. Lemonade made from fresh citróny is a popular summer drink."
         },
         {
           "situation": "Which of these four is zelenina (a vegetable), not ovocie (a fruit)?",
           "instruction": "Choose the vegetable",
-          "choices": ["Banán", "Hruška", "Pomaranč", "Paprika"],
+          "choices": [
+            "Banán",
+            "Hruška",
+            "Pomaranč",
+            "Paprika"
+          ],
           "answer": "Paprika",
           "answerMeaning": "Paprika = pepper — botanically a fruit, but used and categorised as zelenina (vegetable) in Slovak cooking! Banán, Hruška (pear) and Pomaranč (orange) are all ovocie (fruit). Slovak paprika can be sweet (sladká) or hot (pálivá)."
         },
         {
           "situation": "Your recipe for a traditional Slovak dish says 'pridajte cibuľu a cesnak'. What do you need?",
           "instruction": "Choose the correct ingredients",
-          "choices": ["Carrots and potatoes", "Cabbage and broccoli", "Onion and garlic", "Pepper and tomato"],
+          "choices": [
+            "Carrots and potatoes",
+            "Cabbage and broccoli",
+            "Onion and garlic",
+            "Pepper and tomato"
+          ],
           "answer": "Onion and garlic",
           "answerMeaning": "Cibuľa = onion, Cesnak = garlic. These two are the flavour backbone of Slovak cooking — you'll find them in guláš, kapustnica, and almost every savoury dish. Pridajte = add (imperative, plural/formal)."
         },
         {
           "situation": "Which fruit is most associated with Slovak winemaking traditions?",
           "instruction": "Choose the correct fruit",
-          "choices": ["Jablko", "Banán", "Jahoda", "Hrozno"],
+          "choices": [
+            "Jablko",
+            "Banán",
+            "Jahoda",
+            "Hrozno"
+          ],
           "answer": "Hrozno",
           "answerMeaning": "Hrozno = grapes — the basis of wine (víno). Slovakia has established wine regions around Nitra, Bratislava, and the Tokaj area in the east. Look out for Slovenské víno (Slovak wine) on restaurant menus — often excellent value!"
         },
         {
           "situation": "You pick up loose tomatoes at the supermarket. Before going to the till, what must you do?",
           "instruction": "Choose the correct action",
-          "choices": ["Pay at the till immediately", "Put them in the fridge section", "Ask the čašník for help", "Weigh them at the váha and print a barcode sticker"],
+          "choices": [
+            "Pay at the till immediately",
+            "Put them in the fridge section",
+            "Ask the čašník for help",
+            "Weigh them at the váha and print a barcode sticker"
+          ],
           "answer": "Weigh them at the váha and print a barcode sticker",
           "answerMeaning": "Loose paradajky and other zelenina must be weighed at the self-service váha (scale) in the produce section. Print the barcode sticker and stick it on the bag before going to the pokladňa (checkout). Forgetting to do this is a common beginner mistake!"
         }
@@ -154,49 +432,89 @@
         {
           "sentence": "Dám si ___ a jahody — milujem čerstvé letné ovocie.",
           "translation": "I'll have ___ and strawberries — I love fresh summer fruit.",
-          "choices": ["hrozno", "cesnak", "zemiaky", "šalát"],
+          "choices": [
+            "hrozno",
+            "cesnak",
+            "zemiaky",
+            "šalát"
+          ],
           "answer": "hrozno"
         },
         {
           "sentence": "Potrebujem ___ na šalát — sú červené, šťavnaté a zdravé.",
           "translation": "I need ___ for the salad — they are red, juicy and healthy.",
-          "choices": ["paradajky", "citróny", "hrušky", "slivky"],
+          "choices": [
+            "paradajky",
+            "citróny",
+            "hrušky",
+            "slivky"
+          ],
           "answer": "paradajky"
         },
         {
           "sentence": "Kúp mi ___, prosím — chcem urobiť domácu limonádu.",
           "translation": "Please buy me ___ — I want to make homemade lemonade.",
-          "choices": ["citróny", "zemiaky", "uhorky", "kapustu"],
+          "choices": [
+            "citróny",
+            "zemiaky",
+            "uhorky",
+            "kapustu"
+          ],
           "answer": "citróny"
         },
         {
           "sentence": "Do guláša vždy dávam ___ a mrkvu — to je základ.",
           "translation": "I always put ___ and carrots into the goulash — that's the base.",
-          "choices": ["cibuľu", "jahody", "banán", "hrozno"],
+          "choices": [
+            "cibuľu",
+            "jahody",
+            "banán",
+            "hrozno"
+          ],
           "answer": "cibuľu"
         },
         {
           "sentence": "___ sú základ pre výrobu slivovice — tradičného slovenského destilátu.",
           "translation": "___ are the basis for making slivovica — a traditional Slovak spirit.",
-          "choices": ["Slivky", "Jablká", "Jahody", "Čerešne"],
+          "choices": [
+            "Slivky",
+            "Jablká",
+            "Jahody",
+            "Čerešne"
+          ],
           "answer": "Slivky"
         },
         {
           "sentence": "Potrebujem ___ do šalátu — je to chrumkavá zelená zelenina.",
           "translation": "I need ___ for the salad — it's a crunchy green vegetable.",
-          "choices": ["šalát", "cesnak", "banán", "hrozno"],
+          "choices": [
+            "šalát",
+            "cesnak",
+            "banán",
+            "hrozno"
+          ],
           "answer": "šalát"
         },
         {
           "sentence": "Chcem si kúpiť ___ — je to žlté ovocie bohaté na draslík.",
           "translation": "I want to buy ___ — it's a yellow fruit rich in potassium.",
-          "choices": ["banán", "mrkvu", "brokolicu", "papriku"],
+          "choices": [
+            "banán",
+            "mrkvu",
+            "brokolicu",
+            "papriku"
+          ],
           "answer": "banán"
         },
         {
           "sentence": "Na kapustovú polievku potrebujem ___ a bravčové mäso.",
           "translation": "For the cabbage soup I need ___ and pork.",
-          "choices": ["kapustu", "jahody", "pomaranče", "čerešne"],
+          "choices": [
+            "kapustu",
+            "jahody",
+            "pomaranče",
+            "čerešne"
+          ],
           "answer": "kapustu"
         }
       ]
@@ -207,42 +525,82 @@
       "items": [
         {
           "sentence": "Dám si ___ a jahody — milujem čerstvé letné ovocie.",
-          "choices": ["hrozno", "cesnak", "zemiaky", "šalát"],
+          "choices": [
+            "hrozno",
+            "cesnak",
+            "zemiaky",
+            "šalát"
+          ],
           "answer": "hrozno"
         },
         {
           "sentence": "Potrebujem ___ na šalát — sú červené, šťavnaté a zdravé.",
-          "choices": ["paradajky", "citróny", "hrušky", "slivky"],
+          "choices": [
+            "paradajky",
+            "citróny",
+            "hrušky",
+            "slivky"
+          ],
           "answer": "paradajky"
         },
         {
           "sentence": "Kúp mi ___, prosím — chcem urobiť domácu limonádu.",
-          "choices": ["citróny", "zemiaky", "uhorky", "kapustu"],
+          "choices": [
+            "citróny",
+            "zemiaky",
+            "uhorky",
+            "kapustu"
+          ],
           "answer": "citróny"
         },
         {
           "sentence": "Do guláša vždy dávam ___ a mrkvu — to je základ.",
-          "choices": ["cibuľu", "jahody", "banán", "hrozno"],
+          "choices": [
+            "cibuľu",
+            "jahody",
+            "banán",
+            "hrozno"
+          ],
           "answer": "cibuľu"
         },
         {
           "sentence": "___ sú základ pre výrobu slivovice — tradičného slovenského destilátu.",
-          "choices": ["Slivky", "Jablká", "Jahody", "Čerešne"],
+          "choices": [
+            "Slivky",
+            "Jablká",
+            "Jahody",
+            "Čerešne"
+          ],
           "answer": "Slivky"
         },
         {
           "sentence": "Potrebujem ___ do šalátu — je to chrumkavá zelená zelenina.",
-          "choices": ["šalát", "cesnak", "banán", "hrozno"],
+          "choices": [
+            "šalát",
+            "cesnak",
+            "banán",
+            "hrozno"
+          ],
           "answer": "šalát"
         },
         {
           "sentence": "Chcem si kúpiť ___ — je to žlté ovocie bohaté na draslík.",
-          "choices": ["banán", "mrkvu", "brokolicu", "papriku"],
+          "choices": [
+            "banán",
+            "mrkvu",
+            "brokolicu",
+            "papriku"
+          ],
           "answer": "banán"
         },
         {
           "sentence": "Na kapustovú polievku potrebujem ___ a bravčové mäso.",
-          "choices": ["kapustu", "jahody", "pomaranče", "čerešne"],
+          "choices": [
+            "kapustu",
+            "jahody",
+            "pomaranče",
+            "čerešne"
+          ],
           "answer": "kapustu"
         }
       ]
@@ -256,72 +614,168 @@
           "snailMessage": "Dobrý deň! Čo si prajete? Máme čerstvú zeleninu aj ovocie.",
           "snailMessageEnglish": "Good day! What would you like? We have fresh vegetables and fruit.",
           "choices": [
-            { "slovak": "Prosím, koľko stoja paradajky?", "english": "Please, how much are the tomatoes?", "isCorrect": true },
-            { "slovak": "Kde je pokladňa?", "english": "Where is the checkout?", "isCorrect": false },
-            { "slovak": "Chcem účet.", "english": "I want the bill.", "isCorrect": false }
+            {
+              "slovak": "Prosím, koľko stoja paradajky?",
+              "english": "Please, how much are the tomatoes?",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Kde je pokladňa?",
+              "english": "Where is the checkout?",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Chcem účet.",
+              "english": "I want the bill.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Paradajky sú dve eurá za kilogram. Čerstvé z farmy!",
           "snailReplyEnglish": "Tomatoes are two euros per kilogram. Fresh from the farm!"
         },
         {
           "choices": [
-            { "slovak": "Dám si kilogram paradajok, prosím.", "english": "I'll have a kilogram of tomatoes please.", "isCorrect": true },
-            { "slovak": "Nemám rád paradajky.", "english": "I don't like tomatoes.", "isCorrect": false },
-            { "slovak": "Chcem iba minerálku.", "english": "I only want mineral water.", "isCorrect": false }
+            {
+              "slovak": "Dám si kilogram paradajok, prosím.",
+              "english": "I'll have a kilogram of tomatoes please.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Nemám rád paradajky.",
+              "english": "I don't like tomatoes.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Chcem iba minerálku.",
+              "english": "I only want mineral water.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Výborne! Chcete aj nejakú inú zeleninu?",
           "snailReplyEnglish": "Excellent! Would you like any other vegetables?"
         },
         {
           "choices": [
-            { "slovak": "Áno, dajte mi aj kapustu a mrkvu, prosím.", "english": "Yes, please give me cabbage and carrots too.", "isCorrect": true },
-            { "slovak": "Nemám peniaze.", "english": "I don't have money.", "isCorrect": false },
-            { "slovak": "Len ovocie, prosím.", "english": "Only fruit please.", "isCorrect": false }
+            {
+              "slovak": "Áno, dajte mi aj kapustu a mrkvu, prosím.",
+              "english": "Yes, please give me cabbage and carrots too.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Nemám peniaze.",
+              "english": "I don't have money.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Len ovocie, prosím.",
+              "english": "Only fruit please.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Dobre! Kapusta je euro päťdesiat, mrkva osemdesiat centov za kilogram.",
           "snailReplyEnglish": "Good! Cabbage is one euro fifty, carrots are eighty cents per kilogram."
         },
         {
           "choices": [
-            { "slovak": "Dám si pol kilogramu kapusty a kilogram mrkvy.", "english": "I'll have half a kilogram of cabbage and one kilogram of carrots.", "isCorrect": true },
-            { "slovak": "To je príliš drahé.", "english": "That's too expensive.", "isCorrect": false },
-            { "slovak": "Nechcem kapustu ani mrkvu.", "english": "I don't want cabbage or carrots.", "isCorrect": false }
+            {
+              "slovak": "Dám si pol kilogramu kapusty a kilogram mrkvy.",
+              "english": "I'll have half a kilogram of cabbage and one kilogram of carrots.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "To je príliš drahé.",
+              "english": "That's too expensive.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Nechcem kapustu ani mrkvu.",
+              "english": "I don't want cabbage or carrots.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Samozrejme! A máme aj skvelé letné ovocie — jahody, broskyňe aj hrozno.",
           "snailReplyEnglish": "Of course! And we also have great summer fruit — strawberries, peaches and grapes."
         },
         {
           "choices": [
-            { "slovak": "Výborne! Dám si jahody a broskyňe, prosím.", "english": "Excellent! I'll have strawberries and peaches please.", "isCorrect": true },
-            { "slovak": "Nemám rád ovocie.", "english": "I don't like fruit.", "isCorrect": false },
-            { "slovak": "Kde je záchod?", "english": "Where is the toilet?", "isCorrect": false }
+            {
+              "slovak": "Výborne! Dám si jahody a broskyňe, prosím.",
+              "english": "Excellent! I'll have strawberries and peaches please.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Nemám rád ovocie.",
+              "english": "I don't like fruit.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Kde je záchod?",
+              "english": "Where is the toilet?",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Jahody sú tri eurá za kilogram, broskyňe dve eurá päťdesiat.",
           "snailReplyEnglish": "Strawberries are three euros per kilogram, peaches two euros fifty."
         },
         {
           "choices": [
-            { "slovak": "Dám si pol kilogramu jahôd a pol kilogramu broskyňí.", "english": "I'll have half a kilogram of strawberries and half a kilogram of peaches.", "isCorrect": true },
-            { "slovak": "Dajte mi všetko zadarmo.", "english": "Give me everything for free.", "isCorrect": false },
-            { "slovak": "Nechcem broskyňe.", "english": "I don't want peaches.", "isCorrect": false }
+            {
+              "slovak": "Dám si pol kilogramu jahôd a pol kilogramu broskyňí.",
+              "english": "I'll have half a kilogram of strawberries and half a kilogram of peaches.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Dajte mi všetko zadarmo.",
+              "english": "Give me everything for free.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Nechcem broskyňe.",
+              "english": "I don't want peaches.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Dobre! Ešte niečo? Máme aj čerstvý cesnak a brokolicu.",
           "snailReplyEnglish": "Good! Anything else? We also have fresh garlic and broccoli."
         },
         {
           "choices": [
-            { "slovak": "Nie, ďakujem, to je všetko. Koľko platím spolu?", "english": "No thank you, that's all. How much is it altogether?", "isCorrect": true },
-            { "slovak": "Chcem ešte viac paradajok.", "english": "I want more tomatoes.", "isCorrect": false },
-            { "slovak": "Kde je supermarket?", "english": "Where is the supermarket?", "isCorrect": false }
+            {
+              "slovak": "Nie, ďakujem, to je všetko. Koľko platím spolu?",
+              "english": "No thank you, that's all. How much is it altogether?",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Chcem ešte viac paradajok.",
+              "english": "I want more tomatoes.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Kde je supermarket?",
+              "english": "Where is the supermarket?",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Spolu je to osem eur dvadsať. Platíte kartou alebo hotovosťou?",
           "snailReplyEnglish": "The total is eight euros twenty. Are you paying by card or cash?"
         },
         {
           "choices": [
-            { "slovak": "Hotovosťou, prosím. Tu je desať eur.", "english": "By cash please. Here is ten euros.", "isCorrect": true },
-            { "slovak": "Platím jablkami.", "english": "I'm paying with apples.", "isCorrect": false },
-            { "slovak": "Nemám hotovosť ani kartu.", "english": "I have neither cash nor card.", "isCorrect": false }
+            {
+              "slovak": "Hotovosťou, prosím. Tu je desať eur.",
+              "english": "By cash please. Here is ten euros.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Platím jablkami.",
+              "english": "I'm paying with apples.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Nemám hotovosť ani kartu.",
+              "english": "I have neither cash nor card.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Ďakujem! Váš zvyšok je jedno euro osemdesiat. Príjemný deň a dobrú chuť!",
           "snailReplyEnglish": "Thank you! Your change is one euro eighty. Have a lovely day and enjoy your food!"
@@ -337,65 +791,137 @@
         {
           "snailMessage": "Dobrý deň! Čo si prajete? Máme čerstvú zeleninu aj ovocie.",
           "choices": [
-            { "slovak": "Prosím, koľko stoja paradajky?", "isCorrect": true },
-            { "slovak": "Kde je pokladňa?", "isCorrect": false },
-            { "slovak": "Chcem účet.", "isCorrect": false }
+            {
+              "slovak": "Prosím, koľko stoja paradajky?",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Kde je pokladňa?",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Chcem účet.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Paradajky sú dve eurá za kilogram. Čerstvé z farmy!"
         },
         {
           "choices": [
-            { "slovak": "Dám si kilogram paradajok, prosím.", "isCorrect": true },
-            { "slovak": "Nemám rád paradajky.", "isCorrect": false },
-            { "slovak": "Chcem iba minerálku.", "isCorrect": false }
+            {
+              "slovak": "Dám si kilogram paradajok, prosím.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Nemám rád paradajky.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Chcem iba minerálku.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Výborne! Chcete aj nejakú inú zeleninu?"
         },
         {
           "choices": [
-            { "slovak": "Áno, dajte mi aj kapustu a mrkvu, prosím.", "isCorrect": true },
-            { "slovak": "Nemám peniaze.", "isCorrect": false },
-            { "slovak": "Len ovocie, prosím.", "isCorrect": false }
+            {
+              "slovak": "Áno, dajte mi aj kapustu a mrkvu, prosím.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Nemám peniaze.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Len ovocie, prosím.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Dobre! Kapusta je euro päťdesiat, mrkva osemdesiat centov za kilogram."
         },
         {
           "choices": [
-            { "slovak": "Dám si pol kilogramu kapusty a kilogram mrkvy.", "isCorrect": true },
-            { "slovak": "To je príliš drahé.", "isCorrect": false },
-            { "slovak": "Nechcem kapustu ani mrkvu.", "isCorrect": false }
+            {
+              "slovak": "Dám si pol kilogramu kapusty a kilogram mrkvy.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "To je príliš drahé.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Nechcem kapustu ani mrkvu.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Samozrejme! A máme aj skvelé letné ovocie — jahody, broskyňe aj hrozno."
         },
         {
           "choices": [
-            { "slovak": "Výborne! Dám si jahody a broskyňe, prosím.", "isCorrect": true },
-            { "slovak": "Nemám rád ovocie.", "isCorrect": false },
-            { "slovak": "Kde je záchod?", "isCorrect": false }
+            {
+              "slovak": "Výborne! Dám si jahody a broskyňe, prosím.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Nemám rád ovocie.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Kde je záchod?",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Jahody sú tri eurá za kilogram, broskyňe dve eurá päťdesiat."
         },
         {
           "choices": [
-            { "slovak": "Dám si pol kilogramu jahôd a pol kilogramu broskyňí.", "isCorrect": true },
-            { "slovak": "Dajte mi všetko zadarmo.", "isCorrect": false },
-            { "slovak": "Nechcem broskyňe.", "isCorrect": false }
+            {
+              "slovak": "Dám si pol kilogramu jahôd a pol kilogramu broskyňí.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Dajte mi všetko zadarmo.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Nechcem broskyňe.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Dobre! Ešte niečo? Máme aj čerstvý cesnak a brokolicu."
         },
         {
           "choices": [
-            { "slovak": "Nie, ďakujem, to je všetko. Koľko platím spolu?", "isCorrect": true },
-            { "slovak": "Chcem ešte viac paradajok.", "isCorrect": false },
-            { "slovak": "Kde je supermarket?", "isCorrect": false }
+            {
+              "slovak": "Nie, ďakujem, to je všetko. Koľko platím spolu?",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Chcem ešte viac paradajok.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Kde je supermarket?",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Spolu je to osem eur dvadsať. Platíte kartou alebo hotovosťou?"
         },
         {
           "choices": [
-            { "slovak": "Hotovosťou, prosím. Tu je desať eur.", "isCorrect": true },
-            { "slovak": "Platím jablkami.", "isCorrect": false },
-            { "slovak": "Nemám hotovosť ani kartu.", "isCorrect": false }
+            {
+              "slovak": "Hotovosťou, prosím. Tu je desať eur.",
+              "isCorrect": true
+            },
+            {
+              "slovak": "Platím jablkami.",
+              "isCorrect": false
+            },
+            {
+              "slovak": "Nemám hotovosť ani kartu.",
+              "isCorrect": false
+            }
           ],
           "snailReply": "Ďakujem! Váš zvyšok je jedno euro osemdesiat. Príjemný deň a dobrú chuť!"
         }

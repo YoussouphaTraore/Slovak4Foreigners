@@ -11,71 +11,243 @@
       "id": "ex1",
       "type": "VOCABULARY_TABLE",
       "title": "Numbers 0–10",
-      "headers": ["Number", "Slovak", "English"],
+      "headers": [
+        "Number",
+        "Slovak",
+        "English"
+      ],
       "rows": [
-        { "label": "0",  "slovak": "nula",   "english": "Zero" },
-        { "label": "1",  "slovak": "jeden",  "english": "One" },
-        { "label": "2",  "slovak": "dva",    "english": "Two" },
-        { "label": "3",  "slovak": "tri",    "english": "Three" },
-        { "label": "4",  "slovak": "štyri",  "english": "Four" },
-        { "label": "5",  "slovak": "päť",    "english": "Five" },
-        { "label": "6",  "slovak": "šesť",   "english": "Six" },
-        { "label": "7",  "slovak": "sedem",  "english": "Seven" },
-        { "label": "8",  "slovak": "osem",   "english": "Eight" },
-        { "label": "9",  "slovak": "deväť",  "english": "Nine" },
-        { "label": "10", "slovak": "desať",  "english": "Ten" }
+        {
+          "label": "0",
+          "slovak": "nula",
+          "english": "Zero"
+        },
+        {
+          "label": "1",
+          "slovak": "jeden",
+          "english": "One"
+        },
+        {
+          "label": "2",
+          "slovak": "dva",
+          "english": "Two"
+        },
+        {
+          "label": "3",
+          "slovak": "tri",
+          "english": "Three"
+        },
+        {
+          "label": "4",
+          "slovak": "štyri",
+          "english": "Four"
+        },
+        {
+          "label": "5",
+          "slovak": "päť",
+          "english": "Five"
+        },
+        {
+          "label": "6",
+          "slovak": "šesť",
+          "english": "Six"
+        },
+        {
+          "label": "7",
+          "slovak": "sedem",
+          "english": "Seven"
+        },
+        {
+          "label": "8",
+          "slovak": "osem",
+          "english": "Eight"
+        },
+        {
+          "label": "9",
+          "slovak": "deväť",
+          "english": "Nine"
+        },
+        {
+          "label": "10",
+          "slovak": "desať",
+          "english": "Ten"
+        }
       ]
     },
     {
       "id": "ex2",
       "type": "VOCABULARY_TABLE",
       "title": "Numbers 11–20 & Beyond",
-      "headers": ["Number", "Slovak", "English"],
+      "headers": [
+        "Number",
+        "Slovak",
+        "English"
+      ],
       "rows": [
-        { "label": "11",    "slovak": "jedenásť",  "english": "Eleven" },
-        { "label": "12",    "slovak": "dvanásť",   "english": "Twelve" },
-        { "label": "13",    "slovak": "trinásť",   "english": "Thirteen" },
-        { "label": "14",    "slovak": "štrnásť",   "english": "Fourteen" },
-        { "label": "15",    "slovak": "pätnásť",   "english": "Fifteen" },
-        { "label": "16",    "slovak": "šestnásť",  "english": "Sixteen" },
-        { "label": "17",    "slovak": "sedemnásť", "english": "Seventeen" },
-        { "label": "18",    "slovak": "osemnásť",  "english": "Eighteen" },
-        { "label": "19",    "slovak": "devätnásť", "english": "Nineteen" },
-        { "label": "20",    "slovak": "dvadsať",   "english": "Twenty" },
-        { "label": "50",    "slovak": "päťdesiat", "english": "Fifty" },
-        { "label": "100",   "slovak": "sto",       "english": "One hundred" },
-        { "label": "1 000", "slovak": "tisíc",     "english": "One thousand" }
+        {
+          "label": "11",
+          "slovak": "jedenásť",
+          "english": "Eleven"
+        },
+        {
+          "label": "12",
+          "slovak": "dvanásť",
+          "english": "Twelve"
+        },
+        {
+          "label": "13",
+          "slovak": "trinásť",
+          "english": "Thirteen"
+        },
+        {
+          "label": "14",
+          "slovak": "štrnásť",
+          "english": "Fourteen"
+        },
+        {
+          "label": "15",
+          "slovak": "pätnásť",
+          "english": "Fifteen"
+        },
+        {
+          "label": "16",
+          "slovak": "šestnásť",
+          "english": "Sixteen"
+        },
+        {
+          "label": "17",
+          "slovak": "sedemnásť",
+          "english": "Seventeen"
+        },
+        {
+          "label": "18",
+          "slovak": "osemnásť",
+          "english": "Eighteen"
+        },
+        {
+          "label": "19",
+          "slovak": "devätnásť",
+          "english": "Nineteen"
+        },
+        {
+          "label": "20",
+          "slovak": "dvadsať",
+          "english": "Twenty"
+        },
+        {
+          "label": "50",
+          "slovak": "päťdesiat",
+          "english": "Fifty"
+        },
+        {
+          "label": "100",
+          "slovak": "sto",
+          "english": "One hundred"
+        },
+        {
+          "label": "1 000",
+          "slovak": "tisíc",
+          "english": "One thousand"
+        }
       ]
     },
     {
       "id": "ex3",
       "type": "VOCABULARY_TABLE",
       "title": "Money & Payment Words",
-      "headers": ["Term", "Slovak", "English"],
+      "headers": [
+        "Term",
+        "Slovak",
+        "English"
+      ],
       "rows": [
-        { "label": "Money",   "slovak": "Peniaze",   "english": "Money" },
-        { "label": "Price",   "slovak": "Cena",      "english": "Price / Cost" },
-        { "label": "Bill",    "slovak": "Účet",      "english": "Bill / Check" },
-        { "label": "Receipt", "slovak": "Účtenka",   "english": "Receipt" },
-        { "label": "Cash",    "slovak": "Hotovosť",  "english": "Cash" },
-        { "label": "Card",    "slovak": "Karta",     "english": "Bank card" },
-        { "label": "Change",  "slovak": "Drobné",    "english": "Small change / Coins" },
-        { "label": "Free",    "slovak": "Zadarmo",   "english": "Free of charge" }
+        {
+          "label": "Money",
+          "slovak": "Peniaze",
+          "english": "Money"
+        },
+        {
+          "label": "Price",
+          "slovak": "Cena",
+          "english": "Price / Cost"
+        },
+        {
+          "label": "Bill",
+          "slovak": "Účet",
+          "english": "Bill / Check"
+        },
+        {
+          "label": "Receipt",
+          "slovak": "Účtenka",
+          "english": "Receipt"
+        },
+        {
+          "label": "Cash",
+          "slovak": "Hotovosť",
+          "english": "Cash"
+        },
+        {
+          "label": "Card",
+          "slovak": "Karta",
+          "english": "Bank card"
+        },
+        {
+          "label": "Change",
+          "slovak": "Drobné",
+          "english": "Small change / Coins"
+        },
+        {
+          "label": "Free",
+          "slovak": "Zadarmo",
+          "english": "Free of charge"
+        }
       ]
     },
     {
       "id": "ex4",
       "type": "VOCABULARY_TABLE",
       "title": "Useful Phrases",
-      "headers": ["When", "Slovak", "English"],
+      "headers": [
+        "When",
+        "Slovak",
+        "English"
+      ],
       "rows": [
-        { "label": "Price?",      "slovak": "Koľko to stojí?",         "english": "How much does it cost?" },
-        { "label": "How many?",   "slovak": "Koľko?",                  "english": "How many? / How much?" },
-        { "label": "I'll pay",    "slovak": "Chcem zaplatiť.",         "english": "I want to pay." },
-        { "label": "By card",     "slovak": "Platím kartou.",          "english": "I'm paying by card." },
-        { "label": "In cash",     "slovak": "Platím v hotovosti.",     "english": "I'm paying in cash." },
-        { "label": "Receipt?",    "slovak": "Môžem dostať účtenku?",  "english": "Can I get a receipt?" },
-        { "label": "Change?",     "slovak": "Máte drobné?",           "english": "Do you have change?" }
+        {
+          "label": "Price?",
+          "slovak": "Koľko to stojí?",
+          "english": "How much does it cost?"
+        },
+        {
+          "label": "How many?",
+          "slovak": "Koľko?",
+          "english": "How many? / How much?"
+        },
+        {
+          "label": "I'll pay",
+          "slovak": "Chcem zaplatiť.",
+          "english": "I want to pay."
+        },
+        {
+          "label": "By card",
+          "slovak": "Platím kartou.",
+          "english": "I'm paying by card."
+        },
+        {
+          "label": "In cash",
+          "slovak": "Platím v hotovosti.",
+          "english": "I'm paying in cash."
+        },
+        {
+          "label": "Receipt?",
+          "slovak": "Môžem dostať účtenku?",
+          "english": "Can I get a receipt?"
+        },
+        {
+          "label": "Change?",
+          "slovak": "Máte drobné?",
+          "english": "Do you have change?"
+        }
       ]
     },
     {
@@ -84,27 +256,52 @@
       "items": [
         {
           "number": "6",
-          "choices": ["päť", "šesť", "sedem", "osem"],
+          "choices": [
+            "päť",
+            "šesť",
+            "sedem",
+            "osem"
+          ],
           "answer": "šesť"
         },
         {
           "number": "14",
-          "choices": ["štyri", "štrnásť", "šestnásť", "desať"],
+          "choices": [
+            "štyri",
+            "štrnásť",
+            "šestnásť",
+            "desať"
+          ],
           "answer": "štrnásť"
         },
         {
           "number": "15",
-          "choices": ["päť", "pätnásť", "päťdesiat", "desať"],
+          "choices": [
+            "päť",
+            "pätnásť",
+            "päťdesiat",
+            "desať"
+          ],
           "answer": "pätnásť"
         },
         {
           "number": "17",
-          "choices": ["sedem", "sedemnásť", "osemnásť", "devätnásť"],
+          "choices": [
+            "sedem",
+            "sedemnásť",
+            "osemnásť",
+            "devätnásť"
+          ],
           "answer": "sedemnásť"
         },
         {
           "number": "20",
-          "choices": ["dva", "dvanásť", "dvadsať", "dvesto"],
+          "choices": [
+            "dva",
+            "dvanásť",
+            "dvadsať",
+            "dvesto"
+          ],
           "answer": "dvadsať"
         }
       ]
@@ -113,28 +310,115 @@
       "id": "ex6",
       "type": "LISTEN_AND_PICK",
       "words": [
-        { "slovak": "päť",       "english": "Five" },
-        { "slovak": "sedem",     "english": "Seven" },
-        { "slovak": "desať",     "english": "Ten" },
-        { "slovak": "dvadsať",   "english": "Twenty" },
-        { "slovak": "Peniaze",   "english": "Money" },
-        { "slovak": "Karta",     "english": "Card" },
-        { "slovak": "Hotovosť",  "english": "Cash" },
-        { "slovak": "Zadarmo",   "english": "Free" }
+        {
+          "slovak": "päť",
+          "english": "Five"
+        },
+        {
+          "slovak": "sedem",
+          "english": "Seven"
+        },
+        {
+          "slovak": "desať",
+          "english": "Ten"
+        },
+        {
+          "slovak": "dvadsať",
+          "english": "Twenty"
+        },
+        {
+          "slovak": "Peniaze",
+          "english": "Money"
+        },
+        {
+          "slovak": "Karta",
+          "english": "Card"
+        },
+        {
+          "slovak": "Hotovosť",
+          "english": "Cash"
+        },
+        {
+          "slovak": "Zadarmo",
+          "english": "Free"
+        }
+      ]
+    },
+    {
+      "id": "ex6b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "päť",
+          "english": "Five"
+        },
+        {
+          "slovak": "sedem",
+          "english": "Seven"
+        },
+        {
+          "slovak": "desať",
+          "english": "Ten"
+        },
+        {
+          "slovak": "dvadsať",
+          "english": "Twenty"
+        },
+        {
+          "slovak": "Peniaze",
+          "english": "Money"
+        },
+        {
+          "slovak": "Karta",
+          "english": "Card"
+        },
+        {
+          "slovak": "Hotovosť",
+          "english": "Cash"
+        },
+        {
+          "slovak": "Zadarmo",
+          "english": "Free"
+        }
       ]
     },
     {
       "id": "ex7",
       "type": "PICK_TRANSLATION",
       "words": [
-        { "slovak": "Koľko to stojí?",        "english": "How much does it cost?" },
-        { "slovak": "Platím kartou.",          "english": "I'm paying by card." },
-        { "slovak": "Platím v hotovosti.",     "english": "I'm paying in cash." },
-        { "slovak": "Drobné",                 "english": "Small change" },
-        { "slovak": "Zadarmo",                "english": "Free of charge" },
-        { "slovak": "Účtenka",                "english": "Receipt" },
-        { "slovak": "Chcem zaplatiť.",        "english": "I want to pay." },
-        { "slovak": "Môžem dostať účtenku?", "english": "Can I get a receipt?" }
+        {
+          "slovak": "Koľko to stojí?",
+          "english": "How much does it cost?"
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "I'm paying by card."
+        },
+        {
+          "slovak": "Platím v hotovosti.",
+          "english": "I'm paying in cash."
+        },
+        {
+          "slovak": "Drobné",
+          "english": "Small change"
+        },
+        {
+          "slovak": "Zadarmo",
+          "english": "Free of charge"
+        },
+        {
+          "slovak": "Účtenka",
+          "english": "Receipt"
+        },
+        {
+          "slovak": "Chcem zaplatiť.",
+          "english": "I want to pay."
+        },
+        {
+          "slovak": "Môžem dostať účtenku?",
+          "english": "Can I get a receipt?"
+        }
       ]
     },
     {
@@ -144,56 +428,96 @@
         {
           "situation": "You pick up an item at a market stall. What is the first thing you ask the seller?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Koľko to stojí?", "Platím kartou.", "Chcem zaplatiť.", "Zadarmo?"],
+          "choices": [
+            "Koľko to stojí?",
+            "Platím kartou.",
+            "Chcem zaplatiť.",
+            "Zadarmo?"
+          ],
           "answer": "Koľko to stojí?",
           "answerMeaning": "How much does it cost? — the natural opening when buying anything"
         },
         {
           "situation": "The cashier asks 'Hotovosť alebo karta?' (Cash or card?). You want to pay by card.",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Platím v hotovosti.", "Platím kartou.", "Chcem drobné.", "Koľko to stojí?"],
+          "choices": [
+            "Platím v hotovosti.",
+            "Platím kartou.",
+            "Chcem drobné.",
+            "Koľko to stojí?"
+          ],
           "answer": "Platím kartou.",
           "answerMeaning": "I'm paying by card. — you'll hear 'Hotovosť alebo karta?' at every checkout"
         },
         {
           "situation": "You hand a €20 note for a €3 coffee. The barista owes you coins. What do you ask for?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Účtenku", "Kartu", "Drobné", "Cenu"],
+          "choices": [
+            "Účtenku",
+            "Kartu",
+            "Drobné",
+            "Cenu"
+          ],
           "answer": "Drobné",
           "answerMeaning": "Small change / Coins — drobné literally means 'small ones'"
         },
         {
           "situation": "You're expensing a business lunch and need proof of purchase. What do you ask before leaving?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Koľko to stojí?", "Môžem dostať účtenku?", "Platím v hotovosti.", "Chcem drobné."],
+          "choices": [
+            "Koľko to stojí?",
+            "Môžem dostať účtenku?",
+            "Platím v hotovosti.",
+            "Chcem drobné."
+          ],
           "answer": "Môžem dostať účtenku?",
           "answerMeaning": "Can I get a receipt? — essential for work expenses"
         },
         {
           "situation": "The price tag reads 'pätnásť eur'. How much is the item?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["€5", "€14", "€15", "€50"],
+          "choices": [
+            "€5",
+            "€14",
+            "€15",
+            "€50"
+          ],
           "answer": "€15",
           "answerMeaning": "pätnásť = fifteen — päť (5) + násť (teen suffix)"
         },
         {
           "situation": "The display shows 'dvanásť eur'. You know this word — it appears in the emergency number 112 (sto dvanásť). How much is it?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["€11", "€12", "€20", "€22"],
+          "choices": [
+            "€11",
+            "€12",
+            "€20",
+            "€22"
+          ],
           "answer": "€12",
           "answerMeaning": "dvanásť = twelve — the same word you learned in Lesson 4 for 1-1-2 (sto dvanásť)!"
         },
         {
           "situation": "You are at a pharmacy and feel unwell. What do you tell the pharmacist? (from Lesson 3)",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Je mi dobre.", "Je mi zle.", "Koľko to stojí?", "Zadarmo!"],
+          "choices": [
+            "Je mi dobre.",
+            "Je mi zle.",
+            "Koľko to stojí?",
+            "Zadarmo!"
+          ],
           "answer": "Je mi zle.",
           "answerMeaning": "I feel unwell. (from Lesson 3 — very useful when explaining why you need medicine!)"
         },
         {
           "situation": "You have only a €20 note. The item costs dvadsať eur. What is ideal about this situation?",
           "instruction": "Choose the most appropriate phrase",
-          "choices": ["Platím kartou.", "Máte drobné?", "Platím v hotovosti. Presná suma.", "Môžem dostať účtenku?"],
+          "choices": [
+            "Platím kartou.",
+            "Máte drobné?",
+            "Platím v hotovosti. Presná suma.",
+            "Môžem dostať účtenku?"
+          ],
           "answer": "Platím v hotovosti. Presná suma.",
           "answerMeaning": "I'm paying in cash. Exact amount. — dvadsať = twenty, no change needed!"
         }
@@ -206,37 +530,67 @@
         {
           "sentence": "___ to stojí? — Päť eur.",
           "translation": "___ does it cost? — Five euros.",
-          "choices": ["Koľko", "Kedy", "Kde", "Ako"],
+          "choices": [
+            "Koľko",
+            "Kedy",
+            "Kde",
+            "Ako"
+          ],
           "answer": "Koľko"
         },
         {
           "sentence": "Platím ___. Nemám hotovosť.",
           "translation": "I'm paying by ___. I don't have cash.",
-          "choices": ["kartou", "drobné", "zadarmo", "účet"],
+          "choices": [
+            "kartou",
+            "drobné",
+            "zadarmo",
+            "účet"
+          ],
           "answer": "kartou"
         },
         {
           "sentence": "Môžem dostať ___?",
           "translation": "Can I get a ___?",
-          "choices": ["účtenku", "kartu", "koľko", "cenu"],
+          "choices": [
+            "účtenku",
+            "kartu",
+            "koľko",
+            "cenu"
+          ],
           "answer": "účtenku"
         },
         {
           "sentence": "Nemám kartu. Platím ___.",
           "translation": "I don't have a card. I'm paying ___.",
-          "choices": ["v hotovosti", "kartou", "zadarmo", "drobné"],
+          "choices": [
+            "v hotovosti",
+            "kartou",
+            "zadarmo",
+            "drobné"
+          ],
           "answer": "v hotovosti"
         },
         {
           "sentence": "Jedna káva stojí ___ eurá.",
           "translation": "One coffee costs ___ euros.",
-          "choices": ["tri", "tridsať", "sto", "trinásť"],
+          "choices": [
+            "tri",
+            "tridsať",
+            "sto",
+            "trinásť"
+          ],
           "answer": "tri"
         },
         {
           "sentence": "Nemáte ___? Mám len dvadsaťeurovú bankovku.",
           "translation": "Don't you have ___? I only have a twenty euro note.",
-          "choices": ["drobné", "kartu", "účet", "cenu"],
+          "choices": [
+            "drobné",
+            "kartu",
+            "účet",
+            "cenu"
+          ],
           "answer": "drobné"
         }
       ]

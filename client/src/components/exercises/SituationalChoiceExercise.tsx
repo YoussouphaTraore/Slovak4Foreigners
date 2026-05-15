@@ -42,6 +42,12 @@ export function SituationalChoiceExercise({ exercise, onDone, onAnswer }: Props)
     [current]
   );
 
+  // If situation uses Slovak number words (no digits), show choices as digits.
+  // If situation uses digits, show choices as Slovak words. Never match the same format.
+  const situationHasDigits = /\d/.test(current.situation);
+  const displayChoice = (choice: string) =>
+    situationHasDigits ? slovakifyNumbers(choice) : choice;
+
   const handleChoice = (choice: string) => {
     if (feedback !== null) return;
 
@@ -148,7 +154,7 @@ export function SituationalChoiceExercise({ exercise, onDone, onAnswer }: Props)
               onClick={() => handleChoice(choice)}
               className={getChoiceStyle(choice)}
             >
-              {slovakifyNumbers(choice)}
+              {displayChoice(choice)}
               {feedback !== null && choice === current.answer && ' ✓'}
             </button>
           ))}

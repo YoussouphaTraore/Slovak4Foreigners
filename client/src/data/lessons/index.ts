@@ -14,6 +14,7 @@ import settling6 from './settling-6.json';
 import advanced1 from './advanced-1.json';
 import advanced2 from './advanced-2.json';
 import advanced3 from './advanced-3.json';
+import advanced4 from './advanced-4.json';
 
 export const lessons: Lesson[] = [
   survival1 as unknown as Lesson,
@@ -31,6 +32,7 @@ export const lessons: Lesson[] = [
   advanced1 as unknown as Lesson,
   advanced2 as unknown as Lesson,
   advanced3 as unknown as Lesson,
+  advanced4 as unknown as Lesson,
 ];
 
 export function getLessonById(id: string): Lesson | undefined {
