@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { NumberToWordsExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
+import { cleanForSpeech } from '../../utils/speak';
 
 interface Props {
   exercise: TExercise;
@@ -11,7 +12,7 @@ interface Props {
 function speak(text: string) {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
+  const u = new SpeechSynthesisUtterance(cleanForSpeech(text));
   u.lang = 'sk-SK';
   u.rate = 0.85;
   window.speechSynthesis.speak(u);

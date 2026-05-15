@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from 'react';
 import type { ListenAndIdentifyExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
+import { cleanForSpeech } from '../../utils/speak';
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -14,7 +15,7 @@ function shuffle<T>(arr: T[]): T[] {
 function speak(text: string, lang: string) {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
+  const u = new SpeechSynthesisUtterance(cleanForSpeech(text));
   u.lang = lang;
   u.rate = 0.85;
   window.speechSynthesis.speak(u);

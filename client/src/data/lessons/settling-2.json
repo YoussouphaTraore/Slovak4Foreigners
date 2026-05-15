@@ -1,0 +1,372 @@
+{
+  "id": "settling-2",
+  "stageId": "settling",
+  "stageName": "Stage 2 · Settling In",
+  "title": "At the Foreign Police",
+  "description": "Residence permits, appointments and documents",
+  "icon": "👮",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "The Foreign Police Office",
+      "headers": ["Term", "Slovak", "English"],
+      "rows": [
+        { "label": "Foreign Police",    "slovak": "Cudzinecká polícia",      "english": "Foreign Police (the official department for foreigners)" },
+        { "label": "Office",            "slovak": "Úrad",                    "english": "Office / Authority" },
+        { "label": "Residence permit",  "slovak": "Povolenie na pobyt",      "english": "Residence permit (povolenie = permit, pobyt = stay)" },
+        { "label": "Temporary res.",    "slovak": "Dočasný pobyt",           "english": "Temporary residence — valid up to 5 years, renewable" },
+        { "label": "Permanent res.",    "slovak": "Trvalý pobyt",            "english": "Permanent residence — applied for after 5 years of legal stay" },
+        { "label": "Application",       "slovak": "Žiadosť",                 "english": "Application / Request" },
+        { "label": "Form",              "slovak": "Formulár",                "english": "Form (to fill in)" },
+        { "label": "Appointment",       "slovak": "Termín",                  "english": "Appointment / Scheduled time / Deadline" },
+        { "label": "Queue",             "slovak": "Rad",                     "english": "Queue / Line" },
+        { "label": "Counter",           "slovak": "Prepážka",                "english": "Counter / Window at an office" },
+        { "label": "Waiting room",      "slovak": "Čakáreň",                 "english": "Waiting room" },
+        { "label": "Revenue stamp",     "slovak": "Kolok",                   "english": "Revenue stamp — mandatory fee (~€4.50) paid for official applications" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Documents to Bring",
+      "headers": ["Document", "Slovak", "English"],
+      "rows": [
+        { "label": "Passport",          "slovak": "Pas",                          "english": "Passport — your main ID document as a foreigner" },
+        { "label": "Photo",             "slovak": "Fotografia",                   "english": "Passport-size photo (usually 2 copies needed)" },
+        { "label": "Birth cert.",       "slovak": "Rodný list",                   "english": "Birth certificate" },
+        { "label": "Marriage cert.",    "slovak": "Sobášny list",                 "english": "Marriage certificate (if applicable)" },
+        { "label": "Proof of employ.",  "slovak": "Potvrdenie o zamestnaní",      "english": "Proof / Confirmation of employment" },
+        { "label": "Work contract",     "slovak": "Pracovná zmluva",              "english": "Employment contract" },
+        { "label": "Lease agreement",   "slovak": "Nájomná zmluva",               "english": "Rental / Lease agreement — proves your Slovak address (see Lesson 1!)" },
+        { "label": "Bank statement",    "slovak": "Výpis z účtu",                 "english": "Bank statement (výpis = statement, účet = account)" },
+        { "label": "Health insurance",  "slovak": "Zdravotné poistenie",          "english": "Health insurance — mandatory for residence applications" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Useful Phrases at the Office",
+      "headers": ["When", "Slovak", "English"],
+      "rows": [
+        { "label": "Book appt.",        "slovak": "Chcem si rezervovať termín.",          "english": "I would like to book an appointment." },
+        { "label": "State appt.",       "slovak": "Môj termín je o desiatej.",            "english": "My appointment is at ten." },
+        { "label": "Ask for docs",      "slovak": "Aké doklady potrebujem?",              "english": "What documents do I need?" },
+        { "label": "Submit app.",       "slovak": "Kde podám žiadosť?",                   "english": "Where do I submit my application?" },
+        { "label": "Fill form",         "slovak": "Vyplňte formulár, prosím.",            "english": "Please fill in the form." },
+        { "label": "Apply for permit",  "slovak": "Chcem podať žiadosť o povolenie na pobyt.", "english": "I want to submit a residence permit application." },
+        { "label": "Expires",           "slovak": "Môj pobyt vyprší...",                  "english": "My residence expires..." },
+        { "label": "Take a number",     "slovak": "Prosím, vezmite si číslo.",            "english": "Please take a number (from the machine)." },
+        { "label": "Pay stamp fee",     "slovak": "Kde zaplatím kolok?",                  "english": "Where do I pay the revenue stamp fee?" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "VOCABULARY_TABLE",
+      "title": "Form Fields You Will See",
+      "headers": ["Field", "Slovak", "English"],
+      "rows": [
+        { "label": "First name",        "slovak": "Meno",                    "english": "First name / Given name" },
+        { "label": "Surname",           "slovak": "Priezvisko",              "english": "Surname / Family name" },
+        { "label": "Date of birth",     "slovak": "Dátum narodenia",         "english": "Date of birth" },
+        { "label": "Place of birth",    "slovak": "Miesto narodenia",        "english": "Place of birth" },
+        { "label": "Nationality",       "slovak": "Štátna príslušnosť",      "english": "Nationality / Citizenship (štát = state, príslušnosť = belonging)" },
+        { "label": "Passport no.",      "slovak": "Číslo pasu",              "english": "Passport number" },
+        { "label": "Address",           "slovak": "Adresa",                  "english": "Address — you know this from Lesson 1!" },
+        { "label": "Signature",         "slovak": "Podpis",                  "english": "Signature" },
+        { "label": "Date",              "slovak": "Dátum",                   "english": "Date" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Cudzinecká polícia", "english": "Foreign Police" },
+        { "slovak": "Povolenie",          "english": "Permit" },
+        { "slovak": "Žiadosť",            "english": "Application" },
+        { "slovak": "Formulár",           "english": "Form" },
+        { "slovak": "Termín",             "english": "Appointment" },
+        { "slovak": "Pas",                "english": "Passport" },
+        { "slovak": "Kolok",              "english": "Revenue stamp" },
+        { "slovak": "Podpis",             "english": "Signature" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Chcem si rezervovať termín.",          "english": "I would like to book an appointment." },
+        { "slovak": "Aké doklady potrebujem?",              "english": "What documents do I need?" },
+        { "slovak": "Kde podám žiadosť?",                   "english": "Where do I submit my application?" },
+        { "slovak": "Vyplňte formulár, prosím.",            "english": "Please fill in the form." },
+        { "slovak": "Prosím, vezmite si číslo.",            "english": "Please take a number." },
+        { "slovak": "Zdravotné poistenie",                  "english": "Health insurance" },
+        { "slovak": "Nájomná zmluva",                       "english": "Rental / Lease agreement" },
+        { "slovak": "Dočasný pobyt",                        "english": "Temporary residence" }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The form has a field labelled 'Priezvisko'. What do you write?",
+          "instruction": "Choose the correct answer",
+          "choices": ["Your first name", "Your surname", "Your date of birth", "Your passport number"],
+          "answer": "Your surname",
+          "answerMeaning": "Priezvisko = surname / family name. Meno = first name. A very common mix-up on Slovak forms — always double-check which is which!"
+        },
+        {
+          "situation": "You need to book an appointment at the Foreign Police. Which phrase do you use?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Môj termín je o desiatej.", "Chcem si rezervovať termín.", "Kde podám žiadosť?", "Vyplňte formulár, prosím."],
+          "answer": "Chcem si rezervovať termín.",
+          "answerMeaning": "Chcem si rezervovať termín = I would like to book an appointment. Rezervovať = to reserve / book."
+        },
+        {
+          "situation": "The receptionist says 'Prosím, vezmite si číslo.' What do you do?",
+          "instruction": "Choose the correct action",
+          "choices": ["Show your passport", "Take a numbered ticket from the machine", "Go to counter 3 immediately", "Fill in the form"],
+          "answer": "Take a numbered ticket from the machine",
+          "answerMeaning": "Vezmite si číslo = take a number. Slovak offices use numbered tickets — look for the machine at the vchod (entrance). Your number is called when it is your turn."
+        },
+        {
+          "situation": "You need to prove you have a registered address in Slovakia. Which document do you bring?",
+          "instruction": "Choose the correct document",
+          "choices": ["Rodný list", "Pas", "Nájomná zmluva", "Sobášny list"],
+          "answer": "Nájomná zmluva",
+          "answerMeaning": "Nájomná zmluva = rental / lease agreement. This proves your Slovak address — which is exactly what you learned to give in Lesson 1: Know Your Address!"
+        },
+        {
+          "situation": "Your residence permit allows you to stay up to 5 years and is renewable. What type is it?",
+          "instruction": "Choose the correct type",
+          "choices": ["Trvalý pobyt", "Dočasný pobyt", "Žiadosť", "Kolok"],
+          "answer": "Dočasný pobyt",
+          "answerMeaning": "Dočasný pobyt = temporary residence, valid up to 5 years and renewable. Trvalý pobyt = permanent residence, which you can apply for after 5 years of continuous legal stay."
+        },
+        {
+          "situation": "The clerk asks 'Máte termín?' You booked one for Friday at ten. What do you answer?",
+          "instruction": "Choose the correct reply",
+          "choices": ["Nemám termín.", "Môj termín je v piatok o desiatej.", "Chcem si rezervovať termín.", "Kde je čakáreň?"],
+          "answer": "Môj termín je v piatok o desiatej.",
+          "answerMeaning": "Môj termín je... = My appointment is... — v piatok = on Friday, o desiatej = at ten. The number desať (10) is from Stage 1, Lesson 5 — Numbers!"
+        },
+        {
+          "situation": "You need to pay a government fee for your residence permit application. What must you buy?",
+          "instruction": "Choose the correct item",
+          "choices": ["Pas", "Kolok", "Formulár", "Fotografia"],
+          "answer": "Kolok",
+          "answerMeaning": "Kolok = revenue stamp — a mandatory fee (~€4.50) for many official applications in Slovakia. Buy it at the pošta (post office) or some banks before your appointment."
+        },
+        {
+          "situation": "The form asks for 'Štátna príslušnosť'. What do you fill in?",
+          "instruction": "Choose the correct answer",
+          "choices": ["Your address", "Your signature", "Your nationality", "Your date of birth"],
+          "answer": "Your nationality",
+          "answerMeaning": "Štátna príslušnosť = nationality / citizenship (štát = state, príslušnosť = belonging). Not to be confused with miesto narodenia (place of birth) or dátum narodenia (date of birth)."
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Chcem podať ___ o povolenie na pobyt.",
+          "translation": "I want to submit a ___ for a residence permit.",
+          "choices": ["žiadosť", "termín", "formulár", "kolok"],
+          "answer": "žiadosť"
+        },
+        {
+          "sentence": "Môj ___ je v piatok o desiatej.",
+          "translation": "My ___ is on Friday at ten.",
+          "choices": ["termín", "pas", "podpis", "rad"],
+          "answer": "termín"
+        },
+        {
+          "sentence": "Prinesiem ___, nájomná zmluva a fotografia.",
+          "translation": "I will bring my ___, lease agreement and photo.",
+          "choices": ["pas", "kolok", "formulár", "rodný list"],
+          "answer": "pas"
+        },
+        {
+          "sentence": "Vyplňte ___, prosím.",
+          "translation": "Please fill in the ___.",
+          "choices": ["formulár", "čakáreň", "prepážku", "termín"],
+          "answer": "formulár"
+        },
+        {
+          "sentence": "Kolok môžete kúpiť na ___ alebo v banke.",
+          "translation": "You can buy the revenue stamp at the ___ or at the bank.",
+          "choices": ["pošte", "úrade", "prepážke", "čakárni"],
+          "answer": "pošte"
+        },
+        {
+          "sentence": "___ na pobyt mi vyprší o tri mesiace.",
+          "translation": "My residence ___ expires in three months.",
+          "choices": ["Povolenie", "Žiadosť", "Formulár", "Termín"],
+          "answer": "Povolenie"
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "SMS_DIALOGUE",
+      "scenario": "🏛️ You are at the Foreign Police office. The receptionist helps you book an appointment.",
+      "turns": [
+        {
+          "snailMessage": "Dobrý deň! Čím vám môžem pomôcť?",
+          "snailMessageEnglish": "Good day! How can I help you?",
+          "choices": [
+            { "slovak": "Chcem podať žiadosť o povolenie na pobyt.", "english": "I would like to submit a residence permit application.", "isCorrect": true },
+            { "slovak": "Aká je vaša adresa?", "english": "What is your address?", "isCorrect": false },
+            { "slovak": "Ďakujem, dobrý deň.", "english": "Thank you, good day.", "isCorrect": false }
+          ],
+          "snailReply": "Rozumiem. Aký typ pobytu chcete — dočasný alebo trvalý?",
+          "snailReplyEnglish": "I understand. What type of residence do you want — temporary or permanent?"
+        },
+        {
+          "choices": [
+            { "slovak": "Chcem dočasný pobyt.", "english": "I want temporary residence.", "isCorrect": true },
+            { "slovak": "Chcem trvalý pobyt.", "english": "I want permanent residence.", "isCorrect": false },
+            { "slovak": "Neviem, aký pobyt chcem.", "english": "I don't know what type I want.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Máte termín?",
+          "snailReplyEnglish": "Good. Do you have an appointment?"
+        },
+        {
+          "choices": [
+            { "slovak": "Nemám termín. Chcem si rezervovať.", "english": "I don't have an appointment. I would like to book one.", "isCorrect": true },
+            { "slovak": "Môj termín je o desiatej.", "english": "My appointment is at ten.", "isCorrect": false },
+            { "slovak": "Nepotrebujem termín.", "english": "I don't need an appointment.", "isCorrect": false }
+          ],
+          "snailReply": "Áno, samozrejme. Najbližší termín je v piatok o desiatej. Vyhovuje vám to?",
+          "snailReplyEnglish": "Yes, of course. The nearest appointment is Friday at ten. Does that suit you?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, v piatok o desiatej mi vyhovuje.", "english": "Yes, Friday at ten suits me.", "isCorrect": true },
+            { "slovak": "Nie, v piatok nemôžem.", "english": "No, I can't on Friday.", "isCorrect": false },
+            { "slovak": "Neviem, kedy môžem prísť.", "english": "I don't know when I can come.", "isCorrect": false }
+          ],
+          "snailReply": "Výborne. Aké doklady prinesiete?",
+          "snailReplyEnglish": "Excellent. What documents will you bring?"
+        },
+        {
+          "choices": [
+            { "slovak": "Prinesiem pas, nájomná zmluva a potvrdenie o zamestnaní.", "english": "I will bring my passport, lease agreement and proof of employment.", "isCorrect": true },
+            { "slovak": "Prinesiem iba pas.", "english": "I will bring only my passport.", "isCorrect": false },
+            { "slovak": "Nemám žiadne doklady.", "english": "I have no documents.", "isCorrect": false }
+          ],
+          "snailReply": "Nezabudnite aj na fotografiu a zdravotné poistenie.",
+          "snailReplyEnglish": "Don't forget the photo and health insurance too."
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem. Kde podám žiadosť v piatok?", "english": "Thank you. Where do I submit the application on Friday?", "isCorrect": true },
+            { "slovak": "Nemám zdravotné poistenie.", "english": "I don't have health insurance.", "isCorrect": false },
+            { "slovak": "Môžem prísť bez fotografie?", "english": "Can I come without a photo?", "isCorrect": false }
+          ],
+          "snailReply": "Na prepážke číslo tri. Vezmite si číslo z automatu pri vchode.",
+          "snailReplyEnglish": "At counter number three. Take a number from the machine at the entrance."
+        },
+        {
+          "choices": [
+            { "slovak": "Rozumiem. Kde zaplatím kolok?", "english": "I understand. Where do I pay the revenue stamp fee?", "isCorrect": true },
+            { "slovak": "Kde je záchod?", "english": "Where is the toilet?", "isCorrect": false },
+            { "slovak": "Koľko stojí povolenie na pobyt?", "english": "How much does the residence permit cost?", "isCorrect": false }
+          ],
+          "snailReply": "Kolok kúpite na pošte alebo v banke. Stojí 4,50 €.",
+          "snailReplyEnglish": "You can buy the revenue stamp at the post office or bank. It costs €4.50."
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem veľmi pekne. Do videnia!", "english": "Thank you very much. Goodbye!", "isCorrect": true },
+            { "slovak": "Chcem hovoriť s riaditeľom.", "english": "I want to speak with the director.", "isCorrect": false },
+            { "slovak": "Môžete mi to napísať?", "english": "Can you write that down for me?", "isCorrect": false }
+          ],
+          "snailReply": "Do videnia! Príďte v piatok o desiatej s dokladmi. Veľa šťastia!",
+          "snailReplyEnglish": "Goodbye! Come on Friday at ten with your documents. Good luck!"
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "SMS_DIALOGUE",
+      "autoSpeak": true,
+      "scenario": "🏛️ Teraz len po slovensky! Rezervujte si termín na cudzineckej polícii.",
+      "turns": [
+        {
+          "snailMessage": "Dobrý deň! Čím vám môžem pomôcť?",
+          "choices": [
+            { "slovak": "Chcem podať žiadosť o povolenie na pobyt.", "isCorrect": true },
+            { "slovak": "Aká je vaša adresa?", "isCorrect": false },
+            { "slovak": "Ďakujem, dobrý deň.", "isCorrect": false }
+          ],
+          "snailReply": "Rozumiem. Aký typ pobytu chcete — dočasný alebo trvalý?"
+        },
+        {
+          "choices": [
+            { "slovak": "Chcem dočasný pobyt.", "isCorrect": true },
+            { "slovak": "Chcem trvalý pobyt.", "isCorrect": false },
+            { "slovak": "Neviem, aký pobyt chcem.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Máte termín?"
+        },
+        {
+          "choices": [
+            { "slovak": "Nemám termín. Chcem si rezervovať.", "isCorrect": true },
+            { "slovak": "Môj termín je o desiatej.", "isCorrect": false },
+            { "slovak": "Nepotrebujem termín.", "isCorrect": false }
+          ],
+          "snailReply": "Áno, samozrejme. Najbližší termín je v piatok o desiatej. Vyhovuje vám to?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, v piatok o desiatej mi vyhovuje.", "isCorrect": true },
+            { "slovak": "Nie, v piatok nemôžem.", "isCorrect": false },
+            { "slovak": "Neviem, kedy môžem prísť.", "isCorrect": false }
+          ],
+          "snailReply": "Výborne. Aké doklady prinesiete?"
+        },
+        {
+          "choices": [
+            { "slovak": "Prinesiem pas, nájomná zmluva a potvrdenie o zamestnaní.", "isCorrect": true },
+            { "slovak": "Prinesiem iba pas.", "isCorrect": false },
+            { "slovak": "Nemám žiadne doklady.", "isCorrect": false }
+          ],
+          "snailReply": "Nezabudnite aj na fotografiu a zdravotné poistenie."
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem. Kde podám žiadosť v piatok?", "isCorrect": true },
+            { "slovak": "Nemám zdravotné poistenie.", "isCorrect": false },
+            { "slovak": "Môžem prísť bez fotografie?", "isCorrect": false }
+          ],
+          "snailReply": "Na prepážke číslo tri. Vezmite si číslo z automatu pri vchode."
+        },
+        {
+          "choices": [
+            { "slovak": "Rozumiem. Kde zaplatím kolok?", "isCorrect": true },
+            { "slovak": "Kde je záchod?", "isCorrect": false },
+            { "slovak": "Koľko stojí povolenie na pobyt?", "isCorrect": false }
+          ],
+          "snailReply": "Kolok kúpite na pošte alebo v banke. Stojí 4,50 €."
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem veľmi pekne. Do videnia!", "isCorrect": true },
+            { "slovak": "Chcem hovoriť s riaditeľom.", "isCorrect": false },
+            { "slovak": "Môžete mi to napísať?", "isCorrect": false }
+          ],
+          "snailReply": "Do videnia! Príďte v piatok o desiatej s dokladmi. Veľa šťastia!"
+        }
+      ]
+    },
+    {
+      "id": "ex11",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

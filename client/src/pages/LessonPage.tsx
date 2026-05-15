@@ -7,11 +7,11 @@ import { ProgressBar } from '../components/ui/ProgressBar';
 import { ConfirmModal } from '../components/ui/ConfirmModal';
 import { ExerciseCelebration } from '../components/ui/ExerciseCelebration';
 
-const MAX_TOTAL    = 5;
-const MAX_CONSEC   = 3;
-const RESTART_CONSEC = 5;
+const MAX_TOTAL    = 5; // 5 total strikes → back to previous exercise
+const MAX_CONSEC   = 3; // 3 consecutive strikes → restart from exercise 1
+const MAX_EXERCISE = 2; // 2+ strikes on an exercise → must redo it on complete
 
-type PenaltyInfo = { title: string; sub: string } | null;
+type PenaltyInfo = { title: string; sub: string; image?: string } | null;
 
 export function LessonPage() {
   const { lessonId } = useParams<{ lessonId: string }>();
@@ -96,15 +96,17 @@ export function LessonPage() {
     const { total, consecutive } = strikesRef.current;
     setStrikesDisplay({ total, consecutive });
 
-    if (consecutive >= RESTART_CONSEC) {
+    if (consecutive >= MAX_CONSEC) {
+      // Rule 1: 3 consecutive → restart from the very first exercise
       triggerPenalty(
-        { title: '5 in a row!', sub: "Let's Restart From The Beginning!" },
+        { title: '3 in a row!', sub: "Let's restart from the beginning!" },
         () => setExerciseIndex(0),
       );
-    } else if (consecutive >= MAX_CONSEC || total >= MAX_TOTAL) {
+    } else if (total >= MAX_TOTAL) {
+      // Rule 2: 5 total → go back to the previous exercise
       const capturedIdx = exerciseIndex;
       triggerPenalty(
-        { title: '', sub: "Let's Review The Last Exercise" },
+        { title: '', sub: "Let's review the last exercise" },
         () => setExerciseIndex(Math.max(0, capturedIdx - 1)),
       );
     }
@@ -115,6 +117,14 @@ export function LessonPage() {
     const isLast = exerciseIndex === exercises.length - 1;
 
     if (correct) {
+      // Rule 3: exercise is only "clean" with 0 or 1 strike — 2+ means redo
+      if (strikesRef.current.total >= MAX_EXERCISE) {
+        triggerPenalty(
+          { title: 'That was not clean!', sub: 'We redo this exercise again.', image: '/snailPerplexed.png' },
+          () => { /* stay on same exercise — bumpExerciseKey inside triggerPenalty resets it */ },
+        );
+        return;
+      }
       const nc = correctCount + 1;
       setCorrectCount(nc);
       if (isLast) { finishLesson(nc * xpPerExercise); return; }
@@ -214,8 +224,8 @@ export function LessonPage() {
       {penalty && (
         <div className="fixed inset-0 z-50 bg-black/75 flex items-center justify-center px-6">
           <div className="bg-white rounded-3xl px-8 py-10 max-w-xs w-full text-center shadow-2xl">
-            <img src="/snailAngry.png" alt="" className="w-28 h-28 object-contain mx-auto mb-3" />
-            <p className="text-xl font-extrabold text-gray-800 mb-1">You Are Not Focus!</p>
+            <img src={penalty.image ?? '/snailAngry.png'} alt="" className="w-28 h-28 object-contain mx-auto mb-3" />
+            <p className="text-xl font-extrabold text-gray-800 mb-1">{penalty.title || 'You Are Not Focus!'}</p>
             <p className="text-sm text-gray-500">{penalty.sub}</p>
           </div>
         </div>

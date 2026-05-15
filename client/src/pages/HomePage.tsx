@@ -120,7 +120,7 @@ export function HomePage() {
               {/* Snail Race bridge — sits after every stage's last lesson */}
               <button
                 type="button"
-                onClick={() => navigate('/race')}
+                onClick={() => navigate(`/race/${group.stageId}`)}
                 className="w-full flex items-center gap-4 bg-amber-50 border-2 border-amber-300 rounded-2xl px-4 py-4 shadow-sm hover:bg-amber-100 active:scale-[0.98] transition-all cursor-pointer"
               >
                 <img src="/snailTurbo.png" alt="" className="w-12 h-12 object-contain shrink-0" />

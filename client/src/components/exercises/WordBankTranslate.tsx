@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { TranslateExercise } from '../../types/lesson';
 import { FrogMascot } from '../ui/FrogMascot';
+import { cleanForSpeech } from '../../utils/speak';
 
 interface Props {
   exercise: TranslateExercise;
@@ -39,7 +40,7 @@ function buildTokens(answer: string): Token[] {
 function speak(text: string) {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
+  const u = new SpeechSynthesisUtterance(cleanForSpeech(text));
   u.lang = 'sk-SK';
   window.speechSynthesis.speak(u);
 }

@@ -13,7 +13,8 @@ export type ExerciseType =
   | 'FILL_IN_BLANK_PICK'
   | 'UNSCRAMBLE'
   | 'VOCABULARY_TABLE'
-  | 'NUMBER_TO_WORDS';
+  | 'NUMBER_TO_WORDS'
+  | 'SMS_DIALOGUE';
 
 export interface BaseExercise {
   id: string;
@@ -101,7 +102,7 @@ export interface FillInBlankPickExercise extends BaseExercise {
   type: 'FILL_IN_BLANK_PICK';
   items: {
     sentence: string;     // Slovak sentence — blank marked as ___
-    translation: string;  // English translation — blank marked as ___
+    translation?: string; // English translation — blank marked as ___
     choices: string[];    // 4 word options
     answer: string;       // correct choice
   }[];
@@ -126,6 +127,27 @@ export interface NumberToWordsExercise extends BaseExercise {
   }[];
 }
 
+export interface SmsDialogueChoice {
+  slovak: string;
+  english?: string;
+  isCorrect: boolean;
+}
+
+export interface SmsDialogueTurn {
+  snailMessage?: string;
+  snailMessageEnglish?: string;
+  choices: SmsDialogueChoice[];
+  snailReply: string;
+  snailReplyEnglish?: string;
+}
+
+export interface SmsDialogueExercise extends BaseExercise {
+  type: 'SMS_DIALOGUE';
+  scenario?: string;
+  autoSpeak?: boolean;
+  turns: SmsDialogueTurn[];
+}
+
 export type Exercise =
   | ListenAndPickExercise
   | PickTranslationExercise
@@ -140,7 +162,8 @@ export type Exercise =
   | FillInBlankPickExercise
   | UnscrambleExercise
   | VocabularyTableExercise
-  | NumberToWordsExercise;
+  | NumberToWordsExercise
+  | SmsDialogueExercise;
 
 export interface Lesson {
   id: string;

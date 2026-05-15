@@ -1,0 +1,429 @@
+{
+  "id": "advanced-1",
+  "stageId": "advanced",
+  "stageName": "Stage 3 · Settling In (Advanced)",
+  "title": "Family",
+  "description": "Talk about your family, relationships and household",
+  "icon": "👪",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Core Family Members",
+      "headers": ["Relationship", "Slovak", "English"],
+      "rows": [
+        { "label": "Family",      "slovak": "Rodina",     "english": "Family — Slovaks are close-knit. 'Rodinný večer' (family evening) is a valued tradition" },
+        { "label": "Mum",         "slovak": "Mama",       "english": "Mum / Mother (informal). More formal: Matka. 'Mama' is what most Slovaks say day-to-day" },
+        { "label": "Dad",         "slovak": "Otec",       "english": "Father / Dad. Informal: Tato or Tatko. 'Otec' is formal; 'Tato' is what children typically say" },
+        { "label": "Parents",     "slovak": "Rodičia",    "english": "Parents (plural of rodič). 'Tvoji rodičia' = your parents. Used as a unit: 'Moji rodičia sú z Bratislavy'" },
+        { "label": "Brother",     "slovak": "Brat",       "english": "Brother. Starší brat = older brother. Mladší brat = younger brother" },
+        { "label": "Sister",      "slovak": "Sestra",     "english": "Sister. Staršia sestra = older sister. Mladšia sestra = younger sister" },
+        { "label": "Husband",     "slovak": "Manžel",     "english": "Husband. 'Môj manžel' = my husband. A married couple are called 'manželia'" },
+        { "label": "Wife",        "slovak": "Manželka",   "english": "Wife. 'Moja manželka' = my wife. The female form adds the -ka suffix" },
+        { "label": "Boyfriend",   "slovak": "Priateľ",    "english": "Boyfriend / male friend (context makes it clear). 'Môj priateľ' = my boyfriend" },
+        { "label": "Girlfriend",  "slovak": "Priateľka",  "english": "Girlfriend / female friend. 'Moja priateľka' = my girlfriend. The female -ka suffix again!" },
+        { "label": "Son",         "slovak": "Syn",        "english": "Son. 'Môj syn má päť rokov' = My son is five years old" },
+        { "label": "Daughter",    "slovak": "Dcéra",      "english": "Daughter. 'Moja dcéra' = my daughter. Note: dcéra has a special pronunciation — the 'dc' cluster!" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Extended Family",
+      "headers": ["Relationship", "Slovak", "English"],
+      "rows": [
+        { "label": "Grandpa",          "slovak": "Dedko",      "english": "Grandpa / Grandfather (informal). Formal: Starý otec. Children almost always say 'Dedko'" },
+        { "label": "Grandma",          "slovak": "Babička",    "english": "Grandma / Grandmother. Formal: Stará mama. Babička is universally used and beloved in Slovak culture" },
+        { "label": "Uncle",            "slovak": "Strýko",     "english": "Uncle (mother's or father's brother). Also: Ujo (more informal, especially in western Slovakia)" },
+        { "label": "Aunt",             "slovak": "Teta",       "english": "Aunt. 'Teta Mária' = Aunt Mária. Teta can also mean 'lady' informally (to a child's teacher, for example)" },
+        { "label": "Cousin (male)",    "slovak": "Bratranec",  "english": "Male cousin (literally 'little brother' — from brat). Slovak distinguishes male and female cousins!" },
+        { "label": "Cousin (female)",  "slovak": "Sesternica", "english": "Female cousin (from sestra = sister). The gender distinction is important in Slovak!" },
+        { "label": "Brother-in-law",   "slovak": "Švagor",     "english": "Brother-in-law (wife's or husband's brother)" },
+        { "label": "Sister-in-law",    "slovak": "Švagriná",   "english": "Sister-in-law (wife's or husband's sister)" },
+        { "label": "Father-in-law",    "slovak": "Svokor",     "english": "Father-in-law. The in-laws collectively are called 'svokrovci'" },
+        { "label": "Mother-in-law",    "slovak": "Svokra",     "english": "Mother-in-law. A famously sensitive relationship in Slovak culture — svokra jokes are plentiful!" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Relationship Status & Family Phrases",
+      "headers": ["Situation", "Slovak", "English"],
+      "rows": [
+        { "label": "Siblings",        "slovak": "Súrodenci",              "english": "Siblings — brothers and sisters collectively. 'Nemám súrodencov' = I have no siblings" },
+        { "label": "Single (M/F)",    "slovak": "Slobodný / Slobodná",    "english": "Single (male: slobodný, female: slobodná). The -ý/-á ending changes based on gender" },
+        { "label": "Married (M/F)",   "slovak": "Ženatý / Vydatá",        "english": "Married — different words! Ženatý = married man, Vydatá = married woman. Both correct, context-dependent" },
+        { "label": "Divorced (M/F)",  "slovak": "Rozvedený / Rozvedená",  "english": "Divorced (male: rozvedený, female: rozvedená)" },
+        { "label": "Widower/Widow",   "slovak": "Vdovec / Vdova",         "english": "Widower (male: vdovec) / Widow (female: vdova)" },
+        { "label": "Engaged",         "slovak": "Sme zasnúbení.",         "english": "We are engaged. (zasnúbení = engaged, plural form)" },
+        { "label": "Expecting",       "slovak": "Čakáme dieťa.",          "english": "We are expecting a baby. (literally 'we are waiting for a child')" },
+        { "label": "Only child (M/F)","slovak": "Jedináčik / Jedináčka",  "english": "Only child (male: jedináčik, female: jedináčka). 'Som jedináčik' = I'm an only child (male)" },
+        { "label": "Big/small family","slovak": "Mám veľkú/malú rodinu.", "english": "I have a big/small family. (veľkú = big, malú = small — accusative forms)" },
+        { "label": "Parents' home",   "slovak": "Kde bývajú tvoji rodičia?", "english": "Where do your parents live? A common question when getting to know someone in Slovakia" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Mama",     "english": "Mum" },
+        { "slovak": "Otec",     "english": "Father" },
+        { "slovak": "Brat",     "english": "Brother" },
+        { "slovak": "Sestra",   "english": "Sister" },
+        { "slovak": "Manžel",   "english": "Husband" },
+        { "slovak": "Manželka", "english": "Wife" },
+        { "slovak": "Syn",      "english": "Son" },
+        { "slovak": "Dcéra",    "english": "Daughter" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Dedko",      "english": "Grandpa" },
+        { "slovak": "Babička",    "english": "Grandma" },
+        { "slovak": "Strýko",     "english": "Uncle" },
+        { "slovak": "Teta",       "english": "Aunt" },
+        { "slovak": "Bratranec",  "english": "Cousin (male)" },
+        { "slovak": "Sesternica", "english": "Cousin (female)" },
+        { "slovak": "Švagor",     "english": "Brother-in-law" },
+        { "slovak": "Svokra",     "english": "Mother-in-law" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Súrodenci",         "english": "Siblings" },
+        { "slovak": "Svokor",            "english": "Father-in-law" },
+        { "slovak": "Svokra",            "english": "Mother-in-law" },
+        { "slovak": "Jedináčik",         "english": "Only child (male)" },
+        { "slovak": "Sme zasnúbení.",    "english": "We are engaged." },
+        { "slovak": "Slobodný",          "english": "Single (male)" },
+        { "slovak": "Vdova",             "english": "Widow" },
+        { "slovak": "Čakáme dieťa.",     "english": "We are expecting a baby." }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "A Slovak colleague asks 'Si ženatý?' What are they asking you?",
+          "instruction": "Choose the correct meaning",
+          "choices": ["Are you divorced?", "Do you have children?", "Are you single?", "Are you married?"],
+          "answer": "Are you married?",
+          "answerMeaning": "Si ženatý? = Are you married? (asked to a male). A woman would be asked 'Si vydatá?' — ženatý is for men, vydatá is for women. This gender distinction is important in Slovak grammar!"
+        },
+        {
+          "situation": "You want to say 'I have an older brother and a younger sister.' Which is correct?",
+          "instruction": "Choose the correct sentence",
+          "choices": ["Mám mladšieho brata a staršiu sestru.", "Nemám súrodencov.", "Som jedináčik.", "Mám dvoch bratov."],
+          "answer": "Mám mladšieho brata a staršiu sestru.",
+          "answerMeaning": "Mám staršieho brata a mladšiu sestru = I have an older brother and a younger sister. Starší = older, Mladší = younger. Slovak adjectives change ending to match the noun's gender — brata (masculine), sestru (feminine)."
+        },
+        {
+          "situation": "How does a male speaker say 'I'm an only child' in Slovak?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Som slobodný.", "Nemám rodinu.", "Mám súrodencov.", "Som jedináčik."],
+          "answer": "Som jedináčik.",
+          "answerMeaning": "Som jedináčik = I'm an only child (male). A female would say 'Som jedináčka.' Jedináčik comes from jediný = only/sole. It's a common topic in family conversations — Slovaks often ask 'Máš súrodencov?' (Do you have siblings?)."
+        },
+        {
+          "situation": "Your Slovak neighbour asks 'Kde bývajú tvoji rodičia?' What do they want to know?",
+          "instruction": "Choose the correct meaning",
+          "choices": ["How old are your parents?", "Are your parents healthy?", "What do your parents do for work?", "Where do your parents live?"],
+          "answer": "Where do your parents live?",
+          "answerMeaning": "Kde bývajú tvoji rodičia? = Where do your parents live? Kde = where, bývajú = they live, tvoji rodičia = your parents. This is one of the first questions Slovaks ask when getting to know you — family and origins matter a lot in Slovak culture."
+        },
+        {
+          "situation": "You want to introduce your girlfriend to a Slovak colleague. Which phrase do you use?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Toto je moja manželka.", "Toto je moja sestra.", "Toto je moja svokra.", "Toto je moja priateľka."],
+          "answer": "Toto je moja priateľka.",
+          "answerMeaning": "Toto je moja priateľka = This is my girlfriend. Priateľka = girlfriend / female friend. Manželka = wife (you're married). Sestra = sister. Context usually clarifies whether priateľka means 'girlfriend' or just 'female friend' in Slovak."
+        },
+        {
+          "situation": "What is the collective Slovak word for 'brothers and sisters' (siblings)?",
+          "instruction": "Choose the correct word",
+          "choices": ["Rodičia", "Manželia", "Deti", "Súrodenci"],
+          "answer": "Súrodenci",
+          "answerMeaning": "Súrodenci = siblings (brothers and sisters collectively). Rodičia = parents, Manželia = married couple / spouses, Deti = children. 'Máš súrodencov?' (Do you have siblings?) is a very common getting-to-know-you question in Slovakia."
+        },
+        {
+          "situation": "How do you say 'We are engaged' in Slovak?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Sme ženatí.", "Čakáme dieťa.", "Sme rozvedení.", "Sme zasnúbení."],
+          "answer": "Sme zasnúbení.",
+          "answerMeaning": "Sme zasnúbení = We are engaged. Zasnúbiť sa = to get engaged. Slovak engagements often involve the male asking the female's father for permission — a tradition still common in many families. Zásnuby = engagement party."
+        },
+        {
+          "situation": "In Slovak, a married man says 'Som ženatý.' What would a married woman say?",
+          "instruction": "Choose the correct form",
+          "choices": ["Som ženatá.", "Som slobodná.", "Som zasnúbená.", "Som vydatá."],
+          "answer": "Som vydatá.",
+          "answerMeaning": "Vydatá = married (for women). Ženatý = married (for men). These are completely different words! This reflects Slovak's grammatical gender system. A common mistake for learners is saying 'Som ženatá' — that form doesn't exist. A woman is vydatá, a man is ženatý."
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Toto je môj ___. Volá sa Peter a má dvadsaťpäť rokov.",
+          "translation": "This is my ___. His name is Peter and he is twenty-five years old.",
+          "choices": ["brat", "syn", "strýko", "manžel"],
+          "answer": "brat"
+        },
+        {
+          "sentence": "Mám troch ___: dvoch bratov a jednu sestru.",
+          "translation": "I have three ___: two brothers and one sister.",
+          "choices": ["súrodencov", "rodičov", "detí", "manželov"],
+          "answer": "súrodencov"
+        },
+        {
+          "sentence": "Moji ___ bývajú v Bratislave — mama a otec.",
+          "translation": "My ___ live in Bratislava — mum and dad.",
+          "choices": ["rodičia", "súrodenci", "deti", "manželia"],
+          "answer": "rodičia"
+        },
+        {
+          "sentence": "Som ___. Nemám priateľa ani manžela.",
+          "translation": "I'm ___. I don't have a boyfriend or husband.",
+          "choices": ["slobodná", "vydatá", "zasnúbená", "rozvedená"],
+          "answer": "slobodná"
+        },
+        {
+          "sentence": "Naša ___ má päť členov: mama, otec, brat, sestra a ja.",
+          "translation": "Our ___ has five members: mum, dad, brother, sister and me.",
+          "choices": ["rodina", "škola", "práca", "susedstvo"],
+          "answer": "rodina"
+        },
+        {
+          "sentence": "Môj ___ žije v Londýne. Je to brat mojej manželky.",
+          "translation": "My ___ lives in London. He is my wife's brother.",
+          "choices": ["švagor", "svokor", "bratranec", "strýko"],
+          "answer": "švagor"
+        },
+        {
+          "sentence": "Sme ___. Svadba bude na jar budúci rok.",
+          "translation": "We are ___. The wedding will be next spring.",
+          "choices": ["zasnúbení", "rozvedení", "slobodní", "ženatí"],
+          "answer": "zasnúbení"
+        },
+        {
+          "sentence": "Mám ___ — chodíme spolu pol roka. Ešte nie sme zasnúbení.",
+          "translation": "I have a ___ — we've been together for half a year. Not engaged yet.",
+          "choices": ["priateľa", "manžela", "brata", "svokra"],
+          "answer": "priateľa"
+        }
+      ]
+    },
+    {
+      "id": "ex8b",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Toto je môj ___. Volá sa Peter a má dvadsaťpäť rokov.",
+          "choices": ["brat", "syn", "strýko", "manžel"],
+          "answer": "brat"
+        },
+        {
+          "sentence": "Mám troch ___: dvoch bratov a jednu sestru.",
+          "choices": ["súrodencov", "rodičov", "detí", "manželov"],
+          "answer": "súrodencov"
+        },
+        {
+          "sentence": "Moji ___ bývajú v Bratislave — mama a otec.",
+          "choices": ["rodičia", "súrodenci", "deti", "manželia"],
+          "answer": "rodičia"
+        },
+        {
+          "sentence": "Som ___. Nemám priateľa ani manžela.",
+          "choices": ["slobodná", "vydatá", "zasnúbená", "rozvedená"],
+          "answer": "slobodná"
+        },
+        {
+          "sentence": "Naša ___ má päť členov: mama, otec, brat, sestra a ja.",
+          "choices": ["rodina", "škola", "práca", "susedstvo"],
+          "answer": "rodina"
+        },
+        {
+          "sentence": "Môj ___ žije v Londýne. Je to brat mojej manželky.",
+          "choices": ["švagor", "svokor", "bratranec", "strýko"],
+          "answer": "švagor"
+        },
+        {
+          "sentence": "Sme ___. Svadba bude na jar budúci rok.",
+          "choices": ["zasnúbení", "rozvedení", "slobodní", "ženatí"],
+          "answer": "zasnúbení"
+        },
+        {
+          "sentence": "Mám ___ — chodíme spolu pol roka. Ešte nie sme zasnúbení.",
+          "choices": ["priateľa", "manžela", "brata", "svokra"],
+          "answer": "priateľa"
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "SMS_DIALOGUE",
+      "scenario": "☕ You are having coffee with your Slovak neighbour Jana. She asks about your family.",
+      "turns": [
+        {
+          "snailMessage": "Odkiaľ si? Máš tu nejakú rodinu?",
+          "snailMessageEnglish": "Where are you from? Do you have any family here?",
+          "choices": [
+            { "slovak": "Nie, moja rodina je doma. Mám tu iba manželku.", "english": "No, my family is back home. I only have my wife here.", "isCorrect": true },
+            { "slovak": "Nechcem hovoriť o rodine.", "english": "I don't want to talk about family.", "isCorrect": false },
+            { "slovak": "Odkiaľ si ty?", "english": "Where are you from?", "isCorrect": false }
+          ],
+          "snailReply": "To je romantické! Kde ste sa s manželkou spoznali?",
+          "snailReplyEnglish": "How romantic! Where did you and your wife meet?"
+        },
+        {
+          "choices": [
+            { "slovak": "Spoznali sme sa v Londýne. Ona je Slovenka a ja som z Anglicka.", "english": "We met in London. She is Slovak and I'm from England.", "isCorrect": true },
+            { "slovak": "Nerozumiem otázke.", "english": "I don't understand the question.", "isCorrect": false },
+            { "slovak": "To je súkromná informácia.", "english": "That's private information.", "isCorrect": false }
+          ],
+          "snailReply": "Ach, takže si ženatý so Slovenkou! Máte deti?",
+          "snailReplyEnglish": "Oh, so you're married to a Slovak woman! Do you have children?"
+        },
+        {
+          "choices": [
+            { "slovak": "Zatiaľ nie, ale plánujeme rodinu o pár rokov.", "english": "Not yet, but we plan to start a family in a few years.", "isCorrect": true },
+            { "slovak": "Deti sú pre nás príliš drahé.", "english": "Children are too expensive for us.", "isCorrect": false },
+            { "slovak": "To je osobná otázka.", "english": "That's a personal question.", "isCorrect": false }
+          ],
+          "snailReply": "Super! A máš súrodencov doma v Anglicku?",
+          "snailReplyEnglish": "Great! And do you have siblings back home in England?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, mám staršieho brata a mladšiu sestru.", "english": "Yes, I have an older brother and a younger sister.", "isCorrect": true },
+            { "slovak": "Nemám záujem o túto otázku.", "english": "I'm not interested in this question.", "isCorrect": false },
+            { "slovak": "Mám len priateľov, nie súrodencov.", "english": "I only have friends, not siblings.", "isCorrect": false }
+          ],
+          "snailReply": "A kde bývajú? Tiež v Anglicku?",
+          "snailReplyEnglish": "And where do they live? Also in England?"
+        },
+        {
+          "choices": [
+            { "slovak": "Brat býva v Manchesteri a sestra sa presťahovala do Austrálie.", "english": "My brother lives in Manchester and my sister moved to Australia.", "isCorrect": true },
+            { "slovak": "Neviem, kde bývajú.", "english": "I don't know where they live.", "isCorrect": false },
+            { "slovak": "Bývajú všetci u mojich rodičov.", "english": "They all live with my parents.", "isCorrect": false }
+          ],
+          "snailReply": "Austrália! To je ďaleko. A tvoji rodičia?",
+          "snailReplyEnglish": "Australia! That's far away. And your parents?"
+        },
+        {
+          "choices": [
+            { "slovak": "Moji rodičia bývajú v Oxforde. Navštevujem ich raz za rok.", "english": "My parents live in Oxford. I visit them once a year.", "isCorrect": true },
+            { "slovak": "Moji rodičia sú veľmi starí.", "english": "My parents are very old.", "isCorrect": false },
+            { "slovak": "Rodičia nechcú, aby som ich navštevoval.", "english": "My parents don't want me to visit them.", "isCorrect": false }
+          ],
+          "snailReply": "Rozumiem. Moja babička hovorí, že rodina je vždy najdôležitejšia.",
+          "snailReplyEnglish": "I understand. My grandma says family is always the most important thing."
+        },
+        {
+          "choices": [
+            { "slovak": "Súhlasím. Chýba mi moja rodina, ale Slovensko je teraz môj domov.", "english": "I agree. I miss my family, but Slovakia is my home now.", "isCorrect": true },
+            { "slovak": "Babičky vždy hovoria také veci.", "english": "Grandmas always say such things.", "isCorrect": false },
+            { "slovak": "Nie, práca je dôležitejšia ako rodina.", "english": "No, work is more important than family.", "isCorrect": false }
+          ],
+          "snailReply": "To je krásne! Tvoja manželka má šťastie. A má ona súrodencov tu?",
+          "snailReplyEnglish": "That's beautiful! Your wife is lucky. And does she have siblings here?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, má sestru a brata. Jej rodina ma prijala veľmi dobre.", "english": "Yes, she has a sister and a brother. Her family accepted me very well.", "isCorrect": true },
+            { "slovak": "Jej súrodenci ma nemajú radi.", "english": "Her siblings don't like me.", "isCorrect": false },
+            { "slovak": "Nepoznám jej rodinu.", "english": "I don't know her family.", "isCorrect": false }
+          ],
+          "snailReply": "To je nádherné! Vitaj v Slovensku a v tejto veľkej rodine!",
+          "snailReplyEnglish": "That's wonderful! Welcome to Slovakia and to this big family!"
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "SMS_DIALOGUE",
+      "autoSpeak": true,
+      "scenario": "☕ Tentoraz len po slovensky! Porozprávajte sa s Janou o rodine.",
+      "turns": [
+        {
+          "snailMessage": "Odkiaľ si? Máš tu nejakú rodinu?",
+          "choices": [
+            { "slovak": "Nie, moja rodina je doma. Mám tu iba manželku.", "isCorrect": true },
+            { "slovak": "Nechcem hovoriť o rodine.", "isCorrect": false },
+            { "slovak": "Odkiaľ si ty?", "isCorrect": false }
+          ],
+          "snailReply": "To je romantické! Kde ste sa s manželkou spoznali?"
+        },
+        {
+          "choices": [
+            { "slovak": "Spoznali sme sa v Londýne. Ona je Slovenka a ja som z Anglicka.", "isCorrect": true },
+            { "slovak": "Nerozumiem otázke.", "isCorrect": false },
+            { "slovak": "To je súkromná informácia.", "isCorrect": false }
+          ],
+          "snailReply": "Ach, takže si ženatý so Slovenkou! Máte deti?"
+        },
+        {
+          "choices": [
+            { "slovak": "Zatiaľ nie, ale plánujeme rodinu o pár rokov.", "isCorrect": true },
+            { "slovak": "Deti sú pre nás príliš drahé.", "isCorrect": false },
+            { "slovak": "To je osobná otázka.", "isCorrect": false }
+          ],
+          "snailReply": "Super! A máš súrodencov doma v Anglicku?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, mám staršieho brata a mladšiu sestru.", "isCorrect": true },
+            { "slovak": "Nemám záujem o túto otázku.", "isCorrect": false },
+            { "slovak": "Mám len priateľov, nie súrodencov.", "isCorrect": false }
+          ],
+          "snailReply": "A kde bývajú? Tiež v Anglicku?"
+        },
+        {
+          "choices": [
+            { "slovak": "Brat býva v Manchesteri a sestra sa presťahovala do Austrálie.", "isCorrect": true },
+            { "slovak": "Neviem, kde bývajú.", "isCorrect": false },
+            { "slovak": "Bývajú všetci u mojich rodičov.", "isCorrect": false }
+          ],
+          "snailReply": "Austrália! To je ďaleko. A tvoji rodičia?"
+        },
+        {
+          "choices": [
+            { "slovak": "Moji rodičia bývajú v Oxforde. Navštevujem ich raz za rok.", "isCorrect": true },
+            { "slovak": "Moji rodičia sú veľmi starí.", "isCorrect": false },
+            { "slovak": "Rodičia nechcú, aby som ich navštevoval.", "isCorrect": false }
+          ],
+          "snailReply": "Rozumiem. Moja babička hovorí, že rodina je vždy najdôležitejšia."
+        },
+        {
+          "choices": [
+            { "slovak": "Súhlasím. Chýba mi moja rodina, ale Slovensko je teraz môj domov.", "isCorrect": true },
+            { "slovak": "Babičky vždy hovoria také veci.", "isCorrect": false },
+            { "slovak": "Nie, práca je dôležitejšia ako rodina.", "isCorrect": false }
+          ],
+          "snailReply": "To je krásne! Tvoja manželka má šťastie. A má ona súrodencov tu?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, má sestru a brata. Jej rodina ma prijala veľmi dobre.", "isCorrect": true },
+            { "slovak": "Jej súrodenci ma nemajú radi.", "isCorrect": false },
+            { "slovak": "Nepoznám jej rodinu.", "isCorrect": false }
+          ],
+          "snailReply": "To je nádherné! Vitaj v Slovensku a v tejto veľkej rodine!"
+        }
+      ]
+    },
+    {
+      "id": "ex11",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -1,6 +1,7 @@
 import { useState, useRef, useMemo } from 'react';
 import type { PickTranslationExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
+import { slovakifyNumbers } from '../../utils/numberToSlovak';
 
 interface Word { id: number; slovak: string; english: string }
 type Feedback = 'correct' | 'wrong' | null;
@@ -106,7 +107,7 @@ export function PickTranslationExercise({ exercise, onDone, onAnswer }: Props) {
 
   const getChoiceStyle = (choice: string): string => {
     const base =
-      'w-full border-2 rounded-2xl px-4 py-4 text-left font-medium text-base cursor-pointer transition-all duration-200 active:scale-95';
+      'w-full border-2 rounded-2xl px-4 py-4 text-left font-medium text-base cursor-pointer transition-all duration-200 active:scale-95 break-words';
 
     if (feedback === null) {
       return `${base} border-gray-200 bg-white text-gray-700 hover:border-brand-blue hover:bg-blue-50`;
@@ -145,10 +146,16 @@ export function PickTranslationExercise({ exercise, onDone, onAnswer }: Props) {
       <MascotSpeech message="Pick the correct translation!" />
 
       {/* Word card */}
-      <div className="flex-none flex flex-col items-center justify-center bg-white rounded-3xl border-2 border-gray-100 shadow-sm py-8 px-4">
-        <p className="text-4xl font-bold text-gray-800 text-center leading-tight">
-          {currentWord.slovak}
-        </p>
+      <div className="flex-none flex flex-col items-center justify-center bg-white rounded-3xl border-2 border-gray-100 shadow-sm py-6 px-4">
+        {(() => {
+          const display = slovakifyNumbers(currentWord.slovak);
+          const size = display.length > 35 ? 'text-xl' : display.length > 18 ? 'text-2xl' : 'text-4xl';
+          return (
+            <p className={`${size} font-bold text-gray-800 text-center leading-snug break-all`}>
+              {display}
+            </p>
+          );
+        })()}
       </div>
 
       {/* Choice grid */}

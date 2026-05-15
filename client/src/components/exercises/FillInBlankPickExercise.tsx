@@ -1,6 +1,7 @@
 import { useState, useRef, useMemo } from 'react';
 import type { FillInBlankPickExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
+import { toSlovakLabel, slovakifyNumbers } from '../../utils/numberToSlovak';
 
 type Item = TExercise['items'][number];
 type Feedback = 'correct' | 'wrong' | null;
@@ -42,8 +43,8 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
   );
 
   // Split sentence on ___ placeholder
-  const [skovBefore, slovAfter] = current.sentence.split('___');
-  const [engBefore, engAfter] = current.translation.split('___');
+  const [skovBefore, slovAfter] = current.sentence.split('___').map(slovakifyNumbers);
+  const [engBefore, engAfter] = current.translation ? current.translation.split('___') : [undefined, undefined];
 
   const handleChoice = (choice: string) => {
     if (feedback !== null) return;
@@ -86,7 +87,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
 
   const getChoiceStyle = (choice: string): string => {
     const base =
-      'border-2 rounded-2xl px-4 py-4 text-base font-bold text-center transition-all duration-200 active:scale-95 cursor-pointer';
+      'border-2 rounded-2xl px-4 py-4 text-base font-bold text-center transition-all duration-200 active:scale-95 cursor-pointer break-words';
     if (feedback !== null) {
       if (choice === current.answer)  return `${base} border-brand-green bg-green-50 text-brand-green`;
       if (choice === tappedChoice)    return `${base} border-brand-red bg-red-50 text-brand-red animate-shake`;
@@ -123,11 +124,13 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
           {slovAfter}
         </p>
         {/* English translation — blank stays as ___ */}
-        <p className="text-sm italic text-gray-400 mt-2 leading-relaxed">
-          {engBefore}
-          <span className="not-italic font-medium text-gray-400">___</span>
-          {engAfter}
-        </p>
+        {engBefore !== undefined && (
+          <p className="text-sm italic text-gray-400 mt-2 leading-relaxed">
+            {engBefore}
+            <span className="not-italic font-medium text-gray-400">___</span>
+            {engAfter}
+          </p>
+        )}
       </div>
 
       {/* Choice grid */}
@@ -141,7 +144,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
               onClick={() => handleChoice(choice)}
               className={getChoiceStyle(choice)}
             >
-              {choice}
+              {toSlovakLabel(choice)}
               {feedback !== null && choice === current.answer && ' ✓'}
             </button>
           ))}

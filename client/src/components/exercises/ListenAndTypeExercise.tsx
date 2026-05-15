@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import type { ListenAndTypeExercise as LATExercise } from '../../types/lesson';
+import { cleanForSpeech } from '../../utils/speak';
 
 type InputEl = HTMLInputElement | HTMLTextAreaElement;
 
@@ -14,7 +15,7 @@ interface Props {
 function speak(text: string, rate = 1) {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
+  const u = new SpeechSynthesisUtterance(cleanForSpeech(text));
   u.lang = 'sk-SK';
   u.rate = rate;
   window.speechSynthesis.speak(u);

@@ -1,0 +1,427 @@
+{
+  "id": "settling-5",
+  "stageId": "settling",
+  "stageName": "Stage 2 · Settling In",
+  "title": "At the Restaurant",
+  "description": "Ordering food, splitting the bill and talking to waiters",
+  "icon": "🍽️",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Restaurant Basics",
+      "headers": ["Concept", "Slovak", "English"],
+      "rows": [
+        { "label": "Restaurant",   "slovak": "Reštaurácia",       "english": "Restaurant — smaller local places are often called pohostinstvo (pub-restaurant); a kaviareň is a café" },
+        { "label": "Menu",         "slovak": "Jedálny lístok",    "english": "Menu / Food menu. Jedálny = food/dining, lístok = list/ticket. A nápojový lístok is the drinks menu" },
+        { "label": "Waiter",       "slovak": "Čašník",            "english": "Waiter (male). Say 'Prepáčte!' or 'Čašník, prosím!' to get attention" },
+        { "label": "Waitress",     "slovak": "Čašníčka",          "english": "Waitress (female) — the form you'll most often hear in Slovak restaurants" },
+        { "label": "Table",        "slovak": "Stôl",              "english": "Table. 'Voľný stôl' = free table. 'Rezervovaný stôl' = reserved table" },
+        { "label": "Reservation",  "slovak": "Rezervácia",        "english": "Reservation / Booking. 'Mám rezerváciu' = I have a reservation" },
+        { "label": "Starter",      "slovak": "Predjedlo",         "english": "Starter / Appetiser (pred = before, jedlo = food)" },
+        { "label": "Main course",  "slovak": "Hlavné jedlo",      "english": "Main course (hlavné = main, jedlo = dish/food)" },
+        { "label": "Dessert",      "slovak": "Dezert",            "english": "Dessert. Popular choices: palacinka (crêpe), zmrzlina (ice cream), štrúdľa (strudel)" },
+        { "label": "Drink",        "slovak": "Nápoj",             "english": "Drink / Beverage. The drinks menu is the nápojový lístok" },
+        { "label": "Bill",         "slovak": "Účet",              "english": "Bill / Check. In Slovakia the waiter will NOT bring the bill automatically — you must ask: 'Môžem dostať účet, prosím?'" },
+        { "label": "Tip",          "slovak": "Prepitné",          "english": "Tip / Gratuity (literally 'for drinks money'). ~10% is customary. Say 'Nechajte si zvyšok' = Keep the change" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Ordering & Paying — Phrases",
+      "headers": ["When", "Slovak", "English"],
+      "rows": [
+        { "label": "Ask for menu",         "slovak": "Môžem si pozrieť jedálny lístok?", "english": "Can I see the menu?" },
+        { "label": "Recommend",            "slovak": "Čo odporúčate?",                   "english": "What do you recommend? (formal plural — the polite way to address a waiter)" },
+        { "label": "Order",                "slovak": "Dám si...",                          "english": "I'll have... (the standard ordering phrase — literally 'I'll give myself')" },
+        { "label": "Would like",           "slovak": "Chcel/Chcela by som...",             "english": "I would like... (male: chcel, female: chcela — polite alternative to Dám si)" },
+        { "label": "Allergic",             "slovak": "Som alergický/á na...",              "english": "I'm allergic to... (male: alergický, female: alergická). E.g. Som alergická na orechy = I'm allergic to nuts" },
+        { "label": "Get the bill",         "slovak": "Môžem dostať účet, prosím?",        "english": "Can I get the bill please? Always ask — the bill never comes automatically in Slovakia" },
+        { "label": "Split the bill",       "slovak": "Môžeme si rozdeliť účet?",          "english": "Can we split the bill? (rozdeliť = to divide/split)" },
+        { "label": "Together or separate", "slovak": "Platíme spolu alebo zvlášť?",       "english": "Are we paying together or separately? (the waiter will often ask this first)" },
+        { "label": "Keep the change",      "slovak": "Nechajte si zvyšok.",               "english": "Keep the change. (zvyšok = remainder/change)" },
+        { "label": "Dine in or take away", "slovak": "Tu alebo so sebou?",                "english": "Dine in or take away? (tu = here, so sebou = with you / to go)" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Slovak Menu Classics",
+      "headers": ["Dish", "Slovak", "English"],
+      "rows": [
+        { "label": "National dish", "slovak": "Bryndzové halušky", "english": "Potato dumplings with bryndza sheep cheese and bacon bits — Slovakia's national dish. A must-try!" },
+        { "label": "Cabbage soup",  "slovak": "Kapustnica",        "english": "Sauerkraut soup with sausage or smoked meat — a Slovak staple, especially at Christmas and celebrations" },
+        { "label": "Goulash",       "slovak": "Guláš",             "english": "Goulash — hearty beef and paprika stew, typically served with bread dumplings (knedľa)" },
+        { "label": "Schnitzel",     "slovak": "Vyprážaný rezeň",   "english": "Breaded schnitzel (vyprážaný = fried/breaded, rezeň = cutlet). Often pork (bravčový) or chicken (kurací)" },
+        { "label": "Beer",          "slovak": "Pivo",              "english": "Beer — excellent local brands: Zlatý Bažant, Šariš, Corgoň. Served with a thick foam head (pena)" },
+        { "label": "Wine",          "slovak": "Víno",              "english": "Wine — Slovakia has quality wine regions in the south and east. Červené = red, Biele = white, Ružové = rosé" },
+        { "label": "Mineral water", "slovak": "Minerálka",         "english": "Mineral water (colloquial for minerálna voda). Sýtená = sparkling, Nesýtená = still" },
+        { "label": "Coffee",        "slovak": "Káva",              "english": "Coffee — espresso style. Malá čierna = small black, Veľká čierna = large black, Biela = with milk" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Čašník",         "english": "Waiter" },
+        { "slovak": "Účet",           "english": "Bill" },
+        { "slovak": "Rezervácia",     "english": "Reservation" },
+        { "slovak": "Predjedlo",      "english": "Starter" },
+        { "slovak": "Dezert",         "english": "Dessert" },
+        { "slovak": "Jedálny lístok", "english": "Menu" },
+        { "slovak": "Prepitné",       "english": "Tip" },
+        { "slovak": "Hlavné jedlo",   "english": "Main course" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Bryndzové halušky", "english": "National dish — potato dumplings with sheep cheese" },
+        { "slovak": "Kapustnica",        "english": "Cabbage soup" },
+        { "slovak": "Guláš",             "english": "Goulash" },
+        { "slovak": "Vyprážaný rezeň",   "english": "Breaded schnitzel" },
+        { "slovak": "Pivo",              "english": "Beer" },
+        { "slovak": "Víno",              "english": "Wine" },
+        { "slovak": "Minerálka",         "english": "Mineral water" },
+        { "slovak": "Káva",              "english": "Coffee" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Dám si...",                          "english": "I'll have..." },
+        { "slovak": "Môžem dostať účet, prosím?",         "english": "Can I get the bill please?" },
+        { "slovak": "Čo odporúčate?",                     "english": "What do you recommend?" },
+        { "slovak": "Nechajte si zvyšok.",                "english": "Keep the change." },
+        { "slovak": "Môžeme si rozdeliť účet?",           "english": "Can we split the bill?" },
+        { "slovak": "Môžem si pozrieť jedálny lístok?",  "english": "Can I see the menu?" },
+        { "slovak": "Bolo to výborné!",                   "english": "It was excellent!" },
+        { "slovak": "Som alergický/á na...",              "english": "I'm allergic to..." }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You arrive at a restaurant and the host asks 'Máte rezerváciu?' What are they asking?",
+          "instruction": "Choose the correct meaning",
+          "choices": ["Are you ready to order?", "Do you have a reservation?", "Do you have a loyalty card?", "Would you like a table for two?"],
+          "answer": "Do you have a reservation?",
+          "answerMeaning": "Máte rezerváciu? = Do you have a reservation? Rezervácia = reservation/booking. In popular Slovak restaurants, especially on weekends, it's worth calling ahead — say 'Chcem si rezervovať stôl na dve osoby' (I'd like to reserve a table for two)."
+        },
+        {
+          "situation": "The waiter at a fast food counter says 'Tu alebo so sebou?' What are the two options?",
+          "instruction": "Choose the correct meaning",
+          "choices": ["Dine in or pay by card", "Eat now or order later", "Table inside or outside", "Dine in or take away"],
+          "answer": "Dine in or take away",
+          "answerMeaning": "Tu = here (dine in), So sebou = with you (take away / to go). You'll hear 'Tu alebo so sebou?' at fast food places, bakeries, and casual restaurants. Reply 'Tu, prosím' (here please) or 'So sebou, prosím' (to go please)."
+        },
+        {
+          "situation": "You want to order Slovakia's national dish. What do you ask for?",
+          "instruction": "Choose the correct dish",
+          "choices": ["Kapustnica", "Guláš", "Vyprážaný rezeň", "Bryndzové halušky"],
+          "answer": "Bryndzové halušky",
+          "answerMeaning": "Bryndzové halušky = potato dumplings with bryndza (Slovak sheep cheese), topped with bacon bits. It's Slovakia's national dish and a must-try! You'll find it on most traditional Slovak restaurant menus."
+        },
+        {
+          "situation": "Your meal was great and you want to leave a tip. The bill is €20, you pay €22. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Môžem dostať účet?", "Platíme zvlášť.", "Môžem dostať minerálku?", "Nechajte si zvyšok."],
+          "answer": "Nechajte si zvyšok.",
+          "answerMeaning": "Nechajte si zvyšok = Keep the change. Zvyšok = remainder/change. Tipping in Slovakia is customary (usually 10%) — simply round up or say 'Nechajte si zvyšok' after paying. If paying by card, you can add a tip amount verbally before the transaction."
+        },
+        {
+          "situation": "You're dining with 3 friends and everyone wants to pay their own share. What do you tell the waiter?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Platíme spolu.", "Dám si účet.", "Chcem prepitné.", "Môžeme si rozdeliť účet?"],
+          "answer": "Môžeme si rozdeliť účet?",
+          "answerMeaning": "Môžeme si rozdeliť účet? = Can we split the bill? Rozdeliť = to split/divide. Alternatively say 'Každý platí sám' (everyone pays for themselves) or ask for separate bills: 'Štyri separátne účty, prosím' (four separate bills please)."
+        },
+        {
+          "situation": "You have a nut allergy. Which phrase do you say to the waiter before ordering?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Chcem orechy, prosím.", "Bez cukru, prosím.", "Nemám rád/a orechy.", "Som alergický/á na orechy."],
+          "answer": "Som alergický/á na orechy.",
+          "answerMeaning": "Som alergický/á na orechy = I'm allergic to nuts. Alergický (male) / Alergická (female). Always declare food allergies — Slovak kitchen staff take them seriously. Common allergens in Slovak food: orechy (nuts), mlieko (milk), múka/lepok (flour/gluten), vajcia (eggs)."
+        },
+        {
+          "situation": "The waiter comes to your table and says 'Čo si dáte?' What are they asking?",
+          "instruction": "Choose the correct meaning",
+          "choices": ["Where are you sitting?", "Would you like the bill?", "Are you done eating?", "What will you have?"],
+          "answer": "What will you have?",
+          "answerMeaning": "Čo si dáte? = What will you have? / What would you like to order? Dať si = to have (when ordering). The standard exchange: waiter asks 'Čo si dáte?' and you reply 'Dám si...' (I'll have...). Very natural and common in Slovak restaurants!"
+        },
+        {
+          "situation": "You finish your meal. The bill hasn't arrived. What do you say to the waiter?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Dám si dezert, prosím.", "Čo odporúčate?", "Nechajte si zvyšok.", "Môžem dostať účet, prosím?"],
+          "answer": "Môžem dostať účet, prosím?",
+          "answerMeaning": "Môžem dostať účet, prosím? = Can I get the bill please? The bill never comes automatically in Slovakia — you always need to ask. A quick 'Účet, prosím!' or the universal 'writing' hand gesture also works perfectly."
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Dám si ___ halušky — je to slovenské národné jedlo.",
+          "translation": "I'll have ___ halušky — it's Slovakia's national dish.",
+          "choices": ["bryndzové", "kapustové", "guľášové", "vyprážané"],
+          "answer": "bryndzové"
+        },
+        {
+          "sentence": "Môžem dostať ___, prosím? Chcem zaplatiť.",
+          "translation": "Can I get the ___ please? I want to pay.",
+          "choices": ["účet", "jedálny lístok", "dezert", "nápoj"],
+          "answer": "účet"
+        },
+        {
+          "sentence": "Platíme spolu alebo ___?",
+          "translation": "Are we paying together or ___?",
+          "choices": ["zvlášť", "spolu", "kartou", "hotovosťou"],
+          "answer": "zvlášť"
+        },
+        {
+          "sentence": "Čo ___? — Dám si guláš a pivo, prosím.",
+          "translation": "What ___? — I'll have goulash and beer please.",
+          "choices": ["si dáte", "odporúčate", "máte", "stojí"],
+          "answer": "si dáte"
+        },
+        {
+          "sentence": "Je tu voľný ___? Sme štyria.",
+          "translation": "Is there a free ___ here? There are four of us.",
+          "choices": ["stôl", "čašník", "jedálny lístok", "účet"],
+          "answer": "stôl"
+        },
+        {
+          "sentence": "Nechajte si ___ — bolo to výborné!",
+          "translation": "Keep the ___ — it was excellent!",
+          "choices": ["zvyšok", "účet", "dezert", "prepitné"],
+          "answer": "zvyšok"
+        },
+        {
+          "sentence": "Aký ___ by ste si dali? — Dám si víno, prosím.",
+          "translation": "What ___ would you like? — I'll have wine please.",
+          "choices": ["nápoj", "dezert", "predjedlo", "stôl"],
+          "answer": "nápoj"
+        },
+        {
+          "sentence": "___ nám priniesla jedálny lístok a vysvetlila špeciality dňa.",
+          "translation": "The ___ brought us the menu and explained the daily specials.",
+          "choices": ["Čašníčka", "Rezervácia", "Minerálka", "Kapustnica"],
+          "answer": "Čašníčka"
+        }
+      ]
+    },
+    {
+      "id": "ex8b",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Dám si ___ halušky — je to slovenské národné jedlo.",
+          "choices": ["bryndzové", "kapustové", "guľášové", "vyprážané"],
+          "answer": "bryndzové"
+        },
+        {
+          "sentence": "Môžem dostať ___, prosím? Chcem zaplatiť.",
+          "choices": ["účet", "jedálny lístok", "dezert", "nápoj"],
+          "answer": "účet"
+        },
+        {
+          "sentence": "Platíme spolu alebo ___?",
+          "choices": ["zvlášť", "spolu", "kartou", "hotovosťou"],
+          "answer": "zvlášť"
+        },
+        {
+          "sentence": "Čo ___? — Dám si guláš a pivo, prosím.",
+          "choices": ["si dáte", "odporúčate", "máte", "stojí"],
+          "answer": "si dáte"
+        },
+        {
+          "sentence": "Je tu voľný ___? Sme štyria.",
+          "choices": ["stôl", "čašník", "jedálny lístok", "účet"],
+          "answer": "stôl"
+        },
+        {
+          "sentence": "Nechajte si ___ — bolo to výborné!",
+          "choices": ["zvyšok", "účet", "dezert", "prepitné"],
+          "answer": "zvyšok"
+        },
+        {
+          "sentence": "Aký ___ by ste si dali? — Dám si víno, prosím.",
+          "choices": ["nápoj", "dezert", "predjedlo", "stôl"],
+          "answer": "nápoj"
+        },
+        {
+          "sentence": "___ nám priniesla jedálny lístok a vysvetlila špeciality dňa.",
+          "choices": ["Čašníčka", "Rezervácia", "Minerálka", "Kapustnica"],
+          "answer": "Čašníčka"
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "SMS_DIALOGUE",
+      "scenario": "🍽️ You are at a restaurant in Bratislava for dinner. The waiter takes your order.",
+      "turns": [
+        {
+          "snailMessage": "Dobrý večer! Vitajte. Máte rezerváciu?",
+          "snailMessageEnglish": "Good evening! Welcome. Do you have a reservation?",
+          "choices": [
+            { "slovak": "Áno, rezervácia na meno Smith.", "english": "Yes, reservation under Smith.", "isCorrect": true },
+            { "slovak": "Kde je záchod, prosím?", "english": "Where is the toilet please?", "isCorrect": false },
+            { "slovak": "Chcem so sebou.", "english": "I want take away.", "isCorrect": false }
+          ],
+          "snailReply": "Výborne! Váš stôl je pripravený. Môžem vám priniesť jedálny lístok?",
+          "snailReplyEnglish": "Excellent! Your table is ready. Can I bring you the menu?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, prosím. A čo odporúčate?", "english": "Yes please. And what do you recommend?", "isCorrect": true },
+            { "slovak": "Nie, nemám hlad.", "english": "No, I'm not hungry.", "isCorrect": false },
+            { "slovak": "Dajte mi účet.", "english": "Give me the bill.", "isCorrect": false }
+          ],
+          "snailReply": "Odporúčam bryndzové halušky — je to naše špeciálne jedlo!",
+          "snailReplyEnglish": "I recommend bryndzové halušky — it's our special dish!"
+        },
+        {
+          "choices": [
+            { "slovak": "Dám si bryndzové halušky a minerálku, prosím.", "english": "I'll have bryndzové halušky and a mineral water please.", "isCorrect": true },
+            { "slovak": "Nemám rád halušky.", "english": "I don't like halušky.", "isCorrect": false },
+            { "slovak": "Chcem iba dezert.", "english": "I only want dessert.", "isCorrect": false }
+          ],
+          "snailReply": "Výborná voľba! A niečo na pitie okrem minerálky?",
+          "snailReplyEnglish": "Excellent choice! And something else to drink besides mineral water?"
+        },
+        {
+          "choices": [
+            { "slovak": "Dám si aj pohár vína, prosím.", "english": "I'll also have a glass of wine please.", "isCorrect": true },
+            { "slovak": "Dajte mi vodu zadarmo.", "english": "Give me free water.", "isCorrect": false },
+            { "slovak": "Nemám smäd.", "english": "I'm not thirsty.", "isCorrect": false }
+          ],
+          "snailReply": "Červené alebo biele víno?",
+          "snailReplyEnglish": "Red or white wine?"
+        },
+        {
+          "choices": [
+            { "slovak": "Biele víno, prosím.", "english": "White wine please.", "isCorrect": true },
+            { "slovak": "Nemám rád víno.", "english": "I don't like wine.", "isCorrect": false },
+            { "slovak": "Jedno pivo namiesto toho.", "english": "One beer instead.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Vaše jedlo bude o chvíľu. Príjemné posedenie!",
+          "snailReplyEnglish": "Good. Your food will be ready shortly. Enjoy your time!"
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem! Bolo to výborné. Môžem dostať účet, prosím?", "english": "Thank you! It was excellent. Can I get the bill please?", "isCorrect": true },
+            { "slovak": "Chcem ešte jedno hlavné jedlo.", "english": "I want another main course.", "isCorrect": false },
+            { "slovak": "Jedlo bolo studené.", "english": "The food was cold.", "isCorrect": false }
+          ],
+          "snailReply": "Ráčim! Tu je váš účet. Platíte spolu alebo zvlášť?",
+          "snailReplyEnglish": "Of course! Here is your bill. Are you paying together or separately?"
+        },
+        {
+          "choices": [
+            { "slovak": "Spolu, prosím. Platím kartou.", "english": "Together please. I'm paying by card.", "isCorrect": true },
+            { "slovak": "Môžeme platiť zajtra?", "english": "Can we pay tomorrow?", "isCorrect": false },
+            { "slovak": "Nemám peniaze.", "english": "I don't have money.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Spolu je to dvadsaťdva eur. Prosím priložte kartu.",
+          "snailReplyEnglish": "Good. The total is twenty-two euros. Please tap your card."
+        },
+        {
+          "choices": [
+            { "slovak": "Hotovo. Nechajte si zvyšok — bolo to skvelé!", "english": "Done. Keep the change — it was great!", "isCorrect": true },
+            { "slovak": "Chcem späť drobné.", "english": "I want my change back.", "isCorrect": false },
+            { "slovak": "To je príliš drahé.", "english": "That's too expensive.", "isCorrect": false }
+          ],
+          "snailReply": "Ďakujem veľmi pekne! Príjemný večer a tešíme sa na vás opäť!",
+          "snailReplyEnglish": "Thank you very much! Have a lovely evening and we hope to see you again!"
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "SMS_DIALOGUE",
+      "autoSpeak": true,
+      "scenario": "🍽️ Tentoraz len po slovensky! Objednajte si večeru v reštaurácii.",
+      "turns": [
+        {
+          "snailMessage": "Dobrý večer! Vitajte. Máte rezerváciu?",
+          "choices": [
+            { "slovak": "Áno, rezervácia na meno Smith.", "isCorrect": true },
+            { "slovak": "Kde je záchod, prosím?", "isCorrect": false },
+            { "slovak": "Chcem so sebou.", "isCorrect": false }
+          ],
+          "snailReply": "Výborne! Váš stôl je pripravený. Môžem vám priniesť jedálny lístok?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, prosím. A čo odporúčate?", "isCorrect": true },
+            { "slovak": "Nie, nemám hlad.", "isCorrect": false },
+            { "slovak": "Dajte mi účet.", "isCorrect": false }
+          ],
+          "snailReply": "Odporúčam bryndzové halušky — je to naše špeciálne jedlo!"
+        },
+        {
+          "choices": [
+            { "slovak": "Dám si bryndzové halušky a minerálku, prosím.", "isCorrect": true },
+            { "slovak": "Nemám rád halušky.", "isCorrect": false },
+            { "slovak": "Chcem iba dezert.", "isCorrect": false }
+          ],
+          "snailReply": "Výborná voľba! A niečo na pitie okrem minerálky?"
+        },
+        {
+          "choices": [
+            { "slovak": "Dám si aj pohár vína, prosím.", "isCorrect": true },
+            { "slovak": "Dajte mi vodu zadarmo.", "isCorrect": false },
+            { "slovak": "Nemám smäd.", "isCorrect": false }
+          ],
+          "snailReply": "Červené alebo biele víno?"
+        },
+        {
+          "choices": [
+            { "slovak": "Biele víno, prosím.", "isCorrect": true },
+            { "slovak": "Nemám rád víno.", "isCorrect": false },
+            { "slovak": "Jedno pivo namiesto toho.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Vaše jedlo bude o chvíľu. Príjemné posedenie!"
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem! Bolo to výborné. Môžem dostať účet, prosím?", "isCorrect": true },
+            { "slovak": "Chcem ešte jedno hlavné jedlo.", "isCorrect": false },
+            { "slovak": "Jedlo bolo studené.", "isCorrect": false }
+          ],
+          "snailReply": "Ráčim! Tu je váš účet. Platíte spolu alebo zvlášť?"
+        },
+        {
+          "choices": [
+            { "slovak": "Spolu, prosím. Platím kartou.", "isCorrect": true },
+            { "slovak": "Môžeme platiť zajtra?", "isCorrect": false },
+            { "slovak": "Nemám peniaze.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Spolu je to dvadsaťdva eur. Prosím priložte kartu."
+        },
+        {
+          "choices": [
+            { "slovak": "Hotovo. Nechajte si zvyšok — bolo to skvelé!", "isCorrect": true },
+            { "slovak": "Chcem späť drobné.", "isCorrect": false },
+            { "slovak": "To je príliš drahé.", "isCorrect": false }
+          ],
+          "snailReply": "Ďakujem veľmi pekne! Príjemný večer a tešíme sa na vás opäť!"
+        }
+      ]
+    },
+    {
+      "id": "ex11",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

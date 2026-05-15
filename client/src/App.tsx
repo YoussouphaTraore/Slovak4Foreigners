@@ -12,6 +12,7 @@ function App() {
         <Route path="/lesson/:lessonId" element={<LessonPage />} />
         <Route path="/celebration/:lessonId" element={<XpCelebrationPage />} />
         <Route path="/race" element={<SnailRacePage />} />
+        <Route path="/race/:stageId" element={<SnailRacePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

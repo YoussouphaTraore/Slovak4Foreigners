@@ -1,6 +1,7 @@
 import { useState, useRef, useMemo } from 'react';
 import type { SituationalChoiceExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
+import { slovakifyNumbers } from '../../utils/numberToSlovak';
 
 type Scenario = TExercise['scenarios'][number];
 type Feedback = 'correct' | 'wrong' | null;
@@ -86,7 +87,7 @@ export function SituationalChoiceExercise({ exercise, onDone, onAnswer }: Props)
 
   const getChoiceStyle = (choice: string): string => {
     const base =
-      'w-full border-2 rounded-2xl px-4 py-4 text-left font-medium text-base cursor-pointer transition-all duration-200 active:scale-95';
+      'w-full border-2 rounded-2xl px-4 py-4 text-left font-medium text-base cursor-pointer transition-all duration-200 active:scale-95 break-words';
 
     if (feedback === null) {
       return `${base} border-gray-200 bg-white text-gray-700 hover:border-brand-blue hover:bg-blue-50`;
@@ -147,7 +148,7 @@ export function SituationalChoiceExercise({ exercise, onDone, onAnswer }: Props)
               onClick={() => handleChoice(choice)}
               className={getChoiceStyle(choice)}
             >
-              {choice}
+              {slovakifyNumbers(choice)}
               {feedback !== null && choice === current.answer && ' ✓'}
             </button>
           ))}

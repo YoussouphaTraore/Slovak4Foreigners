@@ -1,0 +1,395 @@
+{
+  "id": "advanced-2",
+  "stageId": "advanced",
+  "stageName": "Stage 3 · Settling In (Advanced)",
+  "title": "Talking About Myself",
+  "description": "Age, work, education and languages",
+  "icon": "🙋",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Age & Birthday",
+      "headers": ["Topic", "Slovak", "English"],
+      "rows": [
+        { "label": "Ask age (formal)",   "slovak": "Koľko máte rokov?",             "english": "How old are you? (formal)" },
+        { "label": "Ask age (informal)", "slovak": "Koľko máš rokov?",              "english": "How old are you? (informal)" },
+        { "label": "My age",             "slovak": "Mám 25 rokov.",                 "english": "I am 25 years old." },
+        { "label": "Born (m)",           "slovak": "Narodil som sa v roku 1990.",   "english": "I was born in 1990. (m)" },
+        { "label": "Born (f)",           "slovak": "Narodila som sa v roku 1990.",  "english": "I was born in 1990. (f)" },
+        { "label": "Birthday?",          "slovak": "Kedy máte narodeniny?",         "english": "When is your birthday?" },
+        { "label": "My birthday",        "slovak": "Mám narodeniny v máji.",        "english": "My birthday is in May." },
+        { "label": "Young (m/f)",        "slovak": "Som mladý. / mladá.",           "english": "I am young. (m/f)" },
+        { "label": "Old (m/f)",          "slovak": "Som starý. / stará.",           "english": "I am old. (m/f)" },
+        { "label": "Almost",             "slovak": "Mám takmer 30 rokov.",          "english": "I am almost 30 years old." }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Work & Occupation",
+      "headers": ["Topic", "Slovak", "English"],
+      "rows": [
+        { "label": "Where work?",       "slovak": "Kde pracujete?",                        "english": "Where do you work?" },
+        { "label": "I work at",         "slovak": "Pracujem v nemocnici.",                 "english": "I work in a hospital." },
+        { "label": "I work as",         "slovak": "Pracujem ako...",                       "english": "I work as..." },
+        { "label": "Employed (m/f)",    "slovak": "Som zamestnaný. / zamestnaná.",         "english": "I am employed. (m/f)" },
+        { "label": "Unemployed (m/f)",  "slovak": "Som nezamestnaný. / nezamestnaná.",     "english": "I am unemployed. (m/f)" },
+        { "label": "Retired",           "slovak": "Som na dôchodku.",                      "english": "I am retired." },
+        { "label": "Self-empl. (m/f)",  "slovak": "Som podnikateľ. / podnikateľka.",       "english": "I am self-employed. (m/f)" },
+        { "label": "Doctor (m/f)",      "slovak": "Som doktor. / doktorka.",               "english": "I am a doctor. (m/f)" },
+        { "label": "Teacher (m/f)",     "slovak": "Som učiteľ. / učiteľka.",               "english": "I am a teacher. (m/f)" },
+        { "label": "Engineer (m/f)",    "slovak": "Som inžinier. / inžinierka.",            "english": "I am an engineer. (m/f)" },
+        { "label": "Shop asst. (m/f)",  "slovak": "Som predavač. / predavačka.",           "english": "I am a shop assistant. (m/f)" },
+        { "label": "Driver (m/f)",      "slovak": "Som vodič. / vodička.",                 "english": "I am a driver. (m/f)" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Languages & Education",
+      "headers": ["Topic", "Slovak", "English"],
+      "rows": [
+        { "label": "Speak Slovak",    "slovak": "Hovorím po slovensky.",           "english": "I speak Slovak." },
+        { "label": "Speak English",   "slovak": "Hovorím po anglicky.",            "english": "I speak English." },
+        { "label": "Speak German",    "slovak": "Hovorím po nemecky.",             "english": "I speak German." },
+        { "label": "Speak French",    "slovak": "Hovorím po francúzsky.",          "english": "I speak French." },
+        { "label": "Learning",        "slovak": "Učím sa slovenčinu.",             "english": "I am learning Slovak." },
+        { "label": "Primary school",  "slovak": "Mám základnú školu.",             "english": "I have a primary school education." },
+        { "label": "Matura",          "slovak": "Mám maturitu.",                   "english": "I passed the school-leaving exam." },
+        { "label": "Degree",          "slovak": "Mám vysokoškolský titul.",        "english": "I have a university degree." },
+        { "label": "Student (m/f)",   "slovak": "Som študent. / študentka.",       "english": "I am a student. (m/f)" },
+        { "label": "I study at",      "slovak": "Študujem na univerzite.",         "english": "I study at university." }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Doktor",       "english": "Doctor" },
+        { "slovak": "Učiteľ",       "english": "Teacher" },
+        { "slovak": "Inžinier",     "english": "Engineer" },
+        { "slovak": "Predavač",     "english": "Shop assistant" },
+        { "slovak": "Vodič",        "english": "Driver" },
+        { "slovak": "Podnikateľ",   "english": "Self-employed" },
+        { "slovak": "Študent",      "english": "Student" },
+        { "slovak": "Dôchodca",     "english": "Retiree" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Mladý",           "english": "Young" },
+        { "slovak": "Starý",           "english": "Old" },
+        { "slovak": "Narodeniny",      "english": "Birthday" },
+        { "slovak": "Maturita",        "english": "School-leaving exam" },
+        { "slovak": "Zamestnaný",      "english": "Employed" },
+        { "slovak": "Nezamestnaný",    "english": "Unemployed" },
+        { "slovak": "Dôchodok",        "english": "Retirement" },
+        { "slovak": "Titul",           "english": "Degree" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Som na dôchodku.",             "english": "I am retired." },
+        { "slovak": "Pracujem ako učiteľka.",        "english": "I work as a teacher. (f)" },
+        { "slovak": "Mám maturitu.",                 "english": "I passed the school-leaving exam." },
+        { "slovak": "Hovorím po nemecky.",           "english": "I speak German." },
+        { "slovak": "Mám 30 rokov.",                 "english": "I am 30 years old." },
+        { "slovak": "Som podnikateľka.",             "english": "I am self-employed. (f)" },
+        { "slovak": "Učím sa slovenčinu.",           "english": "I am learning Slovak." },
+        { "slovak": "Mám vysokoškolský titul.",      "english": "I have a university degree." }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You want to ask someone's age in a formal, polite way.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Koľko máte rokov?", "Koľko máš rokov?", "Kedy ste sa narodili?", "Koľko máte narodenín?"],
+          "answer": "Koľko máte rokov?",
+          "answerMeaning": "How old are you? (formal, polite)"
+        },
+        {
+          "situation": "You are a female teacher introducing yourself at work.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som učiteľ.", "Pracujem ako učiteľka.", "Som doktorka.", "Pracujem ako vodič."],
+          "answer": "Pracujem ako učiteľka.",
+          "answerMeaning": "I work as a teacher. (female)"
+        },
+        {
+          "situation": "You retired last year and no longer work.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som zamestnaný.", "Som nezamestnaný.", "Som na dôchodku.", "Pracujem ako doktor."],
+          "answer": "Som na dôchodku.",
+          "answerMeaning": "I am retired."
+        },
+        {
+          "situation": "You want to tell your Slovak neighbour that you speak Slovak.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Učím sa slovenčinu.", "Hovorím po slovensky.", "Hovorím po anglicky.", "Rozumiem po slovensky."],
+          "answer": "Hovorím po slovensky.",
+          "answerMeaning": "I speak Slovak."
+        },
+        {
+          "situation": "You completed a five-year programme at university.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Mám maturitu.", "Mám základnú školu.", "Mám vysokoškolský titul.", "Som študent."],
+          "answer": "Mám vysokoškolský titul.",
+          "answerMeaning": "I have a university degree."
+        },
+        {
+          "situation": "You are a man who runs his own business.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Som zamestnaný.", "Som nezamestnaný.", "Som na dôchodku.", "Som podnikateľ."],
+          "answer": "Som podnikateľ.",
+          "answerMeaning": "I am self-employed / an entrepreneur."
+        },
+        {
+          "situation": "You (male) want to say you were born in 1994.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Narodila som sa v roku 1994.", "Narodil som sa v roku 1994.", "Mám 1994 rokov.", "Som z roku 1994."],
+          "answer": "Narodil som sa v roku 1994.",
+          "answerMeaning": "I was born in 1994. (male)"
+        },
+        {
+          "situation": "You are currently in the process of studying Slovak.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Hovorím po slovensky.", "Mám slovenský titul.", "Učím sa slovenčinu.", "Vyštudoval som slovenčinu."],
+          "answer": "Učím sa slovenčinu.",
+          "answerMeaning": "I am learning Slovak."
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Mám ___ rokov. Som ešte mladý.",
+          "translation": "I am ___ years old. I'm still young.",
+          "choices": ["25", "starý", "doktor", "maturitu"],
+          "answer": "25"
+        },
+        {
+          "sentence": "Pracujem ako ___. Pomáham chorým ľuďom v nemocnici.",
+          "translation": "I work as a ___. I help sick people in hospital.",
+          "choices": ["doktor", "vodič", "predavač", "učiteľ"],
+          "answer": "doktor"
+        },
+        {
+          "sentence": "Som ___. Nemám prácu, hľadám si ju.",
+          "translation": "I am ___. I don't have a job, I'm looking for one.",
+          "choices": ["zamestnaný", "nezamestnaný", "na dôchodku", "podnikateľ"],
+          "answer": "nezamestnaný"
+        },
+        {
+          "sentence": "Hovorím po ___. Pracujem v Berlíne.",
+          "translation": "I speak ___. I work in Berlin.",
+          "choices": ["slovensky", "nemecky", "anglicky", "francúzsky"],
+          "answer": "nemecky"
+        },
+        {
+          "sentence": "Mám ___. Študoval som päť rokov na vysokej škole.",
+          "translation": "I have a ___. I studied for five years at university.",
+          "choices": ["maturitu", "základnú školu", "vysokoškolský titul", "dôchodok"],
+          "answer": "vysokoškolský titul"
+        },
+        {
+          "sentence": "Narodil som sa ___ roku 1992.",
+          "translation": "I was born ___ 1992.",
+          "choices": ["v", "z", "na", "do"],
+          "answer": "v"
+        },
+        {
+          "sentence": "Som ___. Pracujem pre seba, mám vlastnú firmu.",
+          "translation": "I am ___. I work for myself, I have my own company.",
+          "choices": ["zamestnaná", "na dôchodku", "podnikateľka", "nezamestnaná"],
+          "answer": "podnikateľka"
+        },
+        {
+          "sentence": "Učím sa ___. Chcem hovoriť so Slovákmi.",
+          "translation": "I am learning ___. I want to speak with Slovaks.",
+          "choices": ["po anglicky", "slovenčinu", "maturitu", "nemecky"],
+          "answer": "slovenčinu"
+        }
+      ]
+    },
+    {
+      "id": "ex8b",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Mám ___ rokov. Som ešte mladý.",
+          "choices": ["25", "starý", "doktor", "maturitu"],
+          "answer": "25"
+        },
+        {
+          "sentence": "Pracujem ako ___. Pomáham chorým ľuďom v nemocnici.",
+          "choices": ["doktor", "vodič", "predavač", "učiteľ"],
+          "answer": "doktor"
+        },
+        {
+          "sentence": "Som ___. Nemám prácu, hľadám si ju.",
+          "choices": ["zamestnaný", "nezamestnaný", "na dôchodku", "podnikateľ"],
+          "answer": "nezamestnaný"
+        },
+        {
+          "sentence": "Hovorím po ___. Pracujem v Berlíne.",
+          "choices": ["slovensky", "nemecky", "anglicky", "francúzsky"],
+          "answer": "nemecky"
+        },
+        {
+          "sentence": "Mám ___. Študoval som päť rokov na vysokej škole.",
+          "choices": ["maturitu", "základnú školu", "vysokoškolský titul", "dôchodok"],
+          "answer": "vysokoškolský titul"
+        },
+        {
+          "sentence": "Narodil som sa ___ roku 1992.",
+          "choices": ["v", "z", "na", "do"],
+          "answer": "v"
+        },
+        {
+          "sentence": "Som ___. Pracujem pre seba, mám vlastnú firmu.",
+          "choices": ["zamestnaná", "na dôchodku", "podnikateľka", "nezamestnaná"],
+          "answer": "podnikateľka"
+        },
+        {
+          "sentence": "Učím sa ___. Chcem hovoriť so Slovákmi.",
+          "choices": ["po anglicky", "slovenčinu", "maturitu", "nemecky"],
+          "answer": "slovenčinu"
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "SMS_DIALOGUE",
+      "scenario": "Coffee break at work in Bratislava — chatting with your Slovak colleague Ján.",
+      "turns": [
+        {
+          "snailMessage": "Ahoj! Vidím, že si nový v kancelárii. Odkiaľ si, ak smiem opýtať?",
+          "snailMessageEnglish": "Hi! I see you are new in the office. Where are you from, if I may ask?",
+          "choices": [
+            { "slovak": "Som z Francúzska. Pracujem tu od januára.", "english": "I am from France. I've been working here since January.", "isCorrect": true },
+            { "slovak": "Mám 30 rokov.", "english": "I am 30 years old.", "isCorrect": false },
+            { "slovak": "Hovorím po anglicky.", "english": "I speak English.", "isCorrect": false }
+          ],
+          "snailReply": "Super! Francúzsko! A koľko máš rokov?",
+          "snailReplyEnglish": "Great! France! And how old are you?"
+        },
+        {
+          "choices": [
+            { "slovak": "Mám 29 rokov. Narodil som sa v roku 1996.", "english": "I am 29 years old. I was born in 1996.", "isCorrect": true },
+            { "slovak": "Som z Paríža.", "english": "I am from Paris.", "isCorrect": false },
+            { "slovak": "Pracujem ako inžinier.", "english": "I work as an engineer.", "isCorrect": false }
+          ],
+          "snailReply": "Si mladý! A čo robíš? Aká je tvoja práca?",
+          "snailReplyEnglish": "You're young! And what do you do? What is your job?"
+        },
+        {
+          "choices": [
+            { "slovak": "Pracujem ako inžinier v IT. Som zamestnaný tu v tejto firme.", "english": "I work as an engineer in IT. I am employed here in this company.", "isCorrect": true },
+            { "slovak": "Som na dôchodku.", "english": "I am retired.", "isCorrect": false },
+            { "slovak": "Som nezamestnaný.", "english": "I am unemployed.", "isCorrect": false }
+          ],
+          "snailReply": "To je zaujímavé! IT je teraz veľmi populárne. Študoval si na univerzite?",
+          "snailReplyEnglish": "That's interesting! IT is very popular now. Did you study at university?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, mám vysokoškolský titul z informatiky.", "english": "Yes, I have a university degree in computer science.", "isCorrect": true },
+            { "slovak": "Mám iba maturitu.", "english": "I only have the school-leaving exam.", "isCorrect": false },
+            { "slovak": "Nie, som zamestnaný.", "english": "No, I am employed.", "isCorrect": false }
+          ],
+          "snailReply": "Skvelé! A hovoríš ešte inými jazykmi okrem slovenčiny?",
+          "snailReplyEnglish": "Great! And do you speak any other languages besides Slovak?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, hovorím po francúzsky a anglicky. Trochu aj po nemecky.", "english": "Yes, I speak French and English. A little German too.", "isCorrect": true },
+            { "slovak": "Nie, nehovorím inými jazykmi.", "english": "No, I don't speak other languages.", "isCorrect": false },
+            { "slovak": "Hovorím iba po slovensky.", "english": "I only speak Slovak.", "isCorrect": false }
+          ],
+          "snailReply": "Wow! Si skutočný polyglot. A ako dlho sa učíš slovenčinu?",
+          "snailReplyEnglish": "Wow! You're a real polyglot. And how long have you been learning Slovak?"
+        },
+        {
+          "choices": [
+            { "slovak": "Učím sa slovenčinu šesť mesiacov. Je to ťažký, ale zaujímavý jazyk!", "english": "I've been learning Slovak for six months. It's a difficult but interesting language!", "isCorrect": true },
+            { "slovak": "Neučím sa slovenčinu.", "english": "I'm not learning Slovak.", "isCorrect": false },
+            { "slovak": "Hovorím po slovensky celý život.", "english": "I've been speaking Slovak all my life.", "isCorrect": false }
+          ],
+          "snailReply": "Šesť mesiacov a hovoríš tak dobre! Teší ma. Som Ján, mimochodom.",
+          "snailReplyEnglish": "Six months and you speak so well! Nice to meet you. I'm Ján, by the way."
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "SMS_DIALOGUE",
+      "autoSpeak": true,
+      "scenario": "Prestávka na kávu v práci — rozprávate sa so slovenským kolegom Jánom.",
+      "turns": [
+        {
+          "snailMessage": "Ahoj! Vidím, že si nový v kancelárii. Odkiaľ si, ak smiem opýtať?",
+          "choices": [
+            { "slovak": "Som z Francúzska. Pracujem tu od januára.", "isCorrect": true },
+            { "slovak": "Mám 30 rokov.", "isCorrect": false },
+            { "slovak": "Hovorím po anglicky.", "isCorrect": false }
+          ],
+          "snailReply": "Super! Francúzsko! A koľko máš rokov?"
+        },
+        {
+          "choices": [
+            { "slovak": "Mám 29 rokov. Narodil som sa v roku 1996.", "isCorrect": true },
+            { "slovak": "Som z Paríža.", "isCorrect": false },
+            { "slovak": "Pracujem ako inžinier.", "isCorrect": false }
+          ],
+          "snailReply": "Si mladý! A čo robíš? Aká je tvoja práca?"
+        },
+        {
+          "choices": [
+            { "slovak": "Pracujem ako inžinier v IT. Som zamestnaný tu v tejto firme.", "isCorrect": true },
+            { "slovak": "Som na dôchodku.", "isCorrect": false },
+            { "slovak": "Som nezamestnaný.", "isCorrect": false }
+          ],
+          "snailReply": "To je zaujímavé! IT je teraz veľmi populárne. Študoval si na univerzite?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, mám vysokoškolský titul z informatiky.", "isCorrect": true },
+            { "slovak": "Mám iba maturitu.", "isCorrect": false },
+            { "slovak": "Nie, som zamestnaný.", "isCorrect": false }
+          ],
+          "snailReply": "Skvelé! A hovoríš ešte inými jazykmi okrem slovenčiny?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, hovorím po francúzsky a anglicky. Trochu aj po nemecky.", "isCorrect": true },
+            { "slovak": "Nie, nehovorím inými jazykmi.", "isCorrect": false },
+            { "slovak": "Hovorím iba po slovensky.", "isCorrect": false }
+          ],
+          "snailReply": "Wow! Si skutočný polyglot. A ako dlho sa učíš slovenčinu?"
+        },
+        {
+          "choices": [
+            { "slovak": "Učím sa slovenčinu šesť mesiacov. Je to ťažký, ale zaujímavý jazyk!", "isCorrect": true },
+            { "slovak": "Neučím sa slovenčinu.", "isCorrect": false },
+            { "slovak": "Hovorím po slovensky celý život.", "isCorrect": false }
+          ],
+          "snailReply": "Šesť mesiacov a hovoríš tak dobre! Teší ma. Som Ján, mimochodom."
+        }
+      ]
+    },
+    {
+      "id": "ex11",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

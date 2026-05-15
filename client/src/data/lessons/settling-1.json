@@ -193,7 +193,195 @@
       ]
     },
     {
-      "id": "ex8",
+      "id": "ex7b",
+      "type": "SMS_DIALOGUE",
+      "scenario": "📦 A delivery driver calls to confirm your address before dropping off a package.",
+      "turns": [
+        {
+          "snailMessage": "Dobrý deň! Volám sa Ján, doručujem váš balík. Aká je vaša adresa?",
+          "snailMessageEnglish": "Good day! My name is Ján, I'm delivering your package. What is your address?",
+          "choices": [
+            { "slovak": "Moja adresa je Hlavná 15, Bratislava.", "english": "My address is Hlavná 15, Bratislava.", "isCorrect": true },
+            { "slovak": "Ďakujem, dobrý deň.", "english": "Thank you, good day.", "isCorrect": false },
+            { "slovak": "Neviem, kde bývam.", "english": "I don't know where I live.", "isCorrect": false }
+          ],
+          "snailReply": "Ďakujem! Aké je vaše PSČ?",
+          "snailReplyEnglish": "Thank you! What is your postal code?"
+        },
+        {
+          "choices": [
+            { "slovak": "Moje PSČ je 811 01.", "english": "My postal code is 811 01.", "isCorrect": true },
+            { "slovak": "Moje PSČ je môj telefón.", "english": "My postal code is my phone number.", "isCorrect": false },
+            { "slovak": "Neviem moje PSČ.", "english": "I don't know my postal code.", "isCorrect": false }
+          ],
+          "snailReply": "Výborne. A v ktorom meste bývate?",
+          "snailReplyEnglish": "Excellent. And in which city do you live?"
+        },
+        {
+          "choices": [
+            { "slovak": "Bývam v meste Bratislava.", "english": "I live in the city of Bratislava.", "isCorrect": true },
+            { "slovak": "Bývam v Košiciach.", "english": "I live in Košice.", "isCorrect": false },
+            { "slovak": "Bývam v Žiline.", "english": "I live in Žilina.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. A v ktorom kraji?",
+          "snailReplyEnglish": "Good. And in which region?"
+        },
+        {
+          "choices": [
+            { "slovak": "V Bratislavskom kraji.", "english": "In Bratislava Region.", "isCorrect": true },
+            { "slovak": "V Nitrianskom kraji.", "english": "In Nitra Region.", "isCorrect": false },
+            { "slovak": "V Trnavskom kraji.", "english": "In Trnava Region.", "isCorrect": false }
+          ],
+          "snailReply": "Rozumiem. Aká je vaša ulica?",
+          "snailReplyEnglish": "I understand. What is your street?"
+        },
+        {
+          "choices": [
+            { "slovak": "Moja ulica je Hlavná.", "english": "My street is Hlavná.", "isCorrect": true },
+            { "slovak": "Moja ulica je Námestie slobody.", "english": "My street is Freedom Square.", "isCorrect": false },
+            { "slovak": "Ulica? Neviem.", "english": "Street? I don't know.", "isCorrect": false }
+          ],
+          "snailReply": "A číslo domu?",
+          "snailReplyEnglish": "And the house number?"
+        },
+        {
+          "choices": [
+            { "slovak": "Číslo domu je pätnásť.", "english": "The house number is fifteen.", "isCorrect": true },
+            { "slovak": "Číslo domu je sedem.", "english": "The house number is seven.", "isCorrect": false },
+            { "slovak": "Číslo domu je sto.", "english": "The house number is one hundred.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Aký je váš vchod?",
+          "snailReplyEnglish": "Good. What is your entrance / staircase?"
+        },
+        {
+          "choices": [
+            { "slovak": "Môj vchod je B.", "english": "My entrance is B.", "isCorrect": true },
+            { "slovak": "Môj vchod je päť.", "english": "My entrance is five.", "isCorrect": false },
+            { "slovak": "Nemám vchod.", "english": "I don't have an entrance.", "isCorrect": false }
+          ],
+          "snailReply": "A na ktorom poschodí bývate?",
+          "snailReplyEnglish": "And on which floor do you live?"
+        },
+        {
+          "choices": [
+            { "slovak": "Bývam na treťom poschodí.", "english": "I live on the 3rd floor.", "isCorrect": true },
+            { "slovak": "Bývam na prízemí.", "english": "I live on the ground floor.", "isCorrect": false },
+            { "slovak": "Bývam na šiestom poschodí.", "english": "I live on the 6th floor.", "isCorrect": false }
+          ],
+          "snailReply": "Výborne! A číslo bytu?",
+          "snailReplyEnglish": "Excellent! And the flat number?"
+        },
+        {
+          "choices": [
+            { "slovak": "Číslo bytu je sedem.", "english": "The flat number is seven.", "isCorrect": true },
+            { "slovak": "Číslo bytu je nula.", "english": "The flat number is zero.", "isCorrect": false },
+            { "slovak": "Číslo bytu je sto.", "english": "The flat number is one hundred.", "isCorrect": false }
+          ],
+          "snailReply": "Perfektné! Takže: Hlavná 15, vchod B, 3. poschodie, byt 7, Bratislava 811 01. Správne?",
+          "snailReplyEnglish": "Perfect! So: Hlavná 15, entrance B, 3rd floor, flat 7, Bratislava 811 01. Correct?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, to je správne!", "english": "Yes, that is correct!", "isCorrect": true },
+            { "slovak": "Nie, to nie je moja adresa.", "english": "No, that is not my address.", "isCorrect": false },
+            { "slovak": "Môžem to zopakovať?", "english": "Can I repeat that?", "isCorrect": false }
+          ],
+          "snailReply": "Skvelé! Budem u vás o hodinu. Ďakujem a dovidenia!",
+          "snailReplyEnglish": "Great! I'll be with you in an hour. Thank you and goodbye!"
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "SMS_DIALOGUE",
+      "autoSpeak": true,
+      "scenario": "📦 Kuriér volá, aby potvrdil vašu adresu. Tentoraz len po slovensky!",
+      "turns": [
+        {
+          "snailMessage": "Dobrý deň! Volám sa Ján, doručujem váš balík. Aká je vaša adresa?",
+          "choices": [
+            { "slovak": "Moja adresa je Hlavná 15, Bratislava.", "isCorrect": true },
+            { "slovak": "Ďakujem, dobrý deň.", "isCorrect": false },
+            { "slovak": "Neviem, kde bývam.", "isCorrect": false }
+          ],
+          "snailReply": "Ďakujem! Aké je vaše PSČ?"
+        },
+        {
+          "choices": [
+            { "slovak": "Moje PSČ je 811 01.", "isCorrect": true },
+            { "slovak": "Moje PSČ je môj telefón.", "isCorrect": false },
+            { "slovak": "Neviem moje PSČ.", "isCorrect": false }
+          ],
+          "snailReply": "Výborne. A v ktorom meste bývate?"
+        },
+        {
+          "choices": [
+            { "slovak": "Bývam v meste Bratislava.", "isCorrect": true },
+            { "slovak": "Bývam v Košiciach.", "isCorrect": false },
+            { "slovak": "Bývam v Žiline.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. A v ktorom kraji?"
+        },
+        {
+          "choices": [
+            { "slovak": "V Bratislavskom kraji.", "isCorrect": true },
+            { "slovak": "V Nitrianskom kraji.", "isCorrect": false },
+            { "slovak": "V Trnavskom kraji.", "isCorrect": false }
+          ],
+          "snailReply": "Rozumiem. Aká je vaša ulica?"
+        },
+        {
+          "choices": [
+            { "slovak": "Moja ulica je Hlavná.", "isCorrect": true },
+            { "slovak": "Moja ulica je Námestie slobody.", "isCorrect": false },
+            { "slovak": "Ulica? Neviem.", "isCorrect": false }
+          ],
+          "snailReply": "A číslo domu?"
+        },
+        {
+          "choices": [
+            { "slovak": "Číslo domu je pätnásť.", "isCorrect": true },
+            { "slovak": "Číslo domu je sedem.", "isCorrect": false },
+            { "slovak": "Číslo domu je sto.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Aký je váš vchod?"
+        },
+        {
+          "choices": [
+            { "slovak": "Môj vchod je B.", "isCorrect": true },
+            { "slovak": "Môj vchod je päť.", "isCorrect": false },
+            { "slovak": "Nemám vchod.", "isCorrect": false }
+          ],
+          "snailReply": "A na ktorom poschodí bývate?"
+        },
+        {
+          "choices": [
+            { "slovak": "Bývam na treťom poschodí.", "isCorrect": true },
+            { "slovak": "Bývam na prízemí.", "isCorrect": false },
+            { "slovak": "Bývam na šiestom poschodí.", "isCorrect": false }
+          ],
+          "snailReply": "Výborne! A číslo bytu?"
+        },
+        {
+          "choices": [
+            { "slovak": "Číslo bytu je sedem.", "isCorrect": true },
+            { "slovak": "Číslo bytu je nula.", "isCorrect": false },
+            { "slovak": "Číslo bytu je sto.", "isCorrect": false }
+          ],
+          "snailReply": "Perfektné! Takže: Hlavná 15, vchod B, 3. poschodie, byt 7, Bratislava 811 01. Správne?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, to je správne!", "isCorrect": true },
+            { "slovak": "Nie, to nie je moja adresa.", "isCorrect": false },
+            { "slovak": "Môžem to zopakovať?", "isCorrect": false }
+          ],
+          "snailReply": "Skvelé! Budem u vás o hodinu. Ďakujem a dovidenia!"
+        }
+      ]
+    },
+    {
+      "id": "ex10",
       "type": "WORD_MATCH_REVIEW"
     }
   ]

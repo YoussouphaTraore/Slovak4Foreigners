@@ -1,0 +1,506 @@
+{
+  "id": "settling-4",
+  "stageId": "settling",
+  "stageName": "Stage 2 · Settling In",
+  "title": "At the Supermarket",
+  "description": "Shopping for food and paying at the till",
+  "icon": "🛒",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Supermarkets & Shop Words",
+      "headers": ["Item", "Slovak", "English"],
+      "rows": [
+        { "label": "Supermarket",    "slovak": "Supermarket",        "english": "Supermarket — Billa, Lidl, Kaufland, Tesco and Albert are the most common chains in Slovakia" },
+        { "label": "Shopping cart",  "slovak": "Nákupný vozík",      "english": "Shopping trolley / Cart" },
+        { "label": "Basket",         "slovak": "Košík",              "english": "Shopping basket (for smaller shops)" },
+        { "label": "Checkout",       "slovak": "Pokladňa",           "english": "Checkout / Till" },
+        { "label": "Cashier",        "slovak": "Pokladníčka",        "english": "Cashier (female) — most common. Male form: pokladník" },
+        { "label": "Receipt",        "slovak": "Účtenka",            "english": "Receipt" },
+        { "label": "Plastic bag",    "slovak": "Igelitka",           "english": "Plastic bag (you pay a few cents per bag — EU rules. Many bring a reusable taška)" },
+        { "label": "Scale",          "slovak": "Váha",               "english": "Scale — weigh loose fruit and veg yourself, then print the barcode sticker" },
+        { "label": "Price",          "slovak": "Cena",               "english": "Price" },
+        { "label": "Discount",       "slovak": "Zľava",              "english": "Discount / Sale (e.g. Zľava 30% = 30% off)" },
+        { "label": "Loyalty card",   "slovak": "Vernostná karta",    "english": "Loyalty card — Billa, Kaufland and Tesco all have free loyalty cards with points and discounts" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Vegetables — Zelenina",
+      "headers": ["Vegetable", "Slovak", "English"],
+      "rows": [
+        { "label": "Potato",    "slovak": "Zemiaky",     "english": "Potatoes (plural — you almost always buy them in bulk)" },
+        { "label": "Carrot",    "slovak": "Mrkva",       "english": "Carrot" },
+        { "label": "Onion",     "slovak": "Cibuľa",      "english": "Onion" },
+        { "label": "Garlic",    "slovak": "Cesnak",      "english": "Garlic (used heavily in Slovak cooking)" },
+        { "label": "Pepper",    "slovak": "Paprika",     "english": "Pepper / Paprika (also refers to the red spice)" },
+        { "label": "Tomato",    "slovak": "Paradajka",   "english": "Tomato" },
+        { "label": "Cucumber",  "slovak": "Uhorka",      "english": "Cucumber" },
+        { "label": "Lettuce",   "slovak": "Šalát",       "english": "Lettuce / Salad leaves" },
+        { "label": "Cabbage",   "slovak": "Kapusta",     "english": "Cabbage (a staple of Slovak cuisine — kapustnica soup!)" },
+        { "label": "Broccoli",  "slovak": "Brokolica",   "english": "Broccoli" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Fruits — Ovocie",
+      "headers": ["Fruit", "Slovak", "English"],
+      "rows": [
+        { "label": "Apple",       "slovak": "Jablko",      "english": "Apple (Slovak orchards produce excellent apples)" },
+        { "label": "Pear",        "slovak": "Hruška",      "english": "Pear" },
+        { "label": "Banana",      "slovak": "Banán",       "english": "Banana" },
+        { "label": "Orange",      "slovak": "Pomaranč",    "english": "Orange" },
+        { "label": "Strawberry",  "slovak": "Jahoda",      "english": "Strawberry" },
+        { "label": "Cherry",      "slovak": "Čerešňa",     "english": "Cherry" },
+        { "label": "Plum",        "slovak": "Slivka",      "english": "Plum — used to make the famous Slovak spirit slivovica (plum brandy)!" },
+        { "label": "Peach",       "slovak": "Broskyňa",   "english": "Peach" },
+        { "label": "Grapes",      "slovak": "Hrozno",      "english": "Grapes (Slovakia has a long winemaking tradition)" },
+        { "label": "Lemon",       "slovak": "Citrón",      "english": "Lemon" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "VOCABULARY_TABLE",
+      "title": "Everyday Groceries",
+      "headers": ["Item", "Slovak", "English"],
+      "rows": [
+        { "label": "Bread",   "slovak": "Chlieb",      "english": "Bread (dark rye bread is very popular in Slovakia)" },
+        { "label": "Milk",    "slovak": "Mlieko",      "english": "Milk" },
+        { "label": "Eggs",    "slovak": "Vajcia",      "english": "Eggs (plural — sold per 6 or 10, vajce = one egg)" },
+        { "label": "Butter",  "slovak": "Maslo",       "english": "Butter" },
+        { "label": "Cheese",  "slovak": "Syr",         "english": "Cheese — look out for oštiepok (smoked sheep cheese), a Slovak speciality!" },
+        { "label": "Meat",    "slovak": "Mäso",        "english": "Meat" },
+        { "label": "Chicken", "slovak": "Kuracie mäso","english": "Chicken / Chicken meat" },
+        { "label": "Fish",    "slovak": "Ryba",        "english": "Fish" },
+        { "label": "Pasta",   "slovak": "Cestoviny",   "english": "Pasta" },
+        { "label": "Oil",     "slovak": "Olej",        "english": "Oil (sunflower oil — slnečnicový olej — is most common)" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "VOCABULARY_TABLE",
+      "title": "At the Till — Phrases",
+      "headers": ["When", "Slovak", "English"],
+      "rows": [
+        { "label": "Ask price",     "slovak": "Koľko to stojí?",              "english": "How much does it cost?" },
+        { "label": "Total",         "slovak": "Spolu to je... eur.",          "english": "The total is... euros." },
+        { "label": "Loyalty card",  "slovak": "Máte vernostnú kartu?",        "english": "Do you have a loyalty card?" },
+        { "label": "Pay card",      "slovak": "Platím kartou.",               "english": "I'm paying by card." },
+        { "label": "Pay cash",      "slovak": "Platím hotovosťou.",           "english": "I'm paying by cash." },
+        { "label": "Ask for bag",   "slovak": "Chcem igelitku, prosím.",      "english": "I'd like a plastic bag please." },
+        { "label": "Receipt",       "slovak": "Môžem dostať účtenku?",        "english": "Can I get a receipt?" },
+        { "label": "Insert card",   "slovak": "Prosím vložte kartu.",         "english": "Please insert your card." },
+        { "label": "Enter PIN",     "slovak": "Zadajte PIN, prosím.",         "english": "Please enter your PIN." },
+        { "label": "Enjoy shop",    "slovak": "Príjemný nákup!",             "english": "Happy shopping! / Enjoy your shopping!" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Paradajka",       "english": "Tomato" },
+        { "slovak": "Jablko",          "english": "Apple" },
+        { "slovak": "Pokladňa",        "english": "Checkout" },
+        { "slovak": "Zemiaky",         "english": "Potatoes" },
+        { "slovak": "Účtenka",         "english": "Receipt" },
+        { "slovak": "Banán",           "english": "Banana" },
+        { "slovak": "Igelitka",        "english": "Plastic bag" },
+        { "slovak": "Vernostná karta", "english": "Loyalty card" }
+      ]
+    },
+    {
+      "id": "ex6a",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Mrkva",     "english": "Carrot" },
+        { "slovak": "Cibuľa",   "english": "Onion" },
+        { "slovak": "Cesnak",   "english": "Garlic" },
+        { "slovak": "Paprika",  "english": "Pepper" },
+        { "slovak": "Uhorka",   "english": "Cucumber" },
+        { "slovak": "Šalát",    "english": "Lettuce" },
+        { "slovak": "Kapusta",  "english": "Cabbage" },
+        { "slovak": "Brokolica","english": "Broccoli" }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Koľko to stojí?",         "english": "How much does it cost?" },
+        { "slovak": "Spolu to je... eur.",      "english": "The total is... euros." },
+        { "slovak": "Platím kartou.",           "english": "I'm paying by card." },
+        { "slovak": "Chcem igelitku, prosím.", "english": "I'd like a plastic bag please." },
+        { "slovak": "Máte vernostnú kartu?",   "english": "Do you have a loyalty card?" },
+        { "slovak": "Zadajte PIN, prosím.",     "english": "Please enter your PIN." },
+        { "slovak": "Môžem dostať účtenku?",   "english": "Can I get a receipt?" },
+        { "slovak": "Príjemný nákup!",         "english": "Happy shopping!" }
+      ]
+    },
+    {
+      "id": "ex7a",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Chlieb",     "english": "Bread" },
+        { "slovak": "Vajcia",     "english": "Eggs" },
+        { "slovak": "Syr",        "english": "Cheese" },
+        { "slovak": "Mäso",       "english": "Meat" },
+        { "slovak": "Ryba",       "english": "Fish" },
+        { "slovak": "Cestoviny",  "english": "Pasta" },
+        { "slovak": "Olej",       "english": "Oil" },
+        { "slovak": "Pomaranč",   "english": "Orange" }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "At the checkout the cashier asks 'Máte vernostnú kartu?' What is she asking?",
+          "instruction": "Choose the correct meaning",
+          "choices": ["Are you paying by card?", "Do you have a loyalty card?", "Do you have a receipt?", "Do you want a bag?"],
+          "answer": "Do you have a loyalty card?",
+          "answerMeaning": "Máte vernostnú kartu? = Do you have a loyalty card? Vernostná karta = loyalty card. Billa, Kaufland and Tesco all offer free loyalty cards with points and weekly member discounts — worth picking up!"
+        },
+        {
+          "situation": "You picked loose tomatoes and need to weigh them before going to the till. Where do you go?",
+          "instruction": "Choose the correct action",
+          "choices": ["Straight to the pokladňa with them", "To the váha (scale) in the produce section", "To the igelitka dispenser", "To the customer service desk"],
+          "answer": "To the váha (scale) in the produce section",
+          "answerMeaning": "Váha = scale. In Slovak supermarkets you weigh loose fruit and zelenina (vegetables) yourself at the self-service scale, print a barcode sticker and stick it on the bag before going to the pokladňa (checkout)."
+        },
+        {
+          "situation": "You want to pay by card. Which phrase do you say to the cashier?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Platím hotovosťou.", "Chcem igelitku, prosím.", "Platím kartou.", "Máte vernostnú kartu?"],
+          "answer": "Platím kartou.",
+          "answerMeaning": "Platím kartou = I'm paying by card. Platím hotovosťou = I'm paying by cash. Card payment — including contactless — is accepted in virtually all Slovak supermarkets."
+        },
+        {
+          "situation": "The cashier says 'Spolu je to osemnásť eur päťdesiat centov.' How much is the total?",
+          "instruction": "Choose the correct amount",
+          "choices": ["€8.50", "€80.50", "€18.50", "€1.85"],
+          "answer": "€18.50",
+          "answerMeaning": "Osemnásť eur päťdesiat centov = €18.50. Osemnásť = 18 (from Stage 1, Lesson 5 — Numbers!). Spolu = total / altogether. Päťdesiat = fifty."
+        },
+        {
+          "situation": "You need a bag for your shopping. What do you say to the cashier?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Môžem dostať účtenku?", "Chcem igelitku, prosím.", "Platím kartou.", "Koľko to stojí?"],
+          "answer": "Chcem igelitku, prosím.",
+          "answerMeaning": "Chcem igelitku, prosím = I'd like a plastic bag please. Under EU single-use plastics rules, plastic bags cost a few cents in Slovakia. Many locals bring a reusable taška (bag) to avoid the charge."
+        },
+        {
+          "situation": "You see a label on strawberries that says 'Zľava 30%'. What does this mean?",
+          "instruction": "Choose the correct meaning",
+          "choices": ["30% tax added", "30% discount / 30% off", "Buy 3 get 1 free", "Limited stock only"],
+          "answer": "30% discount / 30% off",
+          "answerMeaning": "Zľava = discount / sale. Zľava 30% = 30% off. Slovak supermarkets rotate weekly discounts — especially on seasonal ovocie (fruit) and zelenina (vegetables). Loyalty card holders often get extra zľavy."
+        },
+        {
+          "situation": "At the self-checkout the screen shows 'Vložte kartu.' What should you do?",
+          "instruction": "Choose the correct action",
+          "choices": ["Enter your PIN", "Insert your card into the reader", "Take your receipt", "Scan your loyalty card"],
+          "answer": "Insert your card into the reader",
+          "answerMeaning": "Vložte kartu = Insert (your) card. Vložiť = to insert / to put in. After inserting, the machine will show 'Zadajte PIN' = Enter your PIN. Contactless also works on most terminals — just tap."
+        },
+        {
+          "situation": "Which of these is Slovak for 'plum' — the fruit behind Slovakia's famous slivovica brandy?",
+          "instruction": "Choose the correct word",
+          "choices": ["Broskyňa", "Hruška", "Slivka", "Čerešňa"],
+          "answer": "Slivka",
+          "answerMeaning": "Slivka = plum. Slivovica (plum brandy) gets its name directly from slivka! Čerešňa = cherry, Hruška = pear, Broskyňa = peach. Slovak orchards are famous for stone fruit — look out for seasonal prices in summer."
+        },
+        {
+          "situation": "You only have a few items to buy. Which should you grab — a Nákupný vozík or a Košík?",
+          "instruction": "Choose the correct item",
+          "choices": ["Nákupný vozík — always use the big trolley", "Košík — it's a small basket, perfect for a few items", "Váha — it's a scale", "Pokladňa — that's the checkout"],
+          "answer": "Košík — it's a small basket, perfect for a few items",
+          "answerMeaning": "Košík = shopping basket (for a small shop). Nákupný vozík = shopping trolley / cart (for a big weekly shop). In Slovak supermarkets, baskets are stacked near the entrance — grab one if you're buying just a few things."
+        },
+        {
+          "situation": "You want to know how much an item costs before buying it. Which word on the shelf label tells you the price?",
+          "instruction": "Choose the correct word",
+          "choices": ["Zľava", "Cena", "Váha", "Účtenka"],
+          "answer": "Cena",
+          "answerMeaning": "Cena = price. Shelf labels in Slovak supermarkets always show the cena per unit (e.g. €1.29/ks — ks = kus = piece) and often the cena per kilogram. Zľava = discount, Váha = weight/scale, Účtenka = receipt."
+        },
+        {
+          "situation": "You left your bank card at home. What do you say to the cashier?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Platím kartou.", "Chcem igelitku, prosím.", "Platím hotovosťou.", "Zadajte PIN, prosím."],
+          "answer": "Platím hotovosťou.",
+          "answerMeaning": "Platím hotovosťou = I'm paying by cash. Hotovosť = cash / cash money. Platím kartou = I'm paying by card. Always good to know both — some smaller markets or market stalls may be cash-only (len hotovosť)."
+        },
+        {
+          "situation": "Your recipe calls for kuracie mäso, hrozno, citrón, and maslo. What are you buying?",
+          "instruction": "Choose the correct translation",
+          "choices": ["Beef, grapes, lime, and yoghurt", "Chicken, grapes, lemon, and butter", "Pork, cherries, orange, and oil", "Fish, plums, lemon, and cheese"],
+          "answer": "Chicken, grapes, lemon, and butter",
+          "answerMeaning": "Kuracie mäso = chicken meat, Hrozno = grapes, Citrón = lemon, Maslo = butter. A classic combo for a Slovak lemon-butter chicken dish! Maslo (butter) is also essential for Slovak pastries and cakes."
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Spolu to je pätnásť ___.",
+          "translation": "The total is fifteen ___.",
+          "choices": ["eur", "centov", "zliav", "igelitiek"],
+          "answer": "eur"
+        },
+        {
+          "sentence": "___ stojí toto mlieko? — Stojí jedno euro deväťdesiat.",
+          "translation": "___ does this milk cost? — It costs one euro ninety.",
+          "choices": ["Koľko", "Kde", "Kedy", "Ktorý"],
+          "answer": "Koľko"
+        },
+        {
+          "sentence": "Platím ___. Nemám pri sebe hotovosť.",
+          "translation": "I'm paying by ___. I don't have cash on me.",
+          "choices": ["kartou", "igelitkou", "účtenkou", "zľavou"],
+          "answer": "kartou"
+        },
+        {
+          "sentence": "Kde je ___? Chcem si odvážiť paradajky.",
+          "translation": "Where is the ___? I want to weigh the tomatoes.",
+          "choices": ["váha", "pokladňa", "košík", "vozík"],
+          "answer": "váha"
+        },
+        {
+          "sentence": "Chcem ___, prosím — mám veľa nákupu.",
+          "translation": "I'd like a ___ please — I have a lot of shopping.",
+          "choices": ["igelitku", "účtenku", "vernostnú kartu", "zľavu"],
+          "answer": "igelitku"
+        },
+        {
+          "sentence": "Na ___ sú jahody lacnejšie pre členov.",
+          "translation": "With a ___ strawberries are cheaper for members.",
+          "choices": ["vernostnú kartu", "igelitku", "účtenku", "váhu"],
+          "answer": "vernostnú kartu"
+        },
+        {
+          "sentence": "Potrebujem kúpiť ___ na tortu — recept vyžaduje 200 gramov.",
+          "translation": "I need to buy ___ for the cake — the recipe calls for 200 grams.",
+          "choices": ["maslo", "olej", "mlieko", "syr"],
+          "answer": "maslo"
+        },
+        {
+          "sentence": "___ mi povedala, že jahody sú dnes v akcii.",
+          "translation": "The ___ told me that strawberries are on sale today.",
+          "choices": ["Pokladníčka", "Váha", "Igelitka", "Pokladňa"],
+          "answer": "Pokladníčka"
+        }
+      ]
+    },
+    {
+      "id": "ex9b",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Spolu to je pätnásť ___.",
+          "choices": ["eur", "centov", "zliav", "igelitiek"],
+          "answer": "eur"
+        },
+        {
+          "sentence": "___ stojí toto mlieko? — Stojí jedno euro deväťdesiat.",
+          "choices": ["Koľko", "Kde", "Kedy", "Ktorý"],
+          "answer": "Koľko"
+        },
+        {
+          "sentence": "Platím ___. Nemám pri sebe hotovosť.",
+          "choices": ["kartou", "igelitkou", "účtenkou", "zľavou"],
+          "answer": "kartou"
+        },
+        {
+          "sentence": "Kde je ___? Chcem si odvážiť paradajky.",
+          "choices": ["váha", "pokladňa", "košík", "vozík"],
+          "answer": "váha"
+        },
+        {
+          "sentence": "Chcem ___, prosím — mám veľa nákupu.",
+          "choices": ["igelitku", "účtenku", "vernostnú kartu", "zľavu"],
+          "answer": "igelitku"
+        },
+        {
+          "sentence": "Na ___ sú jahody lacnejšie pre členov.",
+          "choices": ["vernostnú kartu", "igelitku", "účtenku", "váhu"],
+          "answer": "vernostnú kartu"
+        },
+        {
+          "sentence": "Potrebujem kúpiť ___ na tortu — recept vyžaduje 200 gramov.",
+          "choices": ["maslo", "olej", "mlieko", "syr"],
+          "answer": "maslo"
+        },
+        {
+          "sentence": "___ mi povedala, že jahody sú dnes v akcii.",
+          "choices": ["Pokladníčka", "Váha", "Igelitka", "Pokladňa"],
+          "answer": "Pokladníčka"
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "SMS_DIALOGUE",
+      "scenario": "🛒 You are at the Billa checkout. The cashier helps you pay and pack.",
+      "turns": [
+        {
+          "snailMessage": "Dobrý deň! Máte vernostnú kartu Billa?",
+          "snailMessageEnglish": "Good day! Do you have a Billa loyalty card?",
+          "choices": [
+            { "slovak": "Áno, tu je moja karta.", "english": "Yes, here is my card.", "isCorrect": true },
+            { "slovak": "Kde je pokladňa?", "english": "Where is the checkout?", "isCorrect": false },
+            { "slovak": "Chcem paradajky.", "english": "I want tomatoes.", "isCorrect": false }
+          ],
+          "snailReply": "Ďakujem! Body sú pripísané. Spolu to je dvanásť eur päťdesiat centov.",
+          "snailReplyEnglish": "Thank you! Points have been added. The total is twelve euros fifty cents."
+        },
+        {
+          "choices": [
+            { "slovak": "Platím kartou, prosím.", "english": "I'm paying by card please.", "isCorrect": true },
+            { "slovak": "Koľko to stojí?", "english": "How much does it cost?", "isCorrect": false },
+            { "slovak": "Mám zľavu?", "english": "Do I have a discount?", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Prosím vložte kartu do terminálu.",
+          "snailReplyEnglish": "Good. Please insert your card into the terminal."
+        },
+        {
+          "choices": [
+            { "slovak": "Dobre. Mám zadať PIN?", "english": "Alright. Should I enter my PIN?", "isCorrect": true },
+            { "slovak": "Nemám kartu pri sebe.", "english": "I don't have my card with me.", "isCorrect": false },
+            { "slovak": "Chcem platiť jablkami.", "english": "I want to pay with apples.", "isCorrect": false }
+          ],
+          "snailReply": "Áno, zadajte PIN priamo na termináli, prosím.",
+          "snailReplyEnglish": "Yes, please enter your PIN directly on the terminal."
+        },
+        {
+          "choices": [
+            { "slovak": "Hotovo. Môžem dostať účtenku?", "english": "Done. Can I get a receipt?", "isCorrect": true },
+            { "slovak": "Zabudol som PIN.", "english": "I forgot my PIN.", "isCorrect": false },
+            { "slovak": "Koľko stojí jablko?", "english": "How much does an apple cost?", "isCorrect": false }
+          ],
+          "snailReply": "Samozrejme! Tu je vaša účtenka. Chcete igelitku?",
+          "snailReplyEnglish": "Of course! Here is your receipt. Would you like a bag?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, chcem jednu igelitku, prosím.", "english": "Yes, I'd like one bag please.", "isCorrect": true },
+            { "slovak": "Nie, igelitka je zadarmo.", "english": "No, the bag is free.", "isCorrect": false },
+            { "slovak": "Kde sú zemiaky?", "english": "Where are the potatoes?", "isCorrect": false }
+          ],
+          "snailReply": "Igelitka stojí päť centov. Pridám to k platbe?",
+          "snailReplyEnglish": "The bag costs five cents. Shall I add it to the payment?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, prosím. Celkovo koľko platím?", "english": "Yes please. What's my total now?", "isCorrect": true },
+            { "slovak": "Nie, igelitka by mala byť zadarmo.", "english": "No, the bag should be free.", "isCorrect": false },
+            { "slovak": "Chcem väčšiu igelitku.", "english": "I want a bigger bag.", "isCorrect": false }
+          ],
+          "snailReply": "Spolu dvanásť eur päťdesiatpäť centov. Platba prebehla úspešne!",
+          "snailReplyEnglish": "Total twelve euros fifty-five cents. Payment was successful!"
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem veľmi pekne!", "english": "Thank you very much!", "isCorrect": true },
+            { "slovak": "To je príliš drahé.", "english": "That's too expensive.", "isCorrect": false },
+            { "slovak": "Chcem refundáciu.", "english": "I want a refund.", "isCorrect": false }
+          ],
+          "snailReply": "Príjemný nákup a dobrú chuť! Dovidenia!",
+          "snailReplyEnglish": "Happy shopping and enjoy your meal! Goodbye!"
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem! Do videnia!", "english": "Thank you! Goodbye!", "isCorrect": true },
+            { "slovak": "Kde je záchod?", "english": "Where is the toilet?", "isCorrect": false },
+            { "slovak": "Môžem sa vrátiť zajtra?", "english": "Can I come back tomorrow?", "isCorrect": false }
+          ],
+          "snailReply": "Dovidenia! Tešíme sa na vašu ďalšiu návštevu!",
+          "snailReplyEnglish": "Goodbye! We look forward to your next visit!"
+        }
+      ]
+    },
+    {
+      "id": "ex11",
+      "type": "SMS_DIALOGUE",
+      "autoSpeak": true,
+      "scenario": "🛒 Tentoraz len po slovensky! Zaplaťte na pokladni v Bille.",
+      "turns": [
+        {
+          "snailMessage": "Dobrý deň! Máte vernostnú kartu Billa?",
+          "choices": [
+            { "slovak": "Áno, tu je moja karta.", "isCorrect": true },
+            { "slovak": "Kde je pokladňa?", "isCorrect": false },
+            { "slovak": "Chcem paradajky.", "isCorrect": false }
+          ],
+          "snailReply": "Ďakujem! Body sú pripísané. Spolu to je dvanásť eur päťdesiat centov."
+        },
+        {
+          "choices": [
+            { "slovak": "Platím kartou, prosím.", "isCorrect": true },
+            { "slovak": "Koľko to stojí?", "isCorrect": false },
+            { "slovak": "Mám zľavu?", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Prosím vložte kartu do terminálu."
+        },
+        {
+          "choices": [
+            { "slovak": "Dobre. Mám zadať PIN?", "isCorrect": true },
+            { "slovak": "Nemám kartu pri sebe.", "isCorrect": false },
+            { "slovak": "Chcem platiť jablkami.", "isCorrect": false }
+          ],
+          "snailReply": "Áno, zadajte PIN priamo na termináli, prosím."
+        },
+        {
+          "choices": [
+            { "slovak": "Hotovo. Môžem dostať účtenku?", "isCorrect": true },
+            { "slovak": "Zabudol som PIN.", "isCorrect": false },
+            { "slovak": "Koľko stojí jablko?", "isCorrect": false }
+          ],
+          "snailReply": "Samozrejme! Tu je vaša účtenka. Chcete igelitku?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, chcem jednu igelitku, prosím.", "isCorrect": true },
+            { "slovak": "Nie, igelitka je zadarmo.", "isCorrect": false },
+            { "slovak": "Kde sú zemiaky?", "isCorrect": false }
+          ],
+          "snailReply": "Igelitka stojí päť centov. Pridám to k platbe?"
+        },
+        {
+          "choices": [
+            { "slovak": "Áno, prosím. Celkovo koľko platím?", "isCorrect": true },
+            { "slovak": "Nie, igelitka by mala byť zadarmo.", "isCorrect": false },
+            { "slovak": "Chcem väčšiu igelitku.", "isCorrect": false }
+          ],
+          "snailReply": "Spolu dvanásť eur päťdesiatpäť centov. Platba prebehla úspešne!"
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem veľmi pekne!", "isCorrect": true },
+            { "slovak": "To je príliš drahé.", "isCorrect": false },
+            { "slovak": "Chcem refundáciu.", "isCorrect": false }
+          ],
+          "snailReply": "Príjemný nákup a dobrú chuť! Dovidenia!"
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem! Do videnia!", "isCorrect": true },
+            { "slovak": "Kde je záchod?", "isCorrect": false },
+            { "slovak": "Môžem sa vrátiť zajtra?", "isCorrect": false }
+          ],
+          "snailReply": "Dovidenia! Tešíme sa na vašu ďalšiu návštevu!"
+        }
+      ]
+    },
+    {
+      "id": "ex12",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

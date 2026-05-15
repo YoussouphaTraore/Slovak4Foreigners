@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import type { ListenAndPickExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
+import { cleanForSpeech } from '../../utils/speak';
 
 interface WordEntry { id: number; slovak: string; english: string }
 type Feedback = 'correct' | 'wrong' | 'timeout' | null;
@@ -25,7 +26,7 @@ function shuffle<T>(arr: T[]): T[] {
 function speak(text: string) {
   if (!window.speechSynthesis) return;
   window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
+  const u = new SpeechSynthesisUtterance(cleanForSpeech(text));
   u.lang = 'sk-SK';
   window.speechSynthesis.speak(u);
 }

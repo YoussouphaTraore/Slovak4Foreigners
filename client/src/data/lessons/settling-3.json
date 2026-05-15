@@ -1,0 +1,367 @@
+{
+  "id": "settling-3",
+  "stageId": "settling",
+  "stageName": "Stage 2 · Settling In",
+  "title": "Getting Around",
+  "description": "Buses, trams, taxis and how to buy tickets",
+  "icon": "🚌",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Types of Transport",
+      "headers": ["Type", "Slovak", "English"],
+      "rows": [
+        { "label": "Bus",         "slovak": "Autobus",         "english": "Bus" },
+        { "label": "Tram",        "slovak": "Električka",      "english": "Tram / Streetcar (common in Bratislava, Košice)" },
+        { "label": "Trolleybus",  "slovak": "Trolejbus",       "english": "Trolleybus (electric bus on overhead wires — very common in Slovakia)" },
+        { "label": "Taxi",        "slovak": "Taxík",           "english": "Taxi / Cab" },
+        { "label": "Train",       "slovak": "Vlak",            "english": "Train" },
+        { "label": "Night bus",   "slovak": "Nočný autobus",   "english": "Night bus (runs after midnight when regular service stops)" },
+        { "label": "Line / Route","slovak": "Linka",           "english": "Line / Route number (e.g. linka 50)" },
+        { "label": "Direction",   "slovak": "Smer",            "english": "Direction / Towards (shown on the front of the vehicle)" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Stops & Stations",
+      "headers": ["Place", "Slovak", "English"],
+      "rows": [
+        { "label": "Stop",          "slovak": "Zastávka",               "english": "Stop (bus or tram stop)" },
+        { "label": "Bus stop",      "slovak": "Autobusová zastávka",    "english": "Bus stop" },
+        { "label": "Tram stop",     "slovak": "Zastávka električky",    "english": "Tram stop" },
+        { "label": "Station",       "slovak": "Stanica",                "english": "Station" },
+        { "label": "Bus station",   "slovak": "Autobusová stanica",     "english": "Bus station / Coach terminal" },
+        { "label": "Train station", "slovak": "Železničná stanica",     "english": "Train station (also called Hlavná stanica = Main Station)" },
+        { "label": "Terminal",      "slovak": "Konečná",                "english": "Last stop / Terminal (end of the line)" },
+        { "label": "Platform",      "slovak": "Nástupište",             "english": "Platform / Bay (at a bus or train station)" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Tickets & Payment",
+      "headers": ["Item", "Slovak", "English"],
+      "rows": [
+        { "label": "Ticket",         "slovak": "Lístok",              "english": "Ticket" },
+        { "label": "Single ticket",  "slovak": "Jednorazový lístok",  "english": "Single / One-way ticket" },
+        { "label": "Monthly pass",   "slovak": "Mesačná karta",       "english": "Monthly pass / Season ticket" },
+        { "label": "Zone",           "slovak": "Zóna",                "english": "Zone (Bratislava tickets are zone-based)" },
+        { "label": "Transfer",       "slovak": "Prestup",             "english": "Transfer — changing to another bus, tram or trolleybus" },
+        { "label": "Validator",      "slovak": "Kompostér",           "english": "Ticket validator — the yellow machine on board. ALWAYS stamp your ticket when boarding!" },
+        { "label": "Inspector",      "slovak": "Revízor",             "english": "Ticket inspector / Controller" },
+        { "label": "Fine",           "slovak": "Pokuta",              "english": "Fine (for travelling without a valid stamped ticket)" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "VOCABULARY_TABLE",
+      "title": "Key Phrases",
+      "headers": ["When", "Slovak", "English"],
+      "rows": [
+        { "label": "Find stop",      "slovak": "Kde je zastávka autobusu?",          "english": "Where is the bus stop?" },
+        { "label": "Right bus",      "slovak": "Ktorý autobus ide do centra?",        "english": "Which bus goes to the city centre?" },
+        { "label": "Next stop",      "slovak": "Aká je ďalšia zastávka?",            "english": "What is the next stop?" },
+        { "label": "Get off",        "slovak": "Kde mám vystúpiť?",                  "english": "Where do I get off?" },
+        { "label": "Buy ticket",     "slovak": "Prosím si jednorazový lístok.",      "english": "A single ticket please." },
+        { "label": "Transfer",       "slovak": "Musím prestupiť?",                   "english": "Do I need to transfer?" },
+        { "label": "Taxi - where",   "slovak": "Zavezite ma na..., prosím.",         "english": "Please take me to..." },
+        { "label": "Taxi - stop",    "slovak": "Zastavte tu, prosím.",               "english": "Stop here please." },
+        { "label": "Taxi - price",   "slovak": "Koľko to bude stáť?",               "english": "How much will it cost?" },
+        { "label": "Pay by card",    "slovak": "Môžem platiť kartou?",              "english": "Can I pay by card?" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Autobus",      "english": "Bus" },
+        { "slovak": "Električka",   "english": "Tram" },
+        { "slovak": "Zastávka",     "english": "Stop" },
+        { "slovak": "Lístok",       "english": "Ticket" },
+        { "slovak": "Stanica",      "english": "Station" },
+        { "slovak": "Kompostér",    "english": "Ticket validator" },
+        { "slovak": "Prestup",      "english": "Transfer" },
+        { "slovak": "Revízor",      "english": "Ticket inspector" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Kde je zastávka autobusu?",       "english": "Where is the bus stop?" },
+        { "slovak": "Ktorý autobus ide do centra?",    "english": "Which bus goes to the city centre?" },
+        { "slovak": "Prosím si jednorazový lístok.",   "english": "A single ticket please." },
+        { "slovak": "Musím prestupiť?",                "english": "Do I need to transfer?" },
+        { "slovak": "Zavezite ma na..., prosím.",      "english": "Please take me to..." },
+        { "slovak": "Zastavte tu, prosím.",            "english": "Stop here please." },
+        { "slovak": "Koľko to bude stáť?",            "english": "How much will it cost?" },
+        { "slovak": "Môžem platiť kartou?",           "english": "Can I pay by card?" }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You just boarded a tram in Bratislava. There is a yellow machine on a pole near the door. What must you do?",
+          "instruction": "Choose the correct action",
+          "choices": ["Ignore it — your ticket is already valid", "Stamp your ticket in the kompostér", "Show your ticket to the driver", "Buy a new ticket from it"],
+          "answer": "Stamp your ticket in the kompostér",
+          "answerMeaning": "Kompostér = ticket validator. In Slovakia you MUST stamp your ticket when boarding, even if you already paid. Travelling with an unstamped ticket can result in a pokuta (fine) from a revízor (inspector)."
+        },
+        {
+          "situation": "Your journey from home to work needs one change — from a bus to a tram. What is the Slovak word for this change?",
+          "instruction": "Choose the correct word",
+          "choices": ["Zastávka", "Prestup", "Konečná", "Linka"],
+          "answer": "Prestup",
+          "answerMeaning": "Prestup = transfer — changing from one bus, tram or trolleybus to another. Check the IMHD app (Bratislava) for the best route and transfer points."
+        },
+        {
+          "situation": "You are in a taxi and your destination is just around the corner. What do you say to the driver?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Kde je zastávka?", "Koľko to bude stáť?", "Zastavte tu, prosím.", "Musím prestupiť?"],
+          "answer": "Zastavte tu, prosím.",
+          "answerMeaning": "Zastavte tu, prosím = Stop here please. Zastaviť = to stop. Add prosím (please — from Stage 1, Lesson 1) to stay polite with the driver."
+        },
+        {
+          "situation": "You need a one-way bus ticket for a single journey. Which ticket do you buy?",
+          "instruction": "Choose the correct ticket",
+          "choices": ["Mesačná karta", "Jednorazový lístok", "Prestup", "Zóna"],
+          "answer": "Jednorazový lístok",
+          "answerMeaning": "Jednorazový lístok = single / one-way ticket. If you use public transport every day, a mesačná karta (monthly pass) saves money. Bratislava tickets are zone-based — make sure you buy the right zóna."
+        },
+        {
+          "situation": "A taxi driver asks 'Kam ideme?' What does he want to know?",
+          "instruction": "Choose the correct meaning",
+          "choices": ["Your name", "Your Slovak address", "Where you want to go", "How you will pay"],
+          "answer": "Where you want to go",
+          "answerMeaning": "Kam ideme? = Where are we going? Kam = where to. Answer with 'Zavezite ma na [address], prosím.' — using the address skills from Lesson 1: Know Your Address!"
+        },
+        {
+          "situation": "You want to ask which tram goes to Hlavná stanica (the main train station). Which phrase is correct?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Kde mám vystúpiť?", "Aká je ďalšia zastávka?", "Ktorá električka ide na Hlavnú stanicu?", "Zastavte tu, prosím."],
+          "answer": "Ktorá električka ide na Hlavnú stanicu?",
+          "answerMeaning": "Ktorá električka ide na...? = Which tram goes to...? Swap električka for autobus (bus) or trolejbus (trolleybus) depending on what you are looking for."
+        },
+        {
+          "situation": "You travel without a valid stamped ticket and a revízor checks you. What do you risk?",
+          "instruction": "Choose the correct consequence",
+          "choices": ["A free monthly pass", "A pokuta (fine)", "A free future ride", "A termín at the Foreign Police"],
+          "answer": "A pokuta (fine)",
+          "answerMeaning": "Pokuta = fine. In Bratislava the on-the-spot fine for an invalid ticket is currently €50. Always stamp your lístok in the kompostér the moment you board."
+        },
+        {
+          "situation": "You are at a bus station and the board shows 'Konečná'. What does this mean for your journey?",
+          "instruction": "Choose the correct meaning",
+          "choices": ["The bus is full", "This is the last stop — the end of the line", "The bus is cancelled", "You need to buy a new ticket"],
+          "answer": "This is the last stop — the end of the line",
+          "answerMeaning": "Konečná = terminal / last stop / end of the line. If you stay on past your stop and reach the konečná, you will need to catch a bus back in the other direction."
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Ktorý ___ ide do centra?",
+          "translation": "Which ___ goes to the city centre?",
+          "choices": ["autobus", "lístok", "revízor", "prestup"],
+          "answer": "autobus"
+        },
+        {
+          "sentence": "Nezabudnite okompostovať ___!",
+          "translation": "Don't forget to stamp your ___!",
+          "choices": ["lístok", "zastávku", "stanicu", "taxík"],
+          "answer": "lístok"
+        },
+        {
+          "sentence": "Musím ___? Alebo ide autobus priamo?",
+          "translation": "Do I need to ___? Or does the bus go directly?",
+          "choices": ["prestupiť", "zastaviť", "vystúpiť", "platiť"],
+          "answer": "prestupiť"
+        },
+        {
+          "sentence": "___ tu, prosím — som už doma.",
+          "translation": "___ here please — I'm already home.",
+          "choices": ["Zastavte", "Vystúpte", "Choďte", "Platíte"],
+          "answer": "Zastavte"
+        },
+        {
+          "sentence": "Kde je najbližšia ___ autobusu?",
+          "translation": "Where is the nearest bus ___?",
+          "choices": ["zastávka", "linka", "zóna", "konečná"],
+          "answer": "zastávka"
+        },
+        {
+          "sentence": "Môžem platiť ___? Nemám hotovosť.",
+          "translation": "Can I pay by ___? I don't have cash.",
+          "choices": ["kartou", "lístkom", "prestupom", "pokutou"],
+          "answer": "kartou"
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "SMS_DIALOGUE",
+      "scenario": "🚕 You ordered a taxi. The driver calls to confirm and picks you up.",
+      "turns": [
+        {
+          "snailMessage": "Dobrý deň! Som váš taxík. Kam ideme?",
+          "snailMessageEnglish": "Good day! I'm your taxi. Where are we going?",
+          "choices": [
+            { "slovak": "Zavezite ma na Hlavnú stanicu, prosím.", "english": "Please take me to the Main Station.", "isCorrect": true },
+            { "slovak": "Kde je zastávka autobusu?", "english": "Where is the bus stop?", "isCorrect": false },
+            { "slovak": "Neviem, kde idem.", "english": "I don't know where I'm going.", "isCorrect": false }
+          ],
+          "snailReply": "Hlavná stanica — dobre. Je tam dosť premávky, bude to asi dvadsať minút.",
+          "snailReplyEnglish": "Main Station — alright. There is quite a lot of traffic, it will be about twenty minutes."
+        },
+        {
+          "choices": [
+            { "slovak": "Dobre, to nevadí. Koľko to bude stáť?", "english": "That's fine. How much will it cost?", "isCorrect": true },
+            { "slovak": "Dvadsať minút? To je príliš dlho!", "english": "Twenty minutes? That's too long!", "isCorrect": false },
+            { "slovak": "Kde je kompostér?", "english": "Where is the ticket validator?", "isCorrect": false }
+          ],
+          "snailReply": "Asi desať eur. Záleží na premávke.",
+          "snailReplyEnglish": "About ten euros. Depends on the traffic."
+        },
+        {
+          "choices": [
+            { "slovak": "Môžem platiť kartou?", "english": "Can I pay by card?", "isCorrect": true },
+            { "slovak": "Nemám peniaze.", "english": "I don't have any money.", "isCorrect": false },
+            { "slovak": "Chcem ísť autobusom.", "english": "I want to go by bus.", "isCorrect": false }
+          ],
+          "snailReply": "Samozrejme, kartou aj hotovosťou — oboje funguje.",
+          "snailReplyEnglish": "Of course, by card or cash — both work."
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem. Mám vlak o jedenástej — môžeme ísť trochu rýchlejšie?", "english": "Thank you. I have a train at eleven — can we go a bit faster?", "isCorrect": true },
+            { "slovak": "Idite pomalšie, prosím.", "english": "Please go slower.", "isCorrect": false },
+            { "slovak": "Zastavte tu, prosím.", "english": "Stop here please.", "isCorrect": false }
+          ],
+          "snailReply": "Urobím čo môžem! Máte veľa batožiny?",
+          "snailReplyEnglish": "I'll do what I can! Do you have a lot of luggage?"
+        },
+        {
+          "choices": [
+            { "slovak": "Mám jeden kufor a ruksak.", "english": "I have one suitcase and a backpack.", "isCorrect": true },
+            { "slovak": "Nemám žiadnu batožinu.", "english": "I have no luggage.", "isCorrect": false },
+            { "slovak": "Batožina je doma.", "english": "The luggage is at home.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Pomôžem vám s kufrom. Sme takmer na mieste!",
+          "snailReplyEnglish": "Good. I'll help you with the suitcase. We're almost there!"
+        },
+        {
+          "choices": [
+            { "slovak": "Zastavte tu, prosím — pred vchodom.", "english": "Stop here please — in front of the entrance.", "isCorrect": true },
+            { "slovak": "Pokračujte ďalej, prosím.", "english": "Please keep going.", "isCorrect": false },
+            { "slovak": "Kde je nástupište?", "english": "Where is the platform?", "isCorrect": false }
+          ],
+          "snailReply": "Zastavujem. Tu sme — Hlavná stanica!",
+          "snailReplyEnglish": "Stopping. Here we are — Main Station!"
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem veľmi pekne. Tu je platba kartou.", "english": "Thank you very much. Here is the payment by card.", "isCorrect": true },
+            { "slovak": "Kde je záchod?", "english": "Where is the toilet?", "isCorrect": false },
+            { "slovak": "Chcem ísť späť.", "english": "I want to go back.", "isCorrect": false }
+          ],
+          "snailReply": "Platba prijatá. Ďakujem! Dobrú cestu a veľa šťastia so vlakom!",
+          "snailReplyEnglish": "Payment received. Thank you! Have a good trip and good luck with the train!"
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem! Do videnia!", "english": "Thank you! Goodbye!", "isCorrect": true },
+            { "slovak": "Môžem zostať v taxíku?", "english": "Can I stay in the taxi?", "isCorrect": false },
+            { "slovak": "Kde je autobusová stanica?", "english": "Where is the bus station?", "isCorrect": false }
+          ],
+          "snailReply": "Do videnia! Príjemnú cestu!",
+          "snailReplyEnglish": "Goodbye! Pleasant journey!"
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "SMS_DIALOGUE",
+      "autoSpeak": true,
+      "scenario": "🚕 Tentoraz len po slovensky! Taxík vás odváža na stanicu.",
+      "turns": [
+        {
+          "snailMessage": "Dobrý deň! Som váš taxík. Kam ideme?",
+          "choices": [
+            { "slovak": "Zavezite ma na Hlavnú stanicu, prosím.", "isCorrect": true },
+            { "slovak": "Kde je zastávka autobusu?", "isCorrect": false },
+            { "slovak": "Neviem, kde idem.", "isCorrect": false }
+          ],
+          "snailReply": "Hlavná stanica — dobre. Je tam dosť premávky, bude to asi dvadsať minút."
+        },
+        {
+          "choices": [
+            { "slovak": "Dobre, to nevadí. Koľko to bude stáť?", "isCorrect": true },
+            { "slovak": "Dvadsať minút? To je príliš dlho!", "isCorrect": false },
+            { "slovak": "Kde je kompostér?", "isCorrect": false }
+          ],
+          "snailReply": "Asi desať eur. Záleží na premávke."
+        },
+        {
+          "choices": [
+            { "slovak": "Môžem platiť kartou?", "isCorrect": true },
+            { "slovak": "Nemám peniaze.", "isCorrect": false },
+            { "slovak": "Chcem ísť autobusom.", "isCorrect": false }
+          ],
+          "snailReply": "Samozrejme, kartou aj hotovosťou — oboje funguje."
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem. Mám vlak o jedenástej — môžeme ísť trochu rýchlejšie?", "isCorrect": true },
+            { "slovak": "Idite pomalšie, prosím.", "isCorrect": false },
+            { "slovak": "Zastavte tu, prosím.", "isCorrect": false }
+          ],
+          "snailReply": "Urobím čo môžem! Máte veľa batožiny?"
+        },
+        {
+          "choices": [
+            { "slovak": "Mám jeden kufor a ruksak.", "isCorrect": true },
+            { "slovak": "Nemám žiadnu batožinu.", "isCorrect": false },
+            { "slovak": "Batožina je doma.", "isCorrect": false }
+          ],
+          "snailReply": "Dobre. Pomôžem vám s kufrom. Sme takmer na mieste!"
+        },
+        {
+          "choices": [
+            { "slovak": "Zastavte tu, prosím — pred vchodom.", "isCorrect": true },
+            { "slovak": "Pokračujte ďalej, prosím.", "isCorrect": false },
+            { "slovak": "Kde je nástupište?", "isCorrect": false }
+          ],
+          "snailReply": "Zastavujem. Tu sme — Hlavná stanica!"
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem veľmi pekne. Tu je platba kartou.", "isCorrect": true },
+            { "slovak": "Kde je záchod?", "isCorrect": false },
+            { "slovak": "Chcem ísť späť.", "isCorrect": false }
+          ],
+          "snailReply": "Platba prijatá. Ďakujem! Dobrú cestu a veľa šťastia so vlakom!"
+        },
+        {
+          "choices": [
+            { "slovak": "Ďakujem! Do videnia!", "isCorrect": true },
+            { "slovak": "Môžem zostať v taxíku?", "isCorrect": false },
+            { "slovak": "Kde je autobusová stanica?", "isCorrect": false }
+          ],
+          "snailReply": "Do videnia! Príjemnú cestu!"
+        }
+      ]
+    },
+    {
+      "id": "ex11",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

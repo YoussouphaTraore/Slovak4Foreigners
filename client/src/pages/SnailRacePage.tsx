@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { lessons } from '../data/lessons';
 import { buildRacePool, type RaceQuestion } from '../utils/buildRacePool';
 
@@ -62,8 +62,21 @@ function playWrong() {
 }
 
 // ── Component ─────────────────────────────────────────────────────────────────
+// Ordered unique stageIds as they appear in the lesson array
+const stageOrder = [...new Set(lessons.map((l) => l.stageId))];
+
+// Return all lessons from stages up to and including the given stageId.
+// If stageId is unknown or omitted, fall back to all lessons.
+function getLessonPool(stageId?: string): typeof lessons {
+  const idx = stageId ? stageOrder.indexOf(stageId) : -1;
+  if (idx === -1) return lessons;
+  return lessons.filter((l) => stageOrder.indexOf(l.stageId) <= idx);
+}
+
 export function SnailRacePage() {
   const navigate = useNavigate();
+  const { stageId } = useParams<{ stageId?: string }>();
+  const lessonPool = getLessonPool(stageId);
   const [phase, setPhase] = useState<Phase>('idle');
   const [questions, setQuestions] = useState<RaceQuestion[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -77,7 +90,7 @@ export function SnailRacePage() {
   const currentQuestion = questions[currentIndex] ?? null;
 
   const startRace = useCallback(() => {
-    const pool = buildRacePool(lessons);
+    const pool = buildRacePool(lessonPool);
     setQuestions(pool);
     setCurrentIndex(0);
     setCorrect(0);
@@ -108,7 +121,7 @@ export function SnailRacePage() {
   // Reshuffle if pool exhausted (very fast user)
   useEffect(() => {
     if (phase === 'running' && questions.length > 0 && currentIndex >= questions.length) {
-      const pool = buildRacePool(lessons);
+      const pool = buildRacePool(lessonPool);
       setQuestions(pool);
       setCurrentIndex(0);
     }

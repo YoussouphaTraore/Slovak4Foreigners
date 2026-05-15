@@ -16,6 +16,7 @@ import { FillInBlankPickExercise } from './FillInBlankPickExercise';
 import { UnscrambleExercise } from './UnscrambleExercise';
 import { VocabularyTableExercise } from './VocabularyTableExercise';
 import { NumberToWordsExercise } from './NumberToWordsExercise';
+import { SmsDialogueExercise } from './SmsDialogueExercise';
 import { DiacriticKeyboard } from './DiacriticKeyboard';
 import { FeedbackBanner } from '../ui/FeedbackBanner';
 
@@ -50,6 +51,7 @@ function getTypeBadge(ex: Exercise): string {
     case 'UNSCRAMBLE':           return 'Unscramble';
     case 'VOCABULARY_TABLE':     return 'Learn these words';
     case 'NUMBER_TO_WORDS':      return 'Number to words';
+    case 'SMS_DIALOGUE':         return 'Conversation';
   }
 }
 
@@ -75,6 +77,7 @@ function validate(exercise: Exercise, answer: string): { correct: boolean; corre
     case 'UNSCRAMBLE':
     case 'VOCABULARY_TABLE':
     case 'NUMBER_TO_WORDS':
+    case 'SMS_DIALOGUE':
       return { correct: true, correctAnswer: '' };
   }
 }
@@ -147,6 +150,14 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
     return (
       <div className="flex flex-col flex-1 min-h-0">
         <NumberToWordsExercise exercise={exercise} onDone={() => onComplete(true)} onAnswer={onAnswer} />
+      </div>
+    );
+  }
+
+  if (exercise.type === 'SMS_DIALOGUE') {
+    return (
+      <div className="flex flex-col flex-1 min-h-0">
+        <SmsDialogueExercise exercise={exercise} onDone={() => onComplete(true)} onAnswer={onAnswer} />
       </div>
     );
   }
