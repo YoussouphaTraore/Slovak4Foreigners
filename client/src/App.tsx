@@ -7,6 +7,7 @@ import { SnailRacePage } from './pages/SnailRacePage';
 import { PracticeDialoguePage } from './pages/PracticeDialoguePage';
 import { ProfilePage } from './pages/ProfilePage';
 import { AuthPage } from './pages/AuthPage';
+import { ReviewSessionPage } from './pages/ReviewSessionPage';
 import { DialogueSession } from './components/dialogue/DialogueSession';
 import { EmergencyDialogueSession } from './components/dialogue/EmergencyDialogueSession';
 import { SaveProgressModal, REGRESSION_DISMISS_KEY } from './components/auth/SaveProgressModal';
@@ -36,10 +37,13 @@ function AppRoutes() {
   const regressionLessonTitle = useProgressStore((s) => s.regressionLessonTitle);
   const applyGuestRegression = useProgressStore((s) => s.applyGuestRegression);
   const completedLessons = useProgressStore((s) => s.completedLessons);
+  const lastReviewDate = useProgressStore((s) => s.lastReviewDate);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const userId = useAuthStore((s) => s.user?.id);
+  const navigate = useNavigate();
 
   const regressionChecked = useRef(false);
+  const autoReviewChecked = useRef(false);
 
   useEffect(() => {
     if (!isInitialized || regressionChecked.current) return;
@@ -65,6 +69,32 @@ function AppRoutes() {
     applyGuestRegression();
   }, [isInitialized, userId, completedLessons.length, applyGuestRegression]);
 
+  // Auto-trigger daily review when any lesson hits critical strength (< 30)
+  useEffect(() => {
+    if (!isInitialized || autoReviewChecked.current) return;
+    autoReviewChecked.current = true;
+
+    try {
+      if (sessionStorage.getItem('autoReviewShown')) return;
+    } catch { /* */ }
+
+    const hasEnoughProgress = !!userId || completedLessons.length >= 3;
+    if (!hasEnoughProgress) return;
+
+    const today = new Date().toISOString().split('T')[0];
+    if (lastReviewDate === today) return;
+
+    // Don't conflict with a regression modal that may have just been set
+    const { lessonRecords, showSaveProgressModal: modalState } = useProgressStore.getState();
+    if (modalState !== null) return;
+
+    const hasCritical = lessonRecords.some((r) => r.strength < 30);
+    if (!hasCritical) return;
+
+    try { sessionStorage.setItem('autoReviewShown', 'true'); } catch { /* */ }
+    navigate('/review', { state: { autoTriggered: true } });
+  }, [isInitialized, userId, completedLessons.length, lastReviewDate, navigate]);
+
   return (
     <>
       <Routes>
@@ -76,6 +106,7 @@ function AppRoutes() {
         <Route path="/practice/dialogue/:id" element={<DialogueSessionRoute />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/auth" element={<AuthPage />} />
+        <Route path="/review" element={<ReviewSessionPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {showSaveProgressModal && (

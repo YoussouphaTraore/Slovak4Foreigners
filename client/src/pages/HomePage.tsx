@@ -55,12 +55,15 @@ export function HomePage() {
   const store = useProgressStore();
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
-  const { xp, streak, streakMultiplier, completedLessons, lessonRecords, unlockedStages, snailRaceRecords, isSyncing } = store;
+  const { xp, streak, streakMultiplier, completedLessons, unlockedStages, snailRaceRecords, isSyncing } = store;
+  // Dedicated selectors so dot colors and banner react immediately to store changes
+  const lessonRecords = useProgressStore((s) => s.lessonRecords);
+  const lastReviewDate = useProgressStore((s) => s.lastReviewDate);
   const groups = groupByStage(lessons);
 
   const weakLessons = store.getWeakLessons();
   const suggestedReviews = store.getSuggestedReviews();
-  const showReviewBanner = weakLessons.length >= 3;
+  const showReviewBanner = weakLessons.length >= 3 && lastReviewDate !== todayStr();
 
   useEffect(() => {
     if (headerRef.current) setHeaderHeight(headerRef.current.offsetHeight);
@@ -89,7 +92,7 @@ export function HomePage() {
           {showReviewBanner && (
             <button
               type="button"
-              onClick={() => suggestedReviews[0] && navigate(`/lesson/${suggestedReviews[0].lessonId}`)}
+              onClick={() => navigate('/review')}
               className="shrink-0 flex items-center gap-1.5 bg-amber-50 border border-amber-200 rounded-xl px-2.5 py-1.5 cursor-pointer hover:bg-amber-100 active:scale-[0.97] transition-all"
             >
               <span className="text-sm">⚠️</span>

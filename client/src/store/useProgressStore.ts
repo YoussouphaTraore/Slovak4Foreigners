@@ -89,6 +89,9 @@ interface ProgressStore {
   showSaveProgressModal: 'soft' | 'hard_stage' | 'hard_unlock' | 'regression' | null;
   regressionLessonTitle: string | null;
 
+  // Daily review
+  lastReviewDate: string | null;
+
   // XP actions
   addXP: (amount: number) => void;
   spendXP: (amount: number) => boolean;
@@ -126,6 +129,9 @@ interface ProgressStore {
   // Guest regression
   applyGuestRegression: () => string | null;
 
+  // Daily review
+  completeReview: (xpEarned: number, lessonIds: string[]) => void;
+
   // Cloud sync
   initializeFromCloud: (userId: string) => Promise<void>;
 
@@ -153,6 +159,7 @@ export const useProgressStore = create<ProgressStore>()(
       lastSyncedAt: null,
       showSaveProgressModal: null,
       regressionLessonTitle: null,
+      lastReviewDate: null,
 
       // ── XP ────────────────────────────────────────────────────────────────
 
@@ -365,6 +372,33 @@ export const useProgressStore = create<ProgressStore>()(
         return candidate.lessonId;
       },
 
+      // ── Daily review ─────────────────────────────────────────────────────
+
+      completeReview: (xpEarned, lessonIds) => {
+        set((s) => {
+          const newXp = Math.max(0, s.xp + xpEarned);
+          return {
+            xp: newXp,
+            level: calcLevel(newXp),
+            lastReviewDate: todayStr(),
+            lessonRecords: s.lessonRecords.map((r) =>
+              lessonIds.includes(r.lessonId)
+                ? { ...r, strength: Math.min(100, r.strength + 20) }
+                : r,
+            ),
+          };
+        });
+        const { user } = useAuthStore.getState();
+        if (user) {
+          const s = get();
+          const boosted = s.lessonRecords.filter((r) => lessonIds.includes(r.lessonId));
+          fireSync(
+            [syncProgressToSupabase(user.id, s), ...boosted.map((r) => syncLessonRecord(user.id, r))],
+            set,
+          );
+        }
+      },
+
       // ── Cloud sync ────────────────────────────────────────────────────────
 
       initializeFromCloud: async (userId) => {
@@ -496,7 +530,7 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 4,
+      version: 5,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
@@ -539,6 +573,10 @@ export const useProgressStore = create<ProgressStore>()(
             showSaveProgressModal: null,
             regressionLessonTitle: null,
           };
+        }
+
+        if (version < 5) {
+          old = { ...old, lastReviewDate: null };
         }
 
         return old as unknown as ProgressStore;

@@ -785,3 +785,12 @@ npx tsc --noEmit     # Type-check only (no output files)
 **Scope:** Developer onboarding journal
 - Created `docs/PROJECT_JOURNAL.md` — comprehensive 14-section reference for junior developers
 - Covers: project overview, tech stack, full file structure, database schema, all exercise types, XP formulas, dialogue system, auth flow, guest conversion mechanics, deployment, environment setup, content authoring guide, known issues, complete build history
+
+---
+
+### Phase 8 — OAuth & Dev Server Fixes
+
+**Date:** 2026-05-16
+**Scope:** Production OAuth redirect + stable local dev port
+- Confirmed `signInWithGoogle` in `useAuthStore.ts` already uses `redirectTo: window.location.origin` (no hardcoded URLs)
+- Added `server: { port: 5173, strictPort: true }` to `vite.config.ts` — dev server always starts on 5173 and errors instead of silently incrementing, so Supabase redirect URLs are always predictable
