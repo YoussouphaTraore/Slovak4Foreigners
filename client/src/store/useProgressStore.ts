@@ -1,6 +1,15 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { lessons } from '../data/lessons';
+import { useAuthStore } from './useAuthStore';
+import { SAVE_MODAL_DISMISS_KEY } from '../components/auth/SaveProgressModal';
+
+function isSaveModalDismissed(): boolean {
+  try {
+    const val = localStorage.getItem(SAVE_MODAL_DISMISS_KEY);
+    return !!val && Date.now() < Number(val);
+  } catch { return false; }
+}
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -97,6 +106,11 @@ interface ProgressStore {
   // Emergency scenarios
   markEmergencyScenarioTried: (scenarioId: string) => void;
 
+  // Save-progress modal
+  showSaveProgressModal: 'unlock' | 'streak' | 'dialogue' | null;
+  dismissSaveProgressModal: () => void;
+  recordDialogueComplete: () => void;
+
   // Called on app load
   decayLessonStrengths: () => void;
   checkAndUpdateStreak: () => void;
@@ -117,6 +131,7 @@ export const useProgressStore = create<ProgressStore>()(
       unlockedStages: ['survival'],
       snailRaceRecords: [],
       triedEmergencyScenarios: [],
+      showSaveProgressModal: null,
 
       // ── XP ────────────────────────────────────────────────────────────────
 
@@ -200,10 +215,12 @@ export const useProgressStore = create<ProgressStore>()(
         }
 
         const newXp = Math.max(0, s.xp - xpCost);
+        const { user, isInitialized } = useAuthStore.getState();
         set({
           xp: newXp,
           level: calcLevel(newXp),
           unlockedStages: [...s.unlockedStages, stageId],
+          ...(isInitialized && !user && !isSaveModalDismissed() ? { showSaveProgressModal: 'unlock' as const } : {}),
         });
         return { success: true, xpCost, xpRemaining: newXp };
       },
@@ -257,6 +274,17 @@ export const useProgressStore = create<ProgressStore>()(
             ? s.triedEmergencyScenarios
             : [...s.triedEmergencyScenarios, scenarioId],
         })),
+
+      // ── Save-progress modal ───────────────────────────────────────────────
+
+      dismissSaveProgressModal: () => set({ showSaveProgressModal: null }),
+
+      recordDialogueComplete: () => {
+        const { user, isInitialized } = useAuthStore.getState();
+        if (!isInitialized || user) return;
+        if (isSaveModalDismissed()) return;
+        set({ showSaveProgressModal: 'dialogue' });
+      },
 
       // ── Review helpers ────────────────────────────────────────────────────
 
@@ -314,7 +342,19 @@ export const useProgressStore = create<ProgressStore>()(
             ? 1.5
             : 1.0;
 
-          return { streak: newStreak, lastPlayedDate: today, streakMultiplier };
+          const showStreak = newStreak === 3
+            ? (() => {
+                const { user, isInitialized } = useAuthStore.getState();
+                return isInitialized && !user && !isSaveModalDismissed();
+              })()
+            : false;
+
+          return {
+            streak: newStreak,
+            lastPlayedDate: today,
+            streakMultiplier,
+            ...(showStreak ? { showSaveProgressModal: 'streak' as const } : {}),
+          };
         }),
     }),
     {
