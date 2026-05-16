@@ -5,14 +5,18 @@ import { useProgressStore } from '../store/useProgressStore';
 import type { LessonRecord } from '../store/useProgressStore';
 import { XpBadge } from '../components/ui/XpBadge';
 import { StreakDisplay } from '../components/ui/StreakDisplay';
+import { BottomNav } from '../components/ui/BottomNav';
 
 type NodeState = 'completed' | 'available' | 'locked' | 'stage_locked';
+
+const isDev = import.meta.env.DEV;
 
 function getLessonState(
   index: number,
   completedLessons: string[],
   unlockedStages: string[]
 ): NodeState {
+  if (isDev) return completedLessons.includes(lessons[index].id) ? 'completed' : 'available';
   const lesson = lessons[index];
   if (!unlockedStages.includes(lesson.stageId)) return 'stage_locked';
   if (completedLessons.includes(lesson.id)) return 'completed';
@@ -213,40 +217,40 @@ export function HomePage() {
                 })}
 
                 {/* Snail Race node */}
-                <button
-                  type="button"
-                  disabled={!allInStageCompleted || attemptsLeft === 0}
-                  onClick={() => allInStageCompleted && attemptsLeft > 0 && navigate(`/race/${group.stageId}`)}
-                  className={`w-full flex items-center gap-4 rounded-2xl px-4 py-4 shadow-sm transition-all cursor-pointer
-                    ${allInStageCompleted && attemptsLeft > 0
-                      ? 'bg-amber-50 border-2 border-amber-300 hover:bg-amber-100 active:scale-[0.98]'
-                      : 'bg-gray-100 border-2 border-gray-200 cursor-not-allowed opacity-60'
-                    }`}
-                >
-                  <img
-                    src="/snailTurbo.png"
-                    alt=""
-                    className="w-12 h-12 object-contain shrink-0"
-                  />
-                  <div className="text-left flex-1">
-                    <p className={`text-sm font-extrabold leading-snug ${allInStageCompleted ? 'text-amber-800' : 'text-gray-400'}`}>
-                      {allInStageCompleted ? '🏁' : '🔒'} Snail Race — Become the Turbo-Snail by Racing Other Snails and Earn XP
-                    </p>
-                    <p className={`text-xs mt-0.5 ${allInStageCompleted ? 'text-amber-600' : 'text-gray-400'}`}>
-                      {allInStageCompleted
-                        ? attemptsLeft > 0
-                          ? `Answer as many as you can in 60 seconds! (${attemptsLeft}/5 today)`
-                          : 'No attempts left today — come back tomorrow!'
-                        : 'Complete all lessons in this stage to unlock'}
-                    </p>
-                  </div>
-                  {allInStageCompleted && attemptsLeft > 0 && (
-                    <span className="text-amber-400 text-lg shrink-0">▶</span>
-                  )}
-                </button>
+                {(() => {
+                  const raceEnabled = isDev || (allInStageCompleted && attemptsLeft > 0);
+                  const raceUnlocked = isDev || allInStageCompleted;
+                  return (
+                    <button
+                      type="button"
+                      disabled={!raceEnabled}
+                      onClick={() => raceEnabled && navigate(`/race/${group.stageId}`)}
+                      className={`w-full flex items-center gap-4 rounded-2xl px-4 py-4 shadow-sm transition-all cursor-pointer
+                        ${raceEnabled
+                          ? 'bg-amber-50 border-2 border-amber-300 hover:bg-amber-100 active:scale-[0.98]'
+                          : 'bg-gray-100 border-2 border-gray-200 cursor-not-allowed opacity-60'
+                        }`}
+                    >
+                      <img src="/snailTurbo.png" alt="" className="w-12 h-12 object-contain shrink-0" />
+                      <div className="text-left flex-1">
+                        <p className={`text-sm font-extrabold leading-snug ${raceUnlocked ? 'text-amber-800' : 'text-gray-400'}`}>
+                          {raceUnlocked ? '🏁' : '🔒'} Snail Race — Become the Turbo-Snail by Racing Other Snails and Earn XP
+                        </p>
+                        <p className={`text-xs mt-0.5 ${raceUnlocked ? 'text-amber-600' : 'text-gray-400'}`}>
+                          {raceUnlocked
+                            ? attemptsLeft > 0
+                              ? `Answer as many as you can in 60 seconds! (${attemptsLeft}/5 today)`
+                              : 'No attempts left today — come back tomorrow!'
+                            : 'Complete all lessons in this stage to unlock'}
+                        </p>
+                      </div>
+                      {raceEnabled && <span className="text-amber-400 text-lg shrink-0">▶</span>}
+                    </button>
+                  );
+                })()}
 
                 {/* Stage gate to NEXT stage */}
-                {nextStageId && nextStageLocked && (
+                {!isDev && nextStageId && nextStageLocked && (
                   <>
                     <div className="w-0.5 h-6 border-l-2 border-dashed border-gray-300" />
                     <div className="w-full bg-white border-2 border-gray-200 rounded-2xl px-4 py-4 shadow-sm">
@@ -290,7 +294,7 @@ export function HomePage() {
                 )}
 
                 {/* Connector between race/gate and next stage banner */}
-                {groupIndex < groups.length - 1 && !nextStageLocked && (
+                {groupIndex < groups.length - 1 && (isDev || !nextStageLocked) && (
                   <div className="w-0.5 h-8 border-l-2 border-dashed border-gray-300" />
                 )}
               </div>
@@ -299,23 +303,7 @@ export function HomePage() {
         </div>
       </div>
 
-      {/* Bottom nav */}
-      <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-lg bg-white border-t border-gray-100 flex z-30">
-        <button
-          type="button"
-          className="flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors text-brand-green"
-        >
-          <span className="text-2xl">🏠</span>
-          <span className="text-xs font-semibold">Home</span>
-        </button>
-        <button
-          type="button"
-          className="flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors text-gray-400 hover:text-gray-600"
-        >
-          <span className="text-2xl">👤</span>
-          <span className="text-xs font-semibold">Profile</span>
-        </button>
-      </div>
+      <BottomNav active="home" />
     </div>
   );
 }

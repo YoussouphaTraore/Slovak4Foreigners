@@ -1,0 +1,773 @@
+{
+  "id": "dialogue-emergency-tier1",
+  "tier": 1,
+  "stageRequired": "survival",
+  "topic": "Calling Emergency Services",
+  "description": "Pick the right number and handle the call correctly",
+  "icon": "🚨",
+  "character": {
+    "name": "Dispečer",
+    "role": "dispatcher",
+    "avatar": "🎧"
+  },
+  "outcomes": {
+    "A": {
+      "id": "outcome-police",
+      "title": "Police are on their way! 👮",
+      "description": "You called the right number, gave your name and location. The police are coming.",
+      "xpBonus": 3
+    },
+    "B": {
+      "id": "outcome-ambulance",
+      "title": "Ambulance dispatched! 🚑",
+      "description": "You called 155, described the situation clearly. Help is on the way.",
+      "xpBonus": 3
+    },
+    "C": {
+      "id": "outcome-fire",
+      "title": "Fire brigade on the way! 🚒",
+      "description": "You called 150, gave your address first. Firefighters are coming.",
+      "xpBonus": 3
+    },
+    "D": {
+      "id": "outcome-112",
+      "title": "All services alerted! 🆘",
+      "description": "112 connected you to everything at once. Perfect call in a complex emergency.",
+      "xpBonus": 4
+    },
+    "E": {
+      "id": "outcome-city-police",
+      "title": "City police notified! 🚔",
+      "description": "156 was exactly right for this local dispute. Well handled.",
+      "xpBonus": 2
+    }
+  },
+  "scenarios": [
+    {
+      "id": "scenario-theft",
+      "situation": "🎒 You are on tram 4 in Bratislava. Someone just snatched your bag and ran off at the last stop.",
+      "situationTranslation": "Your bag was stolen on the tram. You need to report it.",
+      "correctNumber": "158",
+      "outcome": "A",
+      "wrongNumbers": {
+        "112": {
+          "response": "Tu je linka 112. Aký je váš problém?",
+          "responseTranslation": "This is line 112. What is your problem?",
+          "note": "112 works but redirects — 158 is faster for theft"
+        },
+        "155": {
+          "response": "Tu je záchranná služba. Niekto je zranený?",
+          "responseTranslation": "This is the ambulance service. Is someone injured?",
+          "redirect": "Nie, ukradli mi tašku. Potrebujem políciu.",
+          "redirectTranslation": "No, my bag was stolen. I need the police.",
+          "note": "Wrong number — ambulance is for medical emergencies"
+        },
+        "150": {
+          "response": "Tu sú hasiči. Je niekde požiar?",
+          "responseTranslation": "This is the fire brigade. Is there a fire somewhere?",
+          "redirect": "Prepáčte, mýlil som sa. Zlodej mi ukradol tašku.",
+          "redirectTranslation": "Sorry, I made a mistake. A thief stole my bag.",
+          "note": "Wrong number — fire brigade handles fires, not theft"
+        },
+        "156": {
+          "response": "Mestská polícia, dobrý deň. Parkujete na zlom mieste?",
+          "responseTranslation": "City police, good day. Are you parked in the wrong place?",
+          "redirect": "Nie, nie — ukradli mi tašku na električke!",
+          "redirectTranslation": "No, no — my bag was stolen on the tram!",
+          "note": "Wrong number — city police handles local disputes, not crime"
+        }
+      }
+    },
+    {
+      "id": "scenario-injury",
+      "situation": "🤕 You are walking on Obchodná ulica. A cyclist crashed into a pedestrian. The pedestrian is on the ground and not moving.",
+      "situationTranslation": "Someone is injured on the street and needs medical help urgently.",
+      "correctNumber": "155",
+      "outcome": "B",
+      "wrongNumbers": {
+        "112": {
+          "response": "Tu je linka 112. Aký je váš problém?",
+          "responseTranslation": "This is line 112. What is your problem?",
+          "note": "112 works — but 155 is the direct medical line"
+        },
+        "158": {
+          "response": "Polícia, dobrý deň. Čo sa stalo?",
+          "responseTranslation": "Police, good day. What happened?",
+          "redirect": "Prepáčte — niekto je zranený na ulici. Potrebujem záchranku!",
+          "redirectTranslation": "Sorry — someone is injured on the street. I need an ambulance!",
+          "note": "Wrong number — police handles crime, not medical emergencies"
+        },
+        "150": {
+          "response": "Tu sú hasiči. Je niekde požiar?",
+          "responseTranslation": "This is the fire brigade. Is there a fire somewhere?",
+          "redirect": "Nie, nie požiar — niekto je zranený! Potrebujem záchranku!",
+          "redirectTranslation": "No, not fire — someone is injured! I need an ambulance!",
+          "note": "Wrong number — fire brigade handles fires and rescues, not medical emergencies"
+        },
+        "156": {
+          "response": "Mestská polícia, dobrý deň.",
+          "responseTranslation": "City police, good day.",
+          "redirect": "Prepáčte — niekto je zranený na Obchodnej! Zavolajte záchranku!",
+          "redirectTranslation": "Sorry — someone is injured on Obchodná! Call an ambulance!",
+          "note": "Wrong number — city police handles local disputes, not medical emergencies"
+        }
+      }
+    },
+    {
+      "id": "scenario-fire",
+      "situation": "🔥 You smell smoke in your apartment building. You open the stairwell door and see flames coming from the apartment on the second floor.",
+      "situationTranslation": "There is a fire in your building. You need the fire brigade immediately.",
+      "correctNumber": "150",
+      "outcome": "C",
+      "wrongNumbers": {
+        "112": {
+          "response": "Tu je linka 112. Aký je váš problém?",
+          "responseTranslation": "This is line 112. What is your problem?",
+          "note": "112 works — but 150 is the direct fire brigade line"
+        },
+        "158": {
+          "response": "Polícia, dobrý deň. Čo sa stalo?",
+          "responseTranslation": "Police, good day. What happened?",
+          "redirect": "Prepáčte, mýlil som sa — je tu požiar! Potrebujem hasičov!",
+          "redirectTranslation": "Sorry, I made a mistake — there is a fire! I need the fire brigade!",
+          "note": "Wrong number — police handles crime, not fires"
+        },
+        "155": {
+          "response": "Tu je záchranná služba. Niekto je zranený?",
+          "responseTranslation": "This is the ambulance service. Is someone injured?",
+          "redirect": "Je tu požiar! Potrebujem hasičov, nie záchranku!",
+          "redirectTranslation": "There is a fire! I need the fire brigade, not an ambulance!",
+          "note": "Wrong number — ambulance handles medical emergencies, not fires"
+        },
+        "156": {
+          "response": "Mestská polícia, dobrý deň.",
+          "responseTranslation": "City police, good day.",
+          "redirect": "Je tu požiar v budove! Zavolajte hasičov — 150!",
+          "redirectTranslation": "There is a fire in the building! Call the fire brigade — 150!",
+          "note": "Wrong number — city police handles local disputes, not fires"
+        }
+      }
+    },
+    {
+      "id": "scenario-multi",
+      "situation": "💥 You witness a serious car crash on the highway. One car is on fire, there are injured people inside, and traffic is blocked. It is chaos.",
+      "situationTranslation": "Multiple services needed at once — fire, medical, and police. One number can do it all.",
+      "correctNumber": "112",
+      "outcome": "D",
+      "wrongNumbers": {
+        "158": {
+          "response": "Polícia, dobrý deň. Čo sa stalo?",
+          "responseTranslation": "Police, good day. What happened?",
+          "redirect": "Nehoda na diaľnici — auto horí a sú tu zranení! Potrebujem aj záchranku aj hasičov!",
+          "redirectTranslation": "Accident on the highway — a car is on fire and there are injured people! I need both ambulance and fire brigade!",
+          "note": "Police alone is not enough — 112 dispatches all services at once"
+        },
+        "155": {
+          "response": "Tu je záchranná služba. Niekto je zranený?",
+          "responseTranslation": "This is the ambulance service. Is someone injured?",
+          "redirect": "Áno, ale aj auto horí! Potrebujem hasičov aj políciu. Volám 112!",
+          "redirectTranslation": "Yes, but a car is also on fire! I need fire brigade and police too. Calling 112!",
+          "note": "Ambulance alone is not enough for a multi-service emergency"
+        },
+        "150": {
+          "response": "Tu sú hasiči. Je niekde požiar?",
+          "responseTranslation": "This is the fire brigade. Is there a fire somewhere?",
+          "redirect": "Áno, ale sú tu aj zranení! Potrebujem záchranku aj políciu. Volám 112!",
+          "redirectTranslation": "Yes, but there are also injured people! I need ambulance and police too. Calling 112!",
+          "note": "Fire brigade alone is not enough — 112 handles everything at once"
+        },
+        "156": {
+          "response": "Mestská polícia, dobrý deň.",
+          "responseTranslation": "City police, good day.",
+          "redirect": "Prepáčte — veľká nehoda na diaľnici! Potrebujem 112 — všetky záchranné zložky!",
+          "redirectTranslation": "Sorry — big accident on the highway! I need 112 — all emergency services!",
+          "note": "City police handles local disputes only — 112 is the right call here"
+        }
+      }
+    },
+    {
+      "id": "scenario-parking",
+      "situation": "🚗 Your neighbor's car is blocking the entrance to your building for 3 hours. You knocked on their door — no answer. The building manager is away.",
+      "situationTranslation": "A car is blocking your building entrance. This is a local dispute — not a crime emergency.",
+      "correctNumber": "156",
+      "outcome": "E",
+      "wrongNumbers": {
+        "158": {
+          "response": "Polícia, dobrý deň. Čo sa stalo? Niekto je zranený?",
+          "responseTranslation": "Police, good day. What happened? Is someone injured?",
+          "redirect": "Nie, nie — auto blokuje vjazd do budovy. Povedali mi volať mestskú políciu.",
+          "redirectTranslation": "No, no — a car is blocking the building entrance. I was told to call city police.",
+          "note": "National police handles crimes — parking disputes go to 156 city police"
+        },
+        "155": {
+          "response": "Tu je záchranná služba. Niekto je zranený?",
+          "responseTranslation": "This is the ambulance service. Is someone injured?",
+          "redirect": "Nie, nikto nie je zranený. Auto blokuje vjazd. Prepáčte, volám mestskú políciu.",
+          "redirectTranslation": "No, nobody is injured. A car is blocking the entrance. Sorry, I'll call city police.",
+          "note": "Ambulance is for medical emergencies only"
+        },
+        "150": {
+          "response": "Tu sú hasiči. Je niekde požiar?",
+          "responseTranslation": "This is the fire brigade. Is there a fire somewhere?",
+          "redirect": "Nie, nie je tu požiar. Auto blokuje cestu. Prepáčte, mýlil som sa.",
+          "redirectTranslation": "No, there is no fire. A car is blocking the road. Sorry, I made a mistake.",
+          "note": "Fire brigade handles fires and rescues — not parking"
+        },
+        "112": {
+          "response": "Tu je linka 112. Aký je váš problém?",
+          "responseTranslation": "This is line 112. What is your problem?",
+          "redirect": "Auto blokuje vjazd... Presmerovali ma na mestskú políciu — 156.",
+          "redirectTranslation": "A car is blocking the entrance... They redirected me to city police — 156.",
+          "note": "112 will redirect parking disputes to city police anyway — call 156 directly"
+        }
+      }
+    }
+  ],
+  "callNodes": {
+    "theft-158": [
+      {
+        "id": "call-theft-1",
+        "speaker": "dispatcher",
+        "text": "Polícia, dobrý deň. Čo sa stalo?",
+        "translation": "Police, good day. What happened?",
+        "wrongAnswerResponse": "Prepáčte — čo sa stalo? Ukradli vám niečo?",
+        "wrongAnswerTranslation": "Sorry — what happened? Was something stolen from you?",
+        "choices": [
+          {
+            "id": "c1a",
+            "text": "Dobrý deň. Ukradli mi tašku na električke!",
+            "translation": "Good day. My bag was stolen on the tram!",
+            "isCorrect": true,
+            "nextNode": "call-theft-2",
+            "usesVocab": ["Dobrý deň"]
+          },
+          {
+            "id": "c1b",
+            "text": "Pomoc! Zlodej! Ukradli mi peňaženku!",
+            "translation": "Help! Thief! They stole my wallet!",
+            "isCorrect": true,
+            "nextNode": "call-theft-2",
+            "usesVocab": ["Pomoc", "Zlodej"]
+          },
+          {
+            "id": "c1c",
+            "text": "Dobrý deň. Je tu požiar!",
+            "translation": "Good day. There is a fire here!",
+            "isCorrect": false,
+            "usesVocab": ["Požiar"]
+          }
+        ]
+      },
+      {
+        "id": "call-theft-2",
+        "speaker": "dispatcher",
+        "text": "Rozumiem. Ako sa voláte a kde ste teraz?",
+        "translation": "I understand. What is your name and where are you now?",
+        "wrongAnswerResponse": "Potrebujem vaše meno a polohu — nie lekára. Kde ste?",
+        "wrongAnswerTranslation": "I need your name and location — not a doctor. Where are you?",
+        "choices": [
+          {
+            "id": "c2a",
+            "text": "Volám sa Jana. Som na zastávke Obchodná.",
+            "translation": "My name is Jana. I am at the Obchodná stop.",
+            "isCorrect": true,
+            "nextNode": "call-theft-3",
+            "usesVocab": ["Volám sa"]
+          },
+          {
+            "id": "c2b",
+            "text": "Volám sa Peter. Som na Hlavnej ulici.",
+            "translation": "My name is Peter. I am on Hlavná street.",
+            "isCorrect": true,
+            "nextNode": "call-theft-3",
+            "usesVocab": ["Volám sa"]
+          },
+          {
+            "id": "c2c",
+            "text": "Potrebujem doktora!",
+            "translation": "I need a doctor!",
+            "isCorrect": false,
+            "usesVocab": ["Doktor"]
+          }
+        ]
+      },
+      {
+        "id": "call-theft-3",
+        "speaker": "dispatcher",
+        "text": "Dobre. Policajná hliadka príde za päť minút. Zostante na mieste.",
+        "translation": "Good. A police patrol will arrive in five minutes. Stay where you are.",
+        "wrongAnswerResponse": "Dovidenia je neskôr — zostante na mieste, prosím!",
+        "wrongAnswerTranslation": "Goodbye is later — please stay where you are!",
+        "choices": [
+          {
+            "id": "c3a",
+            "text": "Ďakujem. Zostanem tu.",
+            "translation": "Thank you. I will stay here.",
+            "isCorrect": true,
+            "nextNode": "call-theft-end",
+            "usesVocab": ["Ďakujem"]
+          },
+          {
+            "id": "c3b",
+            "text": "Dobre. Môžem opísať zlodeja?",
+            "translation": "Alright. Can I describe the thief?",
+            "isCorrect": true,
+            "nextNode": "call-theft-end",
+            "usesVocab": ["Zlodej"]
+          },
+          {
+            "id": "c3c",
+            "text": "Dovidenia!",
+            "translation": "Goodbye!",
+            "isCorrect": false,
+            "usesVocab": ["Dovidenia"]
+          }
+        ]
+      },
+      {
+        "id": "call-theft-end",
+        "speaker": "dispatcher",
+        "text": "Výborne. Hliadka je na ceste. Dovidenia.",
+        "translation": "Excellent. The patrol is on the way. Goodbye.",
+        "isEndNode": true,
+        "outcome": "A"
+      }
+    ],
+    "injury-155": [
+      {
+        "id": "call-injury-1",
+        "speaker": "dispatcher",
+        "text": "Záchranná služba, dobrý deň. Čo sa stalo?",
+        "translation": "Ambulance service, good day. What happened?",
+        "wrongAnswerResponse": "Ukradli vám niečo? To je polícia — 158. Čo sa stalo zdravotne?",
+        "wrongAnswerTranslation": "Was something stolen? That is police — 158. What happened medically?",
+        "choices": [
+          {
+            "id": "ci1a",
+            "text": "Niekto je zranený! Cyklista zrazil chodca na Obchodnej!",
+            "translation": "Someone is injured! A cyclist hit a pedestrian on Obchodná!",
+            "isCorrect": true,
+            "nextNode": "call-injury-2",
+            "usesVocab": ["Niekto je zranený"]
+          },
+          {
+            "id": "ci1b",
+            "text": "Je to núdza! Muž leží na zemi a nehýbe sa!",
+            "translation": "It's an emergency! A man is lying on the ground and not moving!",
+            "isCorrect": true,
+            "nextNode": "call-injury-2",
+            "usesVocab": ["Je to núdza"]
+          },
+          {
+            "id": "ci1c",
+            "text": "Ukradli mi peňaženku!",
+            "translation": "They stole my wallet!",
+            "isCorrect": false,
+            "usesVocab": ["peňaženku"]
+          }
+        ]
+      },
+      {
+        "id": "call-injury-2",
+        "speaker": "dispatcher",
+        "text": "Rozumiem. Kde presne ste?",
+        "translation": "I understand. Where exactly are you?",
+        "wrongAnswerResponse": "Dobrú noc? Je deň! Kde ste — adresa alebo ulica?",
+        "wrongAnswerTranslation": "Good night? It is daytime! Where are you — address or street?",
+        "choices": [
+          {
+            "id": "ci2a",
+            "text": "Som na Obchodnej ulici, pri čísle pätnásť.",
+            "translation": "I am on Obchodná street, near number fifteen.",
+            "isCorrect": true,
+            "nextNode": "call-injury-3",
+            "usesVocab": ["pätnásť"]
+          },
+          {
+            "id": "ci2b",
+            "text": "Obchodná ulica — pri zastávke električky.",
+            "translation": "Obchodná street — near the tram stop.",
+            "isCorrect": true,
+            "nextNode": "call-injury-3",
+            "usesVocab": ["zastávka električky"]
+          },
+          {
+            "id": "ci2c",
+            "text": "Dobrú noc!",
+            "translation": "Good night!",
+            "isCorrect": false,
+            "usesVocab": []
+          }
+        ]
+      },
+      {
+        "id": "call-injury-3",
+        "speaker": "dispatcher",
+        "text": "Sanitka je na ceste — päť minút. Nedotýkajte sa zraneného. Zostante pri ňom.",
+        "translation": "The ambulance is on the way — five minutes. Do not touch the injured person. Stay with them.",
+        "wrongAnswerResponse": "Nie — zostante pri ňom! Sanitka príde čoskoro.",
+        "wrongAnswerTranslation": "No — stay with them! The ambulance is coming soon.",
+        "choices": [
+          {
+            "id": "ci3a",
+            "text": "Dobre. Zostanem pri ňom. Ďakujem.",
+            "translation": "Alright. I will stay with him. Thank you.",
+            "isCorrect": true,
+            "nextNode": "call-injury-end",
+            "usesVocab": ["Ďakujem"]
+          },
+          {
+            "id": "ci3b",
+            "text": "Rozumiem. Dýcha — ale je v bezvedomí.",
+            "translation": "I understand. He is breathing — but unconscious.",
+            "isCorrect": true,
+            "nextNode": "call-injury-end",
+            "usesVocab": []
+          },
+          {
+            "id": "ci3c",
+            "text": "Dovidenia, idem preč.",
+            "translation": "Goodbye, I am leaving.",
+            "isCorrect": false,
+            "usesVocab": ["Dovidenia"]
+          }
+        ]
+      },
+      {
+        "id": "call-injury-end",
+        "speaker": "dispatcher",
+        "text": "Výborne. Pošlite záchranku — sanitka príde čoskoro. Dovidenia.",
+        "translation": "Excellent. Ambulance dispatched — it will arrive soon. Goodbye.",
+        "isEndNode": true,
+        "outcome": "B"
+      }
+    ],
+    "fire-150": [
+      {
+        "id": "call-fire-1",
+        "speaker": "dispatcher",
+        "text": "Hasiči, dobrý deň. Kde je požiar?",
+        "translation": "Fire brigade, good day. Where is the fire?",
+        "wrongAnswerResponse": "Hasiči riešia požiare — nie krádeže. Kde presne horí?",
+        "wrongAnswerTranslation": "Fire brigade handles fires — not theft. Where exactly is the fire?",
+        "choices": [
+          {
+            "id": "cf1a",
+            "text": "Je tu požiar! Horí byt na druhom poschodí!",
+            "translation": "There is a fire! An apartment on the second floor is burning!",
+            "isCorrect": true,
+            "nextNode": "call-fire-2",
+            "usesVocab": ["Je tu požiar"]
+          },
+          {
+            "id": "cf1b",
+            "text": "Požiar v bytovom dome! Vidím plameň a dym!",
+            "translation": "Fire in an apartment building! I can see flames and smoke!",
+            "isCorrect": true,
+            "nextNode": "call-fire-2",
+            "usesVocab": ["Požiar"]
+          },
+          {
+            "id": "cf1c",
+            "text": "Ukradli mi tašku!",
+            "translation": "My bag was stolen!",
+            "isCorrect": false,
+            "usesVocab": []
+          }
+        ]
+      },
+      {
+        "id": "call-fire-2",
+        "speaker": "dispatcher",
+        "text": "Adresa budovy, prosím — rýchlo!",
+        "translation": "The building address please — quickly!",
+        "wrongAnswerResponse": "Meno neskôr — adresa teraz! Kde presne horí?",
+        "wrongAnswerTranslation": "Name later — address now! Where exactly is the fire?",
+        "choices": [
+          {
+            "id": "cf2a",
+            "text": "Nobelova ulica dvanásť, Bratislava.",
+            "translation": "Nobelova street twelve, Bratislava.",
+            "isCorrect": true,
+            "nextNode": "call-fire-3",
+            "usesVocab": ["dvanásť"]
+          },
+          {
+            "id": "cf2b",
+            "text": "Štefánikova osem — blízko centra!",
+            "translation": "Štefánikova eight — near the centre!",
+            "isCorrect": true,
+            "nextNode": "call-fire-3",
+            "usesVocab": ["osem"]
+          },
+          {
+            "id": "cf2c",
+            "text": "Volám sa Martin.",
+            "translation": "My name is Martin.",
+            "isCorrect": false,
+            "usesVocab": ["Volám sa"]
+          }
+        ]
+      },
+      {
+        "id": "call-fire-3",
+        "speaker": "dispatcher",
+        "text": "Hasiči idú. Okamžite evakuujte budovu! Nevolajte výťah!",
+        "translation": "Fire brigade is coming. Evacuate the building immediately! Do not use the lift!",
+        "wrongAnswerResponse": "Nie — evakuujte budovu teraz! Hasiči prídu čoskoro.",
+        "wrongAnswerTranslation": "No — evacuate the building now! Fire brigade is coming soon.",
+        "choices": [
+          {
+            "id": "cf3a",
+            "text": "Rozumiem. Idem varovať susedov. Ďakujem!",
+            "translation": "I understand. I am going to warn the neighbors. Thank you!",
+            "isCorrect": true,
+            "nextNode": "call-fire-end",
+            "usesVocab": ["Rozumiete", "Ďakujem"]
+          },
+          {
+            "id": "cf3b",
+            "text": "Dobre. Sú tu starí ľudia — pomôžete im?",
+            "translation": "Alright. There are elderly people here — will you help them?",
+            "isCorrect": true,
+            "nextNode": "call-fire-end",
+            "usesVocab": []
+          },
+          {
+            "id": "cf3c",
+            "text": "Dobre, idem výťahom.",
+            "translation": "Alright, I am taking the lift.",
+            "isCorrect": false,
+            "usesVocab": []
+          }
+        ]
+      },
+      {
+        "id": "call-fire-end",
+        "speaker": "dispatcher",
+        "text": "Hasiči sú na ceste. Choďte von — ihneď! Dovidenia.",
+        "translation": "Fire brigade is on the way. Go outside — immediately! Goodbye.",
+        "isEndNode": true,
+        "outcome": "C"
+      }
+    ],
+    "multi-112": [
+      {
+        "id": "call-multi-1",
+        "speaker": "dispatcher",
+        "text": "Linka 112, dobrý deň. Čo sa stalo?",
+        "translation": "Line 112, good day. What happened?",
+        "wrongAnswerResponse": "Parkujete? To je mestská polícia — 156. Čo sa stalo na ceste?",
+        "wrongAnswerTranslation": "Are you parked? That is city police — 156. What happened on the road?",
+        "choices": [
+          {
+            "id": "cm1a",
+            "text": "Nehoda na diaľnici! Auto horí a sú tu zranení!",
+            "translation": "Accident on the highway! A car is on fire and there are injured people!",
+            "isCorrect": true,
+            "nextNode": "call-multi-2",
+            "usesVocab": ["Nehoda"]
+          },
+          {
+            "id": "cm1b",
+            "text": "Je to núdza! Hromadná nehoda — požiar aj zranení!",
+            "translation": "It's an emergency! Mass accident — fire and injured people!",
+            "isCorrect": true,
+            "nextNode": "call-multi-2",
+            "usesVocab": ["Je to núdza", "Požiar"]
+          },
+          {
+            "id": "cm1c",
+            "text": "Auto blokuje parkovisko.",
+            "translation": "A car is blocking the parking lot.",
+            "isCorrect": false,
+            "usesVocab": []
+          }
+        ]
+      },
+      {
+        "id": "call-multi-2",
+        "speaker": "dispatcher",
+        "text": "Posielame všetky záchranné zložky. Adresa alebo diaľnica — ktorý úsek?",
+        "translation": "We are dispatching all emergency services. Address or highway — which section?",
+        "wrongAnswerResponse": "Meno neskôr — kde presne je nehoda? Ktorá diaľnica?",
+        "wrongAnswerTranslation": "Name later — where exactly is the accident? Which highway?",
+        "choices": [
+          {
+            "id": "cm2a",
+            "text": "Diaľnica D1 — za Bratislavou smer Trnava, kilometer dvadsať.",
+            "translation": "Highway D1 — past Bratislava towards Trnava, kilometre twenty.",
+            "isCorrect": true,
+            "nextNode": "call-multi-3",
+            "usesVocab": ["dvadsať"]
+          },
+          {
+            "id": "cm2b",
+            "text": "D2 pri Lamači — veľká zrážka, asi päť áut.",
+            "translation": "D2 near Lamač — big collision, about five cars.",
+            "isCorrect": true,
+            "nextNode": "call-multi-3",
+            "usesVocab": ["päť"]
+          },
+          {
+            "id": "cm2c",
+            "text": "Volám sa Peter Novák.",
+            "translation": "My name is Peter Novák.",
+            "isCorrect": false,
+            "usesVocab": ["Volám sa"]
+          }
+        ]
+      },
+      {
+        "id": "call-multi-3",
+        "speaker": "dispatcher",
+        "text": "Dobre. Hasiči, záchranná služba a polícia idú. Zostante v bezpečnej vzdialenosti.",
+        "translation": "Good. Fire brigade, ambulance and police are on their way. Stay at a safe distance.",
+        "wrongAnswerResponse": "Nie — zostante v bezpečí! Pomoc príde čoskoro.",
+        "wrongAnswerTranslation": "No — stay safe! Help is coming soon.",
+        "choices": [
+          {
+            "id": "cm3a",
+            "text": "Rozumiem. Zastavujem premávku. Ďakujem!",
+            "translation": "I understand. I am stopping traffic. Thank you!",
+            "isCorrect": true,
+            "nextNode": "call-multi-end",
+            "usesVocab": ["Ďakujem"]
+          },
+          {
+            "id": "cm3b",
+            "text": "Dobre. Idem pomôcť zraneným — opatrne.",
+            "translation": "Alright. I am going to help the injured — carefully.",
+            "isCorrect": true,
+            "nextNode": "call-multi-end",
+            "usesVocab": []
+          },
+          {
+            "id": "cm3c",
+            "text": "Dovidenia, idem preč.",
+            "translation": "Goodbye, I am leaving.",
+            "isCorrect": false,
+            "usesVocab": ["Dovidenia"]
+          }
+        ]
+      },
+      {
+        "id": "call-multi-end",
+        "speaker": "dispatcher",
+        "text": "Všetky záchranné zložky sú na ceste. Ďakujeme za váš zásah. Dovidenia.",
+        "translation": "All emergency services are on the way. Thank you for your intervention. Goodbye.",
+        "isEndNode": true,
+        "outcome": "D"
+      }
+    ],
+    "parking-156": [
+      {
+        "id": "call-park-1",
+        "speaker": "dispatcher",
+        "text": "Mestská polícia, dobrý deň. Čím môžem pomôcť?",
+        "translation": "City police, good day. How can I help?",
+        "wrongAnswerResponse": "Požiar? To sú hasiči — 150! Čo potrebujete od mestskej polície?",
+        "wrongAnswerTranslation": "Fire? That is the fire brigade — 150! What do you need from city police?",
+        "choices": [
+          {
+            "id": "cp1a",
+            "text": "Dobrý deň. Auto blokuje vjazd do mojej budovy tri hodiny.",
+            "translation": "Good day. A car has been blocking the entrance to my building for three hours.",
+            "isCorrect": true,
+            "nextNode": "call-park-2",
+            "usesVocab": ["Dobrý deň", "tri"]
+          },
+          {
+            "id": "cp1b",
+            "text": "Prepáčte — sused parkuje pred vchodom. Nikto neotvára dvere.",
+            "translation": "Excuse me — a neighbor is parked in front of the entrance. Nobody is answering the door.",
+            "isCorrect": true,
+            "nextNode": "call-park-2",
+            "usesVocab": ["Prepáčte"]
+          },
+          {
+            "id": "cp1c",
+            "text": "Je tu požiar!",
+            "translation": "There is a fire here!",
+            "isCorrect": false,
+            "usesVocab": ["Požiar"]
+          }
+        ]
+      },
+      {
+        "id": "call-park-2",
+        "speaker": "dispatcher",
+        "text": "Rozumiem. Aká je adresa a evidenčné číslo auta?",
+        "translation": "I understand. What is the address and the car registration number?",
+        "wrongAnswerResponse": "Záchranku? Nikto nie je zranený — potrebujem adresu a ŠPZ auta.",
+        "wrongAnswerTranslation": "Ambulance? Nobody is injured — I need the address and the car plate.",
+        "choices": [
+          {
+            "id": "cp2a",
+            "text": "Nobelova dvanásť. ŠPZ — neviem prečítať dobre.",
+            "translation": "Nobelova twelve. Plate — I cannot read it well.",
+            "isCorrect": true,
+            "nextNode": "call-park-3",
+            "usesVocab": ["dvanásť", "Neviem"]
+          },
+          {
+            "id": "cp2b",
+            "text": "Štefánikova osem. Auto je červené, ŠPZ BA123AB.",
+            "translation": "Štefánikova eight. The car is red, plate BA123AB.",
+            "isCorrect": true,
+            "nextNode": "call-park-3",
+            "usesVocab": ["osem"]
+          },
+          {
+            "id": "cp2c",
+            "text": "Zavolajte záchranku!",
+            "translation": "Call an ambulance!",
+            "isCorrect": false,
+            "usesVocab": ["záchranku"]
+          }
+        ]
+      },
+      {
+        "id": "call-park-3",
+        "speaker": "dispatcher",
+        "text": "Dobre. Hliadka príde do tridsiatich minút. Máte telefónne číslo?",
+        "translation": "Good. A patrol will arrive within thirty minutes. Do you have a phone number?",
+        "wrongAnswerResponse": "Hasiči? Nie je tu požiar! Môžem dostať vaše telefónne číslo?",
+        "wrongAnswerTranslation": "Fire brigade? There is no fire! Can I have your phone number?",
+        "choices": [
+          {
+            "id": "cp3a",
+            "text": "Áno — nula deväťsto päťdesiat, dvesto desať.",
+            "translation": "Yes — zero nine hundred fifty, two hundred ten.",
+            "isCorrect": true,
+            "nextNode": "call-park-end",
+            "usesVocab": ["Áno", "nula", "deväťsto", "päťdesiat", "dvesto", "desať"]
+          },
+          {
+            "id": "cp3b",
+            "text": "Áno, pošlem SMS s číslom.",
+            "translation": "Yes, I will send an SMS with the number.",
+            "isCorrect": true,
+            "nextNode": "call-park-end",
+            "usesVocab": ["Áno"]
+          },
+          {
+            "id": "cp3c",
+            "text": "Zavolajte hasičov!",
+            "translation": "Call the fire brigade!",
+            "isCorrect": false,
+            "usesVocab": ["Hasiči"]
+          }
+        ]
+      },
+      {
+        "id": "call-park-end",
+        "speaker": "dispatcher",
+        "text": "Výborne. Hliadka príde čoskoro. Dovidenia.",
+        "translation": "Excellent. A patrol will come shortly. Goodbye.",
+        "isEndNode": true,
+        "outcome": "E"
+      }
+    ]
+  }
+}

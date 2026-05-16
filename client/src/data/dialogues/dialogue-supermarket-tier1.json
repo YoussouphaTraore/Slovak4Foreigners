@@ -1,0 +1,338 @@
+{
+  "id": "dialogue-supermarket-tier1",
+  "tier": 1,
+  "stageRequired": "survival",
+  "topic": "At the Supermarket",
+  "description": "Find what you need, handle the checkout and pay",
+  "icon": "🏪",
+  "character": {
+    "name": "Pokladníčka",
+    "role": "cashier",
+    "avatar": "👩‍💼"
+  },
+  "outcomes": {
+    "A": {
+      "id": "outcome-card",
+      "title": "Paid by card and got your receipt 🧾",
+      "description": "You navigated the checkout like a local — loyalty card, card payment, receipt sorted.",
+      "xpBonus": 2
+    },
+    "B": {
+      "id": "outcome-cash",
+      "title": "Paid in cash and grabbed a bag 🛍️",
+      "description": "Cash in hand, bag packed, shopping done. Well handled!",
+      "xpBonus": 2
+    }
+  },
+  "nodes": [
+    {
+      "id": "node-1",
+      "speaker": "cashier",
+      "text": "Dobrý deň! Máte vernostnú kartu?",
+      "translation": "Good day! Do you have a loyalty card?",
+      "wrongAnswerResponse": "Záchranku? Ste v poriadku? Takže... máte vernostnú kartu?",
+      "wrongAnswerTranslation": "An ambulance? Are you okay? So... do you have a loyalty card?",
+      "choices": [
+        {
+          "id": "choice-1a",
+          "text": "Áno, prosím.",
+          "translation": "Yes, please.",
+          "isCorrect": true,
+          "nextNode": "node-2a",
+          "usesVocab": ["Áno", "prosím"]
+        },
+        {
+          "id": "choice-1b",
+          "text": "Nie, nemám.",
+          "translation": "No, I don't have one.",
+          "isCorrect": true,
+          "nextNode": "node-2b",
+          "usesVocab": ["Nie"]
+        },
+        {
+          "id": "choice-1c",
+          "text": "Zavolajte záchranku!",
+          "translation": "Call an ambulance!",
+          "isCorrect": false,
+          "usesVocab": ["záchranku"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-2a",
+      "speaker": "cashier",
+      "text": "Ďakujem. Spolu to je dvanásť eur päťdesiat.",
+      "translation": "Thank you. The total is twelve euros fifty.",
+      "autoAdvance": true,
+      "nextNode": "node-3a"
+    },
+
+    {
+      "id": "node-2b",
+      "speaker": "cashier",
+      "text": "To nevadí. Spolu to je dvanásť eur päťdesiat.",
+      "translation": "No problem. The total is twelve euros fifty.",
+      "autoAdvance": true,
+      "nextNode": "node-3b"
+    },
+
+    {
+      "id": "node-3a",
+      "speaker": "cashier",
+      "text": "Hotovosť alebo karta?",
+      "translation": "Cash or card?",
+      "wrongAnswerResponse": "Kde som? Som na pokladni... Hotovosť alebo karta?",
+      "wrongAnswerTranslation": "Where am I? I'm at the checkout... Cash or card?",
+      "choices": [
+        {
+          "id": "choice-3a-a",
+          "text": "Platím kartou.",
+          "translation": "I'm paying by card.",
+          "isCorrect": true,
+          "nextNode": "node-4-card",
+          "usesVocab": ["Platím kartou"]
+        },
+        {
+          "id": "choice-3a-b",
+          "text": "Platím hotovosťou.",
+          "translation": "I'm paying in cash.",
+          "isCorrect": true,
+          "nextNode": "node-4-cash",
+          "usesVocab": ["Platím hotovosťou"]
+        },
+        {
+          "id": "choice-3a-c",
+          "text": "Kde je nemocnica?",
+          "translation": "Where is the hospital?",
+          "isCorrect": false,
+          "usesVocab": ["Nemocnica"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-3b",
+      "speaker": "cashier",
+      "text": "Hotovosť alebo karta?",
+      "translation": "Cash or card?",
+      "wrongAnswerResponse": "Dovidenia je neskôr! Najprv zaplaťte — hotovosť alebo karta?",
+      "wrongAnswerTranslation": "Goodbye is later! First pay — cash or card?",
+      "choices": [
+        {
+          "id": "choice-3b-a",
+          "text": "Platím kartou.",
+          "translation": "I'm paying by card.",
+          "isCorrect": true,
+          "nextNode": "node-4-card",
+          "usesVocab": ["Platím kartou"]
+        },
+        {
+          "id": "choice-3b-b",
+          "text": "Platím hotovosťou.",
+          "translation": "I'm paying in cash.",
+          "isCorrect": true,
+          "nextNode": "node-4-cash",
+          "usesVocab": ["Platím hotovosťou"]
+        },
+        {
+          "id": "choice-3b-c",
+          "text": "Dovidenia!",
+          "translation": "Goodbye!",
+          "isCorrect": false,
+          "usesVocab": ["Dovidenia"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-4-card",
+      "speaker": "cashier",
+      "text": "Prosím vložte kartu.",
+      "translation": "Please insert your card.",
+      "autoAdvance": true,
+      "nextNode": "node-5-card"
+    },
+
+    {
+      "id": "node-5-card",
+      "speaker": "cashier",
+      "text": "Zadajte PIN, prosím.",
+      "translation": "Please enter your PIN.",
+      "wrongAnswerResponse": "Neviem váš PIN! Zadajte ho vy, prosím.",
+      "wrongAnswerTranslation": "I don't know your PIN! Please enter it yourself.",
+      "choices": [
+        {
+          "id": "choice-5-card-a",
+          "text": "Dobre, ďakujem.",
+          "translation": "Alright, thank you.",
+          "isCorrect": true,
+          "nextNode": "node-6-card",
+          "usesVocab": ["Ďakujem"]
+        },
+        {
+          "id": "choice-5-card-b",
+          "text": "Prepáčte, môžem platiť bezkontaktne?",
+          "translation": "Excuse me, can I pay contactless?",
+          "isCorrect": true,
+          "nextNode": "node-6-card",
+          "usesVocab": ["Prepáčte"]
+        },
+        {
+          "id": "choice-5-card-c",
+          "text": "Neviem. Pomoc!",
+          "translation": "I don't know. Help!",
+          "isCorrect": false,
+          "usesVocab": ["Neviem", "Pomoc!"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-4-cash",
+      "speaker": "cashier",
+      "text": "Dvanásť eur päťdesiat, prosím.",
+      "translation": "Twelve euros fifty, please.",
+      "wrongAnswerResponse": "Hm, to nie je peniaze... Dvanásť eur päťdesiat, prosím.",
+      "wrongAnswerTranslation": "Hm, that is not money... Twelve euros fifty, please.",
+      "choices": [
+        {
+          "id": "choice-4-cash-a",
+          "text": "Tu máte. Pätnásť eur.",
+          "translation": "Here you go. Fifteen euros.",
+          "isCorrect": true,
+          "nextNode": "node-5-cash",
+          "usesVocab": ["pätnásť"]
+        },
+        {
+          "id": "choice-4-cash-b",
+          "text": "Máte drobné? Mám len dvadsať eur.",
+          "translation": "Do you have change? I only have twenty euros.",
+          "isCorrect": true,
+          "nextNode": "node-5-cash",
+          "usesVocab": ["Máte drobné", "dvadsať"]
+        },
+        {
+          "id": "choice-4-cash-c",
+          "text": "Som z Francúzska.",
+          "translation": "I am from France.",
+          "isCorrect": false,
+          "usesVocab": ["Som z Francúzska"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-5-cash",
+      "speaker": "cashier",
+      "text": "Ďakujem. Tu sú drobné — dva eurá päťdesiat.",
+      "translation": "Thank you. Here is your change — two euros fifty.",
+      "autoAdvance": true,
+      "nextNode": "node-6-cash"
+    },
+
+    {
+      "id": "node-6-card",
+      "speaker": "cashier",
+      "text": "Platba prebehla. Chcete igelitku?",
+      "translation": "Payment successful. Would you like a plastic bag?",
+      "wrongAnswerResponse": "Polícia? Prečo? Chcete len igelitku?",
+      "wrongAnswerTranslation": "Police? Why? Do you just want a plastic bag?",
+      "choices": [
+        {
+          "id": "choice-6-card-a",
+          "text": "Áno, chcem igelitku, prosím.",
+          "translation": "Yes, I'd like a plastic bag please.",
+          "isCorrect": true,
+          "nextNode": "node-7-card-bag",
+          "usesVocab": ["Áno", "igelitku", "prosím"]
+        },
+        {
+          "id": "choice-6-card-b",
+          "text": "Nie, ďakujem. Môžem dostať účtenku?",
+          "translation": "No thank you. Can I get a receipt?",
+          "isCorrect": true,
+          "nextNode": "node-7-card-receipt",
+          "usesVocab": ["Nie", "Ďakujem", "Môžem dostať účtenku"]
+        },
+        {
+          "id": "choice-6-card-c",
+          "text": "Kde je polícia?",
+          "translation": "Where is the police?",
+          "isCorrect": false,
+          "usesVocab": ["polícia"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-6-cash",
+      "speaker": "cashier",
+      "text": "Chcete igelitku?",
+      "translation": "Would you like a plastic bag?",
+      "wrongAnswerResponse": "Nemocnica je inde... Chcete igelitku — áno alebo nie?",
+      "wrongAnswerTranslation": "The hospital is elsewhere... Do you want a bag — yes or no?",
+      "choices": [
+        {
+          "id": "choice-6-cash-a",
+          "text": "Áno, chcem igelitku, prosím.",
+          "translation": "Yes, I'd like a plastic bag please.",
+          "isCorrect": true,
+          "nextNode": "node-7-cash-bag",
+          "usesVocab": ["Áno", "igelitku", "prosím"]
+        },
+        {
+          "id": "choice-6-cash-b",
+          "text": "Nie, ďakujem.",
+          "translation": "No, thank you.",
+          "isCorrect": true,
+          "nextNode": "node-7-cash-no-bag",
+          "usesVocab": ["Nie", "Ďakujem"]
+        },
+        {
+          "id": "choice-6-cash-c",
+          "text": "Kde je nemocnica?",
+          "translation": "Where is the hospital?",
+          "isCorrect": false,
+          "usesVocab": ["Nemocnica"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-7-card-bag",
+      "speaker": "cashier",
+      "text": "Tu je igelitka — desať centov. A tu je vaša účtenka. Príjemný nákup!",
+      "translation": "Here is your bag — ten cents. And here is your receipt. Happy shopping!",
+      "isEndNode": true,
+      "outcome": "A"
+    },
+
+    {
+      "id": "node-7-card-receipt",
+      "speaker": "cashier",
+      "text": "Samozrejme! Tu je účtenka. Príjemný nákup!",
+      "translation": "Of course! Here is your receipt. Happy shopping!",
+      "isEndNode": true,
+      "outcome": "A"
+    },
+
+    {
+      "id": "node-7-cash-bag",
+      "speaker": "cashier",
+      "text": "Tu je igelitka — desať centov. Príjemný nákup!",
+      "translation": "Here is your bag — ten cents. Happy shopping!",
+      "isEndNode": true,
+      "outcome": "B"
+    },
+
+    {
+      "id": "node-7-cash-no-bag",
+      "speaker": "cashier",
+      "text": "Dobre. Príjemný nákup!",
+      "translation": "Alright. Happy shopping!",
+      "isEndNode": true,
+      "outcome": "B"
+    }
+  ]
+}

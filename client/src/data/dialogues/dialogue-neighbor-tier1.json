@@ -1,0 +1,370 @@
+{
+  "id": "dialogue-neighbor-tier1",
+  "tier": 1,
+  "stageRequired": "survival",
+  "topic": "Meeting Your Neighbor",
+  "description": "Introduce yourself to your Slovak neighbor for the first time",
+  "icon": "👋",
+  "character": {
+    "name": "Sused",
+    "role": "neighbor",
+    "avatar": "🧑‍🦳"
+  },
+  "outcomes": {
+    "A": {
+      "id": "outcome-invited",
+      "title": "You got invited for coffee! ☕",
+      "description": "Great first impression — your neighbor invited you over. You're settling in nicely.",
+      "xpBonus": 3
+    },
+    "B": {
+      "id": "outcome-friendly",
+      "title": "Friendly chat, warm goodbye 😊",
+      "description": "Short but warm — your neighbor knows your name and where you're from. Good start!",
+      "xpBonus": 2
+    }
+  },
+  "nodes": [
+    {
+      "id": "node-1",
+      "speaker": "neighbor",
+      "text": "Dobré ráno! Vy ste nový sused, áno?",
+      "translation": "Good morning! You are the new neighbor, yes?",
+      "wrongAnswerResponse": "Záchranku? Ale... ste v poriadku? Vy ste nový sused?",
+      "wrongAnswerTranslation": "An ambulance? But... are you okay? Are you the new neighbor?",
+      "choices": [
+        {
+          "id": "choice-1a",
+          "text": "Dobré ráno! Áno, volám sa Ana. Teší ma.",
+          "translation": "Good morning! Yes, my name is Ana. Nice to meet you.",
+          "isCorrect": true,
+          "nextNode": "node-2a",
+          "usesVocab": ["Dobré ráno", "Áno", "Volám sa", "Teší ma"]
+        },
+        {
+          "id": "choice-1b",
+          "text": "Dobrý deň! Áno. Volám sa Martin.",
+          "translation": "Good day! Yes. My name is Martin.",
+          "isCorrect": true,
+          "nextNode": "node-2b",
+          "usesVocab": ["Dobrý deň", "Áno", "Volám sa"]
+        },
+        {
+          "id": "choice-1c",
+          "text": "Zavolajte záchranku!",
+          "translation": "Call an ambulance!",
+          "isCorrect": false,
+          "usesVocab": ["záchranku"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-2a",
+      "speaker": "neighbor",
+      "text": "Ana — pekné meno! Som Pán Horváth. Odkiaľ ste?",
+      "translation": "Ana — lovely name! I am Mr. Horváth. Where are you from?",
+      "wrongAnswerResponse": "Polícia? Tu nie je žiadny problém! Odkiaľ ste?",
+      "wrongAnswerTranslation": "Police? There is no problem here! Where are you from?",
+      "choices": [
+        {
+          "id": "choice-2a-a",
+          "text": "Som z Francúzska. A vy?",
+          "translation": "I am from France. And you?",
+          "isCorrect": true,
+          "nextNode": "node-3a-curious",
+          "usesVocab": ["Som z Francúzska"]
+        },
+        {
+          "id": "choice-2a-b",
+          "text": "Pochádzam z Indie. Bývam tu prvý týždeň.",
+          "translation": "I come from India. I have been living here for the first week.",
+          "isCorrect": true,
+          "nextNode": "node-3a-new",
+          "usesVocab": ["Pochádzam z Indie"]
+        },
+        {
+          "id": "choice-2a-c",
+          "text": "Kde je polícia?",
+          "translation": "Where is the police?",
+          "isCorrect": false,
+          "usesVocab": ["polícia"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-2b",
+      "speaker": "neighbor",
+      "text": "Martin, vítajte! Som pani Kováčová. Odkiaľ ste?",
+      "translation": "Martin, welcome! I am Mrs. Kováčová. Where are you from?",
+      "wrongAnswerResponse": "Neviem prečo... ale odkiaľ ste, Martin?",
+      "wrongAnswerTranslation": "I don't know why... but where are you from, Martin?",
+      "choices": [
+        {
+          "id": "choice-2b-a",
+          "text": "Som z Nemecka. Hovorím trochu po slovensky.",
+          "translation": "I am from Germany. I speak a little Slovak.",
+          "isCorrect": true,
+          "nextNode": "node-3b-language",
+          "usesVocab": ["Som z Nemecka"]
+        },
+        {
+          "id": "choice-2b-b",
+          "text": "Som z Brazílie. Teší ma, pani Kováčová.",
+          "translation": "I am from Brazil. Nice to meet you, Mrs. Kováčová.",
+          "isCorrect": true,
+          "nextNode": "node-3b-friendly",
+          "usesVocab": ["Som z Brazílie", "Teší ma"]
+        },
+        {
+          "id": "choice-2b-c",
+          "text": "Kde je nemocnica?",
+          "translation": "Where is the hospital?",
+          "isCorrect": false,
+          "usesVocab": ["Nemocnica"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-3a-curious",
+      "speaker": "neighbor",
+      "text": "Z Francúzska! Zaujímavé. Ja som zo Slovenska, samozrejme! Páči sa vám tu?",
+      "translation": "From France! Interesting. I am from Slovakia, of course! Do you like it here?",
+      "wrongAnswerResponse": "Pomoc? Ale... ste v poriadku? Páči sa vám tu?",
+      "wrongAnswerTranslation": "Help? But... are you okay? Do you like it here?",
+      "choices": [
+        {
+          "id": "choice-3a-curious-a",
+          "text": "Áno, veľmi! Ľudia sú milí.",
+          "translation": "Yes, very much! The people are kind.",
+          "isCorrect": true,
+          "nextNode": "node-4-invite",
+          "usesVocab": ["Áno"]
+        },
+        {
+          "id": "choice-3a-curious-b",
+          "text": "Áno. Ale ešte nehovorím dobre po slovensky.",
+          "translation": "Yes. But I don't speak Slovak well yet.",
+          "isCorrect": true,
+          "nextNode": "node-4-invite",
+          "usesVocab": ["Áno"]
+        },
+        {
+          "id": "choice-3a-curious-c",
+          "text": "Pomoc! Neviem.",
+          "translation": "Help! I don't know.",
+          "isCorrect": false,
+          "usesVocab": ["Pomoc!", "Neviem"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-3a-new",
+      "speaker": "neighbor",
+      "text": "Prvý týždeň! Tak vítajte! Potrebujete niečo?",
+      "translation": "First week! Welcome then! Do you need anything?",
+      "wrongAnswerResponse": "Požiar? Kde? Nevidím nič... Potrebujete niečo?",
+      "wrongAnswerTranslation": "Fire? Where? I don't see anything... Do you need anything?",
+      "choices": [
+        {
+          "id": "choice-3a-new-a",
+          "text": "Ďakujem, ste veľmi milý!",
+          "translation": "Thank you, you are very kind!",
+          "isCorrect": true,
+          "nextNode": "node-4-invite",
+          "usesVocab": ["Ďakujem"]
+        },
+        {
+          "id": "choice-3a-new-b",
+          "text": "Ďakujem. Prepáčte — kde je najbližší obchod?",
+          "translation": "Thank you. Excuse me — where is the nearest shop?",
+          "isCorrect": true,
+          "nextNode": "node-3a-shop",
+          "usesVocab": ["Ďakujem", "Prepáčte"]
+        },
+        {
+          "id": "choice-3a-new-c",
+          "text": "Požiar! Požiar!",
+          "translation": "Fire! Fire!",
+          "isCorrect": false,
+          "usesVocab": ["Požiar"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-3b-language",
+      "speaker": "neighbor",
+      "text": "Ach, z Nemecka! A hovoríte po slovensky — výborne! Ako dlho ste tu?",
+      "translation": "Oh, from Germany! And you speak Slovak — excellent! How long have you been here?",
+      "wrongAnswerResponse": "Záchranár? Ale... ste v poriadku? Ako dlho ste tu?",
+      "wrongAnswerTranslation": "Paramedic? But... are you okay? How long have you been here?",
+      "choices": [
+        {
+          "id": "choice-3b-lang-a",
+          "text": "Dva mesiace. Slovenčina je ťažká!",
+          "translation": "Two months. Slovak is difficult!",
+          "isCorrect": true,
+          "nextNode": "node-4-friendly-end",
+          "usesVocab": ["dva"]
+        },
+        {
+          "id": "choice-3b-lang-b",
+          "text": "Tri týždne. Učím sa každý deň.",
+          "translation": "Three weeks. I study every day.",
+          "isCorrect": true,
+          "nextNode": "node-4-friendly-end",
+          "usesVocab": ["tri"]
+        },
+        {
+          "id": "choice-3b-lang-c",
+          "text": "Potrebujem záchranára!",
+          "translation": "I need a paramedic!",
+          "isCorrect": false,
+          "usesVocab": ["záchranár"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-3b-friendly",
+      "speaker": "neighbor",
+      "text": "Z Brazílie! To je ďaleko. Hovoríte po slovensky?",
+      "translation": "From Brazil! That is far. Do you speak Slovak?",
+      "wrongAnswerResponse": "Neviem čo to je... Hovoríte po slovensky?",
+      "wrongAnswerTranslation": "I don't know what that is... Do you speak Slovak?",
+      "choices": [
+        {
+          "id": "choice-3b-fr-a",
+          "text": "Trochu. Ešte sa učím.",
+          "translation": "A little. I am still learning.",
+          "isCorrect": true,
+          "nextNode": "node-4-friendly-end",
+          "usesVocab": []
+        },
+        {
+          "id": "choice-3b-fr-b",
+          "text": "Nie veľmi. Ale rozumiem trochu.",
+          "translation": "Not very much. But I understand a little.",
+          "isCorrect": true,
+          "nextNode": "node-4-friendly-end",
+          "usesVocab": ["Nie"]
+        },
+        {
+          "id": "choice-3b-fr-c",
+          "text": "Neviem. Pomoc!",
+          "translation": "I don't know. Help!",
+          "isCorrect": false,
+          "usesVocab": ["Neviem", "Pomoc!"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-3a-shop",
+      "speaker": "neighbor",
+      "text": "Samozrejme! Tesco je hneď za rohom — päť minút peši.",
+      "translation": "Of course! Tesco is right around the corner — five minutes on foot.",
+      "autoAdvance": true,
+      "nextNode": "node-4-invite"
+    },
+
+    {
+      "id": "node-4-invite",
+      "speaker": "neighbor",
+      "text": "Výborne! Chcete prísť na kávu? Zajtra o desiatej?",
+      "translation": "Excellent! Would you like to come for coffee? Tomorrow at ten?",
+      "wrongAnswerResponse": "Záchod? Je vo vašom byte! Chcete prísť na kávu?",
+      "wrongAnswerTranslation": "Bathroom? It's in your flat! Would you like to come for coffee?",
+      "choices": [
+        {
+          "id": "choice-4-invite-a",
+          "text": "Áno, veľmi rada! Ďakujem.",
+          "translation": "Yes, I'd love to! Thank you.",
+          "isCorrect": true,
+          "nextNode": "node-end-A-accept",
+          "usesVocab": ["Áno", "Ďakujem"]
+        },
+        {
+          "id": "choice-4-invite-b",
+          "text": "Ďakujem pekne! Dovidenia.",
+          "translation": "Thank you very much! Goodbye.",
+          "isCorrect": true,
+          "nextNode": "node-end-A-decline",
+          "usesVocab": ["Ďakujem", "Dovidenia"]
+        },
+        {
+          "id": "choice-4-invite-c",
+          "text": "Kde je záchod?",
+          "translation": "Where is the bathroom?",
+          "isCorrect": false,
+          "usesVocab": ["záchod"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-4-friendly-end",
+      "speaker": "neighbor",
+      "text": "To je skvelé! Vitajte v budove. Ak niečo potrebujete — volajte!",
+      "translation": "That is great! Welcome to the building. If you need anything — just call!",
+      "wrongAnswerResponse": "Dobrú noc? Je ráno! Vitajte v budove!",
+      "wrongAnswerTranslation": "Good night? It's morning! Welcome to the building!",
+      "choices": [
+        {
+          "id": "choice-4-fe-a",
+          "text": "Ďakujem pekne! Dovidenia.",
+          "translation": "Thank you very much! Goodbye.",
+          "isCorrect": true,
+          "nextNode": "node-end-B",
+          "usesVocab": ["Ďakujem", "Dovidenia"]
+        },
+        {
+          "id": "choice-4-fe-b",
+          "text": "Ďakujem! Čau!",
+          "translation": "Thank you! Bye!",
+          "isCorrect": true,
+          "nextNode": "node-end-B",
+          "usesVocab": ["Ďakujem", "Čau"]
+        },
+        {
+          "id": "choice-4-fe-c",
+          "text": "Dobrú noc!",
+          "translation": "Good night!",
+          "isCorrect": false,
+          "usesVocab": []
+        }
+      ]
+    },
+
+    {
+      "id": "node-end-A-accept",
+      "speaker": "neighbor",
+      "text": "Výborne! Zajtra o desiatej. Dovidenia!",
+      "translation": "Excellent! Tomorrow at ten. Goodbye!",
+      "isEndNode": true,
+      "outcome": "A"
+    },
+
+    {
+      "id": "node-end-A-decline",
+      "speaker": "neighbor",
+      "text": "Škoda! Ale ponuka platí. Dovidenia, Ana!",
+      "translation": "What a pity! But the offer stands. Goodbye, Ana!",
+      "isEndNode": true,
+      "outcome": "A"
+    },
+
+    {
+      "id": "node-end-B",
+      "speaker": "neighbor",
+      "text": "Dovidenia! Príjemný deň!",
+      "translation": "Goodbye! Have a nice day!",
+      "isEndNode": true,
+      "outcome": "B"
+    }
+  ]
+}

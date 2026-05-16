@@ -1,0 +1,404 @@
+{
+  "id": "dialogue-coffee-tier1",
+  "tier": 1,
+  "stageRequired": "survival",
+  "topic": "At the Coffee Shop",
+  "description": "Order a coffee, handle payment, and leave politely",
+  "icon": "☕",
+  "character": {
+    "name": "Barista",
+    "role": "barista",
+    "avatar": "👩‍🍳"
+  },
+  "outcomes": {
+    "A": {
+      "id": "outcome-sit-down",
+      "title": "You sat down with your coffee ☕",
+      "description": "You ordered, paid and found a table. Comfortable!",
+      "xpBonus": 2
+    },
+    "B": {
+      "id": "outcome-takeaway",
+      "title": "You took your coffee to go 🚶",
+      "description": "Quick and efficient — you ordered and left with your coffee.",
+      "xpBonus": 2
+    }
+  },
+  "nodes": [
+    {
+      "id": "node-1",
+      "speaker": "barista",
+      "text": "Dobrý deň! Čo si dáte?",
+      "translation": "Good day! What will you have?",
+      "wrongAnswerResponse": "Hmm... záchod je tam vpravo. Ale čo si dáte?",
+      "wrongAnswerTranslation": "Hmm... the bathroom is over there to the right. But what will you have?",
+      "choices": [
+        {
+          "id": "choice-1a",
+          "text": "Dobrý deň! Jedno cappuccino, prosím.",
+          "translation": "Good day! One cappuccino, please.",
+          "isCorrect": true,
+          "nextNode": "node-2a",
+          "usesVocab": ["Dobrý deň", "prosím"]
+        },
+        {
+          "id": "choice-1b",
+          "text": "Dobrý deň! Jednu kávu, prosím.",
+          "translation": "Good day! One coffee, please.",
+          "isCorrect": true,
+          "nextNode": "node-2b",
+          "usesVocab": ["Dobrý deň", "prosím"]
+        },
+        {
+          "id": "choice-1c",
+          "text": "Neviem. Kde je záchod?",
+          "translation": "I don't know. Where is the bathroom?",
+          "isCorrect": false,
+          "usesVocab": ["Neviem"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-2a",
+      "speaker": "barista",
+      "text": "Cappuccino — veľké alebo malé?",
+      "translation": "Cappuccino — large or small?",
+      "wrongAnswerResponse": "Platíte neskôr — najprv mi povedzte: veľké alebo malé?",
+      "wrongAnswerTranslation": "You pay later — first tell me: large or small?",
+      "choices": [
+        {
+          "id": "choice-2a-a",
+          "text": "Veľké, prosím.",
+          "translation": "Large, please.",
+          "isCorrect": true,
+          "nextNode": "node-3a",
+          "usesVocab": ["prosím"]
+        },
+        {
+          "id": "choice-2a-b",
+          "text": "Malé, prosím.",
+          "translation": "Small, please.",
+          "isCorrect": true,
+          "nextNode": "node-3a",
+          "usesVocab": ["prosím"]
+        },
+        {
+          "id": "choice-2a-c",
+          "text": "Platím kartou.",
+          "translation": "I'm paying by card.",
+          "isCorrect": false,
+          "usesVocab": ["Platím kartou"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-2b",
+      "speaker": "barista",
+      "text": "Áno. Tu alebo so sebou?",
+      "translation": "Yes. Dine in or take away?",
+      "wrongAnswerResponse": "To je... iná otázka. Tu alebo so sebou?",
+      "wrongAnswerTranslation": "That is... a different question. Dine in or take away?",
+      "choices": [
+        {
+          "id": "choice-2b-a",
+          "text": "Tu, prosím.",
+          "translation": "Here, please.",
+          "isCorrect": true,
+          "nextNode": "node-3b-sit",
+          "usesVocab": ["prosím"]
+        },
+        {
+          "id": "choice-2b-b",
+          "text": "So sebou, prosím.",
+          "translation": "To go, please.",
+          "isCorrect": true,
+          "nextNode": "node-3b-go",
+          "usesVocab": ["prosím"]
+        },
+        {
+          "id": "choice-2b-c",
+          "text": "Pomoc! Neviem.",
+          "translation": "Help! I don't know.",
+          "isCorrect": false,
+          "usesVocab": ["Pomoc!", "Neviem"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-3a",
+      "speaker": "barista",
+      "text": "Dobre. Tu alebo so sebou?",
+      "translation": "Alright. Dine in or take away?",
+      "wrongAnswerResponse": "Dovidenia je na konci — teraz: tu alebo so sebou?",
+      "wrongAnswerTranslation": "Goodbye comes at the end — for now: dine in or take away?",
+      "choices": [
+        {
+          "id": "choice-3a-a",
+          "text": "Tu, prosím.",
+          "translation": "Here please.",
+          "isCorrect": true,
+          "nextNode": "node-4-sit",
+          "usesVocab": ["prosím"]
+        },
+        {
+          "id": "choice-3a-b",
+          "text": "So sebou, prosím.",
+          "translation": "To go, please.",
+          "isCorrect": true,
+          "nextNode": "node-4-go",
+          "usesVocab": ["prosím"]
+        },
+        {
+          "id": "choice-3a-c",
+          "text": "Dovidenia.",
+          "translation": "Goodbye.",
+          "isCorrect": false,
+          "usesVocab": ["Dovidenia"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-3b-sit",
+      "speaker": "barista",
+      "text": "Dobre! Tri eurá päťdesiat, prosím.",
+      "translation": "Alright! Three euros fifty, please.",
+      "autoAdvance": true,
+      "nextNode": "node-4-sit"
+    },
+
+    {
+      "id": "node-3b-go",
+      "speaker": "barista",
+      "text": "Dobre! Tri eurá päťdesiat, prosím.",
+      "translation": "Alright! Three euros fifty, please.",
+      "autoAdvance": true,
+      "nextNode": "node-4-go"
+    },
+
+    {
+      "id": "node-4-sit",
+      "speaker": "barista",
+      "text": "Hotovosť alebo karta?",
+      "translation": "Cash or card?",
+      "wrongAnswerResponse": "Nemocnica? To neviem... Hotovosť alebo karta?",
+      "wrongAnswerTranslation": "The hospital? I don't know that... Cash or card?",
+      "choices": [
+        {
+          "id": "choice-4-sit-a",
+          "text": "Platím kartou.",
+          "translation": "I'm paying by card.",
+          "isCorrect": true,
+          "nextNode": "node-5-sit",
+          "usesVocab": ["Platím kartou"]
+        },
+        {
+          "id": "choice-4-sit-b",
+          "text": "Platím v hotovosti.",
+          "translation": "I'm paying in cash.",
+          "isCorrect": true,
+          "nextNode": "node-5-sit",
+          "usesVocab": ["Platím v hotovosti"]
+        },
+        {
+          "id": "choice-4-sit-c",
+          "text": "Kde je nemocnica?",
+          "translation": "Where is the hospital?",
+          "isCorrect": false,
+          "usesVocab": ["Nemocnica"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-4-go",
+      "speaker": "barista",
+      "text": "Hotovosť alebo karta?",
+      "translation": "Cash or card?",
+      "wrongAnswerResponse": "Áno, nie, prosím... to nie je odpoveď. Hotovosť alebo karta?",
+      "wrongAnswerTranslation": "Yes, no, please... that's not an answer. Cash or card?",
+      "choices": [
+        {
+          "id": "choice-4-go-a",
+          "text": "Platím kartou.",
+          "translation": "I'm paying by card.",
+          "isCorrect": true,
+          "nextNode": "node-5-go",
+          "usesVocab": ["Platím kartou"]
+        },
+        {
+          "id": "choice-4-go-b",
+          "text": "Platím v hotovosti.",
+          "translation": "I'm paying in cash.",
+          "isCorrect": true,
+          "nextNode": "node-5-go",
+          "usesVocab": ["Platím v hotovosti"]
+        },
+        {
+          "id": "choice-4-go-c",
+          "text": "Áno, nie, prosím.",
+          "translation": "Yes, no, please.",
+          "isCorrect": false,
+          "usesVocab": ["Áno", "Nie", "Prosím"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-5-sit",
+      "speaker": "barista",
+      "text": "Ďakujem. Chcete účtenku?",
+      "translation": "Thank you. Would you like a receipt?",
+      "wrongAnswerResponse": "Záchranku? Ale... ste v poriadku? Chcete účtenku?",
+      "wrongAnswerTranslation": "An ambulance? But... are you okay? Do you want a receipt?",
+      "choices": [
+        {
+          "id": "choice-5-sit-a",
+          "text": "Áno, prosím.",
+          "translation": "Yes, please.",
+          "isCorrect": true,
+          "nextNode": "node-6-sit",
+          "usesVocab": ["Áno", "prosím"]
+        },
+        {
+          "id": "choice-5-sit-b",
+          "text": "Nie, ďakujem.",
+          "translation": "No, thank you.",
+          "isCorrect": true,
+          "nextNode": "node-6-sit",
+          "usesVocab": ["Nie", "Ďakujem"]
+        },
+        {
+          "id": "choice-5-sit-c",
+          "text": "Zavolajte záchranku!",
+          "translation": "Call an ambulance!",
+          "isCorrect": false,
+          "usesVocab": ["záchranku"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-5-go",
+      "speaker": "barista",
+      "text": "Ďakujem. Tu je vaša káva.",
+      "translation": "Thank you. Here is your coffee.",
+      "wrongAnswerResponse": "Z Nemecka? Zaujímavé! Ale — tu je vaša káva. Dovidenia?",
+      "wrongAnswerTranslation": "From Germany? Interesting! But — here is your coffee. Goodbye?",
+      "choices": [
+        {
+          "id": "choice-5-go-a",
+          "text": "Ďakujem. Dovidenia!",
+          "translation": "Thank you. Goodbye!",
+          "isCorrect": true,
+          "nextNode": "node-end-B",
+          "usesVocab": ["Ďakujem", "Dovidenia"]
+        },
+        {
+          "id": "choice-5-go-b",
+          "text": "Môžem dostať účtenku?",
+          "translation": "Can I get a receipt?",
+          "isCorrect": true,
+          "nextNode": "node-6-go",
+          "usesVocab": ["Môžem dostať účtenku"]
+        },
+        {
+          "id": "choice-5-go-c",
+          "text": "Som z Nemecka.",
+          "translation": "I am from Germany.",
+          "isCorrect": false,
+          "usesVocab": ["Som z Nemecka"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-6-sit",
+      "speaker": "barista",
+      "text": "Prosím! Sadnite si, káva príde za chvíľu.",
+      "translation": "Of course! Please sit down, coffee will come in a moment.",
+      "wrongAnswerResponse": "Pomoc? Ale ste v poriadku! Sadnite si, prosím.",
+      "wrongAnswerTranslation": "Help? But you are fine! Please sit down.",
+      "choices": [
+        {
+          "id": "choice-6-sit-a",
+          "text": "Ďakujem!",
+          "translation": "Thank you!",
+          "isCorrect": true,
+          "nextNode": "node-end-A",
+          "usesVocab": ["Ďakujem"]
+        },
+        {
+          "id": "choice-6-sit-b",
+          "text": "Prepáčte, môžem si sadnúť tam?",
+          "translation": "Excuse me, can I sit over there?",
+          "isCorrect": true,
+          "nextNode": "node-end-A",
+          "usesVocab": ["Prepáčte", "Tam"]
+        },
+        {
+          "id": "choice-6-sit-c",
+          "text": "Neviem. Pomoc!",
+          "translation": "I don't know. Help!",
+          "isCorrect": false,
+          "usesVocab": ["Neviem", "Pomoc!"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-6-go",
+      "speaker": "barista",
+      "text": "Áno, tu je účtenka. Príjemný deň!",
+      "translation": "Yes, here is your receipt. Have a nice day!",
+      "wrongAnswerResponse": "Polícia? Neviem prečo... Tu je účtenka. Dovidenia?",
+      "wrongAnswerTranslation": "The police? I don't know why... Here is your receipt. Goodbye?",
+      "choices": [
+        {
+          "id": "choice-6-go-a",
+          "text": "Ďakujem. Dovidenia!",
+          "translation": "Thank you. Goodbye!",
+          "isCorrect": true,
+          "nextNode": "node-end-B",
+          "usesVocab": ["Ďakujem", "Dovidenia"]
+        },
+        {
+          "id": "choice-6-go-b",
+          "text": "Ďakujem pekne. Čau!",
+          "translation": "Thank you very much. Bye!",
+          "isCorrect": true,
+          "nextNode": "node-end-B",
+          "usesVocab": ["Ďakujem", "Čau"]
+        },
+        {
+          "id": "choice-6-go-c",
+          "text": "Kde je polícia?",
+          "translation": "Where is the police?",
+          "isCorrect": false,
+          "usesVocab": ["Polícia"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-end-A",
+      "speaker": "barista",
+      "text": "Tu je vaša káva. Dobrú chuť!",
+      "translation": "Here is your coffee. Enjoy!",
+      "isEndNode": true,
+      "outcome": "A"
+    },
+
+    {
+      "id": "node-end-B",
+      "speaker": "barista",
+      "text": "Dovidenia! Príjemný deň!",
+      "translation": "Goodbye! Have a nice day!",
+      "isEndNode": true,
+      "outcome": "B"
+    }
+  ]
+}

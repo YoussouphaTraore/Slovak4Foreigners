@@ -64,6 +64,7 @@ interface ProgressStore {
   lessonRecords: LessonRecord[];
   unlockedStages: string[];       // stageIds user has paid to unlock
   snailRaceRecords: SnailRaceRecord[];
+  triedEmergencyScenarios: string[];
 
   // XP actions
   addXP: (amount: number) => void;
@@ -93,6 +94,9 @@ interface ProgressStore {
   getWeakLessons: () => LessonRecord[];
   getSuggestedReviews: () => LessonRecord[];
 
+  // Emergency scenarios
+  markEmergencyScenarioTried: (scenarioId: string) => void;
+
   // Called on app load
   decayLessonStrengths: () => void;
   checkAndUpdateStreak: () => void;
@@ -112,6 +116,7 @@ export const useProgressStore = create<ProgressStore>()(
       lessonRecords: [],
       unlockedStages: ['survival'],
       snailRaceRecords: [],
+      triedEmergencyScenarios: [],
 
       // ── XP ────────────────────────────────────────────────────────────────
 
@@ -243,6 +248,15 @@ export const useProgressStore = create<ProgressStore>()(
           blocked: false,
         };
       },
+
+      // ── Emergency scenarios ───────────────────────────────────────────────
+
+      markEmergencyScenarioTried: (scenarioId) =>
+        set((s) => ({
+          triedEmergencyScenarios: s.triedEmergencyScenarios.includes(scenarioId)
+            ? s.triedEmergencyScenarios
+            : [...s.triedEmergencyScenarios, scenarioId],
+        })),
 
       // ── Review helpers ────────────────────────────────────────────────────
 

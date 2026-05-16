@@ -1,0 +1,270 @@
+{
+  "id": "dialogue-bus-tier1",
+  "tier": 1,
+  "stageRequired": "survival",
+  "topic": "On the Bus",
+  "description": "Buy a ticket, find your stop and get off at the right place",
+  "icon": "🚌",
+  "character": {
+    "name": "Vodič",
+    "role": "bus_driver",
+    "avatar": "🧑‍✈️"
+  },
+  "outcomes": {
+    "A": {
+      "id": "outcome-direct",
+      "title": "You got off at the right stop! 🎯",
+      "description": "Direct bus, ticket stamped, right stop — you navigated Bratislava like a local.",
+      "xpBonus": 2
+    },
+    "B": {
+      "id": "outcome-transfer",
+      "title": "You transferred and made it! 🎉",
+      "description": "One transfer needed but you handled it perfectly. Two buses, one destination.",
+      "xpBonus": 3
+    }
+  },
+  "nodes": [
+    {
+      "id": "node-1",
+      "speaker": "bus_driver",
+      "text": "Dobrý deň! Kam idete?",
+      "translation": "Good day! Where are you going?",
+      "wrongAnswerResponse": "Pomoc? Som len vodič... Tak — kam idete?",
+      "wrongAnswerTranslation": "Help? I am just a driver... So — where are you going?",
+      "choices": [
+        {
+          "id": "choice-1a",
+          "text": "Prosím si jednorazový lístok. Idem do centra.",
+          "translation": "A single ticket please. I'm going to the city centre.",
+          "isCorrect": true,
+          "nextNode": "node-2a",
+          "usesVocab": ["prosím", "jednorazový lístok"]
+        },
+        {
+          "id": "choice-1b",
+          "text": "Idem na Hlavnú stanicu. Koľko to bude stáť?",
+          "translation": "I'm going to the Main Station. How much will it cost?",
+          "isCorrect": true,
+          "nextNode": "node-2b",
+          "usesVocab": ["Koľko to bude stáť", "Hlavná stanica"]
+        },
+        {
+          "id": "choice-1c",
+          "text": "Neviem. Som z Nemecka.",
+          "translation": "I don't know. I am from Germany.",
+          "isCorrect": false,
+          "usesVocab": ["Neviem", "Som z Nemecka"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-2a",
+      "speaker": "bus_driver",
+      "text": "Jeden lístok — jedno euro. Môžete platiť kartou.",
+      "translation": "One ticket — one euro. You can pay by card.",
+      "autoAdvance": true,
+      "nextNode": "node-3a"
+    },
+
+    {
+      "id": "node-2b",
+      "speaker": "bus_driver",
+      "text": "Hlavná stanica? Tento autobus tam nejde priamo. Musíte prestupiť na zastávke Námestie SNP.",
+      "translation": "Main Station? This bus doesn't go there directly. You need to transfer at Námestie SNP stop.",
+      "autoAdvance": true,
+      "nextNode": "node-3b"
+    },
+
+    {
+      "id": "node-3a",
+      "speaker": "bus_driver",
+      "text": "Nezabudnite okompostovať lístok!",
+      "translation": "Don't forget to stamp your ticket!",
+      "wrongAnswerResponse": "Záchod? To nie je tu... Okompostujte lístok, prosím!",
+      "wrongAnswerTranslation": "Bathroom? That's not here... Please stamp your ticket!",
+      "choices": [
+        {
+          "id": "choice-3a-a",
+          "text": "Dobre, ďakujem! Kde mám vystúpiť?",
+          "translation": "Alright, thank you! Where do I get off?",
+          "isCorrect": true,
+          "nextNode": "node-4a",
+          "usesVocab": ["ďakujem", "Kde mám vystúpiť"]
+        },
+        {
+          "id": "choice-3a-b",
+          "text": "Ďakujem. Aká je ďalšia zastávka?",
+          "translation": "Thank you. What is the next stop?",
+          "isCorrect": true,
+          "nextNode": "node-4a",
+          "usesVocab": ["Ďakujem", "Aká je ďalšia zastávka"]
+        },
+        {
+          "id": "choice-3a-c",
+          "text": "Kde je záchod?",
+          "translation": "Where is the bathroom?",
+          "isCorrect": false,
+          "usesVocab": ["záchod"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-3b",
+      "speaker": "bus_driver",
+      "text": "Rozumiete? Prestup na Námestie SNP.",
+      "translation": "Do you understand? Transfer at Námestie SNP.",
+      "wrongAnswerResponse": "Dovidenia je potom — teraz: rozumiete o prestupe?",
+      "wrongAnswerTranslation": "Goodbye is later — now: do you understand about the transfer?",
+      "choices": [
+        {
+          "id": "choice-3b-a",
+          "text": "Áno, rozumiem. Ďakujem!",
+          "translation": "Yes, I understand. Thank you!",
+          "isCorrect": true,
+          "nextNode": "node-4b",
+          "usesVocab": ["Áno", "Ďakujem"]
+        },
+        {
+          "id": "choice-3b-b",
+          "text": "Prepáčte — ktorý autobus idem potom?",
+          "translation": "Excuse me — which bus do I take after?",
+          "isCorrect": true,
+          "nextNode": "node-4b-ask",
+          "usesVocab": ["Prepáčte"]
+        },
+        {
+          "id": "choice-3b-c",
+          "text": "Dovidenia!",
+          "translation": "Goodbye!",
+          "isCorrect": false,
+          "usesVocab": ["Dovidenia"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-4a",
+      "speaker": "bus_driver",
+      "text": "Vystúpte na tretej zastávke — Obchodná ulica. Päť minút.",
+      "translation": "Get off at the third stop — Obchodná street. Five minutes.",
+      "autoAdvance": true,
+      "nextNode": "node-5a"
+    },
+
+    {
+      "id": "node-4b",
+      "speaker": "bus_driver",
+      "text": "Dobre. Na Námestie SNP si pozrite smer — linka 93 na Hlavnú stanicu.",
+      "translation": "Good. At Námestie SNP check the direction — line 93 to Main Station.",
+      "autoAdvance": true,
+      "nextNode": "node-5b"
+    },
+
+    {
+      "id": "node-4b-ask",
+      "speaker": "bus_driver",
+      "text": "Linka deväťdesiatri — smer Hlavná stanica. Nastúpte na zastávke Námestie SNP.",
+      "translation": "Line ninety-three — direction Main Station. Board at Námestie SNP stop.",
+      "autoAdvance": true,
+      "nextNode": "node-5b"
+    },
+
+    {
+      "id": "node-5a",
+      "speaker": "bus_driver",
+      "text": "Obchodná ulica — nasledujúca zastávka!",
+      "translation": "Obchodná street — next stop!",
+      "wrongAnswerResponse": "Polícia? Prečo? Toto je vaša zastávka — vystúpte!",
+      "wrongAnswerTranslation": "Police? Why? This is your stop — get off!",
+      "choices": [
+        {
+          "id": "choice-5a-a",
+          "text": "Zastavte tu, prosím. Ďakujem!",
+          "translation": "Stop here please. Thank you!",
+          "isCorrect": true,
+          "nextNode": "node-end-A",
+          "usesVocab": ["Zastavte tu prosím", "Ďakujem"]
+        },
+        {
+          "id": "choice-5a-b",
+          "text": "Ďakujem! Dovidenia!",
+          "translation": "Thank you! Goodbye!",
+          "isCorrect": true,
+          "nextNode": "node-end-A",
+          "usesVocab": ["Ďakujem", "Dovidenia"]
+        },
+        {
+          "id": "choice-5a-c",
+          "text": "Kde je polícia?",
+          "translation": "Where is the police?",
+          "isCorrect": false,
+          "usesVocab": ["polícia"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-5b",
+      "speaker": "bus_driver",
+      "text": "Námestie SNP — nasledujúca zastávka. Vystúpte tu!",
+      "translation": "Námestie SNP — next stop. Get off here!",
+      "wrongAnswerResponse": "Nemocnica je inde... Teraz vystúpte na Námestie SNP!",
+      "wrongAnswerTranslation": "The hospital is elsewhere... Now get off at Námestie SNP!",
+      "choices": [
+        {
+          "id": "choice-5b-a",
+          "text": "Ďakujem! Dovidenia!",
+          "translation": "Thank you! Goodbye!",
+          "isCorrect": true,
+          "nextNode": "node-6b",
+          "usesVocab": ["Ďakujem", "Dovidenia"]
+        },
+        {
+          "id": "choice-5b-b",
+          "text": "Prepáčte — je to tu zastávka pre linku 93?",
+          "translation": "Excuse me — is this the stop for line 93?",
+          "isCorrect": true,
+          "nextNode": "node-6b-confirm",
+          "usesVocab": ["Prepáčte"]
+        },
+        {
+          "id": "choice-5b-c",
+          "text": "Kde je nemocnica?",
+          "translation": "Where is the hospital?",
+          "isCorrect": false,
+          "usesVocab": ["Nemocnica"]
+        }
+      ]
+    },
+
+    {
+      "id": "node-6b",
+      "speaker": "bus_driver",
+      "text": "Áno — linka 93 je naproti. Príjemný deň!",
+      "translation": "Yes — line 93 is across the road. Have a nice day!",
+      "isEndNode": true,
+      "outcome": "B"
+    },
+
+    {
+      "id": "node-6b-confirm",
+      "speaker": "bus_driver",
+      "text": "Áno, zastávka je tam vpravo. Linka 93 príde za chvíľu!",
+      "translation": "Yes, the stop is over there to the right. Line 93 will come shortly!",
+      "isEndNode": true,
+      "outcome": "B"
+    },
+
+    {
+      "id": "node-end-A",
+      "speaker": "bus_driver",
+      "text": "Dovidenia! Príjemný deň!",
+      "translation": "Goodbye! Have a nice day!",
+      "isEndNode": true,
+      "outcome": "A"
+    }
+  ]
+}
