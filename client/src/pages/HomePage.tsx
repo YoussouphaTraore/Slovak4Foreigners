@@ -79,39 +79,38 @@ export function HomePage() {
     <div className="min-h-screen bg-[#E8F4DC] flex flex-col max-w-lg mx-auto w-full">
       {/* Header */}
       <div ref={headerRef} className="sticky top-0 z-20 bg-white border-b border-gray-100 px-4 pt-3 pb-2">
-        {/* Row 1: logo + title */}
+        {/* Row 1: logo + title + review badge */}
         <div className="flex items-center gap-2.5">
           <img src="/snail.png" alt="" className="w-8 h-8 object-contain shrink-0" />
-          <div className="min-w-0">
+          <div className="flex-1 min-w-0">
             <h1 className="text-base font-bold text-gray-800 leading-tight">Slovak for Foreigners</h1>
             <p className="text-xs text-gray-400 leading-tight">Learn Slovak. Live like a local.</p>
           </div>
+          {showReviewBanner && (
+            <button
+              type="button"
+              onClick={() => suggestedReviews[0] && navigate(`/lesson/${suggestedReviews[0].lessonId}`)}
+              className="shrink-0 flex items-center gap-1.5 bg-amber-50 border border-amber-200 rounded-xl px-2.5 py-1.5 cursor-pointer hover:bg-amber-100 active:scale-[0.97] transition-all"
+            >
+              <span className="text-sm">⚠️</span>
+              <div className="min-w-0">
+                <p className="text-xs font-semibold text-amber-700 whitespace-nowrap">
+                  {weakLessons.length} need review
+                </p>
+                {suggestedReviews.length > 0 && (
+                  <p className="text-xs text-amber-500 truncate max-w-[120px]">
+                    {suggestedReviews.map((r) => lessons.find((l) => l.id === r.lessonId)?.title ?? r.lessonId).join(', ')}
+                  </p>
+                )}
+              </div>
+            </button>
+          )}
         </div>
         {/* Row 2: stats pills */}
         <div className="flex items-center gap-2 mt-2">
           <StreakDisplay streak={streak} />
           <XpBadge xp={xp} streakMultiplier={streakMultiplier} />
         </div>
-
-        {/* "Needs Review" banner */}
-        {showReviewBanner && (
-          <div className="mt-3 flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-3 py-2">
-            <span className="text-base">⚠️</span>
-            <div className="flex-1 min-w-0">
-              <p className="text-xs font-semibold text-amber-700">
-                {weakLessons.length} lessons need review
-              </p>
-              {suggestedReviews.length > 0 && (
-                <p className="text-xs text-amber-500 truncate">
-                  Weakest: {suggestedReviews.map((r) => {
-                    const lesson = lessons.find((l) => l.id === r.lessonId);
-                    return lesson?.title ?? r.lessonId;
-                  }).join(', ')}
-                </p>
-              )}
-            </div>
-          </div>
-        )}
       </div>
 
       {/* Skill path */}
