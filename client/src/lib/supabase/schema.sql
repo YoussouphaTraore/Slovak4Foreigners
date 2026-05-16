@@ -16,6 +16,11 @@ CREATE TABLE IF NOT EXISTS public.user_profiles (
 
 ALTER TABLE public.user_profiles ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "users: select own profile"  ON public.user_profiles;
+DROP POLICY IF EXISTS "users: insert own profile"  ON public.user_profiles;
+DROP POLICY IF EXISTS "users: update own profile"  ON public.user_profiles;
+DROP POLICY IF EXISTS "users: delete own profile"  ON public.user_profiles;
+
 CREATE POLICY "users: select own profile"
   ON public.user_profiles FOR SELECT
   USING (auth.uid() = id);
@@ -52,6 +57,11 @@ CREATE TABLE IF NOT EXISTS public.user_progress (
 
 ALTER TABLE public.user_progress ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "users: select own progress"  ON public.user_progress;
+DROP POLICY IF EXISTS "users: insert own progress"  ON public.user_progress;
+DROP POLICY IF EXISTS "users: update own progress"  ON public.user_progress;
+DROP POLICY IF EXISTS "users: delete own progress"  ON public.user_progress;
+
 CREATE POLICY "users: select own progress"
   ON public.user_progress FOR SELECT
   USING (auth.uid() = user_id);
@@ -87,6 +97,11 @@ CREATE TABLE IF NOT EXISTS public.lesson_records (
 
 ALTER TABLE public.lesson_records ENABLE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS "users: select own lesson records"  ON public.lesson_records;
+DROP POLICY IF EXISTS "users: insert own lesson records"  ON public.lesson_records;
+DROP POLICY IF EXISTS "users: update own lesson records"  ON public.lesson_records;
+DROP POLICY IF EXISTS "users: delete own lesson records"  ON public.lesson_records;
+
 CREATE POLICY "users: select own lesson records"
   ON public.lesson_records FOR SELECT
   USING (auth.uid() = user_id);
@@ -118,6 +133,11 @@ CREATE TABLE IF NOT EXISTS public.snail_race_records (
 );
 
 ALTER TABLE public.snail_race_records ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "users: select own snail race records"  ON public.snail_race_records;
+DROP POLICY IF EXISTS "users: insert own snail race records"  ON public.snail_race_records;
+DROP POLICY IF EXISTS "users: update own snail race records"  ON public.snail_race_records;
+DROP POLICY IF EXISTS "users: delete own snail race records"  ON public.snail_race_records;
 
 CREATE POLICY "users: select own snail race records"
   ON public.snail_race_records FOR SELECT

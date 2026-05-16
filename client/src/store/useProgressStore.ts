@@ -3,6 +3,13 @@ import { persist } from 'zustand/middleware';
 import { lessons } from '../data/lessons';
 import { useAuthStore } from './useAuthStore';
 import { SAVE_MODAL_DISMISS_KEY } from '../components/auth/SaveProgressModal';
+import {
+  syncProgressToSupabase,
+  syncLessonRecord,
+  syncSnailRaceRecord,
+  loadProgressFromSupabase,
+  mergeProgress,
+} from '../lib/supabase/progressSync';
 
 function isSaveModalDismissed(): boolean {
   try {
@@ -16,10 +23,10 @@ function isSaveModalDismissed(): boolean {
 export interface LessonRecord {
   lessonId: string;
   completedAt: string;      // ISO date string
-  lastDecayedAt: string;    // YYYY-MM-DD — tracks when decay was last applied
-  strikes: number;          // total strikes in last attempt
+  lastDecayedAt: string;    // YYYY-MM-DD
+  strikes: number;
   strength: number;         // 0–100, decays over time
-  xpEarned: number;         // XP earned in last attempt
+  xpEarned: number;
   timesCompleted: number;
 }
 
@@ -27,12 +34,11 @@ export interface SnailRaceRecord {
   stageId: string;
   attemptsToday: number;    // max 5, resets at midnight
   lastAttemptDate: string;  // YYYY-MM-DD
-  bestScore: number;        // best correct answers ever
+  bestScore: number;
 }
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
-// Stage 1 ('survival') is free. Others cost XP.
 const STAGE_UNLOCK_COSTS: Record<string, number> = {
   settling: 100,
   advanced: 250,
@@ -60,6 +66,14 @@ function todayStr(): string {
   return new Date().toISOString().split('T')[0];
 }
 
+// Fire-and-forget helper — sets isSyncing, runs promises, clears when done
+function fireSync(promises: Promise<unknown>[], setState: (patch: Partial<ProgressStore>) => void) {
+  setState({ isSyncing: true });
+  Promise.all(promises).finally(() =>
+    setState({ isSyncing: false, lastSyncedAt: new Date().toISOString() }),
+  );
+}
+
 // ── Store interface ──────────────────────────────────────────────────────────
 
 interface ProgressStore {
@@ -69,11 +83,18 @@ interface ProgressStore {
   lastPlayedDate: string | null;
   streakMultiplier: number;
 
-  completedLessons: string[];     // kept for sequential unlock logic
+  completedLessons: string[];
   lessonRecords: LessonRecord[];
-  unlockedStages: string[];       // stageIds user has paid to unlock
+  unlockedStages: string[];
   snailRaceRecords: SnailRaceRecord[];
   triedEmergencyScenarios: string[];
+
+  // Sync status (not persisted — reset via onRehydrateStorage)
+  isSyncing: boolean;
+  lastSyncedAt: string | null;
+
+  // Save-progress modal
+  showSaveProgressModal: 'unlock' | 'streak' | 'dialogue' | null;
 
   // XP actions
   addXP: (amount: number) => void;
@@ -83,7 +104,7 @@ interface ProgressStore {
   completeLesson: (
     lessonId: string,
     totalStrikes: number,
-    exerciseCount: number
+    exerciseCount: number,
   ) => { xpEarned: number; perfectBonus: boolean; newStrength: number };
 
   // Stage unlocking
@@ -96,7 +117,7 @@ interface ProgressStore {
   // Snail Race
   recordSnailRaceAttempt: (
     stageId: string,
-    correctAnswers: number
+    correctAnswers: number,
   ) => { xpEarned: number; attemptsLeft: number; blocked: boolean };
 
   // Review helpers
@@ -107,9 +128,11 @@ interface ProgressStore {
   markEmergencyScenarioTried: (scenarioId: string) => void;
 
   // Save-progress modal
-  showSaveProgressModal: 'unlock' | 'streak' | 'dialogue' | null;
   dismissSaveProgressModal: () => void;
   recordDialogueComplete: () => void;
+
+  // Cloud sync
+  initializeFromCloud: (userId: string) => Promise<void>;
 
   // Called on app load
   decayLessonStrengths: () => void;
@@ -131,6 +154,8 @@ export const useProgressStore = create<ProgressStore>()(
       unlockedStages: ['survival'],
       snailRaceRecords: [],
       triedEmergencyScenarios: [],
+      isSyncing: false,
+      lastSyncedAt: null,
       showSaveProgressModal: null,
 
       // ── XP ────────────────────────────────────────────────────────────────
@@ -156,13 +181,12 @@ export const useProgressStore = create<ProgressStore>()(
         const s = get();
         const isRepeat = s.completedLessons.includes(lessonId);
 
-        // XP earned: repeat lessons capped at 8, first-time capped at exerciseCount
         const baseXp = isRepeat ? Math.min(8, exerciseCount) : exerciseCount;
         const strikeXpLoss = Math.floor(totalStrikes * 0.5);
         const rawXp = Math.max(0, baseXp - strikeXpLoss);
         const perfectBonus = totalStrikes === 0 && !isRepeat;
         const xpEarned = Math.round(
-          (rawXp + (perfectBonus ? 5 : 0)) * s.streakMultiplier
+          (rawXp + (perfectBonus ? 5 : 0)) * s.streakMultiplier,
         );
 
         const newStrength = getStartStrength(totalStrikes);
@@ -197,6 +221,17 @@ export const useProgressStore = create<ProgressStore>()(
           level: calcLevel(newXp),
         });
 
+        const { user } = useAuthStore.getState();
+        if (user) {
+          fireSync(
+            [
+              syncProgressToSupabase(user.id, get()),
+              syncLessonRecord(user.id, updatedRecord),
+            ],
+            set,
+          );
+        }
+
         return { xpEarned, perfectBonus, newStrength };
       },
 
@@ -220,8 +255,15 @@ export const useProgressStore = create<ProgressStore>()(
           xp: newXp,
           level: calcLevel(newXp),
           unlockedStages: [...s.unlockedStages, stageId],
-          ...(isInitialized && !user && !isSaveModalDismissed() ? { showSaveProgressModal: 'unlock' as const } : {}),
+          ...(isInitialized && !user && !isSaveModalDismissed()
+            ? { showSaveProgressModal: 'unlock' as const }
+            : {}),
         });
+
+        if (user) {
+          fireSync([syncProgressToSupabase(user.id, get())], set);
+        }
+
         return { success: true, xpCost, xpRemaining: newXp };
       },
 
@@ -253,17 +295,20 @@ export const useProgressStore = create<ProgressStore>()(
           ? s.snailRaceRecords.map((r) => (r.stageId === stageId ? newRecord : r))
           : [...s.snailRaceRecords, newRecord];
 
-        set({
-          xp: newXp,
-          level: calcLevel(newXp),
-          snailRaceRecords: updatedRecords,
-        });
+        set({ xp: newXp, level: calcLevel(newXp), snailRaceRecords: updatedRecords });
 
-        return {
-          xpEarned,
-          attemptsLeft: 5 - (attemptsToday + 1),
-          blocked: false,
-        };
+        const { user } = useAuthStore.getState();
+        if (user) {
+          fireSync(
+            [
+              syncProgressToSupabase(user.id, get()),
+              syncSnailRaceRecord(user.id, newRecord),
+            ],
+            set,
+          );
+        }
+
+        return { xpEarned, attemptsLeft: 5 - (attemptsToday + 1), blocked: false };
       },
 
       // ── Emergency scenarios ───────────────────────────────────────────────
@@ -286,6 +331,59 @@ export const useProgressStore = create<ProgressStore>()(
         set({ showSaveProgressModal: 'dialogue' });
       },
 
+      // ── Cloud sync ────────────────────────────────────────────────────────
+
+      initializeFromCloud: async (userId) => {
+        set({ isSyncing: true });
+        try {
+          const cloud = await loadProgressFromSupabase(userId);
+
+          if (cloud === null) {
+            // New user — push local state to Supabase
+            const s = get();
+            await syncProgressToSupabase(userId, s);
+            await Promise.all(s.lessonRecords.map((r) => syncLessonRecord(userId, r)));
+            await Promise.all(s.snailRaceRecords.map((r) => syncSnailRaceRecord(userId, r)));
+          } else {
+            // Existing user — merge cloud + local, never lose progress
+            const s = get();
+            const merged = mergeProgress(
+              {
+                xp: s.xp,
+                level: s.level,
+                streak: s.streak,
+                lastPlayedDate: s.lastPlayedDate,
+                streakMultiplier: s.streakMultiplier,
+                unlockedStages: s.unlockedStages,
+                triedEmergencyScenarios: s.triedEmergencyScenarios,
+                completedLessons: s.completedLessons,
+                lessonRecords: s.lessonRecords,
+                snailRaceRecords: s.snailRaceRecords,
+              },
+              cloud,
+            );
+            set({
+              xp: merged.xp,
+              level: merged.level,
+              streak: merged.streak,
+              lastPlayedDate: merged.lastPlayedDate,
+              streakMultiplier: merged.streakMultiplier,
+              unlockedStages: merged.unlockedStages,
+              triedEmergencyScenarios: merged.triedEmergencyScenarios,
+              completedLessons: merged.completedLessons,
+              lessonRecords: merged.lessonRecords,
+              snailRaceRecords: merged.snailRaceRecords,
+            });
+            // Write merged state back so cloud is up to date
+            await syncProgressToSupabase(userId, get());
+          }
+        } catch (e) {
+          console.error('[initializeFromCloud] error:', e);
+        } finally {
+          set({ isSyncing: false, lastSyncedAt: new Date().toISOString() });
+        }
+      },
+
       // ── Review helpers ────────────────────────────────────────────────────
 
       getWeakLessons: () =>
@@ -298,26 +396,39 @@ export const useProgressStore = create<ProgressStore>()(
           .sort((a, b) => a.strength - b.strength)
           .slice(0, 3),
 
-      // ── Decay (called on app load) ─────────────────────────────────────────
+      // ── Decay ─────────────────────────────────────────────────────────────
 
       decayLessonStrengths: () => {
         const today = todayStr();
-        set((s) => ({
-          lessonRecords: s.lessonRecords.map((record) => {
-            if (record.lastDecayedAt === today) return record;
-            const daysSince = Math.max(
-              0,
-              Math.floor(
-                (new Date(today).getTime() - new Date(record.lastDecayedAt).getTime()) /
-                  86_400_000
-              )
-            );
-            if (daysSince === 0) return record;
-            const decayRate = getDecayRate(record.strikes);
-            const newStrength = Math.max(0, record.strength - daysSince * decayRate);
-            return { ...record, strength: newStrength, lastDecayedAt: today };
-          }),
-        }));
+        const s = get();
+
+        const decayed: LessonRecord[] = [];
+        const updatedRecords = s.lessonRecords.map((record) => {
+          if (record.lastDecayedAt === today) return record;
+          const daysSince = Math.max(
+            0,
+            Math.floor(
+              (new Date(today).getTime() - new Date(record.lastDecayedAt).getTime()) /
+                86_400_000,
+            ),
+          );
+          if (daysSince === 0) return record;
+          const decayRate = getDecayRate(record.strikes);
+          const newStrength = Math.max(0, record.strength - daysSince * decayRate);
+          const updated = { ...record, strength: newStrength, lastDecayedAt: today };
+          decayed.push(updated);
+          return updated;
+        });
+
+        set({ lessonRecords: updatedRecords });
+
+        const { user } = useAuthStore.getState();
+        if (user && decayed.length > 0) {
+          fireSync(
+            decayed.map((r) => syncLessonRecord(user.id, r)),
+            set,
+          );
+        }
       },
 
       // ── Streak ────────────────────────────────────────────────────────────
@@ -342,12 +453,13 @@ export const useProgressStore = create<ProgressStore>()(
             ? 1.5
             : 1.0;
 
-          const showStreak = newStreak === 3
-            ? (() => {
-                const { user, isInitialized } = useAuthStore.getState();
-                return isInitialized && !user && !isSaveModalDismissed();
-              })()
-            : false;
+          const showStreak =
+            newStreak === 3
+              ? (() => {
+                  const { user, isInitialized } = useAuthStore.getState();
+                  return isInitialized && !user && !isSaveModalDismissed();
+                })()
+              : false;
 
           return {
             streak: newStreak,
@@ -359,18 +471,22 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 2,
+      version: 3,
+      onRehydrateStorage: () => (state) => {
+        // Always reset transient sync flag on page load
+        if (state) state.isSyncing = false;
+      },
       migrate: (persisted: unknown, version: number) => {
-        const old = persisted as Record<string, unknown>;
+        let old = persisted as Record<string, unknown>;
+
         if (version < 2) {
-          // Auto-unlock stages that already have completed lessons
           const completedLessons = (old.completedLessons as string[]) ?? [];
           const unlocked = new Set<string>(['survival']);
           for (const lessonId of completedLessons) {
             const lesson = lessons.find((l) => l.id === lessonId);
             if (lesson) unlocked.add(lesson.stageId);
           }
-          return {
+          old = {
             ...old,
             streakMultiplier: 1.0,
             lessonRecords: [],
@@ -378,8 +494,20 @@ export const useProgressStore = create<ProgressStore>()(
             snailRaceRecords: [],
           };
         }
+
+        if (version < 3) {
+          old = {
+            ...old,
+            isSyncing: false,
+            lastSyncedAt: null,
+            showSaveProgressModal: null,
+            triedEmergencyScenarios:
+              (old.triedEmergencyScenarios as string[]) ?? [],
+          };
+        }
+
         return old as unknown as ProgressStore;
       },
-    }
-  )
+    },
+  ),
 );

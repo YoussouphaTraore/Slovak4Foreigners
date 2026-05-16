@@ -56,13 +56,20 @@ function AppRoutes() {
 
 function App() {
   const decayLessonStrengths = useProgressStore((s) => s.decayLessonStrengths);
+  const initializeFromCloud = useProgressStore((s) => s.initializeFromCloud);
   const initialize = useAuthStore((s) => s.initialize);
   const isInitialized = useAuthStore((s) => s.isInitialized);
+  const userId = useAuthStore((s) => s.user?.id);
 
   useEffect(() => {
     decayLessonStrengths();
     initialize();
   }, [decayLessonStrengths, initialize]);
+
+  // Sync cloud ↔ local whenever a user logs in
+  useEffect(() => {
+    if (userId) initializeFromCloud(userId);
+  }, [userId, initializeFromCloud]);
 
   if (!isInitialized) {
     return (

@@ -55,7 +55,7 @@ export function HomePage() {
   const store = useProgressStore();
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
-  const { xp, streak, streakMultiplier, completedLessons, lessonRecords, unlockedStages, snailRaceRecords } = store;
+  const { xp, streak, streakMultiplier, completedLessons, lessonRecords, unlockedStages, snailRaceRecords, isSyncing } = store;
   const groups = groupByStage(lessons);
 
   const weakLessons = store.getWeakLessons();
@@ -106,10 +106,19 @@ export function HomePage() {
             </button>
           )}
         </div>
-        {/* Row 2: stats pills */}
+        {/* Row 2: stats pills + sync indicator */}
         <div className="flex items-center gap-2 mt-2">
           <StreakDisplay streak={streak} />
           <XpBadge xp={xp} streakMultiplier={streakMultiplier} />
+          {isSyncing && (
+            <span
+              title="Saving to cloud…"
+              className="flex items-center gap-1 text-gray-400"
+            >
+              <span className="w-3 h-3 border-2 border-gray-300 border-t-brand-green rounded-full animate-spin inline-block" />
+              <span className="text-[10px] font-medium">saving</span>
+            </span>
+          )}
         </div>
       </div>
 
