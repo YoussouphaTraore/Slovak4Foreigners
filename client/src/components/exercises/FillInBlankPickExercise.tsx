@@ -2,6 +2,7 @@ import { useState, useRef, useMemo } from 'react';
 import type { FillInBlankPickExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
 import { toSlovakLabel, slovakifyNumbers } from '../../utils/numberToSlovak';
+import { useFeedbackNextDelay } from '../../hooks/useFeedbackNextDelay';
 
 type Item = TExercise['items'][number];
 type Feedback = 'correct' | 'wrong' | null;
@@ -29,6 +30,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
   const [masteredCount, setMasteredCount] = useState(0);
   const [feedback, setFeedback] = useState<Feedback>(null);
   const [tappedChoice, setTappedChoice] = useState<string | null>(null);
+  const nextVisible = useFeedbackNextDelay(feedback);
 
   const pendingRetry = useRef<Item[]>([]);
   const masteredAnswers = useRef<Set<string>>(new Set());
@@ -172,9 +174,9 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
             <button
               type="button"
               onClick={handleNext}
-              className={`flex-none font-bold px-5 py-2 rounded-xl text-sm uppercase tracking-wide cursor-pointer transition-opacity hover:opacity-90 ${
+              className={`flex-none font-bold px-5 py-2 rounded-xl text-sm uppercase tracking-wide cursor-pointer transition-opacity duration-300 hover:opacity-90 ${
                 feedback === 'correct' ? 'bg-brand-green text-white' : 'bg-brand-red text-white'
-              }`}
+              } ${nextVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             >
               Next
             </button>

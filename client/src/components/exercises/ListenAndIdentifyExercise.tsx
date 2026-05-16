@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import type { ListenAndIdentifyExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
 import { cleanForSpeech } from '../../utils/speak';
+import { useFeedbackNextDelay } from '../../hooks/useFeedbackNextDelay';
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -44,6 +45,7 @@ export function ListenAndIdentifyExercise({ exercise, onDone, onAnswer }: Props)
   const [phase, setPhase] = useState<Phase>('listening');
   const [isCorrect, setIsCorrect] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
+  const nextVisible = useFeedbackNextDelay(phase === 'feedback' ? (isCorrect ? 'correct' : 'wrong') : null);
 
   const current = exercise.items[currentIdx];
   const total = exercise.items.length;
@@ -192,9 +194,9 @@ export function ListenAndIdentifyExercise({ exercise, onDone, onAnswer }: Props)
             <button
               type="button"
               onClick={handleNext}
-              className={`flex-none font-bold px-5 py-2 rounded-xl text-sm uppercase tracking-wide cursor-pointer transition-opacity hover:opacity-90 ${
+              className={`flex-none font-bold px-5 py-2 rounded-xl text-sm uppercase tracking-wide cursor-pointer transition-opacity duration-300 hover:opacity-90 ${
                 isCorrect ? 'bg-brand-green text-white' : 'bg-brand-red text-white'
-              }`}
+              } ${nextVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             >
               {currentIdx + 1 >= total ? 'Finish' : 'Next'}
             </button>

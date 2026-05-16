@@ -2,6 +2,7 @@ import { useState, useRef, useMemo } from 'react';
 import type { PickTranslationExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
 import { slovakifyNumbers } from '../../utils/numberToSlovak';
+import { useFeedbackNextDelay } from '../../hooks/useFeedbackNextDelay';
 
 interface Word { id: number; slovak: string; english: string }
 type Feedback = 'correct' | 'wrong' | null;
@@ -41,6 +42,7 @@ export function PickTranslationExercise({ exercise, onDone, onAnswer }: Props) {
   const [masteredIds, setMasteredIds] = useState<Set<number>>(new Set());
   const [feedback, setFeedback] = useState<Feedback>(null);
   const [tappedChoice, setTappedChoice] = useState<string | null>(null);
+  const nextVisible = useFeedbackNextDelay(feedback);
 
   const pendingRetry = useRef<Word[]>([]);
   const pendingMasterId = useRef<number | null>(null);
@@ -195,11 +197,9 @@ export function PickTranslationExercise({ exercise, onDone, onAnswer }: Props) {
             <button
               type="button"
               onClick={handleNext}
-              className={`flex-none font-bold px-5 py-2 rounded-xl text-sm uppercase tracking-wide cursor-pointer transition-opacity hover:opacity-90 ${
-                feedback === 'correct'
-                  ? 'bg-brand-green text-white'
-                  : 'bg-brand-red text-white'
-              }`}
+              className={`flex-none font-bold px-5 py-2 rounded-xl text-sm uppercase tracking-wide cursor-pointer transition-opacity duration-300 hover:opacity-90 ${
+                feedback === 'correct' ? 'bg-brand-green text-white' : 'bg-brand-red text-white'
+              } ${nextVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             >
               Next
             </button>

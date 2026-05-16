@@ -2,6 +2,7 @@ import { useState, useRef, useMemo } from 'react';
 import type { SituationalChoiceExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
 import { slovakifyNumbers } from '../../utils/numberToSlovak';
+import { useFeedbackNextDelay } from '../../hooks/useFeedbackNextDelay';
 
 type Scenario = TExercise['scenarios'][number];
 type Feedback = 'correct' | 'wrong' | null;
@@ -29,6 +30,7 @@ export function SituationalChoiceExercise({ exercise, onDone, onAnswer }: Props)
   const [masteredCount, setMasteredCount] = useState(0);
   const [feedback, setFeedback] = useState<Feedback>(null);
   const [tappedChoice, setTappedChoice] = useState<string | null>(null);
+  const nextVisible = useFeedbackNextDelay(feedback);
 
   const pendingRetry = useRef<Scenario[]>([]);
   const masteredAnswers = useRef<Set<string>>(new Set());
@@ -180,11 +182,9 @@ export function SituationalChoiceExercise({ exercise, onDone, onAnswer }: Props)
             <button
               type="button"
               onClick={handleNext}
-              className={`flex-none font-bold px-5 py-2 rounded-xl text-sm uppercase tracking-wide cursor-pointer transition-opacity hover:opacity-90 ${
-                feedback === 'correct'
-                  ? 'bg-brand-green text-white'
-                  : 'bg-brand-red text-white'
-              }`}
+              className={`flex-none font-bold px-5 py-2 rounded-xl text-sm uppercase tracking-wide cursor-pointer transition-opacity duration-300 hover:opacity-90 ${
+                feedback === 'correct' ? 'bg-brand-green text-white' : 'bg-brand-red text-white'
+              } ${nextVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
             >
               Next
             </button>
