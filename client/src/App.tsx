@@ -5,6 +5,7 @@ import { LessonPage } from './pages/LessonPage';
 import { XpCelebrationPage } from './pages/XpCelebrationPage';
 import { SnailRacePage } from './pages/SnailRacePage';
 import { PracticeDialoguePage } from './pages/PracticeDialoguePage';
+import { ProfilePage } from './pages/ProfilePage';
 import { AuthPage } from './pages/AuthPage';
 import { DialogueSession } from './components/dialogue/DialogueSession';
 import { EmergencyDialogueSession } from './components/dialogue/EmergencyDialogueSession';
@@ -73,6 +74,7 @@ function AppRoutes() {
         <Route path="/race/:stageId" element={<SnailRacePage />} />
         <Route path="/practice/dialogue" element={<PracticeDialoguePage />} />
         <Route path="/practice/dialogue/:id" element={<DialogueSessionRoute />} />
+        <Route path="/profile" element={<ProfilePage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
