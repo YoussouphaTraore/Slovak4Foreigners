@@ -35,7 +35,7 @@ const CONTENT: Record<SaveModalTrigger, { title: string; body?: string }> = {
     body: 'Create a free account to unlock new stages and keep all your hard-earned XP safe.',
   },
   hard_dialogue: {
-    title: 'This dialogue is members only',
+    title: 'Sign in to continue',
     body: 'Sign in to unlock all conversation scenarios and keep your progress safe.',
   },
   regression: {
