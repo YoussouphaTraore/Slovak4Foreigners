@@ -338,7 +338,7 @@ export const useProgressStore = create<ProgressStore>()(
             snailRaceRecords: [],
           };
         }
-        return old as ProgressStore;
+        return old as unknown as ProgressStore;
       },
     }
   )
