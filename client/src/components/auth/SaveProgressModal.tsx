@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
 
 export type SaveModalTrigger = 'soft' | 'hard_stage' | 'hard_unlock' | 'regression';
@@ -47,7 +46,6 @@ interface Props {
 }
 
 export function SaveProgressModal({ trigger, onDismiss, regressionLessonTitle }: Props) {
-  const navigate = useNavigate();
   const { signInWithGoogle, isLoading } = useAuthStore();
 
   const isHard = trigger === 'hard_stage' || trigger === 'hard_unlock';
