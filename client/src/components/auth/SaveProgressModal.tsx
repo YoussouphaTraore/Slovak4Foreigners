@@ -1,6 +1,6 @@
 import { useAuthStore } from '../../store/useAuthStore';
 
-export type SaveModalTrigger = 'soft' | 'hard_stage' | 'hard_unlock' | 'regression';
+export type SaveModalTrigger = 'soft' | 'hard_stage' | 'hard_unlock' | 'hard_dialogue' | 'regression';
 
 // Keys written to localStorage so the store can check before showing
 export const SOFT_DISMISS_KEY = 'save-modal-dismissed-soft';
@@ -34,6 +34,10 @@ const CONTENT: Record<SaveModalTrigger, { title: string; body?: string }> = {
     title: 'Ready for Stage 2?',
     body: 'Create a free account to unlock new stages and keep all your hard-earned XP safe.',
   },
+  hard_dialogue: {
+    title: 'This dialogue is members only',
+    body: 'Sign in to unlock all conversation scenarios and keep your progress safe.',
+  },
   regression: {
     title: 'Welcome back, Guest Learner!',
   },
@@ -48,7 +52,7 @@ interface Props {
 export function SaveProgressModal({ trigger, onDismiss, regressionLessonTitle }: Props) {
   const { signInWithGoogle, isLoading } = useAuthStore();
 
-  const isHard = trigger === 'hard_stage' || trigger === 'hard_unlock';
+  const isHard = trigger === 'hard_stage' || trigger === 'hard_unlock' || trigger === 'hard_dialogue';
   const { title, body } = CONTENT[trigger];
 
   const handleDismiss = () => {

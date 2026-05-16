@@ -84,7 +84,7 @@ export function PracticeDialoguePage() {
 
       {showAuthGate && (
         <SaveProgressModal
-          trigger="hard_unlock"
+          trigger="hard_dialogue"
           onDismiss={() => setShowAuthGate(false)}
         />
       )}
