@@ -794,3 +794,31 @@ npx tsc --noEmit     # Type-check only (no output files)
 **Scope:** Production OAuth redirect + stable local dev port
 - Confirmed `signInWithGoogle` in `useAuthStore.ts` already uses `redirectTo: window.location.origin` (no hardcoded URLs)
 - Added `server: { port: 5173, strictPort: true }` to `vite.config.ts` — dev server always starts on 5173 and errors instead of silently incrementing, so Supabase redirect URLs are always predictable
+
+---
+
+### Phase 9 — Daily Review System
+
+**Date:** 2026-05-16
+**Scope:** Mixed-lesson review session with auto-trigger and real-time UI feedback
+
+**New: `ReviewSessionPage.tsx`** (`/review` route)
+- 4 screens: `intro → session → complete → already_done`
+- **Intro screen** — `snailReading.png` mascot, "Time to Review!" copy, lesson list with color-coded strength bars (🔴 < 30%, 🟡 < 60%, 🟢 ≥ 60%), "Start Review" button, "Maybe Later" link (hidden when auto-triggered)
+- **Session** — shuffles 3–4 exercises from each of the 3 weakest lessons (strength < 70) into one mixed session; "From: Lesson Title" label above every exercise; same ExerciseShell + ExerciseCelebration + ConfirmModal as LessonPage
+- **Completion screen** — XP earned (1 per correct answer, max 10, +2 perfect bonus), strength before → after bar for each reviewed lesson
+- **Already-done screen** — live HH:MM:SS countdown to midnight, Back to Home
+
+**`useProgressStore.ts`** — persist version bumped to 5
+- Added `lastReviewDate: string | null` (persisted; cleared in v5 migration)
+- Added `completeReview(xpEarned, lessonIds)` — boosts each reviewed lesson strength +20 (capped at 100), awards XP, sets `lastReviewDate = today`, syncs to Supabase
+
+**`App.tsx`** — auto-trigger in `AppRoutes`
+- One-shot `useEffect` (locked by `autoReviewChecked` ref + `sessionStorage.autoReviewShown`)
+- Fires when: auth initialized + any lesson strength < 30 + `lastReviewDate !== today` + no regression modal showing
+- Requires logged-in user OR guest with ≥ 3 completed lessons
+- Navigates to `/review` with `{ state: { autoTriggered: true } }` — hides "Maybe Later" on intro screen
+
+**`HomePage.tsx`** — two reactivity fixes
+- `lessonRecords` now read via dedicated `useProgressStore((s) => s.lessonRecords)` selector — strength dot colors update immediately after review without page refresh
+- `showReviewBanner` now also checks `lastReviewDate !== todayStr()` — banner disappears as soon as a review is completed today, reappears tomorrow if lessons decay again
