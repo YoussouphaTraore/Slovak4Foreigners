@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { dialogues } from '../data/dialogues';
 import { useProgressStore } from '../store/useProgressStore';
+import { useAuthStore } from '../store/useAuthStore';
+import { SaveProgressModal } from '../components/auth/SaveProgressModal';
 import { BottomNav } from '../components/ui/BottomNav';
 
 const TIER_LABELS: Record<number, string> = {
@@ -12,6 +15,8 @@ const TIER_LABELS: Record<number, string> = {
 export function PracticeDialoguePage() {
   const navigate = useNavigate();
   const { unlockedStages } = useProgressStore();
+  const user = useAuthStore((s) => s.user);
+  const [showAuthGate, setShowAuthGate] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#E8F4DC] flex flex-col max-w-lg mx-auto w-full">
@@ -23,8 +28,17 @@ export function PracticeDialoguePage() {
 
       {/* Dialogue cards */}
       <div className="flex-1 px-4 py-6 pb-28 space-y-4">
-        {dialogues.map((dialogue) => {
-          const isLocked = !unlockedStages.includes(dialogue.stageRequired);
+        {dialogues.map((dialogue, index) => {
+          const isStageLocked = !unlockedStages.includes(dialogue.stageRequired);
+          const isAuthLocked = !user && index >= 2;
+          const isLocked = isStageLocked;
+
+          const handleStart = () => {
+            if (isStageLocked) return;
+            if (isAuthLocked) { setShowAuthGate(true); return; }
+            navigate(`/practice/dialogue/${dialogue.id}`);
+          };
+
           return (
             <div
               key={dialogue.id}
@@ -52,7 +66,7 @@ export function PracticeDialoguePage() {
               <button
                 type="button"
                 disabled={isLocked}
-                onClick={() => !isLocked && navigate(`/practice/dialogue/${dialogue.id}`)}
+                onClick={handleStart}
                 className={`w-full py-3.5 rounded-xl text-sm font-bold uppercase tracking-wide transition-all cursor-pointer
                   ${isLocked
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
@@ -67,6 +81,13 @@ export function PracticeDialoguePage() {
       </div>
 
       <BottomNav active="practice" />
+
+      {showAuthGate && (
+        <SaveProgressModal
+          trigger="hard_unlock"
+          onDismiss={() => setShowAuthGate(false)}
+        />
+      )}
     </div>
   );
 }
