@@ -2,7 +2,6 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { lessons } from '../data/lessons';
 import { useAuthStore } from './useAuthStore';
-import { SAVE_MODAL_DISMISS_KEY } from '../components/auth/SaveProgressModal';
 import {
   syncProgressToSupabase,
   syncLessonRecord,
@@ -10,13 +9,6 @@ import {
   loadProgressFromSupabase,
   mergeProgress,
 } from '../lib/supabase/progressSync';
-
-function isSaveModalDismissed(): boolean {
-  try {
-    const val = localStorage.getItem(SAVE_MODAL_DISMISS_KEY);
-    return !!val && Date.now() < Number(val);
-  } catch { return false; }
-}
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -94,7 +86,8 @@ interface ProgressStore {
   lastSyncedAt: string | null;
 
   // Save-progress modal
-  showSaveProgressModal: 'unlock' | 'streak' | 'dialogue' | null;
+  showSaveProgressModal: 'soft' | 'hard_stage' | 'hard_unlock' | 'regression' | null;
+  regressionLessonTitle: string | null;
 
   // XP actions
   addXP: (amount: number) => void;
@@ -129,7 +122,9 @@ interface ProgressStore {
 
   // Save-progress modal
   dismissSaveProgressModal: () => void;
-  recordDialogueComplete: () => void;
+
+  // Guest regression
+  applyGuestRegression: () => string | null;
 
   // Cloud sync
   initializeFromCloud: (userId: string) => Promise<void>;
@@ -157,6 +152,7 @@ export const useProgressStore = create<ProgressStore>()(
       isSyncing: false,
       lastSyncedAt: null,
       showSaveProgressModal: null,
+      regressionLessonTitle: null,
 
       // ── XP ────────────────────────────────────────────────────────────────
 
@@ -221,6 +217,21 @@ export const useProgressStore = create<ProgressStore>()(
           level: calcLevel(newXp),
         });
 
+        // hard_stage gate — fires when guest completes the last Stage 1 lesson
+        if (!isRepeat) {
+          const { user, isInitialized } = useAuthStore.getState();
+          if (isInitialized && !user) {
+            const survivalLessons = lessons.filter((l) => l.stageId === 'survival');
+            const survivalIds = survivalLessons.map((l) => l.id);
+            if (survivalIds.includes(lessonId)) {
+              const completedCount = newCompleted.filter((id) => survivalIds.includes(id)).length;
+              if (completedCount === survivalLessons.length) {
+                set({ showSaveProgressModal: 'hard_stage' });
+              }
+            }
+          }
+        }
+
         const { user } = useAuthStore.getState();
         if (user) {
           fireSync(
@@ -245,19 +256,22 @@ export const useProgressStore = create<ProgressStore>()(
           return { success: true, xpCost, xpRemaining: s.xp };
         }
 
+        // Gate guests — show sign-in modal instead of unlocking
+        const { user, isInitialized } = useAuthStore.getState();
+        if (isInitialized && !user) {
+          set({ showSaveProgressModal: 'hard_unlock' });
+          return { success: false, xpCost, xpRemaining: xpCost - s.xp };
+        }
+
         if (s.xp < xpCost) {
           return { success: false, xpCost, xpRemaining: xpCost - s.xp };
         }
 
         const newXp = Math.max(0, s.xp - xpCost);
-        const { user, isInitialized } = useAuthStore.getState();
         set({
           xp: newXp,
           level: calcLevel(newXp),
           unlockedStages: [...s.unlockedStages, stageId],
-          ...(isInitialized && !user && !isSaveModalDismissed()
-            ? { showSaveProgressModal: 'unlock' as const }
-            : {}),
         });
 
         if (user) {
@@ -324,11 +338,31 @@ export const useProgressStore = create<ProgressStore>()(
 
       dismissSaveProgressModal: () => set({ showSaveProgressModal: null }),
 
-      recordDialogueComplete: () => {
-        const { user, isInitialized } = useAuthStore.getState();
-        if (!isInitialized || user) return;
-        if (isSaveModalDismissed()) return;
-        set({ showSaveProgressModal: 'dialogue' });
+      // ── Guest regression ──────────────────────────────────────────────────
+
+      applyGuestRegression: () => {
+        const s = get();
+        if (s.lessonRecords.length === 0) return null;
+
+        // Find the lesson with lowest strength > 0 to regress
+        const candidate = s.lessonRecords
+          .filter((r) => r.strength > 0)
+          .sort((a, b) => a.strength - b.strength)[0];
+
+        if (!candidate) return null;
+
+        const lesson = lessons.find((l) => l.id === candidate.lessonId);
+        const title = lesson?.title ?? candidate.lessonId;
+
+        set({
+          lessonRecords: s.lessonRecords.map((r) =>
+            r.lessonId === candidate.lessonId ? { ...r, strength: 0 } : r,
+          ),
+          regressionLessonTitle: title,
+          showSaveProgressModal: 'regression',
+        });
+
+        return candidate.lessonId;
       },
 
       // ── Cloud sync ────────────────────────────────────────────────────────
@@ -453,28 +487,21 @@ export const useProgressStore = create<ProgressStore>()(
             ? 1.5
             : 1.0;
 
-          const showStreak =
-            newStreak === 3
-              ? (() => {
-                  const { user, isInitialized } = useAuthStore.getState();
-                  return isInitialized && !user && !isSaveModalDismissed();
-                })()
-              : false;
-
           return {
             streak: newStreak,
             lastPlayedDate: today,
             streakMultiplier,
-            ...(showStreak ? { showSaveProgressModal: 'streak' as const } : {}),
           };
         }),
     }),
     {
       name: 'slovak-progress',
-      version: 3,
+      version: 4,
       onRehydrateStorage: () => (state) => {
-        // Always reset transient sync flag on page load
-        if (state) state.isSyncing = false;
+        if (state) {
+          state.isSyncing = false;
+          state.regressionLessonTitle = null;
+        }
       },
       migrate: (persisted: unknown, version: number) => {
         let old = persisted as Record<string, unknown>;
@@ -503,6 +530,14 @@ export const useProgressStore = create<ProgressStore>()(
             showSaveProgressModal: null,
             triedEmergencyScenarios:
               (old.triedEmergencyScenarios as string[]) ?? [],
+          };
+        }
+
+        if (version < 4) {
+          old = {
+            ...old,
+            showSaveProgressModal: null,
+            regressionLessonTitle: null,
           };
         }
 

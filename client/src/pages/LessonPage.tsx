@@ -1,7 +1,9 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getLessonById } from '../data/lessons';
 import { useProgressStore } from '../store/useProgressStore';
+import { useAuthStore } from '../store/useAuthStore';
+import { SOFT_DISMISS_KEY } from '../components/auth/SaveProgressModal';
 import { ExerciseShell } from '../components/exercises/ExerciseShell';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ConfirmModal } from '../components/ui/ConfirmModal';
@@ -31,6 +33,27 @@ export function LessonPage() {
   const [strikesDisplay, setStrikesDisplay] = useState({ total: 0, consecutive: 0 });
   const penaltyRef   = useRef(false);
   const failedWordsRef = useRef<{ slovak: string; english: string }[]>([]);
+  const hasShownSoftModal = useRef(false);
+  const exercisesCompletedInSession = useRef(0);
+
+  // Modal pause/resume
+  const isModalOpen = useProgressStore((s) => s.showSaveProgressModal !== null);
+  const pendingAdvance = useRef(false);
+  const prevModalOpenRef = useRef(false);
+
+  // When modal closes, execute any deferred advance
+  useEffect(() => {
+    const wasOpen = prevModalOpenRef.current;
+    prevModalOpenRef.current = isModalOpen;
+    if (wasOpen && !isModalOpen && pendingAdvance.current) {
+      pendingAdvance.current = false;
+      const lessonTotal = strikesRef.current.lessonTotal;
+      strikesRef.current = { total: 0, consecutive: 0, lessonTotal };
+      setStrikesDisplay({ total: 0, consecutive: 0 });
+      setExerciseIndex((i) => i + 1);
+      setExerciseKey((k) => k + 1);
+    }
+  }, [isModalOpen]);
 
   if (!lesson) {
     return (
@@ -86,7 +109,7 @@ export function LessonPage() {
   };
 
   const handleAnswer = (correct: boolean) => {
-    if (penaltyRef.current) return;
+    if (isModalOpen || penaltyRef.current) return;
 
     if (correct) {
       strikesRef.current.consecutive = 0;
@@ -117,7 +140,7 @@ export function LessonPage() {
   };
 
   const handleComplete = (correct: boolean) => {
-    if (penaltyRef.current) return;
+    if (isModalOpen || penaltyRef.current) return;
     const isLast = exerciseIndex === exercises.length - 1;
 
     if (correct) {
@@ -131,6 +154,27 @@ export function LessonPage() {
       }
       const nc = correctCount + 1;
       setCorrectCount(nc);
+
+      // Soft modal — fires once at exercise 3, on lesson 3 or 5, for guests
+      exercisesCompletedInSession.current += 1;
+      if (
+        !hasShownSoftModal.current &&
+        exercisesCompletedInSession.current === 3 &&
+        (store.completedLessons.length === 2 || store.completedLessons.length === 4) &&
+        !useAuthStore.getState().user
+      ) {
+        try {
+          const val = localStorage.getItem(SOFT_DISMISS_KEY);
+          const dismissed = !!val && Date.now() < Number(val);
+          if (!dismissed) {
+            hasShownSoftModal.current = true;
+            useProgressStore.setState({ showSaveProgressModal: 'soft' });
+            pendingAdvance.current = true;
+            return; // Pause here — useEffect resumes after modal closes
+          }
+        } catch { /* */ }
+      }
+
       if (isLast) { finishLesson(); return; }
       const nextEx = exercises[exerciseIndex + 1];
       if (nextEx?.type === 'WORD_MATCH_REVIEW' && failedWordsRef.current.length === 0) {

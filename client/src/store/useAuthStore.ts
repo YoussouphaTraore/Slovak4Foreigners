@@ -61,6 +61,10 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
     // Keep in sync on every auth change
     supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        // Mark that this session had a logged-in user so regression is skipped on sign-out
+        try { sessionStorage.setItem('wasLoggedIn', 'true'); } catch { /* */ }
+      }
       set({
         session,
         user: session?.user ?? null,

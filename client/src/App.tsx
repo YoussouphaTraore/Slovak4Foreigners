@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { LessonPage } from './pages/LessonPage';
@@ -8,7 +8,7 @@ import { PracticeDialoguePage } from './pages/PracticeDialoguePage';
 import { AuthPage } from './pages/AuthPage';
 import { DialogueSession } from './components/dialogue/DialogueSession';
 import { EmergencyDialogueSession } from './components/dialogue/EmergencyDialogueSession';
-import { SaveProgressModal } from './components/auth/SaveProgressModal';
+import { SaveProgressModal, REGRESSION_DISMISS_KEY } from './components/auth/SaveProgressModal';
 import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
 import { useAuthStore } from './store/useAuthStore';
@@ -16,12 +16,10 @@ import { useAuthStore } from './store/useAuthStore';
 function DialogueSessionRoute() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const recordDialogueComplete = useProgressStore((s) => s.recordDialogueComplete);
   const dialogue = dialogues.find((d) => d.id === id);
   if (!dialogue) return <Navigate to="/practice/dialogue" replace />;
 
   const handleExit = () => {
-    recordDialogueComplete();
     navigate('/practice/dialogue');
   };
 
@@ -34,6 +32,37 @@ function DialogueSessionRoute() {
 function AppRoutes() {
   const showSaveProgressModal = useProgressStore((s) => s.showSaveProgressModal);
   const dismissSaveProgressModal = useProgressStore((s) => s.dismissSaveProgressModal);
+  const regressionLessonTitle = useProgressStore((s) => s.regressionLessonTitle);
+  const applyGuestRegression = useProgressStore((s) => s.applyGuestRegression);
+  const completedLessons = useProgressStore((s) => s.completedLessons);
+  const isInitialized = useAuthStore((s) => s.isInitialized);
+  const userId = useAuthStore((s) => s.user?.id);
+
+  const regressionChecked = useRef(false);
+
+  useEffect(() => {
+    if (!isInitialized || regressionChecked.current) return;
+    regressionChecked.current = true; // Lock — never re-run even if auth state changes later
+
+    if (userId) return; // Already logged in on open, skip
+
+    // Skip if user was logged in at any point this session (e.g. just signed out)
+    try {
+      if (sessionStorage.getItem('wasLoggedIn')) {
+        sessionStorage.removeItem('wasLoggedIn');
+        return;
+      }
+    } catch { /* */ }
+
+    if (completedLessons.length < 3) return;
+
+    try {
+      const val = localStorage.getItem(REGRESSION_DISMISS_KEY);
+      if (val && Date.now() < Number(val)) return;
+    } catch { /* */ }
+
+    applyGuestRegression();
+  }, [isInitialized, userId, completedLessons.length, applyGuestRegression]);
 
   return (
     <>
@@ -48,7 +77,11 @@ function AppRoutes() {
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {showSaveProgressModal && (
-        <SaveProgressModal trigger={showSaveProgressModal} onDismiss={dismissSaveProgressModal} />
+        <SaveProgressModal
+          trigger={showSaveProgressModal}
+          onDismiss={dismissSaveProgressModal}
+          regressionLessonTitle={regressionLessonTitle ?? undefined}
+        />
       )}
     </>
   );
