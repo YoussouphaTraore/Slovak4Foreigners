@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import type { ListenAndPickExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
 import { cleanForSpeech } from '../../utils/speak';
+import { slovakifyNumbers } from '../../utils/numberToSlovak';
 
 interface WordEntry { id: number; slovak: string; english: string }
 type Feedback = 'correct' | 'wrong' | 'timeout' | null;
@@ -208,13 +209,13 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
               type="button"
               disabled={phase !== 'listening'}
               onClick={() => handleTap(card)}
-              className={`flex flex-col items-center justify-center rounded-2xl border-2 px-3 py-0 shadow-sm transition-all active:scale-95 cursor-pointer disabled:cursor-default ${cardClass(card)}`}
+              className={`flex flex-col items-center justify-center rounded-2xl border-2 px-2 py-1 shadow-sm transition-all active:scale-95 cursor-pointer disabled:cursor-default ${cardClass(card)}`}
             >
-              <span className="text-lg font-bold text-gray-800 text-center leading-tight">
-                {card.slovak}
+              <span className={`font-bold text-gray-800 text-center leading-tight ${card.slovak.length > 25 ? 'text-xs' : card.slovak.length > 12 ? 'text-sm' : 'text-base'}`}>
+                {slovakifyNumbers(card.slovak)}
               </span>
               {!isEnglishMode && (
-                <span className="text-xs text-gray-400 mt-0.5 text-center leading-tight">
+                <span className="text-[10px] text-gray-400 mt-0.5 text-center leading-tight">
                   {card.english}
                 </span>
               )}

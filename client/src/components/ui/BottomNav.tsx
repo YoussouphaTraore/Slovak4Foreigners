@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
 
-type Tab = 'home' | 'practice' | 'profile';
+type Tab = 'home' | 'practice' | 'exclusive' | 'profile';
 
 interface Props {
   active: Tab;
@@ -37,7 +37,16 @@ export function BottomNav({ active }: Props) {
         className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'practice' ? 'text-brand-green' : 'text-gray-400 hover:text-gray-600'}`}
       >
         <span className="text-2xl">💬</span>
-        <span className="text-xs font-semibold">Practice Dialogue</span>
+        <span className="text-[9px] font-semibold text-center leading-tight">Practice<br />Dialogue</span>
+      </button>
+
+      <button
+        type="button"
+        onClick={() => navigate('/foreigner-exclusive')}
+        className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'exclusive' ? 'text-brand-green' : 'text-gray-400 hover:text-gray-600'}`}
+      >
+        <span className="text-2xl">🇸🇰</span>
+        <span className="text-[9px] font-semibold text-center leading-tight">Foreigner<br />Exclusive</span>
       </button>
 
       {user ? (

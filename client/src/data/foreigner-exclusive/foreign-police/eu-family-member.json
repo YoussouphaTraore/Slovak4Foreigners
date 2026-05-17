@@ -1,0 +1,17 @@
+{
+  "id": "life-eu-family-member",
+  "stageId": "life-in-slovakia",
+  "stageName": "Foreigner Exclusive",
+  "category": "foreign-police",
+  "categoryName": "Foreign Police",
+  "title": "EU Family Member",
+  "titleSlovak": "Rodinný príslušník občana EÚ",
+  "description": "Residence rights for non-EU family members of EU citizens living in Slovakia",
+  "icon": "👨‍👩‍👧",
+  "xpReward": 15,
+  "isPremium": false,
+  "coming_soon": true,
+  "unlocksReferenceCard": "eu-family-member-card",
+  "exercises": [],
+  "referenceCard": null
+}

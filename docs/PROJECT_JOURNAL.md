@@ -568,7 +568,7 @@ Vercel runs `tsc -b` (project references, strict). This is stricter than running
 ### Supabase OAuth redirect
 
 In the Supabase dashboard → Authentication → URL Configuration:
-- **Site URL:** your production Vercel URL (e.g. `https://slovak4foreigners.vercel.app`)
+- **Site URL:** `https://www.slovakforforeigners.eu`
 - **Redirect URLs:** add both production URL and `http://localhost:5173` for local dev
 
 ---

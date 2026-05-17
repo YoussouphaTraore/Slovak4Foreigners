@@ -154,6 +154,14 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
     );
   }
 
+  if (exercise.type === 'MULTIPLE_CHOICE') {
+    return (
+      <div className="flex flex-col flex-1 min-h-0">
+        <MultipleChoiceExercise exercise={exercise} onDone={(correct) => onComplete(correct)} onAnswer={onAnswer} />
+      </div>
+    );
+  }
+
   if (exercise.type === 'SMS_DIALOGUE') {
     return (
       <div className="flex flex-col flex-1 min-h-0">
@@ -164,9 +172,8 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
 
   const isListenAndPick = exercise.type === 'LISTEN_AND_PICK' || exercise.type === 'PICK_TRANSLATION' || exercise.type === 'SITUATIONAL_CHOICE';
   const isWordMatch = exercise.type === 'WORD_MATCH';
-  const isMC = exercise.type === 'MULTIPLE_CHOICE';
   const isWordBank = exercise.type === 'TRANSLATE_TO_ENGLISH';
-  const needsCheckButton = !isListenAndPick && !isWordMatch && !isMC;
+  const needsCheckButton = !isListenAndPick && !isWordMatch;
   const hasAnswer = answer.trim().length > 0;
   const disabled = phase === 'feedback';
 
@@ -179,12 +186,6 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
     setPhase('feedback');
     onAnswer?.(result.correct);
   }, [exercise, onAnswer]);
-
-  const handleMCCheck = (choice: string) => {
-    if (phase === 'feedback') return;
-    setAnswer(choice);
-    submitAnswer(choice);
-  };
 
   if (isListenAndPick) {
     return (
@@ -226,18 +227,10 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
               disabled={disabled}
               onInputRef={handleRegisterInput}
             />
-          ) : exercise.type === 'MULTIPLE_CHOICE' ? (
-            <MultipleChoiceExercise
-              exercise={exercise}
-              selected={answer}
-              onSelect={handleMCCheck}
-              disabled={disabled}
-              showResult={showResult}
-            />
           ) : exercise.type === 'WORD_MATCH' ? (
             <WordMatchExercise
               exercise={exercise}
-              onAllMatched={() => { setFeedback({ correct: true, correctAnswer: '' }); setPhase('feedback'); }}
+              onAllMatched={() => onComplete(true)}
             />
           ) : exercise.type === 'FILL_IN_BLANK' ? (
             <FillInBlankExercise

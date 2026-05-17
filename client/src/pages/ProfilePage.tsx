@@ -3,6 +3,7 @@ import { useNavigate, Navigate } from 'react-router-dom';
 import { useAuthStore } from '../store/useAuthStore';
 import { useProgressStore } from '../store/useProgressStore';
 import { lessons } from '../data/lessons';
+import { foreignPoliceLessons } from '../data/foreigner-exclusive/foreign-police';
 import { supabase } from '../lib/supabase/client';
 import { BottomNav } from '../components/ui/BottomNav';
 
@@ -144,6 +145,7 @@ export function ProfilePage() {
   const lessonRecords = useProgressStore((s) => s.lessonRecords);
   const snailRaceRecords = useProgressStore((s) => s.snailRaceRecords);
   const unlockedStages = useProgressStore((s) => s.unlockedStages);
+  const unlockedReferenceCards = useProgressStore((s) => s.unlockedReferenceCards);
 
   // All useState hooks must be before any conditional return
   const [editingName, setEditingName] = useState(false);
@@ -353,7 +355,37 @@ export function ProfilePage() {
           </Card>
         </div>
 
-        {/* ── 6. Account settings ────────────────────────────────────────────── */}
+        {/* ── 6. Reference Cards ─────────────────────────────────────────────── */}
+        <div>
+          <SectionLabel>Reference Cards</SectionLabel>
+          <Card>
+            {foreignPoliceLessons
+              .filter((l) => !l.coming_soon)
+              .map((l, i, arr) => {
+                const hasCard = unlockedReferenceCards.includes(l.unlocksReferenceCard);
+                return (
+                  <Row key={l.id} last={i === arr.length - 1} onClick={hasCard ? () => navigate('/foreigner-exclusive/foreign-police') : undefined}>
+                    <span className="text-xl w-7 flex-none text-center leading-none">
+                      {hasCard ? '📋' : '🔒'}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <p className={`text-sm font-semibold truncate ${hasCard ? 'text-gray-800' : 'text-gray-400'}`}>
+                        {l.title}
+                      </p>
+                      <p className="text-xs text-gray-400 italic truncate">{l.titleSlovak}</p>
+                    </div>
+                    {hasCard ? (
+                      <span className="text-xs bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full font-semibold shrink-0">Unlocked</span>
+                    ) : (
+                      <span className="text-xs bg-gray-100 text-gray-400 px-2.5 py-0.5 rounded-full font-semibold shrink-0">Locked</span>
+                    )}
+                  </Row>
+                );
+              })}
+          </Card>
+        </div>
+
+        {/* ── 7. Account settings ────────────────────────────────────────────── */}
         <div>
           <SectionLabel>Account</SectionLabel>
           <Card>
@@ -415,7 +447,7 @@ export function ProfilePage() {
           </Card>
         </div>
 
-        {/* ── 7. Sign out ────────────────────────────────────────────────────── */}
+        {/* ── 8. Sign out ────────────────────────────────────────────────────── */}
         <Card>
           <Row last onClick={handleSignOut}>
             <span className="text-xl w-7 flex-none text-center leading-none">🚪</span>
@@ -423,7 +455,7 @@ export function ProfilePage() {
           </Row>
         </Card>
 
-        {/* ── 8. Delete account ──────────────────────────────────────────────── */}
+        {/* ── 9. Delete account ──────────────────────────────────────────────── */}
         <div className="opacity-60">
           <Card>
             <Row last onClick={() => setShowDeleteConfirm(true)}>

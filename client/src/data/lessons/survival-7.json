@@ -1,0 +1,212 @@
+{
+  "id": "survival-7",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Colors",
+  "description": "Describe the world around you — red buildings, blue cars, and more",
+  "icon": "🎨",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Colors",
+      "headers": ["Color", "Slovak", "English"],
+      "rows": [
+        { "label": "Red",    "slovak": "červená",  "english": "Red" },
+        { "label": "Blue",   "slovak": "modrá",    "english": "Blue" },
+        { "label": "Green",  "slovak": "zelená",   "english": "Green" },
+        { "label": "Yellow", "slovak": "žltá",     "english": "Yellow" },
+        { "label": "White",  "slovak": "biela",    "english": "White" },
+        { "label": "Black",  "slovak": "čierna",   "english": "Black" },
+        { "label": "Orange", "slovak": "oranžová", "english": "Orange" },
+        { "label": "Pink",   "slovak": "ružová",   "english": "Pink" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "červená",  "english": "Red" },
+        { "slovak": "modrá",    "english": "Blue" },
+        { "slovak": "zelená",   "english": "Green" },
+        { "slovak": "žltá",     "english": "Yellow" },
+        { "slovak": "biela",    "english": "White" },
+        { "slovak": "čierna",   "english": "Black" },
+        { "slovak": "oranžová", "english": "Orange" },
+        { "slovak": "ružová",   "english": "Pink" }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "červená",  "english": "Red" },
+        { "slovak": "modrá",    "english": "Blue" },
+        { "slovak": "zelená",   "english": "Green" },
+        { "slovak": "žltá",     "english": "Yellow" },
+        { "slovak": "biela",    "english": "White" },
+        { "slovak": "čierna",   "english": "Black" },
+        { "slovak": "oranžová", "english": "Orange" },
+        { "slovak": "ružová",   "english": "Pink" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "červená",  "english": "Red" },
+        { "slovak": "modrá",    "english": "Blue" },
+        { "slovak": "zelená",   "english": "Green" },
+        { "slovak": "žltá",     "english": "Yellow" },
+        { "slovak": "biela",    "english": "White" },
+        { "slovak": "čierna",   "english": "Black" },
+        { "slovak": "oranžová", "english": "Orange" },
+        { "slovak": "ružová",   "english": "Pink" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "WORD_MATCH",
+      "pairs": [
+        { "slovak": "červená", "english": "Red" },
+        { "slovak": "modrá",   "english": "Blue" },
+        { "slovak": "čierna",  "english": "Black" },
+        { "slovak": "žltá",    "english": "Yellow" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH",
+      "pairs": [
+        { "slovak": "zelená",   "english": "Green" },
+        { "slovak": "biela",    "english": "White" },
+        { "slovak": "oranžová", "english": "Orange" },
+        { "slovak": "ružová",   "english": "Pink" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "MULTIPLE_CHOICE",
+      "prompt": "In the About Me lesson you met 'biely/biela' and 'čierny/čierna' for describing yourself. Which of these four words means 'white'?",
+      "choices": ["čierna", "zelená", "biela", "červená"],
+      "answer": "biela"
+    },
+    {
+      "id": "ex7",
+      "type": "MULTIPLE_CHOICE",
+      "prompt": "The Slovak word 'ružová' comes from 'ruža' — a type of flower. What flower is it, and what color is ružová?",
+      "choices": ["Daisy — white", "Rose — pink", "Sunflower — yellow", "Violet — blue"],
+      "answer": "Rose — pink"
+    },
+    {
+      "id": "ex8",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "A police officer asks you to describe a suspect. You saw the person wearing a red jacket. What color do you report?",
+          "instruction": "Choose the correct color",
+          "choices": ["červená", "modrá", "zelená", "biela"],
+          "answer": "červená",
+          "answerMeaning": "červená = red — a crucial word when describing people or objects to the police"
+        },
+        {
+          "situation": "Your friend has a blue car and you need to find them in a crowded parking lot. Which car are you looking for?",
+          "instruction": "Choose the correct color",
+          "choices": ["červená", "čierna", "modrá", "žltá"],
+          "answer": "modrá",
+          "answerMeaning": "modrá = blue — essential for describing vehicles and arranging meeting points"
+        },
+        {
+          "situation": "In Slovakia, pharmacy (lekáreň) signs are always the same color — the same as grass. Which color word matches?",
+          "instruction": "Choose the correct color",
+          "choices": ["modrá", "zelená", "biela", "červená"],
+          "answer": "zelená",
+          "answerMeaning": "zelená = green — lekáreň signs in Slovakia are always green. Spot them at a glance!"
+        },
+        {
+          "situation": "You lost your bag on the bus. The dispatcher asks for the color. The bag is black. What do you say?",
+          "instruction": "Choose the correct color",
+          "choices": ["biela", "červená", "oranžová", "čierna"],
+          "answer": "čierna",
+          "answerMeaning": "čierna = black — you first saw čierna in the About Me lesson! čierna taška = black bag."
+        },
+        {
+          "situation": "The traffic light turns yellow. What is the Slovak word for this color?",
+          "instruction": "Choose the correct color",
+          "choices": ["červená", "zelená", "oranžová", "žltá"],
+          "answer": "žltá",
+          "answerMeaning": "žltá = yellow — traffic light sequence: zelená = go, žltá = about to change, červená = stop."
+        },
+        {
+          "situation": "A white envelope arrives from the immigration office. Which color word describes it?",
+          "instruction": "Choose the correct color",
+          "choices": ["biela", "ružová", "modrá", "žltá"],
+          "answer": "biela",
+          "answerMeaning": "biela = white — official letters usually come in white envelopes. Now you can describe them!"
+        },
+        {
+          "situation": "You are at a flower shop and want to buy pink roses for a friend. Which color do you ask for?",
+          "instruction": "Choose the correct color",
+          "choices": ["červená", "oranžová", "žltá", "ružová"],
+          "answer": "ružová",
+          "answerMeaning": "ružová = pink — it literally comes from 'ruža' (rose). Ružové ruže = pink roses!"
+        },
+        {
+          "situation": "You receive an orange parking ticket on your windscreen. Which color word matches it?",
+          "instruction": "Choose the correct color",
+          "choices": ["žltá", "červená", "oranžová", "modrá"],
+          "answer": "oranžová",
+          "answerMeaning": "oranžová = orange — parking tickets in Slovakia are often printed on orange paper!"
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Tráva je ___.",
+          "translation": "Grass is ___.",
+          "choices": ["červená", "zelená", "žltá", "modrá"],
+          "answer": "zelená"
+        },
+        {
+          "sentence": "Obloha je ___.",
+          "translation": "The sky is ___.",
+          "choices": ["červená", "modrá", "čierna", "oranžová"],
+          "answer": "modrá"
+        },
+        {
+          "sentence": "Táto taška je ___, nie biela.",
+          "translation": "This bag is ___, not white.",
+          "choices": ["biela", "čierna", "ružová", "zelená"],
+          "answer": "čierna"
+        },
+        {
+          "sentence": "Ruža je ___.",
+          "translation": "A rose is ___.",
+          "choices": ["ružová", "červená", "žltá", "oranžová"],
+          "answer": "ružová"
+        },
+        {
+          "sentence": "Tá budova pri banke je ___. Ľahko ju nájdete.",
+          "translation": "The building near the bank is ___. You will find it easily.",
+          "choices": ["biela", "zelená", "červená", "modrá"],
+          "answer": "červená"
+        },
+        {
+          "sentence": "Farba slnka je ___.",
+          "translation": "The color of the sun is ___.",
+          "choices": ["modrá", "žltá", "biela", "čierna"],
+          "answer": "žltá"
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

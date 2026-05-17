@@ -88,8 +88,9 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
                              'text-brand-blue border-brand-blue';
 
   const getChoiceStyle = (choice: string): string => {
+    const size = choice.length > 16 ? 'text-xs' : choice.length > 10 ? 'text-sm' : 'text-base';
     const base =
-      'border-2 rounded-2xl px-4 py-4 text-base font-bold text-center transition-all duration-200 active:scale-95 cursor-pointer break-words';
+      `border-2 rounded-2xl px-3 py-4 ${size} font-bold text-center transition-all duration-200 active:scale-95 cursor-pointer break-words`;
     if (feedback !== null) {
       if (choice === current.answer)  return `${base} border-brand-green bg-green-50 text-brand-green`;
       if (choice === tappedChoice)    return `${base} border-brand-red bg-red-50 text-brand-red animate-shake`;
@@ -121,7 +122,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
         <p className="text-base font-semibold text-gray-800 leading-relaxed">
           {skovBefore}
           <span className={`font-bold border-b-2 px-1 ${tappedChoice ? blankColor : 'border-gray-300 text-gray-300'}`}>
-            {blankWord}
+            {tappedChoice ? slovakifyNumbers(blankWord) : blankWord}
           </span>
           {slovAfter}
         </p>
@@ -167,8 +168,8 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
               </p>
               <p className={`text-xs leading-snug ${feedback === 'correct' ? 'text-green-700' : 'text-red-700'}`}>
                 {feedback === 'correct'
-                  ? `"${current.answer}" fits perfectly!`
-                  : `The correct word is "${current.answer}"`}
+                  ? `"${slovakifyNumbers(current.answer)}" fits perfectly!`
+                  : `The correct word is "${slovakifyNumbers(current.answer)}"`}
               </p>
             </div>
             <button

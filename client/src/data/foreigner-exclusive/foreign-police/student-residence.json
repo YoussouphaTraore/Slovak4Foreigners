@@ -1,0 +1,17 @@
+{
+  "id": "life-student-residence",
+  "stageId": "life-in-slovakia",
+  "stageName": "Foreigner Exclusive",
+  "category": "foreign-police",
+  "categoryName": "Foreign Police",
+  "title": "Student Residence",
+  "titleSlovak": "Pobyt za účelom štúdia",
+  "description": "Temporary residence for students — documents, timelines and what to expect",
+  "icon": "🎓",
+  "xpReward": 15,
+  "isPremium": false,
+  "coming_soon": true,
+  "unlocksReferenceCard": "student-residence-card",
+  "exercises": [],
+  "referenceCard": null
+}

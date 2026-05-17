@@ -92,6 +92,9 @@ interface ProgressStore {
   // Daily review
   lastReviewDate: string | null;
 
+  // Foreigner Exclusive — reference cards
+  unlockedReferenceCards: string[];
+
   // XP actions
   addXP: (amount: number) => void;
   spendXP: (amount: number) => boolean;
@@ -132,6 +135,9 @@ interface ProgressStore {
   // Daily review
   completeReview: (xpEarned: number, lessonIds: string[]) => void;
 
+  // Foreigner Exclusive
+  unlockReferenceCard: (cardId: string) => void;
+
   // Cloud sync
   initializeFromCloud: (userId: string) => Promise<void>;
 
@@ -160,6 +166,7 @@ export const useProgressStore = create<ProgressStore>()(
       showSaveProgressModal: null,
       regressionLessonTitle: null,
       lastReviewDate: null,
+      unlockedReferenceCards: [],
 
       // ── XP ────────────────────────────────────────────────────────────────
 
@@ -399,6 +406,15 @@ export const useProgressStore = create<ProgressStore>()(
         }
       },
 
+      // ── Foreigner Exclusive ───────────────────────────────────────────────
+
+      unlockReferenceCard: (cardId) =>
+        set((s) => ({
+          unlockedReferenceCards: s.unlockedReferenceCards.includes(cardId)
+            ? s.unlockedReferenceCards
+            : [...s.unlockedReferenceCards, cardId],
+        })),
+
       // ── Cloud sync ────────────────────────────────────────────────────────
 
       initializeFromCloud: async (userId) => {
@@ -530,7 +546,7 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 5,
+      version: 6,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
@@ -577,6 +593,10 @@ export const useProgressStore = create<ProgressStore>()(
 
         if (version < 5) {
           old = { ...old, lastReviewDate: null };
+        }
+
+        if (version < 6) {
+          old = { ...old, unlockedReferenceCards: [] };
         }
 
         return old as unknown as ProgressStore;

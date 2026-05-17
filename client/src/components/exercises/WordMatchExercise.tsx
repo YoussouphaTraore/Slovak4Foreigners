@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import type { WordMatchExercise as WMExercise } from '../../types/lesson';
+import { MascotSpeech } from '../ui/MascotSpeech';
 
 interface Props {
   exercise: WMExercise;
@@ -13,10 +14,25 @@ interface Selection {
   value: string;
 }
 
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 export function WordMatchExercise({ exercise, onAllMatched }: Props) {
   const [matched, setMatched] = useState<Set<string>>(new Set());
   const [selected, setSelected] = useState<Selection | null>(null);
   const [wrongPair, setWrongPair] = useState<{ slovak: string; english: string } | null>(null);
+
+  const shuffledEnglish = useMemo(
+    () => shuffle(exercise.pairs.map((p) => p.english)),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  );
 
   const handleSelect = (side: Side, value: string) => {
     if (matched.has(value)) return;
@@ -81,9 +97,7 @@ export function WordMatchExercise({ exercise, onAllMatched }: Props) {
 
   return (
     <div className="flex flex-col gap-3">
-      <p className="text-base font-semibold text-gray-500 mb-1">
-        Match each Slovak phrase with its English meaning.
-      </p>
+      <MascotSpeech message="Match each Slovak word with its English meaning!" />
       <div className="grid grid-cols-2 gap-3">
         <div className="flex flex-col gap-2">
           {exercise.pairs.map((p) => (
@@ -98,14 +112,14 @@ export function WordMatchExercise({ exercise, onAllMatched }: Props) {
           ))}
         </div>
         <div className="flex flex-col gap-2">
-          {exercise.pairs.map((p) => (
+          {shuffledEnglish.map((eng) => (
             <button
-              key={p.english}
+              key={eng}
               type="button"
-              onClick={() => handleSelect('english', p.english)}
-              className={getStyle('english', p.english)}
+              onClick={() => handleSelect('english', eng)}
+              className={getStyle('english', eng)}
             >
-              {p.english}
+              {eng}
             </button>
           ))}
         </div>

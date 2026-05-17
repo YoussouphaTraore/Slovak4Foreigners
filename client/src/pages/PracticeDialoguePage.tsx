@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { dialogues } from '../data/dialogues';
 import { useProgressStore } from '../store/useProgressStore';
 import { useAuthStore } from '../store/useAuthStore';
+import { XpBadge } from '../components/ui/XpBadge';
+import { StreakDisplay } from '../components/ui/StreakDisplay';
 import { SaveProgressModal } from '../components/auth/SaveProgressModal';
 import { BottomNav } from '../components/ui/BottomNav';
 
@@ -15,15 +17,34 @@ const TIER_LABELS: Record<number, string> = {
 export function PracticeDialoguePage() {
   const navigate = useNavigate();
   const { unlockedStages } = useProgressStore();
+  const xp = useProgressStore((s) => s.xp);
+  const streak = useProgressStore((s) => s.streak);
+  const streakMultiplier = useProgressStore((s) => s.streakMultiplier);
+  const isSyncing = useProgressStore((s) => s.isSyncing);
   const user = useAuthStore((s) => s.user);
   const [showAuthGate, setShowAuthGate] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#E8F4DC] flex flex-col max-w-lg mx-auto w-full">
       {/* Header */}
-      <div className="bg-white border-b border-gray-100 px-4 py-4">
-        <h1 className="text-lg font-bold text-gray-800">Practice Dialogue</h1>
-        <p className="text-xs text-gray-400 mt-0.5">Real conversations with Slovak characters</p>
+      <div className="sticky top-0 z-20 bg-white border-b border-gray-100 px-4 pt-3 pb-2">
+        <div className="flex items-center gap-2.5">
+          <img src="/snail.png" alt="" className="w-8 h-8 object-contain shrink-0" />
+          <div className="flex-1 min-w-0">
+            <h1 className="text-base font-bold text-gray-800 leading-tight">Practice Dialogue</h1>
+            <p className="text-xs text-gray-400 leading-tight">Real conversations with Slovak characters</p>
+          </div>
+        </div>
+        <div className="flex items-center gap-2 mt-2">
+          <StreakDisplay streak={streak} />
+          <XpBadge xp={xp} streakMultiplier={streakMultiplier} />
+          {isSyncing && (
+            <span title="Saving to cloud…" className="flex items-center gap-1 text-gray-400">
+              <span className="w-3 h-3 border-2 border-gray-300 border-t-brand-green rounded-full animate-spin inline-block" />
+              <span className="text-[10px] font-medium">saving</span>
+            </span>
+          )}
+        </div>
       </div>
 
       {/* Dialogue cards */}

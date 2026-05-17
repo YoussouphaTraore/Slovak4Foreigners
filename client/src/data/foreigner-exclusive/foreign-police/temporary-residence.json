@@ -1,0 +1,638 @@
+﻿{
+  "id": "life-temporary-residence",
+  "stageId": "life-in-slovakia",
+  "stageName": "Foreigner Exclusive",
+  "category": "foreign-police",
+  "categoryName": "Foreign Police",
+  "title": "Temporary Residence",
+  "titleSlovak": "Prechodný pobyt",
+  "description": "Learn the documents, rules and Slovak phrases you need for your temporary residence permit",
+  "icon": "🛂",
+  "xpReward": 15,
+  "isPremium": false,
+  "unlocksReferenceCard": "temporary-residence-card",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Key Documents",
+      "subtitle": "These are the documents you will need. Learn their Slovak names â€” the officer will use them.",
+      "rows": [
+        { "label": "The permit itself", "slovak": "PrechodnÃ½ pobyt", "english": "Temporary residence permit" },
+        { "label": "The application", "slovak": "Å½iadosÅ¥", "english": "Application form" },
+        { "label": "Your travel document", "slovak": "CestovnÃ½ pas", "english": "Passport" },
+        { "label": "Clean record", "slovak": "VÃ½pis z registra trestov", "english": "Criminal record check" },
+        { "label": "Where you live", "slovak": "Doklad o ubytovanÃ­", "english": "Proof of accommodation" },
+        { "label": "Your money", "slovak": "Doklad o finanÄnom zabezpeÄenÃ­", "english": "Proof of sufficient funds" },
+        { "label": "Why you are here", "slovak": "Doklad o ÃºÄele pobytu", "english": "Document confirming purpose of stay" },
+        { "label": "Your photo", "slovak": "Fotografia", "english": "Passport photo (2 copies)" },
+        { "label": "The fee", "slovak": "SprÃ¡vny poplatok", "english": "Administrative fee (â‚¬165.50)" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Å½iadosÅ¥", "english": "Application form" },
+        { "slovak": "CestovnÃ½ pas", "english": "Passport" },
+        { "slovak": "Fotografia", "english": "Passport photo" },
+        { "slovak": "PrechodnÃ½ pobyt", "english": "Temporary residence" },
+        { "slovak": "SprÃ¡vny poplatok", "english": "Administrative fee" },
+        { "slovak": "Ubytovanie", "english": "Accommodation" }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Å½iadosÅ¥", "english": "Application form" },
+        { "slovak": "CestovnÃ½ pas", "english": "Passport" },
+        { "slovak": "Fotografia", "english": "Passport photo" },
+        { "slovak": "PrechodnÃ½ pobyt", "english": "Temporary residence" },
+        { "slovak": "SprÃ¡vny poplatok", "english": "Administrative fee" },
+        { "slovak": "Ubytovanie", "english": "Accommodation" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "VÃ½pis z registra trestov", "english": "Criminal record check" },
+        { "slovak": "Doklad o ubytovanÃ­", "english": "Proof of accommodation" },
+        { "slovak": "Doklad o finanÄnom zabezpeÄenÃ­", "english": "Proof of sufficient funds" },
+        { "slovak": "Doklad o ÃºÄele pobytu", "english": "Document confirming purpose of stay" },
+        { "slovak": "Å½iadosÅ¥", "english": "Application form" },
+        { "slovak": "SprÃ¡vny poplatok", "english": "Administrative fee" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The officer at the Foreign Police says: 'ProsÃ­m vÃ¡Å¡ cestovnÃ½ pas.' What are they asking for?",
+          "instruction": "Choose the correct document",
+          "choices": ["Your criminal record", "Your application form", "Your passport", "Your accommodation proof"],
+          "answer": "Your passport",
+          "answerMeaning": "CestovnÃ½ pas = passport. This is always the first thing they ask for."
+        },
+        {
+          "situation": "The officer says: 'VÃ½pis z registra trestov nesmie byÅ¥ starÅ¡Ã­ ako 90 dnÃ­.' What is the rule?",
+          "instruction": "Choose the correct interpretation",
+          "choices": [
+            "The criminal record must be at least 90 days old",
+            "The criminal record cannot be older than 90 days",
+            "You need 90 days to get the criminal record",
+            "The criminal record is valid for 90 years"
+          ],
+          "answer": "The criminal record cannot be older than 90 days",
+          "answerMeaning": "Nesmie byÅ¥ starÅ¡Ã­ ako = must not be older than. This is a critical rule â€” many applications are rejected because of an expired criminal record."
+        },
+        {
+          "situation": "Your criminal record from home was issued 4 months ago. Can you use it for your application?",
+          "instruction": "What is the correct answer?",
+          "choices": [
+            "Yes â€” 4 months is acceptable",
+            "Yes â€” if it has an apostille",
+            "No â€” it must be less than 90 days old",
+            "Ask the Foreign Police officer"
+          ],
+          "answer": "No â€” it must be less than 90 days old",
+          "answerMeaning": "4 months = approximately 120 days. The limit is 90 days. You need to order a new one."
+        },
+        {
+          "situation": "You have a temporary residence for employment but you want to start a business on the side. Is this allowed?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes â€” you can do both with one permit",
+            "No â€” the permit is for one purpose only",
+            "Yes â€” if your employer agrees",
+            "Only if the business makes less than â‚¬500/month"
+          ],
+          "answer": "No â€” the permit is for one purpose only",
+          "answerMeaning": "A temporary residence permit is bound to ONE purpose. Employment â‰  business. You would need a separate permit for business activity."
+        },
+        {
+          "situation": "The officer asks: 'Doklad o ubytovanÃ­, prosÃ­m.' Your landlord has not given you anything yet. What should you do?",
+          "instruction": "Choose the best course of action",
+          "choices": [
+            "Show your rental contract â€” it is enough",
+            "Show your hotel booking",
+            "Ask your landlord for a signed and notarised statement",
+            "Come back another day"
+          ],
+          "answer": "Ask your landlord for a signed and notarised statement",
+          "answerMeaning": "The landlord must provide a notarised confirmation (Ãºradne overenÃ© vyhlÃ¡senie) OR your signed lease. A hotel booking is not accepted for longer stays."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "VOCABULARY_TABLE",
+      "title": "At the Foreign Police â€” Key Phrases",
+      "subtitle": "What you will say and hear at the office.",
+      "rows": [
+        { "label": "Opening", "slovak": "Chcel/a by som poÅ¾iadaÅ¥ o prechodnÃ½ pobyt.", "english": "I would like to apply for a temporary residence permit." },
+        { "label": "Appointment", "slovak": "MÃ¡m stretnutie o desiatej.", "english": "I have an appointment at ten o'clock." },
+        { "label": "Missing doc", "slovak": "KtorÃ© dokumenty chÃ½bajÃº?", "english": "Which documents are missing?" },
+        { "label": "Timeline", "slovak": "Kedy bude rozhodnutie hotovÃ©?", "english": "When will the decision be ready?" },
+        { "label": "Repeat", "slovak": "MÃ´Å¾ete to zopakovaÅ¥, prosÃ­m?", "english": "Could you repeat that, please?" },
+        { "label": "Language", "slovak": "HovorÃ­te po anglicky?", "english": "Do you speak English?" },
+        { "label": "Not clear", "slovak": "Nerozumiem. MÃ´Å¾ete pÃ­saÅ¥?", "english": "I don't understand. Can you write it down?" },
+        { "label": "Apostille", "slovak": "Dokument musÃ­ byÅ¥ apostilovanÃ½.", "english": "The document must be apostilled." },
+        { "label": "Translation", "slovak": "Potrebujeme ÃºradnÃ½ preklad.", "english": "We need a certified translation." }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Chcel by som poÅ¾iadaÅ¥ o prechodnÃ½ pobyt.", "english": "I would like to apply for a temporary residence permit." },
+        { "slovak": "KtorÃ© dokumenty chÃ½bajÃº?", "english": "Which documents are missing?" },
+        { "slovak": "Kedy bude rozhodnutie hotovÃ©?", "english": "When will the decision be ready?" },
+        { "slovak": "Dokument musÃ­ byÅ¥ apostilovanÃ½.", "english": "The document must be apostilled." },
+        { "slovak": "Potrebujeme ÃºradnÃ½ preklad.", "english": "We need a certified translation." }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Chcel by som poÅ¾iadaÅ¥ o ___ pobyt.",
+          "translation": "I would like to apply for a ___ residence permit.",
+          "choices": ["trvalÃ½", "prechodnÃ½", "dlhodobÃ½", "Å¡tudentskÃ½"],
+          "answer": "prechodnÃ½"
+        },
+        {
+          "sentence": "VÃ½pis z registra trestov nesmie byÅ¥ starÅ¡Ã­ ako ___ dnÃ­.",
+          "translation": "The criminal record must not be older than ___ days.",
+          "choices": ["30", "60", "90", "180"],
+          "answer": "90"
+        },
+        {
+          "sentence": "MÃ¡m ___ o desiatej hodine.",
+          "translation": "I have an ___ at ten o'clock.",
+          "choices": ["doklad", "Å¾iadosÅ¥", "stretnutie", "poplatok"],
+          "answer": "stretnutie"
+        },
+        {
+          "sentence": "Potrebujem doklad o ___.",
+          "translation": "I need proof of ___.",
+          "choices": ["poplatok", "ubytovanÃ­", "fotografii", "Å¾iadosti"],
+          "answer": "ubytovanÃ­"
+        },
+        {
+          "sentence": "SprÃ¡vny poplatok je ___ eur pÃ¤Å¥desiat.",
+          "translation": "The administrative fee is ___ euros fifty.",
+          "choices": ["sto", "dvesto", "stopÃ¤Å¥desiatpÃ¤Å¥", "stoÅ¡esÅ¥desiatpÃ¤Å¥"],
+          "answer": "stoÅ¡esÅ¥desiatpÃ¤Å¥"
+        },
+        {
+          "sentence": "Dokument musÃ­ maÅ¥ ÃºradnÃ½ ___ do slovenÄiny.",
+          "translation": "The document must have a certified ___ into Slovak.",
+          "choices": ["poplatok", "preklad", "pobyt", "pas"],
+          "answer": "preklad"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The officer says your application is not complete: 'Å½iadosÅ¥ nie je kompletnÃ¡.' What do you ask?",
+          "instruction": "Choose the most useful response",
+          "choices": ["ÄŽakujem, dovidenia.", "KtorÃ© dokumenty chÃ½bajÃº?", "Nerozumiem po slovensky.", "Kedy bude hotovÃ©?"],
+          "answer": "KtorÃ© dokumenty chÃ½bajÃº?",
+          "answerMeaning": "Asking which documents are missing is the most useful â€” you need to know exactly what to bring next time."
+        },
+        {
+          "situation": "How much is the administrative fee for a temporary residence permit?",
+          "instruction": "Choose the correct amount",
+          "choices": ["â‚¬50", "â‚¬100", "â‚¬165.50", "â‚¬250"],
+          "answer": "â‚¬165.50",
+          "answerMeaning": "The current fee is â‚¬165.50. Always check minv.sk before your appointment as fees can change."
+        },
+        {
+          "situation": "You submitted your application 60 days ago and have not heard back. What should you know?",
+          "instruction": "Choose the correct statement",
+          "choices": [
+            "Your application has been rejected",
+            "Processing takes up to 90 days â€” this is normal",
+            "You need to resubmit everything",
+            "Call the Foreign Police immediately"
+          ],
+          "answer": "Processing takes up to 90 days â€” this is normal",
+          "answerMeaning": "The legal processing time is up to 90 days. You are authorised to stay in Slovakia while waiting."
+        },
+        {
+          "situation": "Your current temporary residence expires in 2 weeks. When should you have applied for renewal?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Before your current permit expires",
+            "On the day it expires â€” that is the deadline",
+            "Within 30 days after expiry â€” there is a grace period",
+            "At least 6 months before expiry"
+          ],
+          "answer": "Before your current permit expires",
+          "answerMeaning": "Slovak law requires you to apply before your permit expires â€” there is no fixed minimum number of days, but the Foreign Police recommend applying well in advance since processing takes up to 90 days. If you apply before expiry you can legally stay while waiting for the decision."
+        },
+        {
+          "situation": "Your documents from home country need an apostille. Where do you get an apostille?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "At the Slovak Foreign Police",
+            "At the Slovak embassy in your home country",
+            "From the authority that issued the document in your home country",
+            "At any notary in Slovakia"
+          ],
+          "answer": "From the authority that issued the document in your home country",
+          "answerMeaning": "The apostille is attached by the relevant authority in the country that issued the document â€” for example, the Ministry of Justice or designated court. Not from Slovakia."
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "WHATSAPP_DIALOGUE",
+      "contact": {
+        "name": "Pán Novák 🏠",
+        "initials": "PN",
+        "role": "landlord",
+        "status": "online"
+      },
+      "context": "You need a document from your landlord for the Foreign Police. You are texting him now.",
+      "outcomes": {
+        "A": {
+          "id": "outcome-notarised",
+          "title": "Document arranged! ✓",
+          "description": "Pán Novák will have the notarised letter ready by Friday.",
+          "xpBonus": 2
+        },
+        "B": {
+          "id": "outcome-explained",
+          "title": "You explained it well! ✓",
+          "description": "You corrected the landlord and got the right document sorted.",
+          "xpBonus": 3
+        }
+      },
+      "nodes": [
+        {
+          "id": "node-1",
+          "speaker": "user",
+          "prompt": "Start the conversation. How do you greet your landlord?",
+          "wrongAnswerResponse": "Prepáčte... nerozumiem.",
+          "wrongAnswerTranslation": "Sorry... I don't understand.",
+          "choices": [
+            {
+              "id": "choice-1a",
+              "text": "Dobrý deň pán Novák.",
+              "translation": "Good day Mr. Novák.",
+              "isCorrect": true,
+              "nextNode": "node-2",
+              "usesVocab": ["Dobrý deň"]
+            },
+            {
+              "id": "choice-1b",
+              "text": "Ahoj pán Novák!",
+              "translation": "Hi Mr. Novák!",
+              "isCorrect": true,
+              "nextNode": "node-2",
+              "usesVocab": ["Ahoj"]
+            },
+            {
+              "id": "choice-1c",
+              "text": "Hej.",
+              "translation": "Hey.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-2",
+          "speaker": "landlord",
+          "text": "Dobrý deň! Čo sa stalo?",
+          "translation": "Good day! What happened?",
+          "wrongAnswerResponse": "Hmm... o čom hovoríte?",
+          "wrongAnswerTranslation": "Hmm... what are you talking about?",
+          "choices": [
+            {
+              "id": "choice-2a",
+              "text": "Potrebujem jeden dokument od vás.",
+              "translation": "I need one document from you.",
+              "isCorrect": true,
+              "nextNode": "node-3",
+              "usesVocab": ["potrebujem", "dokument"]
+            },
+            {
+              "id": "choice-2b",
+              "text": "Mám otázku ohľadom bytu.",
+              "translation": "I have a question about the flat.",
+              "isCorrect": true,
+              "nextNode": "node-3",
+              "usesVocab": ["otázka", "byt"]
+            },
+            {
+              "id": "choice-2c",
+              "text": "Kedy ste doma?",
+              "translation": "When are you home?",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-3",
+          "speaker": "landlord",
+          "text": "Áno, samozrejme. Aký dokument?",
+          "translation": "Yes, of course. What document?",
+          "wrongAnswerResponse": "To nie je dokument... čo presne potrebujete?",
+          "wrongAnswerTranslation": "That's not a document... what exactly do you need?",
+          "choices": [
+            {
+              "id": "choice-3a",
+              "text": "Potvrdenie o ubytovaní.",
+              "translation": "Proof of accommodation.",
+              "isCorrect": true,
+              "nextNode": "node-4a",
+              "usesVocab": ["potvrdenie o ubytovaní"]
+            },
+            {
+              "id": "choice-3b",
+              "text": "Vyhlásenie, že bývam u vás.",
+              "translation": "A statement that I live at your place.",
+              "isCorrect": true,
+              "nextNode": "node-4b",
+              "usesVocab": ["vyhlásenie"]
+            },
+            {
+              "id": "choice-3c",
+              "text": "Váš občiansky preukaz.",
+              "translation": "Your ID card.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-4a",
+          "speaker": "landlord",
+          "text": "Na čo to potrebujete?",
+          "translation": "What do you need it for?",
+          "wrongAnswerResponse": "Nerozumiem... môžete to zopakovať?",
+          "wrongAnswerTranslation": "I don't understand... can you repeat that?",
+          "choices": [
+            {
+              "id": "choice-4a-a",
+              "text": "Pre cudzineckú políciu.",
+              "translation": "For the Foreign Police.",
+              "isCorrect": true,
+              "nextNode": "node-5",
+              "usesVocab": ["cudzinecká polícia"]
+            },
+            {
+              "id": "choice-4a-b",
+              "text": "Žiadam o prechodný pobyt.",
+              "translation": "I am applying for temporary residence.",
+              "isCorrect": true,
+              "nextNode": "node-5",
+              "usesVocab": ["prechodný pobyt"]
+            },
+            {
+              "id": "choice-4a-c",
+              "text": "Na školu.",
+              "translation": "For school.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-4b",
+          "speaker": "landlord",
+          "text": "Dobre. Stačí nájomná zmluva?",
+          "translation": "Alright. Is the lease contract enough?",
+          "wrongAnswerResponse": "Aha... teda áno alebo nie?",
+          "wrongAnswerTranslation": "Ah... so yes or no?",
+          "choices": [
+            {
+              "id": "choice-4b-a",
+              "text": "Nie. Musí byť notársky overené.",
+              "translation": "No. It must be notarised.",
+              "isCorrect": true,
+              "nextNode": "node-5",
+              "usesVocab": ["notársky overené"]
+            },
+            {
+              "id": "choice-4b-b",
+              "text": "Radšej notársky overené vyhlásenie.",
+              "translation": "A notarised statement is better.",
+              "isCorrect": true,
+              "nextNode": "node-5",
+              "usesVocab": ["notársky overené vyhlásenie"]
+            },
+            {
+              "id": "choice-4b-c",
+              "text": "Áno, zmluva stačí.",
+              "translation": "Yes, the contract is enough.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-5",
+          "speaker": "landlord",
+          "text": "Rozumiem. Kedy to potrebujete?",
+          "translation": "I understand. When do you need it?",
+          "wrongAnswerResponse": "Prepáčte... to nie je odpoveď na moju otázku.",
+          "wrongAnswerTranslation": "Sorry... that's not an answer to my question.",
+          "choices": [
+            {
+              "id": "choice-5a",
+              "text": "Čím skôr. Stretnutie mám o dva týždne.",
+              "translation": "As soon as possible. My appointment is in two weeks.",
+              "isCorrect": true,
+              "nextNode": "node-6",
+              "usesVocab": ["čím skôr", "o dva týždne"]
+            },
+            {
+              "id": "choice-5b",
+              "text": "Do konca týždňa, ak sa dá.",
+              "translation": "By the end of the week, if possible.",
+              "isCorrect": true,
+              "nextNode": "node-6",
+              "usesVocab": ["do konca týždňa"]
+            },
+            {
+              "id": "choice-5c",
+              "text": "Neviem.",
+              "translation": "I don't know.",
+              "isCorrect": false,
+              "usesVocab": ["Neviem"]
+            }
+          ]
+        },
+        {
+          "id": "node-6",
+          "speaker": "landlord",
+          "text": "Dobre. Poznám notára na Hlavnej ulici.",
+          "translation": "Alright. I know a notary on Hlavná street.",
+          "autoAdvance": true,
+          "nextNode": "node-6b"
+        },
+        {
+          "id": "node-6b",
+          "speaker": "landlord",
+          "text": "Mám to hotové do piatku.",
+          "translation": "I will have it done by Friday.",
+          "wrongAnswerResponse": "Prepáčte? Len sa pýtam kedy to potrebujete...",
+          "wrongAnswerTranslation": "Excuse me? I'm just asking when you need it...",
+          "choices": [
+            {
+              "id": "choice-6a",
+              "text": "Výborne! Ďakujem pekne.",
+              "translation": "Excellent! Thank you very much.",
+              "isCorrect": true,
+              "nextNode": "node-end-A",
+              "usesVocab": ["ďakujem"]
+            },
+            {
+              "id": "choice-6b",
+              "text": "Perfektné. Dajte mi vedieť.",
+              "translation": "Perfect. Let me know.",
+              "isCorrect": true,
+              "nextNode": "node-end-A",
+              "usesVocab": []
+            },
+            {
+              "id": "choice-6c",
+              "text": "Prečo až v piatok?",
+              "translation": "Why only on Friday?",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-end-A",
+          "speaker": "landlord",
+          "text": "Dovidenia! Veľa šťastia! 👍",
+          "translation": "Goodbye! Good luck! 👍",
+          "isEndNode": true,
+          "outcome": "A"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does 'potvrdenie o ubytovaní' mean?",
+          "choices": ["Rental contract", "Proof of accommodation", "Utility bill", "ID card"],
+          "answer": "Proof of accommodation",
+          "explanation": "Potvrdenie = confirmation/proof. Ubytovanie = accommodation. This is the key document name to know at the Foreign Police."
+        },
+        {
+          "question": "The landlord offered the lease contract. Is that enough?",
+          "choices": ["Yes – any signed document works", "No – it must be notarised", "Yes – if it has your address", "Only if it is less than 90 days old"],
+          "answer": "No – it must be notarised",
+          "explanation": "The Foreign Police require a notarised statement (notársky overené vyhlásenie). A regular lease contract may not be accepted."
+        },
+        {
+          "question": "'Mám to hotové do piatku.' What did the landlord promise?",
+          "choices": ["He will call on Friday", "He will have it ready by Friday", "He will go to the police on Friday", "He will post it on Friday"],
+          "answer": "He will have it ready by Friday",
+          "explanation": "Mám hotové = I have it done/ready. Do piatku = by Friday. A very common phrase in Slovak – you will hear it often."
+        },
+        {
+          "question": "Why should you ask your landlord early – not the day before?",
+          "choices": ["Because landlords are always busy", "Because the notary process takes time", "Because the document expires quickly", "Because the Foreign Police need time to check it"],
+          "answer": "Because the notary process takes time",
+          "explanation": "Getting a notarised document means the landlord must book and visit a notary. This can take several days. Always ask at least 2 weeks before your appointment."
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to book an appointment at the Foreign Police. Where do you do this?",
+          "instruction": "Choose the correct answer",
+          "choices": ["Call the Foreign Police by phone", "Walk in on any working day", "Book online at cudzinec.minv.sk", "Ask your employer to book it"],
+          "answer": "Book online at cudzinec.minv.sk",
+          "answerMeaning": "The official appointment booking system is at cudzinec.minv.sk. Walk-ins are rarely accepted â€” always book in advance. Waiting times in Bratislava can be 4â€“8 weeks."
+        },
+        {
+          "situation": "The officer says: 'Dokument musÃ­ byÅ¥ apostilovanÃ½ a Ãºradne preloÅ¾enÃ½.' What must you do?",
+          "instruction": "Choose the correct interpretation",
+          "choices": [
+            "Get the document stamped at the Slovak embassy",
+            "Get the document apostilled AND translated by a certified translator",
+            "Just translate the document yourself",
+            "Submit the document in the original language"
+          ],
+          "answer": "Get the document apostilled AND translated by a certified translator",
+          "answerMeaning": "ApostilovanÃ½ = apostilled. Ãšradne preloÅ¾enÃ½ = officially/certified translated. Both are required â€” either alone is not enough."
+        },
+        {
+          "situation": "You are applying for temporary residence for employment. Your company's HR asks what document they need to provide. What is it?",
+          "instruction": "Choose the correct document",
+          "choices": [
+            "A letter saying you are a good employee",
+            "Your employment contract (pracovnÃ¡ zmluva)",
+            "Your company's bank statement",
+            "Your employer's passport"
+          ],
+          "answer": "Your employment contract (pracovnÃ¡ zmluva)",
+          "answerMeaning": "PracovnÃ¡ zmluva = employment contract. This is the key 'purpose of stay' document for employment-based residence."
+        },
+        {
+          "situation": "How many passport photos do you need to bring to the Foreign Police appointment?",
+          "instruction": "Choose the correct number",
+          "choices": ["1", "2", "4", "6"],
+          "answer": "2",
+          "answerMeaning": "Always bring 2 passport photos. Size: 3cm Ã— 3.5cm, white background, biometric quality."
+        },
+        {
+          "situation": "What is the minimum monthly income you must prove when applying for temporary residence?",
+          "instruction": "Choose the correct amount",
+          "choices": ["â‚¬100/month", "â‚¬180/month", "â‚¬284.13/month", "â‚¬500/month"],
+          "answer": "â‚¬284.13/month",
+          "answerMeaning": "The current minimum is â‚¬284.13 per month (subsistence minimum as of July 2025). Show a bank statement with at least this amount multiplied by the months of your planned stay. For stays over 1 year: minimum â‚¬3,409.56 total (12 Ã— monthly minimum)."
+        }
+      ]
+    }
+  ],
+  "referenceCard": {
+    "id": "temporary-residence-card",
+    "title": "Temporary Residence â€” Reference Card",
+    "titleSlovak": "PrechodnÃ½ pobyt â€” ReferenÄnÃ¡ karta",
+    "unlockedMessage": "ðŸŽ‰ You completed the Temporary Residence lesson! Your reference card is now saved to your profile.",
+    "checklist": [
+      { "item": "Completed application form (in Slovak)", "slovak": "Å½iadosÅ¥ o udelenie prechodnÃ©ho pobytu", "warning": null },
+      { "item": "Valid passport (valid 6+ months beyond stay)", "slovak": "PlatnÃ½ cestovnÃ½ pas", "warning": "Bring original + photocopy of ALL pages" },
+      { "item": "Criminal record from home country", "slovak": "VÃ½pis z registra trestov", "warning": "Must be APOSTILLED + certified Slovak translation. Cannot be older than 90 days." },
+      { "item": "Proof of accommodation", "slovak": "Doklad o ubytovanÃ­", "warning": "Notarised landlord statement OR signed lease. Must cover 6+ months." },
+      { "item": "Proof of sufficient funds", "slovak": "Doklad o finanÄnom zabezpeÄenÃ­", "warning": "Bank statement showing min. â‚¬284.13/month. For stays over 1 year: min. â‚¬3,409.56 total (12 Ã— monthly minimum)." },
+      { "item": "Document confirming purpose of stay", "slovak": "Doklad o ÃºÄele pobytu", "warning": "Employment contract / business registration / enrollment letter â€” depends on your purpose" },
+      { "item": "2 passport photos (3cm Ã— 3.5cm, white background)", "slovak": "Fotografia", "warning": null },
+      { "item": "Administrative fee: â‚¬165.50", "slovak": "SprÃ¡vny poplatok: â‚¬165.50", "warning": "Verify current amount at minv.sk before your appointment" }
+    ],
+    "keyFacts": [
+      "Processing time: up to 90 days",
+      "You can stay in Slovakia legally while waiting for the decision",
+      "Permit is for ONE purpose only â€” employment, study, business etc.",
+      "Apply for renewal before your permit expires â€” well in advance, since processing takes up to 90 days",
+      "All foreign documents must be apostilled AND translated by a certified Slovak translator",
+      "Documents cannot be older than 90 days when submitted",
+      "Minimum funds: â‚¬284.13/month (subsistence minimum, July 2025). For stays over 1 year: â‚¬3,409.56 total (12 Ã— monthly minimum)"
+    ],
+    "keyPhrase": {
+      "english": "I would like to apply for a temporary residence permit.",
+      "slovak": "Chcel/a by som poÅ¾iadaÅ¥ o prechodnÃ½ pobyt."
+    },
+    "whereToApply": "cudzinec.minv.sk â€” book your appointment online",
+    "freeHelp": "IOM Migration Information Centre: mic.iom.sk â€” free legal advice for foreigners"
+  }
+}

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { LessonPage } from './pages/LessonPage';
 import { XpCelebrationPage } from './pages/XpCelebrationPage';
@@ -8,6 +8,9 @@ import { PracticeDialoguePage } from './pages/PracticeDialoguePage';
 import { ProfilePage } from './pages/ProfilePage';
 import { AuthPage } from './pages/AuthPage';
 import { ReviewSessionPage } from './pages/ReviewSessionPage';
+import { ForeignerExclusivePage } from './pages/ForeignerExclusivePage';
+import { ForeignerExclusiveCategoryPage } from './pages/ForeignerExclusiveCategoryPage';
+import { ForeignerExclusiveLessonPage } from './pages/ForeignerExclusiveLessonPage';
 import { DialogueSession } from './components/dialogue/DialogueSession';
 import { EmergencyDialogueSession } from './components/dialogue/EmergencyDialogueSession';
 import { SaveProgressModal, REGRESSION_DISMISS_KEY } from './components/auth/SaveProgressModal';
@@ -107,6 +110,9 @@ function AppRoutes() {
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/review" element={<ReviewSessionPage />} />
+        <Route path="/foreigner-exclusive" element={<ForeignerExclusivePage />} />
+        <Route path="/foreigner-exclusive/foreign-police" element={<ForeignerExclusiveCategoryPage />} />
+        <Route path="/foreigner-exclusive/lesson/:lessonId" element={<ForeignerExclusiveLessonPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {showSaveProgressModal && (
@@ -146,9 +152,9 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <AppRoutes />
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 

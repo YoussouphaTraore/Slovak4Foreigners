@@ -1,0 +1,17 @@
+{
+  "id": "life-long-term-residence",
+  "stageId": "life-in-slovakia",
+  "stageName": "Foreigner Exclusive",
+  "category": "foreign-police",
+  "categoryName": "Foreign Police",
+  "title": "Long-Term Residence",
+  "titleSlovak": "Dlhodobý pobyt EÚ",
+  "description": "Understand the EU long-term residence permit and how to qualify after 5 years",
+  "icon": "📋",
+  "xpReward": 15,
+  "isPremium": false,
+  "coming_soon": true,
+  "unlocksReferenceCard": "long-term-residence-card",
+  "exercises": [],
+  "referenceCard": null
+}

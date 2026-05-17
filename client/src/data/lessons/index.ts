@@ -5,6 +5,7 @@ import survival3 from './survival-3.json';
 import survival4 from './survival-4.json';
 import survival5 from './survival-5.json';
 import survival6 from './survival-6.json';
+import survival7 from './survival-7.json';
 import settling1 from './settling-1.json';
 import settling2 from './settling-2.json';
 import settling3 from './settling-3.json';
@@ -23,6 +24,7 @@ export const lessons: Lesson[] = [
   survival4 as unknown as Lesson,
   survival5 as unknown as Lesson,
   survival6 as unknown as Lesson,
+  survival7 as unknown as Lesson,
   settling1 as unknown as Lesson,
   settling2 as unknown as Lesson,
   settling3 as unknown as Lesson,

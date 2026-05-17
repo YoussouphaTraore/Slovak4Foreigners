@@ -471,7 +471,7 @@
           "answerMeaning": "Tu = here. Som tu = I am here — use tu for your own position. Tam = over there (for pointing to something away from you)."
         },
         {
-          "situation": "You are giving someone directions over the phone. You can see the building they are looking for from where you stand. What do you say?",
+          "situation": "Someone is asking where the bank is. You can see the bank building from where you stand. You point at the bank direction and say...",
           "instruction": "Choose the most appropriate phrase",
           "choices": [
             "Je to tu.",
@@ -493,6 +493,18 @@
           ],
           "answer": "Som pri lekárni.",
           "answerMeaning": "Pri = at / right next to. Som pri lekárni = I am right at the pharmacy — more precise than pred (in front of) when pinpointing your location for emergency services!"
+        },
+        {
+          "situation": "Someone gives you directions: 'Choďte priamo, potom vpravo pri červenej budove.' You know červená from the Colors lesson. At what landmark do you turn right?",
+          "instruction": "Choose the most appropriate answer",
+          "choices": [
+            "A blue building",
+            "A red building",
+            "A yellow building",
+            "A green building"
+          ],
+          "answer": "A red building",
+          "answerMeaning": "červená = red — combining colors with directions makes landmarks unmistakable. Master all 8 colors in the Colors lesson!"
         }
       ]
     },
