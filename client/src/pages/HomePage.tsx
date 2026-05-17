@@ -4,6 +4,7 @@ import { lessons } from '../data/lessons';
 import { useProgressStore, computeStrength } from '../store/useProgressStore';
 import type { LessonRecord } from '../store/useProgressStore';
 import { BottomNav } from '../components/ui/BottomNav';
+import { SessionRegistrationModal } from '../components/SessionRegistrationModal';
 
 type NodeState = 'completed' | 'available' | 'locked' | 'stage_locked';
 
@@ -56,6 +57,8 @@ export function HomePage() {
   const { xp, streak, streakMultiplier, completedLessons, unlockedStages, snailRaceRecords, isSyncing } = store;
   const lessonRecords = useProgressStore((s) => s.lessonRecords);
   const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
+  const isSessionRegistered = useProgressStore((s) => s.isSessionRegistered);
+  const [showSessionModal, setShowSessionModal] = useState(false);
   const groups = groupByStage(lessons);
 
   // Live clock — ticks every minute so dot colors update while the app is open
@@ -90,6 +93,16 @@ export function HomePage() {
   useEffect(() => {
     if (headerRef.current) setHeaderHeight(headerRef.current.offsetHeight);
   }, [showReviewBanner]);
+
+  // Re-open modal after Google OAuth redirect
+  useEffect(() => {
+    try {
+      if (sessionStorage.getItem('openSessionModal')) {
+        sessionStorage.removeItem('openSessionModal');
+        setShowSessionModal(true);
+      }
+    } catch { /* */ }
+  }, []);
 
   const recordFor = (lessonId: string): LessonRecord | undefined =>
     lessonRecords.find((r) => r.lessonId === lessonId);
@@ -165,20 +178,35 @@ export function HomePage() {
           {showReviewBanner ? (
             <button
               type="button"
-              title="Join Our Physical Sessions"
+              title={isSessionRegistered ? 'Already registered!' : 'Join Our Physical Sessions'}
+              onClick={() => setShowSessionModal(true)}
               className="ml-auto flex items-center justify-center bg-amber-50 border border-amber-200 rounded-xl p-1 cursor-pointer hover:bg-amber-100 active:scale-[0.97] transition-all"
             >
-              <span className="w-6 h-6 rounded-md bg-amber-400 flex items-center justify-center text-sm">👥</span>
+              <span className={`w-6 h-6 rounded-md flex items-center justify-center text-sm ${isSessionRegistered ? 'bg-brand-green' : 'bg-amber-400'}`}>
+                {isSessionRegistered ? '✓' : '👥'}
+              </span>
             </button>
           ) : (
             <button
               type="button"
+              onClick={() => setShowSessionModal(true)}
               className="ml-auto flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl pl-1.5 pr-3 py-0.5 cursor-pointer hover:bg-amber-100 active:scale-[0.98] transition-all"
             >
-              <span className="w-6 h-6 rounded-md bg-amber-400 flex items-center justify-center text-sm shrink-0">👥</span>
+              <span className={`w-6 h-6 rounded-md flex items-center justify-center text-sm shrink-0 ${isSessionRegistered ? 'bg-brand-green' : 'bg-amber-400'}`}>
+                {isSessionRegistered ? '✓' : '👥'}
+              </span>
               <div className="text-left">
-                <p className="text-[8px] font-bold text-amber-800 leading-tight">Join Our Physical Sessions</p>
-                <p className="text-[7px] text-amber-600 leading-tight">Register →</p>
+                {isSessionRegistered ? (
+                  <>
+                    <p className="text-[8px] font-bold text-brand-green leading-tight">Registered!</p>
+                    <p className="text-[7px] text-green-600 leading-tight">See details →</p>
+                  </>
+                ) : (
+                  <>
+                    <p className="text-[8px] font-bold text-amber-800 leading-tight">Join Our Physical Sessions</p>
+                    <p className="text-[7px] text-amber-600 leading-tight">Register →</p>
+                  </>
+                )}
               </div>
             </button>
           )}
@@ -376,6 +404,9 @@ export function HomePage() {
       </div>
 
       <BottomNav active="home" />
+      {showSessionModal && (
+        <SessionRegistrationModal onClose={() => setShowSessionModal(false)} />
+      )}
     </div>
   );
 }

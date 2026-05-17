@@ -147,6 +147,10 @@ interface ProgressStore {
   // Foreigner Exclusive — reference cards
   unlockedReferenceCards: string[];
 
+  // Physical session registration
+  isSessionRegistered: boolean;
+  setIsSessionRegistered: (val: boolean) => void;
+
   // XP actions
   addXP: (amount: number) => void;
   spendXP: (amount: number) => boolean;
@@ -219,6 +223,7 @@ export const useProgressStore = create<ProgressStore>()(
       regressionLessonTitle: null,
       lastReviewedAt: null,
       unlockedReferenceCards: [],
+      isSessionRegistered: false,
 
       // ── XP ────────────────────────────────────────────────────────────────
 
@@ -473,6 +478,8 @@ export const useProgressStore = create<ProgressStore>()(
             : [...s.unlockedReferenceCards, cardId],
         })),
 
+      setIsSessionRegistered: (val) => set({ isSessionRegistered: val }),
+
       // ── Cloud sync ────────────────────────────────────────────────────────
 
       initializeFromCloud: async (userId) => {
@@ -592,7 +599,7 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 7,
+      version: 8,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
@@ -654,6 +661,10 @@ export const useProgressStore = create<ProgressStore>()(
           // Switch from daily date string to ISO timestamp; reset so the
           // new 12-hour clock starts fresh for existing users.
           old = { ...old, lastReviewedAt: null };
+        }
+
+        if (version < 8) {
+          old = { ...old, isSessionRegistered: false };
         }
 
         return old as unknown as ProgressStore;

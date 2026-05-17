@@ -150,6 +150,37 @@ export async function loadProgressFromSupabase(
   }
 }
 
+// ── Physical Session Registration ─────────────────────────────────────────────
+
+export async function checkSessionRegistration(userId: string): Promise<boolean> {
+  try {
+    const { data } = await supabase
+      .from('physical_session_regist')
+      .select('id')
+      .eq('user_id', userId)
+      .maybeSingle();
+    return !!data;
+  } catch {
+    return false;
+  }
+}
+
+export async function insertSessionRegistration(
+  userId: string,
+  name: string,
+  email: string,
+  phone: string | null,
+): Promise<{ error: string | null }> {
+  try {
+    const { error } = await supabase
+      .from('physical_session_regist')
+      .insert({ user_id: userId, name, email, phone: phone || null });
+    return { error: error?.message ?? null };
+  } catch (e) {
+    return { error: String(e) };
+  }
+}
+
 // ── Merge (never lose progress) ───────────────────────────────────────────────
 
 export function mergeProgress(

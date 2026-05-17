@@ -20,6 +20,7 @@ import { ConsentPopup } from './components/ConsentPopup';
 import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
 import { useAuthStore } from './store/useAuthStore';
+import { checkSessionRegistration } from './lib/supabase/progressSync';
 
 function DialogueSessionRoute() {
   const { id } = useParams<{ id: string }>();
@@ -134,6 +135,7 @@ function AppRoutes() {
 function App() {
   const decayLessonStrengths = useProgressStore((s) => s.decayLessonStrengths);
   const initializeFromCloud = useProgressStore((s) => s.initializeFromCloud);
+  const setIsSessionRegistered = useProgressStore((s) => s.setIsSessionRegistered);
   const initialize = useAuthStore((s) => s.initialize);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const userId = useAuthStore((s) => s.user?.id);
@@ -147,6 +149,12 @@ function App() {
   useEffect(() => {
     if (userId) initializeFromCloud(userId);
   }, [userId, initializeFromCloud]);
+
+  // Check physical session registration status on login
+  useEffect(() => {
+    if (!userId) return;
+    checkSessionRegistration(userId).then(setIsSessionRegistered);
+  }, [userId, setIsSessionRegistered]);
 
   if (!isInitialized) {
     return (
