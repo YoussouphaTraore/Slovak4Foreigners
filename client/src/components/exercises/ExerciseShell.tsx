@@ -86,7 +86,6 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
   const [phase, setPhase] = useState<Phase>('answering');
   const [answer, setAnswer] = useState('');
   const [feedback, setFeedback] = useState<{ correct: boolean; correctAnswer: string } | null>(null);
-  const [showResult, setShowResult] = useState(false);
   const [kbReg, setKbReg] = useState<KbReg>(null);
 
   if (exercise.type === 'WORD_MATCH_REVIEW') {
@@ -182,7 +181,6 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
   const submitAnswer = useCallback((ans: string) => {
     const result = validate(exercise, ans);
     setFeedback(result);
-    setShowResult(true);
     setPhase('feedback');
     onAnswer?.(result.correct);
   }, [exercise, onAnswer]);
