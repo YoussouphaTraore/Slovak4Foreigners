@@ -142,6 +142,7 @@ export function HomePage() {
             const nextStageCost = nextStageId ? (STAGE_UNLOCK_COSTS[nextStageId] ?? 0) : 0;
             const xpNeeded = Math.max(0, nextStageCost - xp);
             const canAffordNext = xp >= nextStageCost;
+            const canUnlockNext = canAffordNext && allInStageCompleted;
 
             return (
               <div key={group.stageId} className="w-full flex flex-col items-center">
@@ -274,23 +275,25 @@ export function HomePage() {
                       </div>
                       <button
                         type="button"
-                        disabled={!canAffordNext}
+                        disabled={!canUnlockNext}
                         onClick={() => {
-                          if (canAffordNext) {
+                          if (canUnlockNext) {
                             store.unlockStage(nextStageId);
                           }
                         }}
                         className={`w-full py-2.5 rounded-xl text-sm font-bold uppercase tracking-wide transition-all cursor-pointer
-                          ${canAffordNext
+                          ${canUnlockNext
                             ? 'bg-amber-400 text-white hover:bg-amber-500 active:scale-[0.98]'
                             : 'bg-gray-100 text-gray-400 cursor-not-allowed'
                           }`}
                       >
-                        {canAffordNext
-                          ? `Unlock — ${nextStageCost} XP`
-                          : `Need ${xpNeeded} more XP`}
+                        {!allInStageCompleted
+                          ? 'Complete all lessons first'
+                          : !canAffordNext
+                          ? `Need ${xpNeeded} more XP`
+                          : `Unlock — ${nextStageCost} XP`}
                       </button>
-                      {!canAffordNext && suggestedReviews.length > 0 && (
+                      {!canUnlockNext && suggestedReviews.length > 0 && (
                         <p className="text-xs text-gray-400 text-center mt-2">
                           Review: {suggestedReviews.slice(0, 2).map((r) => {
                             const l = lessons.find((le) => le.id === r.lessonId);

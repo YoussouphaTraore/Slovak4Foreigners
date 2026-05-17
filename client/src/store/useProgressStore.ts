@@ -54,6 +54,47 @@ function calcLevel(xp: number): number {
   return Math.floor(xp / 200) + 1;
 }
 
+// Returns stage IDs in the order they appear in the lesson data
+function orderedStageIds(): string[] {
+  const seen = new Set<string>();
+  const result: string[] = [];
+  for (const l of lessons) {
+    if (!seen.has(l.stageId)) { seen.add(l.stageId); result.push(l.stageId); }
+  }
+  return result;
+}
+
+// True when every lesson in the stage *before* stageId is in completedLessons
+function isPrevStageComplete(stageId: string, completedLessons: string[]): boolean {
+  const ordered = orderedStageIds();
+  const idx = ordered.indexOf(stageId);
+  if (idx <= 0) return true; // first stage has no predecessor
+  const prevId = ordered[idx - 1];
+  return lessons.filter((l) => l.stageId === prevId).every((l) => completedLessons.includes(l.id));
+}
+
+// Removes stages from unlockedStages that weren't legitimately earned:
+// walks stages in order and stops as soon as the previous stage isn't fully completed.
+function sanitizeUnlockedStages(unlockedStages: string[], completedLessons: string[]): string[] {
+  const ordered = orderedStageIds();
+  const result: string[] = [];
+  for (const stageId of ordered) {
+    if (!unlockedStages.includes(stageId)) break;
+    if (result.length > 0) {
+      // Has a predecessor — check it's fully completed
+      const prevId = ordered[ordered.indexOf(stageId) - 1];
+      const prevComplete = lessons
+        .filter((l) => l.stageId === prevId)
+        .every((l) => completedLessons.includes(l.id));
+      if (!prevComplete) break;
+    }
+    result.push(stageId);
+  }
+  // First stage is always unlocked
+  if (!result.includes(ordered[0])) result.unshift(ordered[0]);
+  return result;
+}
+
 function todayStr(): string {
   return new Date().toISOString().split('T')[0];
 }
@@ -279,6 +320,11 @@ export const useProgressStore = create<ProgressStore>()(
 
         if (s.xp < xpCost) {
           return { success: false, xpCost, xpRemaining: xpCost - s.xp };
+        }
+
+        // Previous stage must be fully completed
+        if (!isPrevStageComplete(stageId, s.completedLessons)) {
+          return { success: false, xpCost, xpRemaining: 0 };
         }
 
         const newXp = Math.max(0, s.xp - xpCost);
@@ -551,6 +597,11 @@ export const useProgressStore = create<ProgressStore>()(
         if (state) {
           state.isSyncing = false;
           state.regressionLessonTitle = null;
+          // Correct any stages that were unlocked without the previous stage being complete
+          state.unlockedStages = sanitizeUnlockedStages(
+            state.unlockedStages,
+            state.completedLessons,
+          );
         }
       },
       migrate: (persisted: unknown, version: number) => {

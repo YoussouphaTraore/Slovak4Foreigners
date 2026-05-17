@@ -217,6 +217,8 @@ export function ProfilePage() {
   const handleSaveName = async () => {
     const trimmed = nameInput.trim();
     if (!trimmed) { setNameError('Name cannot be empty.'); return; }
+    if (trimmed.length > 50) { setNameError('Name must be 50 characters or fewer.'); return; }
+    if (/[<>]/.test(trimmed)) { setNameError('Name contains invalid characters.'); return; }
     if (trimmed === displayName) { setEditingName(false); return; }
     setNameSaving(true);
     setNameError('');
