@@ -138,7 +138,7 @@ Slovak4Foreigners/
 │   │   │   └── XpCelebrationPage.tsx        # Confetti + XP breakdown after lesson
 │   │   ├── store/
 │   │   │   ├── useAuthStore.ts              # Auth state + Google sign-in
-│   │   │   └── useProgressStore.ts          # XP, lessons, streaks, sync — version 4
+│   │   │   └── useProgressStore.ts          # XP, lessons, streaks, sync — version 7
 │   │   ├── types/
 │   │   │   ├── dialogue.ts                  # Dialogue + EmergencyScenario types
 │   │   │   └── lesson.ts                    # Lesson + all Exercise union types
@@ -341,16 +341,24 @@ If the user skips a day, streak resets to 0.
 
 ### Lesson Strength & Decay
 
-Each lesson record has a `strength` score (0–100). On app load, `decayLessonStrengths()` reduces strength based on days elapsed since `lastDecayedAt`.
+All lessons share a single **12-hour review clock** driven by `lastReviewedAt` (ISO timestamp). Strength is a pure function of hours elapsed since `max(lastReviewedAt, lesson.completedAt)` — whichever is more recent — so newly completed lessons always start fresh.
 
-| Strikes in last attempt | Decay rate | Starting strength on next completion |
-|------------------------|-----------|--------------------------------------|
-| 0 | 5%/day | 100 |
-| 1–2 | 8%/day | 85 |
-| 3–4 | 12%/day | 65 |
-| 5+ | 20%/day | 40 |
+```
+computeStrength(lastReviewedAt, completedAt, nowMs):
+  hours = (nowMs - max(lastReviewedAt, completedAt)) / 3_600_000
+  if hours < 7  → 100  (green dot)
+  if hours < 10 → 60   (yellow dot)
+  if hours < 12 → 20   (red dot)
+  else          → 0    (review overdue)
+```
 
-Lessons with strength < 50 appear in `getWeakLessons()` and are surfaced as review suggestions on the Home page.
+Dot thresholds: `strength >= 80` → green, `>= 40` → yellow, `< 40` → red.
+
+`decayLessonStrengths()` runs on app load and applies `computeStrength` to each `lessonRecord`, updating the stored value. The Home page also recomputes live via a 1-minute `setInterval` ticker so dots update without a refresh.
+
+After a review session, `completeReview()` resets **all** `lessonRecords` to `strength: 100` and writes a new `lastReviewedAt` timestamp.
+
+Lessons with strength < 80 appear in `getWeakLessons()` and are surfaced in the review banner.
 
 ### Stage Unlocking
 
@@ -495,7 +503,7 @@ Guest users (not signed in) can play freely but are nudged toward sign-in at str
 
 | Trigger | When | Dismissible? | Copy |
 |---------|------|-------------|------|
-| `soft` | After 3rd exercise in lesson 3 or 5 | Yes (4h) | "You're making great progress!" |
+| `soft` | At exercise 5 of the 2nd, 4th, or 6th Stage 1 lesson (guest only) | Yes (4h) | "You're making great progress!" |
 | `hard_stage` | After completing the last Stage 1 lesson | No | "You've completed Stage 1! 🎉" |
 | `hard_unlock` | When a guest tries to unlock Stage 2/3 | No | "Ready for Stage 2?" |
 | `hard_dialogue` | When a guest taps dialogue 3, 4, or 5 | No | "Sign in to continue" |
@@ -505,11 +513,11 @@ Guest users (not signed in) can play freely but are nudged toward sign-in at str
 
 ### Soft modal timing (in `LessonPage.tsx`)
 
-- Fires at the 3rd exercise completion (not start) of lesson session
-- Only when `completedLessons.length === 2` (user just finished lesson 2, on lesson 3) or `completedLessons.length === 4` (user just finished lesson 4, on lesson 5)
-- Once per session via `hasShownSoftModal` ref
+- Fires at the **5th exercise completion** of a Stage 1 lesson, only when the number of previously completed Stage 1 lessons is **odd** (1, 3, or 5 completed → currently on lesson 2, 4, or 6)
+- Only within `stageId === 'survival'`; never fires in Stage 2 or 3 (those require login anyway)
+- Once per lesson instance via `hasShownSoftModal` ref (new LessonPage mount = fresh ref)
 - Respects 4-hour localStorage dismiss key (`save-modal-dismissed-soft`)
-- **Pauses the lesson**: sets `pendingAdvance.current = true` and returns early from `handleAnswer`. A `useEffect` watching `isModalOpen` resumes the lesson (advances to next exercise) when the modal closes.
+- **Pauses the lesson**: sets `pendingAdvance.current = true` and returns early from `handleComplete`. A `useEffect` watching `isModalOpen` resumes the lesson (advances to next exercise) when the modal closes.
 
 ### Regression mechanic
 
@@ -662,7 +670,7 @@ npx tsc --noEmit     # Type-check only (no output files)
 ### Known issues
 
 - **TTS availability varies by browser/OS** — Web Speech API with `sk-SK` voice is available on Chrome and Edge on desktop; on mobile it depends on the device's installed voices. No fallback audio exists.
-- **Zustand persist version** — the store is at version 4. Adding new persisted fields requires bumping the version and writing a migration in the `migrate` function, otherwise old localStorage data will be missing the new fields and users will get `undefined` errors.
+- **Zustand persist version** — the store is at version 7. Adding new persisted fields requires bumping the version and writing a migration in the `migrate` function, otherwise old localStorage data will be missing the new fields and users will get `undefined` errors.
 - **No offline mode** — the app works offline for exercises already loaded, but sync requires connectivity. There's no explicit offline state or retry queue.
 - **Delete account is not implemented** — the Profile page shows a "Delete Account" option that opens a modal directing users to contact `support@learnslovakforforeigners.com`. No automated deletion flow exists yet.
 - **Emergency dialogue** — `dialogue-emergency-tier1` uses a different data structure (`EmergencyDialogueSession` component) than standard dialogues. The `emergencyMode` flag on the dialogue object routes it to the correct component.
@@ -822,3 +830,103 @@ npx tsc --noEmit     # Type-check only (no output files)
 **`HomePage.tsx`** — two reactivity fixes
 - `lessonRecords` now read via dedicated `useProgressStore((s) => s.lessonRecords)` selector — strength dot colors update immediately after review without page refresh
 - `showReviewBanner` now also checks `lastReviewDate !== todayStr()` — banner disappears as soon as a review is completed today, reappears tomorrow if lessons decay again
+
+---
+
+### Phase 10 — Hash Routing, Foreigner Exclusive, Mojibake Fix
+
+**Date:** 2026-05-17
+**Scope:** Routing overhaul, new content section, encoding bug fix
+
+**Hash routing** — switched from `BrowserRouter` to `HashRouter` across the entire app. All URLs now use `#` format (`/#/lesson/:id`, `/#/profile`, etc.). Required because Vercel's SPA rewrite rules were breaking deep links on refresh. No server-side route config needed with hash routing.
+
+**Foreigner Exclusive section** — new gated content area for foreigners living in Slovakia:
+- `ForeignerExclusivePage`, `ForeignerExclusiveCategoryPage`, `ForeignerExclusiveLessonPage` — three-level drill-down
+- First category: Foreign Police — residence permit procedures, document vocabulary, situational exercises
+- Reference card unlock system — completing exercises unlocks `unlockedReferenceCards[]` in the store
+- Bottom nav updated with "🇸🇰" (foreigner exclusive) tab
+
+**Mojibake fix** — `temporary-residence.json` had 75+ lines of double-encoded UTF-8 (bytes read as Windows-1252 then re-saved as UTF-8, e.g. `Ã½` → `ý`). Fixed with PowerShell byte-level targeted replacements using `New-Object System.Text.UTF8Encoding $false` to write back without BOM.
+
+---
+
+### Phase 11 — Legal Pages, GDPR Consent Popup, Security Hardening
+
+**Date:** 2026-05-17
+**Scope:** Compliance infrastructure and input security
+
+**New pages:**
+- `PrivacyPolicyPage.tsx` — 13-section GDPR-compliant privacy policy (route: `/privacy`)
+- `TermsOfServicePage.tsx` — 15-section terms of service (route: `/terms`)
+- Both accessible from Profile page → Legal section, and linked from the consent popup
+
+**`ConsentPopup.tsx`** (new component):
+- Waits for the user's **first tap/click** before appearing (capture-phase `document.addEventListener('click', handler, { capture: true, once: true })`). The click is intercepted via `stopImmediatePropagation()` so it does not activate anything behind the popup.
+- Scrolling is unaffected — only click events are intercepted.
+- On `/terms` or `/privacy` routes: renders as a **mini bar** at the bottom (does not block page reading); on all other routes: renders as a **full blocking modal**.
+- localStorage keys: `consentAccepted`, `consentVersion: "1.0"`, `consentDate`, `lastConsentShown`
+- Guests: re-shown after 24h. Signed-in users: never re-shown once accepted for v1.0.
+
+**`ProfilePage.tsx`** — security hardening on display name input:
+- `trimmed.length > 50` → validation error "Name must be 50 characters or fewer"
+- `/[<>]/.test(trimmed)` → validation error "Name contains invalid characters"
+- Both checks fire before any Supabase write
+
+---
+
+### Phase 12 — Stage Unlock Logic Fix + Retroactive Correction
+
+**Date:** 2026-05-17
+**Scope:** Enforce stage prerequisite completion, fix existing bad data
+
+**Forward guard** (`unlockStage` in `useProgressStore.ts`):
+- Added `isPrevStageComplete(stageId, completedLessons)` check before allowing a stage unlock
+- Users can no longer unlock Stage N without finishing every lesson of Stage N-1
+- XP cost still applies; the completion check is an additional gate
+
+**Retroactive correction** — two layers:
+1. `onRehydrateStorage` runs `sanitizeUnlockedStages(state.unlockedStages, state.completedLessons)` on every app load — corrects localStorage
+2. `initializeFromCloud` applies `sanitizeUnlockedStages` to the **merged** result (after `mergeProgress`) before calling `set()` and before writing back to Supabase — prevents the cloud's stale bad data from overwriting the correction
+
+Root cause of why `onRehydrateStorage` alone wasn't enough: `mergeProgress` unions local + cloud `unlockedStages`, so the cloud's bad stages were added back after `onRehydrateStorage` had already fixed them locally.
+
+**`HomePage.tsx`** — stage gate button updated:
+- Label changes: "Complete all lessons first" / "Need X more XP" / "Unlock — N XP"
+- Button disabled unless both conditions are met (`canUnlockNext = canAffordNext && allInStageCompleted`)
+
+Store bumped to **version 6** for this fix.
+
+---
+
+### Phase 13 — Review System Rework (12-Hour Cycle)
+
+**Date:** 2026-05-17
+**Scope:** Replace daily decay with a 12-hour global review clock
+
+**Architecture change:** Per-lesson decay rates (5–20% per day based on strikes) replaced with a single global 12-hour clock. All lessons share the same cycle.
+
+**`useProgressStore.ts`** — bumped to **version 7**:
+- `lastReviewDate: string | null` (YYYY-MM-DD) → `lastReviewedAt: string | null` (ISO timestamp)
+- New exported helper `computeStrength(lastReviewedAt, completedAt, nowMs)` — pure function, used by both store and UI
+- `decayLessonStrengths()` — no longer per-lesson; applies `computeStrength` to every record on app load
+- `completeReview()` — resets **all** `lessonRecords` to `strength: 100`, sets `lastReviewedAt = now`, syncs XP to Supabase
+- `getWeakLessons()` threshold: `strength < 80` (was `< 60`)
+
+**`ReviewSessionPage.tsx`** — fully rewritten:
+- `alreadyDone`: `hoursElapsed < 12` (was "same calendar day")
+- `buildSession`: up to 3 random completed lessons × 2 exercises each = **max 6 exercises** (was up to 10)
+- Complete screen: shows `strengthBefore% → 100%` per lesson (was `+20%` boost)
+- `AlreadyDoneScreen`: countdown to `lastReviewedAt + 12h` (was countdown to midnight)
+
+**`HomePage.tsx`**:
+- `now` state ticks every 60s via `setInterval` — dot colors update live while app is open
+- Review banner: warning (amber) at 7h, urgent red at 12h with "Review overdue!" label
+- First-review trigger: no `lastReviewedAt` + ≥3 completed lessons (user-initiated via banner)
+
+**`App.tsx`** — auto-trigger:
+- Fires when `hoursElapsed >= 12` since `lastReviewedAt` (was `any strength < 30 + not today`)
+- First review (no `lastReviewedAt`) is never auto-triggered — always user-initiated
+
+**Soft login prompt** (`LessonPage.tsx`) — timing updated:
+- Now fires at **exercise 5** of the 2nd, 4th, and 6th Stage 1 lesson (odd `completedSurvivalCount`)
+- Previously fired at exercise 3 of lesson 3 or 5
