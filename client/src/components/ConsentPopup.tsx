@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '../store/useAuthStore';
 
@@ -28,15 +28,42 @@ export function ConsentPopup() {
   const user = useAuthStore((s) => s.user);
   const navigate = useNavigate();
   const { pathname } = useLocation();
+
+  // needsConsent: user must accept (but popup is not yet visible)
+  // visible: popup is actively shown (triggered by first click)
+  const [needsConsent, setNeedsConsent] = useState(false);
   const [visible, setVisible] = useState(false);
   const [checked, setChecked] = useState(false);
+  const listenerRef = useRef<((e: MouseEvent) => void) | null>(null);
 
   useEffect(() => {
     if (!isInitialized) return;
-    setVisible(shouldShow(!!user));
+    if (shouldShow(!!user)) setNeedsConsent(true);
   }, [isInitialized, user]);
 
-  if (!visible) return null;
+  // Attach a one-shot capture-phase click listener that intercepts the very first
+  // tap/click, prevents it from reaching any element, then shows the popup.
+  useEffect(() => {
+    if (!needsConsent || visible) return;
+
+    const handler = (e: MouseEvent) => {
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      setVisible(true);
+    };
+
+    listenerRef.current = handler;
+    document.addEventListener('click', handler, { capture: true, once: true });
+
+    return () => {
+      if (listenerRef.current) {
+        document.removeEventListener('click', listenerRef.current, { capture: true });
+        listenerRef.current = null;
+      }
+    };
+  }, [needsConsent, visible]);
+
+  if (!needsConsent || !visible) return null;
 
   const isLegalPage = LEGAL_PATHS.includes(pathname);
 
@@ -49,6 +76,7 @@ export function ConsentPopup() {
       if (!user) localStorage.setItem(KEY_LAST_SHOWN, now);
     } catch { /* */ }
     setVisible(false);
+    setNeedsConsent(false);
   };
 
   // ── Mini bar — shown on /terms and /privacy so user can read freely ──────────
