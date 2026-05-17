@@ -55,3 +55,8 @@ Desktop.ini
 # Misc
 *.pem
 
+# Foreigner Exclusive feature (local only — never commit)
+client/src/data/foreigner-exclusive/
+client/src/pages/ForeignerExclusive*.tsx
+client/src/components/foreigner-exclusive/
+

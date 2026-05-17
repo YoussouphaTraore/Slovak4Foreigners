@@ -1,4 +1,4 @@
-﻿{
+{
   "id": "life-temporary-residence",
   "stageId": "life-in-slovakia",
   "stageName": "Foreigner Exclusive",
@@ -16,28 +16,28 @@
       "id": "ex1",
       "type": "VOCABULARY_TABLE",
       "title": "Key Documents",
-      "subtitle": "These are the documents you will need. Learn their Slovak names â€” the officer will use them.",
+      "subtitle": "These are the documents you will need. Learn their Slovak names — the officer will use them.",
       "rows": [
-        { "label": "The permit itself", "slovak": "PrechodnÃ½ pobyt", "english": "Temporary residence permit" },
-        { "label": "The application", "slovak": "Å½iadosÅ¥", "english": "Application form" },
-        { "label": "Your travel document", "slovak": "CestovnÃ½ pas", "english": "Passport" },
-        { "label": "Clean record", "slovak": "VÃ½pis z registra trestov", "english": "Criminal record check" },
-        { "label": "Where you live", "slovak": "Doklad o ubytovanÃ­", "english": "Proof of accommodation" },
-        { "label": "Your money", "slovak": "Doklad o finanÄnom zabezpeÄenÃ­", "english": "Proof of sufficient funds" },
-        { "label": "Why you are here", "slovak": "Doklad o ÃºÄele pobytu", "english": "Document confirming purpose of stay" },
+        { "label": "The permit itself", "slovak": "Prechodný pobyt", "english": "Temporary residence permit" },
+        { "label": "The application", "slovak": "Žiadosť", "english": "Application form" },
+        { "label": "Your travel document", "slovak": "Cestovný pas", "english": "Passport" },
+        { "label": "Clean record", "slovak": "Výpis z registra trestov", "english": "Criminal record check" },
+        { "label": "Where you live", "slovak": "Doklad o ubytovaní", "english": "Proof of accommodation" },
+        { "label": "Your money", "slovak": "Doklad o finančnom zabezpečení", "english": "Proof of sufficient funds" },
+        { "label": "Why you are here", "slovak": "Doklad o účele pobytu", "english": "Document confirming purpose of stay" },
         { "label": "Your photo", "slovak": "Fotografia", "english": "Passport photo (2 copies)" },
-        { "label": "The fee", "slovak": "SprÃ¡vny poplatok", "english": "Administrative fee (â‚¬165.50)" }
+        { "label": "The fee", "slovak": "Správny poplatok", "english": "Administrative fee (€165.50)" }
       ]
     },
     {
       "id": "ex2",
       "type": "LISTEN_AND_PICK",
       "words": [
-        { "slovak": "Å½iadosÅ¥", "english": "Application form" },
-        { "slovak": "CestovnÃ½ pas", "english": "Passport" },
+        { "slovak": "Žiadosť", "english": "Application form" },
+        { "slovak": "Cestovný pas", "english": "Passport" },
         { "slovak": "Fotografia", "english": "Passport photo" },
-        { "slovak": "PrechodnÃ½ pobyt", "english": "Temporary residence" },
-        { "slovak": "SprÃ¡vny poplatok", "english": "Administrative fee" },
+        { "slovak": "Prechodný pobyt", "english": "Temporary residence" },
+        { "slovak": "Správny poplatok", "english": "Administrative fee" },
         { "slovak": "Ubytovanie", "english": "Accommodation" }
       ]
     },
@@ -46,11 +46,11 @@
       "type": "LISTEN_AND_PICK",
       "speakLanguage": "en",
       "words": [
-        { "slovak": "Å½iadosÅ¥", "english": "Application form" },
-        { "slovak": "CestovnÃ½ pas", "english": "Passport" },
+        { "slovak": "Žiadosť", "english": "Application form" },
+        { "slovak": "Cestovný pas", "english": "Passport" },
         { "slovak": "Fotografia", "english": "Passport photo" },
-        { "slovak": "PrechodnÃ½ pobyt", "english": "Temporary residence" },
-        { "slovak": "SprÃ¡vny poplatok", "english": "Administrative fee" },
+        { "slovak": "Prechodný pobyt", "english": "Temporary residence" },
+        { "slovak": "Správny poplatok", "english": "Administrative fee" },
         { "slovak": "Ubytovanie", "english": "Accommodation" }
       ]
     },
@@ -58,12 +58,12 @@
       "id": "ex3",
       "type": "PICK_TRANSLATION",
       "words": [
-        { "slovak": "VÃ½pis z registra trestov", "english": "Criminal record check" },
-        { "slovak": "Doklad o ubytovanÃ­", "english": "Proof of accommodation" },
-        { "slovak": "Doklad o finanÄnom zabezpeÄenÃ­", "english": "Proof of sufficient funds" },
-        { "slovak": "Doklad o ÃºÄele pobytu", "english": "Document confirming purpose of stay" },
-        { "slovak": "Å½iadosÅ¥", "english": "Application form" },
-        { "slovak": "SprÃ¡vny poplatok", "english": "Administrative fee" }
+        { "slovak": "Výpis z registra trestov", "english": "Criminal record check" },
+        { "slovak": "Doklad o ubytovaní", "english": "Proof of accommodation" },
+        { "slovak": "Doklad o finančnom zabezpečení", "english": "Proof of sufficient funds" },
+        { "slovak": "Doklad o účele pobytu", "english": "Document confirming purpose of stay" },
+        { "slovak": "Žiadosť", "english": "Application form" },
+        { "slovak": "Správny poplatok", "english": "Administrative fee" }
       ]
     },
     {
@@ -71,14 +71,14 @@
       "type": "SITUATIONAL_CHOICE",
       "scenarios": [
         {
-          "situation": "The officer at the Foreign Police says: 'ProsÃ­m vÃ¡Å¡ cestovnÃ½ pas.' What are they asking for?",
+          "situation": "The officer at the Foreign Police says: 'Prosím váš cestovný pas.' What are they asking for?",
           "instruction": "Choose the correct document",
           "choices": ["Your criminal record", "Your application form", "Your passport", "Your accommodation proof"],
           "answer": "Your passport",
-          "answerMeaning": "CestovnÃ½ pas = passport. This is always the first thing they ask for."
+          "answerMeaning": "Cestovný pas = passport. This is always the first thing they ask for."
         },
         {
-          "situation": "The officer says: 'VÃ½pis z registra trestov nesmie byÅ¥ starÅ¡Ã­ ako 90 dnÃ­.' What is the rule?",
+          "situation": "The officer says: 'Výpis z registra trestov nesmie byť starší ako 90 dní.' What is the rule?",
           "instruction": "Choose the correct interpretation",
           "choices": [
             "The criminal record must be at least 90 days old",
@@ -87,72 +87,72 @@
             "The criminal record is valid for 90 years"
           ],
           "answer": "The criminal record cannot be older than 90 days",
-          "answerMeaning": "Nesmie byÅ¥ starÅ¡Ã­ ako = must not be older than. This is a critical rule â€” many applications are rejected because of an expired criminal record."
+          "answerMeaning": "Nesmie byť starší ako = must not be older than. This is a critical rule — many applications are rejected because of an expired criminal record."
         },
         {
           "situation": "Your criminal record from home was issued 4 months ago. Can you use it for your application?",
           "instruction": "What is the correct answer?",
           "choices": [
-            "Yes â€” 4 months is acceptable",
-            "Yes â€” if it has an apostille",
-            "No â€” it must be less than 90 days old",
+            "Yes — 4 months is acceptable",
+            "Yes — if it has an apostille",
+            "No — it must be less than 90 days old",
             "Ask the Foreign Police officer"
           ],
-          "answer": "No â€” it must be less than 90 days old",
+          "answer": "No — it must be less than 90 days old",
           "answerMeaning": "4 months = approximately 120 days. The limit is 90 days. You need to order a new one."
         },
         {
           "situation": "You have a temporary residence for employment but you want to start a business on the side. Is this allowed?",
           "instruction": "Choose the correct answer",
           "choices": [
-            "Yes â€” you can do both with one permit",
-            "No â€” the permit is for one purpose only",
-            "Yes â€” if your employer agrees",
-            "Only if the business makes less than â‚¬500/month"
+            "Yes — you can do both with one permit",
+            "No — the permit is for one purpose only",
+            "Yes — if your employer agrees",
+            "Only if the business makes less than €500/month"
           ],
-          "answer": "No â€” the permit is for one purpose only",
+          "answer": "No — the permit is for one purpose only",
           "answerMeaning": "A temporary residence permit is bound to ONE purpose. Employment â‰  business. You would need a separate permit for business activity."
         },
         {
-          "situation": "The officer asks: 'Doklad o ubytovanÃ­, prosÃ­m.' Your landlord has not given you anything yet. What should you do?",
+          "situation": "The officer asks: 'Doklad o ubytovaní, prosím.' Your landlord has not given you anything yet. What should you do?",
           "instruction": "Choose the best course of action",
           "choices": [
-            "Show your rental contract â€” it is enough",
+            "Show your rental contract — it is enough",
             "Show your hotel booking",
             "Ask your landlord for a signed and notarised statement",
             "Come back another day"
           ],
           "answer": "Ask your landlord for a signed and notarised statement",
-          "answerMeaning": "The landlord must provide a notarised confirmation (Ãºradne overenÃ© vyhlÃ¡senie) OR your signed lease. A hotel booking is not accepted for longer stays."
+          "answerMeaning": "The landlord must provide a notarised confirmation (úradne overené vyhlásenie) OR your signed lease. A hotel booking is not accepted for longer stays."
         }
       ]
     },
     {
       "id": "ex5",
       "type": "VOCABULARY_TABLE",
-      "title": "At the Foreign Police â€” Key Phrases",
+      "title": "At the Foreign Police — Key Phrases",
       "subtitle": "What you will say and hear at the office.",
       "rows": [
-        { "label": "Opening", "slovak": "Chcel/a by som poÅ¾iadaÅ¥ o prechodnÃ½ pobyt.", "english": "I would like to apply for a temporary residence permit." },
-        { "label": "Appointment", "slovak": "MÃ¡m stretnutie o desiatej.", "english": "I have an appointment at ten o'clock." },
-        { "label": "Missing doc", "slovak": "KtorÃ© dokumenty chÃ½bajÃº?", "english": "Which documents are missing?" },
-        { "label": "Timeline", "slovak": "Kedy bude rozhodnutie hotovÃ©?", "english": "When will the decision be ready?" },
-        { "label": "Repeat", "slovak": "MÃ´Å¾ete to zopakovaÅ¥, prosÃ­m?", "english": "Could you repeat that, please?" },
-        { "label": "Language", "slovak": "HovorÃ­te po anglicky?", "english": "Do you speak English?" },
-        { "label": "Not clear", "slovak": "Nerozumiem. MÃ´Å¾ete pÃ­saÅ¥?", "english": "I don't understand. Can you write it down?" },
-        { "label": "Apostille", "slovak": "Dokument musÃ­ byÅ¥ apostilovanÃ½.", "english": "The document must be apostilled." },
-        { "label": "Translation", "slovak": "Potrebujeme ÃºradnÃ½ preklad.", "english": "We need a certified translation." }
+        { "label": "Opening", "slovak": "Chcel/a by som požiadať o prechodný pobyt.", "english": "I would like to apply for a temporary residence permit." },
+        { "label": "Appointment", "slovak": "Mám stretnutie o desiatej.", "english": "I have an appointment at ten o'clock." },
+        { "label": "Missing doc", "slovak": "Ktoré dokumenty chýbajú?", "english": "Which documents are missing?" },
+        { "label": "Timeline", "slovak": "Kedy bude rozhodnutie hotové?", "english": "When will the decision be ready?" },
+        { "label": "Repeat", "slovak": "Môžete to zopakovať, prosím?", "english": "Could you repeat that, please?" },
+        { "label": "Language", "slovak": "Hovoríte po anglicky?", "english": "Do you speak English?" },
+        { "label": "Not clear", "slovak": "Nerozumiem. Môžete písať?", "english": "I don't understand. Can you write it down?" },
+        { "label": "Apostille", "slovak": "Dokument musí byť apostilovaný.", "english": "The document must be apostilled." },
+        { "label": "Translation", "slovak": "Potrebujeme úradný preklad.", "english": "We need a certified translation." }
       ]
     },
     {
       "id": "ex6",
       "type": "LISTEN_AND_PICK",
       "words": [
-        { "slovak": "Chcel by som poÅ¾iadaÅ¥ o prechodnÃ½ pobyt.", "english": "I would like to apply for a temporary residence permit." },
-        { "slovak": "KtorÃ© dokumenty chÃ½bajÃº?", "english": "Which documents are missing?" },
-        { "slovak": "Kedy bude rozhodnutie hotovÃ©?", "english": "When will the decision be ready?" },
-        { "slovak": "Dokument musÃ­ byÅ¥ apostilovanÃ½.", "english": "The document must be apostilled." },
-        { "slovak": "Potrebujeme ÃºradnÃ½ preklad.", "english": "We need a certified translation." }
+        { "slovak": "Chcel by som požiadať o prechodný pobyt.", "english": "I would like to apply for a temporary residence permit." },
+        { "slovak": "Ktoré dokumenty chýbajú?", "english": "Which documents are missing?" },
+        { "slovak": "Kedy bude rozhodnutie hotové?", "english": "When will the decision be ready?" },
+        { "slovak": "Dokument musí byť apostilovaný.", "english": "The document must be apostilled." },
+        { "slovak": "Potrebujeme úradný preklad.", "english": "We need a certified translation." }
       ]
     },
     {
@@ -160,37 +160,37 @@
       "type": "FILL_IN_BLANK_PICK",
       "items": [
         {
-          "sentence": "Chcel by som poÅ¾iadaÅ¥ o ___ pobyt.",
+          "sentence": "Chcel by som požiadať o ___ pobyt.",
           "translation": "I would like to apply for a ___ residence permit.",
-          "choices": ["trvalÃ½", "prechodnÃ½", "dlhodobÃ½", "Å¡tudentskÃ½"],
-          "answer": "prechodnÃ½"
+          "choices": ["trvalý", "prechodný", "dlhodobý", "študentský"],
+          "answer": "prechodný"
         },
         {
-          "sentence": "VÃ½pis z registra trestov nesmie byÅ¥ starÅ¡Ã­ ako ___ dnÃ­.",
+          "sentence": "Výpis z registra trestov nesmie byť starší ako ___ dní.",
           "translation": "The criminal record must not be older than ___ days.",
           "choices": ["30", "60", "90", "180"],
           "answer": "90"
         },
         {
-          "sentence": "MÃ¡m ___ o desiatej hodine.",
+          "sentence": "Mám ___ o desiatej hodine.",
           "translation": "I have an ___ at ten o'clock.",
-          "choices": ["doklad", "Å¾iadosÅ¥", "stretnutie", "poplatok"],
+          "choices": ["doklad", "žiadosť", "stretnutie", "poplatok"],
           "answer": "stretnutie"
         },
         {
           "sentence": "Potrebujem doklad o ___.",
           "translation": "I need proof of ___.",
-          "choices": ["poplatok", "ubytovanÃ­", "fotografii", "Å¾iadosti"],
-          "answer": "ubytovanÃ­"
+          "choices": ["poplatok", "ubytovaní", "fotografii", "žiadosti"],
+          "answer": "ubytovaní"
         },
         {
-          "sentence": "SprÃ¡vny poplatok je ___ eur pÃ¤Å¥desiat.",
+          "sentence": "Správny poplatok je ___ eur päťdesiat.",
           "translation": "The administrative fee is ___ euros fifty.",
-          "choices": ["sto", "dvesto", "stopÃ¤Å¥desiatpÃ¤Å¥", "stoÅ¡esÅ¥desiatpÃ¤Å¥"],
-          "answer": "stoÅ¡esÅ¥desiatpÃ¤Å¥"
+          "choices": ["sto", "dvesto", "stopäťdesiatpäť", "stošesťdesiatpäť"],
+          "answer": "stošesťdesiatpäť"
         },
         {
-          "sentence": "Dokument musÃ­ maÅ¥ ÃºradnÃ½ ___ do slovenÄiny.",
+          "sentence": "Dokument musí mať úradný ___ do slovenčiny.",
           "translation": "The document must have a certified ___ into Slovak.",
           "choices": ["poplatok", "preklad", "pobyt", "pas"],
           "answer": "preklad"
@@ -202,29 +202,29 @@
       "type": "SITUATIONAL_CHOICE",
       "scenarios": [
         {
-          "situation": "The officer says your application is not complete: 'Å½iadosÅ¥ nie je kompletnÃ¡.' What do you ask?",
+          "situation": "The officer says your application is not complete: 'Žiadosť nie je kompletná.' What do you ask?",
           "instruction": "Choose the most useful response",
-          "choices": ["ÄŽakujem, dovidenia.", "KtorÃ© dokumenty chÃ½bajÃº?", "Nerozumiem po slovensky.", "Kedy bude hotovÃ©?"],
-          "answer": "KtorÃ© dokumenty chÃ½bajÃº?",
-          "answerMeaning": "Asking which documents are missing is the most useful â€” you need to know exactly what to bring next time."
+          "choices": ["Ďakujem, dovidenia.", "Ktoré dokumenty chýbajú?", "Nerozumiem po slovensky.", "Kedy bude hotové?"],
+          "answer": "Ktoré dokumenty chýbajú?",
+          "answerMeaning": "Asking which documents are missing is the most useful — you need to know exactly what to bring next time."
         },
         {
           "situation": "How much is the administrative fee for a temporary residence permit?",
           "instruction": "Choose the correct amount",
-          "choices": ["â‚¬50", "â‚¬100", "â‚¬165.50", "â‚¬250"],
-          "answer": "â‚¬165.50",
-          "answerMeaning": "The current fee is â‚¬165.50. Always check minv.sk before your appointment as fees can change."
+          "choices": ["€50", "€100", "€165.50", "€250"],
+          "answer": "€165.50",
+          "answerMeaning": "The current fee is €165.50. Always check minv.sk before your appointment as fees can change."
         },
         {
           "situation": "You submitted your application 60 days ago and have not heard back. What should you know?",
           "instruction": "Choose the correct statement",
           "choices": [
             "Your application has been rejected",
-            "Processing takes up to 90 days â€” this is normal",
+            "Processing takes up to 90 days — this is normal",
             "You need to resubmit everything",
             "Call the Foreign Police immediately"
           ],
-          "answer": "Processing takes up to 90 days â€” this is normal",
+          "answer": "Processing takes up to 90 days — this is normal",
           "answerMeaning": "The legal processing time is up to 90 days. You are authorised to stay in Slovakia while waiting."
         },
         {
@@ -232,12 +232,12 @@
           "instruction": "Choose the correct answer",
           "choices": [
             "Before your current permit expires",
-            "On the day it expires â€” that is the deadline",
-            "Within 30 days after expiry â€” there is a grace period",
+            "On the day it expires — that is the deadline",
+            "Within 30 days after expiry — there is a grace period",
             "At least 6 months before expiry"
           ],
           "answer": "Before your current permit expires",
-          "answerMeaning": "Slovak law requires you to apply before your permit expires â€” there is no fixed minimum number of days, but the Foreign Police recommend applying well in advance since processing takes up to 90 days. If you apply before expiry you can legally stay while waiting for the decision."
+          "answerMeaning": "Slovak law requires you to apply before your permit expires — there is no fixed minimum number of days, but the Foreign Police recommend applying well in advance since processing takes up to 90 days. If you apply before expiry you can legally stay while waiting for the decision."
         },
         {
           "situation": "Your documents from home country need an apostille. Where do you get an apostille?",
@@ -249,7 +249,7 @@
             "At any notary in Slovakia"
           ],
           "answer": "From the authority that issued the document in your home country",
-          "answerMeaning": "The apostille is attached by the relevant authority in the country that issued the document â€” for example, the Ministry of Justice or designated court. Not from Slovakia."
+          "answerMeaning": "The apostille is attached by the relevant authority in the country that issued the document — for example, the Ministry of Justice or designated court. Not from Slovakia."
         }
       ]
     },
@@ -561,10 +561,10 @@
           "instruction": "Choose the correct answer",
           "choices": ["Call the Foreign Police by phone", "Walk in on any working day", "Book online at cudzinec.minv.sk", "Ask your employer to book it"],
           "answer": "Book online at cudzinec.minv.sk",
-          "answerMeaning": "The official appointment booking system is at cudzinec.minv.sk. Walk-ins are rarely accepted â€” always book in advance. Waiting times in Bratislava can be 4â€“8 weeks."
+          "answerMeaning": "The official appointment booking system is at cudzinec.minv.sk. Walk-ins are rarely accepted — always book in advance. Waiting times in Bratislava can be 4â€“8 weeks."
         },
         {
-          "situation": "The officer says: 'Dokument musÃ­ byÅ¥ apostilovanÃ½ a Ãºradne preloÅ¾enÃ½.' What must you do?",
+          "situation": "The officer says: 'Dokument musí byť apostilovaný a úradne preložený.' What must you do?",
           "instruction": "Choose the correct interpretation",
           "choices": [
             "Get the document stamped at the Slovak embassy",
@@ -573,66 +573,66 @@
             "Submit the document in the original language"
           ],
           "answer": "Get the document apostilled AND translated by a certified translator",
-          "answerMeaning": "ApostilovanÃ½ = apostilled. Ãšradne preloÅ¾enÃ½ = officially/certified translated. Both are required â€” either alone is not enough."
+          "answerMeaning": "Apostilovaný = apostilled. Úradne preložený = officially/certified translated. Both are required — either alone is not enough."
         },
         {
           "situation": "You are applying for temporary residence for employment. Your company's HR asks what document they need to provide. What is it?",
           "instruction": "Choose the correct document",
           "choices": [
             "A letter saying you are a good employee",
-            "Your employment contract (pracovnÃ¡ zmluva)",
+            "Your employment contract (pracovná zmluva)",
             "Your company's bank statement",
             "Your employer's passport"
           ],
-          "answer": "Your employment contract (pracovnÃ¡ zmluva)",
-          "answerMeaning": "PracovnÃ¡ zmluva = employment contract. This is the key 'purpose of stay' document for employment-based residence."
+          "answer": "Your employment contract (pracovná zmluva)",
+          "answerMeaning": "Pracovná zmluva = employment contract. This is the key 'purpose of stay' document for employment-based residence."
         },
         {
           "situation": "How many passport photos do you need to bring to the Foreign Police appointment?",
           "instruction": "Choose the correct number",
           "choices": ["1", "2", "4", "6"],
           "answer": "2",
-          "answerMeaning": "Always bring 2 passport photos. Size: 3cm Ã— 3.5cm, white background, biometric quality."
+          "answerMeaning": "Always bring 2 passport photos. Size: 3cm × 3.5cm, white background, biometric quality."
         },
         {
           "situation": "What is the minimum monthly income you must prove when applying for temporary residence?",
           "instruction": "Choose the correct amount",
-          "choices": ["â‚¬100/month", "â‚¬180/month", "â‚¬284.13/month", "â‚¬500/month"],
-          "answer": "â‚¬284.13/month",
-          "answerMeaning": "The current minimum is â‚¬284.13 per month (subsistence minimum as of July 2025). Show a bank statement with at least this amount multiplied by the months of your planned stay. For stays over 1 year: minimum â‚¬3,409.56 total (12 Ã— monthly minimum)."
+          "choices": ["€100/month", "€180/month", "€284.13/month", "€500/month"],
+          "answer": "€284.13/month",
+          "answerMeaning": "The current minimum is €284.13 per month (subsistence minimum as of July 2025). Show a bank statement with at least this amount multiplied by the months of your planned stay. For stays over 1 year: minimum €3,409.56 total (12 × monthly minimum)."
         }
       ]
     }
   ],
   "referenceCard": {
     "id": "temporary-residence-card",
-    "title": "Temporary Residence â€” Reference Card",
-    "titleSlovak": "PrechodnÃ½ pobyt â€” ReferenÄnÃ¡ karta",
-    "unlockedMessage": "ðŸŽ‰ You completed the Temporary Residence lesson! Your reference card is now saved to your profile.",
+    "title": "Temporary Residence — Reference Card",
+    "titleSlovak": "Prechodný pobyt — Referenčná karta",
+    "unlockedMessage": "🎉 You completed the Temporary Residence lesson! Your reference card is now saved to your profile.",
     "checklist": [
-      { "item": "Completed application form (in Slovak)", "slovak": "Å½iadosÅ¥ o udelenie prechodnÃ©ho pobytu", "warning": null },
-      { "item": "Valid passport (valid 6+ months beyond stay)", "slovak": "PlatnÃ½ cestovnÃ½ pas", "warning": "Bring original + photocopy of ALL pages" },
-      { "item": "Criminal record from home country", "slovak": "VÃ½pis z registra trestov", "warning": "Must be APOSTILLED + certified Slovak translation. Cannot be older than 90 days." },
-      { "item": "Proof of accommodation", "slovak": "Doklad o ubytovanÃ­", "warning": "Notarised landlord statement OR signed lease. Must cover 6+ months." },
-      { "item": "Proof of sufficient funds", "slovak": "Doklad o finanÄnom zabezpeÄenÃ­", "warning": "Bank statement showing min. â‚¬284.13/month. For stays over 1 year: min. â‚¬3,409.56 total (12 Ã— monthly minimum)." },
-      { "item": "Document confirming purpose of stay", "slovak": "Doklad o ÃºÄele pobytu", "warning": "Employment contract / business registration / enrollment letter â€” depends on your purpose" },
-      { "item": "2 passport photos (3cm Ã— 3.5cm, white background)", "slovak": "Fotografia", "warning": null },
-      { "item": "Administrative fee: â‚¬165.50", "slovak": "SprÃ¡vny poplatok: â‚¬165.50", "warning": "Verify current amount at minv.sk before your appointment" }
+      { "item": "Completed application form (in Slovak)", "slovak": "Žiadosť o udelenie prechodného pobytu", "warning": null },
+      { "item": "Valid passport (valid 6+ months beyond stay)", "slovak": "Platný cestovný pas", "warning": "Bring original + photocopy of ALL pages" },
+      { "item": "Criminal record from home country", "slovak": "Výpis z registra trestov", "warning": "Must be APOSTILLED + certified Slovak translation. Cannot be older than 90 days." },
+      { "item": "Proof of accommodation", "slovak": "Doklad o ubytovaní", "warning": "Notarised landlord statement OR signed lease. Must cover 6+ months." },
+      { "item": "Proof of sufficient funds", "slovak": "Doklad o finančnom zabezpečení", "warning": "Bank statement showing min. €284.13/month. For stays over 1 year: min. €3,409.56 total (12 × monthly minimum)." },
+      { "item": "Document confirming purpose of stay", "slovak": "Doklad o účele pobytu", "warning": "Employment contract / business registration / enrollment letter — depends on your purpose" },
+      { "item": "2 passport photos (3cm × 3.5cm, white background)", "slovak": "Fotografia", "warning": null },
+      { "item": "Administrative fee: €165.50", "slovak": "Správny poplatok: €165.50", "warning": "Verify current amount at minv.sk before your appointment" }
     ],
     "keyFacts": [
       "Processing time: up to 90 days",
       "You can stay in Slovakia legally while waiting for the decision",
-      "Permit is for ONE purpose only â€” employment, study, business etc.",
-      "Apply for renewal before your permit expires â€” well in advance, since processing takes up to 90 days",
+      "Permit is for ONE purpose only — employment, study, business etc.",
+      "Apply for renewal before your permit expires — well in advance, since processing takes up to 90 days",
       "All foreign documents must be apostilled AND translated by a certified Slovak translator",
       "Documents cannot be older than 90 days when submitted",
-      "Minimum funds: â‚¬284.13/month (subsistence minimum, July 2025). For stays over 1 year: â‚¬3,409.56 total (12 Ã— monthly minimum)"
+      "Minimum funds: €284.13/month (subsistence minimum, July 2025). For stays over 1 year: €3,409.56 total (12 × monthly minimum)"
     ],
     "keyPhrase": {
       "english": "I would like to apply for a temporary residence permit.",
-      "slovak": "Chcel/a by som poÅ¾iadaÅ¥ o prechodnÃ½ pobyt."
+      "slovak": "Chcel/a by som požiadať o prechodný pobyt."
     },
-    "whereToApply": "cudzinec.minv.sk â€” book your appointment online",
-    "freeHelp": "IOM Migration Information Centre: mic.iom.sk â€” free legal advice for foreigners"
+    "whereToApply": "cudzinec.minv.sk — book your appointment online",
+    "freeHelp": "IOM Migration Information Centre: mic.iom.sk — free legal advice for foreigners"
   }
 }
