@@ -980,3 +980,65 @@ Row 2 — three separate elements:
 - `StreakDisplay.tsx` — replaced by inline stats widget in all three pages
 
 `tsc --noEmit` passes clean after all deletions.
+
+---
+
+### Phase 16 — Physical Session Registration Feature
+
+**Date:** 2026-05-18
+**Scope:** Allow signed-in users to register interest in upcoming physical Slovak practice sessions
+
+**New component — `SessionRegistrationModal.tsx`:**
+- 3-screen modal: `guest` → `form` → `success`
+- **Guest screen:** snailReading.png mascot + "Sign in to register" + Google sign-in button; sets `sessionStorage.openSessionModal = 'true'` before OAuth redirect so the modal re-opens automatically after return
+- **Form screen:** Name (pre-filled from Google `display_name / full_name / name` metadata), Email (read-only), Phone (optional) → calls `insertSessionRegistration` → transitions to success
+- **Success screen:** snailExcited.png + different copy for `justRegistered` vs already registered
+
+**`progressSync.ts`** — two new Supabase helpers:
+- `checkSessionRegistration(userId)` — queries `physical_session_regist` table, returns `boolean`
+- `insertSessionRegistration(userId, name, email, phone)` — inserts row, returns `{ error: string | null }`
+
+**`useProgressStore.ts`** — bumped to **version 8**:
+- Added `isSessionRegistered: boolean` and `setIsSessionRegistered(val)` action
+- v8 migration: sets `isSessionRegistered: false` for existing persisted stores
+
+**`useAuthStore.ts`:**
+- `signOut` now resets `isSessionRegistered` to `false` via dynamic import of `useProgressStore` (avoids circular dependency)
+
+**`App.tsx`:**
+- New `useEffect` calls `checkSessionRegistration(userId)` on login and syncs result to store
+
+**`HomePage.tsx`:**
+- Join Session buttons (both icon-only and full variants) wired to `setShowSessionModal(true)`
+- `useEffect` checks `sessionStorage.openSessionModal` on mount → re-opens modal after OAuth redirect
+- Button appearance adapts when `isSessionRegistered`: green ✓ icon, "Registered! / See details →" copy
+- `SessionRegistrationModal` rendered when `showSessionModal` is true
+
+**Supabase table — `physical_session_regist`:**
+```sql
+create table public.physical_session_regist (
+  id         uuid primary key default gen_random_uuid(),
+  user_id    uuid not null references auth.users(id) on delete cascade,
+  name       text not null,
+  email      text not null,
+  phone      text,
+  created_at timestamptz not null default now(),
+  unique (user_id)
+);
+```
+RLS: authenticated users can insert and select their own row only.
+
+---
+
+### Phase 17 — Fix Supabase Data API table exposure
+
+**Date:** 2026-05-18
+**Scope:** Resolve 403 Forbidden errors on `physical_session_regist` table
+
+Both the `checkSessionRegistration` (GET) and `insertSessionRegistration` (POST) calls were returning 403. Root cause: RLS policies had not been applied to the table after it was created.
+
+**Fix:** Re-ran RLS SQL in Supabase dashboard:
+- `alter table public.physical_session_regist enable row level security`
+- Dropped and re-created both policies (`for insert with check` + `for select using`)
+
+No code changes — fix was entirely in Supabase dashboard.
