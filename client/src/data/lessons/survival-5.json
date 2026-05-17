@@ -450,7 +450,7 @@
           "answerMeaning": "I'm paying by card. — you'll hear 'Hotovosť alebo karta?' at every checkout"
         },
         {
-          "situation": "You hand a €20 note for a €3 coffee. The barista owes you coins. What do you ask for?",
+          "situation": "You hand a €5 note for a €2.5 coffee. The barista owes you coins. What do you ask for?",
           "instruction": "Choose the most appropriate phrase",
           "choices": [
             "Účtenku",
@@ -474,27 +474,27 @@
           "answerMeaning": "Can I get a receipt? — essential for work expenses"
         },
         {
-          "situation": "The price tag reads 'pätnásť eur'. How much is the item?",
+          "situation": "The price tag reads €15. How much is the item?",
           "instruction": "Choose the most appropriate phrase",
           "choices": [
-            "€5",
-            "€14",
-            "€15",
-            "€50"
+            "5 eur",
+            "14 eur",
+            "15 eur",
+            "50 eur"
           ],
-          "answer": "€15",
+          "answer": "15 eur",
           "answerMeaning": "pätnásť = fifteen — päť (5) + násť (teen suffix)"
         },
         {
-          "situation": "The display shows 'dvanásť eur'. You know this word — it appears in the emergency number 112 (sto dvanásť). How much is it?",
+          "situation": "The display shows €12. How much is it?",
           "instruction": "Choose the most appropriate phrase",
           "choices": [
-            "€11",
-            "€12",
-            "€20",
-            "€22"
+            "11 eur",
+            "12 eur",
+            "20 eur",
+            "22 eur"
           ],
-          "answer": "€12",
+          "answer": "12 eur",
           "answerMeaning": "dvanásť = twelve — the same word you learned in Lesson 4 for 1-1-2 (sto dvanásť)!"
         },
         {

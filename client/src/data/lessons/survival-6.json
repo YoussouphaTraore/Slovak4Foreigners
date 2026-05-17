@@ -306,12 +306,12 @@
           "situation": "At the hospital (Nemocnica), the receptionist says the doctor's office is 'vpravo, druhé dvere.' Which way do you go?",
           "instruction": "Choose the most appropriate phrase",
           "choices": [
-            "Hore",
-            "Vľavo",
-            "Vpravo",
-            "Dole"
+            "Up",
+            "Left",
+            "Right",
+            "Down"
           ],
-          "answer": "Vpravo",
+          "answer": "Right",
           "answerMeaning": "Vpravo = Right — useful when navigating the Nemocnica from Lesson 4! (druhé dvere = second door)"
         },
         {

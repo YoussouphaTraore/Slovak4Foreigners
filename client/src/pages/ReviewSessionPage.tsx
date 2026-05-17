@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { lessons } from '../data/lessons';
-import { useProgressStore } from '../store/useProgressStore';
+import { useProgressStore, computeStrength } from '../store/useProgressStore';
 import type { LessonRecord } from '../store/useProgressStore';
 import { ExerciseShell } from '../components/exercises/ExerciseShell';
 import { ProgressBar } from '../components/ui/ProgressBar';
@@ -30,15 +30,9 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function todayStr(): string {
-  return new Date().toISOString().split('T')[0];
-}
-
-function msUntilMidnight(): number {
-  const now = new Date();
-  const midnight = new Date(now);
-  midnight.setHours(24, 0, 0, 0);
-  return midnight.getTime() - now.getTime();
+function msUntilNextReview(lastReviewedAt: string): number {
+  const next = new Date(lastReviewedAt).getTime() + 12 * 3_600_000;
+  return Math.max(0, next - Date.now());
 }
 
 function formatCountdown(ms: number): string {
@@ -49,40 +43,45 @@ function formatCountdown(ms: number): string {
   return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
 }
 
-function buildSession(lessonRecords: LessonRecord[]): {
+// Max 6 exercises: up to 3 lessons × 2 exercises each
+function buildSession(
+  completedLessonIds: string[],
+  lessonRecords: LessonRecord[],
+  lastReviewedAt: string | null,
+): {
   items: ReviewItem[];
   reviewed: ReviewedLesson[];
 } {
-  const weakRecords = lessonRecords
-    .filter((r) => r.strength < 70)
-    .sort((a, b) => a.strength - b.strength)
-    .slice(0, 3);
+  const nowMs = Date.now();
+  const eligible = shuffle(
+    lessons.filter((l) => completedLessonIds.includes(l.id))
+  ).slice(0, 3);
 
   const items: ReviewItem[] = [];
   const reviewed: ReviewedLesson[] = [];
 
-  weakRecords.forEach((record, idx) => {
-    const lesson = lessons.find((l) => l.id === record.lessonId);
-    if (!lesson) return;
-    reviewed.push({ id: lesson.id, title: lesson.title, strengthBefore: record.strength });
+  eligible.forEach((lesson) => {
+    const record = lessonRecords.find((r) => r.lessonId === lesson.id);
+    const strengthBefore = record
+      ? computeStrength(lastReviewedAt, record.completedAt, nowMs)
+      : 0;
+    reviewed.push({ id: lesson.id, title: lesson.title, strengthBefore });
 
-    // Exclude WORD_MATCH_REVIEW — it needs lesson-session failed-word context
-    const eligible = lesson.exercises.filter((e) => e.type !== 'WORD_MATCH_REVIEW');
-    const count = Math.min(idx === 0 ? 4 : 3, eligible.length);
-    const picked = shuffle(eligible).slice(0, count);
+    const pool = lesson.exercises.filter((e) => e.type !== 'WORD_MATCH_REVIEW');
+    const picked = shuffle(pool).slice(0, 2);
     picked.forEach((ex) => items.push({ exercise: ex, lessonTitle: lesson.title, lessonId: lesson.id }));
   });
 
   return { items: shuffle(items), reviewed };
 }
 
-function AlreadyDoneScreen({ onBack }: { onBack: () => void }) {
-  const [ms, setMs] = useState(msUntilMidnight);
+function AlreadyDoneScreen({ lastReviewedAt, onBack }: { lastReviewedAt: string; onBack: () => void }) {
+  const [ms, setMs] = useState(() => msUntilNextReview(lastReviewedAt));
 
   useEffect(() => {
-    const t = setInterval(() => setMs(msUntilMidnight()), 1000);
+    const t = setInterval(() => setMs(msUntilNextReview(lastReviewedAt)), 1000);
     return () => clearInterval(t);
-  }, []);
+  }, [lastReviewedAt]);
 
   return (
     <div className="min-h-screen bg-[#E8F4DC] flex flex-col items-center justify-center px-6 text-center gap-6 max-w-lg mx-auto w-full">
@@ -90,8 +89,8 @@ function AlreadyDoneScreen({ onBack }: { onBack: () => void }) {
       <div>
         <h1 className="text-2xl font-extrabold text-gray-800 mb-2">All caught up!</h1>
         <p className="text-sm text-gray-500 leading-relaxed">
-          You've already done your review today.<br />
-          Come back tomorrow to keep your lessons strong.
+          You've completed your review session.<br />
+          Come back in 12 hours to keep your lessons strong.
         </p>
       </div>
       <div className="bg-white rounded-2xl px-8 py-5 shadow-sm border border-gray-100">
@@ -115,11 +114,20 @@ export function ReviewSessionPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const store = useProgressStore();
-  const lastReviewDate = useProgressStore((s) => s.lastReviewDate);
+  const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
 
   const autoTriggered = (location.state as { autoTriggered?: boolean } | null)?.autoTriggered ?? false;
 
-  const [session] = useState(() => buildSession(store.lessonRecords));
+  const hoursElapsed = lastReviewedAt
+    ? (Date.now() - new Date(lastReviewedAt).getTime()) / 3_600_000
+    : null;
+
+  // Already done if reviewed within the last 12 hours
+  const alreadyDone = hoursElapsed !== null && hoursElapsed < 12;
+
+  const [session] = useState(() =>
+    buildSession(store.completedLessons, store.lessonRecords, lastReviewedAt)
+  );
   const [screen, setScreen] = useState<Screen>('intro');
   const [exerciseIndex, setExerciseIndex] = useState(0);
   const [exerciseKey, setExerciseKey] = useState(0);
@@ -130,19 +138,17 @@ export function ReviewSessionPage() {
   const correctCountRef = useRef(0);
   const totalStrikesRef = useRef(0);
 
-  const alreadyDone = lastReviewDate === todayStr();
-
   // All hooks above — early returns below are safe
   if (alreadyDone) {
-    return <AlreadyDoneScreen onBack={() => navigate('/')} />;
+    return <AlreadyDoneScreen lastReviewedAt={lastReviewedAt!} onBack={() => navigate('/')} />;
   }
 
   if (session.items.length === 0) {
     return (
       <div className="min-h-screen bg-[#E8F4DC] flex flex-col items-center justify-center px-6 text-center gap-6 max-w-lg mx-auto w-full">
         <img src="/snail.png" alt="" className="w-28 h-28 object-contain" />
-        <h1 className="text-xl font-extrabold text-gray-800">Nothing to review!</h1>
-        <p className="text-sm text-gray-500">All your lessons are looking great.</p>
+        <h1 className="text-xl font-extrabold text-gray-800">Nothing to review yet!</h1>
+        <p className="text-sm text-gray-500">Complete some lessons first and come back.</p>
         <button
           type="button"
           onClick={() => navigate('/')}
@@ -162,17 +168,17 @@ export function ReviewSessionPage() {
         <div className="text-center">
           <h1 className="text-2xl font-extrabold text-gray-800 mb-3">Time to Review! 📚</h1>
           <p className="text-sm text-gray-600 leading-relaxed mb-2">
-            Some of your lessons are getting weak — let's strengthen them before you forget.
+            Keep your lessons strong with a quick 6-exercise session.
           </p>
           <p className="text-xs text-gray-400 leading-relaxed">
-            This is a short mixed session from your weakest lessons. It only takes a few minutes.
+            After completing it, all your lesson indicators will turn green.
           </p>
         </div>
 
         <div className="w-full max-w-sm space-y-2">
           {session.reviewed.map((r) => {
-            const dot = r.strengthBefore < 30 ? '🔴' : r.strengthBefore < 60 ? '🟡' : '🟢';
-            const barColor = r.strengthBefore < 30 ? 'bg-red-500' : r.strengthBefore < 60 ? 'bg-amber-400' : 'bg-brand-green';
+            const dot = r.strengthBefore === 0 ? '🔴' : r.strengthBefore < 80 ? '🟡' : '🟢';
+            const barColor = r.strengthBefore === 0 ? 'bg-red-500' : r.strengthBefore < 80 ? 'bg-amber-400' : 'bg-brand-green';
             return (
               <div key={r.id} className="bg-white rounded-xl px-4 py-3 shadow-sm border border-gray-100">
                 <div className="flex items-center gap-2 mb-1.5">
@@ -224,26 +230,22 @@ export function ReviewSessionPage() {
         </div>
 
         <div className="w-full max-w-sm space-y-3">
-          {session.reviewed.map((r) => {
-            const after = Math.min(100, r.strengthBefore + 20);
-            return (
-              <div key={r.id} className="bg-white rounded-2xl px-5 py-4 shadow-sm border border-gray-100">
-                <p className="text-sm font-bold text-gray-700 mb-2">{r.title}</p>
-                <div className="flex items-center gap-3">
-                  <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-brand-green rounded-full"
-                      style={{ width: `${after}%` }}
-                    />
-                  </div>
-                  <span className="text-xs text-gray-400 shrink-0 tabular-nums">
-                    {r.strengthBefore}% → {after}%
-                  </span>
+          {session.reviewed.map((r) => (
+            <div key={r.id} className="bg-white rounded-2xl px-5 py-4 shadow-sm border border-gray-100">
+              <p className="text-sm font-bold text-gray-700 mb-2">{r.title}</p>
+              <div className="flex items-center gap-3">
+                <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
+                  <div className="h-full bg-brand-green rounded-full w-full" />
                 </div>
+                <span className="text-xs text-gray-400 shrink-0 tabular-nums">
+                  {r.strengthBefore}% → 100%
+                </span>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
+
+        <p className="text-xs text-gray-400 text-center">All lessons restored to full strength 🟢</p>
 
         <button
           type="button"

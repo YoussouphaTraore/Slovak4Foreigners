@@ -99,6 +99,24 @@ function todayStr(): string {
   return new Date().toISOString().split('T')[0];
 }
 
+// Global time-based strength — all lessons share the same decay clock.
+// The clock starts from max(lastReviewedAt, completedAt) so newly completed
+// lessons are always fresh regardless of the last review time.
+export function computeStrength(
+  lastReviewedAt: string | null,
+  completedAt: string,
+  nowMs: number = Date.now(),
+): number {
+  const startMs = lastReviewedAt
+    ? Math.max(new Date(lastReviewedAt).getTime(), new Date(completedAt).getTime())
+    : new Date(completedAt).getTime();
+  const hours = (nowMs - startMs) / 3_600_000;
+  if (hours < 7) return 100;
+  if (hours < 10) return 60;   // yellow zone
+  if (hours < 12) return 20;   // red zone
+  return 0;                    // review overdue
+}
+
 // Fire-and-forget helper — sets isSyncing, runs promises, clears when done
 function fireSync(promises: Promise<unknown>[], setState: (patch: Partial<ProgressStore>) => void) {
   setState({ isSyncing: true });
@@ -130,8 +148,8 @@ interface ProgressStore {
   showSaveProgressModal: 'soft' | 'hard_stage' | 'hard_unlock' | 'regression' | null;
   regressionLessonTitle: string | null;
 
-  // Daily review
-  lastReviewDate: string | null;
+  // Review cycle — ISO timestamp of last completed review session
+  lastReviewedAt: string | null;
 
   // Foreigner Exclusive — reference cards
   unlockedReferenceCards: string[];
@@ -173,7 +191,7 @@ interface ProgressStore {
   // Guest regression
   applyGuestRegression: () => string | null;
 
-  // Daily review
+  // Review cycle
   completeReview: (xpEarned: number, lessonIds: string[]) => void;
 
   // Foreigner Exclusive
@@ -206,7 +224,7 @@ export const useProgressStore = create<ProgressStore>()(
       lastSyncedAt: null,
       showSaveProgressModal: null,
       regressionLessonTitle: null,
-      lastReviewDate: null,
+      lastReviewedAt: null,
       unlockedReferenceCards: [],
 
       // ── XP ────────────────────────────────────────────────────────────────
@@ -425,28 +443,29 @@ export const useProgressStore = create<ProgressStore>()(
         return candidate.lessonId;
       },
 
-      // ── Daily review ─────────────────────────────────────────────────────
+      // ── Review cycle ──────────────────────────────────────────────────────
 
-      completeReview: (xpEarned, lessonIds) => {
+      completeReview: (xpEarned, _lessonIds) => {
+        const now = new Date().toISOString();
+        const today = todayStr();
         set((s) => {
           const newXp = Math.max(0, s.xp + xpEarned);
           return {
             xp: newXp,
             level: calcLevel(newXp),
-            lastReviewDate: todayStr(),
-            lessonRecords: s.lessonRecords.map((r) =>
-              lessonIds.includes(r.lessonId)
-                ? { ...r, strength: Math.min(100, r.strength + 20) }
-                : r,
-            ),
+            lastReviewedAt: now,
+            // All lessons reset to 100 — the review clock restarts for everyone
+            lessonRecords: s.lessonRecords.map((r) => ({
+              ...r,
+              strength: 100,
+              lastDecayedAt: today,
+            })),
           };
         });
         const { user } = useAuthStore.getState();
         if (user) {
-          const s = get();
-          const boosted = s.lessonRecords.filter((r) => lessonIds.includes(r.lessonId));
           fireSync(
-            [syncProgressToSupabase(user.id, s), ...boosted.map((r) => syncLessonRecord(user.id, r))],
+            [syncProgressToSupabase(user.id, get())],
             set,
           );
         }
@@ -523,48 +542,30 @@ export const useProgressStore = create<ProgressStore>()(
       // ── Review helpers ────────────────────────────────────────────────────
 
       getWeakLessons: () =>
-        get().lessonRecords.filter((r) => r.strength < 60),
+        get().lessonRecords.filter((r) => r.strength < 80),
 
       getSuggestedReviews: () =>
         get()
           .lessonRecords
-          .filter((r) => r.strength < 70)
+          .filter((r) => r.strength < 80)
           .sort((a, b) => a.strength - b.strength)
           .slice(0, 3),
 
-      // ── Decay ─────────────────────────────────────────────────────────────
+      // ── Decay (time-based, runs on app load) ──────────────────────────────
+      // Strength is now a pure function of hours elapsed since the later of
+      // lastReviewedAt or the lesson's own completedAt. No per-lesson decay
+      // rates — all lessons share the same 12-hour review clock.
 
       decayLessonStrengths: () => {
-        const today = todayStr();
         const s = get();
-
-        const decayed: LessonRecord[] = [];
+        const nowMs = Date.now();
         const updatedRecords = s.lessonRecords.map((record) => {
-          if (record.lastDecayedAt === today) return record;
-          const daysSince = Math.max(
-            0,
-            Math.floor(
-              (new Date(today).getTime() - new Date(record.lastDecayedAt).getTime()) /
-                86_400_000,
-            ),
-          );
-          if (daysSince === 0) return record;
-          const decayRate = getDecayRate(record.strikes);
-          const newStrength = Math.max(0, record.strength - daysSince * decayRate);
-          const updated = { ...record, strength: newStrength, lastDecayedAt: today };
-          decayed.push(updated);
-          return updated;
+          const strength = computeStrength(s.lastReviewedAt, record.completedAt, nowMs);
+          return strength !== record.strength
+            ? { ...record, strength, lastDecayedAt: todayStr() }
+            : record;
         });
-
         set({ lessonRecords: updatedRecords });
-
-        const { user } = useAuthStore.getState();
-        if (user && decayed.length > 0) {
-          fireSync(
-            decayed.map((r) => syncLessonRecord(user.id, r)),
-            set,
-          );
-        }
       },
 
       // ── Streak ────────────────────────────────────────────────────────────
@@ -598,7 +599,7 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 6,
+      version: 7,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
@@ -654,6 +655,12 @@ export const useProgressStore = create<ProgressStore>()(
 
         if (version < 6) {
           old = { ...old, unlockedReferenceCards: [] };
+        }
+
+        if (version < 7) {
+          // Switch from daily date string to ISO timestamp; reset so the
+          // new 12-hour clock starts fresh for existing users.
+          old = { ...old, lastReviewedAt: null };
         }
 
         return old as unknown as ProgressStore;

@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getLessonById } from '../data/lessons';
+import { getLessonById, lessons } from '../data/lessons';
 import { useProgressStore } from '../store/useProgressStore';
 import { useAuthStore } from '../store/useAuthStore';
 import { SOFT_DISMISS_KEY } from '../components/auth/SaveProgressModal';
@@ -155,24 +155,32 @@ export function LessonPage() {
       const nc = correctCount + 1;
       setCorrectCount(nc);
 
-      // Soft modal — fires once at exercise 3, on lesson 3 or 5, for guests
       exercisesCompletedInSession.current += 1;
+
+      // Soft login prompt — fires at exercise 5 of every even-numbered survival lesson
+      // (i.e. 2nd, 4th, 6th) for guest users only. completedSurvivalCount is odd when
+      // the user has finished 1, 3 or 5 survival lessons (meaning they're now on #2, #4, #6).
       if (
         !hasShownSoftModal.current &&
-        exercisesCompletedInSession.current === 3 &&
-        (store.completedLessons.length === 2 || store.completedLessons.length === 4) &&
+        nc === 5 &&
+        lesson.stageId === 'survival' &&
         !useAuthStore.getState().user
       ) {
-        try {
-          const val = localStorage.getItem(SOFT_DISMISS_KEY);
-          const dismissed = !!val && Date.now() < Number(val);
-          if (!dismissed) {
-            hasShownSoftModal.current = true;
-            useProgressStore.setState({ showSaveProgressModal: 'soft' });
-            pendingAdvance.current = true;
-            return; // Pause here — useEffect resumes after modal closes
-          }
-        } catch { /* */ }
+        const completedSurvivalCount = store.completedLessons.filter((id) =>
+          lessons.some((l) => l.id === id && l.stageId === 'survival')
+        ).length;
+        if (completedSurvivalCount % 2 === 1) {
+          try {
+            const val = localStorage.getItem(SOFT_DISMISS_KEY);
+            const dismissed = !!val && Date.now() < Number(val);
+            if (!dismissed) {
+              hasShownSoftModal.current = true;
+              useProgressStore.setState({ showSaveProgressModal: 'soft' });
+              pendingAdvance.current = true;
+              return; // Pause here — useEffect resumes after modal closes
+            }
+          } catch { /* */ }
+        }
       }
 
       if (isLast) { finishLesson(); return; }

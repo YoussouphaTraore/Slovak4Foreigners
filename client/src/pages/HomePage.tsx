@@ -1,7 +1,7 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { lessons } from '../data/lessons';
-import { useProgressStore } from '../store/useProgressStore';
+import { useProgressStore, computeStrength } from '../store/useProgressStore';
 import type { LessonRecord } from '../store/useProgressStore';
 import { XpBadge } from '../components/ui/XpBadge';
 import { StreakDisplay } from '../components/ui/StreakDisplay';
@@ -40,10 +40,6 @@ function strengthDotClass(strength: number): string {
   return 'bg-red-500';
 }
 
-function todayStr() {
-  return new Date().toISOString().split('T')[0];
-}
-
 // XP costs matching the store constants
 const STAGE_UNLOCK_COSTS: Record<string, number> = {
   settling: 100,
@@ -56,14 +52,30 @@ export function HomePage() {
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
   const { xp, streak, streakMultiplier, completedLessons, unlockedStages, snailRaceRecords, isSyncing } = store;
-  // Dedicated selectors so dot colors and banner react immediately to store changes
   const lessonRecords = useProgressStore((s) => s.lessonRecords);
-  const lastReviewDate = useProgressStore((s) => s.lastReviewDate);
+  const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
   const groups = groupByStage(lessons);
 
-  const weakLessons = store.getWeakLessons();
+  // Live clock — ticks every minute so dot colors update while the app is open
+  const [nowMs, setNowMs] = useState(() => Date.now());
+  useEffect(() => {
+    const t = setInterval(() => setNowMs(Date.now()), 60_000);
+    return () => clearInterval(t);
+  }, []);
+
+  const hoursElapsed = lastReviewedAt
+    ? (nowMs - new Date(lastReviewedAt).getTime()) / 3_600_000
+    : null;
+
+  // First review: no timestamp yet, user has completed enough lessons
+  const needsFirstReview = !lastReviewedAt && completedLessons.length >= 3;
+  // Warning zone: 7–12h since last review
+  const reviewWarning = hoursElapsed !== null && hoursElapsed >= 7 && hoursElapsed < 12;
+  // Overdue: 12h+ since last review (mandatory)
+  const reviewOverdue = hoursElapsed !== null && hoursElapsed >= 12;
+  const showReviewBanner = needsFirstReview || reviewWarning || reviewOverdue;
+
   const suggestedReviews = store.getSuggestedReviews();
-  const showReviewBanner = weakLessons.length >= 3 && lastReviewDate !== todayStr();
 
   useEffect(() => {
     if (headerRef.current) setHeaderHeight(headerRef.current.offsetHeight);
@@ -71,6 +83,12 @@ export function HomePage() {
 
   const recordFor = (lessonId: string): LessonRecord | undefined =>
     lessonRecords.find((r) => r.lessonId === lessonId);
+
+  // Live strength computed from the global review clock, not stored value
+  const liveStrength = useCallback(
+    (record: LessonRecord) => computeStrength(lastReviewedAt, record.completedAt, nowMs),
+    [lastReviewedAt, nowMs],
+  );
 
   const raceAttemptsToday = (stageId: string): number => {
     const rec = snailRaceRecords.find((r) => r.stageId === stageId);
@@ -93,15 +111,19 @@ export function HomePage() {
             <button
               type="button"
               onClick={() => navigate('/review')}
-              className="shrink-0 flex items-center gap-1.5 bg-amber-50 border border-amber-200 rounded-xl px-2.5 py-1.5 cursor-pointer hover:bg-amber-100 active:scale-[0.97] transition-all"
+              className={`shrink-0 flex items-center gap-1.5 rounded-xl px-2.5 py-1.5 cursor-pointer active:scale-[0.97] transition-all ${
+                reviewOverdue
+                  ? 'bg-red-50 border border-red-300 hover:bg-red-100'
+                  : 'bg-amber-50 border border-amber-200 hover:bg-amber-100'
+              }`}
             >
-              <span className="text-sm">⚠️</span>
+              <span className="text-sm">{reviewOverdue ? '🔴' : '⚠️'}</span>
               <div className="min-w-0">
-                <p className="text-xs font-semibold text-amber-700 whitespace-nowrap">
-                  {weakLessons.length} need review
+                <p className={`text-xs font-semibold whitespace-nowrap ${reviewOverdue ? 'text-red-700' : 'text-amber-700'}`}>
+                  {reviewOverdue ? 'Review overdue!' : 'Review due'}
                 </p>
                 {suggestedReviews.length > 0 && (
-                  <p className="text-xs text-amber-500 truncate max-w-[120px]">
+                  <p className={`text-xs truncate max-w-[120px] ${reviewOverdue ? 'text-red-500' : 'text-amber-500'}`}>
                     {suggestedReviews.map((r) => lessons.find((l) => l.id === r.lessonId)?.title ?? r.lessonId).join(', ')}
                   </p>
                 )}
@@ -200,11 +222,11 @@ export function HomePage() {
                             {state === 'completed' ? '✓' : (state === 'locked' || state === 'stage_locked') ? '🔒' : lesson.icon}
                           </button>
 
-                          {/* Strength dot */}
+                          {/* Strength dot — uses live time-based strength */}
                           {record && (
                             <span
-                              className={`absolute top-0.5 right-0.5 w-4 h-4 rounded-full border-2 border-white ${strengthDotClass(record.strength)}`}
-                              title={`Strength: ${record.strength}%`}
+                              className={`absolute top-0.5 right-0.5 w-4 h-4 rounded-full border-2 border-white ${strengthDotClass(liveStrength(record))}`}
+                              title={`Strength: ${liveStrength(record)}%`}
                             />
                           )}
                         </div>

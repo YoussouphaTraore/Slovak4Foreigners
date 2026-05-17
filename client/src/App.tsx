@@ -43,7 +43,7 @@ function AppRoutes() {
   const regressionLessonTitle = useProgressStore((s) => s.regressionLessonTitle);
   const applyGuestRegression = useProgressStore((s) => s.applyGuestRegression);
   const completedLessons = useProgressStore((s) => s.completedLessons);
-  const lastReviewDate = useProgressStore((s) => s.lastReviewDate);
+  const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const userId = useAuthStore((s) => s.user?.id);
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ function AppRoutes() {
     applyGuestRegression();
   }, [isInitialized, userId, completedLessons.length, applyGuestRegression]);
 
-  // Auto-trigger daily review when any lesson hits critical strength (< 30)
+  // Auto-trigger review when 12 hours have passed since the last review session
   useEffect(() => {
     if (!isInitialized || autoReviewChecked.current) return;
     autoReviewChecked.current = true;
@@ -87,19 +87,18 @@ function AppRoutes() {
     const hasEnoughProgress = !!userId || completedLessons.length >= 3;
     if (!hasEnoughProgress) return;
 
-    const today = new Date().toISOString().split('T')[0];
-    if (lastReviewDate === today) return;
+    // Check if 12h have elapsed since the last review
+    if (!lastReviewedAt) return; // First review is user-initiated via banner
+    const hoursElapsed = (Date.now() - new Date(lastReviewedAt).getTime()) / 3_600_000;
+    if (hoursElapsed < 12) return;
 
     // Don't conflict with a regression modal that may have just been set
-    const { lessonRecords, showSaveProgressModal: modalState } = useProgressStore.getState();
+    const { showSaveProgressModal: modalState } = useProgressStore.getState();
     if (modalState !== null) return;
-
-    const hasCritical = lessonRecords.some((r) => r.strength < 30);
-    if (!hasCritical) return;
 
     try { sessionStorage.setItem('autoReviewShown', 'true'); } catch { /* */ }
     navigate('/review', { state: { autoTriggered: true } });
-  }, [isInitialized, userId, completedLessons.length, lastReviewDate, navigate]);
+  }, [isInitialized, userId, completedLessons.length, lastReviewedAt, navigate]);
 
   return (
     <>
