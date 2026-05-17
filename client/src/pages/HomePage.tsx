@@ -77,7 +77,11 @@ export function HomePage() {
   const reviewWarning = hoursElapsed !== null && hoursElapsed >= 9 && hoursElapsed < 12;
   // Overdue: 12h+ since last review (mandatory)
   const reviewOverdue = hoursElapsed !== null && hoursElapsed >= 12;
-  const showReviewBanner = needsFirstReview || reviewWarning || reviewOverdue;
+  // Only show banner if at least one lesson actually needs review (strength < 100)
+  const hasLessonsNeedingReview = lessonRecords.some(
+    (r) => computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100
+  );
+  const showReviewBanner = hasLessonsNeedingReview && (needsFirstReview || reviewWarning || reviewOverdue);
 
   const suggestedReviews = store.getSuggestedReviews();
 
