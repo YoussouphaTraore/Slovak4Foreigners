@@ -930,3 +930,53 @@ Store bumped to **version 6** for this fix.
 **Soft login prompt** (`LessonPage.tsx`) — timing updated:
 - Now fires at **exercise 5** of the 2nd, 4th, and 6th Stage 1 lesson (odd `completedSurvivalCount`)
 - Previously fired at exercise 3 of lesson 3 or 5
+
+---
+
+### Phase 14 — Review Banner Refinements
+
+**Date:** 2026-05-17 / 2026-05-18
+**Scope:** Fix review banner false positives + delay timing
+
+**Review banner appears at 9h, not 7h** (`HomePage.tsx`):
+- Warning zone moved from `hoursElapsed >= 7` to `hoursElapsed >= 9` — 2 hours after dots turn yellow
+- Overdue threshold stays at 12h
+
+**Exclude freshly-redone lessons** (`ReviewSessionPage.tsx`):
+- `buildSession` filters by `computeStrength(lastReviewedAt, record.completedAt, nowMs) < 100`
+- Lessons the user voluntarily replayed since the last review have `completedAt > lastReviewedAt`, so `computeStrength` returns 100 and they are excluded from the review queue
+
+**Hide banner when session would be empty** (`HomePage.tsx`):
+- Added `hasLessonsNeedingReview` check: `lessonRecords.some(r => computeStrength(...) < 100)`
+- `showReviewBanner` is now `hasLessonsNeedingReview && (timeCondition)` — prevents the confusing "Review due" → "All lessons are fresh!" dead-end when all lessons were recently replayed
+
+---
+
+### Phase 15 — Header Redesign + Codebase Cleanup
+
+**Date:** 2026-05-18
+**Scope:** Unified header across all main pages + removal of dead components
+
+**New header structure** (applied to `HomePage`, `PracticeDialoguePage`, `ForeignerExclusivePage`):
+
+Row 1 — logo + page title
+
+Row 2 — three separate elements:
+- **Stats widget** — amber pill with `🔥 N Streak` and `⚡ N XP` inline (icon + number + label on one line, separated by a vertical divider)
+- **Review pill** — separate amber pill with `⚠️ N+ Review`; pulses (`animate-pulse`) to catch attention; only visible when `showReviewBanner` is true
+- **Join Our Physical Sessions** CTA — amber button with 👥 icon; positioned `ml-auto` (far right):
+  - When Review pill is **hidden**: shows full text ("Join Our Physical Sessions / Register →")
+  - When Review pill is **visible**: collapses to icon-only to make room
+
+**Review pill behaviour:**
+- Red 🔴 icon when overdue (12h+), amber ⚠️ when in warning zone (9–12h)
+- Shows `N+` count of lessons with `computeStrength < 100`
+- Tapping navigates to `/review`
+
+**Dead code removed:**
+- `HeartsDisplay.tsx` — hearts-based life system, never used after strike system replaced it
+- `SnailMascot.tsx` — SVG snail component, superseded by PNG images in `/public`
+- `XpBadge.tsx` — replaced by inline stats widget in all three pages
+- `StreakDisplay.tsx` — replaced by inline stats widget in all three pages
+
+`tsc --noEmit` passes clean after all deletions.
