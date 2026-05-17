@@ -53,8 +53,16 @@ function buildSession(
   reviewed: ReviewedLesson[];
 } {
   const nowMs = Date.now();
+  // Exclude lessons the user has voluntarily redone since the last review —
+  // their completedAt is more recent than lastReviewedAt so computeStrength
+  // returns 100 (fresh). No point re-reviewing what was just practised.
   const eligible = shuffle(
-    lessons.filter((l) => completedLessonIds.includes(l.id))
+    lessons.filter((l) => {
+      if (!completedLessonIds.includes(l.id)) return false;
+      const record = lessonRecords.find((r) => r.lessonId === l.id);
+      if (!record) return false;
+      return computeStrength(lastReviewedAt, record.completedAt, nowMs) < 100;
+    })
   ).slice(0, 3);
 
   const items: ReviewItem[] = [];
@@ -147,8 +155,8 @@ export function ReviewSessionPage() {
     return (
       <div className="min-h-screen bg-[#E8F4DC] flex flex-col items-center justify-center px-6 text-center gap-6 max-w-lg mx-auto w-full">
         <img src="/snail.png" alt="" className="w-28 h-28 object-contain" />
-        <h1 className="text-xl font-extrabold text-gray-800">Nothing to review yet!</h1>
-        <p className="text-sm text-gray-500">Complete some lessons first and come back.</p>
+        <h1 className="text-xl font-extrabold text-gray-800">All lessons are fresh!</h1>
+        <p className="text-sm text-gray-500">You've recently practised everything — nothing to review right now.</p>
         <button
           type="button"
           onClick={() => navigate('/')}

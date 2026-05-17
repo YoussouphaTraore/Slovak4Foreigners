@@ -73,8 +73,8 @@ export function HomePage() {
 
   // First review: no timestamp yet, user has completed enough lessons
   const needsFirstReview = !lastReviewedAt && completedLessons.length >= 3;
-  // Warning zone: 7–12h since last review
-  const reviewWarning = hoursElapsed !== null && hoursElapsed >= 7 && hoursElapsed < 12;
+  // Warning zone: 9–12h since last review (2h after indicators turn yellow at 7h)
+  const reviewWarning = hoursElapsed !== null && hoursElapsed >= 9 && hoursElapsed < 12;
   // Overdue: 12h+ since last review (mandatory)
   const reviewOverdue = hoursElapsed !== null && hoursElapsed >= 12;
   const showReviewBanner = needsFirstReview || reviewWarning || reviewOverdue;
