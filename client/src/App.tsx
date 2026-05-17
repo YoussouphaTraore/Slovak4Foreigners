@@ -11,9 +11,12 @@ import { ReviewSessionPage } from './pages/ReviewSessionPage';
 import { ForeignerExclusivePage } from './pages/ForeignerExclusivePage';
 import { ForeignerExclusiveCategoryPage } from './pages/ForeignerExclusiveCategoryPage';
 import { ForeignerExclusiveLessonPage } from './pages/ForeignerExclusiveLessonPage';
+import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
+import { TermsOfServicePage } from './pages/TermsOfServicePage';
 import { DialogueSession } from './components/dialogue/DialogueSession';
 import { EmergencyDialogueSession } from './components/dialogue/EmergencyDialogueSession';
 import { SaveProgressModal, REGRESSION_DISMISS_KEY } from './components/auth/SaveProgressModal';
+import { ConsentPopup } from './components/ConsentPopup';
 import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
 import { useAuthStore } from './store/useAuthStore';
@@ -113,6 +116,8 @@ function AppRoutes() {
         <Route path="/foreigner-exclusive" element={<ForeignerExclusivePage />} />
         <Route path="/foreigner-exclusive/foreign-police" element={<ForeignerExclusiveCategoryPage />} />
         <Route path="/foreigner-exclusive/lesson/:lessonId" element={<ForeignerExclusiveLessonPage />} />
+        <Route path="/privacy" element={<PrivacyPolicyPage />} />
+        <Route path="/terms" element={<TermsOfServicePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {showSaveProgressModal && (
@@ -122,6 +127,7 @@ function AppRoutes() {
           regressionLessonTitle={regressionLessonTitle ?? undefined}
         />
       )}
+      <ConsentPopup />
     </>
   );
 }

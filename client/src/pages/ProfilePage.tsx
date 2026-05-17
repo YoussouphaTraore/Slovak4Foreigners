@@ -447,7 +447,24 @@ export function ProfilePage() {
           </Card>
         </div>
 
-        {/* ── 8. Sign out ────────────────────────────────────────────────────── */}
+        {/* ── 8. Legal ───────────────────────────────────────────────────────── */}
+        <div>
+          <SectionLabel>Legal</SectionLabel>
+          <Card>
+            <Row onClick={() => navigate('/privacy')}>
+              <span className="text-xl w-7 flex-none text-center leading-none">🔏</span>
+              <span className="text-sm text-gray-700 flex-1">Privacy Policy</span>
+              <span className="text-xs text-gray-400">›</span>
+            </Row>
+            <Row last onClick={() => navigate('/terms')}>
+              <span className="text-xl w-7 flex-none text-center leading-none">📄</span>
+              <span className="text-sm text-gray-700 flex-1">Terms of Service</span>
+              <span className="text-xs text-gray-400">›</span>
+            </Row>
+          </Card>
+        </div>
+
+        {/* ── 9. Sign out ────────────────────────────────────────────────────── */}
         <Card>
           <Row last onClick={handleSignOut}>
             <span className="text-xl w-7 flex-none text-center leading-none">🚪</span>
@@ -455,7 +472,7 @@ export function ProfilePage() {
           </Row>
         </Card>
 
-        {/* ── 9. Delete account ──────────────────────────────────────────────── */}
+        {/* ── 10. Delete account ─────────────────────────────────────────────── */}
         <div className="opacity-60">
           <Card>
             <Row last onClick={() => setShowDeleteConfirm(true)}>
