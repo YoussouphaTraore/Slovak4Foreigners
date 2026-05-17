@@ -36,13 +36,6 @@ const STAGE_UNLOCK_COSTS: Record<string, number> = {
   advanced: 250,
 };
 
-function getDecayRate(strikes: number): number {
-  if (strikes === 0) return 5;
-  if (strikes <= 2) return 8;
-  if (strikes <= 4) return 12;
-  return 20;
-}
-
 function getStartStrength(strikes: number): number {
   if (strikes === 0) return 100;
   if (strikes <= 2) return 85;

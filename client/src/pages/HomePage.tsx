@@ -34,6 +34,10 @@ function groupByStage(lessonList: typeof lessons) {
   return groups;
 }
 
+function todayStr() {
+  return new Date().toISOString().split('T')[0];
+}
+
 function strengthDotClass(strength: number): string {
   if (strength >= 80) return 'bg-brand-green';
   if (strength >= 40) return 'bg-amber-400';
