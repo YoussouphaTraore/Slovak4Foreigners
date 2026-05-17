@@ -492,13 +492,19 @@ export const useProgressStore = create<ProgressStore>()(
               },
               cloud,
             );
+            // Sanitize after merge — cloud may still carry stages unlocked without
+            // completing the previous stage (retroactive correction for existing users)
+            const sanitizedStages = sanitizeUnlockedStages(
+              merged.unlockedStages,
+              merged.completedLessons,
+            );
             set({
               xp: merged.xp,
               level: merged.level,
               streak: merged.streak,
               lastPlayedDate: merged.lastPlayedDate,
               streakMultiplier: merged.streakMultiplier,
-              unlockedStages: merged.unlockedStages,
+              unlockedStages: sanitizedStages,
               triedEmergencyScenarios: merged.triedEmergencyScenarios,
               completedLessons: merged.completedLessons,
               lessonRecords: merged.lessonRecords,
