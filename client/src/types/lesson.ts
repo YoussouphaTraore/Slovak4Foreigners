@@ -14,7 +14,8 @@ export type ExerciseType =
   | 'UNSCRAMBLE'
   | 'VOCABULARY_TABLE'
   | 'NUMBER_TO_WORDS'
-  | 'SMS_DIALOGUE';
+  | 'SMS_DIALOGUE'
+  | 'VOCABULARY_INTRO';
 
 export interface BaseExercise {
   id: string;
@@ -149,6 +150,11 @@ export interface SmsDialogueExercise extends BaseExercise {
   turns: SmsDialogueTurn[];
 }
 
+export interface VocabularyIntroExercise extends BaseExercise {
+  type: 'VOCABULARY_INTRO';
+  words: { slovak: string; english: string }[];
+}
+
 export type Exercise =
   | ListenAndPickExercise
   | PickTranslationExercise
@@ -164,7 +170,8 @@ export type Exercise =
   | UnscrambleExercise
   | VocabularyTableExercise
   | NumberToWordsExercise
-  | SmsDialogueExercise;
+  | SmsDialogueExercise
+  | VocabularyIntroExercise;
 
 export interface Lesson {
   id: string;
