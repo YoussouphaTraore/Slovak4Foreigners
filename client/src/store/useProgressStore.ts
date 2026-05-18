@@ -92,6 +92,22 @@ function todayStr(): string {
   return new Date().toISOString().split('T')[0];
 }
 
+// Pick the `count` lessons that most need review next cycle.
+// Score factors: more strikes → worse; fewer timesCompleted → worse; older completedAt → worse.
+function pickReviewTargets(lessonRecords: LessonRecord[], count = 3): string[] {
+  if (lessonRecords.length === 0) return [];
+  const now = Date.now();
+  return [...lessonRecords]
+    .map((r) => {
+      const daysSince = (now - new Date(r.completedAt).getTime()) / 86_400_000;
+      const score = r.strikes * 3 + daysSince + 10 / Math.max(r.timesCompleted, 1);
+      return { lessonId: r.lessonId, score };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, count)
+    .map((s) => s.lessonId);
+}
+
 // Global time-based strength — all lessons share the same decay clock.
 // The clock starts from max(lastReviewedAt, completedAt) so newly completed
 // lessons are always fresh regardless of the last review time.
@@ -144,6 +160,10 @@ interface ProgressStore {
   // Review cycle — ISO timestamp of last completed review session
   lastReviewedAt: string | null;
 
+  // The 3 lesson IDs scheduled for decay in the current review cycle.
+  // Only these lessons can turn yellow/red; all others stay green.
+  reviewTargetIds: string[];
+
   // Foreigner Exclusive — reference cards
   unlockedReferenceCards: string[];
 
@@ -178,6 +198,7 @@ interface ProgressStore {
   // Review helpers
   getWeakLessons: () => LessonRecord[];
   getSuggestedReviews: () => LessonRecord[];
+  selectNextReviewTargets: () => void;
 
   // Emergency scenarios
   markEmergencyScenarioTried: (scenarioId: string) => void;
@@ -222,6 +243,7 @@ export const useProgressStore = create<ProgressStore>()(
       showSaveProgressModal: null,
       regressionLessonTitle: null,
       lastReviewedAt: null,
+      reviewTargetIds: [],
       unlockedReferenceCards: [],
       isSessionRegistered: false,
 
@@ -448,16 +470,19 @@ export const useProgressStore = create<ProgressStore>()(
         const today = todayStr();
         set((s) => {
           const newXp = Math.max(0, s.xp + xpEarned);
+          const updatedRecords = s.lessonRecords.map((r) => ({
+            ...r,
+            strength: 100,
+            lastDecayedAt: today,
+          }));
+          // Immediately designate the next 3 lessons for the coming cycle
+          const nextTargets = pickReviewTargets(updatedRecords);
           return {
             xp: newXp,
             level: calcLevel(newXp),
             lastReviewedAt: now,
-            // All lessons reset to 100 — the review clock restarts for everyone
-            lessonRecords: s.lessonRecords.map((r) => ({
-              ...r,
-              strength: 100,
-              lastDecayedAt: today,
-            })),
+            lessonRecords: updatedRecords,
+            reviewTargetIds: nextTargets,
           };
         });
         const { user } = useAuthStore.getState();
@@ -551,6 +576,11 @@ export const useProgressStore = create<ProgressStore>()(
           .sort((a, b) => a.strength - b.strength)
           .slice(0, 3),
 
+      selectNextReviewTargets: () => {
+        const targets = pickReviewTargets(get().lessonRecords);
+        set({ reviewTargetIds: targets });
+      },
+
       // ── Decay (time-based, runs on app load) ──────────────────────────────
       // Strength is now a pure function of hours elapsed since the later of
       // lastReviewedAt or the lesson's own completedAt. No per-lesson decay
@@ -565,7 +595,12 @@ export const useProgressStore = create<ProgressStore>()(
             ? { ...record, strength, lastDecayedAt: todayStr() }
             : record;
         });
-        set({ lessonRecords: updatedRecords });
+        // Bootstrap review targets on first run (or after migration)
+        const reviewTargetIds =
+          s.reviewTargetIds.length > 0
+            ? s.reviewTargetIds
+            : pickReviewTargets(updatedRecords);
+        set({ lessonRecords: updatedRecords, reviewTargetIds });
       },
 
       // ── Streak ────────────────────────────────────────────────────────────
@@ -599,7 +634,7 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 8,
+      version: 9,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
@@ -665,6 +700,11 @@ export const useProgressStore = create<ProgressStore>()(
 
         if (version < 8) {
           old = { ...old, isSessionRegistered: false };
+        }
+
+        if (version < 9) {
+          // reviewTargetIds will be populated by decayLessonStrengths() on app load
+          old = { ...old, reviewTargetIds: [] };
         }
 
         return old as unknown as ProgressStore;

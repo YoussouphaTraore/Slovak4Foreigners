@@ -43,41 +43,92 @@ function formatCountdown(ms: number): string {
   return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
 }
 
-// Max 6 exercises: up to 3 lessons × 2 exercises each
+// Distribute `total` exercises across lessons weighted by strikes.
+// Lessons with more strikes get more exercises; each lesson gets at least 1.
+function weightedCounts(records: LessonRecord[], total: number): Map<string, number> {
+  const n = records.length;
+  const result = new Map<string, number>();
+  if (n === 0) return result;
+
+  const weights = records.map((r) => r.strikes + 1); // +1 so 0-strike lessons still get weight
+  const totalW = weights.reduce((a, b) => a + b, 0);
+  const raw = weights.map((w) => (w / totalW) * total);
+  const counts = raw.map(Math.floor);
+  let remaining = total - counts.reduce((a, b) => a + b, 0);
+
+  // Guarantee minimum 1 per lesson
+  for (let i = 0; i < n; i++) {
+    if (counts[i] === 0) { counts[i] = 1; remaining--; }
+  }
+
+  // Distribute leftover to lessons with largest fractional parts
+  if (remaining > 0) {
+    const order = raw
+      .map((v, i) => ({ i, frac: v - Math.floor(v) }))
+      .sort((a, b) => b.frac - a.frac);
+    for (let k = 0; k < Math.min(remaining, order.length); k++) {
+      counts[order[k].i]++;
+    }
+  }
+
+  records.forEach((r, i) => result.set(r.lessonId, counts[i]));
+  return result;
+}
+
+// 6 exercises drawn from the 3 designated review target lessons.
+// Exercise count per lesson is weighted by strikes (harder lessons → more practice).
 function buildSession(
   completedLessonIds: string[],
   lessonRecords: LessonRecord[],
   lastReviewedAt: string | null,
+  reviewTargetIds: string[],
 ): {
   items: ReviewItem[];
   reviewed: ReviewedLesson[];
 } {
   const nowMs = Date.now();
-  // Exclude lessons the user has voluntarily redone since the last review —
-  // their completedAt is more recent than lastReviewedAt so computeStrength
-  // returns 100 (fresh). No point re-reviewing what was just practised.
-  const eligible = shuffle(
-    lessons.filter((l) => {
-      if (!completedLessonIds.includes(l.id)) return false;
-      const record = lessonRecords.find((r) => r.lessonId === l.id);
-      if (!record) return false;
-      return computeStrength(lastReviewedAt, record.completedAt, nowMs) < 100;
-    })
-  ).slice(0, 3);
+
+  // Use designated targets (completed ones only), fall back to weakest 3 if empty
+  const targetIds =
+    reviewTargetIds.length > 0
+      ? reviewTargetIds.filter((id) => completedLessonIds.includes(id))
+      : null;
+
+  const targetLessons =
+    targetIds && targetIds.length > 0
+      ? lessons.filter((l) => targetIds.includes(l.id))
+      : shuffle(
+          lessons.filter((l) => {
+            if (!completedLessonIds.includes(l.id)) return false;
+            const r = lessonRecords.find((rec) => rec.lessonId === l.id);
+            return r && computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100;
+          }),
+        ).slice(0, 3);
+
+  // Sort by strikes desc so higher-strike lessons get more exercises
+  const targetRecords = targetLessons
+    .map((l) => lessonRecords.find((r) => r.lessonId === l.id))
+    .filter((r): r is LessonRecord => !!r)
+    .sort((a, b) => b.strikes - a.strikes);
+
+  const counts = weightedCounts(targetRecords, 6);
 
   const items: ReviewItem[] = [];
   const reviewed: ReviewedLesson[] = [];
 
-  eligible.forEach((lesson) => {
-    const record = lessonRecords.find((r) => r.lessonId === lesson.id);
-    const strengthBefore = record
-      ? computeStrength(lastReviewedAt, record.completedAt, nowMs)
-      : 0;
+  targetRecords.forEach((record) => {
+    const lesson = targetLessons.find((l) => l.id === record.lessonId)!;
+    const strengthBefore = computeStrength(lastReviewedAt, record.completedAt, nowMs);
     reviewed.push({ id: lesson.id, title: lesson.title, strengthBefore });
 
-    const pool = lesson.exercises.filter((e) => e.type !== 'WORD_MATCH_REVIEW');
-    const picked = shuffle(pool).slice(0, 2);
-    picked.forEach((ex) => items.push({ exercise: ex, lessonTitle: lesson.title, lessonId: lesson.id }));
+    const pool = lesson.exercises.filter(
+      (e) => e.type !== 'WORD_MATCH_REVIEW' && e.type !== 'VOCABULARY_INTRO',
+    );
+    const n = counts.get(lesson.id) ?? 1;
+    const picked = shuffle(pool).slice(0, n);
+    picked.forEach((ex) =>
+      items.push({ exercise: ex, lessonTitle: lesson.title, lessonId: lesson.id }),
+    );
   });
 
   return { items: shuffle(items), reviewed };
@@ -123,6 +174,7 @@ export function ReviewSessionPage() {
   const location = useLocation();
   const store = useProgressStore();
   const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
+  const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
 
   const autoTriggered = (location.state as { autoTriggered?: boolean } | null)?.autoTriggered ?? false;
 
@@ -134,7 +186,7 @@ export function ReviewSessionPage() {
   const alreadyDone = hoursElapsed !== null && hoursElapsed < 12;
 
   const [session] = useState(() =>
-    buildSession(store.completedLessons, store.lessonRecords, lastReviewedAt)
+    buildSession(store.completedLessons, store.lessonRecords, lastReviewedAt, reviewTargetIds)
   );
   const [screen, setScreen] = useState<Screen>('intro');
   const [exerciseIndex, setExerciseIndex] = useState(0);

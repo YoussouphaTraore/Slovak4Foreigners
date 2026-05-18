@@ -57,6 +57,7 @@ export function HomePage() {
   const { xp, streak, streakMultiplier, completedLessons, unlockedStages, snailRaceRecords, isSyncing } = store;
   const lessonRecords = useProgressStore((s) => s.lessonRecords);
   const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
+  const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
   const isSessionRegistered = useProgressStore((s) => s.isSessionRegistered);
   const [showSessionModal, setShowSessionModal] = useState(false);
   const groups = groupByStage(lessons);
@@ -78,15 +79,17 @@ export function HomePage() {
   const reviewWarning = hoursElapsed !== null && hoursElapsed >= 9 && hoursElapsed < 12;
   // Overdue: 12h+ since last review (mandatory)
   const reviewOverdue = hoursElapsed !== null && hoursElapsed >= 12;
-  // Only show banner if at least one lesson actually needs review (strength < 100)
-  const hasLessonsNeedingReview = lessonRecords.some(
-    (r) => computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100
-  );
+  // Only the 3 designated review targets can turn yellow/red; all others stay green.
+  const hasLessonsNeedingReview = reviewTargetIds.some((id) => {
+    const r = lessonRecords.find((rec) => rec.lessonId === id);
+    return r && computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100;
+  });
   const showReviewBanner = isDev || (hasLessonsNeedingReview && (needsFirstReview || reviewWarning || reviewOverdue));
 
-  const reviewCount = lessonRecords.filter(
-    (r) => computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100
-  ).length;
+  const reviewCount = reviewTargetIds.filter((id) => {
+    const r = lessonRecords.find((rec) => rec.lessonId === id);
+    return r && computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100;
+  }).length;
 
   const suggestedReviews = store.getSuggestedReviews();
 
@@ -107,10 +110,13 @@ export function HomePage() {
   const recordFor = (lessonId: string): LessonRecord | undefined =>
     lessonRecords.find((r) => r.lessonId === lessonId);
 
-  // Live strength computed from the global review clock, not stored value
+  // Non-target lessons are always green; only the 3 targets can decay.
   const liveStrength = useCallback(
-    (record: LessonRecord) => computeStrength(lastReviewedAt, record.completedAt, nowMs),
-    [lastReviewedAt, nowMs],
+    (record: LessonRecord) => {
+      if (!reviewTargetIds.includes(record.lessonId)) return 100;
+      return computeStrength(lastReviewedAt, record.completedAt, nowMs);
+    },
+    [reviewTargetIds, lastReviewedAt, nowMs],
   );
 
   const raceAttemptsToday = (stageId: string): number => {

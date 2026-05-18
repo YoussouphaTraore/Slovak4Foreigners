@@ -23,6 +23,7 @@ export function PracticeDialoguePage() {
   const isSyncing = useProgressStore((s) => s.isSyncing);
   const lessonRecords = useProgressStore((s) => s.lessonRecords);
   const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
+  const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
   const completedLessons = useProgressStore((s) => s.completedLessons);
   const user = useAuthStore((s) => s.user);
   const [showAuthGate, setShowAuthGate] = useState(false);
@@ -40,13 +41,15 @@ export function PracticeDialoguePage() {
   const needsFirstReview = !lastReviewedAt && completedLessons.length >= 3;
   const reviewWarning = hoursElapsed !== null && hoursElapsed >= 9 && hoursElapsed < 12;
   const reviewOverdue = hoursElapsed !== null && hoursElapsed >= 12;
-  const hasLessonsNeedingReview = lessonRecords.some(
-    (r) => computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100
-  );
+  const hasLessonsNeedingReview = reviewTargetIds.some((id) => {
+    const r = lessonRecords.find((rec) => rec.lessonId === id);
+    return r && computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100;
+  });
   const showReviewBanner = isDev || (hasLessonsNeedingReview && (needsFirstReview || reviewWarning || reviewOverdue));
-  const reviewCount = lessonRecords.filter(
-    (r) => computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100
-  ).length;
+  const reviewCount = reviewTargetIds.filter((id) => {
+    const r = lessonRecords.find((rec) => rec.lessonId === id);
+    return r && computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100;
+  }).length;
 
   return (
     <div className="min-h-screen bg-[#E8F4DC] flex flex-col max-w-lg mx-auto w-full">
