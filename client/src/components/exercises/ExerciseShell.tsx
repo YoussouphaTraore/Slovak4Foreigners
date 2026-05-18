@@ -52,6 +52,7 @@ function getTypeBadge(ex: Exercise): string {
     case 'VOCABULARY_TABLE':     return 'Learn these words';
     case 'NUMBER_TO_WORDS':      return 'Number to words';
     case 'SMS_DIALOGUE':         return 'Conversation';
+    case 'VOCABULARY_INTRO':     return 'Learn these words';
   }
 }
 
@@ -78,6 +79,7 @@ function validate(exercise: Exercise, answer: string): { correct: boolean; corre
     case 'VOCABULARY_TABLE':
     case 'NUMBER_TO_WORDS':
     case 'SMS_DIALOGUE':
+    case 'VOCABULARY_INTRO':
       return { correct: true, correctAnswer: '' };
   }
 }
