@@ -21,7 +21,7 @@ import { DesktopBlock, isMobile } from './components/DesktopBlock';
 import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
 import { useAuthStore } from './store/useAuthStore';
-import { checkSessionRegistration } from './lib/supabase/progressSync';
+import { checkSessionRegistration, loadWeeklyXp } from './lib/supabase/progressSync';
 import { loadOrAssignAlias } from './lib/supabase/aliasUtils';
 
 function DialogueSessionRoute() {
@@ -138,6 +138,7 @@ function AppShell() {
   const decayLessonStrengths = useProgressStore((s) => s.decayLessonStrengths);
   const initializeFromCloud = useProgressStore((s) => s.initializeFromCloud);
   const setIsSessionRegistered = useProgressStore((s) => s.setIsSessionRegistered);
+  const setWeeklyXp = useProgressStore((s) => s.setWeeklyXp);
   const initialize = useAuthStore((s) => s.initialize);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const userId = useAuthStore((s) => s.user?.id);
@@ -164,6 +165,12 @@ function AppShell() {
     if (!userId) return;
     loadOrAssignAlias(userId).then(setAlias);
   }, [userId, setAlias]);
+
+  // Load weekly XP from Supabase on login (cron may have reset it)
+  useEffect(() => {
+    if (!userId) return;
+    loadWeeklyXp(userId).then(setWeeklyXp);
+  }, [userId, setWeeklyXp]);
 
   if (!isInitialized) {
     return (

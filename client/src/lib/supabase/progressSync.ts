@@ -150,6 +150,33 @@ export async function loadProgressFromSupabase(
   }
 }
 
+// ── Weekly XP ─────────────────────────────────────────────────────────────────
+
+export async function syncWeeklyXp(userId: string, weeklyXp: number): Promise<void> {
+  try {
+    const { error } = await supabase
+      .from('user_profiles')
+      .update({ weekly_xp: weeklyXp })
+      .eq('id', userId);
+    if (error) console.error('[sync] weekly_xp:', error.message);
+  } catch (e) {
+    console.error('[sync] weekly_xp error:', e);
+  }
+}
+
+export async function loadWeeklyXp(userId: string): Promise<number> {
+  try {
+    const { data } = await supabase
+      .from('user_profiles')
+      .select('weekly_xp')
+      .eq('id', userId)
+      .maybeSingle();
+    return (data as { weekly_xp?: number } | null)?.weekly_xp ?? 0;
+  } catch {
+    return 0;
+  }
+}
+
 // ── Physical Session Registration ─────────────────────────────────────────────
 
 export async function checkSessionRegistration(userId: string): Promise<boolean> {

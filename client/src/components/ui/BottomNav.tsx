@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
 import { getAvatarUrl } from '../../lib/supabase/aliasUtils';
+import { LeaderboardModal } from '../LeaderboardModal';
 
 type Tab = 'home' | 'practice' | 'exclusive' | 'profile';
 
@@ -26,6 +27,7 @@ export function BottomNav({ active }: Props) {
   const avatarSrc = alias ? getAvatarUrl(alias) : '/pp/FrogySnail.png';
 
   const [showAvatar, setShowAvatar] = useState(false);
+  const [showLeaderboard, setShowLeaderboard] = useState(false);
 
   useEffect(() => {
     if (!user) {
@@ -37,6 +39,7 @@ export function BottomNav({ active }: Props) {
   }, [user]);
 
   return (
+    <>
     <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-lg bg-white border-t border-gray-100 flex z-30">
       <button
         type="button"
@@ -63,6 +66,15 @@ export function BottomNav({ active }: Props) {
       >
         <span className="text-2xl">🇸🇰</span>
         <span className="text-[9px] font-semibold text-center leading-tight">Foreigner<br />Exclusive</span>
+      </button>
+
+      <button
+        type="button"
+        onClick={() => setShowLeaderboard(true)}
+        className="flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors text-gray-400 hover:text-gray-600"
+      >
+        <span className="text-2xl">🏆</span>
+        <span className="text-[9px] font-semibold text-center leading-tight">Leader<br />board</span>
       </button>
 
       {user ? (
@@ -100,5 +112,10 @@ export function BottomNav({ active }: Props) {
         </button>
       )}
     </div>
+
+    {showLeaderboard && (
+      <LeaderboardModal onClose={() => setShowLeaderboard(false)} />
+    )}
+  </>
   );
 }

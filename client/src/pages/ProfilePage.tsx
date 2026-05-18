@@ -181,7 +181,7 @@ function AliasModal({
           </p>
         )}
 
-        <div className="grid grid-cols-2 gap-3 p-4">
+        <div className="grid grid-cols-2 gap-3 p-4 overflow-y-auto max-h-[60vh]">
           {BASE_ALIASES.map((base) => {
             const isCurrent = currentAlias.replace(/_\d+$/, '') === base;
             return (

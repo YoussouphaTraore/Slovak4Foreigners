@@ -6,6 +6,7 @@ import {
   syncProgressToSupabase,
   syncLessonRecord,
   syncSnailRaceRecord,
+  syncWeeklyXp,
   loadProgressFromSupabase,
   mergeProgress,
 } from '../lib/supabase/progressSync';
@@ -171,6 +172,10 @@ interface ProgressStore {
   isSessionRegistered: boolean;
   setIsSessionRegistered: (val: boolean) => void;
 
+  // Weekly XP (leaderboard)
+  weeklyXp: number;
+  setWeeklyXp: (n: number) => void;
+
   // XP actions
   addXP: (amount: number) => void;
   spendXP: (amount: number) => boolean;
@@ -246,6 +251,7 @@ export const useProgressStore = create<ProgressStore>()(
       reviewTargetIds: [],
       unlockedReferenceCards: [],
       isSessionRegistered: false,
+      weeklyXp: 0,
 
       // ── XP ────────────────────────────────────────────────────────────────
 
@@ -302,12 +308,14 @@ export const useProgressStore = create<ProgressStore>()(
           : [...s.completedLessons, lessonId];
 
         const newXp = Math.max(0, s.xp + xpEarned);
+        const newWeeklyXp = s.weeklyXp + xpEarned;
 
         set({
           lessonRecords: updatedRecords,
           completedLessons: newCompleted,
           xp: newXp,
           level: calcLevel(newXp),
+          weeklyXp: newWeeklyXp,
         });
 
         // hard_stage gate — fires when guest completes the last Stage 1 lesson
@@ -331,6 +339,7 @@ export const useProgressStore = create<ProgressStore>()(
             [
               syncProgressToSupabase(user.id, get()),
               syncLessonRecord(user.id, updatedRecord),
+              syncWeeklyXp(user.id, get().weeklyXp),
             ],
             set,
           );
@@ -407,7 +416,8 @@ export const useProgressStore = create<ProgressStore>()(
           ? s.snailRaceRecords.map((r) => (r.stageId === stageId ? newRecord : r))
           : [...s.snailRaceRecords, newRecord];
 
-        set({ xp: newXp, level: calcLevel(newXp), snailRaceRecords: updatedRecords });
+        const newWeeklyXpRace = s.weeklyXp + xpEarned;
+        set({ xp: newXp, level: calcLevel(newXp), snailRaceRecords: updatedRecords, weeklyXp: newWeeklyXpRace });
 
         const { user } = useAuthStore.getState();
         if (user) {
@@ -415,6 +425,7 @@ export const useProgressStore = create<ProgressStore>()(
             [
               syncProgressToSupabase(user.id, get()),
               syncSnailRaceRecord(user.id, newRecord),
+              syncWeeklyXp(user.id, get().weeklyXp),
             ],
             set,
           );
@@ -475,7 +486,6 @@ export const useProgressStore = create<ProgressStore>()(
             strength: 100,
             lastDecayedAt: today,
           }));
-          // Immediately designate the next 3 lessons for the coming cycle
           const nextTargets = pickReviewTargets(updatedRecords);
           return {
             xp: newXp,
@@ -483,12 +493,16 @@ export const useProgressStore = create<ProgressStore>()(
             lastReviewedAt: now,
             lessonRecords: updatedRecords,
             reviewTargetIds: nextTargets,
+            weeklyXp: s.weeklyXp + xpEarned,
           };
         });
         const { user } = useAuthStore.getState();
         if (user) {
           fireSync(
-            [syncProgressToSupabase(user.id, get())],
+            [
+              syncProgressToSupabase(user.id, get()),
+              syncWeeklyXp(user.id, get().weeklyXp),
+            ],
             set,
           );
         }
@@ -504,6 +518,8 @@ export const useProgressStore = create<ProgressStore>()(
         })),
 
       setIsSessionRegistered: (val) => set({ isSessionRegistered: val }),
+
+      setWeeklyXp: (n) => set({ weeklyXp: n }),
 
       // ── Cloud sync ────────────────────────────────────────────────────────
 
@@ -634,7 +650,7 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 9,
+      version: 10,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
@@ -703,8 +719,11 @@ export const useProgressStore = create<ProgressStore>()(
         }
 
         if (version < 9) {
-          // reviewTargetIds will be populated by decayLessonStrengths() on app load
           old = { ...old, reviewTargetIds: [] };
+        }
+
+        if (version < 10) {
+          old = { ...old, weeklyXp: 0 };
         }
 
         return old as unknown as ProgressStore;

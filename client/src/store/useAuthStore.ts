@@ -42,8 +42,9 @@ export const useAuthStore = create<AuthStore>((set) => ({
       await supabase.auth.signOut();
       set({ user: null, session: null, alias: '' });
       // Registration flag is user-specific — clear on sign-out
-      const { setIsSessionRegistered } = (await import('./useProgressStore')).useProgressStore.getState();
+      const { setIsSessionRegistered, setWeeklyXp } = (await import('./useProgressStore')).useProgressStore.getState();
       setIsSessionRegistered(false);
+      setWeeklyXp(0);
     } finally {
       set({ isLoading: false });
     }
