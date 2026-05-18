@@ -11,6 +11,15 @@ import {
   mergeProgress,
 } from '../lib/supabase/progressSync';
 
+// localStorage keys that belong to a specific user. Wiped when a different user signs in.
+// Consent keys are intentionally excluded — they are device-level, not user-level.
+const USER_STORAGE_KEYS = [
+  'slovak-progress',
+  'dialogues_completed',
+  'save-modal-dismissed-soft',
+  'streak_reminders_enabled',
+];
+
 // ── Types ────────────────────────────────────────────────────────────────────
 
 export interface LessonRecord {
@@ -551,58 +560,125 @@ export const useProgressStore = create<ProgressStore>()(
       // ── Cloud sync ────────────────────────────────────────────────────────
 
       initializeFromCloud: async (userId) => {
+        // ── User-switch guard ───────────────────────────────────────────────
+        // This MUST run before any cloud fetch or merge. Zustand rehydrates
+        // from localStorage synchronously at import time, so by the time this
+        // function is called the in-memory store may already contain a different
+        // user's data. We check and wipe here — the only guaranteed-safe point.
+        let storedId: string | null = null;
+        try { storedId = localStorage.getItem('stored_user_id'); } catch { /* */ }
+
+        console.log('[sync] initializeFromCloud — userId:', userId, '| storedId:', storedId);
+
+        const isDifferentUser = storedId !== null && storedId !== '' && storedId !== userId;
+        const isUnknownDevice = storedId === null || storedId === '';
+
+        const wipeLocal = () => {
+          get().resetToDefaults();
+          for (const key of USER_STORAGE_KEYS) {
+            try { localStorage.removeItem(key); } catch { /* */ }
+          }
+        };
+
+        const applyCloud = (cloud: NonNullable<Awaited<ReturnType<typeof loadProgressFromSupabase>>>) => {
+          const sanitizedStages = sanitizeUnlockedStages(cloud.unlockedStages, cloud.completedLessons);
+          set({
+            xp: cloud.xp,
+            level: cloud.level,
+            streak: cloud.streak,
+            lastPlayedDate: cloud.lastPlayedDate,
+            streakMultiplier: cloud.streakMultiplier,
+            unlockedStages: sanitizedStages,
+            triedEmergencyScenarios: cloud.triedEmergencyScenarios,
+            completedLessons: cloud.completedLessons,
+            lessonRecords: cloud.lessonRecords,
+            snailRaceRecords: cloud.snailRaceRecords,
+          });
+        };
+
+        if (isDifferentUser) {
+          // Case 2: Different user on this device — wipe immediately before fetch
+          console.log('[sync] Case 2: different user — wiping local state before cloud load');
+          wipeLocal();
+        }
+
+        // ── Cloud fetch ─────────────────────────────────────────────────────
         set({ isSyncing: true });
         try {
           const cloud = await loadProgressFromSupabase(userId);
 
-          if (cloud === null) {
-            // New user — push local state to Supabase
-            const s = get();
-            await syncProgressToSupabase(userId, s);
-            await Promise.all(s.lessonRecords.map((r) => syncLessonRecord(userId, r)));
-            await Promise.all(s.snailRaceRecords.map((r) => syncSnailRaceRecord(userId, r)));
+          if (isDifferentUser) {
+            // Local is already wiped — load cloud directly or create fresh profile
+            if (cloud !== null) {
+              applyCloud(cloud);
+            } else {
+              // No cloud data for this user — push fresh defaults
+              await syncProgressToSupabase(userId, get());
+            }
+
+          } else if (isUnknownDevice) {
+            // Case 3: No stored_user_id yet
+            if (cloud !== null) {
+              // Returning user from before this fix was deployed — wipe local, load cloud
+              console.log('[sync] Case 3: no stored_user_id, cloud data exists — wiping local, loading cloud');
+              wipeLocal();
+              applyCloud(cloud);
+            } else {
+              // No cloud data → genuine new user or guest converting — keep local, push up
+              console.log('[sync] Case 3: no stored_user_id, no cloud data — guest converting, pushing local');
+              const s = get();
+              await syncProgressToSupabase(userId, s);
+              await Promise.all(s.lessonRecords.map((r) => syncLessonRecord(userId, r)));
+              await Promise.all(s.snailRaceRecords.map((r) => syncSnailRaceRecord(userId, r)));
+            }
+
           } else {
-            // Existing user — merge cloud + local, never lose progress
-            const s = get();
-            const merged = mergeProgress(
-              {
-                xp: s.xp,
-                level: s.level,
-                streak: s.streak,
-                lastPlayedDate: s.lastPlayedDate,
-                streakMultiplier: s.streakMultiplier,
-                unlockedStages: s.unlockedStages,
-                triedEmergencyScenarios: s.triedEmergencyScenarios,
-                completedLessons: s.completedLessons,
-                lessonRecords: s.lessonRecords,
-                snailRaceRecords: s.snailRaceRecords,
-              },
-              cloud,
-            );
-            // Sanitize after merge — cloud may still carry stages unlocked without
-            // completing the previous stage (retroactive correction for existing users)
-            const sanitizedStages = sanitizeUnlockedStages(
-              merged.unlockedStages,
-              merged.completedLessons,
-            );
-            set({
-              xp: merged.xp,
-              level: merged.level,
-              streak: merged.streak,
-              lastPlayedDate: merged.lastPlayedDate,
-              streakMultiplier: merged.streakMultiplier,
-              unlockedStages: sanitizedStages,
-              triedEmergencyScenarios: merged.triedEmergencyScenarios,
-              completedLessons: merged.completedLessons,
-              lessonRecords: merged.lessonRecords,
-              snailRaceRecords: merged.snailRaceRecords,
-            });
-            // Write merged state back so cloud is up to date
-            await syncProgressToSupabase(userId, get());
+            // Case 4: Same user returning — merge cloud + local as before
+            console.log('[sync] Case 4: same user returning — merging');
+            if (cloud === null) {
+              // Same user but no cloud data — push local up
+              const s = get();
+              await syncProgressToSupabase(userId, s);
+              await Promise.all(s.lessonRecords.map((r) => syncLessonRecord(userId, r)));
+              await Promise.all(s.snailRaceRecords.map((r) => syncSnailRaceRecord(userId, r)));
+            } else {
+              const s = get();
+              const merged = mergeProgress(
+                {
+                  xp: s.xp,
+                  level: s.level,
+                  streak: s.streak,
+                  lastPlayedDate: s.lastPlayedDate,
+                  streakMultiplier: s.streakMultiplier,
+                  unlockedStages: s.unlockedStages,
+                  triedEmergencyScenarios: s.triedEmergencyScenarios,
+                  completedLessons: s.completedLessons,
+                  lessonRecords: s.lessonRecords,
+                  snailRaceRecords: s.snailRaceRecords,
+                },
+                cloud,
+              );
+              const sanitizedStages = sanitizeUnlockedStages(merged.unlockedStages, merged.completedLessons);
+              set({
+                xp: merged.xp,
+                level: merged.level,
+                streak: merged.streak,
+                lastPlayedDate: merged.lastPlayedDate,
+                streakMultiplier: merged.streakMultiplier,
+                unlockedStages: sanitizedStages,
+                triedEmergencyScenarios: merged.triedEmergencyScenarios,
+                completedLessons: merged.completedLessons,
+                lessonRecords: merged.lessonRecords,
+                snailRaceRecords: merged.snailRaceRecords,
+              });
+              await syncProgressToSupabase(userId, get());
+            }
           }
         } catch (e) {
           console.error('[initializeFromCloud] error:', e);
         } finally {
+          // Always stamp stored_user_id so future sign-ins can detect user switches
+          try { localStorage.setItem('stored_user_id', userId); } catch { /* */ }
           set({ isSyncing: false, lastSyncedAt: new Date().toISOString() });
         }
       },

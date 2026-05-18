@@ -69,17 +69,9 @@ export const useAuthStore = create<AuthStore>((set) => ({
       set({ isInitialized: true });
     });
 
-    // Keys that belong to a specific user and must be wiped when a different user signs in.
-    // Consent keys are intentionally excluded — they are device-level, not user-level.
-    const USER_STORAGE_KEYS = [
-      'slovak-progress',
-      'dialogues_completed',
-      'save-modal-dismissed-soft',
-      'streak_reminders_enabled',
-    ];
-
     // Keep in sync on every auth change
     supabase.auth.onAuthStateChange((event, session) => {
+      console.log('[auth] onAuthStateChange — event:', event, '| userId:', session?.user?.id ?? null);
       if (session?.user) {
         // Mark that this session had a logged-in user so regression is skipped on sign-out
         try { sessionStorage.setItem('wasLoggedIn', 'true'); } catch { /* */ }
@@ -89,26 +81,6 @@ export const useAuthStore = create<AuthStore>((set) => ({
         user: session?.user ?? null,
         isInitialized: true,
       });
-
-      // On actual sign-in: check whether localStorage belongs to the same user
-      if (event === 'SIGNED_IN' && session?.user) {
-        const userId = session.user.id;
-        void (async () => {
-          let storedId: string | null = null;
-          try { storedId = localStorage.getItem('stored_user_id'); } catch { /* */ }
-
-          if (storedId !== null && storedId !== userId) {
-            // Different user on this device — wipe in-memory store and user-specific localStorage
-            const { useProgressStore } = await import('./useProgressStore');
-            useProgressStore.getState().resetToDefaults();
-            for (const key of USER_STORAGE_KEYS) {
-              try { localStorage.removeItem(key); } catch { /* */ }
-            }
-          }
-          // Record which user's data is now in localStorage
-          try { localStorage.setItem('stored_user_id', userId); } catch { /* */ }
-        })();
-      }
     });
   },
 }));
