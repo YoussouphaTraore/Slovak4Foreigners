@@ -223,6 +223,9 @@ interface ProgressStore {
   // Cloud sync
   initializeFromCloud: (userId: string) => Promise<void>;
 
+  // Reset all progress to initial defaults (used when a different user signs in)
+  resetToDefaults: () => void;
+
   // Called on app load
   decayLessonStrengths: () => void;
   checkAndUpdateStreak: () => void;
@@ -520,6 +523,30 @@ export const useProgressStore = create<ProgressStore>()(
       setIsSessionRegistered: (val) => set({ isSessionRegistered: val }),
 
       setWeeklyXp: (n) => set({ weeklyXp: n }),
+
+      // ── Reset ─────────────────────────────────────────────────────────────
+
+      resetToDefaults: () => set({
+        xp: 0,
+        level: 1,
+        streak: 0,
+        lastPlayedDate: null,
+        streakMultiplier: 1.0,
+        completedLessons: [],
+        lessonRecords: [],
+        unlockedStages: ['survival'],
+        snailRaceRecords: [],
+        triedEmergencyScenarios: [],
+        isSyncing: false,
+        lastSyncedAt: null,
+        showSaveProgressModal: null,
+        regressionLessonTitle: null,
+        lastReviewedAt: null,
+        reviewTargetIds: [],
+        unlockedReferenceCards: [],
+        isSessionRegistered: false,
+        weeklyXp: 0,
+      }),
 
       // ── Cloud sync ────────────────────────────────────────────────────────
 

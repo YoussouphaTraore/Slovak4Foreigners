@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
+import { supabase } from '../lib/supabase/client';
 import { useAuthStore } from '../store/useAuthStore';
 import { useProgressStore } from '../store/useProgressStore';
 import { lessons } from '../data/lessons';
@@ -80,53 +81,44 @@ function Toggle({ on, onChange }: { on: boolean; onChange: (v: boolean) => void 
 function ConfirmDeleteModal({
   onConfirm,
   onCancel,
+  deleting,
+  error,
 }: {
   onConfirm: () => void;
   onCancel: () => void;
+  deleting: boolean;
+  error: string | null;
 }) {
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center px-4 pb-6 sm:pb-0 bg-black/50">
       <div className="w-full max-w-sm bg-white rounded-3xl p-6 shadow-xl" onClick={(e) => e.stopPropagation()}>
         <h2 className="text-lg font-extrabold text-gray-800 text-center mb-3">Delete account?</h2>
-        <p className="text-sm text-gray-500 text-center leading-snug mb-6">
+        <p className="text-sm text-gray-500 text-center leading-snug mb-4">
           This will permanently delete your account and all progress. This cannot be undone.
         </p>
+        {error && (
+          <p className="text-xs text-red-500 text-center leading-snug mb-4">{error}</p>
+        )}
         <button
           type="button"
           onClick={onConfirm}
-          className="w-full bg-red-500 text-white font-bold py-3 rounded-xl text-sm cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all mb-3"
+          disabled={deleting}
+          className="w-full bg-red-500 text-white font-bold py-3 rounded-xl text-sm cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all mb-3 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
         >
-          Delete forever
+          {deleting ? (
+            <>
+              <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+              Deleting…
+            </>
+          ) : 'Delete forever'}
         </button>
         <button
           type="button"
           onClick={onCancel}
-          className="w-full text-gray-400 text-sm py-1.5 cursor-pointer hover:text-gray-600 transition-colors"
+          disabled={deleting}
+          className="w-full text-gray-400 text-sm py-1.5 cursor-pointer hover:text-gray-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           Cancel
-        </button>
-      </div>
-    </div>
-  );
-}
-
-function ContactSupportModal({ onClose }: { onClose: () => void }) {
-  return (
-    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center px-4 pb-6 sm:pb-0 bg-black/50">
-      <div className="w-full max-w-sm bg-white rounded-3xl p-6 shadow-xl">
-        <h2 className="text-lg font-extrabold text-gray-800 text-center mb-3">Contact support</h2>
-        <p className="text-sm text-gray-500 text-center leading-snug mb-6">
-          To delete your account please contact us at{' '}
-          <span className="font-semibold text-gray-700 break-all">
-            support@learnslovakforforeigners.com
-          </span>
-        </p>
-        <button
-          type="button"
-          onClick={onClose}
-          className="w-full bg-brand-green text-white font-bold py-3 rounded-xl text-sm cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all"
-        >
-          Got it
         </button>
       </div>
     </div>
@@ -227,7 +219,8 @@ export function ProfilePage() {
     catch { return true; }
   });
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
-  const [showDeleteMessage, setShowDeleteMessage] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
   const [showAliasModal, setShowAliasModal] = useState(false);
 
   // Redirect guests to auth
@@ -289,9 +282,17 @@ export function ProfilePage() {
     navigate('/');
   };
 
-  const handleDeleteConfirmed = () => {
-    setShowDeleteConfirm(false);
-    setShowDeleteMessage(true);
+  const handleDeleteConfirmed = async () => {
+    setDeleting(true);
+    setDeleteError(null);
+    const { error } = await supabase.rpc('delete_user');
+    if (error) {
+      setDeleteError('Deletion failed. Please try again or contact contact@slovakforforeigners.eu');
+      setDeleting(false);
+      return;
+    }
+    try { localStorage.clear(); } catch { /* */ }
+    window.location.replace('/');
   };
 
   // ── Render ────────────────────────────────────────────────────────────────────
@@ -503,29 +504,23 @@ export function ProfilePage() {
         </Card>
 
         {/* ── 10. Delete account ─────────────────────────────────────────────── */}
-        <div className="opacity-60">
-          <Card>
-            <Row last onClick={() => setShowDeleteConfirm(true)}>
-              <span className="text-xl w-7 flex-none text-center leading-none">🗑️</span>
-              <span className="text-sm font-semibold text-red-500">Delete account</span>
-            </Row>
-          </Card>
-        </div>
+        <Card>
+          <Row last onClick={() => setShowDeleteConfirm(true)}>
+            <span className="text-xl w-7 flex-none text-center leading-none">🗑️</span>
+            <span className="text-sm font-semibold text-red-500">Delete account</span>
+          </Row>
+        </Card>
 
       </div>
 
       <BottomNav active="profile" />
 
-      {showDeleteConfirm && !showDeleteMessage && (
+      {showDeleteConfirm && (
         <ConfirmDeleteModal
           onConfirm={handleDeleteConfirmed}
-          onCancel={() => setShowDeleteConfirm(false)}
-        />
-      )}
-
-      {showDeleteMessage && (
-        <ContactSupportModal
-          onClose={() => { setShowDeleteMessage(false); setShowDeleteConfirm(false); }}
+          onCancel={() => { setShowDeleteConfirm(false); setDeleteError(null); }}
+          deleting={deleting}
+          error={deleteError}
         />
       )}
 

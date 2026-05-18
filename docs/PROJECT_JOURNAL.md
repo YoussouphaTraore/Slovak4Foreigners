@@ -93,8 +93,9 @@ Slovak4Foreigners/
 │   │   │   │   ├── UnscrambleExercise.tsx
 │   │   │   │   ├── VocabularyTableExercise.tsx
 │   │   │   │   └── WordMatchExercise.tsx
+│   │   │   ├── LeaderboardModal.tsx         # Top-100 weekly leaderboard with live NPC animation
 │   │   │   └── ui/
-│   │   │       └── BottomNav.tsx            # Fixed bottom navigation bar
+│   │   │       └── BottomNav.tsx            # Fixed bottom navigation bar (5 tabs)
 │   │   ├── data/
 │   │   │   ├── dialogues/
 │   │   │   │   ├── index.ts                 # Exports all dialogues array
@@ -103,6 +104,7 @@ Slovak4Foreigners/
 │   │   │   │   ├── dialogue-bus-tier1.json
 │   │   │   │   ├── dialogue-neighbor-tier1.json
 │   │   │   │   └── dialogue-emergency-tier1.json
+│   │   ├── aliases.ts                       # 25 base alias names (all *Snail)
 │   │   │   └── lessons/
 │   │   │       ├── index.ts                 # Exports all lessons array (ordered)
 │   │   │       ├── survival-1.json          # First Words (9 exercises)
@@ -126,7 +128,8 @@ Slovak4Foreigners/
 │   │   ├── lib/
 │   │   │   └── supabase/
 │   │   │       ├── client.ts                # Supabase client singleton
-│   │   │       ├── progressSync.ts          # Cloud read/write helpers
+│   │   │       ├── aliasUtils.ts            # Alias assign / change / cooldown / avatar URL
+│   │   │       ├── progressSync.ts          # Cloud read/write helpers (incl. weekly XP)
 │   │   │       └── schema.sql               # Full DB schema (run once in Supabase SQL editor)
 │   │   ├── pages/
 │   │   │   ├── AuthPage.tsx                 # Google sign-in page
@@ -137,8 +140,8 @@ Slovak4Foreigners/
 │   │   │   ├── SnailRacePage.tsx            # Timed translation mini-game
 │   │   │   └── XpCelebrationPage.tsx        # Confetti + XP breakdown after lesson
 │   │   ├── store/
-│   │   │   ├── useAuthStore.ts              # Auth state + Google sign-in
-│   │   │   └── useProgressStore.ts          # XP, lessons, streaks, sync — version 7
+│   │   │   ├── useAuthStore.ts              # Auth state + Google sign-in + alias state
+│   │   │   └── useProgressStore.ts          # XP, lessons, streaks, weeklyXp, sync — version 10
 │   │   ├── types/
 │   │   │   ├── dialogue.ts                  # Dialogue + EmergencyScenario types
 │   │   │   └── lesson.ts                    # Lesson + all Exercise union types
@@ -171,6 +174,9 @@ All tables live in the `public` schema in Supabase. Row Level Security (RLS) is 
 | `email` | `text` | User's email |
 | `display_name` | `text` | Editable in Profile page |
 | `avatar_url` | `text` | Google avatar URL |
+| `alias` | `text UNIQUE` | Snail alias (e.g. `FrogySnail`, `KittySnail_2`) — assigned on first login |
+| `alias_changed_at` | `timestamptz` | Set when user manually changes alias; NULL if still on auto-assigned alias |
+| `weekly_xp` | `integer` | XP earned since last Monday 00:00 UTC; reset by cron |
 | `created_at` | `timestamptz` | Auto-set |
 
 #### `user_progress`
@@ -197,6 +203,27 @@ All tables live in the `public` schema in Supabase. Row Level Security (RLS) is 
 | `times_completed` | `integer` | Total completions |
 | `xp_earned` | `integer` | XP from last attempt |
 | `last_decayed_at` | `text` | YYYY-MM-DD |
+
+#### `npc_profiles`
+| Column | Type | Notes |
+|--------|------|-------|
+| `alias` | `text PK` | NPC name (same pool as user aliases) |
+| `avatar` | `text` | Path to avatar image e.g. `/pp/FrogySnail.png` |
+| `weekly_xp` | `integer` | Simulated XP; updated by `update_npc_xp()` cron every 3h |
+| `personality` | `text` | One of: `grinder`, `casual`, `weekend_warrior`, `fading` |
+
+100 NPCs seeded. `update_npc_xp()` scales gains to the top real user's XP and applies personality-based variance. Sunday protection: NPCs never exceed `topRealUserXp - 1` on the last day of the week.
+
+#### `weekly_winners`
+| Column | Type | Notes |
+|--------|------|-------|
+| `id` | `uuid PK` | Auto-generated |
+| `alias` | `text` | Winner's alias |
+| `avatar` | `text` | Winner's avatar path |
+| `week_of` | `date` | The Monday that week started |
+| `created_at` | `timestamptz` | When the record was inserted |
+
+`record_weekly_winner()` cron runs at 23:55 UTC Sunday, recording the current #1 player before Monday's reset. Displayed in the leaderboard modal header the following week.
 
 #### `snail_race_records`
 | Column | Type | Notes |
@@ -678,11 +705,11 @@ npx tsc --noEmit     # Type-check only (no output files)
 ### Future work ideas
 
 - Email/magic-link auth as a fallback (for users without Google)
-- Leaderboard (Snail Race scores)
 - Pronunciation scoring (Web Speech Recognition API)
 - Push notifications for streak reminders (Web Push)
 - More dialogue tiers (Tier 2 and Tier 3 scenarios)
 - Offline-first with service worker
+- Leaderboard: add all-time XP ranking alongside the weekly board
 
 ---
 
@@ -1042,3 +1069,55 @@ Both the `checkSessionRegistration` (GET) and `insertSessionRegistration` (POST)
 - Dropped and re-created both policies (`for insert with check` + `for select using`)
 
 No code changes — fix was entirely in Supabase dashboard.
+
+---
+
+### Phase 18 — Alias System, Weekly XP & Leaderboard
+
+**Date:** 2026-05-18
+**Scope:** Player identity, weekly competition, and NPC population
+
+**Alias system:**
+- 25 base aliases defined in `client/src/data/aliases.ts` (all `*Snail` names: FrogySnail, KualySnail, BunnySnail … ZebySnail)
+- Avatar images at `client/public/pp/{BaseName}.png` — 15 new PNGs added for expanded set
+- `aliasUtils.ts` — `getAvatarUrl(alias)` strips `_N` suffix; `loadOrAssignAlias(userId)` auto-assigns a random unique alias on first login; `changeAlias(userId, baseName)` enforces 30-day cooldown via `alias_changed_at` on `user_profiles`
+- Cooldown only activates on **manual** alias changes — auto-assigned aliases can be changed freely
+- Alias collision handled by appending `_2`, `_3`, etc. until a free slot is found
+- `ProfilePage` alias picker: scrollable 5-column grid (`max-h-[60vh]`), change button disabled within 30-day window
+- `useAuthStore` stores `alias`; `signOut` resets it to `''`
+
+**Weekly XP:**
+- `weekly_xp` column on `user_profiles` — reset by pg_cron every Monday 00:00 UTC
+- `syncWeeklyXp(userId, xp)` and `loadWeeklyXp(userId)` in `progressSync.ts`
+- `useProgressStore` v10 added `weeklyXp` field; incremented on every lesson, race, and review XP earn event
+- Loaded from Supabase on login (cron may have reset it since last visit)
+
+**Leaderboard (`LeaderboardModal.tsx`):**
+- Fetches real users (limit 500), all NPCs, and previous week's winner in parallel
+- Merges into a single sorted list, shows top 100
+- Rank banner updates dynamically: gray (not ranked / outside top 100), green (#1), amber (ranked)
+- Previous week's winner shown in modal header: `🏆 [avatar] Winner of Week DD.MM.YYYY / [alias]`
+- BottomNav now has 5 tabs: 🏠 Home | 💬 Practice Dialogue | 🇸🇰 Foreigner Exclusive | 🏆 Leaderboard | 👤 Profile
+- Profile tab icon animates: alternates between initial letter and alias avatar every 4s (cross-fade via inline opacity transition)
+
+**NPC system (Supabase):**
+- `npc_profiles` table: 100 NPCs with personality types (`grinder`, `casual`, `weekend_warrior`, `fading`)
+- `update_npc_xp()` pg_cron runs every 3h — scales gains to top real user XP, personality-based variance
+- `record_weekly_winner()` pg_cron at 23:55 UTC Sunday — records current #1 before Monday reset
+- `weekly_winners` table stores winner history; displayed in leaderboard header
+
+---
+
+### Phase 19 — Live NPC Leaderboard Animation
+
+**Date:** 2026-05-18
+**Scope:** Client-side simulated NPC movement while the leaderboard modal is open
+
+**`LeaderboardModal.tsx`** changes:
+- `setInterval` every 10s while modal is open; cleared on unmount via `useEffect` cleanup
+- Each tick: picks 1–3 random NPCs from the displayed list, bumps each by +1..+15 XP
+- **Sunday protection (client-side):** if `new Date().getDay() === 0` and a real user holds #1, NPCs are capped at `realUserXp - 1` for that tick
+- Re-sorts the full list after each tick; updates `userRank` state so the banner ("You are currently #N") updates live
+- `rowsRef` pattern: a `useRef` mirrors `allRows` so the interval reads current state without needing to be in the dependency array (avoids interval restart on every render)
+- **Flash animation:** `@keyframes xp-flash` embedded via `<style>` tag — bumped XP values briefly turn green (`#15803d`) then fade back to gray over 0.6s; `flashedKeys` Set tracks which rows are mid-flash; cleared after 600ms via `setTimeout`
+- Real user rows are never touched — only NPC keys (starting with `npc-`) are eligible for bumps
