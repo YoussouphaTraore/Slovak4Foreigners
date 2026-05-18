@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { HashRouter, Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { HomePage } from './pages/HomePage';
 import { LessonPage } from './pages/LessonPage';
 import { XpCelebrationPage } from './pages/XpCelebrationPage';
@@ -183,6 +184,7 @@ function AppShell() {
   return (
     <HashRouter>
       <AppRoutes />
+      <Analytics />
     </HashRouter>
   );
 }
