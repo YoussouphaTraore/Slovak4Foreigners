@@ -7,10 +7,12 @@ interface AuthStore {
   session: Session | null;
   isLoading: boolean;
   isInitialized: boolean;
+  alias: string;
 
   signInWithGoogle: () => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   initialize: () => void;
+  setAlias: (alias: string) => void;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -18,6 +20,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
   session: null,
   isLoading: false,
   isInitialized: false,
+  alias: '',
 
   signInWithGoogle: async () => {
     set({ isLoading: true });
@@ -37,7 +40,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
     set({ isLoading: true });
     try {
       await supabase.auth.signOut();
-      set({ user: null, session: null });
+      set({ user: null, session: null, alias: '' });
       // Registration flag is user-specific — clear on sign-out
       const { setIsSessionRegistered } = (await import('./useProgressStore')).useProgressStore.getState();
       setIsSessionRegistered(false);
@@ -45,6 +48,8 @@ export const useAuthStore = create<AuthStore>((set) => ({
       set({ isLoading: false });
     }
   },
+
+  setAlias: (alias) => set({ alias }),
 
   initialize: () => {
     // Safety net: always mark initialized within 3 s even if Supabase hangs

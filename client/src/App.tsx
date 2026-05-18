@@ -17,10 +17,12 @@ import { DialogueSession } from './components/dialogue/DialogueSession';
 import { EmergencyDialogueSession } from './components/dialogue/EmergencyDialogueSession';
 import { SaveProgressModal, REGRESSION_DISMISS_KEY } from './components/auth/SaveProgressModal';
 import { ConsentPopup } from './components/ConsentPopup';
+import { DesktopBlock, isMobile } from './components/DesktopBlock';
 import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
 import { useAuthStore } from './store/useAuthStore';
 import { checkSessionRegistration } from './lib/supabase/progressSync';
+import { loadOrAssignAlias } from './lib/supabase/aliasUtils';
 
 function DialogueSessionRoute() {
   const { id } = useParams<{ id: string }>();
@@ -132,13 +134,14 @@ function AppRoutes() {
   );
 }
 
-function App() {
+function AppShell() {
   const decayLessonStrengths = useProgressStore((s) => s.decayLessonStrengths);
   const initializeFromCloud = useProgressStore((s) => s.initializeFromCloud);
   const setIsSessionRegistered = useProgressStore((s) => s.setIsSessionRegistered);
   const initialize = useAuthStore((s) => s.initialize);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const userId = useAuthStore((s) => s.user?.id);
+  const setAlias = useAuthStore((s) => s.setAlias);
 
   useEffect(() => {
     decayLessonStrengths();
@@ -156,6 +159,12 @@ function App() {
     checkSessionRegistration(userId).then(setIsSessionRegistered);
   }, [userId, setIsSessionRegistered]);
 
+  // Load or auto-assign alias on login
+  useEffect(() => {
+    if (!userId) return;
+    loadOrAssignAlias(userId).then(setAlias);
+  }, [userId, setAlias]);
+
   if (!isInitialized) {
     return (
       <div className="min-h-screen bg-[#E8F4DC] flex items-center justify-center">
@@ -169,6 +178,11 @@ function App() {
       <AppRoutes />
     </HashRouter>
   );
+}
+
+function App() {
+  if (!isMobile) return <DesktopBlock />;
+  return <AppShell />;
 }
 
 export default App;

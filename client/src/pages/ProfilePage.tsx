@@ -4,7 +4,8 @@ import { useAuthStore } from '../store/useAuthStore';
 import { useProgressStore } from '../store/useProgressStore';
 import { lessons } from '../data/lessons';
 import { foreignPoliceLessons } from '../data/foreigner-exclusive/foreign-police';
-import { supabase } from '../lib/supabase/client';
+import { BASE_ALIASES } from '../data/aliases';
+import { getAvatarUrl, changeAlias } from '../lib/supabase/aliasUtils';
 import { BottomNav } from '../components/ui/BottomNav';
 
 // ── Stage metadata ─────────────────────────────────────────────────────────────
@@ -132,12 +133,85 @@ function ContactSupportModal({ onClose }: { onClose: () => void }) {
   );
 }
 
+function AliasModal({
+  currentAlias,
+  userId,
+  onClose,
+  onChanged,
+}: {
+  currentAlias: string;
+  userId: string;
+  onClose: () => void;
+  onChanged: (alias: string) => void;
+}) {
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState<{ text: string; ok: boolean } | null>(null);
+
+  const handlePick = async (base: string) => {
+    if (loading) return;
+    setLoading(true);
+    setMessage(null);
+    const result = await changeAlias(userId, base);
+    setLoading(false);
+    if (result.success) {
+      setMessage({ text: `Your alias is now ${result.alias}`, ok: true });
+      onChanged(result.alias);
+    } else {
+      setMessage({ text: result.error ?? 'Something went wrong.', ok: false });
+    }
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 px-4 pb-6 sm:pb-0"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-sm bg-white rounded-3xl shadow-2xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-gray-100">
+          <h2 className="text-base font-extrabold text-gray-800">Choose Your Alias</h2>
+          <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl cursor-pointer leading-none">✕</button>
+        </div>
+
+        {message && (
+          <p className={`text-xs text-center px-5 py-2.5 font-semibold ${message.ok ? 'text-brand-green' : 'text-red-500'}`}>
+            {message.text}
+          </p>
+        )}
+
+        <div className="grid grid-cols-2 gap-3 p-4">
+          {BASE_ALIASES.map((base) => {
+            const isCurrent = currentAlias.replace(/_\d+$/, '') === base;
+            return (
+              <button
+                key={base}
+                type="button"
+                disabled={loading}
+                onClick={() => handlePick(base)}
+                className={`flex flex-col items-center gap-2 p-3 rounded-2xl border-2 transition-all cursor-pointer active:scale-[0.97] disabled:opacity-60
+                  ${isCurrent ? 'border-brand-green bg-green-50' : 'border-gray-100 hover:border-amber-300 hover:bg-amber-50'}`}
+              >
+                <img src={getAvatarUrl(base)} alt={base} className="w-14 h-14 rounded-full object-cover" />
+                <span className="text-xs font-bold text-gray-700 leading-tight text-center">{base}</span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 // ── Main page ──────────────────────────────────────────────────────────────────
 
 export function ProfilePage() {
   const navigate = useNavigate();
   const user = useAuthStore((s) => s.user);
   const signOut = useAuthStore((s) => s.signOut);
+  const alias = useAuthStore((s) => s.alias);
+  const setAlias = useAuthStore((s) => s.setAlias);
   const xp = useProgressStore((s) => s.xp);
   const level = useProgressStore((s) => s.level);
   const streak = useProgressStore((s) => s.streak);
@@ -148,16 +222,13 @@ export function ProfilePage() {
   const unlockedReferenceCards = useProgressStore((s) => s.unlockedReferenceCards);
 
   // All useState hooks must be before any conditional return
-  const [editingName, setEditingName] = useState(false);
-  const [nameInput, setNameInput] = useState('');
-  const [nameSaving, setNameSaving] = useState(false);
-  const [nameError, setNameError] = useState('');
   const [streakReminders, setStreakReminders] = useState(() => {
     try { return localStorage.getItem('streak_reminders_enabled') !== 'false'; }
     catch { return true; }
   });
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [showDeleteMessage, setShowDeleteMessage] = useState(false);
+  const [showAliasModal, setShowAliasModal] = useState(false);
 
   // Redirect guests to auth
   if (!user) return <Navigate to="/auth" replace />;
@@ -207,32 +278,6 @@ export function ProfilePage() {
   });
 
   // ── Handlers ─────────────────────────────────────────────────────────────────
-
-  const handleEditStart = () => {
-    setNameInput(displayName);
-    setNameError('');
-    setEditingName(true);
-  };
-
-  const handleSaveName = async () => {
-    const trimmed = nameInput.trim();
-    if (!trimmed) { setNameError('Name cannot be empty.'); return; }
-    if (trimmed.length > 50) { setNameError('Name must be 50 characters or fewer.'); return; }
-    if (/[<>]/.test(trimmed)) { setNameError('Name contains invalid characters.'); return; }
-    if (trimmed === displayName) { setEditingName(false); return; }
-    setNameSaving(true);
-    setNameError('');
-    try {
-      const { error: authErr } = await supabase.auth.updateUser({ data: { full_name: trimmed } });
-      if (authErr) throw authErr;
-      await supabase.from('user_profiles').update({ display_name: trimmed }).eq('id', user.id);
-      setEditingName(false);
-    } catch {
-      setNameError('Could not save. Please try again.');
-    } finally {
-      setNameSaving(false);
-    }
-  };
 
   const handleToggleReminders = (val: boolean) => {
     setStreakReminders(val);
@@ -391,54 +436,36 @@ export function ProfilePage() {
         <div>
           <SectionLabel>Account</SectionLabel>
           <Card>
-            {/* Display name row */}
-            {editingName ? (
-              <div className="px-4 py-3.5 border-b border-gray-50">
-                <p className="text-xs text-gray-400 mb-1.5 font-medium">Display name</p>
-                <input
-                  type="text"
-                  value={nameInput}
-                  onChange={(e) => { setNameInput(e.target.value); setNameError(''); }}
-                  onKeyDown={(e) => { if (e.key === 'Enter') handleSaveName(); if (e.key === 'Escape') setEditingName(false); }}
-                  className="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-800 mb-2 focus:outline-none focus:border-brand-green transition-colors"
-                  autoFocus
-                  maxLength={50}
-                />
-                {nameError && <p className="text-xs text-red-500 mb-2">{nameError}</p>}
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    onClick={handleSaveName}
-                    disabled={nameSaving}
-                    className="flex-1 bg-brand-green text-white text-sm font-bold py-2.5 rounded-xl cursor-pointer hover:opacity-90 disabled:opacity-50 transition-opacity"
-                  >
-                    {nameSaving ? 'Saving…' : 'Save'}
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => { setEditingName(false); setNameError(''); }}
-                    className="flex-1 text-sm text-gray-500 py-2.5 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50 transition-colors"
-                  >
-                    Cancel
-                  </button>
-                </div>
+            {/* Alias row */}
+            <Row>
+              <img
+                src={alias ? getAvatarUrl(alias) : '/pp/FrogySnail.png'}
+                alt=""
+                className="w-10 h-10 rounded-full object-cover flex-none"
+              />
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-gray-400 leading-none mb-0.5">Your alias</p>
+                <p className="text-[10px] text-gray-400 leading-none mb-1">This is how others see you</p>
+                <p className="text-sm font-semibold text-gray-800 truncate">{alias || '—'}</p>
               </div>
-            ) : (
-              <Row>
-                <span className="text-xl w-7 flex-none text-center leading-none">✏️</span>
-                <div className="flex-1 min-w-0">
-                  <p className="text-xs text-gray-400 leading-none mb-0.5">Display name</p>
-                  <p className="text-sm font-semibold text-gray-800 truncate">{displayName}</p>
-                </div>
-                <button
-                  type="button"
-                  onClick={handleEditStart}
-                  className="text-xs text-brand-green font-semibold cursor-pointer hover:opacity-70 transition-opacity shrink-0"
-                >
-                  Edit
-                </button>
-              </Row>
-            )}
+              <button
+                type="button"
+                onClick={() => setShowAliasModal(true)}
+                className="text-xs text-brand-green font-semibold cursor-pointer hover:opacity-70 transition-opacity shrink-0"
+              >
+                Change
+              </button>
+            </Row>
+
+            {/* Display name — read-only, sourced from Google */}
+            <Row>
+              <span className="text-xl w-7 flex-none text-center leading-none">🔑</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-gray-400 leading-none mb-0.5">Your name</p>
+                <p className="text-[10px] text-gray-400 leading-none mb-1">From your Google account</p>
+                <p className="text-sm font-semibold text-gray-800 truncate">{displayName}</p>
+              </div>
+            </Row>
 
             {/* Streak reminders toggle */}
             <Row last>
@@ -498,6 +525,15 @@ export function ProfilePage() {
       {showDeleteMessage && (
         <ContactSupportModal
           onClose={() => { setShowDeleteMessage(false); setShowDeleteConfirm(false); }}
+        />
+      )}
+
+      {showAliasModal && user && (
+        <AliasModal
+          currentAlias={alias}
+          userId={user.id}
+          onClose={() => setShowAliasModal(false)}
+          onChanged={(newAlias) => { setAlias(newAlias); setShowAliasModal(false); }}
         />
       )}
     </div>
