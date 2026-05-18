@@ -41,10 +41,16 @@ export const useAuthStore = create<AuthStore>((set) => ({
     try {
       await supabase.auth.signOut();
       set({ user: null, session: null, alias: '' });
-      // Registration flag and weekly XP are user-specific — clear on sign-out
-      const { setIsSessionRegistered, setWeeklyXp } = (await import('./useProgressStore')).useProgressStore.getState();
-      setIsSessionRegistered(false);
-      setWeeklyXp(0);
+      // Full reset: wipes in-memory store and causes Zustand persist to overwrite
+      // slovak-progress in localStorage with clean defaults. This ensures that if a
+      // different user signs in next (even after a page reload), they never inherit
+      // this user's data through the Case 3 "no stored_user_id" path.
+      const { resetToDefaults } = (await import('./useProgressStore')).useProgressStore.getState();
+      resetToDefaults();
+      // Clear remaining user-specific localStorage keys not managed by Zustand
+      for (const key of ['dialogues_completed', 'save-modal-dismissed-soft', 'streak_reminders_enabled']) {
+        try { localStorage.removeItem(key); } catch { /* */ }
+      }
       try { localStorage.removeItem('stored_user_id'); } catch { /* */ }
     } finally {
       set({ isLoading: false });
