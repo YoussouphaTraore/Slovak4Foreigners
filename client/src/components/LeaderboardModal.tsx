@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { supabase } from '../lib/supabase/client';
 import { useAuthStore } from '../store/useAuthStore';
 import { useProgressStore } from '../store/useProgressStore';
@@ -31,6 +31,10 @@ export function LeaderboardModal({ onClose }: Props) {
   const [userRank, setUserRank] = useState<number | null>(null);
   const [prevWinner, setPrevWinner] = useState<{ alias: string; avatar: string; weekOf: string } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [flashedKeys, setFlashedKeys] = useState<Set<string>>(new Set());
+
+  const rowsRef = useRef<MergedRow[]>([]);
+  useEffect(() => { rowsRef.current = allRows; }, [allRows]);
 
   useEffect(() => {
     async function load() {
@@ -78,6 +82,58 @@ export function LeaderboardModal({ onClose }: Props) {
     load();
   }, [user]);
 
+  // NPC live movement simulation
+  useEffect(() => {
+    if (loading) return;
+
+    const id = setInterval(() => {
+      const prev = rowsRef.current;
+      if (prev.length === 0) return;
+
+      const isSunday = new Date().getDay() === 0;
+      const top = prev[0];
+      const realUserTopXp = top && !top.key.startsWith('npc-') ? top.weeklyXp : null;
+
+      const npcIndices = prev.reduce<number[]>((acc, r, i) => {
+        if (r.key.startsWith('npc-')) acc.push(i);
+        return acc;
+      }, []);
+      if (npcIndices.length === 0) return;
+
+      const count = Math.floor(Math.random() * 3) + 1;
+      const chosen = [...npcIndices].sort(() => Math.random() - 0.5).slice(0, count);
+
+      const newFlashed = new Set<string>();
+      const updated = prev.map((row, i) => {
+        if (!chosen.includes(i)) return row;
+        let bump = Math.floor(Math.random() * 15) + 1;
+
+        if (isSunday && realUserTopXp !== null) {
+          const cap = realUserTopXp - 1;
+          if (row.weeklyXp >= cap) return row;
+          bump = Math.min(bump, cap - row.weeklyXp);
+          if (bump <= 0) return row;
+        }
+
+        newFlashed.add(row.key);
+        return { ...row, weeklyXp: row.weeklyXp + bump };
+      });
+
+      const sorted = [...updated].sort((a, b) => b.weeklyXp - a.weeklyXp);
+      const myIdx = sorted.findIndex((r) => r.isMe);
+
+      setAllRows(sorted);
+      setUserRank(myIdx === -1 ? null : myIdx + 1);
+
+      if (newFlashed.size > 0) {
+        setFlashedKeys(newFlashed);
+        setTimeout(() => setFlashedKeys(new Set()), 600);
+      }
+    }, 10000);
+
+    return () => clearInterval(id);
+  }, [loading]);
+
   // Banner text + style
   let bannerText = '';
   let bannerClass = 'bg-gray-50 text-gray-500';
@@ -106,6 +162,14 @@ export function LeaderboardModal({ onClose }: Props) {
       className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 px-4 pb-6 sm:pb-0"
       onClick={onClose}
     >
+      <style>{`
+        @keyframes xp-flash {
+          0%   { color: #15803d; }
+          70%  { color: #15803d; }
+          100% { color: #374151; }
+        }
+        .xp-flash-anim { animation: xp-flash 0.6s ease-out forwards; }
+      `}</style>
       <div
         className="w-full max-w-sm bg-white rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[82vh]"
         onClick={(e) => e.stopPropagation()}
@@ -173,7 +237,7 @@ export function LeaderboardModal({ onClose }: Props) {
                       {row.alias}{row.isMe ? ' (You)' : ''}
                     </p>
                   </div>
-                  <span className="text-sm font-extrabold text-gray-700 tabular-nums shrink-0">
+                  <span className={`text-sm font-extrabold text-gray-700 tabular-nums shrink-0 ${flashedKeys.has(row.key) ? 'xp-flash-anim' : ''}`}>
                     {row.weeklyXp} XP
                   </span>
                 </li>
