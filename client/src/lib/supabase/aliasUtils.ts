@@ -85,32 +85,29 @@ export async function loadOrAssignAlias(userId: string): Promise<string> {
 }
 
 // Returns whether the user is allowed to change alias (30-day cooldown).
-// Bug 1 fix: destructures error from query; if the query fails for any reason
-// (table not exposed in Data API, RLS, network) we default to allowed: false
-// rather than allowed: true, preventing the cooldown from being bypassed silently.
+// Cooldown only applies after a MANUAL change — tracked via alias_changed_at on user_profiles.
+// Auto-assigned aliases (alias_changed_at is null) are always changeable.
 export async function canChangeAlias(
   userId: string,
 ): Promise<{ allowed: boolean; nextChangeDate: Date | null }> {
-  const thirtyDaysAgo = new Date(Date.now() - 30 * 24 * 3_600_000).toISOString();
-
   const { data, error } = await supabase
-    .from('alias_change_log')
-    .select('changed_at')
-    .eq('user_id', userId)
-    .gt('changed_at', thirtyDaysAgo)
-    .order('changed_at', { ascending: false })
-    .limit(1)
+    .from('user_profiles')
+    .select('alias_changed_at')
+    .eq('id', userId)
     .maybeSingle();
 
-  // Query failed — safe default is to block the change
-  if (error) return { allowed: false, nextChangeDate: null };
+  // Query failed — fail open (30-day rule is UX, not security)
+  if (error) return { allowed: true, nextChangeDate: null };
 
-  // No recent change found — allow
-  if (!data) return { allowed: true, nextChangeDate: null };
+  const changedAt = (data as { alias_changed_at?: string | null } | null)?.alias_changed_at;
 
-  const lastChange = new Date((data as { changed_at: string }).changed_at);
+  // Never manually changed — allow
+  if (!changedAt) return { allowed: true, nextChangeDate: null };
+
+  const lastChange = new Date(changedAt);
   const nextChangeDate = new Date(lastChange.getTime() + 30 * 24 * 3_600_000);
-  return { allowed: false, nextChangeDate };
+  if (Date.now() < nextChangeDate.getTime()) return { allowed: false, nextChangeDate };
+  return { allowed: true, nextChangeDate: null };
 }
 
 // Full alias change: enforces 30-day rule, generates unique alias, updates profile, logs change
@@ -132,27 +129,14 @@ export async function changeAlias(
   }
 
   try {
-    const { data: profile } = await supabase
-      .from('user_profiles')
-      .select('alias')
-      .eq('id', userId)
-      .maybeSingle();
-
-    const oldAlias = (profile as { alias: string | null } | null)?.alias ?? null;
     const newAlias = await generateUniqueAlias(baseName);
 
     const { error: updateError } = await supabase
       .from('user_profiles')
-      .update({ alias: newAlias })
+      .update({ alias: newAlias, alias_changed_at: new Date().toISOString() })
       .eq('id', userId);
 
     if (updateError) throw updateError;
-
-    await supabase.from('alias_change_log').insert({
-      user_id: userId,
-      old_alias: oldAlias,
-      new_alias: newAlias,
-    });
 
     return { success: true, alias: newAlias };
   } catch {

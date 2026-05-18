@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { lessons } from '../data/lessons';
 import { useProgressStore, computeStrength } from '../store/useProgressStore';
 import type { LessonRecord } from '../store/useProgressStore';
-import { useAuthStore } from '../store/useAuthStore';
-import { getAvatarUrl } from '../lib/supabase/aliasUtils';
 import { BottomNav } from '../components/ui/BottomNav';
 import { SessionRegistrationModal } from '../components/SessionRegistrationModal';
 
@@ -54,8 +52,6 @@ const STAGE_UNLOCK_COSTS: Record<string, number> = {
 export function HomePage() {
   const navigate = useNavigate();
   const store = useProgressStore();
-  const user = useAuthStore((s) => s.user);
-  const alias = useAuthStore((s) => s.alias);
   const headerRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
   const { xp, streak, streakMultiplier, completedLessons, unlockedStages, snailRaceRecords, isSyncing } = store;
@@ -146,32 +142,6 @@ export function HomePage() {
               <span className="w-3 h-3 border-2 border-gray-300 border-t-brand-green rounded-full animate-spin inline-block" />
             </span>
           )}
-
-          {/* Avatar / profile shortcut */}
-          <button
-            type="button"
-            onClick={() => navigate('/profile')}
-            className="flex flex-col items-center gap-0.5 shrink-0 cursor-pointer hover:opacity-80 transition-opacity"
-          >
-            {user ? (
-              <>
-                <img
-                  src={alias ? getAvatarUrl(alias) : '/pp/FrogySnail.png'}
-                  alt=""
-                  className="w-9 h-9 rounded-full object-cover border-2 border-white shadow-sm"
-                />
-                {alias && (
-                  <span className="text-[7px] font-bold text-gray-500 leading-tight truncate max-w-[36px]">
-                    {alias.replace(/_\d+$/, '')}
-                  </span>
-                )}
-              </>
-            ) : (
-              <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center text-gray-400 text-base">
-                👤
-              </div>
-            )}
-          </button>
         </div>
 
         {/* Row 2: stats widget + join session (separate, with gap) */}

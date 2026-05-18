@@ -1,5 +1,7 @@
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../../store/useAuthStore';
+import { getAvatarUrl } from '../../lib/supabase/aliasUtils';
 
 type Tab = 'home' | 'practice' | 'exclusive' | 'profile';
 
@@ -10,6 +12,7 @@ interface Props {
 export function BottomNav({ active }: Props) {
   const navigate = useNavigate();
   const user = useAuthStore((s) => s.user);
+  const alias = useAuthStore((s) => s.alias);
 
   const displayName =
     (user?.user_metadata?.display_name as string | undefined) ??
@@ -19,6 +22,19 @@ export function BottomNav({ active }: Props) {
     '?';
 
   const displayLetter = displayName[0].toUpperCase();
+
+  const avatarSrc = alias ? getAvatarUrl(alias) : '/pp/FrogySnail.png';
+
+  const [showAvatar, setShowAvatar] = useState(false);
+
+  useEffect(() => {
+    if (!user) {
+      setShowAvatar(false);
+      return;
+    }
+    const t = setInterval(() => setShowAvatar((v) => !v), 4000);
+    return () => clearInterval(t);
+  }, [user]);
 
   return (
     <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-lg bg-white border-t border-gray-100 flex z-30">
@@ -55,13 +71,22 @@ export function BottomNav({ active }: Props) {
           onClick={() => navigate('/profile')}
           className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'profile' ? 'text-brand-green' : 'text-gray-400 hover:text-gray-600'}`}
         >
-          <span
-            className={`w-7 h-7 rounded-full bg-brand-green text-white text-xs font-bold flex items-center justify-center ${
-              active === 'profile' ? 'ring-2 ring-brand-green/40' : ''
-            }`}
-          >
-            {displayLetter}
-          </span>
+          <div className={`relative w-7 h-7 rounded-full ${active === 'profile' ? 'ring-2 ring-brand-green/40' : ''}`}>
+            {/* State 1: initial letter */}
+            <span
+              className="absolute inset-0 rounded-full bg-brand-green text-white text-xs font-bold flex items-center justify-center"
+              style={{ opacity: showAvatar ? 0 : 1, transition: 'opacity 0.4s' }}
+            >
+              {displayLetter}
+            </span>
+            {/* State 2: alias avatar (always mounted; fallback to FrogySnail if alias not yet loaded) */}
+            <img
+              src={avatarSrc}
+              alt=""
+              className="absolute inset-0 w-7 h-7 rounded-full object-cover"
+              style={{ opacity: showAvatar ? 1 : 0, transition: 'opacity 0.4s' }}
+            />
+          </div>
           <span className="text-xs font-semibold">Profile</span>
         </button>
       ) : (

@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS public.user_profiles (
   email         text        NOT NULL,
   display_name  text        NOT NULL DEFAULT '',
   avatar_url    text,
+  alias         text        UNIQUE,
   created_at    timestamptz NOT NULL DEFAULT now()
 );
 
@@ -157,7 +158,28 @@ CREATE POLICY "users: delete own snail race records"
   USING (auth.uid() = user_id);
 
 
--- ── 5. Auto-create rows on sign-up ──────────────────────────
+-- ── 5. alias_change_log ─────────────────────────────────────
+
+CREATE TABLE IF NOT EXISTS public.alias_change_log (
+  id         uuid        PRIMARY KEY DEFAULT gen_random_uuid(),
+  user_id    uuid        NOT NULL REFERENCES auth.users(id) ON DELETE CASCADE,
+  old_alias  text,
+  new_alias  text        NOT NULL,
+  changed_at timestamptz NOT NULL DEFAULT now()
+);
+
+ALTER TABLE public.alias_change_log ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "users: select own alias log"
+  ON public.alias_change_log FOR SELECT
+  USING (auth.uid() = user_id);
+
+CREATE POLICY "users: insert own alias log"
+  ON public.alias_change_log FOR INSERT
+  WITH CHECK (auth.uid() = user_id);
+
+
+-- ── 6. Auto-create rows on sign-up ──────────────────────────
 --
 -- Fires after a new row is inserted into auth.users (i.e. after
 -- any sign-up method: email/password, Google, magic link, etc.)
@@ -166,21 +188,16 @@ CREATE OR REPLACE FUNCTION public.handle_new_user()
 RETURNS trigger
 LANGUAGE plpgsql
 SECURITY DEFINER
-SET search_path = public
 AS $$
 BEGIN
-  -- Create profile
-  INSERT INTO public.user_profiles (id, email, display_name)
+  INSERT INTO public.user_profiles (id, display_name, email, alias)
   VALUES (
     NEW.id,
-    COALESCE(NEW.email, ''),
-    COALESCE(NEW.raw_user_meta_data->>'full_name',
-             NEW.raw_user_meta_data->>'name',
-             split_part(COALESCE(NEW.email, ''), '@', 1))
-  )
-  ON CONFLICT (id) DO NOTHING;
+    NEW.raw_user_meta_data->>'full_name',
+    NEW.email,
+    NULL
+  );
 
-  -- Create progress row with survival stage unlocked
   INSERT INTO public.user_progress (user_id)
   VALUES (NEW.id)
   ON CONFLICT (user_id) DO NOTHING;
@@ -198,7 +215,7 @@ CREATE TRIGGER on_auth_user_created
   EXECUTE FUNCTION public.handle_new_user();
 
 
--- ── 6. updated_at auto-stamp ────────────────────────────────
+-- ── 7. updated_at auto-stamp ────────────────────────────────
 
 CREATE OR REPLACE FUNCTION public.set_updated_at()
 RETURNS trigger

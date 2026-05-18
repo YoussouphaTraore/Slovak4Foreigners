@@ -310,6 +310,7 @@ export function ProfilePage() {
           </div>
           <h1 className="text-xl font-extrabold text-gray-800 leading-tight">{displayName}</h1>
           <p className="text-sm text-gray-400 mt-1">{user.email}</p>
+          <p className="text-xs text-gray-500 mt-1">User Alias: <span className="font-semibold text-gray-700">{alias || '—'}</span></p>
           {memberSince && <p className="text-xs text-gray-400 mt-1">{memberSince}</p>}
         </div>
 
