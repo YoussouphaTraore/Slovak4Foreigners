@@ -26,7 +26,7 @@ export function LessonPage() {
   // Resume from partial progress if this lesson was saved mid-way
   const initialIndex = (() => {
     const p = useProgressStore.getState().partialLessonProgress;
-    return p?.lessonId === lessonId ? p.resumeFromIndex : 0;
+    return p && p.lessonId === lessonId ? p.resumeFromIndex : 0;
   })();
 
   const [exerciseIndex, setExerciseIndex] = useState(initialIndex);
