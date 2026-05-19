@@ -39,6 +39,12 @@ export interface SnailRaceRecord {
   bestScore: number;
 }
 
+export interface PartialLessonProgress {
+  lessonId: string;
+  resumeFromIndex: number;  // exercise index to start from on resume
+  savedAt: number;          // epoch ms
+}
+
 // ── Constants ────────────────────────────────────────────────────────────────
 
 const STAGE_UNLOCK_COSTS: Record<string, number> = {
@@ -185,6 +191,11 @@ interface ProgressStore {
   weeklyXp: number;
   setWeeklyXp: (n: number) => void;
 
+  // Lesson checkpoint — partial progress when user saves mid-lesson
+  partialLessonProgress: PartialLessonProgress | null;
+  savePartialProgress: (lessonId: string, resumeFromIndex: number) => void;
+  clearPartialProgress: () => void;
+
   // XP actions
   addXP: (amount: number) => void;
   spendXP: (amount: number) => boolean;
@@ -264,6 +275,7 @@ export const useProgressStore = create<ProgressStore>()(
       unlockedReferenceCards: [],
       isSessionRegistered: false,
       weeklyXp: 0,
+      partialLessonProgress: null,
 
       // ── XP ────────────────────────────────────────────────────────────────
 
@@ -459,6 +471,13 @@ export const useProgressStore = create<ProgressStore>()(
 
       dismissSaveProgressModal: () => set({ showSaveProgressModal: null }),
 
+      // ── Lesson checkpoint ─────────────────────────────────────────────────
+
+      savePartialProgress: (lessonId, resumeFromIndex) =>
+        set({ partialLessonProgress: { lessonId, resumeFromIndex, savedAt: Date.now() } }),
+
+      clearPartialProgress: () => set({ partialLessonProgress: null }),
+
       // ── Guest regression ──────────────────────────────────────────────────
 
       applyGuestRegression: () => {
@@ -555,6 +574,7 @@ export const useProgressStore = create<ProgressStore>()(
         unlockedReferenceCards: [],
         isSessionRegistered: false,
         weeklyXp: 0,
+        partialLessonProgress: null,
       }),
 
       // ── Cloud sync ────────────────────────────────────────────────────────
@@ -786,7 +806,7 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 10,
+      version: 11,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
@@ -860,6 +880,10 @@ export const useProgressStore = create<ProgressStore>()(
 
         if (version < 10) {
           old = { ...old, weeklyXp: 0 };
+        }
+
+        if (version < 11) {
+          old = { ...old, partialLessonProgress: null };
         }
 
         return old as unknown as ProgressStore;

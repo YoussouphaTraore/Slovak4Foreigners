@@ -59,6 +59,7 @@ export function HomePage() {
   const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
   const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
   const isSessionRegistered = useProgressStore((s) => s.isSessionRegistered);
+  const partialLessonProgress = useProgressStore((s) => s.partialLessonProgress);
   const [showSessionModal, setShowSessionModal] = useState(false);
   const groups = groupByStage(lessons);
 
@@ -260,15 +261,22 @@ export function HomePage() {
                   const state = getLessonState(lessonIndex, completedLessons, unlockedStages);
                   const isLastInGroup = posInGroup === group.indices.length - 1;
                   const record = recordFor(lesson.id);
+                  const isPartial = state !== 'completed' && state !== 'locked' && state !== 'stage_locked'
+                    && partialLessonProgress?.lessonId === lesson.id;
+                  const partialFraction = isPartial
+                    ? Math.min(1, partialLessonProgress!.resumeFromIndex / lesson.exercises.length)
+                    : 0;
+                  // Arc geometry: SVG 96×96, circle r=44 centered at (48,48)
+                  const arcCircumference = 2 * Math.PI * 44;
 
                   return (
                     <div key={lesson.id} className="flex flex-col items-center">
                       <div className="w-0.5 h-8 border-l-2 border-dashed border-gray-300" />
 
                       <div className="relative flex flex-col items-center">
-                        {state === 'available' && (
+                        {(state === 'available') && (
                           <span className="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full text-xs font-bold text-brand-green uppercase tracking-widest">
-                            START
+                            {isPartial ? 'RESUME' : 'START'}
                           </span>
                         )}
                         <div className="relative">
@@ -286,6 +294,8 @@ export function HomePage() {
                             className={`relative w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold shadow-md transition-all duration-200 cursor-pointer
                               ${state === 'completed'
                                 ? 'bg-brand-green text-white hover:opacity-90'
+                                : isPartial
+                                ? 'bg-brand-green text-white hover:opacity-90'
                                 : state === 'available'
                                 ? 'bg-brand-green text-white hover:opacity-90 ring-4 ring-brand-green/30 animate-pulse'
                                 : 'bg-gray-200 text-gray-400 cursor-not-allowed'
@@ -293,6 +303,26 @@ export function HomePage() {
                           >
                             {state === 'completed' ? '✓' : (state === 'locked' || state === 'stage_locked') ? '🔒' : lesson.icon}
                           </button>
+
+                          {/* Partial progress arc — ring outside the button */}
+                          {isPartial && (
+                            <svg
+                              className="absolute pointer-events-none"
+                              style={{ inset: -8, width: 'calc(100% + 16px)', height: 'calc(100% + 16px)' }}
+                              viewBox="0 0 96 96"
+                            >
+                              <circle cx="48" cy="48" r="44" fill="none" stroke="#E5E7EB" strokeWidth="4" />
+                              <circle
+                                cx="48" cy="48" r="44"
+                                fill="none"
+                                stroke="#22c55e"
+                                strokeWidth="4"
+                                strokeLinecap="round"
+                                strokeDasharray={`${partialFraction * arcCircumference} ${arcCircumference}`}
+                                transform="rotate(-90 48 48)"
+                              />
+                            </svg>
+                          )}
 
                           {/* Strength dot — uses live time-based strength */}
                           {record && (

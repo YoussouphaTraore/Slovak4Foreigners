@@ -9,9 +9,10 @@ import { ProgressBar } from '../components/ui/ProgressBar';
 import { ConfirmModal } from '../components/ui/ConfirmModal';
 import { ExerciseCelebration } from '../components/ui/ExerciseCelebration';
 
-const MAX_TOTAL    = 5; // 5 total strikes → back to previous exercise
-const MAX_CONSEC   = 3; // 3 consecutive strikes → restart from exercise 1
-const MAX_EXERCISE = 2; // 2+ strikes on an exercise → must redo it on complete
+const MAX_TOTAL      = 5;           // 5 total strikes → back to previous exercise
+const MAX_CONSEC     = 3;           // 3 consecutive strikes → restart from exercise 1
+const MAX_EXERCISE   = 2;           // 2+ strikes on an exercise → must redo it on complete
+const CHECKPOINT_MS  = 1 * 60_000; // 1 minute (testing) — change back to 4 * 60_000
 
 type PenaltyInfo = { title: string; sub: string; image?: string } | null;
 
@@ -22,12 +23,19 @@ export function LessonPage() {
 
   const lesson = lessonId ? getLessonById(lessonId) : undefined;
 
-  const [exerciseIndex, setExerciseIndex] = useState(0);
+  // Resume from partial progress if this lesson was saved mid-way
+  const initialIndex = (() => {
+    const p = useProgressStore.getState().partialLessonProgress;
+    return p?.lessonId === lessonId ? p.resumeFromIndex : 0;
+  })();
+
+  const [exerciseIndex, setExerciseIndex] = useState(initialIndex);
   const [correctCount, setCorrectCount] = useState(0);
   const [showExit, setShowExit] = useState(false);
   const [exerciseKey, setExerciseKey] = useState(0);
   const [celebrating, setCelebrating] = useState(false);
   const [penalty, setPenalty] = useState<PenaltyInfo>(null);
+  const [showCheckpoint, setShowCheckpoint] = useState(false);
 
   const strikesRef   = useRef({ total: 0, consecutive: 0, lessonTotal: 0 });
   const [strikesDisplay, setStrikesDisplay] = useState({ total: 0, consecutive: 0 });
@@ -35,6 +43,37 @@ export function LessonPage() {
   const failedWordsRef = useRef<{ slovak: string; english: string }[]>([]);
   const hasShownSoftModal = useRef(false);
   const exercisesCompletedInSession = useRef(0);
+
+  // ── 4-minute checkpoint timer ─────────────────────────────────────────────
+  const timerStartRef    = useRef<number>(Date.now());
+  const accumulatedMsRef = useRef<number>(0);
+  const timerPausedRef   = useRef<boolean>(false);
+  const checkpointShownRef   = useRef<boolean>(false);
+
+  function getActiveMs() {
+    if (timerPausedRef.current) return accumulatedMsRef.current;
+    return accumulatedMsRef.current + (Date.now() - timerStartRef.current);
+  }
+  function resetTimer() {
+    accumulatedMsRef.current = 0;
+    timerStartRef.current = Date.now();
+    timerPausedRef.current = false;
+  }
+
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.visibilityState === 'hidden') {
+        accumulatedMsRef.current = getActiveMs();
+        timerPausedRef.current = true;
+      } else {
+        timerStartRef.current = Date.now();
+        timerPausedRef.current = false;
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+    return () => document.removeEventListener('visibilitychange', handleVisibility);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Modal pause/resume
   const isModalOpen = useProgressStore((s) => s.showSaveProgressModal !== null);
@@ -81,6 +120,9 @@ export function LessonPage() {
   };
 
   const finishLesson = () => {
+    if (useProgressStore.getState().partialLessonProgress?.lessonId === lesson.id) {
+      store.clearPartialProgress();
+    }
     const { xpEarned } = store.completeLesson(
       lesson.id,
       strikesRef.current.lessonTotal,
@@ -88,6 +130,18 @@ export function LessonPage() {
     );
     store.checkAndUpdateStreak();
     navigate(`/celebration/${lesson.id}`, { state: { xpEarned, totalXP: lesson.xpReward } });
+  };
+
+  const handleSaveAndExit = () => {
+    store.savePartialProgress(lesson.id, exerciseIndex + 1);
+    navigate('/');
+  };
+
+  const handleKeepGoing = () => {
+    resetTimer();
+    checkpointShownRef.current = false;
+    setShowCheckpoint(false);
+    advance();
   };
 
   const handleFailed = (words: { slovak: string; english: string }[]) => {
@@ -273,7 +327,16 @@ export function LessonPage() {
       )}
 
       {celebrating && (
-        <ExerciseCelebration onDone={() => { setCelebrating(false); advance(); }} />
+        <ExerciseCelebration onDone={() => {
+          setCelebrating(false);
+          const remaining = exercises.length - exerciseIndex - 1;
+          if (remaining > 1 && getActiveMs() >= CHECKPOINT_MS && !checkpointShownRef.current) {
+            checkpointShownRef.current = true;
+            setShowCheckpoint(true);
+          } else {
+            advance();
+          }
+        }} />
       )}
 
       {/* Penalty overlay */}
@@ -283,6 +346,31 @@ export function LessonPage() {
             <img src={penalty.image ?? '/snailAngry.png'} alt="" className="w-28 h-28 object-contain mx-auto mb-3" />
             <p className="text-xl font-extrabold text-gray-800 mb-1">{penalty.title || 'You Are Not Focus!'}</p>
             <p className="text-sm text-gray-500">{penalty.sub}</p>
+          </div>
+        </div>
+      )}
+
+      {/* Checkpoint modal */}
+      {showCheckpoint && (
+        <div className="fixed inset-0 z-50 bg-black/75 flex items-center justify-center px-6">
+          <div className="bg-white rounded-3xl px-6 py-6 max-w-xs w-full text-center shadow-2xl">
+            <img src="/SnailDrinking.png" alt="" className="w-16 h-16 object-contain mx-auto mb-2" />
+            <p className="text-lg font-extrabold text-gray-800 mb-1">You've been at it for 4 minutes!</p>
+            <p className="text-xs text-gray-500 mb-4">We care about our users mental health. Drink water!</p>
+            <button
+              type="button"
+              onClick={handleKeepGoing}
+              className="w-full bg-brand-green text-white font-bold py-2.5 rounded-xl text-sm cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all mb-2"
+            >
+              Keep going
+            </button>
+            <button
+              type="button"
+              onClick={handleSaveAndExit}
+              className="w-full bg-blue-100 text-blue-500 font-semibold py-2.5 rounded-xl text-sm cursor-pointer hover:bg-blue-200 active:scale-[0.98] transition-all"
+            >
+              Take a Break
+            </button>
           </div>
         </div>
       )}
