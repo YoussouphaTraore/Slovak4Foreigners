@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { useAuthStore } from '../../store/useAuthStore';
 
 export type SaveModalTrigger = 'soft' | 'hard_stage' | 'hard_unlock' | 'hard_dialogue' | 'regression';
@@ -51,6 +52,25 @@ interface Props {
 
 export function SaveProgressModal({ trigger, onDismiss, regressionLessonTitle }: Props) {
   const { signInWithGoogle, isLoading } = useAuthStore();
+  const [maybeLaterOpacity, setMaybeLaterOpacity] = useState(0);
+
+  useEffect(() => {
+    const isHardTrigger = trigger === 'hard_stage' || trigger === 'hard_unlock' || trigger === 'hard_dialogue';
+    if (isHardTrigger) return;
+    // Delay start so the transition is visible, then fade in over 6s
+    const start = performance.now() + 100;
+    const DURATION = 10000;
+    let raf: number;
+    function tick() {
+      const elapsed = performance.now() - start;
+      const t = Math.min(1, Math.max(0, elapsed / DURATION));
+      // Ease-in (quadratic) so it stays near-invisible for the first few seconds
+      setMaybeLaterOpacity(t * t);
+      if (elapsed < DURATION) raf = requestAnimationFrame(tick);
+    }
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [trigger]);
 
   const isHard = trigger === 'hard_stage' || trigger === 'hard_unlock' || trigger === 'hard_dialogue';
   const { title, body } = CONTENT[trigger];
@@ -125,8 +145,9 @@ export function SaveProgressModal({ trigger, onDismiss, regressionLessonTitle }:
         {!isHard && (
           <button
             type="button"
-            onClick={handleDismiss}
-            className="w-full text-gray-400 text-sm py-1.5 cursor-pointer hover:text-gray-600 transition-colors"
+            onClick={maybeLaterOpacity > 0 ? handleDismiss : undefined}
+            style={{ opacity: maybeLaterOpacity, pointerEvents: maybeLaterOpacity > 0 ? 'auto' : 'none' }}
+            className="w-full text-gray-200 text-sm py-1.5 cursor-pointer"
           >
             Maybe Later
           </button>

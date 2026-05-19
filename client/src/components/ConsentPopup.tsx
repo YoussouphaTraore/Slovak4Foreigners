@@ -23,7 +23,11 @@ function shouldShow(isLoggedIn: boolean): boolean {
   }
 }
 
-export function ConsentPopup() {
+interface ConsentPopupProps {
+  onAccepted?: () => void;
+}
+
+export function ConsentPopup({ onAccepted }: ConsentPopupProps) {
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const user = useAuthStore((s) => s.user);
   const navigate = useNavigate();
@@ -77,6 +81,7 @@ export function ConsentPopup() {
     } catch { /* */ }
     setVisible(false);
     setNeedsConsent(false);
+    onAccepted?.();
   };
 
   // ── Mini bar — shown on /terms and /privacy so user can read freely ──────────

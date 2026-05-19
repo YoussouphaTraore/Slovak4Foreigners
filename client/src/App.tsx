@@ -58,6 +58,16 @@ function AppRoutes() {
   const userId = useAuthStore((s) => s.user?.id);
   const navigate = useNavigate();
 
+  function handleConsentAccepted() {
+    // Only prompt guests — logged-in users already have an account
+    if (userId) return;
+    try {
+      const val = localStorage.getItem(SOFT_DISMISS_KEY);
+      if (val && Date.now() < Number(val)) return;
+    } catch { /* */ }
+    useProgressStore.setState({ showSaveProgressModal: 'soft' });
+  }
+
   const regressionChecked = useRef(false);
   const autoReviewChecked = useRef(false);
 
@@ -137,7 +147,7 @@ function AppRoutes() {
           regressionLessonTitle={regressionLessonTitle ?? undefined}
         />
       )}
-      <ConsentPopup />
+      <ConsentPopup onAccepted={handleConsentAccepted} />
     </>
   );
 }
