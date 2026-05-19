@@ -23,11 +23,12 @@ import { DesktopBlock, isMobile } from './components/DesktopBlock';
 import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
 import { useAuthStore } from './store/useAuthStore';
-import { checkSessionRegistration, loadWeeklyXp, loadIsAdmin } from './lib/supabase/progressSync';
+import { checkSessionRegistration, loadWeeklyXp, loadIsAdmin, checkWeeklyWinner, markWinnerSeen } from './lib/supabase/progressSync';
 import { loadOrAssignAlias } from './lib/supabase/aliasUtils';
 import { startSession, heartbeat, endSession } from './lib/supabase/sessionTracking';
 import { runMagicBoxCheck, claimMagicBox } from './lib/supabase/magicBox';
 import { MagicBoxModal } from './components/MagicBoxModal';
+import { WeeklyWinnerModal } from './components/WeeklyWinnerModal';
 
 function DialogueSessionRoute() {
   const { id } = useParams<{ id: string }>();
@@ -148,6 +149,7 @@ function AppShell() {
   const initialize = useAuthStore((s) => s.initialize);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const userId = useAuthStore((s) => s.user?.id);
+  const alias = useAuthStore((s) => s.alias);
   const setAlias = useAuthStore((s) => s.setAlias);
   const setIsAdmin = useAuthStore((s) => s.setIsAdmin);
 
@@ -185,10 +187,40 @@ function AppShell() {
     loadIsAdmin(userId).then(setIsAdmin);
   }, [userId, setIsAdmin]);
 
-  // ── Magic Box ────────────────────────────────────────────────────────────────
+  // ── Magic Box state (declared early; effects follow weekly-winner section) ───
   const [showMagicBox, setShowMagicBox] = useState(false);
   const [magicBoxToast, setMagicBoxToast] = useState<string | null>(null);
   const magicBoxCheckedUser = useRef<string | null>(null);
+
+  // ── Weekly Winner ─────────────────────────────────────────────────────────────
+  const [weeklyWinner, setWeeklyWinner] = useState<{
+    winnerAlias: string;
+    winnerAvatar: string;
+    winnerXp: number;
+    isCurrentUser: boolean;
+  } | null>(null);
+  const weeklyWinnerChecked = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!isInitialized || !userId || !alias) return;
+    if (weeklyWinnerChecked.current === userId) return;
+    weeklyWinnerChecked.current = userId;
+    checkWeeklyWinner(userId, alias).then((result) => {
+      if (result?.show) setWeeklyWinner(result);
+    }).catch(() => {});
+  }, [isInitialized, userId, alias]);
+
+  function handleWinnerDismiss() {
+    markWinnerSeen();
+    setWeeklyWinner(null);
+    // If magic box hasn't been checked yet (was blocked by winner modal), run it now
+    if (userId && !magicBoxCheckedUser.current) {
+      magicBoxCheckedUser.current = userId;
+      runMagicBoxCheck(userId).then((should) => { if (should) setShowMagicBox(true); }).catch(() => {});
+    }
+  }
+
+  // ── Magic Box effects ─────────────────────────────────────────────────────────
 
   useEffect(() => {
     if (!isInitialized || !userId) return;
@@ -202,7 +234,7 @@ function AppShell() {
     const handleFocus = () => {
       if (document.visibilityState !== 'visible') return;
       if (!userId || showMagicBox) return;
-      runMagicBoxCheck(userId).then((should) => { if (should) setShowMagicBox(true); }).catch((e) => console.error('[MagicBox] visibility check failed:', e));
+      runMagicBoxCheck(userId).then((should) => { if (should) setShowMagicBox(true); }).catch(() => {});
     };
     document.addEventListener('visibilitychange', handleFocus);
     return () => document.removeEventListener('visibilitychange', handleFocus);
@@ -278,7 +310,16 @@ function AppShell() {
         <AppRoutes />
         <Analytics />
       </HashRouter>
-      {showMagicBox && <MagicBoxModal onClaim={handleMagicBoxClaim} />}
+      {weeklyWinner && (
+        <WeeklyWinnerModal
+          winnerAlias={weeklyWinner.winnerAlias}
+          winnerAvatar={weeklyWinner.winnerAvatar}
+          winnerXp={weeklyWinner.winnerXp}
+          isCurrentUser={weeklyWinner.isCurrentUser}
+          onDismiss={handleWinnerDismiss}
+        />
+      )}
+      {showMagicBox && !weeklyWinner && <MagicBoxModal onClaim={handleMagicBoxClaim} />}
       {magicBoxToast && (
         <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-gray-900 text-white text-sm font-semibold px-5 py-3 rounded-full shadow-xl whitespace-nowrap pointer-events-none">
           {magicBoxToast}

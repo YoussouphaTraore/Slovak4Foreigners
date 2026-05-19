@@ -5,6 +5,7 @@ import { useAuthStore } from '../store/useAuthStore';
 import { getAvatarUrl } from '../lib/supabase/aliasUtils';
 import { lessons } from '../data/lessons';
 import { triggerMagicBoxForUser } from '../lib/supabase/magicBox';
+import { WeeklyWinnerModal } from '../components/WeeklyWinnerModal';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -176,6 +177,11 @@ export function AdminPage() {
   const [boostTarget, setBoostTarget] = useState<{ userId: string; alias: string | null; amount: number } | null>(null);
   const [boosting, setBoosting] = useState(false);
   const [boostMessage, setBoostMessage] = useState<{ text: string; ok: boolean } | null>(null);
+
+  // Weekly winner preview
+  const [previewWinner, setPreviewWinner] = useState<{ alias: string; avatar: string; xp: number } | null>(null);
+  const [loadingWinner, setLoadingWinner] = useState(false);
+  const [winnerMessage, setWinnerMessage] = useState<{ text: string; ok: boolean } | null>(null);
 
   const load = useCallback(async () => {
     if (!userId) { navigate('/'); return; }
@@ -386,6 +392,26 @@ export function AdminPage() {
     }
   }
 
+  // ── Weekly winner preview ───────────────────────────────────────────────────
+
+  async function handlePreviewWinner() {
+    setLoadingWinner(true);
+    const { data, error } = await supabase
+      .from('weekly_winners')
+      .select('alias, avatar, weekly_xp')
+      .order('week_of', { ascending: false })
+      .limit(1)
+      .maybeSingle();
+    setLoadingWinner(false);
+    if (error || !data) {
+      setWinnerMessage({ text: 'No winner found in the database yet.', ok: false });
+      setTimeout(() => setWinnerMessage(null), 4000);
+      return;
+    }
+    const row = data as { alias: string; avatar: string; weekly_xp: number };
+    setPreviewWinner({ alias: row.alias, avatar: row.avatar, xp: row.weekly_xp });
+  }
+
   // ── Render ─────────────────────────────────────────────────────────────────
 
   if (loading) {
@@ -541,6 +567,33 @@ export function AdminPage() {
           )}
         </Section>
 
+        {/* Weekly Winner Preview */}
+        <Section title="Weekly Winner">
+          <div className="px-4 py-4 flex flex-col gap-3">
+            {winnerMessage && (
+              <div className={`px-3 py-2 rounded-xl text-xs font-semibold text-center ${winnerMessage.ok ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-600'}`}>
+                {winnerMessage.text}
+              </div>
+            )}
+            <p className="text-xs text-gray-400 leading-snug">
+              Preview the winner notification using the most recent winner already recorded in the database. No data is changed.
+            </p>
+            <button
+              type="button"
+              onClick={handlePreviewWinner}
+              disabled={loadingWinner}
+              className="w-full bg-yellow-400 text-white font-extrabold text-sm py-3 rounded-xl cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all disabled:opacity-40 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            >
+              {loadingWinner ? (
+                <>
+                  <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                  Loading…
+                </>
+              ) : '🏆 Preview Winner Notification'}
+            </button>
+          </div>
+        </Section>
+
         {/* NPC Controls */}
         <Section title="NPC Controls">
           {stats.npcs.length === 0 ? (
@@ -614,6 +667,17 @@ export function AdminPage() {
           boosting={boosting}
           onConfirm={confirmBoost}
           onCancel={() => setBoostTarget(null)}
+        />
+      )}
+
+      {/* Weekly winner preview modal */}
+      {previewWinner && (
+        <WeeklyWinnerModal
+          winnerAlias={previewWinner.alias}
+          winnerAvatar={previewWinner.avatar}
+          winnerXp={previewWinner.xp}
+          isCurrentUser={useAuthStore.getState().alias === previewWinner.alias}
+          onDismiss={() => setPreviewWinner(null)}
         />
       )}
     </div>

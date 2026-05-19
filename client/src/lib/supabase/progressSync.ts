@@ -192,6 +192,67 @@ export async function loadIsAdmin(userId: string): Promise<boolean> {
   }
 }
 
+// ── Weekly Winner ─────────────────────────────────────────────────────────────
+
+const WINNER_SEEN_KEY = 'winner_seen_week';
+
+function getLastMonday(): string {
+  const d = new Date();
+  const day = d.getDay(); // 0=Sun, 1=Mon…6=Sat
+  const daysBack = day === 0 ? 6 : day - 1;
+  d.setDate(d.getDate() - daysBack);
+  return d.toISOString().split('T')[0];
+}
+
+export interface WeeklyWinnerResult {
+  show: boolean;
+  winnerAlias: string;
+  winnerAvatar: string;
+  winnerXp: number;
+  isCurrentUser: boolean;
+}
+
+export async function checkWeeklyWinner(
+  _userId: string,
+  userAlias: string,
+): Promise<WeeklyWinnerResult | null> {
+  const lastMonday = getLastMonday();
+
+  try {
+    const seen = localStorage.getItem(WINNER_SEEN_KEY);
+    if (seen === lastMonday) return null;
+  } catch { /* */ }
+
+  try {
+    const { data, error } = await supabase
+      .from('weekly_winners')
+      .select('alias, avatar, weekly_xp')
+      .eq('week_of', lastMonday)
+      .maybeSingle();
+
+    if (error || !data) return null;
+
+    const row = data as { alias: string; avatar: string; weekly_xp: number };
+    const userBase = userAlias.replace(/_\d+$/, '');
+    const winnerBase = row.alias.replace(/_\d+$/, '');
+    const isCurrentUser = row.alias === userAlias || winnerBase === userBase;
+
+    return {
+      show: true,
+      winnerAlias: row.alias,
+      winnerAvatar: row.avatar,
+      winnerXp: row.weekly_xp ?? 0,
+      isCurrentUser,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export function markWinnerSeen(): void {
+  try { localStorage.setItem(WINNER_SEEN_KEY, getLastMonday()); } catch { /* */ }
+}
+
 // ── Physical Session Registration ─────────────────────────────────────────────
 
 export async function checkSessionRegistration(userId: string): Promise<boolean> {
