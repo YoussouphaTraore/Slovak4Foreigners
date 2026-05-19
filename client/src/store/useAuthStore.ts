@@ -8,11 +8,13 @@ interface AuthStore {
   isLoading: boolean;
   isInitialized: boolean;
   alias: string;
+  isAdmin: boolean;
 
   signInWithGoogle: () => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   initialize: () => void;
   setAlias: (alias: string) => void;
+  setIsAdmin: (v: boolean) => void;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -21,6 +23,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
   isLoading: false,
   isInitialized: false,
   alias: '',
+  isAdmin: false,
 
   signInWithGoogle: async () => {
     set({ isLoading: true });
@@ -40,7 +43,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
     set({ isLoading: true });
     try {
       await supabase.auth.signOut();
-      set({ user: null, session: null, alias: '' });
+      set({ user: null, session: null, alias: '', isAdmin: false });
       // Full reset: wipes in-memory store and causes Zustand persist to overwrite
       // slovak-progress in localStorage with clean defaults. This ensures that if a
       // different user signs in next (even after a page reload), they never inherit
@@ -58,6 +61,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
   },
 
   setAlias: (alias) => set({ alias }),
+  setIsAdmin: (isAdmin) => set({ isAdmin }),
 
   initialize: () => {
     // Safety net: always mark initialized within 3 s even if Supabase hangs

@@ -177,6 +177,21 @@ export async function loadWeeklyXp(userId: string): Promise<number> {
   }
 }
 
+// ── Admin flag ────────────────────────────────────────────────────────────────
+
+export async function loadIsAdmin(userId: string): Promise<boolean> {
+  try {
+    const { data } = await supabase
+      .from('user_profiles')
+      .select('is_admin')
+      .eq('id', userId)
+      .single();
+    return (data as { is_admin?: boolean } | null)?.is_admin ?? false;
+  } catch {
+    return false;
+  }
+}
+
 // ── Physical Session Registration ─────────────────────────────────────────────
 
 export async function checkSessionRegistration(userId: string): Promise<boolean> {

@@ -204,6 +204,7 @@ export function ProfilePage() {
   const signOut = useAuthStore((s) => s.signOut);
   const alias = useAuthStore((s) => s.alias);
   const setAlias = useAuthStore((s) => s.setAlias);
+  const isAdmin = useAuthStore((s) => s.isAdmin);
   const xp = useProgressStore((s) => s.xp);
   const level = useProgressStore((s) => s.level);
   const streak = useProgressStore((s) => s.streak);
@@ -503,7 +504,18 @@ export function ProfilePage() {
           </Row>
         </Card>
 
-        {/* ── 10. Delete account ─────────────────────────────────────────────── */}
+        {/* ── 10. Admin ──────────────────────────────────────────────────────── */}
+        {isAdmin && (
+          <Card>
+            <Row last onClick={() => navigate('/admin')}>
+              <span className="text-xl w-7 flex-none text-center leading-none">⚙️</span>
+              <span className="text-sm text-gray-700 flex-1">Admin Dashboard</span>
+              <span className="text-xs text-gray-400">›</span>
+            </Row>
+          </Card>
+        )}
+
+        {/* ── 11. Delete account ─────────────────────────────────────────────── */}
         <Card>
           <Row last onClick={() => setShowDeleteConfirm(true)}>
             <span className="text-xl w-7 flex-none text-center leading-none">🗑️</span>

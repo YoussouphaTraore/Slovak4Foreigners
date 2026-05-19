@@ -9,6 +9,7 @@ import { PracticeDialoguePage } from './pages/PracticeDialoguePage';
 import { ProfilePage } from './pages/ProfilePage';
 import { AuthPage } from './pages/AuthPage';
 import { ReviewSessionPage } from './pages/ReviewSessionPage';
+import { AdminPage } from './pages/AdminPage';
 import { ForeignerExclusivePage } from './pages/ForeignerExclusivePage';
 import { ForeignerExclusiveCategoryPage } from './pages/ForeignerExclusiveCategoryPage';
 import { ForeignerExclusiveLessonPage } from './pages/ForeignerExclusiveLessonPage';
@@ -22,8 +23,9 @@ import { DesktopBlock, isMobile } from './components/DesktopBlock';
 import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
 import { useAuthStore } from './store/useAuthStore';
-import { checkSessionRegistration, loadWeeklyXp } from './lib/supabase/progressSync';
+import { checkSessionRegistration, loadWeeklyXp, loadIsAdmin } from './lib/supabase/progressSync';
 import { loadOrAssignAlias } from './lib/supabase/aliasUtils';
+import { startSession, heartbeat, endSession } from './lib/supabase/sessionTracking';
 
 function DialogueSessionRoute() {
   const { id } = useParams<{ id: string }>();
@@ -121,6 +123,7 @@ function AppRoutes() {
         <Route path="/foreigner-exclusive/lesson/:lessonId" element={<ForeignerExclusiveLessonPage />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsOfServicePage />} />
+        <Route path="/admin" element={<AdminPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {showSaveProgressModal && (
@@ -144,6 +147,7 @@ function AppShell() {
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const userId = useAuthStore((s) => s.user?.id);
   const setAlias = useAuthStore((s) => s.setAlias);
+  const setIsAdmin = useAuthStore((s) => s.setIsAdmin);
 
   useEffect(() => {
     decayLessonStrengths();
@@ -172,6 +176,54 @@ function AppShell() {
     if (!userId) return;
     loadWeeklyXp(userId).then(setWeeklyXp);
   }, [userId, setWeeklyXp]);
+
+  // Load admin flag on login; clear on sign-out
+  useEffect(() => {
+    if (!userId) { setIsAdmin(false); return; }
+    loadIsAdmin(userId).then(setIsAdmin);
+  }, [userId, setIsAdmin]);
+
+  // ── Session tracking ─────────────────────────────────────────────────────────
+  const sessionIdRef = useRef<string | null>(null);
+  const sessionUserIdRef = useRef<string | null | undefined>(undefined);
+
+  useEffect(() => {
+    if (!isInitialized) return;
+    const nextUserId = userId ?? null;
+    if (sessionUserIdRef.current === nextUserId) return;
+    const prevId = sessionIdRef.current;
+    if (prevId) endSession(prevId).catch(() => {});
+    sessionIdRef.current = null;
+    sessionUserIdRef.current = nextUserId;
+    startSession(nextUserId).then((id) => { if (id) sessionIdRef.current = id; }).catch(() => {});
+  }, [isInitialized, userId]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const id = sessionIdRef.current;
+      if (id) heartbeat(id).catch(() => {});
+    }, 60_000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.visibilityState === 'hidden') {
+        const id = sessionIdRef.current;
+        if (id) endSession(id).catch(() => {});
+      }
+    };
+    const handleUnload = () => {
+      const id = sessionIdRef.current;
+      if (id) endSession(id).catch(() => {});
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('beforeunload', handleUnload);
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('beforeunload', handleUnload);
+    };
+  }, []);
 
   if (!isInitialized) {
     return (
