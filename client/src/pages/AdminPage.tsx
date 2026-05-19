@@ -49,8 +49,18 @@ interface RecentSession {
   device_type: string | null;
 }
 
+interface LiveSession {
+  id: string;
+  user_id: string | null;
+  alias: string | null;
+  started_at: string;
+  last_active_at: string;
+  ended_at: string | null;
+}
+
+type SessionStatus = 'active' | 'idle' | 'gone';
+
 interface AdminStats {
-  liveNow: number;
   totalUsers: number;
   newUsersThisWeek: number;
   sessionsToday: number;
@@ -63,6 +73,19 @@ interface AdminStats {
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
+
+function getSessionStatus(s: LiveSession, nowMs: number): SessionStatus {
+  if (s.ended_at !== null) return 'gone';
+  const diffMs = nowMs - new Date(s.last_active_at).getTime();
+  if (diffMs < 2 * 60_000) return 'active';
+  if (diffMs < 10 * 60_000) return 'idle';
+  return 'gone';
+}
+
+function fmtLiveDuration(startedAt: string, nowMs: number): string {
+  const sec = Math.max(0, Math.floor((nowMs - new Date(startedAt).getTime()) / 1000));
+  return fmtDuration(sec);
+}
 
 function fmtDuration(sec: number | null): string {
   if (sec === null || sec < 0) return '—';
@@ -105,6 +128,82 @@ function StatRow({ label, value }: { label: string; value: string | number }) {
       <span className="text-sm text-gray-600">{label}</span>
       <span className="text-sm font-bold text-gray-900">{value}</span>
     </div>
+  );
+}
+
+// ── Live Now section ──────────────────────────────────────────────────────────
+
+function LiveNowSection({ sessions }: { sessions: LiveSession[] }) {
+  const [nowMs, setNowMs] = useState(() => Date.now());
+
+  useEffect(() => {
+    const t = setInterval(() => setNowMs(Date.now()), 1000);
+    return () => clearInterval(t);
+  }, []);
+
+  const STATUS_ORDER: Record<SessionStatus, number> = { active: 0, idle: 1, gone: 2 };
+  const STATUS_DOT: Record<SessionStatus, string> = { active: '🟢', idle: '🟡', gone: '⚫' };
+
+  const counts = { active: 0, idle: 0, gone: 0 };
+  for (const s of sessions) counts[getSessionStatus(s, nowMs)]++;
+
+  const sorted = [...sessions].sort((a, b) =>
+    STATUS_ORDER[getSessionStatus(a, nowMs)] - STATUS_ORDER[getSessionStatus(b, nowMs)],
+  );
+
+  return (
+    <>
+      <div className="flex items-center px-4 py-3 border-b border-gray-100">
+        <span className="flex-1 flex items-center justify-center gap-1">
+          <span className="text-sm">🟢</span>
+          <span className="text-sm font-bold text-green-600">{counts.active}</span>
+          <span className="text-xs text-gray-400">Active</span>
+        </span>
+        <span className="w-px h-5 bg-gray-200 flex-none" />
+        <span className="flex-1 flex items-center justify-center gap-1">
+          <span className="text-sm">🟡</span>
+          <span className="text-sm font-bold text-yellow-500">{counts.idle}</span>
+          <span className="text-xs text-gray-400">Idle</span>
+        </span>
+        <span className="w-px h-5 bg-gray-200 flex-none" />
+        <span className="flex-1 flex items-center justify-center gap-1">
+          <span className="text-sm">⚫</span>
+          <span className="text-sm font-bold text-gray-400">{counts.gone}</span>
+          <span className="text-xs text-gray-400">Gone</span>
+        </span>
+      </div>
+
+      {sorted.length === 0 ? (
+        <p className="text-sm text-gray-400 px-4 py-4 text-center">No sessions</p>
+      ) : (
+        sorted.map((s) => {
+          const status = getSessionStatus(s, nowMs);
+          const label = s.alias ?? (s.user_id ? 'User' : 'Guest');
+          const isGone = status === 'gone';
+          const duration = isGone && s.ended_at
+            ? fmtDuration(Math.floor((new Date(s.ended_at).getTime() - new Date(s.started_at).getTime()) / 1000))
+            : fmtLiveDuration(s.started_at, nowMs);
+          return (
+            <div key={s.id} className={`flex items-center gap-3 px-4 py-3 border-b border-gray-50 last:border-b-0 ${isGone ? 'opacity-45' : ''}`}>
+              {s.alias ? (
+                <img src={getAvatarUrl(s.alias)} alt={label} className="w-9 h-9 rounded-full object-cover flex-none" />
+              ) : (
+                <div className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center flex-none text-lg">👤</div>
+              )}
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-sm leading-none">{STATUS_DOT[status]}</span>
+                  <p className="text-sm font-semibold text-gray-800 truncate">{label}</p>
+                </div>
+                <p className="text-xs text-gray-400 mt-0.5">
+                  {timeAgo(s.last_active_at)} · {duration}
+                </p>
+              </div>
+            </div>
+          );
+        })
+      )}
+    </>
   );
 }
 
@@ -165,6 +264,7 @@ export function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
   const [stats, setStats] = useState<AdminStats | null>(null);
+  const [liveSessions, setLiveSessions] = useState<LiveSession[]>([]);
 
   // NPC controls
   const [npcSaving, setNpcSaving] = useState<string | null>(null);
@@ -183,6 +283,49 @@ export function AdminPage() {
   const [loadingWinner, setLoadingWinner] = useState(false);
   const [winnerMessage, setWinnerMessage] = useState<{ text: string; ok: boolean } | null>(null);
 
+  const loadLiveSessions = useCallback(async () => {
+    const tenMinAgo = new Date(Date.now() - 10 * 60_000).toISOString();
+    const { data } = await supabase
+      .from('user_sessions')
+      .select('id, user_id, started_at, last_active_at, ended_at')
+      .or(`ended_at.is.null,last_active_at.gte.${tenMinAgo}`)
+      .order('last_active_at', { ascending: false })
+      .limit(50);
+
+    const allRows = (data ?? []) as {
+      id: string; user_id: string | null;
+      started_at: string; last_active_at: string; ended_at: string | null;
+    }[];
+
+    // Keep only the most recent session per logged-in user (rows are already sorted desc)
+    const seenUserIds = new Set<string>();
+    const rows = allRows.filter((r) => {
+      if (!r.user_id) return true;
+      if (seenUserIds.has(r.user_id)) return false;
+      seenUserIds.add(r.user_id);
+      return true;
+    });
+
+    const userIds = [...new Set(rows.filter((r) => r.user_id).map((r) => r.user_id as string))];
+    const aliasMap = new Map<string, string | null>();
+    if (userIds.length > 0) {
+      const { data: profiles } = await supabase
+        .from('user_profiles').select('id, alias').in('id', userIds);
+      for (const p of (profiles ?? []) as { id: string; alias: string | null }[]) {
+        aliasMap.set(p.id, p.alias);
+      }
+    }
+
+    setLiveSessions(rows.map((r) => ({
+      id: r.id,
+      user_id: r.user_id,
+      alias: r.user_id ? (aliasMap.get(r.user_id) ?? null) : null,
+      started_at: r.started_at,
+      last_active_at: r.last_active_at,
+      ended_at: r.ended_at,
+    })));
+  }, []);
+
   const load = useCallback(async () => {
     if (!userId) { navigate('/'); return; }
 
@@ -200,10 +343,8 @@ export function AdminPage() {
       const todayStart = new Date();
       todayStart.setHours(0, 0, 0, 0);
       const weekAgo = new Date(Date.now() - 7 * 24 * 3_600_000).toISOString();
-      const fiveMinAgo = new Date(Date.now() - 5 * 60_000).toISOString();
 
       const [
-        liveRes,
         totalRes,
         newRes,
         sessTodayCountRes,
@@ -214,10 +355,6 @@ export function AdminPage() {
         npcRes,
         recentSessRes,
       ] = await Promise.all([
-        supabase
-          .from('user_sessions')
-          .select('*', { count: 'exact', head: true })
-          .gte('last_active_at', fiveMinAgo),
         supabase
           .from('user_profiles')
           .select('*', { count: 'exact', head: true }),
@@ -325,7 +462,6 @@ export function AdminPage() {
       });
 
       setStats({
-        liveNow: liveRes.count ?? 0,
         totalUsers: totalRes.count ?? 0,
         newUsersThisWeek: newRes.count ?? 0,
         sessionsToday: sessTodayCountRes.count ?? 0,
@@ -336,12 +472,19 @@ export function AdminPage() {
         npcs: (npcRes.data ?? []) as Npc[],
         recentSessions: (recentSessRes.data ?? []) as RecentSession[],
       });
+
+      loadLiveSessions();
     } finally {
       setLoading(false);
     }
-  }, [userId, navigate]);
+  }, [userId, navigate, loadLiveSessions]);
 
   useEffect(() => { load(); }, [load]);
+
+  useEffect(() => {
+    const t = setInterval(loadLiveSessions, 30_000);
+    return () => clearInterval(t);
+  }, [loadLiveSessions]);
 
   // ── NPC boost ──────────────────────────────────────────────────────────────
 
@@ -448,10 +591,7 @@ export function AdminPage() {
       <div className="px-4 pb-24">
         {/* Live Now */}
         <Section title="Live Now">
-          <div className="flex flex-col items-center py-6">
-            <span className="text-5xl font-black text-brand-green">{stats.liveNow}</span>
-            <span className="text-xs text-gray-400 mt-1">active in the last 5 minutes</span>
-          </div>
+          <LiveNowSection sessions={liveSessions} />
         </Section>
 
         {/* Users */}

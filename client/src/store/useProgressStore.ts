@@ -617,19 +617,52 @@ export const useProgressStore = create<ProgressStore>()(
             }
 
           } else if (isUnknownDevice) {
-            // Case 3: No stored_user_id yet
-            if (cloud !== null) {
-              // Returning user from before this fix was deployed — wipe local, load cloud
-              console.log('[sync] Case 3: no stored_user_id, cloud data exists — wiping local, loading cloud');
-              wipeLocal();
-              applyCloud(cloud);
-            } else {
-              // No cloud data → genuine new user or guest converting — keep local, push up
-              console.log('[sync] Case 3: no stored_user_id, no cloud data — guest converting, pushing local');
+            // Case 3: No stored_user_id — either a guest converting or a returning user on a new device.
+            // The handle_new_user trigger always creates a blank user_progress row immediately on
+            // sign-up, so cloud is never null for a brand-new user. We cannot distinguish "guest
+            // converting" from "returning user on new device" by cloud null-ness alone.
+            // Safe solution: always MERGE. Merging local guest data with an empty cloud row
+            // preserves all guest progress. Merging empty local with a real cloud record keeps
+            // the cloud data. Both cases are handled correctly.
+            if (cloud === null) {
+              // No cloud data at all (shouldn't happen given the trigger, but handle it)
+              console.log('[sync] Case 3: no cloud data — pushing local to cloud');
               const s = get();
               await syncProgressToSupabase(userId, s);
               await Promise.all(s.lessonRecords.map((r) => syncLessonRecord(userId, r)));
               await Promise.all(s.snailRaceRecords.map((r) => syncSnailRaceRecord(userId, r)));
+            } else {
+              console.log('[sync] Case 3: merging local + cloud (guest convert or new device)');
+              const s = get();
+              const merged = mergeProgress(
+                {
+                  xp: s.xp,
+                  level: s.level,
+                  streak: s.streak,
+                  lastPlayedDate: s.lastPlayedDate,
+                  streakMultiplier: s.streakMultiplier,
+                  unlockedStages: s.unlockedStages,
+                  triedEmergencyScenarios: s.triedEmergencyScenarios,
+                  completedLessons: s.completedLessons,
+                  lessonRecords: s.lessonRecords,
+                  snailRaceRecords: s.snailRaceRecords,
+                },
+                cloud,
+              );
+              const sanitizedStages = sanitizeUnlockedStages(merged.unlockedStages, merged.completedLessons);
+              set({
+                xp: merged.xp,
+                level: merged.level,
+                streak: merged.streak,
+                lastPlayedDate: merged.lastPlayedDate,
+                streakMultiplier: merged.streakMultiplier,
+                unlockedStages: sanitizedStages,
+                triedEmergencyScenarios: merged.triedEmergencyScenarios,
+                completedLessons: merged.completedLessons,
+                lessonRecords: merged.lessonRecords,
+                snailRaceRecords: merged.snailRaceRecords,
+              });
+              await syncProgressToSupabase(userId, get());
             }
 
           } else {
