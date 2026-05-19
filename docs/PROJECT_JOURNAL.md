@@ -1121,3 +1121,147 @@ No code changes — fix was entirely in Supabase dashboard.
 - `rowsRef` pattern: a `useRef` mirrors `allRows` so the interval reads current state without needing to be in the dependency array (avoids interval restart on every render)
 - **Flash animation:** `@keyframes xp-flash` embedded via `<style>` tag — bumped XP values briefly turn green (`#15803d`) then fade back to gray over 0.6s; `flashedKeys` Set tracks which rows are mid-flash; cleared after 600ms via `setTimeout`
 - Real user rows are never touched — only NPC keys (starting with `npc-`) are eligible for bumps
+
+---
+
+### Phase 20 — Analytics, Auth Data Isolation & Real Delete Account
+
+**Date:** 2026-05-18
+**Scope:** Vercel Analytics integration, multi-user data safety, and implemented delete account
+
+**Vercel Analytics:**
+- Added `@vercel/analytics/react` — `<Analytics />` component mounted in `AppShell` render; zero-config, no cookie banner needed
+
+**Sign-out data isolation bug (root cause + fix):**
+- Bug: User A signs out; User B signs in on the same device. `initializeFromCloud` was reading `stored_user_id` from localStorage and, if User B had never used the device before (no stored ID), it treated local guest data as theirs and merged it — so User B inherited User A's completed lessons and XP.
+- Fix: Added a user-switch detection check inside `initializeFromCloud` that compares `stored_user_id` against the incoming `userId`. If they differ, local state is reset to defaults before the cloud merge. `stored_user_id` is written to localStorage on each cloud sync and cleared on sign-out.
+- Secondary fix: moved the `wasLoggedIn` sessionStorage flag write from the auth-state listener into `initializeFromCloud` so the flag is set only when a real cloud load occurs.
+
+**Real delete account flow:**
+- Profile page "Delete account" button now opens a confirmation modal with a "Delete my account" destructive action
+- On confirm: calls `supabase.auth.admin` via a SECURITY DEFINER RPC, deletes `user_profiles`, `user_progress`, `lesson_records`, `snail_race_records` rows, then signs out
+- Store is reset to defaults and all user-specific localStorage keys are cleared
+
+---
+
+### Phase 21 — Admin Dashboard
+
+**Date:** 2026-05-19
+**Scope:** Hidden admin panel accessible only to the admin user
+
+**`AdminPage.tsx`** (new, route: `/admin`):
+- Accessible only when `useAuthStore.isAdmin === true`; all other users are redirected to `/`
+- `loadIsAdmin(userId)` in `progressSync.ts` checks `user_profiles.is_admin` column; result stored in `useAuthStore.isAdmin`
+
+**Sections:**
+- **User Stats** — total registered users, weekly active users, total XP across all users (live Supabase queries)
+- **Recent Sessions** — scrollable list (max-h-[560px]) of the 10 most recent `user_sessions` rows with alias, duration, and timestamp
+- **User Controls** — search by alias → view user profile → manually adjust XP (add/subtract) via admin RPC; updates `user_progress.xp` and `user_profiles.weekly_xp`
+- **NPC Controls** — trigger NPC XP update immediately (calls `update_npc_xp` RPC) without waiting for the 3-hour cron
+
+**Profile page admin entry:**
+- Admin link replaced standard "Admin Dashboard" card with a plain `⁂` (asterism) text button — visually looks like a decorative separator, not an interactive element; provides stealth access
+
+---
+
+### Phase 22 — Magic Box Reward Feature
+
+**Date:** 2026-05-19
+**Scope:** Daily surprise XP reward system with admin trigger
+
+**Concept:** Once per day, a signed-in user who opens the app may find a Magic Box containing a random XP reward (5, 10, 15, or 20 XP). The box opens on first app visit after midnight.
+
+**`magicBox.ts`** (new):
+- `runMagicBoxCheck(userId)` — reads `user_profiles.magic_box_force_trigger` and `magic_box_claimed_date`; returns `true` if the box should be shown (either force-triggered by admin or not yet claimed today)
+- `claimMagicBox(xp)` — calls `claim_magic_box` SECURITY DEFINER RPC which writes the XP to `user_progress` and stamps `magic_box_claimed_date = today`
+- **RLS fix:** direct `.update()` on `user_profiles` from the admin was silently blocked by RLS (no error returned, 0 rows affected). Fixed by routing through `admin_set_magic_box_trigger` SECURITY DEFINER RPC.
+- **PostgREST schema cache fix:** after `ALTER TABLE` added `magic_box_force_trigger`, new column was silently omitted from SELECT responses until `NOTIFY pgrst, 'reload schema'` was run in the SQL editor.
+
+**`MagicBoxModal.tsx`** (new):
+- Displays 3 mystery gift boxes; user taps one to reveal the XP
+- **Open sound:** rising frequency sweep (160→880 Hz) + sparkle cascade (C6→E6→G6→C7) on mount via Web Audio API
+- **Pick sound:** ascending arpeggio (C5→E5→G5→C6 held) on box selection
+- `SnailSuperExcited.png` mascot between title and subtitle
+- After claim: `initializeFromCloud` re-syncs XP, then `loadWeeklyXp` refreshes the leaderboard XP — so all counters update instantly
+
+**`App.tsx` integration:**
+- Magic box check runs once per login (`magicBoxCheckedUser` ref guard); also re-checked on `visibilitychange` to catch midnight day-changes
+- Toast notification: "+N XP from your Magic Box! 🐌" fades after 4s
+
+**Admin trigger (AdminPage):**
+- "Trigger Magic Box" button calls `admin_set_magic_box_trigger(target_user_id)` RPC — sets `magic_box_force_trigger = true` on any user, overriding the daily claim check so the box shows on their next app open
+
+---
+
+### Phase 23 — Weekly Winner Notification
+
+**Date:** 2026-05-19
+**Scope:** Show the weekly leaderboard winner to all users on app open
+
+**`WeeklyWinnerModal.tsx`** (new):
+- Full-screen dark overlay (z-[70]), confetti, `SnailSuperExcited.png` mascot, winner avatar with gold ring (80px)
+- Conditional copy: "You won this week! 🏆" (current user is winner) vs "We have a winner! 🏆" (other user won)
+- Button triggers a victory cheer sound (Web Audio API); backdrop tap does nothing (non-dismissible)
+- Cannot be dismissed by tapping outside — button is the only exit
+
+**`checkWeeklyWinner(userId, userAlias)`** in `progressSync.ts`:
+- Queries `weekly_winners` for the most recent row with `week_of >= lastMonday`
+- Returns `null` if already seen this week (`winner_seen_week` key in localStorage matches current Monday)
+- Returns `{ show: true, winnerAlias, winnerAvatar, winnerXp, isCurrentUser }` otherwise
+
+**`markWinnerSeen()`** — writes current Monday's date string to `winner_seen_week` in localStorage so the modal doesn't reappear
+
+**`App.tsx` priority ordering:**
+- Weekly Winner modal (z-[70]) renders before Magic Box modal: `{showMagicBox && !weeklyWinner && <MagicBoxModal />}`
+- `handleWinnerDismiss`: marks winner seen → clears winner state → pulses leaderboard nav icon for 10s → triggers magic box check if it hadn't run yet (safety net for modal ordering)
+
+**Admin preview (AdminPage):**
+- "Preview Winner Notification" button fetches the latest `weekly_winners` row and opens `WeeklyWinnerModal` in preview mode
+- Read-only — does not write to the database; allows admin to test both the winner and non-winner views
+
+---
+
+### Phase 24 — Alias System Rework & UI Polish
+
+**Date:** 2026-05-19
+**Scope:** Required alias selection on first login, 4-digit suffix format, profile + nav polish
+
+**Alias system rework:**
+- **Before:** aliases were auto-assigned on first login (e.g. `FrogySnail`, then `FrogySnail_2` on collision)
+- **After:** no auto-assign. New users must pick their alias manually before using the app.
+- Suffix format changed from sequential `_2/_3` to random 4-digit `_1000–_9999` (e.g. `BunnySnail_4271`). 25 base names × 9000 possible suffixes = 225,000 combinations.
+- `generateUniqueAlias(baseName)` — 30-attempt loop; random 4-digit suffix each attempt; inserts directly to `user_profiles.alias`
+- `loadAlias(userId)` replaces `loadOrAssignAlias` — returns `null` (no alias → show picker), `''` (DB error → silent, no picker), or the alias string
+- `assignDefaultAlias` removed entirely
+
+**`AliasPickerModal.tsx`** (new):
+- Sheet-style modal (z-[80]), slides up from bottom, non-dismissible (no X button, no backdrop tap)
+- Subtitle: "To keep our Users privacy, your Alias is what other users will see"
+- Grid of 25 base names; tapping generates a 4-digit alias and calls `changeAlias(userId, baseName)`
+- On successful pick: shows `WelcomeOverlay` (z-[90]) — confetti, `SnailSuperExcited.png`, avatar, "Welcome, {alias}! 🎉", body text explaining the alias is their public identity
+- "Let's go!" button plays a cheer sound and calls `onDone(alias)`
+
+**Leaderboard nav pulse:**
+- After `WeeklyWinnerModal` dismiss, the 🏆 BottomNav icon pulses strongly (scale 1→1.45× at 0.6s cycle + gold `drop-shadow(0 0 6px #FFD700)`) for 10 seconds to draw attention to the leaderboard
+- `leaderboardPulse: boolean` added to `useAuthStore`; trophy button tap clears it
+
+**Profile page polish:**
+- Sign out button moved above the Legal section
+- Delete account: removed card/row wrapper → plain small grey text button (no white background)
+- Admin entry (⁂): removed card/row wrapper → plain neutral text, blends with surrounding content
+
+**Admin page:**
+- Recent Sessions list wrapped in `overflow-y-auto max-h-[560px]` — scrollable when more than ~10 sessions
+
+---
+
+### Phase 25 — Database Maintenance
+
+**Date:** 2026-05-19
+**Scope:** RLS policy deduplication (no code changes)
+
+**`weekly_winners` table** had two identical SELECT policies both using `USING (true)` for `authenticated` role:
+- "All users can read weekly winners"
+- "Anyone can read weekly winners"
+
+Verified via codebase audit that all three query sites (`LeaderboardModal`, `progressSync.checkWeeklyWinner`, `AdminPage`) use the standard authenticated Supabase client — neither policy name is referenced in code. Deleted "Anyone can read weekly winners"; "All users can read weekly winners" remains as the single authoritative policy. No behavioral change.
