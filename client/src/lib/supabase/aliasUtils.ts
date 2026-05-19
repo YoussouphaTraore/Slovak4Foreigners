@@ -1,5 +1,4 @@
 import { supabase } from './client';
-import { BASE_ALIASES } from '../../data/aliases';
 
 // Strips _2, _3 etc suffix to get the base avatar name
 export function getAvatarUrl(alias: string): string {
