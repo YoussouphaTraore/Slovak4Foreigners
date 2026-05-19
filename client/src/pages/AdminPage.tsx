@@ -640,7 +640,8 @@ export function AdminPage() {
           {stats.recentSessions.length === 0 ? (
             <p className="text-sm text-gray-400 px-4 py-4 text-center">No sessions yet</p>
           ) : (
-            stats.recentSessions.map((s) => (
+            <div className="overflow-y-auto max-h-[560px]">
+            {stats.recentSessions.map((s) => (
               <div key={s.id} className="px-4 py-3 border-b border-gray-50 last:border-b-0">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-semibold text-gray-700">
@@ -655,7 +656,8 @@ export function AdminPage() {
                   <span className="text-xs text-gray-500">{fmtDuration(s.duration_seconds)}</span>
                 </div>
               </div>
-            ))
+            ))}
+            </div>
           )}
         </Section>
       </div>

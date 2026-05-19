@@ -7,61 +7,25 @@ export function getAvatarUrl(alias: string): string {
   return `/pp/${base}.png`;
 }
 
-// Returns baseName if free; otherwise tries baseName_2, _3, ... until one is free
+// Returns baseName_XXXX with a random 4-digit suffix that isn't already taken
 export async function generateUniqueAlias(baseName: string): Promise<string> {
-  const { data } = await supabase
-    .from('user_profiles')
-    .select('alias')
-    .eq('alias', baseName)
-    .maybeSingle();
-
-  if (!data) return baseName;
-
-  let suffix = 2;
-  while (true) {
+  for (let attempt = 0; attempt < 30; attempt++) {
+    const suffix = String(Math.floor(1000 + Math.random() * 9000));
     const candidate = `${baseName}_${suffix}`;
-    const { data: taken } = await supabase
+    const { data } = await supabase
       .from('user_profiles')
       .select('alias')
       .eq('alias', candidate)
       .maybeSingle();
-    if (!taken) return candidate;
-    suffix++;
+    if (!data) return candidate;
   }
+  throw new Error('Could not generate a unique alias — try again');
 }
 
-// Picks a random base alias, generates a unique version, saves it to user_profiles.
-// Verifies the write actually landed (PostgREST silently ignores unknown columns when
-// its schema cache is stale, returning no error but saving nothing). Throws if the
-// column isn't readable after writing so loadOrAssignAlias returns '' rather than
-// exposing an alias that will disappear on the next refresh.
-export async function assignDefaultAlias(userId: string): Promise<string> {
-  const base = BASE_ALIASES[Math.floor(Math.random() * BASE_ALIASES.length)];
-  const alias = await generateUniqueAlias(base);
-
-  const { error } = await supabase
-    .from('user_profiles')
-    .update({ alias })
-    .eq('id', userId);
-  if (error) throw new Error(`alias update failed: ${error.message}`);
-
-  // Re-read to confirm the value was actually persisted
-  const { data: verify } = await supabase
-    .from('user_profiles')
-    .select('alias')
-    .eq('id', userId)
-    .maybeSingle();
-  const saved = (verify as { alias?: string | null } | null)?.alias;
-  if (!saved) throw new Error('alias not persisted — run: NOTIFY pgrst, \'reload schema\'; in Supabase SQL editor');
-
-  return saved;
-}
-
-// Fetches the user's current alias; only assigns a new one if alias is truly absent.
-// Bug 2 fix: uses maybeSingle() (not single() which errors on no-match),
-// checks both data and the alias field explicitly, and catches any DB error so
-// a transient failure never triggers a spurious re-assignment.
-export async function loadOrAssignAlias(userId: string): Promise<string> {
+// Fetches the user's current alias. Returns the alias string if one exists,
+// null if the user has never chosen one (triggers the alias picker),
+// or '' on network/DB error (treated as "try again later", don't show picker).
+export async function loadAlias(userId: string): Promise<string | null> {
   try {
     const { data, error } = await supabase
       .from('user_profiles')
@@ -71,16 +35,10 @@ export async function loadOrAssignAlias(userId: string): Promise<string> {
 
     if (error) throw error;
 
-    // Alias exists in DB — return it, never overwrite
     const existing = (data as { alias?: string | null } | null)?.alias;
-    if (existing) return existing;
-
-    // Alias is null/empty — first-time user, assign one
-    return await assignDefaultAlias(userId);
+    return existing ?? null; // null = no alias yet, must pick
   } catch {
-    // If anything fails (DB error, network, schema not refreshed), return empty
-    // string so the UI gracefully shows nothing rather than assigning a bad alias.
-    return '';
+    return ''; // empty string = error, don't trigger picker
   }
 }
 

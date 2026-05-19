@@ -26,6 +26,8 @@ export function BottomNav({ active }: Props) {
 
   const avatarSrc = alias ? getAvatarUrl(alias) : '/pp/FrogySnail.png';
 
+  const leaderboardPulse = useAuthStore((s) => s.leaderboardPulse);
+
   const [showAvatar, setShowAvatar] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
 
@@ -70,10 +72,26 @@ export function BottomNav({ active }: Props) {
 
       <button
         type="button"
-        onClick={() => setShowLeaderboard(true)}
+        onClick={() => { setShowLeaderboard(true); useAuthStore.getState().setLeaderboardPulse(false); }}
         className="flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors text-gray-400 hover:text-gray-600"
       >
-        <span className="text-2xl">🏆</span>
+        <span
+          className="text-2xl inline-block"
+          style={leaderboardPulse ? {
+            animation: 'trophy-pulse 0.6s ease-in-out infinite',
+            filter: 'drop-shadow(0 0 6px #FFD700)',
+          } : undefined}
+        >
+          🏆
+        </span>
+        {leaderboardPulse && (
+          <style>{`
+            @keyframes trophy-pulse {
+              0%, 100% { transform: scale(1); }
+              50%       { transform: scale(1.45); }
+            }
+          `}</style>
+        )}
         <span className="text-[9px] font-semibold text-center leading-tight">Leader<br />board</span>
       </button>
 

@@ -9,12 +9,14 @@ interface AuthStore {
   isInitialized: boolean;
   alias: string;
   isAdmin: boolean;
+  leaderboardPulse: boolean;
 
   signInWithGoogle: () => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
   initialize: () => void;
   setAlias: (alias: string) => void;
   setIsAdmin: (v: boolean) => void;
+  setLeaderboardPulse: (v: boolean) => void;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -24,6 +26,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
   isInitialized: false,
   alias: '',
   isAdmin: false,
+  leaderboardPulse: false,
 
   signInWithGoogle: async () => {
     set({ isLoading: true });
@@ -62,6 +65,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
   setAlias: (alias) => set({ alias }),
   setIsAdmin: (isAdmin) => set({ isAdmin }),
+  setLeaderboardPulse: (leaderboardPulse) => set({ leaderboardPulse }),
 
   initialize: () => {
     // Safety net: always mark initialized within 3 s even if Supabase hangs

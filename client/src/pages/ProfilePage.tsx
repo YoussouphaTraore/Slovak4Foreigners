@@ -162,9 +162,12 @@ function AliasModal({
         className="w-full max-w-sm bg-white rounded-3xl shadow-2xl overflow-hidden"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-5 pt-5 pb-3 border-b border-gray-100">
-          <h2 className="text-base font-extrabold text-gray-800">Choose Your Alias</h2>
-          <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl cursor-pointer leading-none">✕</button>
+        <div className="px-5 pt-5 pb-3 border-b border-gray-100">
+          <div className="flex items-center justify-between">
+            <h2 className="text-base font-extrabold text-gray-800">Choose Your Alias</h2>
+            <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl cursor-pointer leading-none">✕</button>
+          </div>
+          <p className="text-xs text-gray-400 mt-1">You'll get a unique 4-digit tag — e.g. FrogySnail_2847</p>
         </div>
 
         {message && (
@@ -479,7 +482,15 @@ export function ProfilePage() {
           </Card>
         </div>
 
-        {/* ── 8. Legal ───────────────────────────────────────────────────────── */}
+        {/* ── 8. Sign out ────────────────────────────────────────────────────── */}
+        <Card>
+          <Row last onClick={handleSignOut}>
+            <span className="text-xl w-7 flex-none text-center leading-none">🚪</span>
+            <span className="text-sm font-semibold text-red-500">Sign out</span>
+          </Row>
+        </Card>
+
+        {/* ── 9. Legal ───────────────────────────────────────────────────────── */}
         <div>
           <SectionLabel>Legal</SectionLabel>
           <Card>
@@ -496,32 +507,25 @@ export function ProfilePage() {
           </Card>
         </div>
 
-        {/* ── 9. Sign out ────────────────────────────────────────────────────── */}
-        <Card>
-          <Row last onClick={handleSignOut}>
-            <span className="text-xl w-7 flex-none text-center leading-none">🚪</span>
-            <span className="text-sm font-semibold text-red-500">Sign out</span>
-          </Row>
-        </Card>
-
-        {/* ── 10. Admin ──────────────────────────────────────────────────────── */}
+        {/* ── 10. Admin — intentionally unremarkable ─────────────────────────── */}
         {isAdmin && (
-          <Card>
-            <Row last onClick={() => navigate('/admin')}>
-              <span className="text-xl w-7 flex-none text-center leading-none">⚙️</span>
-              <span className="text-sm text-gray-700 flex-1">Admin Dashboard</span>
-              <span className="text-xs text-gray-400">›</span>
-            </Row>
-          </Card>
+          <button
+            type="button"
+            onClick={() => navigate('/admin')}
+            className="w-full text-center text-gray-300 py-1 cursor-pointer"
+          >
+            ⁂
+          </button>
         )}
 
-        {/* ── 11. Delete account ─────────────────────────────────────────────── */}
-        <Card>
-          <Row last onClick={() => setShowDeleteConfirm(true)}>
-            <span className="text-xl w-7 flex-none text-center leading-none">🗑️</span>
-            <span className="text-sm font-semibold text-red-500">Delete account</span>
-          </Row>
-        </Card>
+        {/* ── 11. Delete account — plain text, no card ───────────────────────── */}
+        <button
+          type="button"
+          onClick={() => setShowDeleteConfirm(true)}
+          className="w-full text-center text-xs text-gray-400 py-2 cursor-pointer hover:text-gray-500 transition-colors"
+        >
+          Delete account
+        </button>
 
       </div>
 

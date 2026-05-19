@@ -24,7 +24,8 @@ import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
 import { useAuthStore } from './store/useAuthStore';
 import { checkSessionRegistration, loadWeeklyXp, loadIsAdmin, checkWeeklyWinner, markWinnerSeen } from './lib/supabase/progressSync';
-import { loadOrAssignAlias } from './lib/supabase/aliasUtils';
+import { loadAlias } from './lib/supabase/aliasUtils';
+import { AliasPickerModal } from './components/AliasPickerModal';
 import { startSession, heartbeat, endSession } from './lib/supabase/sessionTracking';
 import { runMagicBoxCheck, claimMagicBox } from './lib/supabase/magicBox';
 import { MagicBoxModal } from './components/MagicBoxModal';
@@ -169,10 +170,18 @@ function AppShell() {
     checkSessionRegistration(userId).then(setIsSessionRegistered);
   }, [userId, setIsSessionRegistered]);
 
-  // Load or auto-assign alias on login
+  // Load alias on login — show picker if user has none
+  const [showAliasPicker, setShowAliasPicker] = useState(false);
   useEffect(() => {
-    if (!userId) return;
-    loadOrAssignAlias(userId).then(setAlias);
+    if (!userId) { setShowAliasPicker(false); return; }
+    loadAlias(userId).then((result) => {
+      if (result === null) {
+        setShowAliasPicker(true); // no alias — must pick
+      } else if (result) {
+        setAlias(result); // existing alias
+      }
+      // '' = DB error — don't show picker, alias stays empty
+    });
   }, [userId, setAlias]);
 
   // Load weekly XP from Supabase on login (cron may have reset it)
@@ -213,6 +222,9 @@ function AppShell() {
   function handleWinnerDismiss() {
     markWinnerSeen();
     setWeeklyWinner(null);
+    // Pulse the leaderboard nav icon for 10 seconds to draw attention
+    useAuthStore.getState().setLeaderboardPulse(true);
+    setTimeout(() => useAuthStore.getState().setLeaderboardPulse(false), 10_000);
     // If magic box hasn't been checked yet (was blocked by winner modal), run it now
     if (userId && !magicBoxCheckedUser.current) {
       magicBoxCheckedUser.current = userId;
@@ -310,6 +322,15 @@ function AppShell() {
         <AppRoutes />
         <Analytics />
       </HashRouter>
+      {showAliasPicker && userId && (
+        <AliasPickerModal
+          userId={userId}
+          onDone={(newAlias) => {
+            setAlias(newAlias);
+            setShowAliasPicker(false);
+          }}
+        />
+      )}
       {weeklyWinner && (
         <WeeklyWinnerModal
           winnerAlias={weeklyWinner.winnerAlias}
