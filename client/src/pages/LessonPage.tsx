@@ -12,7 +12,7 @@ import { ExerciseCelebration } from '../components/ui/ExerciseCelebration';
 const MAX_TOTAL      = 5;           // 5 total strikes → back to previous exercise
 const MAX_CONSEC     = 3;           // 3 consecutive strikes → restart from exercise 1
 const MAX_EXERCISE   = 2;           // 2+ strikes on an exercise → must redo it on complete
-const CHECKPOINT_MS  = 1 * 60_000; // 1 minute (testing) — change back to 4 * 60_000
+const CHECKPOINT_MS  = 4 * 60_000; // 4 minutes of active lesson time
 
 type PenaltyInfo = { title: string; sub: string; image?: string } | null;
 
