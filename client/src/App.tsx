@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { HashRouter, Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { HomePage } from './pages/HomePage';
@@ -26,6 +26,8 @@ import { useAuthStore } from './store/useAuthStore';
 import { checkSessionRegistration, loadWeeklyXp, loadIsAdmin } from './lib/supabase/progressSync';
 import { loadOrAssignAlias } from './lib/supabase/aliasUtils';
 import { startSession, heartbeat, endSession } from './lib/supabase/sessionTracking';
+import { runMagicBoxCheck, claimMagicBox } from './lib/supabase/magicBox';
+import { MagicBoxModal } from './components/MagicBoxModal';
 
 function DialogueSessionRoute() {
   const { id } = useParams<{ id: string }>();
@@ -183,6 +185,42 @@ function AppShell() {
     loadIsAdmin(userId).then(setIsAdmin);
   }, [userId, setIsAdmin]);
 
+  // ── Magic Box ────────────────────────────────────────────────────────────────
+  const [showMagicBox, setShowMagicBox] = useState(false);
+  const [magicBoxToast, setMagicBoxToast] = useState<string | null>(null);
+  const magicBoxCheckedUser = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (!isInitialized || !userId) return;
+    if (magicBoxCheckedUser.current === userId) return;
+    magicBoxCheckedUser.current = userId;
+    runMagicBoxCheck(userId).then((should) => { if (should) setShowMagicBox(true); }).catch(() => {});
+  }, [isInitialized, userId]);
+
+  // Re-check when app comes back to foreground (catches midnight day-change)
+  useEffect(() => {
+    const handleFocus = () => {
+      if (!userId || showMagicBox) return;
+      runMagicBoxCheck(userId).then((should) => { if (should) setShowMagicBox(true); }).catch(() => {});
+    };
+    document.addEventListener('visibilitychange', handleFocus);
+    return () => document.removeEventListener('visibilitychange', handleFocus);
+  }, [userId, showMagicBox]);
+
+  async function handleMagicBoxClaim(xp: number) {
+    setShowMagicBox(false);
+    if (!userId) return;
+    claimMagicBox(xp).then(({ error }) => {
+      if (!error) {
+        useProgressStore.getState().initializeFromCloud(userId).then(() => {
+          loadWeeklyXp(userId).then((n) => useProgressStore.getState().setWeeklyXp(n));
+        });
+      }
+    });
+    setMagicBoxToast(`You earned +${xp} XP from your Magic Box! 🐌`);
+    setTimeout(() => setMagicBoxToast(null), 4000);
+  }
+
   // ── Session tracking ─────────────────────────────────────────────────────────
   const sessionIdRef = useRef<string | null>(null);
   const sessionUserIdRef = useRef<string | null | undefined>(undefined);
@@ -234,10 +272,18 @@ function AppShell() {
   }
 
   return (
-    <HashRouter>
-      <AppRoutes />
-      <Analytics />
-    </HashRouter>
+    <>
+      <HashRouter>
+        <AppRoutes />
+        <Analytics />
+      </HashRouter>
+      {showMagicBox && <MagicBoxModal onClaim={handleMagicBoxClaim} />}
+      {magicBoxToast && (
+        <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-gray-900 text-white text-sm font-semibold px-5 py-3 rounded-full shadow-xl whitespace-nowrap pointer-events-none">
+          {magicBoxToast}
+        </div>
+      )}
+    </>
   );
 }
 

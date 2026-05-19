@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase/client';
 import { useAuthStore } from '../store/useAuthStore';
 import { getAvatarUrl } from '../lib/supabase/aliasUtils';
 import { lessons } from '../data/lessons';
+import { triggerMagicBoxForUser } from '../lib/supabase/magicBox';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -166,6 +167,10 @@ export function AdminPage() {
 
   // NPC controls
   const [npcSaving, setNpcSaving] = useState<string | null>(null);
+
+  // Magic box triggers
+  const [magicBoxTriggered, setMagicBoxTriggered] = useState<Set<string>>(new Set());
+  const [magicBoxTriggering, setMagicBoxTriggering] = useState<string | null>(null);
 
   // User boost
   const [boostTarget, setBoostTarget] = useState<{ userId: string; alias: string | null; amount: number } | null>(null);
@@ -370,6 +375,17 @@ export function AdminPage() {
     setTimeout(() => setBoostMessage(null), 4000);
   }
 
+  // ── Magic box trigger ───────────────────────────────────────────────────────
+
+  async function handleMagicBoxTrigger(targetUserId: string) {
+    setMagicBoxTriggering(targetUserId);
+    const { error } = await triggerMagicBoxForUser(targetUserId);
+    setMagicBoxTriggering(null);
+    if (!error) {
+      setMagicBoxTriggered((prev) => new Set([...prev, targetUserId]));
+    }
+  }
+
   // ── Render ─────────────────────────────────────────────────────────────────
 
   if (loading) {
@@ -492,8 +508,8 @@ export function AdminPage() {
                         <p className="text-[10px] text-gray-400">{u.totalXp.toLocaleString()} total</p>
                       </div>
                     </div>
-                    {/* Bottom row: boost buttons */}
-                    <div className="flex items-center gap-1 justify-end">
+                    {/* Bottom row: boost + magic box buttons */}
+                    <div className="flex items-center gap-1 justify-end flex-wrap">
                       <span className="text-[10px] text-gray-400 mr-1">Boost:</span>
                       {[5, 10, 15, 20].map((amt) => (
                         <button
@@ -505,6 +521,18 @@ export function AdminPage() {
                           +{amt}
                         </button>
                       ))}
+                      <button
+                        type="button"
+                        onClick={() => handleMagicBoxTrigger(u.userId)}
+                        disabled={magicBoxTriggering === u.userId || magicBoxTriggered.has(u.userId)}
+                        className={`text-xs font-bold px-2 py-1 rounded-lg cursor-pointer transition-colors disabled:cursor-not-allowed ml-1 ${
+                          magicBoxTriggered.has(u.userId)
+                            ? 'bg-purple-100 text-purple-400'
+                            : 'bg-purple-50 text-purple-600 hover:bg-purple-100'
+                        }`}
+                      >
+                        {magicBoxTriggering === u.userId ? '…' : magicBoxTriggered.has(u.userId) ? '🎁 Queued' : '🎁 Magic Box'}
+                      </button>
                     </div>
                   </div>
                 );
