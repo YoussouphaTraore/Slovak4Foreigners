@@ -330,7 +330,8 @@ export function LessonPage() {
         <ExerciseCelebration onDone={() => {
           setCelebrating(false);
           const remaining = exercises.length - exerciseIndex - 1;
-          if (remaining > 1 && getActiveMs() >= CHECKPOINT_MS && !checkpointShownRef.current) {
+          const isReplay = store.completedLessons.includes(lesson.id);
+          if (!isReplay && remaining > 1 && getActiveMs() >= CHECKPOINT_MS && !checkpointShownRef.current) {
             checkpointShownRef.current = true;
             setShowCheckpoint(true);
           } else {
