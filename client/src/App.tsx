@@ -200,8 +200,9 @@ function AppShell() {
   // Re-check when app comes back to foreground (catches midnight day-change)
   useEffect(() => {
     const handleFocus = () => {
+      if (document.visibilityState !== 'visible') return;
       if (!userId || showMagicBox) return;
-      runMagicBoxCheck(userId).then((should) => { if (should) setShowMagicBox(true); }).catch(() => {});
+      runMagicBoxCheck(userId).then((should) => { if (should) setShowMagicBox(true); }).catch((e) => console.error('[MagicBox] visibility check failed:', e));
     };
     document.addEventListener('visibilitychange', handleFocus);
     return () => document.removeEventListener('visibilitychange', handleFocus);

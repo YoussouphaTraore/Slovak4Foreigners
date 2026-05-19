@@ -9,13 +9,13 @@ export async function runMagicBoxCheck(userId: string): Promise<boolean> {
   try { lastActive = localStorage.getItem(LAST_ACTIVE_KEY); } catch { /* */ }
 
   // Fetch current profile state first
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from('user_profiles')
     .select('magic_box_days_count, magic_box_last_claimed, magic_box_force_trigger')
     .eq('id', userId)
     .single();
 
-  if (!data) return false;
+  if (error || !data) return false;
 
   type Row = { magic_box_days_count: number; magic_box_last_claimed: string | null; magic_box_force_trigger: boolean };
   const d = data as Row;
@@ -52,10 +52,7 @@ export async function claimMagicBox(xp: number): Promise<{ error: string | null 
 
 export async function triggerMagicBoxForUser(targetUserId: string): Promise<{ error: string | null }> {
   try {
-    const { error } = await supabase
-      .from('user_profiles')
-      .update({ magic_box_force_trigger: true })
-      .eq('id', targetUserId);
+    const { error } = await supabase.rpc('admin_set_magic_box_trigger', { target_user_id: targetUserId });
     return { error: error?.message ?? null };
   } catch (e) {
     return { error: String(e) };
