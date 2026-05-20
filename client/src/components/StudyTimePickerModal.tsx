@@ -22,15 +22,6 @@ const TIME_SLOTS: { label: string; value: string }[] = (() => {
   return slots;
 })();
 
-function urlBase64ToUint8Array(base64String: string): Uint8Array {
-  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
-  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
-  const rawData = window.atob(base64);
-  const output = new Uint8Array(new ArrayBuffer(rawData.length));
-  for (let i = 0; i < rawData.length; i++) output[i] = rawData.charCodeAt(i);
-  return output;
-}
-
 export function StudyTimePickerModal({ userId, onClose }: Props) {
   const [selected, setSelected] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -50,11 +41,10 @@ export function StudyTimePickerModal({ userId, onClose }: Props) {
     if (permission === 'granted') {
       try {
         const registration = await navigator.serviceWorker.ready;
+        // applicationServerKey accepts a base64url string directly
         const subscription = await registration.pushManager.subscribe({
           userVisibleOnly: true,
-          applicationServerKey: urlBase64ToUint8Array(
-            import.meta.env.VITE_VAPID_PUBLIC_KEY as string,
-          ),
+          applicationServerKey: import.meta.env.VITE_VAPID_PUBLIC_KEY as string,
         });
         await saveStudyReminder(userId, {
           studyReminderTime: selected,
