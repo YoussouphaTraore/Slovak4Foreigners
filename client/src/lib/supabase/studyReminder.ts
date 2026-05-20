@@ -25,6 +25,7 @@ export async function loadStudyReminder(userId: string): Promise<StudyReminderSe
     .eq('user_id', userId)
     .maybeSingle();
 
+  if (error) console.error('[studyReminder] load error:', error.code, error.message, error.details, error.hint);
   if (error || !data) return null;
   return {
     studyReminderTime: data.study_reminder_time ?? null,
@@ -42,10 +43,12 @@ export async function saveStudyReminder(
   if (patch.studyReminderEnabled !== undefined) row.study_reminder_enabled = patch.studyReminderEnabled;
   if (patch.pushSubscription !== undefined) row.push_subscription = patch.pushSubscription;
 
+  console.log('[studyReminder] saving row:', JSON.stringify(row));
   const { error } = await supabase
     .from('user_profiles')
     .upsert(row, { onConflict: 'user_id' });
 
+  if (error) console.error('[studyReminder] save error:', error.code, error.message, error.details, error.hint);
   return { error: error?.message ?? null };
 }
 
