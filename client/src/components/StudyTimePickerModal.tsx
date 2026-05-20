@@ -40,15 +40,11 @@ export function StudyTimePickerModal({ userId, onClose }: Props) {
 
     if (permission === 'granted') {
       try {
-        console.log('[Push] VAPID key (first 10):', String(import.meta.env.VITE_VAPID_PUBLIC_KEY ?? 'UNDEFINED').slice(0, 10));
-        console.log('[Push] SW controller:', navigator.serviceWorker.controller);
         const registration = await navigator.serviceWorker.ready;
-        console.log('[Push] SW ready:', registration.scope);
         const subscription = await registration.pushManager.subscribe({
           userVisibleOnly: true,
           applicationServerKey: import.meta.env.VITE_VAPID_PUBLIC_KEY as string,
         });
-        console.log('[Push] subscription endpoint:', subscription.endpoint.slice(0, 40));
         await saveStudyReminder(userId, {
           studyReminderTime: selected,
           studyReminderEnabled: true,
@@ -56,8 +52,7 @@ export function StudyTimePickerModal({ userId, onClose }: Props) {
         });
         onClose();
         return;
-      } catch (e) {
-        console.error('[Push] subscribe/save failed:', e);
+      } catch {
         // push subscription failed — save time only
         await saveStudyReminder(userId, {
           studyReminderTime: selected,
