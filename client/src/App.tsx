@@ -31,6 +31,7 @@ import { runMagicBoxCheck, claimMagicBox } from './lib/supabase/magicBox';
 import { MagicBoxModal } from './components/MagicBoxModal';
 import { WeeklyWinnerModal } from './components/WeeklyWinnerModal';
 import { PwaInstallSheet } from './components/PwaInstallSheet';
+import { StudyTimePickerModal } from './components/StudyTimePickerModal';
 import {
   setDeferredPrompt, clearDeferredPrompt,
   markInstalled, markShown, shouldAutoShow, shouldShowIOSPrompt, isIOS, triggerInstall,
@@ -187,6 +188,7 @@ function AppShell() {
 
   // Load alias on login — show picker if user has none
   const [showAliasPicker, setShowAliasPicker] = useState(false);
+  const [showStudyPicker, setShowStudyPicker] = useState(false);
   useEffect(() => {
     if (!userId) { setShowAliasPicker(false); return; }
     loadAlias(userId).then((result) => {
@@ -417,7 +419,14 @@ function AppShell() {
           onDone={(newAlias) => {
             setAlias(newAlias);
             setShowAliasPicker(false);
+            setShowStudyPicker(true);
           }}
+        />
+      )}
+      {showStudyPicker && userId && (
+        <StudyTimePickerModal
+          userId={userId}
+          onClose={() => setShowStudyPicker(false)}
         />
       )}
       {weeklyWinner && (
