@@ -5,7 +5,7 @@ type DeferredPrompt = Event & {
 
 const INSTALLED_KEY   = 'install_prompt_installed';
 const LAST_SHOWN_KEY  = 'install_prompt_last_shown';
-const COOLDOWN_MS     = 24 * 60 * 60 * 1000;
+const COOLDOWN_MS     = 10_000; // 10 seconds (testing) — change back to 24 * 60 * 60 * 1000
 
 let deferredPrompt: DeferredPrompt | null = null;
 

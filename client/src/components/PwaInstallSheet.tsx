@@ -1,13 +1,22 @@
+import { useRef } from 'react';
+
 interface Props {
   onInstall: () => void;
   onDismiss: () => void;
 }
 
 export function PwaInstallSheet({ onInstall, onDismiss }: Props) {
+  const tapCountRef = useRef(0);
+
+  const handleBackdropTap = () => {
+    tapCountRef.current += 1;
+    if (tapCountRef.current >= 2) onDismiss();
+  };
+
   return (
     <div
       className="fixed inset-0 z-[150] flex items-end justify-center bg-black/40"
-      onClick={onDismiss}
+      onClick={handleBackdropTap}
     >
       <div
         className="w-full max-w-sm bg-white rounded-t-3xl shadow-2xl px-6 pt-6 pb-10 animate-slide-up"
@@ -28,16 +37,9 @@ export function PwaInstallSheet({ onInstall, onDismiss }: Props) {
         <button
           type="button"
           onClick={onInstall}
-          className="w-full bg-brand-green text-white font-bold py-3 rounded-xl text-sm cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all mb-3"
+          className="w-full bg-brand-green text-white font-bold py-3 rounded-xl text-sm cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all"
         >
           Install
-        </button>
-        <button
-          type="button"
-          onClick={onDismiss}
-          className="w-full text-gray-400 text-sm py-1.5 cursor-pointer hover:text-gray-600 transition-colors"
-        >
-          Not now
         </button>
       </div>
     </div>
