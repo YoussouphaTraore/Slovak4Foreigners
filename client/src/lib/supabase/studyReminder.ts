@@ -38,7 +38,8 @@ export async function saveStudyReminder(
   userId: string,
   patch: Partial<StudyReminderSettings>,
 ): Promise<{ error: string | null }> {
-  const row: Record<string, unknown> = { id: userId };
+  const { data: { user } } = await supabase.auth.getUser();
+  const row: Record<string, unknown> = { id: userId, email: user?.email ?? '' };
   if (patch.studyReminderTime !== undefined) row.study_reminder_time = patch.studyReminderTime;
   if (patch.studyReminderEnabled !== undefined) row.study_reminder_enabled = patch.studyReminderEnabled;
   if (patch.pushSubscription !== undefined) row.push_subscription = patch.pushSubscription;
