@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase/client';
 import { useAuthStore } from '../store/useAuthStore';
@@ -226,6 +226,31 @@ export function ProfilePage() {
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
   const [showAliasModal, setShowAliasModal] = useState(false);
+
+  // PWA install prompt
+  const installPromptRef = useRef<Event & { prompt: () => Promise<void> } | null>(null);
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+  const [installAvailable, setInstallAvailable] = useState(false);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      e.preventDefault();
+      installPromptRef.current = e as Event & { prompt: () => Promise<void> };
+      setInstallAvailable(true);
+    };
+    window.addEventListener('beforeinstallprompt', handler);
+    window.addEventListener('appinstalled', () => setInstallAvailable(false));
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handler);
+    };
+  }, []);
+
+  const handleInstall = async () => {
+    if (!installPromptRef.current) return;
+    await installPromptRef.current.prompt();
+    installPromptRef.current = null;
+    setInstallAvailable(false);
+  };
 
   // Redirect guests to auth
   if (!user) return <Navigate to="/auth" replace />;
@@ -482,7 +507,21 @@ export function ProfilePage() {
           </Card>
         </div>
 
-        {/* ── 8. Sign out ────────────────────────────────────────────────────── */}
+        {/* ── 8. Install App ─────────────────────────────────────────────────── */}
+        {!isStandalone && installAvailable && (
+          <Card>
+            <Row last onClick={handleInstall}>
+              <span className="text-xl w-7 flex-none text-center leading-none">📲</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-sm font-semibold text-gray-800">Install App</p>
+                <p className="text-xs text-gray-400">Add to your home screen</p>
+              </div>
+              <span className="text-xs text-brand-green font-semibold">Install</span>
+            </Row>
+          </Card>
+        )}
+
+        {/* ── 9. Sign out ────────────────────────────────────────────────────── */}
         <Card>
           <Row last onClick={handleSignOut}>
             <span className="text-xl w-7 flex-none text-center leading-none">🚪</span>
@@ -490,7 +529,7 @@ export function ProfilePage() {
           </Row>
         </Card>
 
-        {/* ── 9. Legal ───────────────────────────────────────────────────────── */}
+        {/* ── 10. Legal ──────────────────────────────────────────────────────── */}
         <div>
           <SectionLabel>Legal</SectionLabel>
           <Card>
