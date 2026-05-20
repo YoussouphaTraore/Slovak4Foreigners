@@ -9,6 +9,15 @@ const COOLDOWN_MS     = 10_000; // 10 seconds (testing) — change back to 24 * 
 
 let deferredPrompt: DeferredPrompt | null = null;
 
+export function isIOS(): boolean {
+  return /iP(ad|hone|od)/.test(navigator.userAgent);
+}
+
+export function isInStandaloneMode(): boolean {
+  if (window.matchMedia('(display-mode: standalone)').matches) return true;
+  return ('standalone' in navigator) && (navigator as any).standalone === true;
+}
+
 export function setDeferredPrompt(e: Event) {
   deferredPrompt = e as DeferredPrompt;
   window.dispatchEvent(new CustomEvent('pwa-prompt-available'));
@@ -22,7 +31,7 @@ export function canInstall(): boolean {
   if (!deferredPrompt) return false;
   try {
     if (localStorage.getItem(INSTALLED_KEY) === 'true') return false;
-    if (window.matchMedia('(display-mode: standalone)').matches) return false;
+    if (isInStandaloneMode()) return false;
   } catch { /* */ }
   return true;
 }
@@ -30,6 +39,17 @@ export function canInstall(): boolean {
 export function shouldAutoShow(): boolean {
   if (!canInstall()) return false;
   try {
+    const last = Number(localStorage.getItem(LAST_SHOWN_KEY) ?? '0');
+    return Date.now() - last >= COOLDOWN_MS;
+  } catch {
+    return true;
+  }
+}
+
+export function shouldShowIOSPrompt(): boolean {
+  if (!isIOS() || isInStandaloneMode()) return false;
+  try {
+    if (localStorage.getItem(INSTALLED_KEY) === 'true') return false;
     const last = Number(localStorage.getItem(LAST_SHOWN_KEY) ?? '0');
     return Date.now() - last >= COOLDOWN_MS;
   } catch {

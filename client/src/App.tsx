@@ -33,7 +33,7 @@ import { WeeklyWinnerModal } from './components/WeeklyWinnerModal';
 import { PwaInstallSheet } from './components/PwaInstallSheet';
 import {
   setDeferredPrompt, clearDeferredPrompt,
-  markInstalled, markShown, shouldAutoShow, triggerInstall,
+  markInstalled, markShown, shouldAutoShow, shouldShowIOSPrompt, isIOS, triggerInstall,
 } from './lib/pwaInstall';
 
 function DialogueSessionRoute() {
@@ -283,6 +283,7 @@ function AppShell() {
 
   // ── PWA install prompt ────────────────────────────────────────────────────────
   const [showInstallSheet, setShowInstallSheet] = useState(false);
+  const [isIOSInstall, setIsIOSInstall] = useState(false);
   const installTimerRef  = useRef<ReturnType<typeof setTimeout> | null>(null);
   const prevUserIdRef    = useRef<string | null | undefined>(undefined);
 
@@ -291,10 +292,24 @@ function AppShell() {
     installTimerRef.current = setTimeout(() => {
       if (shouldAutoShow()) {
         markShown();
+        setIsIOSInstall(false);
         setShowInstallSheet(true);
       }
     }, 10_000);
   }
+
+  // iOS: schedule the "Add to Home Screen" instructions sheet on mount
+  useEffect(() => {
+    if (!isIOS()) return;
+    const timer = setTimeout(() => {
+      if (shouldShowIOSPrompt()) {
+        markShown();
+        setIsIOSInstall(true);
+        setShowInstallSheet(true);
+      }
+    }, 10_000);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const handlePrompt = (e: Event) => {
@@ -327,16 +342,28 @@ function AppShell() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInitialized, userId]);
 
-  const handleInstallTap = async () => {
-    const outcome = await triggerInstall();
-    if (outcome === 'accepted') markInstalled();
-    else markShown(); // dismissed on native dialog — 24h cooldown
-    setShowInstallSheet(false);
+  // Open a blank window synchronously (inside the click handler) so popup blockers
+  // can't intervene, then navigate it to the PWA URL only once the user accepts.
+  // If dismissed, we close it — the user never sees a stale tab.
+  const handleInstallTap = () => {
+    const pwaUrl = window.location.origin + '/#/';
+    const newWin = window.open('', '_blank');
+    triggerInstall().then((outcome) => {
+      if (outcome === 'accepted') {
+        markInstalled();
+        if (newWin) newWin.location.href = pwaUrl;
+      } else {
+        markShown();
+        if (newWin) newWin.close();
+      }
+      setShowInstallSheet(false);
+    });
   };
 
   const handleInstallDismiss = () => {
     markShown();
     setShowInstallSheet(false);
+    setIsIOSInstall(false);
   };
 
   // ── Session tracking ─────────────────────────────────────────────────────────
@@ -415,7 +442,7 @@ function AppShell() {
       )}
       {showMagicBox && !weeklyWinner && <MagicBoxModal onClaim={handleMagicBoxClaim} />}
       {showInstallSheet && (
-        <PwaInstallSheet onInstall={handleInstallTap} onDismiss={handleInstallDismiss} />
+        <PwaInstallSheet isIOS={isIOSInstall} onInstall={handleInstallTap} onDismiss={handleInstallDismiss} />
       )}
       {magicBoxToast && (
         <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-gray-900 text-white text-sm font-semibold px-5 py-3 rounded-full shadow-xl whitespace-nowrap pointer-events-none">
