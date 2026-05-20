@@ -342,22 +342,11 @@ function AppShell() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInitialized, userId]);
 
-  // Open a blank window synchronously (inside the click handler) so popup blockers
-  // can't intervene, then navigate it to the PWA URL only once the user accepts.
-  // If dismissed, we close it — the user never sees a stale tab.
-  const handleInstallTap = () => {
-    const pwaUrl = window.location.origin + '/#/';
-    const newWin = window.open('', '_blank');
-    triggerInstall().then((outcome) => {
-      if (outcome === 'accepted') {
-        markInstalled();
-        if (newWin) newWin.location.href = pwaUrl;
-      } else {
-        markShown();
-        if (newWin) newWin.close();
-      }
-      setShowInstallSheet(false);
-    });
+  const handleInstallTap = async () => {
+    const outcome = await triggerInstall();
+    if (outcome === 'accepted') markInstalled();
+    else markShown();
+    setShowInstallSheet(false);
   };
 
   const handleInstallDismiss = () => {
