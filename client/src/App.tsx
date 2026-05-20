@@ -30,6 +30,11 @@ import { startSession, heartbeat, endSession } from './lib/supabase/sessionTrack
 import { runMagicBoxCheck, claimMagicBox } from './lib/supabase/magicBox';
 import { MagicBoxModal } from './components/MagicBoxModal';
 import { WeeklyWinnerModal } from './components/WeeklyWinnerModal';
+import { PwaInstallSheet } from './components/PwaInstallSheet';
+import {
+  setDeferredPrompt, clearDeferredPrompt,
+  markInstalled, markShown, shouldAutoShow, triggerInstall,
+} from './lib/pwaInstall';
 
 function DialogueSessionRoute() {
   const { id } = useParams<{ id: string }>();
@@ -276,6 +281,64 @@ function AppShell() {
     setTimeout(() => setMagicBoxToast(null), 4000);
   }
 
+  // ── PWA install prompt ────────────────────────────────────────────────────────
+  const [showInstallSheet, setShowInstallSheet] = useState(false);
+  const installTimerRef  = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const prevUserIdRef    = useRef<string | null | undefined>(undefined);
+
+  function scheduleInstall() {
+    if (installTimerRef.current) clearTimeout(installTimerRef.current);
+    installTimerRef.current = setTimeout(() => {
+      if (shouldAutoShow()) {
+        markShown();
+        setShowInstallSheet(true);
+      }
+    }, 10_000);
+  }
+
+  useEffect(() => {
+    const handlePrompt = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+      scheduleInstall();
+    };
+    const handleInstalled = () => {
+      markInstalled();
+      clearDeferredPrompt();
+      setShowInstallSheet(false);
+    };
+    window.addEventListener('beforeinstallprompt', handlePrompt);
+    window.addEventListener('appinstalled', handleInstalled);
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handlePrompt);
+      window.removeEventListener('appinstalled', handleInstalled);
+      if (installTimerRef.current) clearTimeout(installTimerRef.current);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Trigger on new sign-in (userId: null → value)
+  useEffect(() => {
+    if (!isInitialized) return;
+    const prev = prevUserIdRef.current;
+    prevUserIdRef.current = userId ?? null;
+    if (prev === undefined) return; // first render
+    if (!prev && userId) scheduleInstall();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isInitialized, userId]);
+
+  const handleInstallTap = async () => {
+    const outcome = await triggerInstall();
+    if (outcome === 'accepted') markInstalled();
+    else markShown(); // dismissed on native dialog — 24h cooldown
+    setShowInstallSheet(false);
+  };
+
+  const handleInstallDismiss = () => {
+    markShown();
+    setShowInstallSheet(false);
+  };
+
   // ── Session tracking ─────────────────────────────────────────────────────────
   const sessionIdRef = useRef<string | null>(null);
   const sessionUserIdRef = useRef<string | null | undefined>(undefined);
@@ -351,6 +414,9 @@ function AppShell() {
         />
       )}
       {showMagicBox && !weeklyWinner && <MagicBoxModal onClaim={handleMagicBoxClaim} />}
+      {showInstallSheet && (
+        <PwaInstallSheet onInstall={handleInstallTap} onDismiss={handleInstallDismiss} />
+      )}
       {magicBoxToast && (
         <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-50 bg-gray-900 text-white text-sm font-semibold px-5 py-3 rounded-full shadow-xl whitespace-nowrap pointer-events-none">
           {magicBoxToast}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { supabase } from '../lib/supabase/client';
 import { useAuthStore } from '../store/useAuthStore';
@@ -8,6 +8,7 @@ import { foreignPoliceLessons } from '../data/foreigner-exclusive/foreign-police
 import { BASE_ALIASES } from '../data/aliases';
 import { getAvatarUrl, changeAlias } from '../lib/supabase/aliasUtils';
 import { BottomNav } from '../components/ui/BottomNav';
+import { canInstall, triggerInstall, markInstalled, markShown } from '../lib/pwaInstall';
 
 // ── Stage metadata ─────────────────────────────────────────────────────────────
 
@@ -227,28 +228,24 @@ export function ProfilePage() {
   const [deleteError, setDeleteError] = useState<string | null>(null);
   const [showAliasModal, setShowAliasModal] = useState(false);
 
-  // PWA install prompt
-  const installPromptRef = useRef<Event & { prompt: () => Promise<void> } | null>(null);
+  // PWA install prompt — reads from shared module (captured in AppShell)
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
-  const [installAvailable, setInstallAvailable] = useState(false);
+  const [installAvailable, setInstallAvailable] = useState(() => canInstall());
 
   useEffect(() => {
-    const handler = (e: Event) => {
-      e.preventDefault();
-      installPromptRef.current = e as Event & { prompt: () => Promise<void> };
-      setInstallAvailable(true);
-    };
-    window.addEventListener('beforeinstallprompt', handler);
-    window.addEventListener('appinstalled', () => setInstallAvailable(false));
+    const update = () => setInstallAvailable(canInstall());
+    window.addEventListener('pwa-prompt-available', update);
+    window.addEventListener('appinstalled', update);
     return () => {
-      window.removeEventListener('beforeinstallprompt', handler);
+      window.removeEventListener('pwa-prompt-available', update);
+      window.removeEventListener('appinstalled', update);
     };
   }, []);
 
   const handleInstall = async () => {
-    if (!installPromptRef.current) return;
-    await installPromptRef.current.prompt();
-    installPromptRef.current = null;
+    const outcome = await triggerInstall();
+    if (outcome === 'accepted') markInstalled();
+    else markShown();
     setInstallAvailable(false);
   };
 
