@@ -10,7 +10,7 @@ interface Props {
 const TIME_SLOTS: { label: string; value: string }[] = (() => {
   const slots: { label: string; value: string }[] = [];
   for (let h = 6; h <= 23; h++) {
-    for (let m = 0; m < 60; m += 30) {
+    for (let m = 0; m < 60; m += 2) {
       if (h === 23 && m > 0) break;
       const period = h < 12 ? 'AM' : 'PM';
       const hour12 = h === 0 ? 12 : h > 12 ? h - 12 : h;
