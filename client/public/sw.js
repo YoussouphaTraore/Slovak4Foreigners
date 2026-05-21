@@ -23,21 +23,3 @@ self.addEventListener('fetch', (event) => {
     fetch(event.request).catch(() => caches.match(event.request))
   );
 });
-
-// Push notification handler
-self.addEventListener('push', (event) => {
-  const data = event.data?.json() ?? {};
-  event.waitUntil(
-    self.registration.showNotification(data.title ?? 'Slovak for Foreigners', {
-      body: data.body ?? 'Time to practice your Slovak! 🐌',
-      icon: '/icons/icon-192.png',
-      badge: '/icons/icon-96.png',
-      data: { url: data.url ?? '/#/' },
-    })
-  );
-});
-
-self.addEventListener('notificationclick', (event) => {
-  event.notification.close();
-  event.waitUntil(clients.openWindow(event.notification.data.url));
-});

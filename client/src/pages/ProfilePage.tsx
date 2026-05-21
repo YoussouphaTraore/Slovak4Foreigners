@@ -9,9 +9,6 @@ import { BASE_ALIASES } from '../data/aliases';
 import { getAvatarUrl, changeAlias } from '../lib/supabase/aliasUtils';
 import { BottomNav } from '../components/ui/BottomNav';
 import { canInstall, triggerInstall, markInstalled, markShown } from '../lib/pwaInstall';
-import { loadStudyReminder, saveStudyReminder, formatReminderTime } from '../lib/supabase/studyReminder';
-import type { StudyReminderSettings } from '../lib/supabase/studyReminder';
-import { StudyTimePickerModal } from '../components/StudyTimePickerModal';
 
 // ── Stage metadata ─────────────────────────────────────────────────────────────
 
@@ -230,9 +227,6 @@ export function ProfilePage() {
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
   const [showAliasModal, setShowAliasModal] = useState(false);
-  const [showStudyPicker, setShowStudyPicker] = useState(false);
-  const [studyReminder, setStudyReminder] = useState<StudyReminderSettings | null>(null);
-  const [studyReminderSaving, setStudyReminderSaving] = useState(false);
 
   // PWA install prompt — reads from shared module (captured in AppShell)
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -247,11 +241,6 @@ export function ProfilePage() {
       window.removeEventListener('appinstalled', update);
     };
   }, []);
-
-  useEffect(() => {
-    if (!user?.id) return;
-    loadStudyReminder(user.id).then(setStudyReminder);
-  }, [user?.id]);
 
   const handleInstall = async () => {
     const outcome = await triggerInstall();
@@ -317,24 +306,6 @@ export function ProfilePage() {
   const handleSignOut = async () => {
     await signOut();
     navigate('/');
-  };
-
-  const handleStudyReminderToggle = async (val: boolean) => {
-    if (!user?.id) return;
-    // Turning on with no subscription → open picker to set up from scratch
-    if (val && !studyReminder?.pushSubscription) {
-      setShowStudyPicker(true);
-      return;
-    }
-    setStudyReminderSaving(true);
-    await saveStudyReminder(user.id, { studyReminderEnabled: val });
-    setStudyReminder((prev) => prev ? { ...prev, studyReminderEnabled: val } : null);
-    setStudyReminderSaving(false);
-  };
-
-  const handleStudyPickerClose = () => {
-    setShowStudyPicker(false);
-    if (user?.id) loadStudyReminder(user.id).then(setStudyReminder);
   };
 
   const handleDeleteConfirmed = async () => {
@@ -533,44 +504,7 @@ export function ProfilePage() {
           </Card>
         </div>
 
-        {/* ── 8. Study Reminder ──────────────────────────────────────────────── */}
-        {(() => {
-          const notifDenied = 'Notification' in window && Notification.permission === 'denied';
-          return (
-            <div>
-              <SectionLabel>Study Reminder</SectionLabel>
-              <Card>
-                <Row>
-                  <span className="text-xl w-7 flex-none text-center leading-none">🔔</span>
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm font-semibold text-gray-800">Daily reminder</p>
-                    <p className="text-xs text-gray-400 mt-0.5">
-                      {studyReminder?.studyReminderTime
-                        ? formatReminderTime(studyReminder.studyReminderTime)
-                        : 'Not set'}
-                    </p>
-                  </div>
-                  <Toggle
-                    on={studyReminder?.studyReminderEnabled ?? false}
-                    onChange={studyReminderSaving ? () => {} : handleStudyReminderToggle}
-                  />
-                </Row>
-                <Row last onClick={() => setShowStudyPicker(true)}>
-                  <span className="text-xl w-7 flex-none text-center leading-none">🕐</span>
-                  <span className="text-sm text-gray-700 flex-1">Change time</span>
-                  <span className="text-xs text-gray-400">›</span>
-                </Row>
-              </Card>
-              {notifDenied && (
-                <p className="text-xs text-red-400 mt-2 px-1">
-                  Notifications are blocked. Enable them in your browser settings.
-                </p>
-              )}
-            </div>
-          );
-        })()}
-
-        {/* ── 9. Install App ─────────────────────────────────────────────────── */}
+        {/* ── 8. Install App ─────────────────────────────────────────────────── */}
         {!isStandalone && installAvailable && (
           <Card>
             <Row last onClick={handleInstall}>
@@ -648,12 +582,6 @@ export function ProfilePage() {
           userId={user.id}
           onClose={() => setShowAliasModal(false)}
           onChanged={(newAlias) => { setAlias(newAlias); setShowAliasModal(false); }}
-        />
-      )}
-      {showStudyPicker && user && (
-        <StudyTimePickerModal
-          userId={user.id}
-          onClose={handleStudyPickerClose}
         />
       )}
     </div>
