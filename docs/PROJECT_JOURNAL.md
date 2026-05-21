@@ -1255,6 +1255,82 @@ No code changes — fix was entirely in Supabase dashboard.
 
 ---
 
+### Phase 26 — PWA Install Sheet Refinements
+
+**Date:** 2026-05-20
+**Scope:** iOS-aware install prompts + improved dismiss UX
+
+**`client/src/lib/pwaInstall.ts`** — three new helpers:
+- `isIOS()` — detects iPhone/iPad/iPod via `navigator.userAgent`
+- `isInStandaloneMode()` — checks `(display-mode: standalone)` media query + `navigator.standalone` (iOS Safari)
+- `shouldShowIOSPrompt()` — returns true if: iOS device + not in standalone mode + not previously installed + 24h cooldown elapsed
+
+**`PwaInstallSheet.tsx`** — UX overhaul:
+- Removed "Not now" button; dismissal now requires **3 taps on the backdrop** (tap counter tracked via `useRef`)
+- Added `isIOS?: boolean` prop
+- **iOS flow:** Install button → sets `showIOSSteps = true` → displays step-by-step "Add to Home Screen" instructions with visual cues → "Got it" dismisses
+- **Android/Chrome flow:** Install button → calls `onInstall()` (deferred prompt), unchanged
+
+**`App.tsx`:**
+- Added `isIOSInstall` boolean state
+- New `useEffect` on mount: if `isIOS() && shouldShowIOSPrompt()`, schedules the iOS sheet after 10s
+- `handleInstallDismiss` resets both `showInstallSheet` and `isIOSInstall`
+
+---
+
+### Phase 27 — Study Reminder System (Attempted & Removed)
+
+**Date:** 2026-05-20 → 2026-05-21
+**Scope:** Full Web Push notification system — built, then abandoned and cleaned up
+
+#### What was built
+
+**VAPID keys** generated via `npx web-push generate-vapid-keys`; stored in gitignored `.env.local` (server-side) and `client/.env` (frontend public key).
+
+**`client/src/lib/supabase/studyReminder.ts`** (deleted):
+- `StudyReminderSettings` interface: `studyReminderTime`, `studyReminderEnabled`, `pushSubscription`, `timezone`
+- `loadStudyReminder(userId)` — reads from `user_profiles`
+- `saveStudyReminder(userId, patch)` — upserts; must include `email` due to NOT NULL constraint
+- `formatReminderTime(value)` — converts `"HH:MM"` to `"H:MM AM/PM"`
+
+**`client/src/components/StudyTimePickerModal.tsx`** (deleted):
+- Time slot picker (30-min increments, 6 AM – 11 PM)
+- On confirm: requests `Notification.requestPermission()`, subscribes to push via `pushManager.subscribe()`, saves to Supabase including IANA timezone (`Intl.DateTimeFormat().resolvedOptions().timeZone`)
+
+**`supabase/functions/send-study-reminders/index.ts`** (deleted):
+- Deno Edge Function using `npm:web-push`
+- Fetched all enabled users, converted UTC target time to each user's stored timezone via `Intl.DateTimeFormat`, sent push notifications to matching users
+- Intended to run every 5 minutes via pg_cron
+
+**`user_profiles` columns added** (must be dropped manually — see SQL below):
+`study_reminder_time`, `study_reminder_enabled`, `push_subscription`, `timezone`
+
+**`ProfilePage.tsx`** — new "Study Reminder" section with enable toggle and "Change time" row.
+
+**`sw.js`** — added `push` and `notificationclick` event handlers.
+
+#### Why it was removed
+
+Web Push delivery was unreliable across the target browsers (especially iOS Safari). The timezone-aware delivery logic was complex, and the feature added significant infra surface area (VAPID keys, Edge Function, pg_cron job) for uncertain value. Decision: abandon entirely.
+
+#### Cleanup (commit `8cee32b`)
+
+- **Deleted:** `StudyTimePickerModal.tsx`, `studyReminder.ts`, `send-study-reminders/` edge function
+- **Cleaned:** `App.tsx` (removed `showStudyPicker` state + render), `ProfilePage.tsx` (removed Study Reminder section + all imports), `sw.js` (removed push handlers), `client/.env` (removed `VITE_VAPID_PUBLIC_KEY`)
+- **Manual DB cleanup** (run in Supabase SQL editor):
+  ```sql
+  alter table public.user_profiles
+    drop column if exists study_reminder_time,
+    drop column if exists study_reminder_enabled,
+    drop column if exists push_subscription,
+    drop column if exists timezone;
+
+  select cron.unschedule('send-study-reminders');
+  ```
+- **Vercel:** remove `VITE_VAPID_PUBLIC_KEY` from environment variables manually
+
+---
+
 ### Phase 25 — Database Maintenance
 
 **Date:** 2026-05-19
