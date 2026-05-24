@@ -439,7 +439,7 @@ export function ProfilePage() {
               .map((l, i, arr) => {
                 const hasCard = unlockedReferenceCards.includes(l.unlocksReferenceCard);
                 return (
-                  <Row key={l.id} last={i === arr.length - 1} onClick={hasCard ? () => navigate('/foreigner-exclusive/foreign-police') : undefined}>
+                  <Row key={l.id} last={i === arr.length - 1} onClick={hasCard ? () => navigate(`/foreigner-exclusive/lesson/${l.id}?card=1`) : undefined}>
                     <span className="text-xl w-7 flex-none text-center leading-none">
                       {hasCard ? '📋' : '🔒'}
                     </span>

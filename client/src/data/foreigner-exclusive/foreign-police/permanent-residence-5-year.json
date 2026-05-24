@@ -1,0 +1,737 @@
+{
+  "id": "life-permanent-residence-5-year",
+  "stageId": "life-in-slovakia",
+  "stageName": "Foreigner Exclusive",
+  "category": "foreign-police",
+  "categoryName": "Foreign Police",
+  "title": "Permanent Residence (5 Years)",
+  "titleSlovak": "Trvalý pobyt na päť rokov",
+  "description": "Who qualifies, what documents you need, and what to do after approval",
+  "icon": "🏠",
+  "xpReward": 15,
+  "isPremium": false,
+  "coming_soon": false,
+  "unlocksReferenceCard": "permanent-residence-5-year-card",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Key Terms",
+      "subtitle": "These are the terms you will see on forms and hear at the Foreign Police. Learn them.",
+      "rows": [
+        { "label": "The permit", "slovak": "Trvalý pobyt na päť rokov", "english": "Permanent residence for five years" },
+        { "label": "The application", "slovak": "Žiadosť", "english": "Application form" },
+        { "label": "Your passport", "slovak": "Cestovný doklad", "english": "Travel document / Passport" },
+        { "label": "Clean record", "slovak": "Potvrdenie o bezúhonnosti", "english": "Criminal record check" },
+        { "label": "Where you live", "slovak": "Doklad o ubytovaní", "english": "Proof of accommodation" },
+        { "label": "Why you qualify", "slovak": "Doklad o účele pobytu", "english": "Proof of purpose of stay" },
+        { "label": "Health check", "slovak": "Lekársky posudok", "english": "Medical certificate" },
+        { "label": "Health insurance", "slovak": "Zdravotné poistenie", "english": "Health insurance" },
+        { "label": "Decision deadline", "slovak": "Do 90 dní", "english": "Within 90 days" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Trvalý pobyt", "english": "Permanent residence" },
+        { "slovak": "Žiadosť", "english": "Application form" },
+        { "slovak": "Potvrdenie o bezúhonnosti", "english": "Criminal record check" },
+        { "slovak": "Doklad o ubytovaní", "english": "Proof of accommodation" },
+        { "slovak": "Lekársky posudok", "english": "Medical certificate" },
+        { "slovak": "Zdravotné poistenie", "english": "Health insurance" }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Trvalý pobyt", "english": "Permanent residence" },
+        { "slovak": "Žiadosť", "english": "Application form" },
+        { "slovak": "Potvrdenie o bezúhonnosti", "english": "Criminal record check" },
+        { "slovak": "Doklad o ubytovaní", "english": "Proof of accommodation" },
+        { "slovak": "Lekársky posudok", "english": "Medical certificate" },
+        { "slovak": "Zdravotné poistenie", "english": "Health insurance" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Trvalý pobyt na päť rokov", "english": "Permanent residence for five years" },
+        { "slovak": "Potvrdenie o bezúhonnosti", "english": "Criminal record check" },
+        { "slovak": "Doklad o ubytovaní", "english": "Proof of accommodation" },
+        { "slovak": "Lekársky posudok", "english": "Medical certificate" },
+        { "slovak": "Zdravotné poistenie", "english": "Health insurance" },
+        { "slovak": "Doklad o účele pobytu", "english": "Proof of purpose of stay" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are a non-EU citizen married to a Slovak citizen who has permanent residence in Slovakia. Can you apply for 5-year permanent residence?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "No — you must first have temporary residence for 5 years",
+            "Yes — being married to a Slovak citizen with permanent residence is one of the qualifying conditions",
+            "Yes — but only after 2 years of marriage",
+            "No — only EU citizens can apply for permanent residence"
+          ],
+          "answer": "Yes — being married to a Slovak citizen with permanent residence is one of the qualifying conditions",
+          "answerMeaning": "Marriage to a Slovak citizen who holds permanent residence in Slovakia is a direct qualifying condition for 5-year permanent residence. You do not need to wait 5 years — this is a separate faster route."
+        },
+        {
+          "situation": "You qualify for 5-year permanent residence. You are currently in Slovakia on a valid temporary residence permit. Where do you submit your application?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "At the Slovak embassy in your home country only",
+            "At any police station in Slovakia",
+            "At the Foreign Police in Slovakia — because you already hold a valid residence permit",
+            "By post to the Ministry of Interior"
+          ],
+          "answer": "At the Foreign Police in Slovakia — because you already hold a valid residence permit",
+          "answerMeaning": "The default is to apply at the Slovak embassy abroad. However, if you are already legally present in Slovakia on a valid permit, tolerated stay, or valid visa, you can apply directly at the Foreign Police in Slovakia."
+        },
+        {
+          "situation": "You submit your application but one document is missing. What happens?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "The officer accepts it and you bring the missing document later",
+            "The application is not accepted — you receive a written list of missing documents",
+            "Your application is automatically rejected",
+            "You have 7 days to bring the missing document"
+          ],
+          "answer": "The application is not accepted — you receive a written list of missing documents",
+          "answerMeaning": "An incomplete application is not accepted at all. The Foreign Police or embassy will give you a written list of exactly which documents are missing so you can prepare a complete application."
+        },
+        {
+          "situation": "Your criminal record was issued 95 days ago. Can you use it for your application?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — 95 days is close enough",
+            "Yes — criminal records have no expiry for residence applications",
+            "No — documents cannot be older than 90 days",
+            "Only if it has an apostille"
+          ],
+          "answer": "No — documents cannot be older than 90 days",
+          "answerMeaning": "Documents attached to your application cannot be older than 90 days — the only exception is civil registry documents such as a marriage certificate. A criminal record issued 95 days ago will be rejected."
+        },
+        {
+          "situation": "You lived in Germany for 8 months two years ago. Which criminal record(s) do you need for your Slovak application?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Only from your home country",
+            "Only from Slovakia",
+            "From your home country AND from Germany",
+            "From your home country, Germany, and Slovakia"
+          ],
+          "answer": "From your home country AND from Germany",
+          "answerMeaning": "You need a criminal record from your home country AND from any country where you spent more than 90 days during 6 consecutive months in the last 3 years. 8 months in Germany qualifies — you need both."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "VOCABULARY_TABLE",
+      "title": "At the Foreign Police — Key Phrases",
+      "subtitle": "What you will say and hear at your permanent residence appointment.",
+      "rows": [
+        { "label": "Opening", "slovak": "Chcel/a by som požiadať o trvalý pobyt na päť rokov.", "english": "I would like to apply for 5-year permanent residence." },
+        { "label": "Reason", "slovak": "Som manžel/manželka občana SR.", "english": "I am the spouse of a Slovak citizen." },
+        { "label": "Appointment", "slovak": "Mám stretnutie o desiatej.", "english": "I have an appointment at ten o'clock." },
+        { "label": "Missing doc", "slovak": "Ktoré dokumenty chýbajú?", "english": "Which documents are missing?" },
+        { "label": "Timeline", "slovak": "Kedy bude rozhodnutie hotové?", "english": "When will the decision be ready?" },
+        { "label": "Not clear", "slovak": "Nerozumiem. Môžete písať?", "english": "I don't understand. Can you write it down?" },
+        { "label": "Apostille", "slovak": "Dokument musí byť apostilovaný.", "english": "The document must be apostilled." },
+        { "label": "Translation", "slovak": "Potrebujeme úradný preklad.", "english": "We need a certified translation." }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Chcel by som požiadať o trvalý pobyt na päť rokov.", "english": "I would like to apply for 5-year permanent residence." },
+        { "slovak": "Som manžel občana SR.", "english": "I am the spouse of a Slovak citizen." },
+        { "slovak": "Ktoré dokumenty chýbajú?", "english": "Which documents are missing?" },
+        { "slovak": "Kedy bude rozhodnutie hotové?", "english": "When will the decision be ready?" },
+        { "slovak": "Dokument musí byť apostilovaný.", "english": "The document must be apostilled." }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Chcel by som požiadať o trvalý pobyt na ___ rokov.",
+          "translation": "I would like to apply for permanent residence for ___ years.",
+          "choices": ["tri", "štyri", "päť", "desať"],
+          "answer": "päť"
+        },
+        {
+          "sentence": "Doklady k žiadosti nesmú byť staršie ako ___ dní.",
+          "translation": "Documents attached to the application cannot be older than ___ days.",
+          "choices": ["30", "60", "90", "180"],
+          "answer": "90"
+        },
+        {
+          "sentence": "Do ___ pracovných dní od prevzatia dokladu o pobyte musí cudzinec uzavrieť zdravotné poistenie.",
+          "translation": "Within ___ working days of receiving the residence document, the foreigner must take out health insurance.",
+          "choices": ["3", "5", "7", "10"],
+          "answer": "3"
+        },
+        {
+          "sentence": "Lekársky posudok musí byť predložený do ___ dní od prevzatia dokladu o pobyte.",
+          "translation": "The medical certificate must be submitted within ___ days of receiving the residence document.",
+          "choices": ["7", "14", "30", "60"],
+          "answer": "30"
+        },
+        {
+          "sentence": "Policajný útvar rozhodne o žiadosti spravidla do ___ dní.",
+          "translation": "The police unit decides on the application usually within ___ days.",
+          "choices": ["30", "60", "90", "180"],
+          "answer": "90"
+        },
+        {
+          "sentence": "Po ___ rokoch s trvalým pobytom na päť rokov možno požiadať o trvalý pobyt na neobmedzený čas.",
+          "translation": "After ___ years with 5-year permanent residence one can apply for unlimited permanent residence.",
+          "choices": ["dva", "tri", "štyri", "päť"],
+          "answer": "štyri"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your application was submitted with all documents. You are still waiting for a decision after 60 days. Can you stay in Slovakia?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "No — you must leave and re-enter",
+            "Yes — a complete application allows you to stay legally until a decision is made",
+            "Only if you have a valid temporary residence at the same time",
+            "Yes — but only for 30 more days"
+          ],
+          "answer": "Yes — a complete application allows you to stay legally until a decision is made",
+          "answerMeaning": "Once you submit a complete application, you are legally authorised to remain in Slovakia until the decision is made — even if your previous permit expires during that time."
+        },
+        {
+          "situation": "You receive your 5-year permanent residence card. What must you do within 3 working days?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Submit your medical certificate",
+            "Register at the local council",
+            "Take out health insurance",
+            "Return your previous residence permit"
+          ],
+          "answer": "Take out health insurance",
+          "answerMeaning": "Within 3 working days of receiving your residence document you must take out health insurance (zdravotné poistenie). This is a legal obligation — do not delay."
+        },
+        {
+          "situation": "You received your 5-year permanent residence card 35 days ago. You have not yet submitted your medical certificate. What is your situation?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "You are on time — the deadline is 60 days",
+            "You are late — the deadline was 30 days",
+            "There is no deadline for the medical certificate",
+            "You are fine — the deadline only applies to new arrivals"
+          ],
+          "answer": "You are late — the deadline was 30 days",
+          "answerMeaning": "The medical certificate must be submitted to the Foreign Police within 30 days of receiving your residence document. You can request a 60-day extension — but only before the deadline passes."
+        },
+        {
+          "situation": "You need to get the medical certificate. You go to your regular GP. Is this correct?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — any licensed doctor in Slovakia can issue it",
+            "No — it must be issued by an approved clinic on the official list",
+            "Yes — but only if your GP is registered with the Foreign Police",
+            "No — you must go to a state hospital only"
+          ],
+          "answer": "No — it must be issued by an approved clinic on the official list",
+          "answerMeaning": "The medical certificate confirming you have no public health threatening disease can only be issued by approved clinics listed by the Ministry of Interior. Your regular GP cannot issue this document. Check the reference card for approved clinics in your region."
+        },
+        {
+          "situation": "Your accommodation document was issued by a friend who owns the flat where you live. What form must it take?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "An email from your friend is enough",
+            "A signed statement from your friend confirming they provide accommodation",
+            "A notarised statement from your friend AND proof of their ownership of the property",
+            "Only a formal lease contract is accepted"
+          ],
+          "answer": "A notarised statement from your friend AND proof of their ownership of the property",
+          "answerMeaning": "If someone else owns the flat and provides accommodation, they must give a written statement (čestné vyhlásenie) AND provide proof that they are entitled to use the property. The document must cover at least 6 months."
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "WHATSAPP_DIALOGUE",
+      "contact": {
+        "name": "Martina 🇸🇰",
+        "initials": "M",
+        "role": "Slovak spouse",
+        "status": "online"
+      },
+      "context": "You are applying for 5-year permanent residence as the spouse of a Slovak citizen. You need Martina (your Slovak wife) to prepare her documents confirming her permanent residence in Slovakia. You are texting her.",
+      "outcomes": {
+        "A": {
+          "id": "outcome-confirmed",
+          "title": "Documents sorted! ✅",
+          "description": "Martina knows exactly what to prepare and will have it ready before your appointment.",
+          "xpBonus": 2
+        },
+        "B": {
+          "id": "outcome-clarified",
+          "title": "You explained it clearly! ✅",
+          "description": "You clarified that her ID card is the key document the Foreign Police need.",
+          "xpBonus": 3
+        }
+      },
+      "nodes": [
+        {
+          "id": "node-1",
+          "speaker": "user",
+          "prompt": "Start the conversation. How do you greet Martina?",
+          "wrongAnswerResponse": "Prepáčte... nerozumiem.",
+          "wrongAnswerTranslation": "Sorry... I don't understand.",
+          "choices": [
+            {
+              "id": "choice-1a",
+              "text": "Ahoj Martina!",
+              "translation": "Hi Martina!",
+              "isCorrect": true,
+              "nextNode": "node-2",
+              "usesVocab": ["Ahoj"]
+            },
+            {
+              "id": "choice-1b",
+              "text": "Dobrý deň Martina.",
+              "translation": "Good day Martina.",
+              "isCorrect": true,
+              "nextNode": "node-2",
+              "usesVocab": ["Dobrý deň"]
+            },
+            {
+              "id": "choice-1c",
+              "text": "Hej.",
+              "translation": "Hey.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-2",
+          "speaker": "martina",
+          "text": "Ahoj! Čo sa deje?",
+          "translation": "Hi! What's going on?",
+          "wrongAnswerResponse": "Hmm... o čom hovoríš?",
+          "wrongAnswerTranslation": "Hmm... what are you talking about?",
+          "choices": [
+            {
+              "id": "choice-2a",
+              "text": "Žiadam o trvalý pobyt. Potrebujem tvoje doklady.",
+              "translation": "I am applying for permanent residence. I need your documents.",
+              "isCorrect": true,
+              "nextNode": "node-3",
+              "usesVocab": ["trvalý pobyt", "doklady"]
+            },
+            {
+              "id": "choice-2b",
+              "text": "Mám stretnutie na cudzineckej polícii.",
+              "translation": "I have an appointment at the Foreign Police.",
+              "isCorrect": true,
+              "nextNode": "node-3",
+              "usesVocab": ["cudzinecká polícia"]
+            },
+            {
+              "id": "choice-2c",
+              "text": "Nič. Len sa pýtam.",
+              "translation": "Nothing. Just asking.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-3",
+          "speaker": "martina",
+          "text": "Jasné! Aké doklady potrebuješ odo mňa?",
+          "translation": "Of course! What documents do you need from me?",
+          "wrongAnswerResponse": "To nie je doklad... čo presne potrebuješ?",
+          "wrongAnswerTranslation": "That's not a document... what exactly do you need?",
+          "choices": [
+            {
+              "id": "choice-3a",
+              "text": "Potvrdenie o trvalom pobyte na Slovensku.",
+              "translation": "Confirmation of permanent residence in Slovakia.",
+              "isCorrect": true,
+              "nextNode": "node-4a",
+              "usesVocab": ["potvrdenie o trvalom pobyte"]
+            },
+            {
+              "id": "choice-3b",
+              "text": "Platný občiansky preukaz stačí.",
+              "translation": "A valid ID card is enough.",
+              "isCorrect": true,
+              "nextNode": "node-4b",
+              "usesVocab": ["občiansky preukaz"]
+            },
+            {
+              "id": "choice-3c",
+              "text": "Tvoj pas.",
+              "translation": "Your passport.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-4a",
+          "speaker": "martina",
+          "text": "Mám platný občiansky preukaz. Stačí to?",
+          "translation": "I have a valid ID card. Is that enough?",
+          "wrongAnswerResponse": "Aha... teda áno alebo nie?",
+          "wrongAnswerTranslation": "Ah... so yes or no?",
+          "choices": [
+            {
+              "id": "choice-4a-a",
+              "text": "Áno! Občiansky preukaz preukazuje tvoj trvalý pobyt.",
+              "translation": "Yes! The ID card proves your permanent residence.",
+              "isCorrect": true,
+              "nextNode": "node-5",
+              "usesVocab": ["občiansky preukaz", "trvalý pobyt"]
+            },
+            {
+              "id": "choice-4a-b",
+              "text": "Nie, potrebujem úradný výpis z evidencie obyvateľov.",
+              "translation": "No, I need an official extract from the population register.",
+              "isCorrect": false,
+              "usesVocab": []
+            },
+            {
+              "id": "choice-4a-c",
+              "text": "Neviem.",
+              "translation": "I don't know.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-4b",
+          "speaker": "martina",
+          "text": "Super. Mám ho pri sebe. Kedy je stretnutie?",
+          "translation": "Great. I have it with me. When is the appointment?",
+          "wrongAnswerResponse": "Prepáčte... to nie je dátum.",
+          "wrongAnswerTranslation": "Sorry... that's not a date.",
+          "choices": [
+            {
+              "id": "choice-4b-a",
+              "text": "V piatok o deviatej.",
+              "translation": "On Friday at nine.",
+              "isCorrect": true,
+              "nextNode": "node-5",
+              "usesVocab": ["v piatok", "o deviatej"]
+            },
+            {
+              "id": "choice-4b-b",
+              "text": "O dva týždne.",
+              "translation": "In two weeks.",
+              "isCorrect": true,
+              "nextNode": "node-5",
+              "usesVocab": ["o dva týždne"]
+            },
+            {
+              "id": "choice-4b-c",
+              "text": "Neviem ešte.",
+              "translation": "I don't know yet.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-5",
+          "speaker": "martina",
+          "text": "Dobre. Musím ísť s tebou osobne?",
+          "translation": "Alright. Do I need to come with you in person?",
+          "wrongAnswerResponse": "Prepáčte... to nie je odpoveď.",
+          "wrongAnswerTranslation": "Sorry... that's not an answer.",
+          "choices": [
+            {
+              "id": "choice-5a",
+              "text": "Áno, prosím. Polícia ťa môže požiadať o overenie.",
+              "translation": "Yes please. The police may ask to verify with you.",
+              "isCorrect": true,
+              "nextNode": "node-6",
+              "usesVocab": ["polícia", "overenie"]
+            },
+            {
+              "id": "choice-5b",
+              "text": "Nie je to povinné, ale bolo by to dobré.",
+              "translation": "It is not mandatory but it would be good.",
+              "isCorrect": true,
+              "nextNode": "node-6",
+              "usesVocab": []
+            },
+            {
+              "id": "choice-5c",
+              "text": "Nie, vôbec nie je potrebná.",
+              "translation": "No, not needed at all.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-6",
+          "speaker": "martina",
+          "text": "Dobre, prídem s tebou. Veľa šťastia! 🤝",
+          "translation": "Alright, I will come with you. Good luck! 🤝",
+          "wrongAnswerResponse": "Prepáčte...",
+          "wrongAnswerTranslation": "Sorry...",
+          "choices": [
+            {
+              "id": "choice-6a",
+              "text": "Ďakujem veľmi pekne! Si najlepšia.",
+              "translation": "Thank you very much! You are the best.",
+              "isCorrect": true,
+              "nextNode": "node-end-A",
+              "usesVocab": ["Ďakujem"]
+            },
+            {
+              "id": "choice-6b",
+              "text": "Perfektné. Veľmi ti ďakujem.",
+              "translation": "Perfect. Thank you very much.",
+              "isCorrect": true,
+              "nextNode": "node-end-A",
+              "usesVocab": ["ďakujem"]
+            },
+            {
+              "id": "choice-6c",
+              "text": "Prečo ideš so mnou?",
+              "translation": "Why are you coming with me?",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-end-A",
+          "speaker": "martina",
+          "text": "Dovidenia! Dáme vedieť ako to dopadlo. 🏠",
+          "translation": "Goodbye! Let us know how it goes. 🏠",
+          "isEndNode": true,
+          "outcome": "A"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What document proves a Slovak citizen's permanent residence in Slovakia?",
+          "choices": ["Their passport", "Their valid ID card (občiansky preukaz)", "A bank statement", "A utility bill"],
+          "answer": "Their valid ID card (občiansky preukaz)",
+          "explanation": "The Slovak ID card (občiansky preukaz) contains the holder's permanent residence address and is accepted by the Foreign Police as proof. According to the MIC guidance, for marriage-based applications it is sufficient to present the spouse's valid ID card."
+        },
+        {
+          "question": "Does your Slovak spouse need to come to the Foreign Police appointment with you?",
+          "choices": [
+            "Yes — always legally required",
+            "No — never required",
+            "Not strictly required but recommended — the officer may want to verify",
+            "Only if you do not speak Slovak"
+          ],
+          "answer": "Not strictly required but recommended — the officer may want to verify",
+          "explanation": "The law does not require your spouse to attend, but having them present can help if the officer needs to verify details about your marriage or their residence. It is always better to come prepared."
+        },
+        {
+          "question": "Where was the marriage required to take place for it to count as proof of purpose?",
+          "choices": [
+            "Anywhere in the world — marriage is marriage",
+            "In your home country",
+            "In Slovakia or registered in the Slovak special register",
+            "In an EU member state"
+          ],
+          "answer": "In Slovakia or registered in the Slovak special register",
+          "explanation": "For marriage-based permanent residence, the marriage must have taken place in Slovakia or be recorded in the Slovak special register (osobitná matrika). Marriages abroad must be officially registered in Slovakia first."
+        },
+        {
+          "question": "After receiving your 5-year permanent residence card, within how many working days must you take out health insurance?",
+          "choices": ["1", "3", "7", "30"],
+          "answer": "3",
+          "explanation": "Within 3 working days (pracovné dni) of receiving your residence document you must take out health insurance. This is a strict legal obligation — not a recommendation."
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You received your permanent residence card. You need to get a medical certificate. You book an appointment with your regular GP. Is this correct?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — any registered doctor in Slovakia can issue it",
+            "No — only approved clinics on the official Ministry of Interior list can issue it",
+            "Yes — but only GPs who speak English",
+            "No — you must go to a state university hospital only"
+          ],
+          "answer": "No — only approved clinics on the official Ministry of Interior list can issue it",
+          "answerMeaning": "The medical certificate confirming no public health threatening disease can only be issued by specific approved clinics. Your regular GP cannot issue this document. See the reference card for the approved clinic in your region."
+        },
+        {
+          "situation": "You received your card 28 days ago and have not yet submitted the medical certificate. What should you do?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Nothing — you have 60 days in total",
+            "Book the approved clinic urgently — deadline is 30 days",
+            "Submit it next month — there is a grace period",
+            "Ask your employer to sort it"
+          ],
+          "answer": "Book the approved clinic urgently — deadline is 30 days",
+          "answerMeaning": "The deadline is 30 days from receiving your residence document. At 28 days you have 2 days left. Book the approved clinic immediately. If you cannot make it in time, you can request a 60-day extension — but do this before the deadline passes."
+        },
+        {
+          "situation": "You cannot submit the medical certificate within 30 days due to illness. What can you do?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Nothing — missing the deadline means your permit is cancelled",
+            "Request a 60-day extension from the Foreign Police",
+            "Submit it whenever you are ready — there are no consequences",
+            "Ask your doctor to backdate it"
+          ],
+          "answer": "Request a 60-day extension from the Foreign Police",
+          "answerMeaning": "You can request a 60-day extension (predĺženie lehoty) from the Foreign Police. You must make this request before the original 30-day deadline. The medical certificate itself must not be older than 30 days when submitted."
+        },
+        {
+          "situation": "Your friend already has permanent residence in another EU country and is now getting Slovak permanent residence too. Does he need to submit a medical certificate?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — always required for permanent residence",
+            "No — the medical certificate is not required if already holding residence in another EU member state",
+            "Yes — but only within 60 days instead of 30",
+            "No — only required for non-EU nationals"
+          ],
+          "answer": "No — the medical certificate is not required if already holding residence in another EU member state",
+          "answerMeaning": "The medical certificate is not required if the applicant already has a granted residence permit in another EU member state, or when changing type of residence within Slovakia."
+        },
+        {
+          "situation": "You have held 5-year permanent residence for 4 years. What can you now apply for?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Slovak citizenship directly",
+            "Long-term EU residence (dlhodobý pobyt)",
+            "Unlimited permanent residence (trvalý pobyt na neobmedzený čas)",
+            "Nothing — you must renew the 5-year permit again"
+          ],
+          "answer": "Unlimited permanent residence (trvalý pobyt na neobmedzený čas)",
+          "answerMeaning": "After 4 years of holding 5-year permanent residence you can apply for unlimited permanent residence (trvalý pobyt na neobmedzený čas). This is the next step — a separate lesson covers this permit."
+        }
+      ]
+    }
+  ],
+  "referenceCard": {
+    "id": "permanent-residence-5-year-card",
+    "title": "Permanent Residence (5 Years) — Reference Card",
+    "titleSlovak": "Trvalý pobyt na päť rokov — Referenčná karta",
+    "unlockedMessage": "🎉 You completed the Permanent Residence (5 Years) lesson! Your reference card is now saved to your profile.",
+    "checklist": [
+      { "item": "Completed application form (official MV SR form)", "slovak": "Žiadosť — oficiálne tlačivo MV SR", "warning": null },
+      { "item": "Valid passport", "slovak": "Platný cestovný doklad", "warning": "Bring original + photocopy of ALL pages" },
+      { "item": "Proof of purpose of stay", "slovak": "Doklad o účele pobytu", "warning": "For marriage: place of marriage + spouse's valid Slovak ID card. Marriage must be in Slovakia or registered in Slovak special register." },
+      { "item": "Criminal record check", "slovak": "Potvrdenie o bezúhonnosti", "warning": "From your home country AND any country you lived in 90+ days during 6 consecutive months in the last 3 years. Cannot be older than 90 days." },
+      { "item": "Proof of accommodation (min. 6 months)", "slovak": "Doklad o ubytovaní", "warning": "Lease contract OR owner's written statement + proof of ownership OR accommodation facility confirmation. Must cover at least 6 months." },
+      { "item": "Written parental consent (applicants under 18 only)", "slovak": "Písomný súhlas rodiča", "warning": "Required from the parent who has visitation rights but is not the primary guardian" }
+    ],
+    "afterApproval": [
+      { "deadline": "Within 3 working days", "action": "Take out health insurance (zdravotné poistenie)" },
+      { "deadline": "Within 30 days", "action": "Submit medical certificate (lekársky posudok) to the Foreign Police — only from an approved clinic. Certificate must not be older than 30 days. Extension of 60 days possible on request." }
+    ],
+    "keyFacts": [
+      "Documents cannot be older than 90 days — except civil registry documents (e.g. marriage certificate)",
+      "All foreign documents must be apostilled AND translated by a certified Slovak translator (Czech translation also accepted)",
+      "Incomplete application is not accepted — you receive a written list of missing documents",
+      "Complete application = you can legally stay in Slovakia while waiting for the decision",
+      "Decision within 90 days",
+      "Medical certificate can only be issued by approved clinics — not your regular GP",
+      "After 4 years with this permit you can apply for unlimited permanent residence"
+    ],
+    "medicalClinics": {
+      "note": "The medical certificate (lekársky posudok) confirming no public health threatening disease can only be issued by these approved clinics:",
+      "regions": [
+        {
+          "region": "Bratislavský kraj",
+          "clinics": [
+            "Poliklinika cudzokrajných chorôb ZAMA, Americké námestie 3, Bratislava — +421 2 52925688",
+            "Inštitút očkovania a cestovnej medicíny, Teslova 33, Bratislava — +421 2 44635473",
+            "Medicínske zariadenie Mlynská Dolina, Staré Grunty 56, Bratislava — +421 2 3231 3025",
+            "Travel Health Clinic, Tehelná 26, Bratislava — +421 905 742 898"
+          ]
+        },
+        {
+          "region": "Trnavský kraj",
+          "clinics": [
+            "KARIBU s.r.o., Hlavná 31/15, Trnava — +421 907 311 127",
+            "Infekčná klinika Fakultnej nemocnice Trnava, A. Žarnova 11, Trnava — +421 33 593811"
+          ]
+        },
+        {
+          "region": "Nitriansky kraj",
+          "clinics": [
+            "Infekčná klinika Fakultnej nemocnice Nitra, Špitálska 6, Nitra — +421 37 6545 55",
+            "Expat Clinic, Nemocnica Zlaté Moravce, Bernolákova 4 — +421 948 350 123",
+            "ID Clinic, Hornočemánska 806/4, Nitra — +421 951 078 258"
+          ]
+        },
+        {
+          "region": "Trenčiansky kraj",
+          "clinics": [
+            "TC Ambulancia, Dolný Šianec 1013/1, Trenčín — +421 915 992 086"
+          ]
+        },
+        {
+          "region": "Banskobystrický kraj",
+          "clinics": [
+            "Ambulancia cestovnej medicíny FNsP F.D. Roosevelta, Cesta k nemocnici 1, Banská Bystrica — +421 48 4335 315",
+            "Nemocnica Zvolen, Kuzmányho nábrežie 28, Zvolen — +421 948 350 123"
+          ]
+        },
+        {
+          "region": "Žilinský kraj",
+          "clinics": [
+            "Inštitút očkovania a cestovnej medicíny, Vysokoškolákov 31, Žilina — +421 915 889 054",
+            "Univerzitná nemocnica Martin, Klinika infektológie, Kollárova 2, Martin — +421 43 4203637",
+            "Travel Health Clinic, Bratislavská 4, Žilina — +421 905 742 898"
+          ]
+        },
+        {
+          "region": "Prešovský kraj",
+          "clinics": [
+            "Ambulancia tropickej medicíny, Nemocnica Svidník, MUDr. Pribilu 412/4, Svidník — +421 54 7860564",
+            "Nemocnica Poprad, Banícka 803/28, Poprad",
+            "Fakultná nemocnica J.A. Reimana, Hollého 14, Prešov"
+          ]
+        },
+        {
+          "region": "Košický kraj",
+          "clinics": [
+            "LV-Medical Infektologická ambulancia, Gemerská 3, Košice — +421 55 625 05 55",
+            "Univerzitná nemocnica L. Pasteura, Klinika infektológie, Rastislavova 43, Košice — +421 55 6152204",
+            "Nemocnica Michalovce, Špitálska 2, Michalovce — +421 56 641 6809"
+          ]
+        }
+      ]
+    },
+    "keyPhrase": {
+      "english": "I would like to apply for 5-year permanent residence.",
+      "slovak": "Chcel/a by som požiadať o trvalý pobyt na päť rokov."
+    },
+    "whereToApply": "cudzinec.minv.sk — book your appointment online",
+    "freeHelp": "IOM Migration Information Centre: mic.iom.sk — free legal advice for foreigners"
+  }
+}

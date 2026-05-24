@@ -5,13 +5,690 @@
   "category": "foreign-police",
   "categoryName": "Foreign Police",
   "title": "Long-Term Residence",
-  "titleSlovak": "Dlhodobý pobyt EÚ",
-  "description": "Understand the EU long-term residence permit and how to qualify after 5 years",
+  "titleSlovak": "Dlhodobý pobyt",
+  "description": "5 years of continuous residence, a Slovak language exam, and what makes this different from unlimited permanent residence",
   "icon": "📋",
   "xpReward": 15,
   "isPremium": false,
-  "coming_soon": true,
+  "coming_soon": false,
   "unlocksReferenceCard": "long-term-residence-card",
-  "exercises": [],
-  "referenceCard": null
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Key Terms",
+      "subtitle": "These are the terms you will see on forms and hear at the Foreign Police.",
+      "rows": [
+        { "label": "The permit", "slovak": "Dlhodobý pobyt", "english": "Long-term residence" },
+        { "label": "The application", "slovak": "Žiadosť", "english": "Application form" },
+        { "label": "Continuous residence", "slovak": "Nepretržitý pobyt", "english": "Continuous / uninterrupted residence" },
+        { "label": "Your passport", "slovak": "Cestovný doklad", "english": "Travel document / Passport" },
+        { "label": "Money proof", "slovak": "Stabilné a pravidelné zdroje", "english": "Stable and regular financial resources" },
+        { "label": "Health insurance", "slovak": "Zdravotné poistenie", "english": "Health insurance" },
+        { "label": "Language exam", "slovak": "Jazyková skúška", "english": "Language exam" },
+        { "label": "Language level", "slovak": "Úroveň A2", "english": "A2 language level" },
+        { "label": "Decision deadline", "slovak": "Do 90 dní", "english": "Within 90 days" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Dlhodobý pobyt", "english": "Long-term residence" },
+        { "slovak": "Nepretržitý pobyt", "english": "Continuous residence" },
+        { "slovak": "Stabilné a pravidelné zdroje", "english": "Stable and regular financial resources" },
+        { "slovak": "Zdravotné poistenie", "english": "Health insurance" },
+        { "slovak": "Jazyková skúška", "english": "Language exam" },
+        { "slovak": "Úroveň A2", "english": "A2 language level" }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Dlhodobý pobyt", "english": "Long-term residence" },
+        { "slovak": "Nepretržitý pobyt", "english": "Continuous residence" },
+        { "slovak": "Stabilné a pravidelné zdroje", "english": "Stable and regular financial resources" },
+        { "slovak": "Zdravotné poistenie", "english": "Health insurance" },
+        { "slovak": "Jazyková skúška", "english": "Language exam" },
+        { "slovak": "Úroveň A2", "english": "A2 language level" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Dlhodobý pobyt", "english": "Long-term residence" },
+        { "slovak": "Nepretržitý pobyt", "english": "Continuous residence" },
+        { "slovak": "Stabilné a pravidelné zdroje", "english": "Stable and regular financial resources" },
+        { "slovak": "Jazyková skúška", "english": "Language exam" },
+        { "slovak": "Zdravotné poistenie", "english": "Health insurance" },
+        { "slovak": "Cestovný doklad", "english": "Travel document" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You have lived legally in Slovakia for 4 years and 8 months without interruption. Can you apply for long-term residence now?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — close enough to 5 years",
+            "No — you need 5 full years of continuous legal residence immediately before applying",
+            "Yes — if you also have a valid work contract",
+            "No — you must first get 5-year permanent residence"
+          ],
+          "answer": "No — you need 5 full years of continuous legal residence immediately before applying",
+          "answerMeaning": "The condition is exactly 5 years of continuous legal residence immediately before submitting the application. 4 years and 8 months does not qualify. Wait until the 5-year mark."
+        },
+        {
+          "situation": "What is the key requirement that long-term residence (dlhodobý pobyt) has that unlimited permanent residence (trvalý pobyt na neobmedzený čas) does not?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "A medical certificate from an approved clinic",
+            "Proof of accommodation",
+            "A Slovak language exam at A2 level",
+            "A criminal record from your home country"
+          ],
+          "answer": "A Slovak language exam at A2 level",
+          "answerMeaning": "Since 15 July 2025, applicants for long-term residence must prove Slovak language proficiency at A2 level by passing an exam at an approved language school. This requirement does not apply to unlimited permanent residence — a key difference many people miss."
+        },
+        {
+          "situation": "You are currently in Slovakia on a temporary residence permit for study purposes. Can you apply for long-term residence?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — any legal residence counts",
+            "No — temporary residence for study purposes is excluded from long-term residence eligibility",
+            "Yes — but only after finishing your degree",
+            "No — students must apply for unlimited permanent residence instead"
+          ],
+          "answer": "No — temporary residence for study purposes is excluded from long-term residence eligibility",
+          "answerMeaning": "The law explicitly lists categories that cannot apply for long-term residence. Temporary residence for study purposes (prechodný pobyt na účel štúdia) is one of them. Other excluded categories include asylum seekers, seasonal workers, posted workers, and persons with diplomatic immunity."
+        },
+        {
+          "situation": "Where do you submit the application for long-term residence?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "At the Slovak embassy in your home country",
+            "At any police station in Slovakia",
+            "Only at the Foreign Police in Slovakia",
+            "By post to the Ministry of Interior"
+          ],
+          "answer": "Only at the Foreign Police in Slovakia",
+          "answerMeaning": "Like unlimited permanent residence, the application for long-term residence can only be submitted in person at the Foreign Police in Slovakia. You cannot apply at a Slovak embassy abroad."
+        },
+        {
+          "situation": "You are 13 years old. Your family is applying for long-term residence. Do you need to pass the Slovak A2 language exam?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — the exam is required for all applicants",
+            "No — the language exam is not required for applicants under 14",
+            "Yes — but only a simplified version",
+            "No — children never need language exams"
+          ],
+          "answer": "No — the language exam is not required for applicants under 14",
+          "answerMeaning": "The Slovak A2 language exam is not required if the applicant has not yet reached 14 years of age at the time of submitting the application. Other exemptions include Slovaks living abroad, and those who completed education in Slovak language."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "VOCABULARY_TABLE",
+      "title": "At the Foreign Police — Key Phrases",
+      "subtitle": "What you will say and hear at your long-term residence appointment.",
+      "rows": [
+        { "label": "Opening", "slovak": "Chcel/a by som požiadať o dlhodobý pobyt.", "english": "I would like to apply for long-term residence." },
+        { "label": "Your stay", "slovak": "Žijem na Slovensku päť rokov nepretržite.", "english": "I have lived in Slovakia continuously for five years." },
+        { "label": "Language proof", "slovak": "Tu je certifikát z jazykovej skúšky.", "english": "Here is the certificate from the language exam." },
+        { "label": "Money proof", "slovak": "Tu je potvrdenie o príjme.", "english": "Here is the confirmation of income." },
+        { "label": "Insurance", "slovak": "Tu je potvrdenie o zdravotnom poistení.", "english": "Here is the proof of health insurance." },
+        { "label": "Missing doc", "slovak": "Ktoré dokumenty chýbajú?", "english": "Which documents are missing?" },
+        { "label": "Timeline", "slovak": "Kedy bude rozhodnutie hotové?", "english": "When will the decision be ready?" },
+        { "label": "Not clear", "slovak": "Nerozumiem. Môžete písať?", "english": "I don't understand. Can you write it down?" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Chcel by som požiadať o dlhodobý pobyt.", "english": "I would like to apply for long-term residence." },
+        { "slovak": "Žijem na Slovensku päť rokov nepretržite.", "english": "I have lived in Slovakia continuously for five years." },
+        { "slovak": "Tu je certifikát z jazykovej skúšky.", "english": "Here is the certificate from the language exam." },
+        { "slovak": "Tu je potvrdenie o príjme.", "english": "Here is the confirmation of income." },
+        { "slovak": "Ktoré dokumenty chýbajú?", "english": "Which documents are missing?" }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Na dlhodobý pobyt musím žiť na Slovensku ___ rokov nepretržite.",
+          "translation": "For long-term residence I must live in Slovakia continuously for ___ years.",
+          "choices": ["tri", "štyri", "päť", "desať"],
+          "answer": "päť"
+        },
+        {
+          "sentence": "Od 15. júla 2025 sa vyžaduje ovládanie slovenského jazyka na úrovni ___.",
+          "translation": "From 15 July 2025 Slovak language proficiency at level ___ is required.",
+          "choices": ["A1", "A2", "B1", "B2"],
+          "answer": "A2"
+        },
+        {
+          "sentence": "Jazyková skúška sa vykonáva na ___.",
+          "translation": "The language exam is taken at a ___.",
+          "choices": ["cudzineckej polícii", "zastupiteľskom úrade", "jazykovej škole", "ministerstve vnútra"],
+          "answer": "jazykovej škole"
+        },
+        {
+          "sentence": "Bez platného cestovného dokladu policajný útvar žiadosť ___.",
+          "translation": "Without a valid travel document the Foreign Police will ___ the application.",
+          "choices": ["prijme", "odloží", "neprijme", "schváli"],
+          "answer": "neprijme"
+        },
+        {
+          "sentence": "Doklady priložené k žiadosti nesmú byť staršie ako ___ dní.",
+          "translation": "Documents attached to the application must not be older than ___ days.",
+          "choices": ["30", "60", "90", "180"],
+          "answer": "90"
+        },
+        {
+          "sentence": "Policajný útvar rozhodne o žiadosti do ___ dní.",
+          "translation": "The Foreign Police decides on the application within ___ days.",
+          "choices": ["30", "60", "90", "120"],
+          "answer": "90"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You studied for 3 years at a Slovak-language university and graduated 3 years ago. Do you need to take the A2 language exam?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — the exam is always required",
+            "No — but only if you studied at least 2 years at a Slovak-language school within the last 5 years",
+            "No — any university degree in Slovakia exempts you",
+            "Yes — university study does not count as language proof"
+          ],
+          "answer": "No — but only if you studied at least 2 years at a Slovak-language school within the last 5 years",
+          "answerMeaning": "You are exempt if you studied at least 2 school years at a Slovak-language secondary or university programme and no more than 5 years have passed since finishing. You graduated 3 years ago — within the 5-year window. No exam needed."
+        },
+        {
+          "situation": "How can you prove stable and regular financial resources?",
+          "instruction": "Choose the most complete answer",
+          "choices": [
+            "Only a bank statement is accepted",
+            "Employment contract, employer salary confirmation, bank statement, or pension document",
+            "Only an employment contract from a Slovak employer",
+            "A letter from a friend guaranteeing financial support"
+          ],
+          "answer": "Employment contract, employer salary confirmation, bank statement, or pension document",
+          "answerMeaning": "Stable and regular financial resources (stabilné a pravidelné zdroje) can be proven by: an employment contract, employer confirmation of salary, a bank account statement in your name, or proof of receiving a pension. The key is that the resources are stable and regular — not a one-off amount."
+        },
+        {
+          "situation": "Your previous long-term residence was cancelled. You want to reapply. Do you need to provide proof of accommodation this time?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "No — accommodation proof is never required for long-term residence",
+            "Yes — accommodation proof is required specifically when reapplying after cancellation",
+            "Only if you moved to a new address",
+            "No — only proof of finances is needed"
+          ],
+          "answer": "Yes — accommodation proof is required specifically when reapplying after cancellation",
+          "answerMeaning": "Proof of accommodation is only required for long-term residence in one specific case: when the applicant is reapplying because their previous long-term residence was cancelled or lapsed for legal reasons. In all other cases it is not required."
+        },
+        {
+          "situation": "You spent 3 years working in Slovakia and 2 years in Germany on an EU Blue Card. Can you apply for Slovak long-term residence?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "No — all 5 years must be in Slovakia",
+            "Yes — 5 years across Slovakia and EU member states as a Blue Card holder qualifies, with at least 2 years in Slovakia immediately before applying",
+            "Yes — but only if you worked for a Slovak company in Germany",
+            "No — Blue Card holders must apply in the country where they held the card longest"
+          ],
+          "answer": "Yes — 5 years across Slovakia and EU member states as a Blue Card holder qualifies, with at least 2 years in Slovakia immediately before applying",
+          "answerMeaning": "Blue Card holders can combine residence across Slovakia and other EU member states to reach the 5-year threshold. However the last 2 years immediately before the application must be in Slovakia as a Blue Card holder or family member of one."
+        },
+        {
+          "situation": "A colleague tells you that dlhodobý pobyt and trvalý pobyt na neobmedzený čas are basically the same thing. Is he right?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — they are different names for the same permit",
+            "No — the key difference is that long-term residence requires a Slovak A2 language exam; unlimited permanent residence does not",
+            "Yes — both require 5 years of residence and the same documents",
+            "No — long-term residence is only for EU citizens"
+          ],
+          "answer": "No — the key difference is that long-term residence requires a Slovak A2 language exam; unlimited permanent residence does not",
+          "answerMeaning": "This is the most important distinction. Dlhodobý pobyt (long-term residence) requires a Slovak language exam at A2 level from an approved school — introduced on 15 July 2025. Trvalý pobyt na neobmedzený čas (unlimited permanent residence) does not have this requirement. They are separate permits with different qualifying routes."
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "WHATSAPP_DIALOGUE",
+      "contact": {
+        "name": "Jazyková škola Košice 🎓",
+        "initials": "JŠ",
+        "role": "Language school",
+        "status": "online"
+      },
+      "context": "You need to pass the Slovak A2 language exam to apply for long-term residence. You are texting the language school in Košice to find out about the exam and book a place.",
+      "outcomes": {
+        "A": {
+          "id": "outcome-confirmed",
+          "title": "Exam booked! ✓",
+          "description": "You confirmed the exam is for long-term residence purposes and successfully booked your place.",
+          "xpBonus": 2
+        },
+        "B": {
+          "id": "outcome-clarified",
+          "title": "You got all the details! ✓",
+          "description": "You asked the right questions and know exactly what to prepare before the exam.",
+          "xpBonus": 3
+        }
+      },
+      "nodes": [
+        {
+          "id": "node-1",
+          "speaker": "user",
+          "prompt": "Start the conversation politely. How do you greet the school?",
+          "wrongAnswerResponse": "Prepáčte... nerozumiem.",
+          "wrongAnswerTranslation": "Sorry... I don't understand.",
+          "choices": [
+            {
+              "id": "choice-1a",
+              "text": "Dobrý deň.",
+              "translation": "Good day.",
+              "isCorrect": true,
+              "nextNode": "node-2",
+              "usesVocab": ["Dobrý deň"]
+            },
+            {
+              "id": "choice-1b",
+              "text": "Dobrý deň. Ospravedlňujem sa za vyrušenie.",
+              "translation": "Good day. I apologise for the disturbance.",
+              "isCorrect": true,
+              "nextNode": "node-2",
+              "usesVocab": ["Dobrý deň"]
+            },
+            {
+              "id": "choice-1c",
+              "text": "Ahoj!",
+              "translation": "Hi!",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-2",
+          "speaker": "school",
+          "text": "Dobrý deň! Čím vám môžeme pomôcť?",
+          "translation": "Good day! How can we help you?",
+          "wrongAnswerResponse": "Hmm... o čom hovoríte?",
+          "wrongAnswerTranslation": "Hmm... what are you talking about?",
+          "choices": [
+            {
+              "id": "choice-2a",
+              "text": "Zaujíma ma jazyková skúška zo slovenčiny na úrovni A2.",
+              "translation": "I am interested in the Slovak language exam at A2 level.",
+              "isCorrect": true,
+              "nextNode": "node-3",
+              "usesVocab": ["jazyková skúška", "úroveň A2"]
+            },
+            {
+              "id": "choice-2b",
+              "text": "Potrebujem zložiť jazykovú skúšku pre cudzineckú políciu.",
+              "translation": "I need to pass a language exam for the Foreign Police.",
+              "isCorrect": true,
+              "nextNode": "node-3",
+              "usesVocab": ["jazyková skúška", "cudzinecká polícia"]
+            },
+            {
+              "id": "choice-2c",
+              "text": "Chcem sa zapísať na kurz slovenčiny.",
+              "translation": "I want to enrol in a Slovak language course.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-3",
+          "speaker": "school",
+          "text": "Rozumiem. Je to pre účely dlhodobého pobytu?",
+          "translation": "I understand. Is this for the purposes of long-term residence?",
+          "wrongAnswerResponse": "Hmm... teda áno alebo nie?",
+          "wrongAnswerTranslation": "Hmm... so yes or no?",
+          "choices": [
+            {
+              "id": "choice-3a",
+              "text": "Áno, žiadam o dlhodobý pobyt.",
+              "translation": "Yes, I am applying for long-term residence.",
+              "isCorrect": true,
+              "nextNode": "node-4",
+              "usesVocab": ["dlhodobý pobyt"]
+            },
+            {
+              "id": "choice-3b",
+              "text": "Áno. Potrebujem certifikát pre cudzineckú políciu.",
+              "translation": "Yes. I need the certificate for the Foreign Police.",
+              "isCorrect": true,
+              "nextNode": "node-4",
+              "usesVocab": ["certifikát", "cudzinecká polícia"]
+            },
+            {
+              "id": "choice-3c",
+              "text": "Nie, len sa pýtam.",
+              "translation": "No, just asking.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-4",
+          "speaker": "school",
+          "text": "Skvelé. Skúška pozostáva z písomnej a ústnej časti. Kedy by ste chceli prísť?",
+          "translation": "Great. The exam consists of a written and oral part. When would you like to come?",
+          "wrongAnswerResponse": "Prepáčte... to nie je dátum.",
+          "wrongAnswerTranslation": "Sorry... that's not a date.",
+          "choices": [
+            {
+              "id": "choice-4a",
+              "text": "Čím skôr. Máte termín tento mesiac?",
+              "translation": "As soon as possible. Do you have a date this month?",
+              "isCorrect": true,
+              "nextNode": "node-5",
+              "usesVocab": ["čím skôr", "termín"]
+            },
+            {
+              "id": "choice-4b",
+              "text": "Budúci týždeň, ak je možné.",
+              "translation": "Next week if possible.",
+              "isCorrect": true,
+              "nextNode": "node-5",
+              "usesVocab": ["budúci týždeň"]
+            },
+            {
+              "id": "choice-4c",
+              "text": "Neviem ešte.",
+              "translation": "I don't know yet.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-5",
+          "speaker": "school",
+          "text": "Máme termín o dva týždne. Čo si máte pripraviť?",
+          "translation": "We have a date in two weeks. What should you prepare?",
+          "wrongAnswerResponse": "Prepáčte... to nie je správna odpoveď.",
+          "wrongAnswerTranslation": "Sorry... that's not the right answer.",
+          "choices": [
+            {
+              "id": "choice-5a",
+              "text": "Platný cestovný doklad a potvrdenie o pobyte.",
+              "translation": "A valid travel document and proof of residence.",
+              "isCorrect": true,
+              "nextNode": "node-6",
+              "usesVocab": ["cestovný doklad", "potvrdenie o pobyte"]
+            },
+            {
+              "id": "choice-5b",
+              "text": "Občiansky preukaz alebo pas.",
+              "translation": "An ID card or passport.",
+              "isCorrect": true,
+              "nextNode": "node-6",
+              "usesVocab": ["pas"]
+            },
+            {
+              "id": "choice-5c",
+              "text": "Nič. Prídem len tak.",
+              "translation": "Nothing. I will just come.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-6",
+          "speaker": "school",
+          "text": "Správne. Po úspešnom absolvovaní dostanete certifikát pre cudzineckú políciu.",
+          "translation": "Correct. After successful completion you will receive a certificate for the Foreign Police.",
+          "autoAdvance": true,
+          "nextNode": "node-6b"
+        },
+        {
+          "id": "node-6b",
+          "speaker": "school",
+          "text": "Chcete sa teraz zapísať?",
+          "translation": "Would you like to register now?",
+          "wrongAnswerResponse": "Prepáčte...",
+          "wrongAnswerTranslation": "Sorry...",
+          "choices": [
+            {
+              "id": "choice-6a",
+              "text": "Áno, prosím. Chcem sa zapísať.",
+              "translation": "Yes please. I would like to register.",
+              "isCorrect": true,
+              "nextNode": "node-end-A",
+              "usesVocab": ["zapísať sa"]
+            },
+            {
+              "id": "choice-6b",
+              "text": "Áno. Ako mám zaplatiť poplatok?",
+              "translation": "Yes. How do I pay the fee?",
+              "isCorrect": true,
+              "nextNode": "node-end-A",
+              "usesVocab": ["poplatok"]
+            },
+            {
+              "id": "choice-6c",
+              "text": "Nie, rozmyslím si to.",
+              "translation": "No, I will think about it.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-end-A",
+          "speaker": "school",
+          "text": "Výborne! Zapísali sme vás. Veľa šťastia na skúške! 🎓",
+          "translation": "Excellent! We have registered you. Good luck on the exam! 🎓",
+          "isEndNode": true,
+          "outcome": "A"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What does the Slovak A2 language exam consist of?",
+          "choices": [
+            "Only a written test",
+            "Only an oral interview",
+            "A written and an oral part",
+            "A grammar test and a reading comprehension"
+          ],
+          "answer": "A written and an oral part",
+          "explanation": "According to the language school, the A2 exam consists of a written and an oral part (písomná a ústna časť). Passing both earns you the certificate required by the Foreign Police."
+        },
+        {
+          "question": "What document do you receive after passing the A2 exam?",
+          "choices": [
+            "A residence permit",
+            "A certificate confirming you passed — for submission to the Foreign Police",
+            "A Slovak language diploma",
+            "An employer confirmation"
+          ],
+          "answer": "A certificate confirming you passed — for submission to the Foreign Police",
+          "explanation": "After successfully completing the exam you receive a certifikát (certificate) which you then submit to the Foreign Police as part of your long-term residence application."
+        },
+        {
+          "question": "Where must the Slovak A2 language exam be taken?",
+          "choices": [
+            "At the Foreign Police",
+            "At any school in Slovakia",
+            "At an approved language school on the official Ministry of Interior list",
+            "Online"
+          ],
+          "answer": "At an approved language school on the official Ministry of Interior list",
+          "explanation": "The exam must be taken at one of the approved language schools listed by the Ministry of Interior. Not just any school qualifies — see the reference card for approved schools in your region."
+        },
+        {
+          "question": "Since when is the Slovak A2 language requirement in effect?",
+          "choices": [
+            "1 January 2024",
+            "1 January 2025",
+            "15 July 2025",
+            "It has always been required"
+          ],
+          "answer": "15 July 2025",
+          "explanation": "The Slovak language requirement at A2 level was introduced on 15 July 2025. Applications submitted before this date were not subject to this requirement."
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You have been in Slovakia for 5 years on a seasonal work permit. Can you apply for long-term residence?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — 5 years of any legal residence qualifies",
+            "No — seasonal employment is specifically excluded from long-term residence eligibility",
+            "Yes — but you need a regular employment contract first",
+            "No — seasonal workers must apply for unlimited permanent residence instead"
+          ],
+          "answer": "No — seasonal employment is specifically excluded from long-term residence eligibility",
+          "answerMeaning": "The law explicitly excludes several categories from applying for long-term residence. Holders of temporary residence for seasonal employment (sezónne zamestnanie) are one of them — regardless of how long they have been in Slovakia."
+        },
+        {
+          "situation": "You completed lower secondary school (základná škola) entirely in Slovak. Do you need the A2 language exam?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — the exam is always required",
+            "No — completing lower secondary education at a Slovak-language school is an exemption",
+            "Yes — basic school does not count",
+            "No — but only if you also have a Slovak language certificate from somewhere"
+          ],
+          "answer": "No — completing lower secondary education at a Slovak-language school is an exemption",
+          "answerMeaning": "One of the official exemptions from the A2 exam is proof that you completed lower secondary education (nižšie stredné vzdelanie) at a school with Slovak as the language of instruction. You do not need to take the exam."
+        },
+        {
+          "situation": "Your proof of health insurance was issued 88 days ago. Your employment contract confirmation was issued 92 days ago. Which document is a problem?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Both are fine",
+            "Both are a problem",
+            "Only the health insurance — 88 days is too old",
+            "Only the employment confirmation — 92 days exceeds the 90-day limit"
+          ],
+          "answer": "Only the employment confirmation — 92 days exceeds the 90-day limit",
+          "answerMeaning": "The health insurance proof at 88 days is within the 90-day limit — fine. The employment confirmation at 92 days exceeds the limit — you need a fresh one from your employer."
+        },
+        {
+          "situation": "You submit a complete long-term residence application today. After how many days must the Foreign Police give you a decision?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "30 days",
+            "60 days",
+            "90 days",
+            "180 days"
+          ],
+          "answer": "90 days",
+          "answerMeaning": "The Foreign Police must decide on the application within 90 days of receiving it. This is the same deadline as for other types of permanent residence."
+        },
+        {
+          "situation": "A friend says: 'Just apply for unlimited permanent residence — it's easier than long-term residence.' What is the key reason they might be right?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Unlimited permanent residence requires fewer years of residence",
+            "Unlimited permanent residence does not require a Slovak language exam",
+            "Unlimited permanent residence can be applied for at the embassy",
+            "Unlimited permanent residence has a faster decision time"
+          ],
+          "answer": "Unlimited permanent residence does not require a Slovak language exam",
+          "answerMeaning": "This is the most important practical difference. If you qualify for unlimited permanent residence (through the 5-year permanent residence route), you avoid the A2 language exam requirement. Long-term residence and unlimited permanent residence are separate routes — check which one applies to your situation."
+        }
+      ]
+    }
+  ],
+  "referenceCard": {
+    "id": "long-term-residence-card",
+    "title": "Long-Term Residence — Reference Card",
+    "titleSlovak": "Dlhodobý pobyt — Referenčná karta",
+    "unlockedMessage": "🎉 You completed the Long-Term Residence lesson! Your reference card is now saved to your profile.",
+    "checklist": [
+      { "item": "Completed application form (official MV SR form)", "slovak": "Žiadosť — oficiálne tlačivo MV SR", "warning": null },
+      { "item": "Valid passport", "slovak": "Platný cestovný doklad", "warning": "Mandatory — application not accepted without it. Bring original." },
+      { "item": "Proof of stable and regular financial resources", "slovak": "Stabilné a pravidelné zdroje", "warning": "Must not be older than 90 days. Accepted: employment contract, employer salary confirmation, bank statement, pension document." },
+      { "item": "Proof of health insurance in Slovakia", "slovak": "Zdravotné poistenie na území SR", "warning": "Must not be older than 90 days." },
+      { "item": "Slovak language certificate at A2 level", "slovak": "Certifikát z jazykovej skúšky — úroveň A2", "warning": "Required from 15 July 2025. Must be from an approved language school. See school list in this card. Exemptions apply — see below." },
+      { "item": "Proof of accommodation (only if reapplying after cancellation)", "slovak": "Doklad o ubytovaní", "warning": "Only required if your previous long-term residence was cancelled or lapsed. Not required in other cases." }
+    ],
+    "languageExemptions": [
+      "Under 14 years of age at the time of application",
+      "Holds temporary residence as a Slovak living abroad",
+      "Completed lower secondary education at a Slovak-language school",
+      "Studied at least 2 school years at a Slovak-language secondary school or university — and no more than 5 years have passed since finishing"
+    ],
+    "excludedCategories": [
+      "Asylum seekers",
+      "Victims of trafficking (in decision period)",
+      "Persons with temporary refuge / Odídenec status",
+      "Temporary residence for study purposes",
+      "Temporary residence for special activity (internship, EU/government programmes, international treaties)",
+      "Seasonal employment permit holders",
+      "Posted workers in international transport or service provision",
+      "Persons with diplomatic immunity"
+    ],
+    "languageSchools": {
+      "note": "The Slovak A2 language exam must be taken at one of these approved schools:",
+      "schools": [
+        "Jazyková škola, Palisády 38, Bratislava",
+        "International House Bratislava, Námestie SNP 14, Bratislava",
+        "Súkromná jazyková škola iCan, Panónska cesta 3604/17, Bratislava",
+        "Súkromná jazyková škola Volis Academy, Štefánikova 19, Bratislava",
+        "Súkromná jazyková škola, Pplk. Pľjušťa 26/777, Skalica",
+        "Súkromná jazyková škola Via Humana, Kráľovská 11, Skalica",
+        "Súkromná jazyková škola E-KU Inštitútu, Piaristická 2, Nitra",
+        "Súkromná jazyková škola PREMIER CLASS, Studená 855/165, Nitra",
+        "Jazyková škola, 1. mája 2, Trenčín",
+        "Jazyková škola, Veľká okružná 24, Žilina",
+        "Súkromná jazyková škola MOBILE COLLEGE, P. Mudroňa 10, Martin",
+        "Súkromná jazyková škola RK Centrum UNIVERSA, Kuzmányho 5, Banská Bystrica",
+        "Jazyková škola, Mnoheľova 828, Poprad",
+        "Jazyková škola, Hlavná 113, Košice",
+        "Jazyková škola, Užhorodská 8, Košice",
+        "Súkromná jazyková škola iCan, Mojmírova 12, Košice",
+        "Jazyková škola, Plzenská 10, Prešov",
+        "Jazyková škola, Gymnázium Moldava nad Bodvou, Školská 13",
+        "Jazyková škola, SOŠ Strážske, Mierová 727",
+        "Jazyková škola, Gymnázium Michalovce, Ľ. Štúra 26"
+      ]
+    },
+    "keyFacts": [
+      "5 years of continuous legal residence in Slovakia immediately before applying",
+      "Slovak language at A2 level required — exam at an approved school only (since 15 July 2025)",
+      "Application only at the Foreign Police in Slovakia — not at an embassy",
+      "No valid passport = application not accepted",
+      "All supporting documents must not be older than 90 days",
+      "Decision within 90 days",
+      "Key difference from unlimited permanent residence: language exam is required for long-term residence, not for unlimited permanent residence"
+    ],
+    "keyPhrase": {
+      "english": "I would like to apply for long-term residence.",
+      "slovak": "Chcel/a by som požiadať o dlhodobý pobyt."
+    },
+    "whereToApply": "cudzinec.minv.sk — book your appointment online",
+    "freeHelp": "IOM Migration Information Centre: mic.iom.sk — free legal advice for foreigners"
+  }
 }

@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { foreignPoliceLessons } from '../data/foreigner-exclusive/foreign-police';
 import { useProgressStore } from '../store/useProgressStore';
 import { ForeignerExerciseShell } from '../components/foreigner-exclusive/ForeignerExerciseShell';
@@ -18,11 +18,14 @@ type Screen = 'lesson' | 'referenceCard';
 export function ForeignerExclusiveLessonPage() {
   const { lessonId } = useParams<{ lessonId: string }>();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const store = useProgressStore();
 
   const lesson = foreignPoliceLessons.find((l) => l.id === lessonId);
 
-  const [screen, setScreen] = useState<Screen>('lesson');
+  const [screen, setScreen] = useState<Screen>(
+    searchParams.get('card') === '1' ? 'referenceCard' : 'lesson'
+  );
   const [exerciseIndex, setExerciseIndex] = useState(0);
   const [exerciseKey, setExerciseKey] = useState(0);
   const [celebrating, setCelebrating] = useState(false);

@@ -1,0 +1,641 @@
+{
+  "id": "life-permanent-residence-unlimited",
+  "stageId": "life-in-slovakia",
+  "stageName": "Foreigner Exclusive",
+  "category": "foreign-police",
+  "categoryName": "Foreign Police",
+  "title": "Unlimited Permanent Residence",
+  "titleSlovak": "Trvalý pobyt na neobmedzený čas",
+  "description": "How to upgrade from 5-year permanent residence to unlimited — who qualifies and what you need",
+  "icon": "🏡",
+  "xpReward": 15,
+  "isPremium": false,
+  "coming_soon": false,
+  "unlocksReferenceCard": "permanent-residence-unlimited-card",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Key Terms",
+      "subtitle": "These are the terms you will see on forms and hear at the Foreign Police.",
+      "rows": [
+        { "label": "The permit", "slovak": "Trvalý pobyt na neobmedzený čas", "english": "Permanent residence for unlimited time" },
+        { "label": "The application", "slovak": "Žiadosť", "english": "Application form" },
+        { "label": "Your passport", "slovak": "Cestovný doklad", "english": "Travel document / Passport" },
+        { "label": "Your photo", "slovak": "Fotografia", "english": "Passport photo (1 copy)" },
+        { "label": "Health insurance", "slovak": "Zdravotné poistenie", "english": "Health insurance" },
+        { "label": "Clean record", "slovak": "Bezúhonnosť", "english": "Criminal record check" },
+        { "label": "Where you live", "slovak": "Doklad o ubytovaní", "english": "Proof of accommodation" },
+        { "label": "Written statement", "slovak": "Čestné vyhlásenie", "english": "Statutory declaration / Sworn statement" },
+        { "label": "Decision deadline", "slovak": "Do 90 dní", "english": "Within 90 days" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Trvalý pobyt na neobmedzený čas", "english": "Permanent residence for unlimited time" },
+        { "slovak": "Zdravotné poistenie", "english": "Health insurance" },
+        { "slovak": "Bezúhonnosť", "english": "Criminal record check" },
+        { "slovak": "Doklad o ubytovaní", "english": "Proof of accommodation" },
+        { "slovak": "Čestné vyhlásenie", "english": "Statutory declaration" },
+        { "slovak": "Cestovný doklad", "english": "Travel document" }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Trvalý pobyt na neobmedzený čas", "english": "Permanent residence for unlimited time" },
+        { "slovak": "Zdravotné poistenie", "english": "Health insurance" },
+        { "slovak": "Bezúhonnosť", "english": "Criminal record check" },
+        { "slovak": "Doklad o ubytovaní", "english": "Proof of accommodation" },
+        { "slovak": "Čestné vyhlásenie", "english": "Statutory declaration" },
+        { "slovak": "Cestovný doklad", "english": "Travel document" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Trvalý pobyt na neobmedzený čas", "english": "Permanent residence for unlimited time" },
+        { "slovak": "Zdravotné poistenie", "english": "Health insurance" },
+        { "slovak": "Čestné vyhlásenie", "english": "Statutory declaration" },
+        { "slovak": "Doklad o ubytovaní", "english": "Proof of accommodation" },
+        { "slovak": "Bezúhonnosť", "english": "Criminal record check" },
+        { "slovak": "Cestovný doklad", "english": "Travel document" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You have held 5-year permanent residence for 3 years and 8 months. Can you apply for unlimited permanent residence now?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — close enough to 4 years",
+            "No — you need at least 4 full years of 5-year permanent residence",
+            "Yes — the minimum is 3 years",
+            "No — you must first apply for long-term EU residence"
+          ],
+          "answer": "No — you need at least 4 full years of 5-year permanent residence",
+          "answerMeaning": "The condition is clear — at least 4 years of granted 5-year permanent residence immediately before applying. 3 years and 8 months does not qualify. Wait until the 4-year mark."
+        },
+        {
+          "situation": "Where do you submit the application for unlimited permanent residence?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "At the Slovak embassy in your home country",
+            "At any police station in Slovakia",
+            "Only at the Foreign Police in Slovakia",
+            "By post to the Ministry of Interior"
+          ],
+          "answer": "Only at the Foreign Police in Slovakia",
+          "answerMeaning": "Unlike the 5-year permit, the application for unlimited permanent residence can only be submitted in person at the Foreign Police in Slovakia. You cannot apply at a Slovak embassy abroad."
+        },
+        {
+          "situation": "You arrive at the Foreign Police to submit your application. You realise you left your passport at home. What happens?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "The officer accepts the application and notes the missing passport",
+            "You can submit a photocopy for now and bring the original later",
+            "The Foreign Police will not accept the application without a valid passport",
+            "You can use your residence card instead"
+          ],
+          "answer": "The Foreign Police will not accept the application without a valid passport",
+          "answerMeaning": "A valid travel document (cestovný doklad) is mandatory. If you do not present it, the Foreign Police will not accept the application at all. Always bring your original passport to any Foreign Police appointment."
+        },
+        {
+          "situation": "You are 16 years old and your parent has unlimited permanent residence. Do you need to provide a criminal record check?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "No — criminal records are never required for children",
+            "Yes — criminal records are required for children aged 14 to 18",
+            "No — only adults over 18 need a criminal record",
+            "Yes — but only if you have previously been to court"
+          ],
+          "answer": "Yes — criminal records are required for children aged 14 to 18",
+          "answerMeaning": "For children applying as dependants of a parent with unlimited permanent residence, a criminal record check (bezúhonnosť) is required if the child is between 14 and 18 years old. Under 14 — not required."
+        },
+        {
+          "situation": "The officer asks for your proof of health insurance. The document you bring was issued 95 days ago. Will they accept it?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — health insurance documents have no expiry",
+            "Yes — 95 days is within the 6-month limit",
+            "No — supporting documents cannot be older than 90 days",
+            "Only if your insurer stamps it again"
+          ],
+          "answer": "No — supporting documents cannot be older than 90 days",
+          "answerMeaning": "All supporting documents for the unlimited permanent residence application must not be older than 90 days. A document issued 95 days ago will be rejected. Request a fresh confirmation from your health insurer before your appointment."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "VOCABULARY_TABLE",
+      "title": "At the Foreign Police — Key Phrases",
+      "subtitle": "What you will say and hear at your unlimited permanent residence appointment.",
+      "rows": [
+        { "label": "Opening", "slovak": "Chcel/a by som požiadať o trvalý pobyt na neobmedzený čas.", "english": "I would like to apply for unlimited permanent residence." },
+        { "label": "Your status", "slovak": "Mám trvalý pobyt na päť rokov štyri roky.", "english": "I have had 5-year permanent residence for four years." },
+        { "label": "Missing doc", "slovak": "Ktoré dokumenty chýbajú?", "english": "Which documents are missing?" },
+        { "label": "Timeline", "slovak": "Kedy bude rozhodnutie hotové?", "english": "When will the decision be ready?" },
+        { "label": "Accommodation", "slovak": "Tu je doklad o ubytovaní.", "english": "Here is the proof of accommodation." },
+        { "label": "Insurance", "slovak": "Tu je potvrdenie o zdravotnom poistení.", "english": "Here is the proof of health insurance." },
+        { "label": "Not clear", "slovak": "Nerozumiem. Môžete písať?", "english": "I don't understand. Can you write it down?" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Chcel by som požiadať o trvalý pobyt na neobmedzený čas.", "english": "I would like to apply for unlimited permanent residence." },
+        { "slovak": "Mám trvalý pobyt na päť rokov štyri roky.", "english": "I have had 5-year permanent residence for four years." },
+        { "slovak": "Tu je potvrdenie o zdravotnom poistení.", "english": "Here is the proof of health insurance." },
+        { "slovak": "Ktoré dokumenty chýbajú?", "english": "Which documents are missing?" },
+        { "slovak": "Kedy bude rozhodnutie hotové?", "english": "When will the decision be ready?" }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Chcel by som požiadať o trvalý pobyt na ___ čas.",
+          "translation": "I would like to apply for permanent residence for ___ time.",
+          "choices": ["obmedzený", "päťročný", "neobmedzený", "dočasný"],
+          "answer": "neobmedzený"
+        },
+        {
+          "sentence": "Na udelenie trvalého pobytu na neobmedzený čas musím mať trvalý pobyt na päť rokov najmenej ___ roky.",
+          "translation": "To be granted unlimited permanent residence I must have had 5-year permanent residence for at least ___ years.",
+          "choices": ["dva", "tri", "štyri", "päť"],
+          "answer": "štyri"
+        },
+        {
+          "sentence": "Žiadosť možno podať len na ___ útvare v SR.",
+          "translation": "The application can only be submitted at the ___ unit in Slovakia.",
+          "choices": ["obecnom", "colnom", "policajnom", "súdnom"],
+          "answer": "policajnom"
+        },
+        {
+          "sentence": "Doklady priložené k žiadosti nesmú byť staršie ako ___ dní.",
+          "translation": "Documents attached to the application must not be older than ___ days.",
+          "choices": ["30", "60", "90", "180"],
+          "answer": "90"
+        },
+        {
+          "sentence": "Bezúhonnosť sa vyžaduje od detí starších ako ___ rokov.",
+          "translation": "A criminal record is required from children older than ___ years.",
+          "choices": ["10", "12", "14", "16"],
+          "answer": "14"
+        },
+        {
+          "sentence": "Policajný útvar rozhodne o žiadosti do ___ dní.",
+          "translation": "The Foreign Police decides on the application within ___ days.",
+          "choices": ["30", "60", "90", "120"],
+          "answer": "90"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The officer says they may also request proof of accommodation and a sworn statement that your reasons for residence still apply. Are these documents always required?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — they are always mandatory",
+            "No — they may be requested by the officer but are not always required",
+            "No — accommodation proof is never needed for unlimited residence",
+            "Yes — but only for children"
+          ],
+          "answer": "No — they may be requested by the officer but are not always required",
+          "answerMeaning": "The proof of accommodation and the sworn statement (čestné vyhlásenie) that your reasons for residence still apply are documents the officer may request — but they are not automatically mandatory for everyone. Bring them anyway to avoid a wasted trip."
+        },
+        {
+          "situation": "Your landlord is willing to provide a sworn statement about your accommodation. What is an acceptable form of this document?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "A text message from your landlord",
+            "A written statement from your landlord confirming they provide accommodation to you",
+            "A utility bill in your name",
+            "A screenshot of your rental payment"
+          ],
+          "answer": "A written statement from your landlord confirming they provide accommodation to you",
+          "answerMeaning": "An acceptable accommodation document can be a written sworn statement (čestné vyhlásenie) from the property owner or user confirming they provide accommodation, a lease contract, or a confirmation from a hotel or dormitory. Must not be older than 90 days."
+        },
+        {
+          "situation": "You own the flat you live in. What do you provide as proof of accommodation?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Nothing — owners do not need to prove accommodation",
+            "Your own sworn statement declaring ownership of the property",
+            "A letter from a neighbour confirming you live there",
+            "A bank statement showing mortgage payments"
+          ],
+          "answer": "Your own sworn statement declaring ownership of the property",
+          "answerMeaning": "If you own the property, you can provide your own sworn statement (čestné vyhlásenie) declaring ownership. You may also need to show proof of your ownership rights such as a property register extract."
+        },
+        {
+          "situation": "After how many years of unlimited permanent residence can a foreigner generally begin exploring Slovak citizenship?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Immediately after getting unlimited permanent residence",
+            "After 3 years of unlimited permanent residence",
+            "After 5 years of unlimited permanent residence",
+            "Unlimited permanent residence does not lead to citizenship"
+          ],
+          "answer": "After 5 years of unlimited permanent residence",
+          "answerMeaning": "Generally a foreigner can apply for Slovak citizenship after 8 years of legal residence in total, including at least 5 years of permanent residence (any type). Unlimited permanent residence is the most stable foundation for this path. Always verify current rules at minv.sk."
+        },
+        {
+          "situation": "You submit a complete application. How long can the Foreign Police take to make a decision?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "30 days",
+            "60 days",
+            "90 days",
+            "180 days"
+          ],
+          "answer": "90 days",
+          "answerMeaning": "The Foreign Police must decide on the application within 90 days of receiving it. You can legally remain in Slovakia while waiting for the decision once a complete application has been submitted."
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "WHATSAPP_DIALOGUE",
+      "contact": {
+        "name": "Pán Novák 🏠",
+        "initials": "PN",
+        "role": "Landlord",
+        "status": "online"
+      },
+      "context": "You are applying for unlimited permanent residence. The Foreign Police may request proof of accommodation. You need your landlord, Pán Novák, to prepare a written statement confirming he provides accommodation to you. You are texting him.",
+      "outcomes": {
+        "A": {
+          "id": "outcome-confirmed",
+          "title": "Statement confirmed! ✅",
+          "description": "Pán Novák will prepare the accommodation statement and have it ready before your appointment.",
+          "xpBonus": 2
+        },
+        "B": {
+          "id": "outcome-clarified",
+          "title": "You got all the details right! ✅",
+          "description": "You confirmed the document must not be older than 90 days and cover your current address.",
+          "xpBonus": 3
+        }
+      },
+      "nodes": [
+        {
+          "id": "node-1",
+          "speaker": "user",
+          "prompt": "Start the conversation politely. How do you greet your landlord?",
+          "wrongAnswerResponse": "Prepáčte... nerozumiem.",
+          "wrongAnswerTranslation": "Sorry... I don't understand.",
+          "choices": [
+            {
+              "id": "choice-1a",
+              "text": "Dobrý deň, pán Novák.",
+              "translation": "Good day, Mr. Novák.",
+              "isCorrect": true,
+              "nextNode": "node-2",
+              "usesVocab": ["Dobrý deň"]
+            },
+            {
+              "id": "choice-1b",
+              "text": "Dobrý deň. Ospravedlňujem sa za vyrušenie.",
+              "translation": "Good day. I apologise for the disturbance.",
+              "isCorrect": true,
+              "nextNode": "node-2",
+              "usesVocab": ["Dobrý deň", "ospravedlňujem sa"]
+            },
+            {
+              "id": "choice-1c",
+              "text": "Čau!",
+              "translation": "Hey!",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-2",
+          "speaker": "landlord",
+          "text": "Dobrý deň. Čo potrebujete?",
+          "translation": "Good day. What do you need?",
+          "wrongAnswerResponse": "Hmm... o čom hovoríte?",
+          "wrongAnswerTranslation": "Hmm... what are you talking about?",
+          "choices": [
+            {
+              "id": "choice-2a",
+              "text": "Žiadam o trvalý pobyt. Potrebujem doklad o ubytovaní.",
+              "translation": "I am applying for permanent residence. I need proof of accommodation.",
+              "isCorrect": true,
+              "nextNode": "node-3",
+              "usesVocab": ["trvalý pobyt", "doklad o ubytovaní"]
+            },
+            {
+              "id": "choice-2b",
+              "text": "Potrebujem od vás čestné vyhlásenie pre cudzineckú políciu.",
+              "translation": "I need a sworn statement from you for the Foreign Police.",
+              "isCorrect": true,
+              "nextNode": "node-3",
+              "usesVocab": ["Čestné vyhlásenie", "cudzinecká polícia"]
+            },
+            {
+              "id": "choice-2c",
+              "text": "Chcem znížiť nájom.",
+              "translation": "I want to lower the rent.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-3",
+          "speaker": "landlord",
+          "text": "Rozumiem. Aký dokument presne potrebujete?",
+          "translation": "I understand. What document exactly do you need?",
+          "wrongAnswerResponse": "Hmm... to nie je odpoveď na moju otázku.",
+          "wrongAnswerTranslation": "Hmm... that's not an answer to my question.",
+          "choices": [
+            {
+              "id": "choice-3a",
+              "text": "Čestné vyhlásenie, že mi poskytujete ubytovanie na tejto adrese.",
+              "translation": "A sworn statement that you provide accommodation to me at this address.",
+              "isCorrect": true,
+              "nextNode": "node-4",
+              "usesVocab": ["Čestné vyhlásenie", "adresa"]
+            },
+            {
+              "id": "choice-3b",
+              "text": "Písomné potvrdenie o ubytovaní podpísané vami.",
+              "translation": "A written confirmation of accommodation signed by you.",
+              "isCorrect": true,
+              "nextNode": "node-4",
+              "usesVocab": ["písomné potvrdenie"]
+            },
+            {
+              "id": "choice-3c",
+              "text": "Kópiu vašej nájomnej zmluvy.",
+              "translation": "A copy of your rental contract.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-4",
+          "speaker": "landlord",
+          "text": "Dobre. Musí byť nejako overené? Notárom?",
+          "translation": "Alright. Does it need to be certified? By a notary?",
+          "wrongAnswerResponse": "Prepáčte... nerozumiem vašu odpoveď.",
+          "wrongAnswerTranslation": "Sorry... I don't understand your answer.",
+          "choices": [
+            {
+              "id": "choice-4a",
+              "text": "Nie, stačí váš podpis. Ale nesmie byť staršie ako 90 dní.",
+              "translation": "No, your signature is enough. But it must not be older than 90 days.",
+              "isCorrect": true,
+              "nextNode": "node-5",
+              "usesVocab": ["podpis", "90 dní"]
+            },
+            {
+              "id": "choice-4b",
+              "text": "Nie je potrebný notár. Váš podpis postačuje.",
+              "translation": "A notary is not needed. Your signature is sufficient.",
+              "isCorrect": true,
+              "nextNode": "node-5",
+              "usesVocab": ["podpis"]
+            },
+            {
+              "id": "choice-4c",
+              "text": "Áno, musí byť notársky overené.",
+              "translation": "Yes, it must be notarised.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-5",
+          "speaker": "landlord",
+          "text": "Jasné. Kedy to potrebujete?",
+          "translation": "Understood. When do you need it?",
+          "wrongAnswerResponse": "Prepáčte... to nie je dátum.",
+          "wrongAnswerTranslation": "Sorry... that's not a date.",
+          "choices": [
+            {
+              "id": "choice-5a",
+              "text": "Čím skôr. Mám stretnutie budúci týždeň.",
+              "translation": "As soon as possible. I have an appointment next week.",
+              "isCorrect": true,
+              "nextNode": "node-6",
+              "usesVocab": ["Čím skôr", "budúci týždeň"]
+            },
+            {
+              "id": "choice-5b",
+              "text": "Do piatku, ak je to možné.",
+              "translation": "By Friday if possible.",
+              "isCorrect": true,
+              "nextNode": "node-6",
+              "usesVocab": ["do piatku"]
+            },
+            {
+              "id": "choice-5c",
+              "text": "Nie je to dôležité.",
+              "translation": "It is not important.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-6",
+          "speaker": "landlord",
+          "text": "Žiadny problém. Pripravím to do zajtra.",
+          "translation": "No problem. I will have it ready by tomorrow.",
+          "autoAdvance": true,
+          "nextNode": "node-6b"
+        },
+        {
+          "id": "node-6b",
+          "speaker": "landlord",
+          "text": "Mám uviesť vašu presnú adresu v dokumente?",
+          "translation": "Should I include your exact address in the document?",
+          "wrongAnswerResponse": "Prepáčte...",
+          "wrongAnswerTranslation": "Sorry...",
+          "choices": [
+            {
+              "id": "choice-6a",
+              "text": "Áno, prosím. Uveďte presnú adresu a dátum.",
+              "translation": "Yes please. Include the exact address and date.",
+              "isCorrect": true,
+              "nextNode": "node-end-A",
+              "usesVocab": ["adresa", "dátum"]
+            },
+            {
+              "id": "choice-6b",
+              "text": "Áno — adresu, dátum a váš podpis.",
+              "translation": "Yes — the address, date and your signature.",
+              "isCorrect": true,
+              "nextNode": "node-end-A",
+              "usesVocab": ["adresa", "podpis"]
+            },
+            {
+              "id": "choice-6c",
+              "text": "Nie, adresa nie je potrebná.",
+              "translation": "No, the address is not needed.",
+              "isCorrect": false,
+              "usesVocab": []
+            }
+          ]
+        },
+        {
+          "id": "node-end-A",
+          "speaker": "landlord",
+          "text": "Výborne. Dovidenia a veľa šťastia! 🏠",
+          "translation": "Excellent. Goodbye and good luck! 🏠",
+          "isEndNode": true,
+          "outcome": "A"
+        }
+      ],
+      "questions": [
+        {
+          "question": "What is a 'čestné vyhlásenie'?",
+          "choices": [
+            "A certified translation",
+            "A statutory declaration / sworn statement",
+            "A criminal record check",
+            "A lease contract"
+          ],
+          "answer": "A statutory declaration / sworn statement",
+          "explanation": "Čestné vyhlásenie literally means 'honourable declaration'. It is a written signed statement declaring something to be true. For accommodation purposes it is signed by the property owner or provider and confirms they are providing housing to the applicant."
+        },
+        {
+          "question": "Why did you tell the landlord the document must not be older than 90 days?",
+          "choices": [
+            "Because landlords tend to use old documents",
+            "Because all supporting documents for this application cannot be older than 90 days",
+            "Because the Foreign Police only checks documents from the last 3 months",
+            "Because health insurance documents expire after 90 days"
+          ],
+          "answer": "Because all supporting documents for this application cannot be older than 90 days",
+          "explanation": "The 90-day rule applies to all supporting documents for the unlimited permanent residence application. If the landlord's statement is older than 90 days when you submit it, the officer will reject it."
+        },
+        {
+          "question": "Does the landlord's accommodation statement need to be notarised?",
+          "choices": [
+            "Yes — always required",
+            "No — a signed written statement is sufficient",
+            "Only if the landlord is a company",
+            "Only if the property is rented not owned"
+          ],
+          "answer": "No — a signed written statement is sufficient",
+          "explanation": "According to the MIC guidance, a written signed statement (čestné vyhlásenie) from the property owner or provider is accepted. Notarisation is not explicitly required — though always confirm with the Foreign Police as requirements can vary."
+        },
+        {
+          "question": "What key details should the landlord include in the accommodation statement?",
+          "choices": [
+            "Only their name and signature",
+            "The rental amount and bank details",
+            "The exact address, date, and signature",
+            "The duration of your original lease"
+          ],
+          "answer": "The exact address, date, and signature",
+          "explanation": "The statement should clearly state the address where accommodation is provided, the date it was written (to confirm the 90-day validity), and the landlord's signature. These are the minimum details needed for the Foreign Police."
+        }
+      ]
+    },
+    {
+      "id": "ex10",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You have held 5-year permanent residence for exactly 4 years. You submit your application for unlimited permanent residence today. Two months later you receive a decision. Is everything in order?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "No — you needed to wait longer before applying",
+            "Yes — you met the 4-year condition and the decision came within 90 days",
+            "No — the decision should have come within 30 days",
+            "Yes — but only if you also held temporary residence before"
+          ],
+          "answer": "Yes — you met the 4-year condition and the decision came within 90 days",
+          "answerMeaning": "You qualified at the 4-year mark and the decision came within the 90-day legal deadline. Everything is correct."
+        },
+        {
+          "situation": "Your child is 12 years old and qualifies for unlimited permanent residence through you. Do they need to provide a criminal record?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Yes — always required regardless of age",
+            "No — criminal records are only required for children aged 14 to 18",
+            "Yes — but only from Slovakia",
+            "No — children never need criminal records"
+          ],
+          "answer": "No — criminal records are only required for children aged 14 to 18",
+          "answerMeaning": "The criminal record check for dependant children only applies to those aged 14 to 18. Your 12-year-old child does not need one."
+        },
+        {
+          "situation": "You are preparing your documents. Your health insurance confirmation is from 85 days ago. Your proof of accommodation is from 95 days ago. Which is a problem?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Both are fine",
+            "Both are a problem",
+            "Only the health insurance — 85 days is too old",
+            "Only the accommodation proof — 95 days exceeds the 90-day limit"
+          ],
+          "answer": "Only the accommodation proof — 95 days exceeds the 90-day limit",
+          "answerMeaning": "The health insurance confirmation at 85 days is within the 90-day limit — fine. The accommodation proof at 95 days exceeds the limit — you need a fresh one from your landlord."
+        },
+        {
+          "situation": "You want to apply but are unsure if the Foreign Police will ask for your accommodation proof. What should you do?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Do not bring it — wait until they ask",
+            "Bring it anyway — it may be requested and a wasted trip is avoidable",
+            "Call the Foreign Police to ask first",
+            "Only bring it if your landlord insists"
+          ],
+          "answer": "Bring it anyway — it may be requested and a wasted trip is avoidable",
+          "answerMeaning": "The accommodation proof and the sworn statement may or may not be requested — but bringing them costs nothing. Being turned away for a missing document and having to rebook wastes weeks. Always come over-prepared."
+        }
+      ]
+    }
+  ],
+  "referenceCard": {
+    "id": "permanent-residence-unlimited-card",
+    "title": "Unlimited Permanent Residence — Reference Card",
+    "titleSlovak": "Trvalý pobyt na neobmedzený čas — Referenčná karta",
+    "unlockedMessage": "🎉 You completed the Unlimited Permanent Residence lesson! Your reference card is now saved to your profile.",
+    "checklist": [
+      { "item": "Completed application form (official MV SR form)", "slovak": "Žiadosť — oficiálne tlačivo MV SR", "warning": null },
+      { "item": "Valid passport", "slovak": "Platný cestovný doklad", "warning": "Mandatory — application not accepted without it. Bring original." },
+      { "item": "One passport photo", "slovak": "Jedna fotografia", "warning": null },
+      { "item": "Proof of health insurance in Slovakia", "slovak": "Zdravotné poistenie na území SR", "warning": "Must not be older than 90 days" },
+      { "item": "Criminal record (children aged 14–18 only)", "slovak": "Bezúhonnosť (deti 14–18 rokov)", "warning": "Must not be older than 90 days. Not required for children under 14." },
+      { "item": "Proof of accommodation (may be requested)", "slovak": "Doklad o ubytovaní", "warning": "Must not be older than 90 days. Bring it anyway — better safe than a wasted trip." },
+      { "item": "Sworn statement that reasons for residence still apply (may be requested)", "slovak": "Čestné vyhlásenie o trvaní dôvodov pobytu", "warning": "May be requested by the officer. Prepare in advance." }
+    ],
+    "keyFacts": [
+      "You must have held 5-year permanent residence for at least 4 years before applying",
+      "Application must be submitted in person at the Foreign Police in Slovakia — not at an embassy",
+      "No valid passport = application not accepted",
+      "All supporting documents must not be older than 90 days",
+      "Decision within 90 days",
+      "The unlimited residence card does not expire — no periodic renewal needed",
+      "Children under 14 do not need a criminal record check; children aged 14–18 do"
+    ],
+    "keyPhrase": {
+      "english": "I would like to apply for unlimited permanent residence.",
+      "slovak": "Chcel/a by som požiadať o trvalý pobyt na neobmedzený čas."
+    },
+    "whereToApply": "cudzinec.minv.sk — book your appointment online",
+    "freeHelp": "IOM Migration Information Centre: mic.iom.sk — free legal advice for foreigners"
+  }
+}

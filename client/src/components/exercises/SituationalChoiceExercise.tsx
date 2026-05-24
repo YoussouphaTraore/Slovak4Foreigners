@@ -30,11 +30,10 @@ export function SituationalChoiceExercise({ exercise, onDone, onAnswer }: Props)
   const [masteredCount, setMasteredCount] = useState(0);
   const [feedback, setFeedback] = useState<Feedback>(null);
   const [tappedChoice, setTappedChoice] = useState<string | null>(null);
-  const nextVisible = useFeedbackNextDelay(feedback);
-
   const pendingRetry = useRef<Scenario[]>([]);
   const masteredAnswers = useRef<Set<string>>(new Set());
   const everFailed = useRef<Set<string>>(new Set());
+  const nextVisible = useFeedbackNextDelay(feedback);
 
   const current = queue[currentIdx];
 

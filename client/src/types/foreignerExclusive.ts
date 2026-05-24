@@ -42,7 +42,7 @@ export interface WhatsAppOutcome {
 
 export interface WhatsAppNode {
   id: string;
-  speaker: 'user' | 'landlord';
+  speaker: 'user' | 'landlord' | 'hr' | 'martina' | 'school';
   // user-speaker nodes
   prompt?: string;
   // landlord-speaker nodes
