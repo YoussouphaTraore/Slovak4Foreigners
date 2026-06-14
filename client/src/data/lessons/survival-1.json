@@ -415,31 +415,43 @@
     },
     {
       "id": "ex8",
-      "type": "UNSCRAMBLE",
+      "type": "FILL_IN_BLANK_PICK",
       "items": [
         {
-          "word": "Nie",
-          "context": "When you refuse, you say it."
+          "sentence": "— Hovoríte po slovensky? — ___, nehovorím.",
+          "translation": "Do you speak Slovak? — ___, I don't.",
+          "choices": ["Áno", "Nie", "Prosím", "Neviem"],
+          "answer": "Nie"
         },
         {
-          "word": "Áno",
-          "context": "When you agree, you say it."
+          "sentence": "— Chcete pomoc? — ___, ďakujem.",
+          "translation": "Do you want help? — ___, thank you.",
+          "choices": ["Nie", "Áno", "Neviem", "Pomoc!"],
+          "answer": "Áno"
         },
         {
-          "word": "Prosím",
-          "context": "You say it to ask for something politely, or to say you're welcome."
+          "sentence": "Niekto volá o pomoc. Čo kričíte?",
+          "translation": "Someone is calling for help. What do you shout?",
+          "choices": ["Prosím", "Ďakujem", "Pomoc!", "Áno"],
+          "answer": "Pomoc!"
         },
         {
-          "word": "Neviem",
-          "context": "You say it when you have no idea about something."
+          "sentence": "Pýtajú sa vás na cestu, ale neviete kde to je. Čo hovoríte?",
+          "translation": "Someone asks you for directions but you have no idea. What do you say?",
+          "choices": ["Áno", "Prepáčte", "Neviem", "Prosím"],
+          "answer": "Neviem"
         },
         {
-          "word": "Ďakujem",
-          "context": "You say it when someone does something nice for you."
+          "sentence": "Niekto vám drží dvere. Čo poviete?",
+          "translation": "Someone holds the door for you. What do you say?",
+          "choices": ["Prepáčte", "Nie", "Pomoc!", "Ďakujem"],
+          "answer": "Ďakujem"
         },
         {
-          "word": "Prepáčte",
-          "context": "You say it when you bump into someone or want to get their attention."
+          "sentence": "Chcete upútať pozornosť predavača. Čo poviete?",
+          "translation": "You want to get the shopkeeper's attention. What do you say?",
+          "choices": ["Áno", "Neviem", "Prepáčte", "Ďakujem"],
+          "answer": "Prepáčte"
         }
       ]
     }

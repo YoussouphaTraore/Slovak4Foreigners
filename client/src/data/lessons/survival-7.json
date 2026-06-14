@@ -2,39 +2,36 @@
   "id": "survival-7",
   "stageId": "survival",
   "stageName": "Stage 1 · Survival",
-  "title": "Colors",
-  "description": "Describe the world around you — red buildings, blue cars, and more",
-  "icon": "🎨",
+  "title": "I Don't Understand",
+  "description": "The phrases every foreigner needs before anything else",
+  "icon": "🤷",
   "xpReward": 10,
   "exercises": [
     {
       "id": "ex1",
       "type": "VOCABULARY_TABLE",
-      "title": "Colors",
-      "headers": ["Color", "Slovak", "English"],
+      "title": "When You Don't Understand",
       "rows": [
-        { "label": "Red",    "slovak": "červená",  "english": "Red" },
-        { "label": "Blue",   "slovak": "modrá",    "english": "Blue" },
-        { "label": "Green",  "slovak": "zelená",   "english": "Green" },
-        { "label": "Yellow", "slovak": "žltá",     "english": "Yellow" },
-        { "label": "White",  "slovak": "biela",    "english": "White" },
-        { "label": "Black",  "slovak": "čierna",   "english": "Black" },
-        { "label": "Orange", "slovak": "oranžová", "english": "Orange" },
-        { "label": "Pink",   "slovak": "ružová",   "english": "Pink" }
+        { "label": "Don't understand", "slovak": "Nerozumiem.", "english": "I don't understand." },
+        { "label": "Don't speak Slovak", "slovak": "Nehovorím po slovensky.", "english": "I don't speak Slovak." },
+        { "label": "Speak English?", "slovak": "Hovoríte po anglicky?", "english": "Do you speak English?" },
+        { "label": "Please repeat", "slovak": "Môžete zopakovať?", "english": "Can you repeat that?" },
+        { "label": "Speak slowly", "slovak": "Hovorte pomaly, prosím.", "english": "Please speak slowly." },
+        { "label": "Write it down", "slovak": "Môžete to napísať?", "english": "Can you write it down?" },
+        { "label": "What does it mean?", "slovak": "Čo to znamená?", "english": "What does that mean?" },
+        { "label": "Just a moment", "slovak": "Moment, prosím.", "english": "Just a moment, please." }
       ]
     },
     {
       "id": "ex2",
       "type": "LISTEN_AND_PICK",
       "words": [
-        { "slovak": "červená",  "english": "Red" },
-        { "slovak": "modrá",    "english": "Blue" },
-        { "slovak": "zelená",   "english": "Green" },
-        { "slovak": "žltá",     "english": "Yellow" },
-        { "slovak": "biela",    "english": "White" },
-        { "slovak": "čierna",   "english": "Black" },
-        { "slovak": "oranžová", "english": "Orange" },
-        { "slovak": "ružová",   "english": "Pink" }
+        { "slovak": "Nerozumiem.", "english": "I don't understand." },
+        { "slovak": "Nehovorím po slovensky.", "english": "I don't speak Slovak." },
+        { "slovak": "Hovoríte po anglicky?", "english": "Do you speak English?" },
+        { "slovak": "Môžete zopakovať?", "english": "Can you repeat that?" },
+        { "slovak": "Hovorte pomaly, prosím.", "english": "Please speak slowly." },
+        { "slovak": "Môžete to napísať?", "english": "Can you write it down?" }
       ]
     },
     {
@@ -42,170 +39,215 @@
       "type": "LISTEN_AND_PICK",
       "speakLanguage": "en",
       "words": [
-        { "slovak": "červená",  "english": "Red" },
-        { "slovak": "modrá",    "english": "Blue" },
-        { "slovak": "zelená",   "english": "Green" },
-        { "slovak": "žltá",     "english": "Yellow" },
-        { "slovak": "biela",    "english": "White" },
-        { "slovak": "čierna",   "english": "Black" },
-        { "slovak": "oranžová", "english": "Orange" },
-        { "slovak": "ružová",   "english": "Pink" }
+        { "slovak": "Nerozumiem.", "english": "I don't understand." },
+        { "slovak": "Nehovorím po slovensky.", "english": "I don't speak Slovak." },
+        { "slovak": "Hovoríte po anglicky?", "english": "Do you speak English?" },
+        { "slovak": "Môžete zopakovať?", "english": "Can you repeat that?" },
+        { "slovak": "Hovorte pomaly, prosím.", "english": "Please speak slowly." },
+        { "slovak": "Môžete to napísať?", "english": "Can you write it down?" }
       ]
     },
     {
       "id": "ex3",
       "type": "PICK_TRANSLATION",
       "words": [
-        { "slovak": "červená",  "english": "Red" },
-        { "slovak": "modrá",    "english": "Blue" },
-        { "slovak": "zelená",   "english": "Green" },
-        { "slovak": "žltá",     "english": "Yellow" },
-        { "slovak": "biela",    "english": "White" },
-        { "slovak": "čierna",   "english": "Black" },
-        { "slovak": "oranžová", "english": "Orange" },
-        { "slovak": "ružová",   "english": "Pink" }
+        { "slovak": "Nerozumiem.", "english": "I don't understand." },
+        { "slovak": "Nehovorím po slovensky.", "english": "I don't speak Slovak." },
+        { "slovak": "Hovoríte po anglicky?", "english": "Do you speak English?" },
+        { "slovak": "Môžete zopakovať?", "english": "Can you repeat that?" },
+        { "slovak": "Hovorte pomaly, prosím.", "english": "Please speak slowly." },
+        { "slovak": "Môžete to napísať?", "english": "Can you write it down?" },
+        { "slovak": "Čo to znamená?", "english": "What does that mean?" },
+        { "slovak": "Moment, prosím.", "english": "Just a moment, please." }
       ]
     },
     {
       "id": "ex4",
-      "type": "WORD_MATCH",
-      "pairs": [
-        { "slovak": "červená", "english": "Red" },
-        { "slovak": "modrá",   "english": "Blue" },
-        { "slovak": "čierna",  "english": "Black" },
-        { "slovak": "žltá",    "english": "Yellow" }
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The Foreign Police officer says something in Slovak you completely missed. What is the first thing you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Hovoríte po anglicky?",
+            "Nerozumiem.",
+            "Moment, prosím.",
+            "Čo to znamená?"
+          ],
+          "answer": "Nerozumiem.",
+          "answerMeaning": "Nerozumiem = I don't understand — your first response when you miss something. Short, clear, and universally understood."
+        },
+        {
+          "situation": "The officer continues speaking Slovak very fast. What do you ask?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Nerozumiem.",
+            "Môžete zopakovať?",
+            "Hovorte pomaly, prosím.",
+            "Môžete to napísať?"
+          ],
+          "answer": "Hovorte pomaly, prosím.",
+          "answerMeaning": "Hovorte pomaly, prosím = Please speak slowly. The most useful phrase when someone is speaking too fast — and it works in any situation."
+        },
+        {
+          "situation": "The doctor uses a medical term you have never heard. What do you ask?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Nehovorím po slovensky.",
+            "Moment, prosím.",
+            "Čo to znamená?",
+            "Môžete zopakovať?"
+          ],
+          "answer": "Čo to znamená?",
+          "answerMeaning": "Čo to znamená? = What does that mean? — essential when you hear a word you don't know. Doctors, officers and officials will usually explain simply."
+        },
+        {
+          "situation": "The landlord is explaining your contract over the phone very quickly. You need them to write it down. What do you ask?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Hovoríte po anglicky?",
+            "Hovorte pomaly, prosím.",
+            "Môžete to napísať?",
+            "Nerozumiem."
+          ],
+          "answer": "Môžete to napísať?",
+          "answerMeaning": "Môžete to napísať? = Can you write it down? — when phone Slovak is too fast or unclear, asking them to write it gives you time to translate and process."
+        },
+        {
+          "situation": "You are at the supermarket checkout (Survival-5) and the cashier asks you something. You don't understand. What do you say first?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Platím kartou.",
+            "Nerozumiem.",
+            "Koľko to stojí?",
+            "Ďakujem."
+          ],
+          "answer": "Nerozumiem.",
+          "answerMeaning": "Nerozumiem — always your first response when you miss something. The cashier will likely repeat more slowly or show you the screen."
+        },
+        {
+          "situation": "You call 155 (Survival-4) and the dispatcher speaks too fast. What do you ask?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Nehovorím po slovensky.",
+            "Moment, prosím.",
+            "Hovorte pomaly, prosím.",
+            "Čo to znamená?"
+          ],
+          "answer": "Hovorte pomaly, prosím.",
+          "answerMeaning": "Even in an emergency — asking the dispatcher to speak slowly is the right move. A calm, clear exchange saves time. Dispatchers are trained for this."
+        },
+        {
+          "situation": "A colleague sends you a Slovak message and you don't recognise one word. You reply asking what it means. What do you write?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Nerozumiem.",
+            "Môžete zopakovať?",
+            "Čo to znamená?",
+            "Hovorte pomaly, prosím."
+          ],
+          "answer": "Čo to znamená?",
+          "answerMeaning": "Čo to znamená? = What does that mean? — works in writing too. Simple and direct."
+        },
+        {
+          "situation": "Someone is speaking to you and you need a few seconds to check your translation app. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Nerozumiem.",
+            "Moment, prosím.",
+            "Hovorte pomaly, prosím.",
+            "Môžete to napísať?"
+          ],
+          "answer": "Moment, prosím.",
+          "answerMeaning": "Moment, prosím = Just a moment, please — buys you time without being rude. Use it whenever you need a few seconds to think, check your phone, or collect yourself."
+        }
       ]
     },
     {
       "id": "ex5",
-      "type": "WORD_MATCH",
-      "pairs": [
-        { "slovak": "zelená",   "english": "Green" },
-        { "slovak": "biela",    "english": "White" },
-        { "slovak": "oranžová", "english": "Orange" },
-        { "slovak": "ružová",   "english": "Pink" }
-      ]
+      "type": "WORD_MATCH_REVIEW"
     },
     {
       "id": "ex6",
-      "type": "MULTIPLE_CHOICE",
-      "prompt": "In the About Me lesson you met 'biely/biela' and 'čierny/čierna' for describing yourself. Which of these four words means 'white'?",
-      "choices": ["čierna", "zelená", "biela", "červená"],
-      "answer": "biela"
-    },
-    {
-      "id": "ex7",
-      "type": "MULTIPLE_CHOICE",
-      "prompt": "The Slovak word 'ružová' comes from 'ruža' — a type of flower. What flower is it, and what color is ružová?",
-      "choices": ["Daisy — white", "Rose — pink", "Sunflower — yellow", "Violet — blue"],
-      "answer": "Rose — pink"
-    },
-    {
-      "id": "ex8",
-      "type": "SITUATIONAL_CHOICE",
-      "scenarios": [
-        {
-          "situation": "A police officer asks you to describe a suspect. You saw the person wearing a red jacket. What color do you report?",
-          "instruction": "Choose the correct color",
-          "choices": ["červená", "modrá", "zelená", "biela"],
-          "answer": "červená",
-          "answerMeaning": "červená = red — a crucial word when describing people or objects to the police"
-        },
-        {
-          "situation": "Your friend has a blue car and you need to find them in a crowded parking lot. Which car are you looking for?",
-          "instruction": "Choose the correct color",
-          "choices": ["červená", "čierna", "modrá", "žltá"],
-          "answer": "modrá",
-          "answerMeaning": "modrá = blue — essential for describing vehicles and arranging meeting points"
-        },
-        {
-          "situation": "In Slovakia, pharmacy (lekáreň) signs are always the same color — the same as grass. Which color word matches?",
-          "instruction": "Choose the correct color",
-          "choices": ["modrá", "zelená", "biela", "červená"],
-          "answer": "zelená",
-          "answerMeaning": "zelená = green — lekáreň signs in Slovakia are always green. Spot them at a glance!"
-        },
-        {
-          "situation": "You lost your bag on the bus. The dispatcher asks for the color. The bag is black. What do you say?",
-          "instruction": "Choose the correct color",
-          "choices": ["biela", "červená", "oranžová", "čierna"],
-          "answer": "čierna",
-          "answerMeaning": "čierna = black — you first saw čierna in the About Me lesson! čierna taška = black bag."
-        },
-        {
-          "situation": "The traffic light turns yellow. What is the Slovak word for this color?",
-          "instruction": "Choose the correct color",
-          "choices": ["červená", "zelená", "oranžová", "žltá"],
-          "answer": "žltá",
-          "answerMeaning": "žltá = yellow — traffic light sequence: zelená = go, žltá = about to change, červená = stop."
-        },
-        {
-          "situation": "A white envelope arrives from the immigration office. Which color word describes it?",
-          "instruction": "Choose the correct color",
-          "choices": ["biela", "ružová", "modrá", "žltá"],
-          "answer": "biela",
-          "answerMeaning": "biela = white — official letters usually come in white envelopes. Now you can describe them!"
-        },
-        {
-          "situation": "You are at a flower shop and want to buy pink roses for a friend. Which color do you ask for?",
-          "instruction": "Choose the correct color",
-          "choices": ["červená", "oranžová", "žltá", "ružová"],
-          "answer": "ružová",
-          "answerMeaning": "ružová = pink — it literally comes from 'ruža' (rose). Ružové ruže = pink roses!"
-        },
-        {
-          "situation": "You receive an orange parking ticket on your windscreen. Which color word matches it?",
-          "instruction": "Choose the correct color",
-          "choices": ["žltá", "červená", "oranžová", "modrá"],
-          "answer": "oranžová",
-          "answerMeaning": "oranžová = orange — parking tickets in Slovakia are often printed on orange paper!"
-        }
-      ]
-    },
-    {
-      "id": "ex9",
       "type": "FILL_IN_BLANK_PICK",
       "items": [
         {
-          "sentence": "Tráva je ___.",
-          "translation": "Grass is ___.",
-          "choices": ["červená", "zelená", "žltá", "modrá"],
-          "answer": "zelená"
+          "sentence": "Prepáčte, ___. Hovoríte po anglicky?",
+          "translation": "Excuse me, ___. Do you speak English?",
+          "choices": ["rozumiem", "nerozumiem", "hovorím", "neviem"],
+          "answer": "nerozumiem"
         },
         {
-          "sentence": "Obloha je ___.",
-          "translation": "The sky is ___.",
-          "choices": ["červená", "modrá", "čierna", "oranžová"],
-          "answer": "modrá"
+          "sentence": "___ po slovensky. Môžete to napísať?",
+          "translation": "___ Slovak. Can you write it down?",
+          "choices": ["Hovorím", "Rozumiem", "Nehovorím", "Neviem"],
+          "answer": "Nehovorím"
         },
         {
-          "sentence": "Táto taška je ___, nie biela.",
-          "translation": "This bag is ___, not white.",
-          "choices": ["biela", "čierna", "ružová", "zelená"],
-          "answer": "čierna"
+          "sentence": "Hovorte ___, prosím. Nerozumiem rýchlo.",
+          "translation": "Please speak ___. I don't understand fast speech.",
+          "choices": ["rýchlo", "pomaly", "hlasno", "ticho"],
+          "answer": "pomaly"
         },
         {
-          "sentence": "Ruža je ___.",
-          "translation": "A rose is ___.",
-          "choices": ["ružová", "červená", "žltá", "oranžová"],
-          "answer": "ružová"
+          "sentence": "Čo to ___? Toto slovo nepoznám.",
+          "translation": "What does that ___? I don't know this word.",
+          "choices": ["hovorí", "znamená", "píše", "je"],
+          "answer": "znamená"
         },
         {
-          "sentence": "Tá budova pri banke je ___. Ľahko ju nájdete.",
-          "translation": "The building near the bank is ___. You will find it easily.",
-          "choices": ["biela", "zelená", "červená", "modrá"],
-          "answer": "červená"
+          "sentence": "___, prosím. Musím si to preložiť.",
+          "translation": "___, please. I need to translate this.",
+          "choices": ["Pomoc", "Prepáčte", "Moment", "Ďakujem"],
+          "answer": "Moment"
         },
         {
-          "sentence": "Farba slnka je ___.",
-          "translation": "The color of the sun is ___.",
-          "choices": ["modrá", "žltá", "biela", "čierna"],
-          "answer": "žltá"
+          "sentence": "Môžete ___? Nerozumel som prvýkrát.",
+          "translation": "Can you ___? I didn't understand the first time.",
+          "choices": ["napísať", "zopakovať", "hovoriť", "pomôcť"],
+          "answer": "zopakovať"
         }
       ]
     },
     {
-      "id": "ex10",
+      "id": "ex7",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are at the Foreign Police. The officer says something. You say 'Nerozumiem.' They repeat faster. What is your next move?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Nerozumiem. (again)",
+            "Hovorte pomaly, prosím.",
+            "Môžete to napísať?",
+            "Hovoríte po anglicky?"
+          ],
+          "answer": "Hovoríte po anglicky?",
+          "answerMeaning": "You have tried Nerozumiem. The next step is to ask if they speak English. Many Foreign Police officers do. If not, then ask them to write it down."
+        },
+        {
+          "situation": "The officer does not speak English. You have now tried everything verbal. What is your final option?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Hovorte pomaly, prosím.",
+            "Nehovorím po slovensky.",
+            "Môžete to napísať?",
+            "Čo to znamená?"
+          ],
+          "answer": "Môžete to napísať?",
+          "answerMeaning": "Môžete to napísať? = Can you write it down? — your last resort when verbal communication fails. Written Slovak is easier to translate with your phone."
+        },
+        {
+          "situation": "You are leaving the Foreign Police office. You want to say goodbye formally. (Survival-2)",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Čau", "Ahoj", "Dovidenia", "Dobré ráno"],
+          "answer": "Dovidenia",
+          "answerMeaning": "Dovidenia = Goodbye (formal) — always use formal farewell in official settings. From Survival-2."
+        }
+      ]
+    },
+    {
+      "id": "ex8",
       "type": "WORD_MATCH_REVIEW"
     }
   ]

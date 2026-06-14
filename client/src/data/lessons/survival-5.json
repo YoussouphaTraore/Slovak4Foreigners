@@ -75,6 +75,62 @@
       ]
     },
     {
+      "id": "ex5",
+      "type": "NUMBER_TO_WORDS",
+      "items": [
+        {
+          "number": "6",
+          "choices": [
+            "päť",
+            "šesť",
+            "sedem",
+            "osem"
+          ],
+          "answer": "šesť"
+        },
+        {
+          "number": "14",
+          "choices": [
+            "štyri",
+            "štrnásť",
+            "šestnásť",
+            "desať"
+          ],
+          "answer": "štrnásť"
+        },
+        {
+          "number": "15",
+          "choices": [
+            "päť",
+            "pätnásť",
+            "päťdesiat",
+            "desať"
+          ],
+          "answer": "pätnásť"
+        },
+        {
+          "number": "17",
+          "choices": [
+            "sedem",
+            "sedemnásť",
+            "osemnásť",
+            "devätnásť"
+          ],
+          "answer": "sedemnásť"
+        },
+        {
+          "number": "20",
+          "choices": [
+            "dva",
+            "dvanásť",
+            "dvadsať",
+            "dvesto"
+          ],
+          "answer": "dvadsať"
+        }
+      ]
+    },
+    {
       "id": "ex2",
       "type": "VOCABULARY_TABLE",
       "title": "Numbers 11–20 & Beyond",
@@ -247,62 +303,6 @@
           "label": "Change?",
           "slovak": "Máte drobné?",
           "english": "Do you have change?"
-        }
-      ]
-    },
-    {
-      "id": "ex5",
-      "type": "NUMBER_TO_WORDS",
-      "items": [
-        {
-          "number": "6",
-          "choices": [
-            "päť",
-            "šesť",
-            "sedem",
-            "osem"
-          ],
-          "answer": "šesť"
-        },
-        {
-          "number": "14",
-          "choices": [
-            "štyri",
-            "štrnásť",
-            "šestnásť",
-            "desať"
-          ],
-          "answer": "štrnásť"
-        },
-        {
-          "number": "15",
-          "choices": [
-            "päť",
-            "pätnásť",
-            "päťdesiat",
-            "desať"
-          ],
-          "answer": "pätnásť"
-        },
-        {
-          "number": "17",
-          "choices": [
-            "sedem",
-            "sedemnásť",
-            "osemnásť",
-            "devätnásť"
-          ],
-          "answer": "sedemnásť"
-        },
-        {
-          "number": "20",
-          "choices": [
-            "dva",
-            "dvanásť",
-            "dvadsať",
-            "dvesto"
-          ],
-          "answer": "dvadsať"
         }
       ]
     },
@@ -520,6 +520,20 @@
           ],
           "answer": "Platím v hotovosti. Presná suma.",
           "answerMeaning": "I'm paying in cash. Exact amount. — dvadsať = twenty, no change needed!"
+        },
+        {
+          "situation": "You feel unwell at the pharmacy and need to explain. What do you say? (Survival-3)",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Je mi dobre.", "Koľko to stojí?", "Je mi zle.", "Platím kartou."],
+          "answer": "Je mi zle.",
+          "answerMeaning": "Je mi zle = I feel unwell — from Survival-3. Always useful when buying medicine so the pharmacist understands why."
+        },
+        {
+          "situation": "You call 155 (Survival-4) and the dispatcher asks how many people are injured. There are 3. What do you say?",
+          "instruction": "Choose the correct number",
+          "choices": ["Dva", "Tri", "Štyri", "Päť"],
+          "answer": "Tri",
+          "answerMeaning": "Tri = Three — numbers are critical when calling emergency services. Always have 1–10 ready."
         }
       ]
     },

@@ -1,9 +1,9 @@
 {
-  "id": "survival-3",
+  "id": "survival-3a",
   "stageId": "survival",
   "stageName": "Stage 1 · Survival",
-  "title": "About Me",
-  "description": "Name, origin, height and where you come from",
+  "title": "Who I Am",
+  "description": "Name, where you're from, and how to introduce yourself",
   "icon": "🙋",
   "xpReward": 10,
   "exercises": [
@@ -41,36 +41,6 @@
           "label": "Meet",
           "slovak": "Teší ma.",
           "english": "Nice to meet you."
-        },
-        {
-          "label": "Man",
-          "slovak": "Som muž.",
-          "english": "I am a man."
-        },
-        {
-          "label": "Woman",
-          "slovak": "Som žena.",
-          "english": "I am a woman."
-        },
-        {
-          "label": "White",
-          "slovak": "Som biely. / biela.",
-          "english": "I am white. (m/f)"
-        },
-        {
-          "label": "Black",
-          "slovak": "Som čierny. / čierna.",
-          "english": "I am Black. (m/f)"
-        },
-        {
-          "label": "Tall",
-          "slovak": "Som vysoký. / vysoká.",
-          "english": "I am tall. (m/f)"
-        },
-        {
-          "label": "Short",
-          "slovak": "Som nízky. / nízka.",
-          "english": "I am short. (m/f)"
         }
       ]
     },
@@ -505,32 +475,6 @@
             "do"
           ],
           "answer": "z"
-        }
-      ]
-    },
-    {
-      "id": "ex8",
-      "type": "UNSCRAMBLE",
-      "items": [
-        {
-          "word": "Kuba",
-          "context": "An island nation in the Caribbean."
-        },
-        {
-          "word": "Čína",
-          "context": "The most populous country in the world."
-        },
-        {
-          "word": "Maroko",
-          "context": "A North African country just across the sea from Spain."
-        },
-        {
-          "word": "Vysoký",
-          "context": "The opposite of short (male form)."
-        },
-        {
-          "word": "Nízky",
-          "context": "The opposite of tall (male form)."
         }
       ]
     }

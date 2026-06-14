@@ -518,31 +518,33 @@
     },
     {
       "id": "ex9",
-      "type": "UNSCRAMBLE",
-      "items": [
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
         {
-          "word": "Požiar",
-          "context": "What you shout when a building is burning."
+          "situation": "The police officer asks for your name and where you are from. You are from India. What do you say? (Survival-3)",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som z Indie.",
+            "Som z Číny.",
+            "Som z Nemecka.",
+            "Som z Brazílie."
+          ],
+          "answer": "Som z Indie.",
+          "answerMeaning": "Som z Indie = I am from India. Always have your country ready — police and medical staff will ask for nationality."
         },
         {
-          "word": "Nehoda",
-          "context": "What happens when cars crash into each other."
+          "situation": "The doctor's report says you are a man but you are a woman. How do you correct it? (Survival-3)",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Som muž.", "Som vysoká.", "Som žena.", "Som chorá."],
+          "answer": "Som žena.",
+          "answerMeaning": "Som žena = I am a woman. Medical records must be correct — always verify your details."
         },
         {
-          "word": "Zlodej",
-          "context": "Someone who steals from you."
-        },
-        {
-          "word": "Hasiči",
-          "context": "They fight fires and rescue people. Dial 150."
-        },
-        {
-          "word": "Sanitka",
-          "context": "The vehicle that rushes injured people to hospital."
-        },
-        {
-          "word": "Doktorka",
-          "context": "A female doctor."
+          "situation": "It is 2pm and you walk into the ambulancia. How do you greet the receptionist? (Survival-2)",
+          "instruction": "Choose the most appropriate greeting",
+          "choices": ["Ahoj!", "Dobré ráno!", "Dobrý deň!", "Dovidenia!"],
+          "answer": "Dobrý deň!",
+          "answerMeaning": "Dobrý deň = Good day — formal daytime greeting. Always use formal greetings in medical and official settings."
         }
       ]
     }

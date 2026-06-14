@@ -1,10 +1,12 @@
 import type { Lesson } from '../../types/lesson';
 import survival1 from './survival-1.json';
 import survival2 from './survival-2.json';
-import survival3 from './survival-3.json';
+import survival3a from './survival-3a.json';
+import survival3b from './survival-3b.json';
 import survival4 from './survival-4.json';
 import survival5 from './survival-5.json';
-import survival6 from './survival-6.json';
+import survival6a from './survival-6a.json';
+import survival6b from './survival-6b.json';
 import survival7 from './survival-7.json';
 import settling1 from './settling-1.json';
 import settling2 from './settling-2.json';
@@ -20,10 +22,12 @@ import advanced4 from './advanced-4.json';
 export const lessons: Lesson[] = [
   survival1 as unknown as Lesson,
   survival2 as unknown as Lesson,
-  survival3 as unknown as Lesson,
+  survival3a as unknown as Lesson,
+  survival3b as unknown as Lesson,
   survival4 as unknown as Lesson,
   survival5 as unknown as Lesson,
-  survival6 as unknown as Lesson,
+  survival6a as unknown as Lesson,
+  survival6b as unknown as Lesson,
   survival7 as unknown as Lesson,
   settling1 as unknown as Lesson,
   settling2 as unknown as Lesson,

@@ -205,6 +205,20 @@
           ],
           "answer": "Čau",
           "answerMeaning": "Bye (informal)"
+        },
+        {
+          "situation": "You walk into a shop. The cashier greets you with 'Dobrý deň!' You want to greet back and then ask for help. What do you say first?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Ahoj", "Dobrý deň", "Dovidenia", "Dobré ráno"],
+          "answer": "Dobrý deň",
+          "answerMeaning": "Dobrý deň — formal daytime greeting. Always match the register. A shopkeeper says Dobrý deň, you respond with Dobrý deň."
+        },
+        {
+          "situation": "You just gave directions to a tourist in Slovak. They look confused. What do you ask them? (Survival-1)",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Ďakujem", "Dovidenia", "Rozumiete?", "Prepáčte"],
+          "answer": "Rozumiete?",
+          "answerMeaning": "Rozumiete? = Do you understand? — from Survival-1. Always check comprehension after giving directions or instructions."
         }
       ]
     },
@@ -270,24 +284,6 @@
             "Čau"
           ],
           "answer": "Dobrý večer"
-        }
-      ]
-    },
-    {
-      "id": "ex7",
-      "type": "UNSCRAMBLE",
-      "items": [
-        {
-          "word": "Ahoj",
-          "context": "The casual Slovak hello — you'd say it to a friend."
-        },
-        {
-          "word": "Čau",
-          "context": "Informal goodbye — borrowed from Italian ciao."
-        },
-        {
-          "word": "Dovidenia",
-          "context": "The formal way to say goodbye."
         }
       ]
     }
