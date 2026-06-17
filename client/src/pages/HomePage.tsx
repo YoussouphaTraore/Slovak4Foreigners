@@ -73,7 +73,9 @@ export function HomePage() {
   const navigate = useNavigate();
   const store = useProgressStore();
   const headerRef = useRef<HTMLDivElement>(null);
+  const endSentinelRef = useRef<HTMLDivElement>(null);
   const [headerHeight, setHeaderHeight] = useState(0);
+  const [hasReachedEnd, setHasReachedEnd] = useState(false);
   const {
     xp, streak, streakMultiplier, completedLessons, unlockedStages,
     snailRaceRecords, isSyncing, passedBlocks, completedBlockDialogues,
@@ -112,9 +114,36 @@ export function HomePage() {
 
   const suggestedReviews = store.getSuggestedReviews();
 
+  // All non-coming_soon Stage 1 lessons complete + Block 6 race passed
+  const allAvailableLessonsComplete =
+    !isDev &&
+    lessons
+      .filter((l) => l.stageId === 'survival' && !l.coming_soon)
+      .every((l) => completedLessons.includes(l.id)) &&
+    passedBlocks.includes('stage1-block6');
+
   useEffect(() => {
     if (headerRef.current) setHeaderHeight(headerRef.current.offsetHeight);
   }, [showReviewBanner]);
+
+  // Show end-of-feed message when user scrolls to the bottom sentinel (prod only)
+  useEffect(() => {
+    if (isDev) return;
+    const el = endSentinelRef.current;
+    if (!el) return;
+    let obs: IntersectionObserver | null = null;
+    const timer = setTimeout(() => {
+      obs = new IntersectionObserver(
+        ([entry]) => { if (entry.isIntersecting) setHasReachedEnd(true); },
+        { threshold: 0.3 },
+      );
+      obs.observe(el);
+    }, 500);
+    return () => {
+      clearTimeout(timer);
+      obs?.disconnect();
+    };
+  }, []);
 
   useEffect(() => {
     try {
@@ -351,6 +380,9 @@ export function HomePage() {
             const canUnlockNext = canAffordNext && allInStageCompleted;
             const isStageHiddenInProd = !isDev && !PRODUCTION_VISIBLE_STAGES.includes(group.stageId);
 
+            // In production, hide Stage 2/3 entirely — no banner, no content, no connector
+            if (isStageHiddenInProd) return null;
+
             return (
               <div key={group.stageId} className="w-full flex flex-col items-center">
                 {groupIndex > 0 && (
@@ -582,6 +614,23 @@ export function HomePage() {
               </div>
             );
           })}
+
+          {/* End-of-feed message — production only, fades in when sentinel enters viewport */}
+          {!isDev && (
+            <div ref={endSentinelRef} className="w-full flex flex-col items-center pt-10 pb-2">
+              <div
+                className={`text-center transition-all duration-500 ${
+                  hasReachedEnd ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'
+                }`}
+              >
+                <p className="text-xs text-gray-400 font-medium tracking-wide">
+                  {allAvailableLessonsComplete
+                    ? 'New lessons on the way soon'
+                    : 'Complete the already loaded lessons on your feed first'}
+                </p>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 

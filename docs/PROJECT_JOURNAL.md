@@ -1875,3 +1875,64 @@ Left everything uncommitted per user instruction ("we hold everything till I say
 - `npm run build` (tsc -b) passed clean before the QA run (verified in Codex Phase 52 review).
 
 **Verdict:** Block 4 and Block 5 dialogues are production-ready. All changes from this session are uncommitted and ready for the user to trigger a commit.
+
+---
+
+### [Claude Code] Phase 54 — 2026-06-17 — Remove Stage 2/3 from Production, Add End-of-Feed Message
+
+**Scope:** Steps 1 & 2 of a 3-part production UX cleanup. Step 3 is investigate-only (see report below).
+
+**Files changed:** `client/src/pages/HomePage.tsx` only.
+
+#### Step 1 — Stage 2/3 banners fully removed from production
+
+Added `if (isStageHiddenInProd) return null;` at the top of the `groups.map()` callback, immediately after computing `isStageHiddenInProd`. This early return eliminates the stage banner, all stage content, and all connectors for that group. Previously only the content was gated; the stage banner (`🏆 Stage 2 · Settling In`) and the old "More coming soon" teaser block still rendered. Both are now gone in production.
+
+Existing guards already ensured no stage-gate XP-unlock button renders for hidden stages (Phase 50). The dashed connector after Stage 1 was already suppressed by `(isDev || !nextStageLocked)` being false. No connector or spacing artefacts remain.
+
+In dev mode: no change — Stage 2/3 still fully visible.
+
+#### Step 2 — End-of-feed overscroll message
+
+Added a sentinel div at the bottom of the skill-path column (production only). An IntersectionObserver (500ms mount delay to avoid false-trigger on initial layout) watches it; when it enters the viewport (user scrolls to the bottom), `hasReachedEnd` is set to true and the message fades in (`opacity-0 → opacity-100`, `translate-y-1 → translate-y-0`, 500ms CSS transition).
+
+Two message variants driven by `allAvailableLessonsComplete`:
+- **Not complete**: `"Complete the already loaded lessons on your feed first"` — fires when any non-`coming_soon` Stage 1 lesson is still undone, or Block 6 race not yet passed.
+- **All complete**: `"New lessons on the way soon"` — fires when every non-`coming_soon` survival lesson is in `completedLessons` AND `passedBlocks.includes('stage1-block6')`.
+
+Visual treatment: `text-xs text-gray-400 font-medium tracking-wide` — same quiet tone as a native "you're all caught up" message. No banner, no icon, not visible until the user deliberately scrolls past the last item.
+
+**Verification:**
+- `npm run build` (tsc -b): zero TypeScript errors.
+- Playwright production-preview check:
+  - `Stage2Banner: false` ✓
+  - `Stage3Banner/Advanced: false` ✓
+  - `"More coming soon": false` ✓
+  - `Stage1: true` ✓
+  - `SentinelInDOM: true` ✓
+  - `SentinelParentOpacity: 0` (hidden on initial load, before scroll) ✓
+- Screenshot confirms feed shows only "Stage 1 · Survival" banner, Core Communication block, First Words lesson available, subsequent lessons locked — no Stage 2/3 content anywhere.
+
+#### Step 3 — Stage 1 Completion Moment: Investigation Report (no code changes)
+
+**Current behaviour** (when Block 6 race is passed as the last block — `isLastBlock(blockId!) && isTurboSnail`):
+- User lands on the standard Turbo Snail finished screen, same layout as every other block race.
+- A small green banner appears: `"🎉 Stage 1 complete! Stage 2 is now unlocked."` — now **misleading** since Stage 2 is hidden in production.
+- `store.unlockStage('settling')` is still called in the store (line 161, `SnailRacePage.tsx`) even in production — Stage 2 silently unlocks in Zustand state but is invisible. Not a bug today; worth noting for when Stage 2 goes live.
+- "Continue" button navigates to `/` (Home). The user lands on a feed of all-completed lessons with no forward motion visible.
+
+**What needs strengthening:**
+
+1. **Fix the stale message immediately**: Change `'🎉 Stage 1 complete! Stage 2 is now unlocked.'` to `'🎉 Stage 1 complete! New lessons are on the way.'` — a one-line change in `SnailRacePage.tsx` that removes the misleading Stage 2 reference.
+
+2. **Dedicated `Stage1CompletePage`** (`/stage1-complete` route): A full-screen celebration page, not just a banner. Navigation changes: after passing Block 6 race (`blockPassed && isLastBlock(blockId!)`), navigate to `/stage1-complete` instead of leaving the user on the race finished screen.
+
+3. **Confetti**: `canvas-confetti` is already installed (used in `XpCelebrationPage`). A celebratory burst on mount would work here.
+
+4. **Stage 1 Journey summary**: A brief stats card — "X lessons completed · 5 conversations had · 6 Block Races passed · Y XP earned" — so the user feels the scale of what they finished.
+
+5. **Human-language message**: Short, warm, focused on what they can now DO in Slovak rather than abstract "you completed Stage 1." Something like: *"You can now survive daily life in Slovakia — in Slovak. That's real progress."*
+
+6. **CTA**: Since no next stage is visible, the CTA should point to the Review feature (keep skills sharp) rather than going back to the completed feed with no forward motion.
+
+**Recommended implementation order:** Fix the stale message (item 1) first — it's one line and it's currently incorrect. Stage1CompletePage (item 2-6) can be a separate phase.
