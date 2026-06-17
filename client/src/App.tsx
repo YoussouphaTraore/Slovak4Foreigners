@@ -15,6 +15,7 @@ import { ForeignerExclusiveCategoryPage } from './pages/ForeignerExclusiveCatego
 import { ForeignerExclusiveLessonPage } from './pages/ForeignerExclusiveLessonPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsOfServicePage } from './pages/TermsOfServicePage';
+import { BlockDialoguePage } from './pages/BlockDialoguePage';
 import { DialogueSession } from './components/dialogue/DialogueSession';
 import { EmergencyDialogueSession } from './components/dialogue/EmergencyDialogueSession';
 import { SaveProgressModal, SOFT_DISMISS_KEY, REGRESSION_DISMISS_KEY } from './components/auth/SaveProgressModal';
@@ -131,6 +132,7 @@ function AppRoutes() {
         <Route path="/" element={<HomePage />} />
         <Route path="/lesson/:lessonId" element={<LessonPage />} />
         <Route path="/celebration/:lessonId" element={<XpCelebrationPage />} />
+        <Route path="/race/:stageId/:blockId" element={<SnailRacePage />} />
         <Route path="/race/:stageId" element={<SnailRacePage />} />
         <Route path="/practice/dialogue" element={<PracticeDialoguePage />} />
         <Route path="/practice/dialogue/:id" element={<DialogueSessionRoute />} />
@@ -143,6 +145,7 @@ function AppRoutes() {
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsOfServicePage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/block-dialogue/:blockId" element={<BlockDialoguePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
       {showSaveProgressModal && (

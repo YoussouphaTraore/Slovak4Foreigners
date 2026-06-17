@@ -43,7 +43,11 @@ export function SituationalChoiceExercise({ exercise, onDone, onAnswer }: Props)
     [current]
   );
 
-  const displayChoice = (choice: string) => slovakifyNumbers(choice);
+  const displayChoice = (choice: string) => {
+    const isEnglishOrdinalChoice = /\b\d+(st|nd|rd|th)\b/i.test(choice);
+    const isEnglishClockTimeChoice = /\b\d{1,2}(:\d{2})?\s*(am|pm)\b/i.test(choice);
+    return isEnglishOrdinalChoice || isEnglishClockTimeChoice ? choice : slovakifyNumbers(choice);
+  };
 
   const handleChoice = (choice: string) => {
     if (feedback !== null) return;

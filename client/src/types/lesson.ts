@@ -181,5 +181,6 @@ export interface Lesson {
   description: string;
   icon: string;
   xpReward: number;
+  coming_soon?: boolean;
   exercises: Exercise[];
 }

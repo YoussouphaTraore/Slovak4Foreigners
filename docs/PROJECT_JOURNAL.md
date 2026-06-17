@@ -3,6 +3,51 @@
 > **Audience:** Junior developers joining this project. This document is the single source of truth.
 > **Rule:** Every GitHub push must add an entry to the [Build History](#14-build-history) section.
 
+> **Developer note — 2026-06-16:** Codex is joining this project as a new developer collaborator to help Claude Code maintain, understand, and extend the Slovak for Foreigners codebase.
+
+---
+
+## Collaboration Protocol — Slovak4Foreigners
+
+You are one of two AI coding assistants working on this repository: **Claude Code (lead developer)** and **Codex (supporting developer)**. Both work in the same VS Code workspace and the same git working tree, but never at the same time.
+
+### Roles
+
+Claude Code is the lead developer. It owns architecture decisions, lesson content structure, primary feature implementation, and is the only tool authorized to commit or push. Codex is the support developer — it assists with debugging, investigates issues, proposes fixes, writes code, and can take over active implementation work when Claude Code is unavailable (e.g. hit a token/context limit mid-task). Codex never commits or pushes under any circumstance, even if explicitly asked to by anyone other than the user relaying a Claude Code instruction.
+
+Neither tool overrides the other's completed decisions without the user's explicit approval. If you disagree with a prior decision recorded in the journal, raise it with the user — don't silently redo it.
+
+### Before starting any session, every time, no exceptions
+
+1. Run `git status`. If there are uncommitted changes, **STOP** and tell the user. Do not proceed, do not commit them yourself, do not discard them. The user will tell you what to do.
+2. Read `PROJECT_JOURNAL.md`, specifically the [Build History](#14-build-history) section, to understand what was done in the most recent sessions and by which tool.
+3. State out loud (in your first response) which tool you are and a one-line summary of what you understand the current state to be, before taking any action.
+
+### During the session
+
+- Tag your identity in any journal entry you write: `### [Claude Code] ...` or `### [Codex] ...`.
+- If you are taking over a task that another tool left incomplete (e.g. Claude Code hit a token limit mid-implementation), say so explicitly: *"Picking up from Claude Code's incomplete work on X — here's what I see in the current files."* Then verify the actual file state matches what the journal claims before continuing — don't trust the journal blindly, trust `git status` and the files themselves.
+- For debugging tasks: either tool can independently read code, search for the root cause, and propose a fix. Investigation is parallel-safe in conversation (talking to the user) but file edits are not — only one tool edits at a time, confirmed by the user.
+- Do not start a task that requires extensive file changes if you suspect you are near a context/token limit. Flag it to the user early.
+
+### Commit and push — Claude Code only
+
+- Codex never runs `git commit`, `git push`, or any command that changes git history. If Codex's work is ready to ship, it stops at "uncommitted, ready for review" and tells the user explicitly: *"Changes are complete and uncommitted. Claude Code needs to review and commit these."*
+- When Claude Code starts a session and finds uncommitted changes from Codex, it must review the actual diff (`git diff`) before committing anything — not just read Codex's summary. Claude Code validates the changes are correct, consistent with project conventions, and don't conflict with anything else before committing.
+- If Claude Code finds Codex's uncommitted changes are incomplete, broken, or inconsistent with the journal's description, it stops and tells the user what it found — it does not silently fix and commit, nor does it discard the work without asking.
+- The user gives the final go-ahead to commit, same as always. Claude Code reviewing the diff is a validation step, not a replacement for the user's explicit "commit now" instruction.
+- **Every time Claude Code reviews a `[Codex]` journal entry, it writes its own review back into the journal directly below that entry** — tagged `### [Claude Code review of Codex Phase N]` — stating what was checked (diff, build/typecheck, file structure, consistency with the claim) and whether it matches what Codex claimed. This applies whether or not the work is committed yet.
+
+### Before ending any session
+
+- **Codex:** confirm with the user that changes are left uncommitted and ready for Claude Code to review. Write a Build History entry tagged `[Codex]` describing exactly what was changed and why, so Claude Code can validate against the actual diff rather than just the description.
+- **Claude Code:** follow the existing rule — never commit or push without the user explicitly saying so. Write a Build History entry tagged `[Claude Code]` after any commit, summarizing what was committed.
+- If the task is incomplete, leave clear notes on exactly where work stopped and what the next step is.
+
+### Handoff scenario — token limit mid-task
+
+If Claude Code is running low on context mid-task, it stops at a clean point if possible (not mid-edit of a file), tells the user clearly what is done and what remains, and writes the journal entry before running out. Codex picking up afterward always verifies file state against the claim first, not just reads the claim and proceeds. Codex continues the implementation but leaves everything uncommitted for Claude Code to review when it returns.
+
 ---
 
 ## Table of Contents
@@ -1341,3 +1386,492 @@ Web Push delivery was unreliable across the target browsers (especially iOS Safa
 - "Anyone can read weekly winners"
 
 Verified via codebase audit that all three query sites (`LeaderboardModal`, `progressSync.checkWeeklyWinner`, `AdminPage`) use the standard authenticated Supabase client — neither policy name is referenced in code. Deleted "Anyone can read weekly winners"; "All users can read weekly winners" remains as the single authoritative policy. No behavioral change.
+
+---
+
+### Phase 28 — Block Dialogue Feature (Guided / Unguided)
+
+**Date:** 2026-06-14 → 2026-06-16
+**Scope:** New per-block conversation exercise sitting between a block's lessons and its Snail Race, with a two-pass guided → unguided flow
+
+**New types — `client/src/types/blockDialogue.ts`:**
+- `BlockDialogue`, `BlockDialogueExchange`, `BlockDialogueChoice`, `BlockDialogueContact`
+- Each exchange has Slovak `text` + `translation`, a `prompt`, multiple `choices` (one `isCorrect`), and `correctFeedback` / `wrongFeedback` strings
+
+**New data — `client/src/data/block-dialogues/`:**
+- `block1-dialogue.json` — 6-exchange conversation with "Marek" (`blockId: stage1-block1`, `xpReward: 20`) covering greeting, small talk, admitting limited Slovak, asking him to slow down, confirming understanding, and a formal farewell
+- `index.ts` exports `blockDialogues[]` and `getBlockDialogueById(blockId)`
+
+**New page — `BlockDialoguePage.tsx`** (route: `/block-dialogue/:blockId`, bare route, no guard):
+- Two modes driven by `isGuided = location.state?.guided === true` — **not** a query param (see HashRouter note below)
+- **Guided mode:** Slovak text and choices both show their English `translation`; on completing all exchanges, shows a "Ready for the real thing?" transition screen (no XP, no store write) with a "Let's Go" button that re-navigates to the same route **without** `state`, landing in unguided mode
+- **Unguided mode:** translations hidden throughout; completion screen awards `dialogue.xpReward` via `addXP` and calls `completeBlockDialogue(blockId)` — this is the **only** path that marks the block's dialogue complete
+- `useEffect` keyed on `location.key` resets all local state (`exchangeIndex`, `phase`, `selectedChoice`, `history`) on every navigation — required because React Router reuses the same component instance across guided → unguided since both hit the same route pattern; without the reset, "Let's Go" landed straight on the completion screen because `phase` was still `'complete'` from the guided run
+
+**`HomePage.tsx` integration:**
+- New dialogue node rendered between a block's lessons and its Snail Race card
+- Tapping it always navigates with `{ state: { guided: true } }` — both first play and replay restart from guided, so the translated walkthrough is available every time
+- Race button gate: `raceUnlocked = isDev || (allBlockLessonsCompleted && (dialogueCompleted || !blockDialogue))`
+
+**`useProgressStore.ts`:**
+- Added `completedBlockDialogues: string[]`, `completeBlockDialogue(blockId)`, `hasCompletedBlockDialogue(blockId)`
+- Persist version bumped **12 → 15** — required three extra bumps during testing because stale pre-feature localStorage data (`completedBlockDialogues` already containing `stage1-block1` from before guided/unguided existed) kept routing returning players straight to unguided mode; each bump forces the migration to re-run and reset the field
+
+**HashRouter gotcha (the actual bug, not a symptom):**
+- `useSearchParams()` and `new URLSearchParams(location.search)` both read empty under `HashRouter` — query params inside the `#` fragment aren't exposed via `window.location.search`, and `navigate('/path?x=1')` can even misplace the `?` outside the fragment
+- Fix: abandoned query params entirely in favor of React Router `location.state`, which lives in the history entry object and isn't subject to hash-URL encoding at all
+
+`tsc --noEmit` clean throughout; two temporary debug `console.log` statements (in `BlockDialoguePage.tsx` and `HomePage.tsx`, added to diagnose the `location.state` issue) were removed once the feature was confirmed working.
+
+---
+
+### [Codex] Phase 29 — 2026-06-16 — Stage 1 Family Lesson Content Replacement
+
+**Scope:** Replace the local Stage 1 Family lesson JSON with the user-provided file.
+
+- Replaced `client/src/data/lessons/s1-family.json` with `C:\Users\Ty\Downloads\s1-family.json`.
+- Verified the copied file matches the source byte-for-byte by SHA-256 hash.
+- Confirmed the lesson keeps `id: "s1-family"`, `stageId: "survival"`, and contains 9 exercises.
+- Ran `npx tsc --noEmit` from `client/`; TypeScript completed with zero errors.
+
+---
+
+### [Claude Code review of Codex Phase 29]
+
+**Verdict:** Matches the claim. Verified independently, not just read.
+
+- Re-ran `npx tsc --noEmit` from `client/` myself — clean, zero errors, confirming Codex's claim rather than trusting it.
+- Read `s1-family.json` directly: `id: "s1-family"`, `stageId: "survival"`, exactly 9 exercises — matches Codex's description exactly.
+- Confirmed `client/src/data/lessons/index.ts` already imports it correctly as `s1Family` — no wiring left dangling.
+- Content check: vocabulary table (core + extended family), bidirectional listen/pick, pick-translation, an 8-scenario situational-choice set, 6-item fill-in-blank, and a word-match review — all using proper Slovak diacritics, consistent with existing lesson conventions.
+- No conflicts with the rest of the in-progress (uncommitted) lesson restructuring — this is a content-only swap of a file the restructuring already references.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Codex] Phase 30 - 2026-06-16 - Block Dialogue Open Question Flag
+
+**Scope:** Add open-question metadata to block dialogue exchanges and replace Block 2 dialogue content.
+
+- Added `isOpenQuestion: boolean` to `BlockDialogueExchange`.
+- Reviewed `BlockDialoguePage.tsx`; answer handling already uses `selectedChoice.isCorrect` only and does not assume exactly one correct choice per exchange.
+- Replaced `client/src/data/block-dialogues/block2-dialogue.json` with the user-provided file.
+- Verified copied Block 2 JSON matches the source byte-for-byte by SHA-256 hash.
+- Verified `ex2` through `ex7` are open questions with all 4 choices marked correct.
+- Verified `ex1` and `ex8` are closed questions with exactly 1 correct choice.
+- Ran `npx.cmd tsc --noEmit` from `client/`; TypeScript completed with zero errors.
+
+---
+
+### [Codex] Phase 31 - 2026-06-16 - Closed Block Dialogue Retry Loop
+
+**Scope:** Make closed block dialogue questions retry once after a wrong answer.
+
+- Updated `BlockDialoguePage.tsx` with a per-exchange wrong-attempt counter.
+- Closed questions (`isOpenQuestion: false`) now show wrong feedback, then Marek says `Prepáčte, nerozumiem. Môžete to skúsiť znova?`, then the same exchange is shown again.
+- A second wrong answer on the same closed exchange shows feedback and then advances, preventing an infinite loop.
+- Correct answers reset the counter and advance normally, including after one previous wrong attempt.
+- Open questions are unaffected because retry logic only runs when `!currentExchange.isOpenQuestion && !selectedChoice.isCorrect`.
+- Ran `npx.cmd tsc --noEmit` from `client/`; TypeScript completed with zero errors.
+
+---
+
+### [Codex] Phase 32 - 2026-06-16 - Staged Block Dialogue Retry Timing
+
+**Scope:** Stagger the closed-question retry sequence so repeated questions do not appear at the same time as Marek's confusion message.
+
+- Added a `retryPhase` state machine to `BlockDialoguePage.tsx`: `idle`, `waiting`, `confusion`, and `repeating`.
+- First wrong answer on a closed question now keeps the wrong feedback flow, waits 600ms, shows Marek's confusion bubble, then waits another 800ms before re-showing the same question and choices.
+- The confusion bubble remains visible while the repeated question appears, matching the chat-style pacing used elsewhere in the app.
+- Added timeout cleanup so retry timers are cleared on navigation reset and unmount.
+- Open questions and correct-answer advance behavior are unchanged.
+- Ran `npx.cmd tsc --noEmit` from `client/`; TypeScript completed with zero errors.
+
+---
+
+### [Claude Code review of Codex Phase 30, 31, 32]
+
+**Verdict:** Matches the claims across all three phases. Verified independently against the actual files, not just the journal descriptions.
+
+- Re-ran `npx tsc --noEmit` from `client/` myself — clean, zero errors.
+- **Phase 30:** Confirmed `isOpenQuestion: boolean` added to `BlockDialogueExchange` in `types/blockDialogue.ts`. Read `block2-dialogue.json` directly — `ex1` and `ex8` have `isOpenQuestion: false` with exactly 1 `isCorrect: true` choice each; `ex2`–`ex7` have `isOpenQuestion: true` with all 4 choices `isCorrect: true`. Matches the claim exactly. Confirmed `block-dialogues/index.ts` imports and wires in `block2Dialogue` alongside `block1DialogueData`.
+- **Phase 31 & 32:** Read the full `BlockDialoguePage.tsx`. Traced the retry logic by hand: `handleContinue` only re-triggers the retry path when `!currentExchange.isOpenQuestion && !selectedChoice.isCorrect`, increments `wrongAttemptsRef` capped so a second wrong answer always falls through to `advanceToNextExchange()` — no infinite loop possible. `willRetryClosedQuestion` (button label "Try Again" vs "Continue") checks the counter *before* increment, so the label correctly previews what `handleContinue` will do on click. `retryPhase` state machine (`idle → waiting → confusion → repeating`) is timed via two `setTimeout`s (600ms, then +800ms) and cleaned up both on `location.key` change and on unmount — no leaked timers. `showConfusionBubble` / `showCurrentExchange` / `showChoices` gating confirmed consistent with the claimed staged reveal.
+- Confirmed `animate-msg-in` (used on the new confusion bubble) is an existing CSS class already defined in `index.css` and used elsewhere in the app — not a dangling class reference.
+- **Minor consistency note (not a bug):** `block1-dialogue.json` exchanges have no `isOpenQuestion` field at all, relying on `undefined` being falsy so they're treated as closed questions — which is correct behavior since all of Block 1's exchanges are single-correct-answer by design, but it's implicit rather than explicit, and only passes typecheck because `data/block-dialogues/index.ts` casts via `as unknown as BlockDialogue`. Worth adding `isOpenQuestion: false` explicitly to Block 1's exchanges for consistency with Block 2, next time that file is touched — not blocking.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 33 — 2026-06-16 — Tidy: Explicit isOpenQuestion on Block 1
+
+**Scope:** Address the consistency note from the Phase 30–32 review above.
+
+- Added `"isOpenQuestion": false` explicitly to all 6 exchanges in `block1-dialogue.json` — matches the pattern already used in `block2-dialogue.json`, removes the implicit reliance on `undefined` being falsy.
+- No behavior change — Block 1 exchanges were already treated as closed questions at runtime; this just makes it explicit in the data instead of implicit via the type cast.
+- Ran `npx tsc --noEmit` from `client/`; zero errors.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Codex] Phase 34 - 2026-06-16 - Stage 1 Cardinal Numbers Lesson Replacement
+
+**Scope:** Replace the local Stage 1 Cardinal & Ordinal Numbers lesson JSON with the user-provided file.
+
+- Replaced `client/src/data/lessons/s1-cardinal-numbers.json` with `C:\Users\Ty\Downloads\s1-cardinal-numbers.json`.
+- Confirmed the copied file matches the source byte-for-byte by SHA-256 hash.
+- Confirmed `id: "s1-cardinal-numbers"`, `stageId: "survival"`, `coming_soon: false`, and 10 exercises.
+- Ran `npx.cmd tsc --noEmit` from `client/`; TypeScript completed with zero errors.
+
+---
+
+### [Codex] Phase 35 - 2026-06-16 - Situational Choice Ordinal Display Guard
+
+**Scope:** Prevent English ordinal choices from being corrupted by Slovak number display conversion.
+
+- Updated `SituationalChoiceExercise.tsx` so `displayChoice` skips `slovakifyNumbers` for English ordinal choices matching `/\b\d+(st|nd|rd|th)\b/i`.
+- Left global `slovakifyNumbers` unchanged because other components depend on its current behavior for Slovak-facing text.
+- Verified the `tretie poschodie` scenario displays `1st floor`, `2nd floor`, `3rd floor`, and `5th floor` unchanged.
+- Verified numeric euro choices such as `100 eur` still display as Slovak words where applicable.
+- Verified the stamps scenario remains unchanged with Slovak word choices.
+- Ran `npx.cmd tsc --noEmit` from `client/`; TypeScript completed with zero errors.
+
+---
+
+### [Claude Code review of Codex Phase 34 & 35]
+
+**Verdict:** Matches both claims. Verified independently, including reproducing the actual bug Codex fixed.
+
+- **Phase 34:** Read `s1-cardinal-numbers.json` directly — `id: "s1-cardinal-numbers"`, `stageId: "survival"`, `coming_soon: false`, exactly 10 exercises. Matches the claim exactly. Re-ran `tsc --noEmit` myself — clean.
+- **Phase 35:** Read `SituationalChoiceExercise.tsx` — confirmed the `displayChoice` guard (`/\b\d+(st|nd|rd|th)\b/i`) is exactly as described, and the global `slovakifyNumbers` in `utils/numberToSlovak.ts` was left untouched.
+- **Reproduced the bug Codex fixed**, not just trusted the description: extracted the real `slovakifyNumbers` regex and ran it against the actual `s1-cardinal-numbers.json` floor scenario (`choices: ["1st floor", "2nd floor", "3rd floor", "5th floor"]`). Without the guard, the digit-boundary regex in `numberToSlovak.ts` (`(?<!\d)([1-9]\d{0,3})(?!\d)`) matches the leading digit in "1st" (not preceded/followed by another digit) and corrupts it to `"jedenst floor"`, `"dvand floor"`, `"trird floor"`, `"päťth floor"`. With Codex's guard applied, all four ordinals pass through unchanged.
+- Confirmed the guard is correctly scoped: `"100 eur"` / `"10 eur"` / `"1000 eur"` (no ordinal suffix) still convert to `"sto eur"` / `"desať eur"` / `"tisíc eur"` as intended — the fix doesn't disable Slovak-number conversion globally, only for English ordinal patterns. This is consistent with the project's standing number-display rule (all Slovak-facing digits render as words; this exercise also displays genuine English text, which the rule was never meant to cover).
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 36 — 2026-06-16 — Playwright E2E Setup
+
+**Scope:** Give Claude Code (and future sessions) the ability to drive the running app in a real browser the same way the user does locally, instead of only reading source and tracing logic by hand.
+
+**Investigation — how the existing dev bypass works:**
+- It is `const isDev = import.meta.env.DEV;`, Vite's built-in flag — automatically `true` under `vite dev` / `npm run dev`, `false` in a production build. Not a query param, not a stored flag, not a button.
+- Used in `HomePage.tsx`, `PracticeDialoguePage.tsx`, `ForeignerExclusivePage.tsx` to bypass stage/block/sequential lesson unlock gating, Block Dialogue and Block Race gating, and the stage-locked banner. The only thing it never bypasses is `lesson.coming_soon`.
+- Conclusion: no setup is required to get the bypass active — any Playwright session pointed at the dev server already has it.
+
+**Installed:**
+- `@playwright/test` as a dev dependency in `client/` (`npm install -D @playwright/test`)
+- Chromium browser binary only (`npx playwright install chromium`) — not WebKit/Firefox, to keep the install light
+
+**New files:**
+- `client/playwright.config.ts` — `webServer` auto-launches `npm run dev` on port 5173 (reuses one already running); `use` emulates `devices['Pixel 7']`
+- `client/e2e/smoke.spec.ts` — navigates to `/#/`, clicks the first lesson card, confirms arrival on `/#/lesson/s1-first-words` with real exercise content visible
+
+**Two real obstacles found and fixed (both are *correct app behavior*, not bugs):**
+1. **`DesktopBlock` gate** (`App.tsx:449`, `if (!isMobile) return <DesktopBlock />;`) — the entire app renders nothing but a "use your phone" splash (`DesktopPageRedircting.png` + a QR/url overlay) for any viewport wider than 768px or non-mobile user agent. Playwright's default desktop viewport triggered this every time. Fixed by emulating `devices['Pixel 7']` (Chromium-based — `iPhone 13` would have required installing WebKit too) instead of the default desktop context.
+2. **GDPR `ConsentPopup`** — its capture-phase one-shot click listener swallows the very first click anywhere on the page and shows the consent modal instead of letting the click reach its target, exactly as documented in Phase 11. This ate the first click on the lesson card. Fixed by seeding `localStorage` via `page.addInitScript` before navigation: `consentAccepted`, `consentVersion`, **and** `lastConsentShown` — the last one matters because `ConsentPopup.shouldShow()` re-prompts guests every 24h based on it, so seeding only the first two still showed the popup.
+- `.gitignore` updated with `/test-results/`, `/playwright-report/`, `/blob-report/`, `/playwright/.cache/`.
+- Ran the smoke test 3× in a row — passes consistently. `tsc --noEmit` unaffected, clean.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 37 — 2026-06-16 — QA Pass: Stage 1 Lessons, Block Dialogues, Block Race
+
+**Scope:** Full content/UI QA pass over 12 Stage 1 lessons (First Words through Food), Block 1 & Block 2 Dialogues, and the Block Race for Block 1. Findings logged in the new **`docs/TestingResults.md`** — a living QA log, not a one-off report; future fixes update entries there in place rather than creating new files.
+
+**Tooling built:**
+- `client/qa-walk-lessons.cjs` — jumps to every exercise in a lesson via the DEV jump bar (`LessonPage.tsx`), screenshotting + full-text-dumping each one; scans for mojibake and suspect tokens (`undefined`, `NaN`, `[object Object]`) automatically.
+- `client/qa-walk-dialogues-race.cjs` — drives Block 1/2 Dialogue end-to-end (guided → unguided → completion, always correct choice) and the Block Race for Block 1 (idle → running → real-time finish) through the actual UI.
+- `client/qa-make-contactsheets.cjs` / `client/qa-resize-for-review.cjs` — tiling/downscaling utilities to make screenshot review tractable; the chat image viewer rejects images taller than ~2000px and gets stricter as more images accumulate in a session, so raw Pixel-7-scale screenshots (1082×2202) needed a downscaled `-review` copy.
+- Screenshots/logs are gitignored (`qa-screenshots/`, `qa-*-log.json`) — regenerate by re-running the walker scripts.
+
+**Result: 110/110 lesson exercises and 70/70 dialogue+race captures passed the automated text-corruption scan** (zero mojibake, zero suspect tokens, zero console/page errors), and manual visual review across all 8 exercise types, both dialogues, and the race found no layout bugs. Specifically reconfirmed Codex's Phase 35 ordinal-display fix live in the browser (`s1-cardinal-numbers` ex8 — "1st/2nd/3rd/5th floor" render as plain English, not corrupted by `slovakifyNumbers`).
+
+**One real bug found — not in content, in navigation (`TestingResults.md` Finding #1):**
+`LessonPage.tsx` has no `key` tied to `:lessonId`, so navigating directly from `/lesson/A` to a different `/lesson/B` without passing through another route reuses the existing component instance instead of remounting it, throwing `Rendered fewer hooks than expected` and leaving a blank page. Found because my own first version of `qa-walk-lessons.cjs` chained `page.goto` calls between lesson URLs back-to-back and hit this exact crash for 10 of 12 lessons (looked like a script timeout at first — the dev jump bar never rendered because the page was blank). Confirmed via `pageerror` listener, reproduced minimally in isolation, then worked around it in the walker by routing through Home between every lesson (which is also what real navigation always does — `HomePage.tsx:181` is the only in-app code path to `/lesson/:id`, and Home is a different route component, so it always force-unmounts `LessonPage` first). **Not reachable via any in-app button** — only via direct URL/hash editing or a stale-tab deep link. Reported only, not fixed, per task instructions; suggested fix noted in `TestingResults.md` (a `key={lessonId}`, matching the pattern already used for `BlockDialoguePage`'s `location.key` reset in Phase 28).
+
+**Two non-bugs also logged for the record:** a UTF-8 BOM on 7 lesson JSON files (harmless — Vite's JSON loader tolerates it; only breaks naive `JSON.parse` in ad hoc scripts) and a coverage gap where the dev-jump-bar method can't exercise the *populated* `WORD_MATCH_REVIEW` state per lesson (the empty state was verified everywhere it appeared; the populated UI was read from source and is generic/data-driven).
+
+Left everything uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 38 — 2026-06-16 — Stage 1 Money Lesson Content Replacement
+
+**Scope:** Replace `client/src/data/lessons/s1-money.json` with a user-provided file (`C:\Users\Ty\Downloads\s1-money.json`).
+
+- The file as pasted into chat displayed as double-encoded mojibake (`"Stage 1 Â· Survival"`, `"ÃÄet"` for `Účet`, `"ð¶"` for the icon) — the same corruption pattern as Phase 10's `temporary-residence.json` fix. Did **not** assume the real file was corrupted just because the chat rendering of it was.
+- Read the actual file's raw bytes directly (`fs.readFileSync(..., 'utf8')` on the real Downloads path) and confirmed it is correctly encoded UTF-8 — `"Stage 1 · Survival"`, icon `"💶"`, all diacritics intact. The mojibake was an artifact of the document-paste pipeline, not present in the file on disk.
+- Copied the real file directly into `client/src/data/lessons/s1-money.json`; verified byte-for-byte via SHA-256 hash match between source and destination.
+- Confirmed `id: "s1-money"`, `stageId: "survival"`, `coming_soon: false`, 8 exercises (`VOCABULARY_TABLE` ×2, `LISTEN_AND_PICK` ×2, `PICK_TRANSLATION`, `SITUATIONAL_CHOICE`, `FILL_IN_BLANK_PICK`, `WORD_MATCH_REVIEW`).
+- `s1-money` was already imported in `lessons/index.ts` and referenced in `stageBlocks.ts` (Block 3 — Numbers & Time) from the in-progress lesson restructuring; this was a content-only swap, no wiring changes needed.
+- Ran `npx tsc --noEmit`; zero errors.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 39 — 2026-06-16 — Stage 1 Times of the Day Lesson Content Replacement
+
+**Scope:** Replace `client/src/data/lessons/s1-times-of-day.json`, pasted directly in chat (not a file attachment, so the Phase 38 paste-corruption risk didn't apply here — confirmed diacritics were already correct in the message text).
+
+- Previous content was a `coming_soon: true` placeholder shell with `exercises: []`.
+- Replaced with the full 9-exercise lesson: `VOCABULARY_TABLE` ×3 (parts of the day, asking/telling time, the hours), `LISTEN_AND_PICK` ×2 (Slovak + English audio direction), `PICK_TRANSLATION`, `SITUATIONAL_CHOICE` (8 scenarios covering `Koľko je hodín?` vs `O koľkej?`, AM/PM via `ráno`/`večer`, `Dobrú noc!` vs `Dobrý večer`), `FILL_IN_BLANK_PICK`, `WORD_MATCH_REVIEW`.
+- Verified diacritics round-tripped correctly after writing (`Večer`, `Koľko je hodín?`, etc.) and `coming_soon` flipped to `false`.
+- Already imported in `lessons/index.ts` (`s1TimesOfDay`) and referenced in `stageBlocks.ts` Block 3 — content-only swap, no wiring changes.
+- Ran `npx tsc --noEmit`; zero errors.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 40 — 2026-06-16 — Fix: English am/pm Choices Corrupted by slovakifyNumbers
+
+**Scope:** Same bug class as Codex's Phase 35 ordinal fix, different suffix pattern. User caught it live in the browser: the Phase 39 "shop opening hours" scenario (`s1-times-of-day.json` ex6) rendered choices `8pm` / `8am` / `10am` as `osempm` / `osemam` / `desaťam`.
+
+- **Root cause:** `SituationalChoiceExercise.tsx`'s `displayChoice` guard only matched English ordinal suffixes (`/\b\d+(st|nd|rd|th)\b/i`, added in Phase 35). `8pm`/`8am`/`10am` don't match that pattern, so they fell through to `slovakifyNumbers`, which extracts the bare digit and converts it to a Slovak word while leaving the suffix glued on (`8` → `osem` + `pm` = `osempm`).
+- **Fix:** added a second guard, `isEnglishClockTimeChoice = /\b\d{1,2}(:\d{2})?\s*(am|pm)\b/i`, alongside the existing ordinal guard in `displayChoice`. Both guards now skip `slovakifyNumbers` and return the choice unchanged.
+- Verified by running the actual regex/conversion logic standalone: `8pm`/`8am`/`10am`/`5:30pm` now pass through unchanged; ordinals (`1st floor`) still work; genuine Slovak numbers (`100 eur` → `sto eur`) still convert — the fix doesn't disable real number conversion, same scoping discipline as Phase 35.
+- Checked the rest of the lesson set for the same exposure: grepped all lesson JSON for `\d{1,2}(am|pm)` — `s1-emergency.json` and `s1-food.json` matched, but only in `situation`/`instruction` text (never run through `displayChoice`), not inside `choices` arrays. `s1-times-of-day.json` was the only live instance.
+- Ran `npx tsc --noEmit`; zero errors.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 41 — 2026-06-16 — Stage 1 Days of the Week Lesson Content Replacement
+
+**Scope:** Replace `client/src/data/lessons/s1-days-of-week.json`, pasted directly in chat.
+
+- Previous content was a `coming_soon: true` placeholder shell with `exercises: []`.
+- Replaced with the full 9-exercise lesson: `VOCABULARY_TABLE` ×3 (days Monday–Sunday, today/tomorrow/yesterday, useful phrases), `LISTEN_AND_PICK` ×2, `PICK_TRANSLATION`, `SITUATIONAL_CHOICE` (8 scenarios — `Dnes je streda`, `V piatok`, `Zajtra`/`Včera`, `Víkend` vs `Pracovný deň`, shop-hours sign reading), `FILL_IN_BLANK_PICK`, `WORD_MATCH_REVIEW`.
+- Verified diacritics (`Štvrtok`, `Nedeľa`, `Včera`) round-tripped correctly and `coming_soon` flipped to `false`.
+- Proactively scanned all `SITUATIONAL_CHOICE` choices in the file for the digit-suffix bug class just fixed in Phase 40 (`/\d/` over every choice) — none contain digits, so that exposure doesn't apply to this lesson.
+- Already imported in `lessons/index.ts` (`s1DaysOfWeek`) and referenced in `stageBlocks.ts` Block 3 — content-only swap, no wiring changes.
+- Ran `npx tsc --noEmit`; zero errors.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 42 — 2026-06-16 — Stage 1 Weeks of the Month Lesson Content Replacement
+
+**Scope:** Replace `client/src/data/lessons/s1-weeks-of-month.json`, pasted directly in chat.
+
+- Previous content was a `coming_soon: true` placeholder shell with `exercises: []`.
+- Replaced with the full 8-exercise lesson: `VOCABULARY_TABLE` ×2 (week/month basics, ordinal weeks within a month — "1st week"/"2nd week"/"3rd week" labels), `LISTEN_AND_PICK` ×2, `PICK_TRANSLATION`, `SITUATIONAL_CHOICE` (6 scenarios — rent/salary timing, `minulý`/`budúci`/`každý týždeň`, ordinal week-of-month phrasing), `FILL_IN_BLANK_PICK`, `WORD_MATCH_REVIEW`.
+- Verified diacritics (`Minulý týždeň`, `Tretí týždeň`) round-tripped correctly and `coming_soon` flipped to `false`.
+- Checked the ex2 row labels "1st week" / "2nd week" / "3rd week" against the Phase 40 digit-suffix bug — not at risk, since `VocabularyTableExercise.tsx` renders `row.label` as plain text and only runs `slovakifyNumbers` on `row.slovak`. Also scanned all `SITUATIONAL_CHOICE` choices for digits — none found.
+- Already imported in `lessons/index.ts` (`s1WeeksOfMonth`) and referenced in `stageBlocks.ts` Block 3 — content-only swap, no wiring changes.
+- Ran `npx tsc --noEmit`; zero errors.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 43 — 2026-06-16 — Stage 1 Months of the Year Lesson Content Replacement
+
+**Scope:** Replace `client/src/data/lessons/s1-months-of-year.json`, pasted directly in chat.
+
+- Previous content was a `coming_soon: true` placeholder shell with `exercises: []`.
+- Replaced with the full 9-exercise lesson: `VOCABULARY_TABLE` ×3 (January–June, July–December, talking about months — `tento`/`minulý`/`budúci mesiac`, `od marca`), `LISTEN_AND_PICK` ×2, `PICK_TRANSLATION`, `SITUATIONAL_CHOICE` (8 scenarios — residence permit expiry, birthdays, contract start dates via `od + month`, recurring renewals), `FILL_IN_BLANK_PICK`, `WORD_MATCH_REVIEW`.
+- Verified diacritics (`Február`, `Máj`, `Minulý mesiac`) round-tripped correctly and `coming_soon` flipped to `false`.
+- Scanned all `SITUATIONAL_CHOICE` choices for the Phase 40 digit-suffix bug class — none contain digits (month names are spelled out, not numbered).
+- Already imported in `lessons/index.ts` (`s1MonthsOfYear`) and referenced in `stageBlocks.ts` Block 3 — content-only swap, no wiring changes. This completes all 6 lessons in Block 3 (Numbers & Time).
+- Ran `npx tsc --noEmit`; zero errors.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 44 — 2026-06-16 — QA Pass: Block 3 (Numbers & Time)
+
+**Scope:** Full content/UI QA pass over all 6 Block 3 lessons (Cardinal & Ordinal Numbers, Money, Times of the Day, Days of the Week, Weeks of the Month, Months of the Year) and the Block Race for Block 3. No Block 3 dialogue exists yet (`block-dialogues/` only has Block 1 and Block 2), so this pass covers lessons + race only. Findings appended to `docs/TestingResults.md` under a new "Block 3 — Numbers & Time" section.
+
+**Tooling changes:**
+- `qa-walk-lessons.cjs` made reusable: now accepts `node qa-walk-lessons.cjs <scopeName> <lessonId>...` to scope output to its own subfolder/log instead of always overwriting the original 12-lesson results. No-args invocation still runs the original default set.
+- New `qa-walk-block3-race.cjs` — same pattern as the existing dialogue/race walker but for the Block 3 race route (`/race/survival/stage1-block3`), since the existing script's race-walking function was hardcoded to Block 1.
+- `qa-resize-for-review.cjs` generalized: previously only walked the hardcoded `lessons/` and `dialogues-race/` folders for downscaling; now iterates every subdirectory of `qa-screenshots/` automatically, so it picks up new scoped output without editing the script each time.
+
+**Result: 53/53 lesson exercises and 12/12 race captures passed the automated text-corruption scan** (zero mojibake, zero suspect tokens, zero console/page errors). Full-resolution visual review confirmed:
+- Phase 38's `s1-money.json` mojibake fix renders correctly live in-browser (`Účet`, `Účtenka`, `Hotovosť`).
+- Phase 40's am/pm display fix renders correctly live in-browser (`s1-times-of-day` ex7 — `8pm`/`10am`/`Noon`/`8am`).
+- `s1-weeks-of-month` ex2's longer "Posledný týždeň mesiaca" row wraps to 3 lines with no overflow/cutoff.
+- Block Race for Block 3 idle screen correctly interpolates the block name ("Block Race — Numbers & Time"); the question pool is confirmed cumulative across Blocks 1–3 (matches `getCumulativeLessonIds()` by design, not a bug).
+- No new issues found. Cardinal & Ordinal Numbers was re-verified with no regressions.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Codex] Phase 45 — 2026-06-16 — Block 3 Dialogue Added + Multi-Speaker Support
+
+**Scope:** Add the provided Block 3 dialogue and extend Block Dialogue rendering to support multiple incoming speakers while preserving Block 1/2 fallback behavior.
+
+- Added `client/src/data/block-dialogues/block3-dialogue.json` from the provided file and registered it in `client/src/data/block-dialogues/index.ts`.
+- Added optional `speakers?: Record<string, BlockDialogueSpeaker>` support to `BlockDialogue`, keeping `contact` as the required default/fallback speaker and header contact.
+- Added the Block 3 speaker map: `waitress` resolves to `W` / Waitress, `marek` resolves to `M` / Marek.
+- Updated `BlockDialoguePage.tsx` so each exchange bubble resolves `dialogue.speakers?.[exchange.speaker] ?? dialogue.contact`; the header and retry confusion bubble still use `dialogue.contact`.
+- Verified Block 3 ex1-ex3 resolve to waitress and ex4 resolves to Marek.
+- Ran `npx.cmd tsc --noEmit`; zero TypeScript errors.
+- Left uncommitted for Claude Code review.
+
+---
+
+### [Codex] Phase 46 — 2026-06-16 — Block Dialogue Multi-Speaker Visual Verification
+
+**Scope:** Regression-check and complete the visible speaker rendering for multi-speaker block dialogues.
+
+- Updated `BlockDialoguePage.tsx` so exchanges with an explicit `speakers` map entry show the speaker avatar in the bubble badge plus a small `Name (Initial)` label inside the incoming bubble.
+- Preserved Block 1/2 rendering behavior: because they have no `speakers` map, they continue to fall back to `dialogue.contact` and do not show the new speaker label.
+- Verified in Playwright with a temporary spec, then removed the spec:
+  - Block 1 and Block 2 show no `Marek (M)` or `Waitress (W)` speaker label.
+  - Block 3 ex1-ex3 show `Waitress (W)` and the waitress avatar.
+  - After advancing through ex3, Block 3 ex4 shows `Marek (M)` and the Marek avatar.
+  - Block 3 header still shows Marek / Your friend as the main contact.
+- Ran `npx.cmd tsc --noEmit`; zero TypeScript errors.
+- Left uncommitted for Claude Code review.
+
+---
+
+### [Codex] Phase 47 — 2026-06-16 — Block 3 Dialogue Payment/Receipt Answer Corrections
+
+**Scope:** Apply user-requested content corrections to Block 3 dialogue exchanges 2 and 3.
+
+- Updated `block3-dialogue.json` ex2 so the waitress asks whether the learner pays by card or cash: `Platíte kartou alebo v hotovosti?`
+- Replaced the free/irrelevant answer tile with `Platím v hotovosti.` and marked both `Platím v hotovosti.` and `Platím kartou.` as correct.
+- Updated ex2 prompt and feedback to match the card/cash choice.
+- Updated ex3 so both `Nie, ďakujem.` and `Áno, môžem dostať účtenku?` are correct receipt answers.
+- Updated ex3 prompt and feedback so the situation is neutral rather than saying the learner definitely wants a receipt.
+- Parsed the JSON and verified the correct-choice sets for ex2/ex3.
+- Ran `npx.cmd tsc --noEmit`; zero TypeScript errors.
+- Left uncommitted for Claude Code review.
+
+---
+
+### [Codex] Phase 48 — 2026-06-16 — Stage 1 My Address Lesson Replacement
+
+**Scope:** Replace the local Stage 1 My Address lesson JSON with the user-provided file.
+
+- Replaced `client/src/data/lessons/s1-my-address.json` with `C:\Users\Ty\Downloads\s1-my-address.json`.
+- Verified the copied file matches the source byte-for-byte by SHA-256 hash.
+- Confirmed `id: "s1-my-address"`, `stageId: "survival"`, `coming_soon: false`, and 8 exercises.
+- Exercise sequence: `VOCABULARY_TABLE` ×2, `LISTEN_AND_PICK` ×2, `PICK_TRANSLATION`, `SITUATIONAL_CHOICE`, `FILL_IN_BLANK_PICK`, `WORD_MATCH_REVIEW`.
+- Ran `npx.cmd tsc --noEmit`; zero TypeScript errors.
+- Left uncommitted for Claude Code review.
+
+---
+
+### [Claude Code review of Codex Phase 45, 46, 47 & 48]
+
+**Verdict:** All four match their claims. Verified independently — read the diff, ran the app live, didn't just trust the descriptions.
+
+- **Phase 45/46 (multi-speaker support):** Read `types/blockDialogue.ts` — `BlockDialogueSpeaker` and optional `speakers?: Record<string, BlockDialogueSpeaker>` added exactly as described, `contact` still required. Read the full `BlockDialoguePage.tsx` — `getExchangeSpeaker()` resolves `dialogue.speakers?.[exchange.speaker] ?? dialogue.contact` with an `isExplicitSpeaker` flag, used consistently in history bubbles and the current-exchange bubble; the header and the retry confusion bubble intentionally still use `dialogue.contact` always (a reasonable simplification Codex's note already flagged, not a gap). Confirmed no leftover temp Playwright spec (`e2e/` only has my own `smoke.spec.ts`).
+  - **Live-verified, not just read**: drove Block 3 through the real UI to ex4. My first verification attempt falsely reported the speaker label missing — turned out to be a bug in *my own check*, not the app: `page.locator('body').innerText()` reflects the CSS `text-transform: uppercase` on the label (`"WAITRESS (W)"` not `"Waitress (W)"`), so a case-sensitive string match against the lowercase claim failed. Re-checked via screenshot: ex1–3 correctly show a "WAITRESS (W)" label + 👩 avatar, ex4 switches mid-conversation to "MAREK (M)" + 👨 avatar, all while the header still shows Marek as the main contact throughout — exactly as claimed. Confirmed Block 1 shows no speaker label at all (plain `M` avatar, no label line), fallback fully preserved.
+- **Phase 47 (payment/receipt content fix):** Read `block3-dialogue.json` directly — ex2 choices now include both `Platím v hotovosti.` and `Platím kartou.` marked `isCorrect: true`, ex3 has both `Nie, ďakujem.` and `Áno, môžem dostať účtenku?` marked correct. Confirmed the existing `isOpenQuestion: false` + multi-correct-choice combination works correctly with the retry logic in `handleContinue` (`shouldRetryClosedQuestion` only checks `!selectedChoice.isCorrect`, indifferent to how many choices are correct) — no special-casing needed, already verified live via the screenshot in the bullet above (ex2/ex3 history both show green "correct" styling for the actual choices picked).
+- **Phase 48 (My Address lesson):** Verified independently — `id: "s1-my-address"`, `stageId: "survival"`, `coming_soon: false`, 8 exercises, exact type sequence matches. Checked the file for the Phase 38-style paste corruption (BOM + mojibake regex on the raw bytes) — clean, no BOM, no mojibake. No digit-suffix choices in any `SITUATIONAL_CHOICE`, so the Phase 40 bug class doesn't apply. Already wired into `lessons/index.ts` and `stageBlocks.ts` Block 4 (`Where You Are`, renamed earlier today).
+- Re-ran `npx tsc --noEmit` myself across all four — clean.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 49 — 2026-06-16 — Block 4 Dialogue Added (with Encoding Reconstruction)
+
+**Scope:** Add `client/src/data/block-dialogues/block4-dialogue.json` ("Something Happened" — a witnessed accident: calling emergency services, then explaining to Marek), registered in `block-dialogues/index.ts` the same way as Blocks 1–3.
+
+**The encoding problem was worse than Phase 38/39's:** the pasted content showed the same double-encoded mojibake pattern (`"Stage 1 Â· Survival"`, `"TiesÅovÃ¡ linka"`), but unlike `s1-money.json` and `s1-my-address.json` there was no file on disk to read real bytes from — this arrived as inline chat text only. Ran the standard cp1252-reversal decode (map each character back to its Windows-1252 byte, redecode as UTF-8) and it left **38 unrecoverable `�` replacement characters** across the file. Diagnosis: some double-encoded character *pairs* (e.g. `ň` → UTF-8 `C5 88` → mojibake `Å` + `ˆ`) arrived in the chat with only the first half present — information was already lost before reaching me, not just shifted. Flagged this to the user and asked for a real file; user said to continue without one.
+
+**Resolution — reconstructed from context, not guessed blindly:** every one of the 38 gaps was resolvable with high confidence because (a) every sentence ships with an English translation as ground truth, and (b) the missing letters were almost always the same predictable Slovak diacritics already well-established in this app's content (`č`/`Č`, `ď`/`Ď`, `ň`, `š`/`Š`, `á`/`Á`) plus the `—` em-dash already used in every other block dialogue's `"Phrase — explanation"` feedback pattern. Example: `"Ties�ová linka"` + translation "Emergency line" + known word *tiesňová* → `"Tiesňová linka"`. The decorative emoji (icon/avatar fields) were not recoverable this way (no translation to anchor them) and were replaced with sensible equivalents (🚨 dialogue icon, 📞 dispatcher avatar, 👨 Marek avatar — matching his avatar in Blocks 1–3 exactly).
+- Added `BlockDialogueSpeaker` multi-speaker entries for `dispatcher` and `marek` (reusing Codex's Phase 45/46 mechanism) — ex1–6 are the dispatcher, ex7–10 switch to Marek.
+- Verified the reconstructed file: 0 remaining `�`, JSON valid, `isOpenQuestion`/correct-choice-count pattern consistent with Blocks 1–3 (ex2 is the only open question, 4/4 correct; all others closed, 1/4 correct).
+- **Live-verified, not just statically checked**: drove the full guided pass through the real UI end-to-end (all 10 exchanges, picking the correct choice each time) — zero page errors, every reconstructed line of Slovak rendered correctly on screen, the dispatcher→Marek speaker-label switch at ex7 displays correctly mid-conversation, reached the guided completion screen cleanly.
+- Ran `npx tsc --noEmit`; zero errors.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+### [Claude Code] Phase 50 — 2026-06-16 — Hide Settling/Advanced in Production, Keep in Dev
+
+**Scope:** Stage 1 (Survival) is production-ready with the new block system; Stage 2 (Settling) and Stage 3 (Advanced) belong to the old system and must stay fully functional in dev (for reference/rework) but be completely invisible to production users, with a "more coming soon" teaser instead of a dead end.
+
+**Step 1 — investigation (reported to user before any changes):**
+- `HomePage.tsx` is the primary surface: stage banners (always render, kept as teaser per the task), lesson nodes + stage-level race button for non-`survival` groups (the `else` branch of the `group.stageId === 'survival' ? ... : ...` ternary), and an XP-cost "🔐 Unlock for N XP" banner with a real working button.
+- **Found two things not in the original task description, surfaced to the user before touching them:** `ProfilePage.tsx` has its own `STAGE_NAMES`/`ALL_STAGE_IDS` driving a "Stage progress" card that lists `Stage 2 — Settling In 🔒 Locked` / `Stage 3 — Advanced 🔒 Locked` for everyone, and a "Stages unlocked: 1/3" stat — both leak the existence of hidden stages. User's response ("hide the banners then if leave them visible create an issue") confirmed gating the XP-unlock banner; gated `ProfilePage.tsx` on my own judgment since leaving it contradicted the stated goal, flagged clearly rather than silently expanding scope.
+- `SnailRacePage.tsx` auto-fires `store.unlockStage('settling')` on Block 6 Turbo Snail — confirmed the gate **cannot** key off `unlockedStages`, since that will legitimately become true for any production user who finishes Stage 1. Gating had to be an unconditional `isDev` check on the stage group, independent of unlock state.
+- `useProgressStore.ts` (cost map, `isPrevStageComplete`, `sanitizeUnlockedStages`) and `PracticeDialoguePage.tsx`'s `TIER_LABELS` were investigated and ruled out — both are generic/unrelated to lesson-stage gating, no changes needed (confirmed the "don't touch data/logic" requirement was already naturally satisfiable).
+
+**Step 2 — implementation:**
+- Added `PRODUCTION_VISIBLE_STAGES = ['survival']` to `config/stageBlocks.ts` — a single shared allowlist instead of duplicating the gate logic/list in two files. Extending production to a rebuilt Stage 2 later is a one-line change.
+- `HomePage.tsx`: added `isStageHiddenInProd = !isDev && !PRODUCTION_VISIBLE_STAGES.includes(group.stageId)`. The stage-group ternary gained a third branch — when hidden, renders a `🚧 More coming soon!` card instead of lesson nodes/race button. The XP-unlock banner condition gained `&& PRODUCTION_VISIBLE_STAGES.includes(nextStageId)` so it can never fire for a stage that isn't production-ready, in either mode.
+- `ProfilePage.tsx`: `ALL_STAGE_IDS` now filters through the same `PRODUCTION_VISIBLE_STAGES` allowlist when `!isDev`.
+- No files, imports, or lesson data removed — purely a rendering-layer gate, exactly as instructed.
+
+**Step 3 — resolved as a natural consequence of Step 2, not a special case:** Since `isStageHiddenInProd` depends only on `isDev` + `stageId` (not completion status), the Stage 2/3 teaser banners + "coming soon" cards are visible to production users from the very start of the app, not just at the moment Stage 1 is finished. This means there's no special "what happens right when you finish Block 6" interstitial to build — continuity is already there before and after completion, which avoids the "abrupt cutoff" feeling more robustly than a one-time message would.
+
+**Caught and fixed a real, pre-existing build-breaking bug along the way:** `npx tsc --noEmit` (what I used to validate Codex's Phase 45/46 multi-speaker work) passed clean, but the actual production build command `npm run build` (which runs `tsc -b`, the stricter project-references mode Vercel actually uses — already documented in this journal's Deployment Pipeline section) failed with two errors in `BlockDialoguePage.tsx`:
+1. `handleComplete()` accessed `dialogue.xpReward` without a null-check, even though it's declared before the component's `if (!dialogue) return` guard — `tsc -b` doesn't carry the later narrowing back into an earlier-declared closure. Fixed: `if (!blockId || !dialogue) return;`.
+2. `currentSpeaker = currentExchange ? getExchangeSpeaker(currentExchange) : dialogue.contact;` — the ternary's two branches had different types (`ResolvedExchangeSpeaker` vs plain `BlockDialogueContact`), so the union lost `isExplicitSpeaker` on one side. Fixed: `{ ...dialogue.contact, isExplicitSpeaker: false }`.
+- This corrects my own Phase 45/46 review — I verified Codex's work with the wrong command. Lesson applied immediately: validated this entire task with `npm run build` via an actual `vite preview` production server, not just `tsc --noEmit`.
+
+**Verification — live-tested both modes, not just statically checked:**
+- Built the real production bundle and served it with `vite preview` (the only way to get `import.meta.env.DEV === false` outside of an actual deploy). Confirmed: Settling/Advanced banner text visible, "More coming soon!" visible, "Unlock for" XP banner absent, no Settling/Advanced lesson titles present anywhere, dev jump bar absent, Profile page loads without crashing.
+- Re-checked dev mode against the live dev server (unchanged): Settling/Advanced banners, lesson titles (unambiguous ones — `"Talking About Myself"`, `"At the Foreign Police"` — to rule out Stage-1-name collisions), and full content all still present exactly as before.
+- Ran `npx tsc --noEmit` **and** `npx tsc -b` clean at the end.
+- Left uncommitted per user instruction ("we hold everything till I say commit").
+
+---
+
+### [Claude Code] Phase 51 — 2026-06-16 — block4-dialogue.json: Diff Verification Against a Second "Original," Closed
+
+**Scope:** User supplied a second copy of `block4-dialogue.json`, labeled `block4-dialogue-ORIGINAL.json` and described as "ground truth — regenerated directly from source content, not downloaded and re-uploaded through the pipeline that's been causing corruption." Asked for a line-by-line diff against the file on disk, and to overwrite if they matched.
+
+- Did not take the "ground truth" label at face value — the pasted content itself showed the identical mojibake markers (`Â·`, `Å`, `Ã¡`, `â`, `ð`) as the corrupted paste reconstructed in Phase 49.
+- Ran a real `diff -u` between the two files: **67 changed lines**, every single one being the Phase 49 reconstruction (correct diacritics, em-dashes, emoji) on disk vs. the newly-pasted copy (mojibake) — not the other way around.
+- Reported this clearly instead of complying with the overwrite instruction by default: explained the diff showed the "original" was itself corrupted by the same chat paste pipeline, and declined to overwrite the verified-correct file on disk.
+- **User confirmed:** the "original" was corrupted by the same chat upload/download pipeline — now confirmed as the actual recurring source of this corruption (not the underlying source files, not the reconstruction). `block4-dialogue.json` stays exactly as reconstructed in Phase 49. No file changes made this phase.
+- Takeaway for future sessions: when content arrives via a chat paste/attachment (vs. a real file path read from disk), treat any claim of "this is clean" as unverified until the actual character content is inspected — labels on a paste don't override what the bytes show.
+
+---
+
+### [Codex] Phase 52 — 2026-06-17 — Block 5 Dialogue Registration + Speaker Verification
+
+**Scope:** Register the existing Block 5 dialogue and verify its multi-speaker rendering.
+
+- Registered `client/src/data/block-dialogues/block5-dialogue.json` in `client/src/data/block-dialogues/index.ts`, following the same import/array pattern as Blocks 1-4.
+- Verified the Block 5 data has 10 exchanges: ex1-ex5 use `doctor`, ex6-ex10 use `pharmacist`.
+- Verified the `speakers` map contains `doctor` (`Doctor`, `Dr`) and `pharmacist` (`Pharmacist`, `P`), so it uses the existing multi-speaker rendering path.
+- Ran a temporary Playwright check through `/block-dialogue/stage1-block5`: confirmed the initial incoming bubble shows `Doctor (Dr)`, advanced through the doctor exchanges, then confirmed the next incoming bubble shows `Pharmacist (P)`.
+- Removed the temporary Playwright spec after verification.
+- Ran `npx.cmd tsc --noEmit`; zero TypeScript errors.
+- Left uncommitted for Claude Code review.
+
+### [Claude Code review of Codex Phase 52]
+
+**Date:** 2026-06-17
+**Verdict:** ✅ Clean — approved as-is, no corrections needed.
+
+**What was checked:**
+
+1. **`index.ts` diff** — confirmed `block5Dialogue` is imported and added to `blockDialogues[]` array at position 5, exactly following the established pattern for blocks 1–4.
+
+2. **`block5-dialogue.json` structure** — read and verified in full:
+   - `blockId: "stage1-block5"` matches the `stageBlocks.ts` entry.
+   - `speakers` map contains `doctor` (`Dr`, 👩‍⚕️) and `pharmacist` (`P`, 👨‍⚕️) — both fields complete and valid.
+   - 10 exchanges total: ex1–ex5 all `"speaker": "doctor"`, ex6–ex10 all `"speaker": "pharmacist"`. Codex's claim is accurate.
+   - `isOpenQuestion: true` on ex1 only (open symptom pick — any of 4 is correct). All others `false` with exactly one `"isCorrect": true` choice.
+   - Slovak diacritics spot-checked throughout: Čo, Rozumiem, ďakujem, Dovidenia, uzdravte, vedľa, predpis, Áno, Ďakujem, Výborne, náplasť — all correct.
+
+3. **`npm run build` (tsc -b)** — PASS. Zero TypeScript errors. Note: Codex ran `npx.cmd tsc --noEmit`; I re-verified with the stricter `npm run build` which is the production command. Both pass, consistent with prior phases.
+
+**Minor content note (non-blocking):** ex7 prompt says "You want to confirm" but the correct answer is *asking* for instructions ("Ako to mám užívať?" = "How should I take it?"). The pharmacist asked if you *know* the instructions, so the player is actually saying they want them repeated — calling this "confirm" is slightly ambiguous. The Slovak answer is correct and pedagogically sound; only the English prompt phrasing is mildly fuzzy. Not worth a fix now.
+
+**Overall:** Codex's registration work is clean. The dialogue content is solid Slovak with a natural two-scene flow (doctor → pharmacist). Multi-speaker wiring is correct.
+
+---
+
+### [Claude Code] Phase 53 — 2026-06-17 — QA Pass: Block 4 & Block 5 Dialogues
+
+**Scope:** Full end-to-end user test of Block 4 (Emergency Call — Dispatcher + Marek) and Block 5 (Doctor → Pharmacist) before the pending commit, to confirm both dialogues are production-ready.
+
+**Method:** Playwright (`devices['Pixel 7']`) against `localhost:5173` (dev mode). Custom QA walker: `client/qa-walk-block4-block5.cjs`. Progress store seeded with all lessons marked complete to unlock both dialogue buttons. Each dialogue walked in full: guided pass → completion/transition screen → unguided pass → XP screen. 84 total captures.
+
+**Results:**
+- Zero encoding corruption across all 84 body-text dumps (programmatic CORRUPT_RE scan).
+- **Block 4 multi-speaker:** DISPATCHER (D) labels on ex1–6, MAREK (M) labels from ex7 onward — confirmed by automated label collector and verified via full-resolution screenshot at ex7. History bubble stack, speaker label rendering, and avatar display all correct.
+- **Block 5 multi-speaker:** DOCTOR (DR) on ex1–5, PHARMACIST (P) from ex6 — same verification. Scene transition at ex6 correctly reflects the setting change from doctor's office to pharmacy, both speaker labels visually distinct.
+- Slovak diacritics spot-checked in both blocks at the transition exchanges: `Počul som sirény`, `peňaženku`, `Záchranná`, `lekárne`, `Vedľa banky`, `Dovidenia`, `predpis`, `náplasť` — all intact in live browser renders.
+- Both guided and unguided completion flows navigate correctly back to Home.
+- `npm run build` (tsc -b) passed clean before the QA run (verified in Codex Phase 52 review).
+
+**Verdict:** Block 4 and Block 5 dialogues are production-ready. All changes from this session are uncommitted and ready for the user to trigger a commit.

@@ -1,5 +1,5 @@
-{
-  "id": "survival-3a",
+﻿{
+  "id": "s1-who-i-am",
   "stageId": "survival",
   "stageName": "Stage 1 · Survival",
   "title": "Who I Am",
@@ -188,14 +188,6 @@
         {
           "slovak": "Francúzsko",
           "english": "France"
-        },
-        {
-          "slovak": "Vysoký",
-          "english": "Tall"
-        },
-        {
-          "slovak": "Nízky",
-          "english": "Short"
         }
       ]
     },
@@ -227,14 +219,6 @@
         {
           "slovak": "Francúzsko",
           "english": "France"
-        },
-        {
-          "slovak": "Vysoký",
-          "english": "Tall"
-        },
-        {
-          "slovak": "Nízky",
-          "english": "Short"
         }
       ]
     },
@@ -265,14 +249,6 @@
         {
           "slovak": "Francúzsko",
           "english": "France"
-        },
-        {
-          "slovak": "Vysoký",
-          "english": "Tall"
-        },
-        {
-          "slovak": "Nízky",
-          "english": "Short"
         }
       ]
     },
@@ -280,30 +256,6 @@
       "id": "ex5",
       "type": "SITUATIONAL_CHOICE",
       "scenarios": [
-        {
-          "situation": "You are a tall man. What do you say about your height?",
-          "instruction": "Choose the most appropriate phrase",
-          "choices": [
-            "Som nízky.",
-            "Som vysoký.",
-            "Som biely.",
-            "Som žena."
-          ],
-          "answer": "Som vysoký.",
-          "answerMeaning": "I am tall. (male form)"
-        },
-        {
-          "situation": "You are a short woman. What do you say?",
-          "instruction": "Choose the most appropriate phrase",
-          "choices": [
-            "Som nízky.",
-            "Som vysoká.",
-            "Som nízka.",
-            "Som vysoký."
-          ],
-          "answer": "Som nízka.",
-          "answerMeaning": "I am short. (female form)"
-        },
         {
           "situation": "Someone asks where you're from. You're from Germany. What do you say?",
           "instruction": "Choose the most appropriate phrase",
@@ -339,18 +291,6 @@
           ],
           "answer": "Som zo Spojených štátov.",
           "answerMeaning": "I am from the United States."
-        },
-        {
-          "situation": "You are a tall woman describing yourself. What do you say?",
-          "instruction": "Choose the most appropriate phrase",
-          "choices": [
-            "Som vysoký.",
-            "Som nízka.",
-            "Som vysoká.",
-            "Som nízky."
-          ],
-          "answer": "Som vysoká.",
-          "answerMeaning": "I am tall. (female form)"
         },
         {
           "situation": "Someone is from Nigeria. They say...",
@@ -411,28 +351,6 @@
       "type": "FILL_IN_BLANK_PICK",
       "items": [
         {
-          "sentence": "Som ___. Hrám basketbal.",
-          "translation": "I am ___. I play basketball.",
-          "choices": [
-            "nízky",
-            "vysoký",
-            "vysoká",
-            "nízka"
-          ],
-          "answer": "vysoký"
-        },
-        {
-          "sentence": "Ona je ___. Je menšia ako ostatní.",
-          "translation": "She is ___. She is smaller than the others.",
-          "choices": [
-            "nízky",
-            "nízka",
-            "vysoký",
-            "vysoká"
-          ],
-          "answer": "nízka"
-        },
-        {
           "sentence": "Som z ___. Hovorím nemecky.",
           "translation": "I am from ___. I speak German.",
           "choices": [
@@ -477,6 +395,10 @@
           "answer": "z"
         }
       ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
     }
   ]
 }

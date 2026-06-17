@@ -1,0 +1,217 @@
+{
+  "id": "s1-days-of-week",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Days of the Week",
+  "description": "Monday to Sunday — and talking about today, tomorrow, and yesterday",
+  "icon": "📅",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Days of the Week",
+      "rows": [
+        { "label": "Monday", "slovak": "Pondelok", "english": "Monday" },
+        { "label": "Tuesday", "slovak": "Utorok", "english": "Tuesday" },
+        { "label": "Wednesday", "slovak": "Streda", "english": "Wednesday" },
+        { "label": "Thursday", "slovak": "Štvrtok", "english": "Thursday" },
+        { "label": "Friday", "slovak": "Piatok", "english": "Friday" },
+        { "label": "Saturday", "slovak": "Sobota", "english": "Saturday" },
+        { "label": "Sunday", "slovak": "Nedeľa", "english": "Sunday" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Today, Tomorrow, Yesterday",
+      "rows": [
+        { "label": "Today", "slovak": "Dnes", "english": "Today" },
+        { "label": "Tomorrow", "slovak": "Zajtra", "english": "Tomorrow" },
+        { "label": "Yesterday", "slovak": "Včera", "english": "Yesterday" },
+        { "label": "This week", "slovak": "Tento týždeň", "english": "This week" },
+        { "label": "Working day", "slovak": "Pracovný deň", "english": "Working day / Weekday" },
+        { "label": "Weekend", "slovak": "Víkend", "english": "Weekend" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Useful Phrases",
+      "rows": [
+        { "label": "What day?", "slovak": "Aký je dnes deň?", "english": "What day is it today?" },
+        { "label": "See you on...", "slovak": "Uvidíme sa v...", "english": "See you on... (+ day)" },
+        { "label": "On Monday", "slovak": "V pondelok", "english": "On Monday" },
+        { "label": "On Friday", "slovak": "V piatok", "english": "On Friday" },
+        { "label": "Every day", "slovak": "Každý deň", "english": "Every day" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Pondelok", "english": "Monday" },
+        { "slovak": "Utorok", "english": "Tuesday" },
+        { "slovak": "Streda", "english": "Wednesday" },
+        { "slovak": "Štvrtok", "english": "Thursday" },
+        { "slovak": "Piatok", "english": "Friday" },
+        { "slovak": "Sobota", "english": "Saturday" },
+        { "slovak": "Nedeľa", "english": "Sunday" },
+        { "slovak": "Víkend", "english": "Weekend" }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Pondelok", "english": "Monday" },
+        { "slovak": "Utorok", "english": "Tuesday" },
+        { "slovak": "Streda", "english": "Wednesday" },
+        { "slovak": "Štvrtok", "english": "Thursday" },
+        { "slovak": "Piatok", "english": "Friday" },
+        { "slovak": "Sobota", "english": "Saturday" },
+        { "slovak": "Nedeľa", "english": "Sunday" },
+        { "slovak": "Víkend", "english": "Weekend" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Pondelok", "english": "Monday" },
+        { "slovak": "Streda", "english": "Wednesday" },
+        { "slovak": "Piatok", "english": "Friday" },
+        { "slovak": "Nedeľa", "english": "Sunday" },
+        { "slovak": "Dnes", "english": "Today" },
+        { "slovak": "Zajtra", "english": "Tomorrow" },
+        { "slovak": "Včera", "english": "Yesterday" },
+        { "slovak": "Víkend", "english": "Weekend" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your colleague asks what day it is today. It is Wednesday. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Dnes je piatok.", "Dnes je streda.", "Dnes je pondelok.", "Dnes je nedeľa."],
+          "answer": "Dnes je streda.",
+          "answerMeaning": "Dnes je streda = Today is Wednesday. Dnes from this lesson + the day name."
+        },
+        {
+          "situation": "Your doctor's appointment is on Friday. How do you say this?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["V pondelok", "V piatok", "V utorok", "V nedeľu"],
+          "answer": "V piatok",
+          "answerMeaning": "V piatok = On Friday. The pattern V + day tells someone when something is happening."
+        },
+        {
+          "situation": "You want to confirm a meeting for tomorrow. What word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": ["Dnes", "Zajtra", "Včera", "Víkend"],
+          "answer": "Zajtra",
+          "answerMeaning": "Zajtra = Tomorrow. Essential when scheduling anything in Slovak."
+        },
+        {
+          "situation": "You missed a delivery yesterday. How do you mention this to the courier?",
+          "instruction": "Choose the correct word",
+          "choices": ["Dnes", "Zajtra", "Včera", "Pondelok"],
+          "answer": "Včera",
+          "answerMeaning": "Včera = Yesterday. Doručenie bolo včera = The delivery was yesterday."
+        },
+        {
+          "situation": "Most Slovak offices are closed on Saturday and Sunday. What do you call these two days together?",
+          "instruction": "Choose the correct word",
+          "choices": ["Pracovný deň", "Víkend", "Týždeň", "Streda"],
+          "answer": "Víkend",
+          "answerMeaning": "Víkend = Weekend. Sobota and Nedeľa together make up the víkend."
+        },
+        {
+          "situation": "A shop sign says 'Otvorené: pondelok — piatok.' What does this mean?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "Open only on Mondays",
+            "Open Monday to Friday",
+            "Open on weekends only",
+            "Closed Monday and Friday"
+          ],
+          "answer": "Open Monday to Friday",
+          "answerMeaning": "Pondelok — piatok = Monday to Friday. A very common way Slovak shops display their opening days."
+        },
+        {
+          "situation": "Your friend says 'Uvidíme sa v sobotu.' What are they saying?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "See you tomorrow",
+            "See you on Saturday",
+            "See you yesterday",
+            "See you next week"
+          ],
+          "answer": "See you on Saturday",
+          "answerMeaning": "Uvidíme sa v sobotu = See you on Saturday. Uvidíme sa v... + day is how Slovaks confirm plans."
+        },
+        {
+          "situation": "You go to the gym Monday through Friday but never on weekends. How do you describe your routine?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Idem každý víkend.",
+            "Idem každý pracovný deň.",
+            "Idem každú nedeľu.",
+            "Idem zajtra."
+          ],
+          "answer": "Idem každý pracovný deň.",
+          "answerMeaning": "Idem každý pracovný deň = I go every working day. Pracovný deň = weekday, as opposed to víkend."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ je dnes deň?",
+          "translation": "What day is it today?",
+          "choices": ["Aký", "Kedy", "Koľko", "Kde"],
+          "answer": "Aký"
+        },
+        {
+          "sentence": "Stretnutie je ___ pondelok.",
+          "translation": "The meeting is on Monday.",
+          "choices": ["o", "v", "na", "do"],
+          "answer": "v"
+        },
+        {
+          "sentence": "___ idem k doktorovi. Dnes nie.",
+          "translation": "Tomorrow I am going to the doctor. Not today.",
+          "choices": ["Dnes", "Zajtra", "Včera", "Víkend"],
+          "answer": "Zajtra"
+        },
+        {
+          "sentence": "Obchody sú zatvorené počas ___.",
+          "translation": "Shops are closed during the weekend.",
+          "choices": ["pracovného dňa", "víkendu", "streda", "pondelka"],
+          "answer": "víkendu"
+        },
+        {
+          "sentence": "___ som bol chorý. Dnes je mi lepšie.",
+          "translation": "Yesterday I was sick. Today I feel better.",
+          "choices": ["Dnes", "Zajtra", "Včera", "Týždeň"],
+          "answer": "Včera"
+        },
+        {
+          "sentence": "Pracujem ___ deň okrem víkendu.",
+          "translation": "I work every day except the weekend.",
+          "choices": ["každý", "tento", "zajtra", "dnes"],
+          "answer": "každý"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

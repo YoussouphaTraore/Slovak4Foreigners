@@ -1,0 +1,11 @@
+﻿{
+  "id": "s1-tram-bus",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Getting Around With Tram/Bus",
+  "description": "Coming soon",
+  "icon": "🔒",
+  "xpReward": 10,
+  "coming_soon": true,
+  "exercises": []
+}

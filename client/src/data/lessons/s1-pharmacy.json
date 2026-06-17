@@ -1,0 +1,231 @@
+﻿{
+  "id": "s1-pharmacy",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "At the Pharmacy",
+  "description": "Ask for medicine and understand the pharmacist",
+  "icon": "💊",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Medicine Words",
+      "rows": [
+        { "label": "Medicine", "slovak": "Lieky", "english": "Medicine" },
+        { "label": "Pills", "slovak": "Tabletky", "english": "Pills" },
+        { "label": "Syrup", "slovak": "Sirup", "english": "Syrup" },
+        { "label": "Ointment", "slovak": "Masť", "english": "Ointment" },
+        { "label": "Plaster", "slovak": "Náplasť", "english": "Plaster / Band-aid" },
+        { "label": "Drops", "slovak": "Kvapky", "english": "Drops" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Asking for Something",
+      "rows": [
+        { "label": "Do you have something for...?", "slovak": "Máte niečo na...?", "english": "Do you have something for...?" },
+        { "label": "Something for a headache", "slovak": "Niečo na bolesť hlavy", "english": "Something for a headache" },
+        { "label": "Something for a cold", "slovak": "Niečo na nádchu", "english": "Something for a cold" },
+        { "label": "Something for a cough", "slovak": "Niečo na kašeľ", "english": "Something for a cough" },
+        { "label": "Without a prescription", "slovak": "Voľne predajné", "english": "Over the counter" },
+        { "label": "Is a prescription needed?", "slovak": "Je potrebný predpis?", "english": "Is a prescription needed?" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Instructions",
+      "rows": [
+        { "label": "How to take it", "slovak": "Ako to mám užívať?", "english": "How should I take it?" },
+        { "label": "Twice a day", "slovak": "Dvakrát denne", "english": "Twice a day" },
+        { "label": "Before meals", "slovak": "Pred jedlom", "english": "Before meals" },
+        { "label": "After meals", "slovak": "Po jedle", "english": "After meals" },
+        { "label": "Side effects", "slovak": "Vedľajšie účinky", "english": "Side effects" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Lieky", "english": "Medicine" },
+        { "slovak": "Tabletky", "english": "Pills" },
+        { "slovak": "Sirup", "english": "Syrup" },
+        { "slovak": "Masť", "english": "Ointment" },
+        { "slovak": "Náplasť", "english": "Plaster" },
+        { "slovak": "Kvapky", "english": "Drops" },
+        { "slovak": "Predpis", "english": "Prescription" },
+        { "slovak": "Voľne predajné", "english": "Over the counter" }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Lieky", "english": "Medicine" },
+        { "slovak": "Tabletky", "english": "Pills" },
+        { "slovak": "Sirup", "english": "Syrup" },
+        { "slovak": "Masť", "english": "Ointment" },
+        { "slovak": "Náplasť", "english": "Plaster" },
+        { "slovak": "Kvapky", "english": "Drops" },
+        { "slovak": "Predpis", "english": "Prescription" },
+        { "slovak": "Voľne predajné", "english": "Over the counter" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Lieky", "english": "Medicine" },
+        { "slovak": "Tabletky", "english": "Pills" },
+        { "slovak": "Sirup", "english": "Syrup" },
+        { "slovak": "Masť", "english": "Ointment" },
+        { "slovak": "Máte niečo na...?", "english": "Do you have something for...?" },
+        { "slovak": "Niečo na bolesť hlavy", "english": "Something for a headache" },
+        { "slovak": "Ako to mám užívať?", "english": "How should I take it?" },
+        { "slovak": "Dvakrát denne", "english": "Twice a day" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You have a headache and walk into the pharmacy. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Máte niečo na bolesť hlavy?",
+            "Máte niečo na nádchu?",
+            "Je potrebný predpis?",
+            "Ako to mám užívať?"
+          ],
+          "answer": "Máte niečo na bolesť hlavy?",
+          "answerMeaning": "Máte niečo na bolesť hlavy? = Do you have something for a headache? Bolesť hlavy combines bolesť (pain) and hlava (head) from the Body Parts and Hospital lessons."
+        },
+        {
+          "situation": "The doctor gave you a prescription. The pharmacist asks if you have it. What do you show them?",
+          "instruction": "Choose the correct word",
+          "choices": ["Tabletky", "Predpis", "Masť", "Kvapky"],
+          "answer": "Predpis",
+          "answerMeaning": "Predpis = Prescription, from the Hospital lesson. Some medicines require this before the pharmacist can give them to you."
+        },
+        {
+          "situation": "You want to know if you can buy something without a doctor's prescription. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Je potrebný predpis?",
+            "Máte niečo na kašeľ?",
+            "Dvakrát denne?",
+            "Vedľajšie účinky?"
+          ],
+          "answer": "Je potrebný predpis?",
+          "answerMeaning": "Je potrebný predpis? = Is a prescription needed? Important to ask before assuming you can just buy something."
+        },
+        {
+          "situation": "You cut your finger and need something to cover it. What do you ask for?",
+          "instruction": "Choose the correct word",
+          "choices": ["Sirup", "Masť", "Náplasť", "Kvapky"],
+          "answer": "Náplasť",
+          "answerMeaning": "Náplasť = Plaster / Band-aid. Bolí ma prst (from the Body Parts lesson) — and now you know what to ask for."
+        },
+        {
+          "situation": "The pharmacist hands you tablets and explains the instructions: 'Dvakrát denne, pred jedlom.' When and how often do you take them?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "Once a day, after meals",
+            "Twice a day, before meals",
+            "Three times a day, after meals",
+            "Once a week, before meals"
+          ],
+          "answer": "Twice a day, before meals",
+          "answerMeaning": "Dvakrát denne = Twice a day. Pred jedlom = before meals. Always confirm timing instructions — getting this wrong can affect how well the medicine works."
+        },
+        {
+          "situation": "You have a sore throat and a cough. Your child also has a cold. What do you ask the pharmacist for your child?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Máte niečo na nádchu?",
+            "Máte niečo na bolesť hlavy?",
+            "Je to voľne predajné?",
+            "Vedľajšie účinky?"
+          ],
+          "answer": "Máte niečo na nádchu?",
+          "answerMeaning": "Máte niečo na nádchu? = Do you have something for a cold? Nádcha = common cold/runny nose."
+        },
+        {
+          "situation": "You want to know if a medicine has any unwanted reactions before taking it. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Aké sú vedľajšie účinky?",
+            "Ako to mám užívať?",
+            "Je to voľne predajné?",
+            "Máte niečo na kašeľ?"
+          ],
+          "answer": "Aké sú vedľajšie účinky?",
+          "answerMeaning": "Aké sú vedľajšie účinky? = What are the side effects? Important to ask, especially for new medicines."
+        },
+        {
+          "situation": "You don't understand the pharmacist's instructions and need them explained again. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Ako to mám užívať?",
+            "Nerozumiem. Môžete zopakovať?",
+            "Máte niečo na nádchu?",
+            "Dvakrát denne."
+          ],
+          "answer": "Nerozumiem. Môžete zopakovať?",
+          "answerMeaning": "Nerozumiem. Môžete zopakovať? = I don't understand. Can you repeat that? From the I Don't Understand lesson — always useful when instructions matter for your health."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Máte niečo na ___ hlavy?",
+          "translation": "Do you have something for a headache?",
+          "choices": ["nádchu", "bolesť", "kašeľ", "predpis"],
+          "answer": "bolesť"
+        },
+        {
+          "sentence": "Je potrebný ___ na tento liek?",
+          "translation": "Is a prescription needed for this medicine?",
+          "choices": ["predpis", "sirup", "masť", "kvapky"],
+          "answer": "predpis"
+        },
+        {
+          "sentence": "Berte tieto tabletky ___ denne.",
+          "translation": "Take these pills twice a day.",
+          "choices": ["raz", "dvakrát", "trikrát", "nikdy"],
+          "answer": "dvakrát"
+        },
+        {
+          "sentence": "Užívajte liek ___ jedlom, nie po ňom.",
+          "translation": "Take the medicine before meals, not after.",
+          "choices": ["po", "pred", "na", "do"],
+          "answer": "pred"
+        },
+        {
+          "sentence": "Potrebujem ___ na ranu na prste.",
+          "translation": "I need a plaster for the cut on my finger.",
+          "choices": ["sirup", "tabletky", "náplasť", "kvapky"],
+          "answer": "náplasť"
+        },
+        {
+          "sentence": "Aké sú ___ účinky tohto lieku?",
+          "translation": "What are the side effects of this medicine?",
+          "choices": ["vedľajšie", "hlavné", "rýchle", "dobré"],
+          "answer": "vedľajšie"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -39,6 +39,12 @@ export interface SnailRaceRecord {
   bestScore: number;
 }
 
+export interface BlockRaceRecord {
+  blockId: string;
+  passed: boolean;
+  bestScore: number;
+}
+
 export interface PartialLessonProgress {
   lessonId: string;
   resumeFromIndex: number;  // exercise index to start from on resume
@@ -163,7 +169,12 @@ interface ProgressStore {
   lessonRecords: LessonRecord[];
   unlockedStages: string[];
   snailRaceRecords: SnailRaceRecord[];
+  blockRaceRecords: BlockRaceRecord[];
+  passedBlocks: string[];
+  blockRaceAttemptsToday: number;
+  blockRaceLastAttemptDate: string;
   triedEmergencyScenarios: string[];
+  completedBlockDialogues: string[];
 
   // Sync status (not persisted — reset via onRehydrateStorage)
   isSyncing: boolean;
@@ -220,6 +231,17 @@ interface ProgressStore {
     correctAnswers: number,
   ) => { xpEarned: number; attemptsLeft: number; blocked: boolean };
 
+  // Block Race
+  recordBlockRaceAttempt: (
+    blockId: string,
+    correctAnswers: number,
+    accuracy: number,
+  ) => { xpEarned: number; attemptsLeft: number; blocked: boolean; isTurboSnail: boolean };
+  passBlock: (blockId: string) => void;
+  getBlockRaceAttemptsLeft: () => number;
+  hasPassedBlock: (blockId: string) => boolean;
+  getBlockBestScore: (blockId: string) => number;
+
   // Review helpers
   getWeakLessons: () => LessonRecord[];
   getSuggestedReviews: () => LessonRecord[];
@@ -227,6 +249,10 @@ interface ProgressStore {
 
   // Emergency scenarios
   markEmergencyScenarioTried: (scenarioId: string) => void;
+
+  // Block Dialogue
+  completeBlockDialogue: (blockId: string) => void;
+  hasCompletedBlockDialogue: (blockId: string) => boolean;
 
   // Save-progress modal
   dismissSaveProgressModal: () => void;
@@ -265,7 +291,12 @@ export const useProgressStore = create<ProgressStore>()(
       lessonRecords: [],
       unlockedStages: ['survival'],
       snailRaceRecords: [],
+      blockRaceRecords: [],
+      passedBlocks: [],
+      blockRaceAttemptsToday: 0,
+      blockRaceLastAttemptDate: '',
       triedEmergencyScenarios: [],
+      completedBlockDialogues: [],
       isSyncing: false,
       lastSyncedAt: null,
       showSaveProgressModal: null,
@@ -458,6 +489,80 @@ export const useProgressStore = create<ProgressStore>()(
         return { xpEarned, attemptsLeft: 5 - (attemptsToday + 1), blocked: false };
       },
 
+      // ── Block Race ────────────────────────────────────────────────────────
+
+      recordBlockRaceAttempt: (blockId, correctAnswers, accuracy) => {
+        const s = get();
+        const today = new Date().toISOString().slice(0, 10);
+        const attemptsToday = s.blockRaceLastAttemptDate === today ? s.blockRaceAttemptsToday : 0;
+
+        if (attemptsToday >= 5) {
+          return { xpEarned: 0, attemptsLeft: 0, blocked: true, isTurboSnail: false };
+        }
+
+        const isTurboSnail = correctAnswers > 10 && accuracy > 50;
+        const xpEarned = Math.max(1, Math.round(correctAnswers * s.streakMultiplier));
+        const newXp = Math.max(0, s.xp + xpEarned);
+        const newWeeklyXp = s.weeklyXp + xpEarned;
+        const newAttemptsToday = attemptsToday + 1;
+
+        const existing = s.blockRaceRecords.find((r) => r.blockId === blockId);
+        const updatedRecords = existing
+          ? s.blockRaceRecords.map((r) =>
+              r.blockId === blockId
+                ? { ...r, bestScore: Math.max(correctAnswers, r.bestScore), passed: r.passed || isTurboSnail }
+                : r,
+            )
+          : [...s.blockRaceRecords, { blockId, passed: isTurboSnail, bestScore: correctAnswers }];
+
+        const updatedPassedBlocks =
+          isTurboSnail && !s.passedBlocks.includes(blockId)
+            ? [...s.passedBlocks, blockId]
+            : s.passedBlocks;
+
+        set({
+          xp: newXp,
+          level: calcLevel(newXp),
+          weeklyXp: newWeeklyXp,
+          blockRaceRecords: updatedRecords,
+          blockRaceAttemptsToday: newAttemptsToday,
+          blockRaceLastAttemptDate: today,
+          passedBlocks: updatedPassedBlocks,
+        });
+
+        const { user } = useAuthStore.getState();
+        if (user) {
+          fireSync(
+            [syncProgressToSupabase(user.id, get()), syncWeeklyXp(user.id, get().weeklyXp)],
+            set,
+          );
+        }
+
+        return { xpEarned, attemptsLeft: 5 - newAttemptsToday, blocked: false, isTurboSnail };
+      },
+
+      passBlock: (blockId) =>
+        set((s) => ({
+          passedBlocks: s.passedBlocks.includes(blockId)
+            ? s.passedBlocks
+            : [...s.passedBlocks, blockId],
+          blockRaceRecords: s.blockRaceRecords.map((r) =>
+            r.blockId === blockId ? { ...r, passed: true } : r,
+          ),
+        })),
+
+      getBlockRaceAttemptsLeft: () => {
+        const s = get();
+        const today = new Date().toISOString().slice(0, 10);
+        const attemptsToday = s.blockRaceLastAttemptDate === today ? s.blockRaceAttemptsToday : 0;
+        return Math.max(0, 5 - attemptsToday);
+      },
+
+      hasPassedBlock: (blockId) => get().passedBlocks.includes(blockId),
+
+      getBlockBestScore: (blockId) =>
+        get().blockRaceRecords.find((r) => r.blockId === blockId)?.bestScore ?? 0,
+
       // ── Emergency scenarios ───────────────────────────────────────────────
 
       markEmergencyScenarioTried: (scenarioId) =>
@@ -466,6 +571,18 @@ export const useProgressStore = create<ProgressStore>()(
             ? s.triedEmergencyScenarios
             : [...s.triedEmergencyScenarios, scenarioId],
         })),
+
+      // ── Block Dialogue ────────────────────────────────────────────────────
+
+      completeBlockDialogue: (blockId) =>
+        set((s) => ({
+          completedBlockDialogues: s.completedBlockDialogues.includes(blockId)
+            ? s.completedBlockDialogues
+            : [...s.completedBlockDialogues, blockId],
+        })),
+
+      hasCompletedBlockDialogue: (blockId) =>
+        get().completedBlockDialogues.includes(blockId),
 
       // ── Save-progress modal ───────────────────────────────────────────────
 
@@ -564,7 +681,12 @@ export const useProgressStore = create<ProgressStore>()(
         lessonRecords: [],
         unlockedStages: ['survival'],
         snailRaceRecords: [],
+        blockRaceRecords: [],
+        passedBlocks: [],
+        blockRaceAttemptsToday: 0,
+        blockRaceLastAttemptDate: '',
         triedEmergencyScenarios: [],
+        completedBlockDialogues: [],
         isSyncing: false,
         lastSyncedAt: null,
         showSaveProgressModal: null,
@@ -806,7 +928,7 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 11,
+      version: 15,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
@@ -884,6 +1006,28 @@ export const useProgressStore = create<ProgressStore>()(
 
         if (version < 11) {
           old = { ...old, partialLessonProgress: null };
+        }
+
+        if (version < 12) {
+          old = {
+            ...old,
+            blockRaceRecords: [],
+            passedBlocks: [],
+            blockRaceAttemptsToday: 0,
+            blockRaceLastAttemptDate: '',
+          };
+        }
+
+        if (version < 13) {
+          old = { ...old, completedBlockDialogues: [] };
+        }
+
+        if (version < 14) {
+          old = { ...old, completedBlockDialogues: [] };
+        }
+
+        if (version < 15) {
+          old = { ...old, completedBlockDialogues: [] };
         }
 
         return old as unknown as ProgressStore;

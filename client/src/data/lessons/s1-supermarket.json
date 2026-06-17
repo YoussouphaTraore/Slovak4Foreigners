@@ -1,0 +1,11 @@
+﻿{
+  "id": "s1-supermarket",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "At the Supermarket",
+  "description": "Coming soon",
+  "icon": "🔒",
+  "xpReward": 10,
+  "coming_soon": true,
+  "exercises": []
+}

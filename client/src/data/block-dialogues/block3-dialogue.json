@@ -1,0 +1,185 @@
+{
+  "id": "block3-dialogue",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "blockId": "stage1-block3",
+  "type": "BLOCK_DIALOGUE",
+  "title": "Coffee with Marek",
+  "description": "You meet Marek at a coffee shop. After ordering, he helps you book a Foreign Police appointment.",
+  "icon": "☕",
+  "xpReward": 20,
+  "contact": {
+    "name": "Marek",
+    "initials": "M",
+    "role": "Your friend",
+    "avatar": "👨"
+  },
+  "speakers": {
+    "waitress": { "name": "Waitress", "initials": "W", "avatar": "👩" },
+    "marek": { "name": "Marek", "initials": "M", "avatar": "👨" }
+  },
+  "context": "You and Marek are now friends. You meet him at a coffee shop. First you order from the waitress, then Marek helps you book an appointment at the Foreign Police.",
+  "exchanges": [
+    {
+      "id": "ex1",
+      "speaker": "waitress",
+      "text": "Dobrý deň! Čo si dáte?",
+      "translation": "Good day! What will you have?",
+      "prompt": "The waitress asks what you want. You want a coffee. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Dám si kávu, prosím.", "translation": "I'll have a coffee, please.", "isCorrect": true },
+        { "id": "b", "text": "Koľko to stojí?", "translation": "How much does it cost?", "isCorrect": false },
+        { "id": "c", "text": "Máte drobné?", "translation": "Do you have change?", "isCorrect": false },
+        { "id": "d", "text": "Platím kartou.", "translation": "I'm paying by card.", "isCorrect": false }
+      ],
+      "correctFeedback": "Dám si kávu, prosím. — correct. Dám si is the standard ordering phrase in any café or restaurant.",
+      "wrongFeedback": "Dám si... + what you want is how you order. Save the payment phrases for after you've ordered."
+    },
+    {
+      "id": "ex2",
+      "speaker": "waitress",
+      "text": "Dobre. To je tri eurá päťdesiat. Platíte kartou alebo v hotovosti?",
+      "translation": "Good. That's three euros fifty. Do you pay by card or cash?",
+      "prompt": "The waitress asks whether you pay by card or cash. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Máte drobné?", "translation": "Do you have change?", "isCorrect": false },
+        { "id": "b", "text": "Platím v hotovosti.", "translation": "I'm paying in cash.", "isCorrect": true },
+        { "id": "c", "text": "Platím kartou.", "translation": "I'm paying by card.", "isCorrect": true },
+        { "id": "d", "text": "Koľko je hodín?", "translation": "What time is it?", "isCorrect": false }
+      ],
+      "correctFeedback": "Correct. Platím kartou means I'm paying by card; Platím v hotovosti means I'm paying in cash.",
+      "wrongFeedback": "Use Platím kartou for card, or Platím v hotovosti for cash."
+    },
+    {
+      "id": "ex3",
+      "speaker": "waitress",
+      "text": "Tu máte. Chcete účtenku?",
+      "translation": "Here you are. Do you want a receipt?",
+      "prompt": "The waitress asks if you want a receipt. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Nie, ďakujem.", "translation": "No, thank you.", "isCorrect": true },
+        { "id": "b", "text": "Áno, môžem dostať účtenku?", "translation": "Yes, can I get a receipt?", "isCorrect": true },
+        { "id": "c", "text": "Mám drobné.", "translation": "I have change.", "isCorrect": false },
+        { "id": "d", "text": "Som vegetarián.", "translation": "I am vegetarian.", "isCorrect": false }
+      ],
+      "correctFeedback": "Correct. You can say Nie, ďakujem if you don't want a receipt, or Áno, môžem dostať účtenku? if you do.",
+      "wrongFeedback": "Answer the receipt question directly: Nie, ďakujem or Áno, môžem dostať účtenku?"
+    },
+    {
+      "id": "ex4",
+      "speaker": "marek",
+      "text": "Ahoj! Ako sa máš? Počul som, že potrebuješ pomoc s niečím na cudzineckej polícii.",
+      "translation": "Hi! How are you? I heard you need help with something at the Foreign Police.",
+      "prompt": "Marek greets you and mentions the Foreign Police. How do you respond?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Ahoj! Áno, potrebujem urobiť stretnutie.", "translation": "Hi! Yes, I need to make an appointment.", "isCorrect": true },
+        { "id": "b", "text": "Dobrú noc!", "translation": "Good night!", "isCorrect": false },
+        { "id": "c", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
+        { "id": "d", "text": "Koľko to stojí?", "translation": "How much does it cost?", "isCorrect": false }
+      ],
+      "correctFeedback": "Ahoj! Áno, potrebujem urobiť stretnutie. — exactly right. You greeted him back and confirmed what you need.",
+      "wrongFeedback": "Ahoj! Áno, potrebujem urobiť stretnutie is the natural response — greeting him back and confirming the appointment need."
+    },
+    {
+      "id": "ex5",
+      "speaker": "marek",
+      "text": "Dobre, pomôžem ti. Aký deň by si chcel ísť?",
+      "translation": "Good, I'll help you. What day would you like to go?",
+      "prompt": "Marek asks what day works for you. Pick the day that suits you.",
+      "isOpenQuestion": true,
+      "choices": [
+        { "id": "a", "text": "Pondelok by bol dobrý.", "translation": "Monday would be good.", "isCorrect": true },
+        { "id": "b", "text": "Streda by bola dobrá.", "translation": "Wednesday would be good.", "isCorrect": true },
+        { "id": "c", "text": "Piatok by bol dobrý.", "translation": "Friday would be good.", "isCorrect": true },
+        { "id": "d", "text": "Utorok by bol dobrý.", "translation": "Tuesday would be good.", "isCorrect": true }
+      ],
+      "correctFeedback": "Correct pattern — [Day] by bol/bola dobrý/dobrá. Any day works, the grammar is what matters.",
+      "wrongFeedback": "[Day] by bol/bola dobrý/dobrá is the pattern for suggesting a day. Pick whichever day suits you."
+    },
+    {
+      "id": "ex6",
+      "speaker": "marek",
+      "text": "Dobre, zapíšem to. A o koľkej by si chcel ísť?",
+      "translation": "Good, I'll note that down. And what time would you like to go?",
+      "prompt": "Marek asks what time works for you. Pick a time.",
+      "isOpenQuestion": true,
+      "choices": [
+        { "id": "a", "text": "O deviatej ráno.", "translation": "At nine in the morning.", "isCorrect": true },
+        { "id": "b", "text": "O druhej popoludní.", "translation": "At two in the afternoon.", "isCorrect": true },
+        { "id": "c", "text": "O desiatej ráno.", "translation": "At ten in the morning.", "isCorrect": true },
+        { "id": "d", "text": "O tretej popoludní.", "translation": "At three in the afternoon.", "isCorrect": true }
+      ],
+      "correctFeedback": "O + time — correct pattern for saying 'at' a specific time. Pick whichever time suits you.",
+      "wrongFeedback": "O + time is the pattern. Any time works as long as the grammar is correct."
+    },
+    {
+      "id": "ex7",
+      "speaker": "marek",
+      "text": "Super. A v ktorom mesiaci to potrebuješ vybaviť? Tvoj pobyt platí dokedy?",
+      "translation": "Great. And which month do you need to sort this out? Until when is your residence valid?",
+      "prompt": "Marek asks which month your permit expires. Pick a month.",
+      "isOpenQuestion": true,
+      "choices": [
+        { "id": "a", "text": "Platí do marca.", "translation": "It's valid until March.", "isCorrect": true },
+        { "id": "b", "text": "Platí do júna.", "translation": "It's valid until June.", "isCorrect": true },
+        { "id": "c", "text": "Platí do septembra.", "translation": "It's valid until September.", "isCorrect": true },
+        { "id": "d", "text": "Platí do decembra.", "translation": "It's valid until December.", "isCorrect": true }
+      ],
+      "correctFeedback": "Platí do + month — correct pattern for saying when something expires. Any month works here.",
+      "wrongFeedback": "Platí do + month is the pattern for expiry dates. Pick whichever month fits your situation."
+    },
+    {
+      "id": "ex8",
+      "speaker": "marek",
+      "text": "Dobre, máme čas. Je to tvoja prvá návšteva na cudzineckej polícii?",
+      "translation": "Good, we have time. Is this your first visit to the Foreign Police?",
+      "prompt": "Marek asks if this is your first visit. What do you say if it IS your first time?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Áno, je to moja prvá návšteva.", "translation": "Yes, it's my first visit.", "isCorrect": true },
+        { "id": "b", "text": "Áno, je to moja druhá návšteva.", "translation": "Yes, it's my second visit.", "isCorrect": false },
+        { "id": "c", "text": "Nie, som tu už desiaty raz.", "translation": "No, I'm here for the tenth time already.", "isCorrect": false },
+        { "id": "d", "text": "Neviem.", "translation": "I don't know.", "isCorrect": false }
+      ],
+      "correctFeedback": "Áno, je to moja prvá návšteva. — correct. Prvá = first, the ordinal you learned in the Numbers lesson.",
+      "wrongFeedback": "If it's your first time, Áno, je to moja prvá návšteva is correct — prvá means first."
+    },
+    {
+      "id": "ex9",
+      "speaker": "marek",
+      "text": "Rozumiem. Teraz mi povedz svoje číslo pasu. Začni prvým číslom.",
+      "translation": "I understand. Now tell me your passport number. Start with the first digit.",
+      "prompt": "Marek asks for the first digit of your passport number. It's 5. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Tri.", "translation": "Three.", "isCorrect": false },
+        { "id": "b", "text": "Päť.", "translation": "Five.", "isCorrect": true },
+        { "id": "c", "text": "Sedem.", "translation": "Seven.", "isCorrect": false },
+        { "id": "d", "text": "Desať.", "translation": "Ten.", "isCorrect": false }
+      ],
+      "correctFeedback": "Päť. — correct, five. Reading numbers digit by digit is exactly how you'll give document numbers in Slovak.",
+      "wrongFeedback": "Päť = five. When reading a document number aloud, say each digit using the cardinal numbers you learned."
+    },
+    {
+      "id": "ex10",
+      "speaker": "marek",
+      "text": "Výborne, zapísal som všetko. Stretnutie je dohodnuté. Ešte niečo k káve?",
+      "translation": "Excellent, I noted everything down. The appointment is arranged. Anything else with the coffee?",
+      "prompt": "Marek finishes helping and asks if you need anything else. How do you thank him?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Ďakujem veľmi pekne za pomoc!", "translation": "Thank you very much for the help!", "isCorrect": true },
+        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
+        { "id": "c", "text": "Dobrú noc!", "translation": "Good night!", "isCorrect": false },
+        { "id": "d", "text": "Som unavený.", "translation": "I am tired.", "isCorrect": false }
+      ],
+      "correctFeedback": "Ďakujem veľmi pekne za pomoc! — perfect. A warm, genuine thank you for Marek's help with the appointment.",
+      "wrongFeedback": "Ďakujem veľmi pekne za pomoc! is the right way to thank Marek warmly for everything he just helped with."
+    }
+  ],
+  "completionMessage": "🎉 Great job! You ordered coffee, paid, and worked with Marek to book your Foreign Police appointment — confirming the day, time, month, and even reading out your passport number. All in Slovak."
+}

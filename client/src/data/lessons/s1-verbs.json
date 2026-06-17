@@ -1,0 +1,332 @@
+﻿{
+  "id": "s1-verbs",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Most Common Verbs",
+  "description": "The verbs you will use every single day in Slovakia",
+  "icon": "⚡",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Slovak Pronouns",
+      "subtitle": "These are the people doing the action.",
+      "rows": [
+        { "label": "I", "slovak": "Ja", "english": "I" },
+        { "label": "You", "slovak": "Ty", "english": "You (one person, informal)" },
+        { "label": "He", "slovak": "On", "english": "He" },
+        { "label": "She", "slovak": "Ona", "english": "She" },
+        { "label": "We", "slovak": "My", "english": "We" },
+        { "label": "You all", "slovak": "Vy", "english": "You (formal / plural)" },
+        { "label": "They (m)", "slovak": "Oni", "english": "They (male / mixed)" },
+        { "label": "They (f)", "slovak": "Ony", "english": "They (female)" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Byť — To Be",
+      "subtitle": "This verb is unique. Each form must be learned as it is.",
+      "rows": [
+        { "label": "Ja", "slovak": "Som", "english": "I am" },
+        { "label": "Ty", "slovak": "Si", "english": "You are" },
+        { "label": "On / Ona", "slovak": "Je", "english": "He / She is" },
+        { "label": "My", "slovak": "Sme", "english": "We are" },
+        { "label": "Vy", "slovak": "Ste", "english": "You are (formal/plural)" },
+        { "label": "Oni / Ony", "slovak": "Sú", "english": "They are" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Common Verbs",
+      "subtitle": "The infinitive, your I-form, and what it means.",
+      "headers": ["Infinitive", "I (Ja) form", "English"],
+      "rows": [
+        { "label": "Mať", "slovak": "Mám", "english": "To have / I have" },
+        { "label": "Chcieť", "slovak": "Chcem", "english": "To want / I want" },
+        { "label": "Potrebovať", "slovak": "Potrebujem", "english": "To need / I need" },
+        { "label": "Vedieť", "slovak": "Viem", "english": "To know / I know" },
+        { "label": "Zabudnúť", "slovak": "Zabudol som / Zabudla som", "english": "To forget / I forgot (m/f)" },
+        { "label": "Ísť", "slovak": "Idem", "english": "To go / I go" },
+        { "label": "Prísť", "slovak": "Prídem", "english": "To come / I am coming" },
+        { "label": "Hovoriť", "slovak": "Hovorím", "english": "To speak / I speak" },
+        { "label": "Rozumieť", "slovak": "Rozumiem", "english": "To understand / I understand" },
+        { "label": "Robiť", "slovak": "Robím", "english": "To do / I do" },
+        { "label": "Jesť", "slovak": "Jem", "english": "To eat / I eat" },
+        { "label": "Piť", "slovak": "Pijem", "english": "To drink / I drink" },
+        { "label": "Bývať", "slovak": "Bývam", "english": "To live / I live" },
+        { "label": "Zostať", "slovak": "Zostanem", "english": "To stay / I am staying" },
+        { "label": "Platiť", "slovak": "Platím", "english": "To pay / I pay" },
+        { "label": "Kúpiť", "slovak": "Kúpim", "english": "To buy / I am buying" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Mám", "english": "I have" },
+        { "slovak": "Chcem", "english": "I want" },
+        { "slovak": "Potrebujem", "english": "I need" },
+        { "slovak": "Viem", "english": "I know" },
+        { "slovak": "Idem", "english": "I go" },
+        { "slovak": "Hovorím", "english": "I speak" },
+        { "slovak": "Rozumiem", "english": "I understand" },
+        { "slovak": "Platím", "english": "I pay" }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Mám", "english": "I have" },
+        { "slovak": "Chcem", "english": "I want" },
+        { "slovak": "Potrebujem", "english": "I need" },
+        { "slovak": "Viem", "english": "I know" },
+        { "slovak": "Idem", "english": "I go" },
+        { "slovak": "Hovorím", "english": "I speak" },
+        { "slovak": "Rozumiem", "english": "I understand" },
+        { "slovak": "Platím", "english": "I pay" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Mám", "english": "I have" },
+        { "slovak": "Chcem", "english": "I want" },
+        { "slovak": "Potrebujem", "english": "I need" },
+        { "slovak": "Viem", "english": "I know" },
+        { "slovak": "Idem", "english": "I go" },
+        { "slovak": "Hovorím", "english": "I speak" },
+        { "slovak": "Rozumiem", "english": "I understand" },
+        { "slovak": "Platím", "english": "I pay" },
+        { "slovak": "Bývam", "english": "I live" },
+        { "slovak": "Jem", "english": "I eat" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You left your wallet at home. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Zabudnem peňaženku.",
+            "Zabudol som peňaženku.",
+            "Zabudne peňaženku.",
+            "Zabudnete peňaženku."
+          ],
+          "answer": "Zabudol som peňaženku.",
+          "answerMeaning": "Zabudol som = I forgot (male). Zabudla som = I forgot (female). Peňaženka = wallet."
+        },
+        {
+          "situation": "You are at the Foreign Police. You say 'I need a document.' Which is correct?",
+          "instruction": "Choose the correct form",
+          "choices": [
+            "Potrebuje dokument.",
+            "Potrebujem dokument.",
+            "Potrebujete dokument.",
+            "Potrebujú dokument."
+          ],
+          "answer": "Potrebujem dokument.",
+          "answerMeaning": "Potrebujem = I need. Ja form."
+        },
+        {
+          "situation": "The officer asks if you speak Slovak. You say 'I speak a little.' Which is correct?",
+          "instruction": "Choose the correct form",
+          "choices": [
+            "Hovorí trochu.",
+            "Hovoríte trochu.",
+            "Hovorím trochu.",
+            "Hovoríš trochu."
+          ],
+          "answer": "Hovorím trochu.",
+          "answerMeaning": "Hovorím = I speak. Ja form."
+        },
+        {
+          "situation": "Your flatmate asks if you want coffee. You do. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Chce kávu.",
+            "Chcem kávu.",
+            "Chcete kávu.",
+            "Chceš kávu."
+          ],
+          "answer": "Chcem kávu.",
+          "answerMeaning": "Chcem = I want. Ja form."
+        },
+        {
+          "situation": "You ask your colleague: 'Do you know where the office is?' Which form do you use?",
+          "instruction": "Choose the correct form",
+          "choices": ["Viem", "Vie", "Vieš", "Vedia"],
+          "answer": "Vieš",
+          "answerMeaning": "Vieš = You know (informal, one person). Ty form."
+        },
+        {
+          "situation": "You are at the supermarket checkout. You want to pay by card. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Platí kartou.", "Platíš kartou.", "Platím kartou.", "Platíte kartou."],
+          "answer": "Platím kartou.",
+          "answerMeaning": "Platím = I pay. Kartou = by card. Ja form — you are the one paying."
+        },
+        {
+          "situation": "The cashier says 'Platíte kartou alebo hotovosťou?' What are they asking?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "Do you want a receipt?",
+            "Are you paying by card or cash?",
+            "Do you have enough money?",
+            "Do you want change?"
+          ],
+          "answer": "Are you paying by card or cash?",
+          "answerMeaning": "Platíte = You pay (Vy form — formal). Kartou = by card. Hotovosťou = in cash. You will hear this at every checkout in Slovakia."
+        },
+        {
+          "situation": "You want to ask your colleague formally: 'Do you speak English?' Which is correct?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Hovorím po anglicky?", "Hovorí po anglicky?", "Hovoríte po anglicky?", "Hovoria po anglicky?"],
+          "answer": "Hovoríte po anglicky?",
+          "answerMeaning": "Hovoríte = You speak (Vy form — formal/respectful). Use Vy when speaking to officials, officers, doctors, landlords, or anyone you don't know well."
+        },
+        {
+          "situation": "You introduce yourself: 'I am from India and I am a doctor.' Which form of byť do you use for 'I am'?",
+          "instruction": "Choose the correct form",
+          "choices": ["Je", "Si", "Sme", "Som"],
+          "answer": "Som",
+          "answerMeaning": "Som = I am. Som z Indie a som doktor. Byť is the unique verb — Som is the Ja form you must remember."
+        },
+        {
+          "situation": "You are filling in a form. It asks 'Kde bývate?' What is it asking?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "Where do you work?",
+            "Where do you live?",
+            "Where are you from?",
+            "Where are you going?"
+          ],
+          "answer": "Where do you live?",
+          "answerMeaning": "Bývate = You live (Vy form — formal). Kde bývate? = Where do you live? One of the most common questions on Slovak official forms."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ kartou. Nemám hotovosť.",
+          "translation": "I am paying by card. I don't have cash.",
+          "choices": ["Platíš", "Platíte", "Platím", "Platí"],
+          "answer": "Platím"
+        },
+        {
+          "sentence": "___ po anglicky, prosím?",
+          "translation": "Do you speak English, please? (formal)",
+          "choices": ["Hovorím", "Hovorí", "Hovoríte", "Hovoria"],
+          "answer": "Hovoríte"
+        },
+        {
+          "sentence": "___ si kúpiť nový telefón.",
+          "translation": "I want to buy a new phone.",
+          "choices": ["Chce", "Chceš", "Chcete", "Chcem"],
+          "answer": "Chcem"
+        },
+        {
+          "sentence": "Ty ___ hovoriť po slovensky?",
+          "translation": "Do you know how to speak Slovak?",
+          "choices": ["Viem", "Vie", "Viete", "Vieš"],
+          "answer": "Vieš"
+        },
+        {
+          "sentence": "___ do práce každý deň.",
+          "translation": "I go to work every day.",
+          "choices": ["Ideš", "Idem", "Ide", "Idete"],
+          "answer": "Idem"
+        },
+        {
+          "sentence": "Kde ___? Hľadám vás.",
+          "translation": "Where are you? I am looking for you. (formal)",
+          "choices": ["Som", "Je", "Sme", "Ste"],
+          "answer": "Ste"
+        },
+        {
+          "sentence": "___ z Indie. A ty?",
+          "translation": "I am from India. And you?",
+          "choices": ["Si", "Je", "Som", "Sme"],
+          "answer": "Som"
+        },
+        {
+          "sentence": "___ po slovensky trochu.",
+          "translation": "I speak Slovak a little.",
+          "choices": ["Hovorí", "Hovoríš", "Hovorím", "Hovoríte"],
+          "answer": "Hovorím"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You don't understand what the officer said. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Rozumiete.", "Nerozumieš.", "Nerozumiem.", "Rozumiem."],
+          "answer": "Nerozumiem.",
+          "answerMeaning": "Nerozumiem = I don't understand. Ja form. Ne- makes any verb negative. Your most important phrase at any official appointment."
+        },
+        {
+          "situation": "Your colleague says 'Chcem ísť domov.' What do they want?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "They want to go to work",
+            "They want to go home",
+            "They want to come with you",
+            "They want to stay"
+          ],
+          "answer": "They want to go home",
+          "answerMeaning": "Chcem = I want. Ísť = to go. Domov = home. Two verbs from this lesson in one sentence."
+        },
+        {
+          "situation": "You are at a restaurant. You say 'I'll have the soup.' Which is correct?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Dám si polievku.",
+            "Dáš si polievku.",
+            "Dá si polievku.",
+            "Dajú si polievku."
+          ],
+          "answer": "Dám si polievku.",
+          "answerMeaning": "Dám si = I'll have. Dám = I give (Ja form). This is the standard phrase for ordering food in Slovak restaurants."
+        },
+        {
+          "situation": "The officer says 'Rozumiete?' after explaining something. What are they asking?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "Do you agree?",
+            "Do you understand?",
+            "Do you have questions?",
+            "Do you speak Slovak?"
+          ],
+          "answer": "Do you understand?",
+          "answerMeaning": "Rozumiete = You understand (Vy form — formal). Used as a question it means 'Do you understand?' Officers use this to check you followed their instructions."
+        },
+        {
+          "situation": "You are calling the doctor's office. You say 'I am coming at ten o'clock.' Which is correct?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Príde o desiatej.", "Prídem o desiatej.", "Prídeš o desiatej.", "Prídete o desiatej."],
+          "answer": "Prídem o desiatej.",
+          "answerMeaning": "Prídem = I am coming. Ja form. O desiatej = at ten o'clock."
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

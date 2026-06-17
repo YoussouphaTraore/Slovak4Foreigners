@@ -1,0 +1,234 @@
+{
+  "id": "s1-body-parts",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Parts of the Body",
+  "description": "Essential body vocabulary for doctors, emergencies and describing yourself",
+  "icon": "🫀",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Head & Face",
+      "rows": [
+        { "label": "Head", "slovak": "Hlava", "english": "Head" },
+        { "label": "Hair", "slovak": "Vlasy", "english": "Hair" },
+        { "label": "Face", "slovak": "Tvár", "english": "Face" },
+        { "label": "Eye / Eyes", "slovak": "Oko / Oči", "english": "Eye / Eyes" },
+        { "label": "Ear / Ears", "slovak": "Ucho / Uši", "english": "Ear / Ears" },
+        { "label": "Nose", "slovak": "Nos", "english": "Nose" },
+        { "label": "Mouth", "slovak": "Ústa", "english": "Mouth" },
+        { "label": "Teeth", "slovak": "Zuby", "english": "Teeth" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Body",
+      "rows": [
+        { "label": "Shoulder / Shoulders", "slovak": "Plece / Plecia", "english": "Shoulder / Shoulders" },
+        { "label": "Chest", "slovak": "Hruď", "english": "Chest" },
+        { "label": "Heart", "slovak": "Srdce", "english": "Heart" },
+        { "label": "Back", "slovak": "Chrbát", "english": "Back" },
+        { "label": "Stomach", "slovak": "Brucho", "english": "Stomach / Belly" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Arms & Legs",
+      "rows": [
+        { "label": "Hand / Arm", "slovak": "Ruka / Ruky", "english": "Hand / Arm (singular / plural)" },
+        { "label": "Finger", "slovak": "Prst", "english": "Finger" },
+        { "label": "Leg / Foot", "slovak": "Noha / Nohy", "english": "Leg / Foot (singular / plural)" },
+        { "label": "Knee", "slovak": "Koleno", "english": "Knee" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Hlava", "english": "Head" },
+        { "slovak": "Vlasy", "english": "Hair" },
+        { "slovak": "Oko", "english": "Eye" },
+        { "slovak": "Ucho", "english": "Ear" },
+        { "slovak": "Nos", "english": "Nose" },
+        { "slovak": "Ústa", "english": "Mouth" },
+        { "slovak": "Zuby", "english": "Teeth" },
+        { "slovak": "Tvár", "english": "Face" }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Hlava", "english": "Head" },
+        { "slovak": "Vlasy", "english": "Hair" },
+        { "slovak": "Oko", "english": "Eye" },
+        { "slovak": "Ucho", "english": "Ear" },
+        { "slovak": "Nos", "english": "Nose" },
+        { "slovak": "Ústa", "english": "Mouth" },
+        { "slovak": "Zuby", "english": "Teeth" },
+        { "slovak": "Tvár", "english": "Face" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Plece", "english": "Shoulder" },
+        { "slovak": "Hruď", "english": "Chest" },
+        { "slovak": "Srdce", "english": "Heart" },
+        { "slovak": "Chrbát", "english": "Back" },
+        { "slovak": "Brucho", "english": "Stomach" },
+        { "slovak": "Ruka", "english": "Hand / Arm" },
+        { "slovak": "Noha", "english": "Leg / Foot" },
+        { "slovak": "Koleno", "english": "Knee" }
+      ]
+    },
+    {
+      "id": "ex5b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Plece", "english": "Shoulder" },
+        { "slovak": "Hruď", "english": "Chest" },
+        { "slovak": "Srdce", "english": "Heart" },
+        { "slovak": "Chrbát", "english": "Back" },
+        { "slovak": "Brucho", "english": "Stomach" },
+        { "slovak": "Ruka", "english": "Hand / Arm" },
+        { "slovak": "Noha", "english": "Leg / Foot" },
+        { "slovak": "Koleno", "english": "Knee" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Hlava", "english": "Head" },
+        { "slovak": "Vlasy", "english": "Hair" },
+        { "slovak": "Oko", "english": "Eye" },
+        { "slovak": "Nos", "english": "Nose" },
+        { "slovak": "Zuby", "english": "Teeth" },
+        { "slovak": "Hruď", "english": "Chest" },
+        { "slovak": "Srdce", "english": "Heart" },
+        { "slovak": "Chrbát", "english": "Back" },
+        { "slovak": "Brucho", "english": "Stomach" },
+        { "slovak": "Ruka", "english": "Hand / Arm" },
+        { "slovak": "Noha", "english": "Leg / Foot" },
+        { "slovak": "Koleno", "english": "Knee" }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are at the doctor. You have a headache. Where do you point and what do you say?",
+          "instruction": "Choose the correct word",
+          "choices": ["Brucho", "Hlava", "Koleno", "Chrbát"],
+          "answer": "Hlava",
+          "answerMeaning": "Hlava = Head. Bolí ma hlava = My head hurts. The most common complaint at any doctor's office."
+        },
+        {
+          "situation": "The doctor asks you to open your mouth so they can check your teeth. Which two body parts are they looking at?",
+          "instruction": "Choose the correct pair",
+          "choices": ["Nos a Ucho", "Ústa a Zuby", "Tvár a Vlasy", "Oko a Nos"],
+          "answer": "Ústa a Zuby",
+          "answerMeaning": "Ústa = Mouth. Zuby = Teeth. Otvorte ústa = Open your mouth. You will hear this at every dental appointment."
+        },
+        {
+          "situation": "You fell and hurt your leg. You are at the emergency room. Which word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": ["Ruka", "Koleno", "Noha", "Plece"],
+          "answer": "Noha",
+          "answerMeaning": "Noha = Leg / Foot. Bolí ma noha = My leg hurts. Note: Noha covers both leg and foot in Slovak — the same word for both."
+        },
+        {
+          "situation": "The police need you to describe the person you saw. They had short dark hair. Which body part word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": ["Tvár", "Hlava", "Vlasy", "Oko"],
+          "answer": "Vlasy",
+          "answerMeaning": "Vlasy = Hair. Krátke tmavé vlasy = Short dark hair. In the Colors lesson you will learn to describe hair color more precisely."
+        },
+        {
+          "situation": "You have chest pain and call 155. Which word tells the dispatcher where the pain is?",
+          "instruction": "Choose the correct word",
+          "choices": ["Chrbát", "Brucho", "Hruď", "Plece"],
+          "answer": "Hruď",
+          "answerMeaning": "Hruď = Chest. Bolí ma hruď = My chest hurts. Chest pain is a 155 call — always say this clearly and immediately."
+        },
+        {
+          "situation": "You hurt your back carrying boxes. What do you tell your doctor?",
+          "instruction": "Choose the correct word",
+          "choices": ["Brucho", "Srdce", "Hruď", "Chrbát"],
+          "answer": "Chrbát",
+          "answerMeaning": "Chrbát = Back. Bolí ma chrbát = My back hurts. One of the most common complaints at Slovak GP offices."
+        },
+        {
+          "situation": "You twisted your knee playing sport. At the doctor you say 'Bolí ma...' and point. Which word completes the sentence?",
+          "instruction": "Choose the correct word",
+          "choices": ["Noha", "Prst", "Koleno", "Ruka"],
+          "answer": "Koleno",
+          "answerMeaning": "Koleno = Knee. Bolí ma koleno = My knee hurts. The phrase Bolí ma + body part is all you need to explain pain to any doctor."
+        },
+        {
+          "situation": "You cut your finger while cooking. At the pharmacy you show them and say 'Bolí ma...' Which word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": ["Ruka", "Noha", "Koleno", "Prst"],
+          "answer": "Prst",
+          "answerMeaning": "Prst = Finger. Bolí ma prst = My finger hurts. Prst also means toe — context makes it clear which one."
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Bolí ma ___. Mám teplotu.",
+          "translation": "My ___ hurts. I have a fever.",
+          "choices": ["Hlava", "Noha", "Chrbát", "Koleno"],
+          "answer": "Hlava"
+        },
+        {
+          "sentence": "Otvorte ___. Prezriem vám zuby.",
+          "translation": "Open your ___. I will check your teeth.",
+          "choices": ["Nos", "Ucho", "Ústa", "Oko"],
+          "answer": "Ústa"
+        },
+        {
+          "sentence": "Spadol som zo schodov. Bolí ma ___. Neviem chodiť.",
+          "translation": "I fell down the stairs. My ___ hurts. I cannot walk.",
+          "choices": ["Ruka", "Vlasy", "Noha", "Plece"],
+          "answer": "Noha"
+        },
+        {
+          "sentence": "Mám bolesť ___. Tlačí ma to za hrudnou kosťou.",
+          "translation": "I have ___ pain. There is pressure behind my breastbone.",
+          "choices": ["Koleno", "Hruď", "Brucho", "Nos"],
+          "answer": "Hruď"
+        },
+        {
+          "sentence": "Celý deň sedím za počítačom. Bolí ma ___.",
+          "translation": "I sit at the computer all day. My ___ hurts.",
+          "choices": ["Srdce", "Chrbát", "Prst", "Ucho"],
+          "answer": "Chrbát"
+        },
+        {
+          "sentence": "Má modré ___ a tmavé vlasy.",
+          "translation": "She has blue ___ and dark hair.",
+          "choices": ["Ústa", "Nos", "Zuby", "Oči"],
+          "answer": "Oči"
+        }
+      ]
+    },
+    {
+      "id": "ex9",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

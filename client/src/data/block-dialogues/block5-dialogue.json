@@ -1,0 +1,185 @@
+{
+  "id": "block5-dialogue",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "blockId": "stage1-block5",
+  "type": "BLOCK_DIALOGUE",
+  "title": "Doctor, Then Pharmacy",
+  "description": "You visit the doctor, get a prescription, and find your way to the pharmacy.",
+  "icon": "🩺",
+  "xpReward": 20,
+  "contact": {
+    "name": "Doctor",
+    "initials": "Dr",
+    "role": "Your doctor / The pharmacist",
+    "avatar": "👩‍⚕️"
+  },
+  "context": "You go to the doctor because you don't feel well. After the appointment, you find the pharmacy and pick up your medicine.",
+  "speakers": {
+    "doctor": { "name": "Doctor", "initials": "Dr", "avatar": "👩‍⚕️" },
+    "pharmacist": { "name": "Pharmacist", "initials": "P", "avatar": "👨‍⚕️" }
+  },
+  "exchanges": [
+    {
+      "id": "ex1",
+      "speaker": "doctor",
+      "text": "Dobrý deň. Čo vás trápi?",
+      "translation": "Good day. What's troubling you?",
+      "prompt": "The doctor asks what's wrong. Pick whichever symptom fits.",
+      "isOpenQuestion": true,
+      "choices": [
+        { "id": "a", "text": "Bolí ma hlava.", "translation": "My head hurts.", "isCorrect": true },
+        { "id": "b", "text": "Mám horúčku.", "translation": "I have a fever.", "isCorrect": true },
+        { "id": "c", "text": "Mám kašeľ.", "translation": "I have a cough.", "isCorrect": true },
+        { "id": "d", "text": "Mám závrat.", "translation": "I have dizziness.", "isCorrect": true }
+      ],
+      "correctFeedback": "Correct pattern — Bolí ma + body part, or Mám + symptom. Any of these works to describe how you feel.",
+      "wrongFeedback": "Bolí ma + body part or Mám + symptom is the pattern. Pick whichever describes you."
+    },
+    {
+      "id": "ex2",
+      "speaker": "doctor",
+      "text": "Rozumiem. Ako dlho to trvá?",
+      "translation": "I understand. How long has this been going on?",
+      "prompt": "The doctor asks how long. It started yesterday. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Od včera.", "translation": "Since yesterday.", "isCorrect": true },
+        { "id": "b", "text": "Zajtra.", "translation": "Tomorrow.", "isCorrect": false },
+        { "id": "c", "text": "Koľko to stojí?", "translation": "How much does it cost?", "isCorrect": false },
+        { "id": "d", "text": "Som objednaný.", "translation": "I have an appointment.", "isCorrect": false }
+      ],
+      "correctFeedback": "Od včera. — correct. Od + time tells the doctor exactly when the symptoms began.",
+      "wrongFeedback": "Od včera (since yesterday) is correct here. Od + time period is the pattern for saying since when."
+    },
+    {
+      "id": "ex3",
+      "speaker": "doctor",
+      "text": "Dobre, dám vám predpis. Berte tieto tabletky dvakrát denne.",
+      "translation": "Good, I'll give you a prescription. Take these pills twice a day.",
+      "prompt": "The doctor explains the dosage. How do you confirm you understood?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
+        { "id": "b", "text": "Rozumiem, ďakujem.", "translation": "I understand, thank you.", "isCorrect": true },
+        { "id": "c", "text": "Dobrú noc.", "translation": "Good night.", "isCorrect": false },
+        { "id": "d", "text": "Koľko to stojí?", "translation": "How much does it cost?", "isCorrect": false }
+      ],
+      "correctFeedback": "Rozumiem, ďakujem. — correct. You confirmed understanding and thanked the doctor.",
+      "wrongFeedback": "Rozumiem, ďakujem (I understand, thank you) is the right response when you've followed the instructions."
+    },
+    {
+      "id": "ex4",
+      "speaker": "doctor",
+      "text": "Lekáreň je blízko. Choďte rovno z budovy a je hneď vedľa banky.",
+      "translation": "The pharmacy is close. Go straight out of the building and it's right next to the bank.",
+      "prompt": "The doctor gives directions. Where is the pharmacy located relative to the bank?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Za bankou.", "translation": "Behind the bank.", "isCorrect": false },
+        { "id": "b", "text": "Vedľa banky.", "translation": "Next to the bank.", "isCorrect": true },
+        { "id": "c", "text": "Naproti banke.", "translation": "Opposite the bank.", "isCorrect": false },
+        { "id": "d", "text": "Nad bankou.", "translation": "Above the bank.", "isCorrect": false }
+      ],
+      "correctFeedback": "Vedľa banky. — correct. Vedľa = next to, from the Positions lesson, exactly where the doctor said the pharmacy is.",
+      "wrongFeedback": "Vedľa banky (next to the bank) matches what the doctor said — listen carefully to position words."
+    },
+    {
+      "id": "ex5",
+      "speaker": "doctor",
+      "text": "Dovidenia a uzdravte sa!",
+      "translation": "Goodbye and get well soon!",
+      "prompt": "The doctor says goodbye warmly. How do you respond?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Dovidenia, ďakujem veľmi pekne!", "translation": "Goodbye, thank you very much!", "isCorrect": true },
+        { "id": "b", "text": "Ahoj!", "translation": "Hi!", "isCorrect": false },
+        { "id": "c", "text": "Som unavený.", "translation": "I am tired.", "isCorrect": false },
+        { "id": "d", "text": "Koľko je hodín?", "translation": "What time is it?", "isCorrect": false }
+      ],
+      "correctFeedback": "Dovidenia, ďakujem veľmi pekne! — correct, formal and warm goodbye.",
+      "wrongFeedback": "Dovidenia, ďakujem veľmi pekne! is the formal, warm way to say goodbye to a doctor."
+    },
+    {
+      "id": "ex6",
+      "speaker": "pharmacist",
+      "text": "Dobrý deň. Ako vám môžem pomôcť?",
+      "translation": "Good day. How can I help you?",
+      "prompt": "You found the pharmacy. You have a prescription. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Mám predpis od doktora.", "translation": "I have a prescription from the doctor.", "isCorrect": true },
+        { "id": "b", "text": "Je potrebný predpis?", "translation": "Is a prescription needed?", "isCorrect": false },
+        { "id": "c", "text": "Máte niečo na nádchu?", "translation": "Do you have something for a cold?", "isCorrect": false },
+        { "id": "d", "text": "Koľko je hodín?", "translation": "What time is it?", "isCorrect": false }
+      ],
+      "correctFeedback": "Mám predpis od doktora. — correct. The pharmacist now knows to process your prescription.",
+      "wrongFeedback": "Mám predpis od doktora (I have a prescription from the doctor) is the right way to start when you have one."
+    },
+    {
+      "id": "ex7",
+      "speaker": "pharmacist",
+      "text": "Dobre, tu sú vaše tabletky. Viete ako ich užívať?",
+      "translation": "Good, here are your pills. Do you know how to take them?",
+      "prompt": "The pharmacist hands you the pills and asks if you know the instructions. You want to confirm. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Ako to mám užívať?", "translation": "How should I take it?", "isCorrect": true },
+        { "id": "b", "text": "Máte drobné?", "translation": "Do you have change?", "isCorrect": false },
+        { "id": "c", "text": "Koľko to stojí?", "translation": "How much does it cost?", "isCorrect": false },
+        { "id": "d", "text": "Som objednaný.", "translation": "I have an appointment.", "isCorrect": false }
+      ],
+      "correctFeedback": "Ako to mám užívať? — correct. Asking this confirms you'll take the medicine correctly.",
+      "wrongFeedback": "Ako to mám užívať? (How should I take it?) is the right question to confirm the instructions."
+    },
+    {
+      "id": "ex8",
+      "speaker": "pharmacist",
+      "text": "Dvakrát denne, pred jedlom.",
+      "translation": "Twice a day, before meals.",
+      "prompt": "The pharmacist gives the instructions. What do you say to confirm you understood?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
+        { "id": "b", "text": "Dvakrát denne, pred jedlom. Rozumiem.", "translation": "Twice a day, before meals. I understand.", "isCorrect": true },
+        { "id": "c", "text": "Máte niečo na bolesť hlavy?", "translation": "Do you have something for a headache?", "isCorrect": false },
+        { "id": "d", "text": "Dobrú noc.", "translation": "Good night.", "isCorrect": false }
+      ],
+      "correctFeedback": "Dvakrát denne, pred jedlom. Rozumiem. — perfect, you repeated it back to confirm.",
+      "wrongFeedback": "Repeating the instructions back — Dvakrát denne, pred jedlom. Rozumiem — confirms you understood correctly."
+    },
+    {
+      "id": "ex9",
+      "speaker": "pharmacist",
+      "text": "Výborne. Niečo iné potrebujete?",
+      "translation": "Excellent. Do you need anything else?",
+      "prompt": "You also want a plaster for a cut finger. What do you ask?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Áno, potrebujem náplasť.", "translation": "Yes, I need a plaster.", "isCorrect": true },
+        { "id": "b", "text": "Nie, ďakujem.", "translation": "No, thank you.", "isCorrect": false },
+        { "id": "c", "text": "Máte drobné?", "translation": "Do you have change?", "isCorrect": false },
+        { "id": "d", "text": "Je potrebný predpis?", "translation": "Is a prescription needed?", "isCorrect": false }
+      ],
+      "correctFeedback": "Áno, potrebujem náplasť. — correct. Náplasť = plaster, exactly what you need for your finger.",
+      "wrongFeedback": "Áno, potrebujem náplasť (Yes, I need a plaster) is correct since you also need that."
+    },
+    {
+      "id": "ex10",
+      "speaker": "pharmacist",
+      "text": "Tu máte. Dovidenia a uzdravte sa!",
+      "translation": "Here you go. Goodbye and get well soon!",
+      "prompt": "The pharmacist hands you the plaster and says goodbye. How do you respond?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Ďakujem veľmi pekne, dovidenia!", "translation": "Thank you very much, goodbye!", "isCorrect": true },
+        { "id": "b", "text": "Ahoj!", "translation": "Hi!", "isCorrect": false },
+        { "id": "c", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
+        { "id": "d", "text": "Som chorý.", "translation": "I am sick.", "isCorrect": false }
+      ],
+      "correctFeedback": "Ďakujem veľmi pekne, dovidenia! — warm and complete closing to the whole visit.",
+      "wrongFeedback": "Ďakujem veľmi pekne, dovidenia! (Thank you very much, goodbye!) is the warm way to close out your pharmacy visit."
+    }
+  ],
+  "completionMessage": "🎉 Great job! You described your symptoms, understood the doctor's directions to the pharmacy, confirmed your medicine instructions, and got everything you needed — all in Slovak."
+}

@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase/client';
 import { useAuthStore } from '../store/useAuthStore';
 import { useProgressStore } from '../store/useProgressStore';
 import { lessons } from '../data/lessons';
+import { PRODUCTION_VISIBLE_STAGES } from '../config/stageBlocks';
 import { foreignPoliceLessons } from '../data/foreigner-exclusive/foreign-police';
 import { BASE_ALIASES } from '../data/aliases';
 import { getAvatarUrl, changeAlias } from '../lib/supabase/aliasUtils';
@@ -18,8 +19,14 @@ const STAGE_NAMES: Record<string, string> = {
   advanced: 'Stage 3 — Advanced',
 };
 
-// Ordered list of all stages present in lesson data (preserves source order)
-const ALL_STAGE_IDS = [...new Set(lessons.map((l) => l.stageId))];
+const isDev = import.meta.env.DEV;
+
+// Ordered list of all stages present in lesson data (preserves source order).
+// In production, only stages with rebuilt content are shown (see Step 2 of
+// the Settling/Advanced hide-in-prod work) — dev still sees every stage.
+const ALL_STAGE_IDS = isDev
+  ? [...new Set(lessons.map((l) => l.stageId))]
+  : [...new Set(lessons.map((l) => l.stageId))].filter((id) => PRODUCTION_VISIBLE_STAGES.includes(id));
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 

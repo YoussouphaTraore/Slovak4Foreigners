@@ -1,5 +1,5 @@
-{
-  "id": "survival-6a",
+﻿{
+  "id": "s1-directions",
   "stageId": "survival",
   "stageName": "Stage 1 · Survival",
   "title": "Directions",
@@ -92,21 +92,21 @@
           "instruction": "Choose the most appropriate phrase",
           "choices": ["Choďte vľavo.", "Choďte vpravo.", "Choďte priamo.", "Je to ďaleko."],
           "answer": "Choďte priamo.",
-          "answerMeaning": "Go straight ahead. — Policajná stanica = Police station (from Survival-4). Priamo = straight."
+          "answerMeaning": "Go straight ahead. — Policajná stanica = Police station (from the Emergency lesson). Priamo = straight."
         },
         {
           "situation": "At the hospital (Nemocnica), the receptionist says the doctor's office is 'vpravo, druhé dvere.' Which way do you go?",
           "instruction": "Choose the correct direction",
           "choices": ["Up", "Left", "Right", "Down"],
           "answer": "Right",
-          "answerMeaning": "Vpravo = Right — useful when navigating the Nemocnica from Survival-4! (druhé dvere = second door)"
+          "answerMeaning": "Vpravo = Right — useful when navigating the Nemocnica from the Emergency lesson! (druhé dvere = second door)"
         },
         {
           "situation": "You need a pharmacy. A passer-by says 'Je to blízko, päť minút pešo.' Do you need a taxi?",
           "instruction": "Choose the most appropriate response",
           "choices": ["Áno, je to ďaleko.", "Nie, je to blízko.", "Neviem.", "Pomoc!"],
           "answer": "Nie, je to blízko.",
-          "answerMeaning": "No, it's nearby. — päť minút pešo = five minutes on foot. Blízko = near, ďaleko = far. Neviem and Pomoc! are from Survival-1."
+          "answerMeaning": "No, it's nearby. — päť minút pešo = five minutes on foot. Blízko = near, ďaleko = far. Neviem and Pomoc! are from the First Words lesson."
         },
         {
           "situation": "The lift is broken. The doctor's office is on the third floor. Which direction must you go?",
@@ -130,18 +130,18 @@
           "answerMeaning": "Tam = there / over there. Je to tam = it's over there. Use tam when pointing to something away from you."
         },
         {
-          "situation": "The ambulance dispatcher asks exactly where you are. You are at that very spot. What do you say to confirm? (Survival-4)",
+          "situation": "The ambulance dispatcher asks exactly where you are. You are at that very spot. What do you say to confirm? (the Emergency lesson)",
           "instruction": "Choose the most appropriate phrase",
           "choices": ["Som tam.", "Som tu.", "Som blízko.", "Som ďaleko."],
           "answer": "Som tu.",
           "answerMeaning": "Tu = here. Som tu = I am here — use tu for your own position. Tam = over there (for pointing to something away from you)."
         },
         {
-          "situation": "Someone gives you directions: 'Choďte priamo, potom vpravo pri nemocnici.' At what landmark do you turn right? (Survival-4)",
+          "situation": "Someone gives you directions: 'Choďte priamo, potom vpravo pri nemocnici.' At what landmark do you turn right? (the Emergency lesson)",
           "instruction": "Choose the most appropriate answer",
           "choices": ["At the pharmacy", "At the police station", "At the hospital", "At the bank"],
           "answer": "At the hospital",
-          "answerMeaning": "Nemocnica = hospital (Survival-4). Combining directions with landmarks you already know — this is real navigation in Slovak."
+          "answerMeaning": "Nemocnica = hospital (the Emergency lesson). Combining directions with landmarks you already know — this is real navigation in Slovak."
         }
       ]
     },

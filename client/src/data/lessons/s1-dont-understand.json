@@ -1,5 +1,5 @@
-{
-  "id": "survival-7",
+﻿{
+  "id": "s1-dont-understand",
   "stageId": "survival",
   "stageName": "Stage 1 · Survival",
   "title": "I Don't Understand",
@@ -114,7 +114,7 @@
           "answerMeaning": "Môžete to napísať? = Can you write it down? — when phone Slovak is too fast or unclear, asking them to write it gives you time to translate and process."
         },
         {
-          "situation": "You are at the supermarket checkout (Survival-5) and the cashier asks you something. You don't understand. What do you say first?",
+          "situation": "You are at the supermarket checkout and the cashier asks you something. You don't understand. What do you say first?",
           "instruction": "Choose the most appropriate phrase",
           "choices": [
             "Platím kartou.",
@@ -126,7 +126,7 @@
           "answerMeaning": "Nerozumiem — always your first response when you miss something. The cashier will likely repeat more slowly or show you the screen."
         },
         {
-          "situation": "You call 155 (Survival-4) and the dispatcher speaks too fast. What do you ask?",
+          "situation": "You call 155 and the dispatcher speaks too fast. What do you ask?",
           "instruction": "Choose the most appropriate phrase",
           "choices": [
             "Nehovorím po slovensky.",
@@ -238,11 +238,11 @@
           "answerMeaning": "Môžete to napísať? = Can you write it down? — your last resort when verbal communication fails. Written Slovak is easier to translate with your phone."
         },
         {
-          "situation": "You are leaving the Foreign Police office. You want to say goodbye formally. (Survival-2)",
+          "situation": "You are leaving the Foreign Police office. You want to say goodbye formally. (the Greetings lesson)",
           "instruction": "Choose the most appropriate phrase",
           "choices": ["Čau", "Ahoj", "Dovidenia", "Dobré ráno"],
           "answer": "Dovidenia",
-          "answerMeaning": "Dovidenia = Goodbye (formal) — always use formal farewell in official settings. From Survival-2."
+          "answerMeaning": "Dovidenia = Goodbye (formal) — always use formal farewell in official settings. From the Greetings lesson."
         }
       ]
     },

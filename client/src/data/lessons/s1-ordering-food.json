@@ -1,0 +1,11 @@
+﻿{
+  "id": "s1-ordering-food",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Ordering Food",
+  "description": "Coming soon",
+  "icon": "🔒",
+  "xpReward": 10,
+  "coming_soon": true,
+  "exercises": []
+}

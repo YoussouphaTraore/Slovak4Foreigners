@@ -1,0 +1,205 @@
+{
+  "id": "s1-times-of-day",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Times of the Day",
+  "description": "Tell the time and talk about your day",
+  "icon": "🕐",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Parts of the Day",
+      "subtitle": "You met some of these in the Greetings lesson — here they are again.",
+      "rows": [
+        { "label": "Morning", "slovak": "Ráno", "english": "Morning" },
+        { "label": "Noon", "slovak": "Poludnie", "english": "Noon / Midday" },
+        { "label": "Afternoon", "slovak": "Popoludnie", "english": "Afternoon" },
+        { "label": "Evening", "slovak": "Večer", "english": "Evening" },
+        { "label": "Night", "slovak": "Noc", "english": "Night" },
+        { "label": "Midnight", "slovak": "Polnoc", "english": "Midnight" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Asking and Telling the Time",
+      "rows": [
+        { "label": "What time?", "slovak": "Koľko je hodín?", "english": "What time is it?" },
+        { "label": "At what time?", "slovak": "O koľkej?", "english": "At what time?" },
+        { "label": "It's...", "slovak": "Je...", "english": "It is... (telling time)" },
+        { "label": "At...", "slovak": "O...", "english": "At... (a specific time)" },
+        { "label": "Hour", "slovak": "Hodina / Hodín", "english": "Hour / O'clock" },
+        { "label": "Minute", "slovak": "Minúta / Minút", "english": "Minute / Minutes" },
+        { "label": "Half past", "slovak": "Pol", "english": "Half (past the hour)" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "The Hours",
+      "headers": ["Time", "Slovak", "English"],
+      "rows": [
+        { "label": "1:00", "slovak": "Je jedna hodina.", "english": "It is one o'clock." },
+        { "label": "2:00", "slovak": "Sú dve hodiny.", "english": "It is two o'clock." },
+        { "label": "5:00", "slovak": "Je päť hodín.", "english": "It is five o'clock." },
+        { "label": "At 1:00", "slovak": "O jednej.", "english": "At one o'clock." },
+        { "label": "At 2:00", "slovak": "O druhej.", "english": "At two o'clock." },
+        { "label": "At 10:00", "slovak": "O desiatej.", "english": "At ten o'clock." }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Ráno", "english": "Morning" },
+        { "slovak": "Večer", "english": "Evening" },
+        { "slovak": "Noc", "english": "Night" },
+        { "slovak": "Koľko je hodín?", "english": "What time is it?" },
+        { "slovak": "O koľkej?", "english": "At what time?" },
+        { "slovak": "Hodina", "english": "Hour" },
+        { "slovak": "Minúta", "english": "Minute" },
+        { "slovak": "Pol", "english": "Half" }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Ráno", "english": "Morning" },
+        { "slovak": "Večer", "english": "Evening" },
+        { "slovak": "Noc", "english": "Night" },
+        { "slovak": "Koľko je hodín?", "english": "What time is it?" },
+        { "slovak": "O koľkej?", "english": "At what time?" },
+        { "slovak": "Hodina", "english": "Hour" },
+        { "slovak": "Minúta", "english": "Minute" },
+        { "slovak": "Pol", "english": "Half" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Koľko je hodín?", "english": "What time is it?" },
+        { "slovak": "O koľkej?", "english": "At what time?" },
+        { "slovak": "Je jedna hodina.", "english": "It is one o'clock." },
+        { "slovak": "O desiatej.", "english": "At ten o'clock." },
+        { "slovak": "Ráno", "english": "Morning" },
+        { "slovak": "Večer", "english": "Evening" },
+        { "slovak": "Popoludnie", "english": "Afternoon" },
+        { "slovak": "Pol", "english": "Half" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You want to know what time it is right now. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["O koľkej?", "Koľko je hodín?", "Aký je deň?", "Kedy?"],
+          "answer": "Koľko je hodín?",
+          "answerMeaning": "Koľko je hodín? = What time is it? The standard way to ask the current time."
+        },
+        {
+          "situation": "You want to know what time your appointment is. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Koľko je hodín?", "O koľkej?", "Kde je to?", "Koľko to stojí?"],
+          "answer": "O koľkej?",
+          "answerMeaning": "O koľkej? = At what time? Used to ask when something will happen — different from asking the current time."
+        },
+        {
+          "situation": "Your appointment with the doctor is at 10am. How do you say this in Slovak?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Je desiata.", "O desiatej.", "Desať hodín.", "Pol desiatej."],
+          "answer": "O desiatej.",
+          "answerMeaning": "O desiatej = At ten o'clock. The pattern O + time tells someone when something happens."
+        },
+        {
+          "situation": "Someone asks 'Koľko je hodín?' and it is exactly 5 o'clock. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["O piatej.", "Je päť hodín.", "Päť minút.", "Pol piatej."],
+          "answer": "Je päť hodín.",
+          "answerMeaning": "Je päť hodín = It is five o'clock. Use Je... when telling the current time, not O... (which is for 'at' a time)."
+        },
+        {
+          "situation": "You greet your colleague at 7am on the way into work. Which greeting fits this time of day?",
+          "instruction": "Choose the most appropriate greeting",
+          "choices": ["Dobrý večer", "Dobré ráno", "Dobrú noc", "Dobrý deň"],
+          "answer": "Dobré ráno",
+          "answerMeaning": "Dobré ráno = Good morning. Ráno = morning — from the Greetings lesson, now reinforced with clock time."
+        },
+        {
+          "situation": "A shop's opening hours sign says it opens 'o ôsmej ráno.' What time does it open?",
+          "instruction": "Choose the correct time",
+          "choices": ["8pm", "8am", "10am", "Noon"],
+          "answer": "8am",
+          "answerMeaning": "O ôsmej ráno = At eight in the morning. Ráno after the time clarifies it's AM, not PM — Slovak doesn't always use a 24-hour clock in casual speech."
+        },
+        {
+          "situation": "You want to say your meeting is at half past two. What is the key word you need?",
+          "instruction": "Choose the correct word",
+          "choices": ["Hodina", "Minúta", "Pol", "Noc"],
+          "answer": "Pol",
+          "answerMeaning": "Pol = Half. Pol tretej literally means 'half of three' — Slovak counts toward the next hour, unlike English 'half past two.'"
+        },
+        {
+          "situation": "You are leaving a friend's house very late. Which phrase do you say as you leave?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": ["Dobré ráno!", "Dobrú noc!", "Dobrý deň!", "Dovidenia!"],
+          "answer": "Dobrú noc!",
+          "answerMeaning": "Dobrú noc! = Good night! Used when leaving late at night or going to sleep — different from Dobrý večer (good evening, used as a greeting earlier in the evening)."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ je hodín? — Je tri hodiny.",
+          "translation": "What time is it? — It is three o'clock.",
+          "choices": ["Koľko", "Kedy", "O koľkej", "Kde"],
+          "answer": "Koľko"
+        },
+        {
+          "sentence": "Stretnutie je ___ jedenástej.",
+          "translation": "The meeting is at eleven o'clock.",
+          "choices": ["v", "na", "o", "do"],
+          "answer": "o"
+        },
+        {
+          "sentence": "Vstávam ___ o šiestej.",
+          "translation": "I get up in the morning at six.",
+          "choices": ["ráno", "večer", "noc", "poludnie"],
+          "answer": "ráno"
+        },
+        {
+          "sentence": "Obchod zatvára ___ ôsmej večer.",
+          "translation": "The shop closes at eight in the evening.",
+          "choices": ["ráno", "o", "noc", "pol"],
+          "answer": "o"
+        },
+        {
+          "sentence": "Je ___ tretej. Musím ísť.",
+          "translation": "It is half past two. I must go.",
+          "choices": ["hodina", "minúta", "pol", "noc"],
+          "answer": "pol"
+        },
+        {
+          "sentence": "Dobrú ___! Idem spať.",
+          "translation": "Good night! I am going to sleep.",
+          "choices": ["ráno", "deň", "noc", "večer"],
+          "answer": "noc"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

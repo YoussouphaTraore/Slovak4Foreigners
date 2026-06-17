@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { lessons } from '../data/lessons';
 import { buildRacePool, type RaceQuestion } from '../utils/buildRacePool';
 import { useProgressStore } from '../store/useProgressStore';
+import { getCumulativeLessonIds, isLastBlock, stage1Blocks } from '../config/stageBlocks';
 
 const RACE_DURATION = 60;
 const BONUS_SECONDS = 3;
@@ -59,7 +60,11 @@ function playWrong() {
 // ── Helpers ───────────────────────────────────────────────────────────────────
 const stageOrder = [...new Set(lessons.map((l) => l.stageId))];
 
-function getLessonPool(stageId?: string): typeof lessons {
+function getLessonPool(stageId?: string, blockId?: string): typeof lessons {
+  if (blockId) {
+    const cumulativeIds = getCumulativeLessonIds(blockId);
+    return lessons.filter((l) => cumulativeIds.includes(l.id) && !l.coming_soon);
+  }
   const idx = stageId ? stageOrder.indexOf(stageId) : -1;
   if (idx === -1) return lessons;
   return lessons.filter((l) => stageOrder.indexOf(l.stageId) <= idx);
@@ -78,14 +83,19 @@ function attemptsUsedToday(stageId: string, records: ReturnType<typeof useProgre
 // ── Component ─────────────────────────────────────────────────────────────────
 export function SnailRacePage() {
   const navigate = useNavigate();
-  const { stageId } = useParams<{ stageId?: string }>();
+  const { stageId, blockId } = useParams<{ stageId?: string; blockId?: string }>();
   const store = useProgressStore();
-  const lessonPool = getLessonPool(stageId);
+  const lessonPool = getLessonPool(stageId, blockId);
   const resolvedStageId = stageId ?? 'all';
+  const currentBlock = blockId ? stage1Blocks.find((b) => b.blockId === blockId) : null;
+
+  // Compute attempts left (reactive — reads store directly)
+  const attemptsLeft = blockId
+    ? store.getBlockRaceAttemptsLeft()
+    : MAX_ATTEMPTS - attemptsUsedToday(resolvedStageId, store.snailRaceRecords);
 
   // Check daily limit before render
-  const usedOnLoad = attemptsUsedToday(resolvedStageId, store.snailRaceRecords);
-  const initialPhase: Phase = usedOnLoad >= MAX_ATTEMPTS ? 'blocked' : 'idle';
+  const initialPhase: Phase = attemptsLeft <= 0 ? 'blocked' : 'idle';
 
   const [phase, setPhase] = useState<Phase>(initialPhase);
   const [questions, setQuestions] = useState<RaceQuestion[]>([]);
@@ -95,13 +105,16 @@ export function SnailRacePage() {
   const [timeLeft, setTimeLeft] = useState(RACE_DURATION);
   const [flash, setFlash] = useState<Flash>(null);
   const [showBonus, setShowBonus] = useState(false);
-  const [raceResult, setRaceResult] = useState<{ xpEarned: number; attemptsLeft: number } | null>(null);
+  const [raceResult, setRaceResult] = useState<{
+    xpEarned: number;
+    attemptsLeft: number;
+    isTurboSnail?: boolean;
+  } | null>(null);
 
   const flashRef  = useRef(false);
-  const frozenRef = useRef(false); // timer paused on wrong answer
+  const frozenRef = useRef(false);
 
   const currentQuestion = questions[currentIndex] ?? null;
-  const attemptsLeft = MAX_ATTEMPTS - attemptsUsedToday(resolvedStageId, store.snailRaceRecords);
 
   const startRace = useCallback(() => {
     if (attemptsLeft <= 0) { setPhase('blocked'); return; }
@@ -135,8 +148,28 @@ export function SnailRacePage() {
   // Record result when race finishes
   useEffect(() => {
     if (phase !== 'finished') return;
-    const result = store.recordSnailRaceAttempt(resolvedStageId, correct);
-    setRaceResult(result.blocked ? { xpEarned: 0, attemptsLeft: 0 } : result);
+    const total = correct + wrong;
+    const acc = total > 0 ? Math.round((correct / total) * 100) : 0;
+
+    if (blockId) {
+      const result = store.recordBlockRaceAttempt(blockId, correct, acc);
+      if (result.blocked) {
+        setRaceResult({ xpEarned: 0, attemptsLeft: 0, isTurboSnail: false });
+      } else {
+        if (result.isTurboSnail) {
+          store.passBlock(blockId);
+          if (isLastBlock(blockId)) store.unlockStage('settling');
+        }
+        setRaceResult({
+          xpEarned: result.xpEarned,
+          attemptsLeft: result.attemptsLeft,
+          isTurboSnail: result.isTurboSnail,
+        });
+      }
+    } else {
+      const result = store.recordSnailRaceAttempt(resolvedStageId, correct);
+      setRaceResult(result.blocked ? { xpEarned: 0, attemptsLeft: 0 } : result);
+    }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
@@ -188,7 +221,9 @@ export function SnailRacePage() {
 
   // Best score from store
   const stageRecord = store.snailRaceRecords.find((r) => r.stageId === resolvedStageId);
-  const bestScore = stageRecord?.bestScore ?? 0;
+  const bestScore = blockId
+    ? store.getBlockBestScore(blockId)
+    : (stageRecord?.bestScore ?? 0);
 
   // ── Blocked (no attempts left today) ──────────────────────────────────────
   if (phase === 'blocked') {
@@ -218,16 +253,23 @@ export function SnailRacePage() {
     return (
       <div className="min-h-screen bg-[#E8F4DC] flex flex-col items-center justify-center px-6 text-center">
         <img src="/snailTurbo.png" alt="" className="w-36 h-36 object-contain mb-4" />
-        <h1 className="text-4xl font-black text-gray-800 mb-2">The Snail Race</h1>
+        <h1 className="text-4xl font-black text-gray-800 mb-2">
+          {blockId ? `Block Race — ${currentBlock?.blockName ?? ''}` : 'The Snail Race'}
+        </h1>
         <p className="text-gray-500 mb-2 text-base max-w-xs leading-relaxed">
           Answer as many questions as you can in{' '}
           <span className="font-bold text-brand-green">60 seconds</span>.
         </p>
+        {blockId && (
+          <p className="text-sm text-amber-700 font-semibold mb-2 max-w-xs">
+            Reach Turbo Snail (10+ correct &amp; 50%+ accuracy) to unlock the next block!
+          </p>
+        )}
         <p className="text-sm text-amber-600 font-semibold mb-1">
           +{BONUS_SECONDS}s bonus for every correct answer!
         </p>
-        <p className="text-sm text-gray-400 mb-2">
-          Attempts today: <span className="font-bold">{MAX_ATTEMPTS - attemptsLeft}/{MAX_ATTEMPTS}</span>
+        <p className={`text-sm font-bold mb-2 ${attemptsLeft === 1 ? 'text-orange-500' : attemptsLeft === 0 ? 'text-red-500' : 'text-gray-400'}`}>
+          Attempts today: <span>{MAX_ATTEMPTS - attemptsLeft}/{MAX_ATTEMPTS}</span>
         </p>
         {bestScore > 0 && (
           <p className="text-sm text-gray-400 mb-6">
@@ -255,7 +297,14 @@ export function SnailRacePage() {
   // ── Finished ──────────────────────────────────────────────────────────────
   if (phase === 'finished') {
     const xpEarned = raceResult?.xpEarned ?? 0;
-    const attLeft = raceResult?.attemptsLeft ?? 0;
+    const attLeft = raceResult?.attemptsLeft ?? attemptsLeft;
+    const blockPassed = blockId && raceResult?.isTurboSnail;
+
+    const blockMessage = blockPassed
+      ? isLastBlock(blockId!)
+        ? '🎉 Stage 1 complete! Stage 2 is now unlocked.'
+        : `🎉 ${currentBlock?.blockName ?? ''} passed! Your next lessons are now unlocked.`
+      : null;
 
     return (
       <div className="min-h-screen bg-[#E8F4DC] flex flex-col items-center justify-center px-6 text-center">
@@ -267,11 +316,30 @@ export function SnailRacePage() {
         <h1 className="text-4xl font-black text-gray-800 mb-1">
           {isTurbo ? '🐌💨 Turbo Snail!' : '🐌 Snail Pace...'}
         </h1>
-        <p className="text-gray-500 mb-6 max-w-xs">
-          {isTurbo
-            ? 'Amazing speed and accuracy. You are unstoppable!'
-            : 'Keep practising the lessons and come back for a rematch!'}
-        </p>
+
+        {/* Block race result messages */}
+        {blockId && blockMessage && (
+          <div className="bg-green-50 border-2 border-green-300 rounded-2xl px-6 py-3 mb-3 max-w-xs">
+            <p className="text-sm font-bold text-green-700">{blockMessage}</p>
+          </div>
+        )}
+        {blockId && !blockPassed && (
+          <div className="bg-gray-100 border-2 border-gray-300 rounded-2xl px-6 py-3 mb-3 max-w-xs">
+            <p className="text-sm font-bold text-gray-600">🔒 Next block locked</p>
+            <p className="text-xs text-gray-500 mt-0.5">Reach Turbo Snail (10+ correct &amp; 50%+ accuracy) to unlock</p>
+          </div>
+        )}
+
+        {!blockId && (
+          <p className="text-gray-500 mb-4 max-w-xs">
+            {isTurbo
+              ? 'Amazing speed and accuracy. You are unstoppable!'
+              : 'Keep practising the lessons and come back for a rematch!'}
+          </p>
+        )}
+        {blockId && !blockPassed && (
+          <p className="text-gray-500 mb-4 max-w-xs text-sm">Keep practising and try again!</p>
+        )}
 
         <div className="flex gap-3 mb-5">
           <div className="bg-white rounded-2xl px-5 py-4 text-center shadow-sm">
@@ -293,24 +361,43 @@ export function SnailRacePage() {
           <p className="text-4xl font-black text-amber-500">+{xpEarned}</p>
         </div>
 
-        <p className="text-sm text-gray-400 mb-6">
-          Best score: <span className="font-bold text-gray-700">{stageRecord?.bestScore ?? correct}</span>
+        <p className={`text-sm mb-6 ${attLeft === 1 ? 'text-orange-500 font-bold' : attLeft === 0 ? 'text-red-500 font-bold' : 'text-gray-400'}`}>
+          Best score: <span className="font-bold text-gray-700">{bestScore}</span>
           {' · '}Attempts used today: <span className="font-bold">{MAX_ATTEMPTS - attLeft}/{MAX_ATTEMPTS}</span>
         </p>
 
-        {attLeft > 0 ? (
+        {/* Block race passed → CONTINUE button */}
+        {blockId && blockPassed && (
           <button
             type="button"
-            onClick={startRace}
+            onClick={() => navigate('/')}
             className="w-full max-w-xs bg-brand-green text-white font-bold py-4 rounded-xl text-base uppercase tracking-widest hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer shadow-md mb-3"
           >
-            Race Again!
+            Continue
           </button>
-        ) : (
-          <div className="w-full max-w-xs bg-gray-100 text-gray-400 font-bold py-4 rounded-xl text-base text-center uppercase tracking-widest mb-3">
-            Come Back Tomorrow
-          </div>
         )}
+
+        {/* Block race not passed, or stage race → Race Again / Come Back */}
+        {(!blockId || !blockPassed) && (
+          attLeft > 0 ? (
+            <button
+              type="button"
+              onClick={startRace}
+              className="w-full max-w-xs bg-brand-green text-white font-bold py-4 rounded-xl text-base uppercase tracking-widest hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer shadow-md mb-3"
+            >
+              Race Again!
+            </button>
+          ) : (
+            <button
+              type="button"
+              onClick={() => navigate('/')}
+              className="w-full max-w-xs bg-gray-200 text-gray-500 font-bold py-4 rounded-xl text-base uppercase tracking-widest cursor-pointer shadow-sm mb-3"
+            >
+              Come Back Tomorrow
+            </button>
+          )
+        )}
+
         <button
           type="button"
           onClick={() => navigate('/')}

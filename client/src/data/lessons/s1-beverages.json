@@ -1,0 +1,11 @@
+﻿{
+  "id": "s1-beverages",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Beverages",
+  "description": "Coming soon",
+  "icon": "🔒",
+  "xpReward": 10,
+  "coming_soon": true,
+  "exercises": []
+}

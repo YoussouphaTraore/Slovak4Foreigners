@@ -1,0 +1,11 @@
+﻿{
+  "id": "s1-pets",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Pets / House Animals",
+  "description": "Coming soon",
+  "icon": "🔒",
+  "xpReward": 10,
+  "coming_soon": true,
+  "exercises": []
+}

@@ -1,0 +1,11 @@
+﻿{
+  "id": "s1-flat-items",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Items in My Flat",
+  "description": "Coming soon",
+  "icon": "🔒",
+  "xpReward": 10,
+  "coming_soon": true,
+  "exercises": []
+}

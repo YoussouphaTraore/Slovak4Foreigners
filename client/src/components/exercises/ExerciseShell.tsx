@@ -92,25 +92,30 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
 
   if (exercise.type === 'WORD_MATCH_REVIEW') {
     const pairs = reviewPairs ?? [];
-    if (pairs.length === 0) {
-      return (
-        <div className="flex flex-col flex-1 min-h-0 items-center justify-center gap-4 text-center px-6">
-          <img src="/snailExcited.png" alt="" className="w-28 h-28 object-contain" />
-          <p className="text-2xl font-extrabold text-gray-800">Perfect score!</p>
-          <p className="text-sm text-gray-400">You got every word right — nothing to review.</p>
-          <button
-            type="button"
-            onClick={() => onComplete(true)}
-            className="bg-brand-green text-white font-bold py-3 px-10 rounded-xl hover:opacity-90 cursor-pointer"
-          >
-            Continue
-          </button>
-        </div>
-      );
-    }
     return (
       <div className="flex flex-col flex-1 min-h-0">
-        <WordMatchReview pairs={pairs} onDone={() => onComplete(true)} onAnswer={onAnswer} />
+        <div className="flex items-center gap-2 mb-4 flex-none">
+          <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800">
+            Quick Review
+          </span>
+          <span className="text-sm text-gray-400">Ex {exerciseIndex + 1}</span>
+        </div>
+        {pairs.length === 0 ? (
+          <div className="flex flex-col flex-1 min-h-0 items-center justify-center gap-4 text-center px-6">
+            <img src="/snailExcited.png" alt="" className="w-28 h-28 object-contain" />
+            <p className="text-2xl font-extrabold text-gray-800">Nothing to Review — You Nailed Everything!</p>
+            <p className="text-sm text-gray-400">Every word in this lesson was answered correctly first time.</p>
+            <button
+              type="button"
+              onClick={() => onComplete(true)}
+              className="bg-brand-green text-white font-bold py-3 px-10 rounded-xl hover:opacity-90 cursor-pointer"
+            >
+              Continue
+            </button>
+          </div>
+        ) : (
+          <WordMatchReview pairs={pairs} onDone={() => onComplete(true)} onAnswer={onAnswer} />
+        )}
       </div>
     );
   }

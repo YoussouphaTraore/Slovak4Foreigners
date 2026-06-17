@@ -1,0 +1,117 @@
+{
+  "id": "block1-dialogue",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "blockId": "stage1-block1",
+  "type": "BLOCK_DIALOGUE",
+  "title": "Block Dialogue — Core Communication",
+  "description": "You just arrived in Slovakia. You meet someone for the first time. Use everything you learned.",
+  "icon": "💬",
+  "xpReward": 20,
+  "contact": {
+    "name": "Marek",
+    "initials": "M",
+    "role": "Someone you just met in Slovakia",
+    "avatar": "👨"
+  },
+  "context": "You just arrived in Slovakia. You bump into Marek, a friendly Slovak, and start a conversation. Use what you know.",
+  "exchanges": [
+    {
+      "id": "ex1",
+      "speaker": "marek",
+      "text": "Dobrý deň!",
+      "translation": "Good day!",
+      "prompt": "Marek greets you. What do you say back?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Dobrý deň!", "translation": "Good day!", "isCorrect": true },
+        { "id": "b", "text": "Dovidenia!", "translation": "Goodbye!", "isCorrect": false },
+        { "id": "c", "text": "Dobré ráno!", "translation": "Good morning!", "isCorrect": false },
+        { "id": "d", "text": "Pomoc!", "translation": "Help!", "isCorrect": false }
+      ],
+      "correctFeedback": "Dobrý deň! — matching the register. He greeted you formally, you respond formally.",
+      "wrongFeedback": "Dobrý deň is the right match — always mirror the greeting you receive."
+    },
+    {
+      "id": "ex2",
+      "speaker": "marek",
+      "text": "Ako sa máte?",
+      "translation": "How are you?",
+      "prompt": "Marek asks how you are. You are doing well. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Nie veľmi dobre.", "translation": "Not very well.", "isCorrect": false },
+        { "id": "b", "text": "Neviem.", "translation": "I don't know.", "isCorrect": false },
+        { "id": "c", "text": "Dobre, ďakujem. A vy?", "translation": "Fine, thank you. And you?", "isCorrect": true },
+        { "id": "d", "text": "Pomoc!", "translation": "Help!", "isCorrect": false }
+      ],
+      "correctFeedback": "Dobre, ďakujem. A vy? — perfect. You answered and returned the question. That's exactly how Slovaks expect this exchange to go.",
+      "wrongFeedback": "The natural response is Dobre, ďakujem — and always return the question with A vy? when speaking formally."
+    },
+    {
+      "id": "ex3",
+      "speaker": "marek",
+      "text": "Veľmi dobre, ďakujem. Hovoríte po slovensky?",
+      "translation": "Very well, thank you. Do you speak Slovak?",
+      "prompt": "Marek asks if you speak Slovak. You speak a little. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Áno, hovorím plynne.", "translation": "Yes, I speak fluently.", "isCorrect": false },
+        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
+        { "id": "c", "text": "Nie, nehovorím.", "translation": "No, I don't speak.", "isCorrect": false },
+        { "id": "d", "text": "Hovorím trochu. Nehovorím dobre.", "translation": "I speak a little. I don't speak well.", "isCorrect": true }
+      ],
+      "correctFeedback": "Hovorím trochu. Nehovorím dobre. — honest and clear. Slovaks will immediately adjust and speak more simply for you.",
+      "wrongFeedback": "Hovorím trochu is the most accurate answer — it tells Marek to keep things simple without shutting down the conversation."
+    },
+    {
+      "id": "ex4",
+      "speaker": "marek",
+      "text": "Rozumiem. Potrebujete pomoc s niečím?",
+      "translation": "I understand. Do you need help with anything?",
+      "prompt": "Marek speaks too fast and you missed part of what he said. What do you do?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Áno, ďakujem.", "translation": "Yes, thank you.", "isCorrect": false },
+        { "id": "b", "text": "Hovorte pomaly, prosím.", "translation": "Please speak slowly.", "isCorrect": true },
+        { "id": "c", "text": "Dovidenia.", "translation": "Goodbye.", "isCorrect": false },
+        { "id": "d", "text": "Neviem.", "translation": "I don't know.", "isCorrect": false }
+      ],
+      "correctFeedback": "Hovorte pomaly, prosím. — exactly right. Marek will slow down and you will understand much more.",
+      "wrongFeedback": "When someone speaks too fast, Hovorte pomaly, prosím is your go-to. It's polite and always works."
+    },
+    {
+      "id": "ex5",
+      "speaker": "marek",
+      "text": "Prepáčte! Rozumiete teraz?",
+      "translation": "Sorry! Do you understand now?",
+      "prompt": "Marek slowed down and repeated. You understood this time. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
+        { "id": "b", "text": "Áno, rozumiem. Ďakujem!", "translation": "Yes, I understand. Thank you!", "isCorrect": true },
+        { "id": "c", "text": "Môžete zopakovať?", "translation": "Can you repeat that?", "isCorrect": false },
+        { "id": "d", "text": "Čo to znamená?", "translation": "What does that mean?", "isCorrect": false }
+      ],
+      "correctFeedback": "Áno, rozumiem. Ďakujem! — great. You confirmed you understood and thanked him. Natural and warm.",
+      "wrongFeedback": "You understood this time — so Áno, rozumiem. Ďakujem! is the right response."
+    },
+    {
+      "id": "ex6",
+      "speaker": "marek",
+      "text": "Potrebujem ísť. Dovidenia!",
+      "translation": "I need to go. Goodbye!",
+      "prompt": "Marek is leaving. How do you say goodbye formally?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Čau!", "translation": "Bye! (informal)", "isCorrect": false },
+        { "id": "b", "text": "Ahoj!", "translation": "Hi / Bye (informal)", "isCorrect": false },
+        { "id": "c", "text": "Dovidenia! Ďakujem!", "translation": "Goodbye! Thank you!", "isCorrect": true },
+        { "id": "d", "text": "Pomoc!", "translation": "Help!", "isCorrect": false }
+      ],
+      "correctFeedback": "Dovidenia! Ďakujem! — perfect formal farewell. You closed the conversation politely and with gratitude.",
+      "wrongFeedback": "Dovidenia is the formal goodbye — always use it with people you don't know well. Čau and Ahoj are only for friends."
+    }
+  ],
+  "completionMessage": "🎉 Well done! You just had your first real conversation in Slovakia. You greeted, answered, admitted you don't speak Slovak well, asked him to slow down, and said goodbye — all in Slovak."
+}
