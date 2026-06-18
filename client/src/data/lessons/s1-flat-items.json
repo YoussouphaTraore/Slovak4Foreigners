@@ -1,11 +1,208 @@
-﻿{
+{
   "id": "s1-flat-items",
   "stageId": "survival",
   "stageName": "Stage 1 · Survival",
   "title": "Items in My Flat",
-  "description": "Coming soon",
-  "icon": "🔒",
+  "description": "Rooms, furniture, and reporting something broken to your landlord",
+  "icon": "🛋️",
   "xpReward": 10,
-  "coming_soon": true,
-  "exercises": []
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Rooms",
+      "rows": [
+        { "label": "Living room", "slovak": "Obývačka", "english": "Living room" },
+        { "label": "Bedroom", "slovak": "Spálňa", "english": "Bedroom" },
+        { "label": "Bathroom", "slovak": "Kúpeľňa", "english": "Bathroom" },
+        { "label": "Kitchen", "slovak": "Kuchyňa", "english": "Kitchen" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Furniture & Appliances",
+      "rows": [
+        { "label": "Bed", "slovak": "Posteľ", "english": "Bed" },
+        { "label": "Table", "slovak": "Stôl", "english": "Table" },
+        { "label": "Chair", "slovak": "Stolička", "english": "Chair" },
+        { "label": "Wardrobe", "slovak": "Skriňa", "english": "Wardrobe / Cabinet" },
+        { "label": "Fridge", "slovak": "Chladnička", "english": "Fridge" },
+        { "label": "Washing machine", "slovak": "Práčka", "english": "Washing machine" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Reporting a Problem",
+      "rows": [
+        { "label": "Something broke", "slovak": "Niečo sa pokazilo.", "english": "Something broke." },
+        { "label": "...doesn't work", "slovak": "Nefunguje...", "english": "...doesn't work." },
+        { "label": "I need to fix...", "slovak": "Potrebujem opraviť...", "english": "I need to fix / repair..." },
+        { "label": "Can you come and look?", "slovak": "Môžete prísť a pozrieť sa?", "english": "Can you come and look?" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Obývačka", "english": "Living room" },
+        { "slovak": "Spálňa", "english": "Bedroom" },
+        { "slovak": "Kúpeľňa", "english": "Bathroom" },
+        { "slovak": "Kuchyňa", "english": "Kitchen" },
+        { "slovak": "Posteľ", "english": "Bed" },
+        { "slovak": "Skriňa", "english": "Wardrobe" },
+        { "slovak": "Chladnička", "english": "Fridge" },
+        { "slovak": "Práčka", "english": "Washing machine" }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Obývačka", "english": "Living room" },
+        { "slovak": "Spálňa", "english": "Bedroom" },
+        { "slovak": "Kúpeľňa", "english": "Bathroom" },
+        { "slovak": "Kuchyňa", "english": "Kitchen" },
+        { "slovak": "Posteľ", "english": "Bed" },
+        { "slovak": "Skriňa", "english": "Wardrobe" },
+        { "slovak": "Chladnička", "english": "Fridge" },
+        { "slovak": "Práčka", "english": "Washing machine" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Obývačka", "english": "Living room" },
+        { "slovak": "Spálňa", "english": "Bedroom" },
+        { "slovak": "Kúpeľňa", "english": "Bathroom" },
+        { "slovak": "Kuchyňa", "english": "Kitchen" },
+        { "slovak": "Chladnička", "english": "Fridge" },
+        { "slovak": "Práčka", "english": "Washing machine" },
+        { "slovak": "Niečo sa pokazilo.", "english": "Something broke." },
+        { "slovak": "Nefunguje...", "english": "...doesn't work." }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your fridge stops cooling. What do you tell your landlord?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Práčka nefunguje.", "Chladnička nefunguje.", "Posteľ nefunguje.", "Skriňa nefunguje."],
+          "answer": "Chladnička nefunguje.",
+          "answerMeaning": "Chladnička nefunguje = The fridge doesn't work. Nefunguje is the key phrase for reporting any broken appliance."
+        },
+        {
+          "situation": "Your washing machine is leaking water. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Práčka sa pokazila.", "Posteľ sa pokazila.", "Kuchyňa sa pokazila.", "Stolička sa pokazila."],
+          "answer": "Práčka sa pokazila.",
+          "answerMeaning": "Práčka sa pokazila = The washing machine broke. Sa pokazila is the feminine past form — práčka is a feminine noun."
+        },
+        {
+          "situation": "You want the landlord to come see the problem in person. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Môžete prísť a pozrieť sa?",
+            "Potrebujem opraviť posteľ.",
+            "Kde je kúpeľňa?",
+            "Stôl pre dvoch."
+          ],
+          "answer": "Môžete prísť a pozrieť sa?",
+          "answerMeaning": "Môžete prísť a pozrieť sa? = Can you come and look? Useful when you can't describe the problem clearly over the phone."
+        },
+        {
+          "situation": "You want to host a guest and show them around. Where do you say you usually relax and watch TV?",
+          "instruction": "Choose the correct word",
+          "choices": ["Spálňa", "Kúpeľňa", "Obývačka", "Kuchyňa"],
+          "answer": "Obývačka",
+          "answerMeaning": "Obývačka = Living room. The room for relaxing, watching TV, and spending time with guests."
+        },
+        {
+          "situation": "Where do you say you sleep at night?",
+          "instruction": "Choose the correct word",
+          "choices": ["Obývačka", "Spálňa", "Kuchyňa", "Kúpeľňa"],
+          "answer": "Spálňa",
+          "answerMeaning": "Spálňa = Bedroom. From spať (to sleep) — the room where you rest."
+        },
+        {
+          "situation": "Your wardrobe door fell off. What do you say you need to do?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Potrebujem opraviť skriňu.",
+            "Potrebujem opraviť kuchyňu.",
+            "Potrebujem opraviť spálňu.",
+            "Potrebujem opraviť obývačku."
+          ],
+          "answer": "Potrebujem opraviť skriňu.",
+          "answerMeaning": "Potrebujem opraviť skriňu = I need to fix the wardrobe. Skriňa = wardrobe/cabinet."
+        },
+        {
+          "situation": "You're cooking dinner. Which room are you in?",
+          "instruction": "Choose the correct word",
+          "choices": ["Kúpeľňa", "Spálňa", "Kuchyňa", "Obývačka"],
+          "answer": "Kuchyňa",
+          "answerMeaning": "Kuchyňa = Kitchen. Where you cook and often eat your meals at home."
+        },
+        {
+          "situation": "Your shower stopped producing hot water. Where is the problem located?",
+          "instruction": "Choose the correct word",
+          "choices": ["Kuchyňa", "Spálňa", "Kúpeľňa", "Obývačka"],
+          "answer": "Kúpeľňa",
+          "answerMeaning": "Kúpeľňa = Bathroom. From kúpeľ (bath) — the room with the shower, sink and toilet."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ nefunguje. Nemám teplú vodu.",
+          "translation": "The washing machine doesn't work. I don't have hot water.",
+          "choices": ["Posteľ", "Práčka", "Stolička", "Skriňa"],
+          "answer": "Práčka"
+        },
+        {
+          "sentence": "Niečo sa ___ v kúpeľni.",
+          "translation": "Something broke in the bathroom.",
+          "choices": ["pokazilo", "opravilo", "kúpilo", "predalo"],
+          "answer": "pokazilo"
+        },
+        {
+          "sentence": "Potrebujem ___ chladničku. Je veľmi stará.",
+          "translation": "I need to fix the fridge. It's very old.",
+          "choices": ["kúpiť", "opraviť", "predať", "nájsť"],
+          "answer": "opraviť"
+        },
+        {
+          "sentence": "Moja ___ je v spálni, pri okne.",
+          "translation": "My bed is in the bedroom, by the window.",
+          "choices": ["stôl", "posteľ", "stolička", "skriňa"],
+          "answer": "posteľ"
+        },
+        {
+          "sentence": "Sedíme v ___ a pozeráme televíziu.",
+          "translation": "We are sitting in the living room watching TV.",
+          "choices": ["kuchyni", "spálni", "obývačke", "kúpeľni"],
+          "answer": "obývačke"
+        },
+        {
+          "sentence": "Môžete prísť a ___ sa? Nerozumiem, čo je pokazené.",
+          "translation": "Can you come and look? I don't understand what's broken.",
+          "choices": ["pozrieť", "opraviť", "kúpiť", "vidieť"],
+          "answer": "pozrieť"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
 }

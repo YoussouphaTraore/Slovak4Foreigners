@@ -1,11 +1,199 @@
-﻿{
+{
   "id": "s1-ordering-food",
   "stageId": "survival",
   "stageName": "Stage 1 · Survival",
   "title": "Ordering Food",
-  "description": "Coming soon",
-  "icon": "🔒",
+  "description": "At the restaurant and with a delivery app",
+  "icon": "🧾",
   "xpReward": 10,
-  "coming_soon": true,
-  "exercises": []
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "At the Restaurant",
+      "rows": [
+        { "label": "Table for one", "slovak": "Stôl pre jedného.", "english": "A table for one." },
+        { "label": "Table for two", "slovak": "Stôl pre dvoch.", "english": "A table for two." },
+        { "label": "Menu", "slovak": "Jedálny lístok", "english": "Menu" },
+        { "label": "I'll have...", "slovak": "Dám si...", "english": "I'll have..." },
+        { "label": "What do you recommend?", "slovak": "Čo odporúčate?", "english": "What do you recommend?" },
+        { "label": "Something to drink?", "slovak": "Niečo na pitie?", "english": "Something to drink?" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Finishing Up",
+      "rows": [
+        { "label": "The bill, please", "slovak": "Účet, prosím.", "english": "The bill, please." },
+        { "label": "Can I get the bill?", "slovak": "Môžem dostať účet?", "english": "Can I get the bill?" },
+        { "label": "Was it tasty?", "slovak": "Bolo to chutné?", "english": "Was it tasty?" },
+        { "label": "Yes, very tasty", "slovak": "Áno, veľmi chutné.", "english": "Yes, very tasty." }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Ordering Through an App",
+      "rows": [
+        { "label": "Delivery", "slovak": "Doručenie", "english": "Delivery" },
+        { "label": "Courier", "slovak": "Kuriér", "english": "Courier" },
+        { "label": "Where are you?", "slovak": "Kde ste?", "english": "Where are you? (courier asking)" },
+        { "label": "I'm in front of the building", "slovak": "Som pred budovou.", "english": "I'm in front of the building." },
+        { "label": "I'm coming down", "slovak": "Idem dole.", "english": "I'm coming down." }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Stôl pre dvoch.", "english": "A table for two." },
+        { "slovak": "Jedálny lístok", "english": "Menu" },
+        { "slovak": "Dám si...", "english": "I'll have..." },
+        { "slovak": "Čo odporúčate?", "english": "What do you recommend?" },
+        { "slovak": "Účet, prosím.", "english": "The bill, please." },
+        { "slovak": "Doručenie", "english": "Delivery" },
+        { "slovak": "Kuriér", "english": "Courier" },
+        { "slovak": "Som pred budovou.", "english": "I'm in front of the building." }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Stôl pre dvoch.", "english": "A table for two." },
+        { "slovak": "Jedálny lístok", "english": "Menu" },
+        { "slovak": "Dám si...", "english": "I'll have..." },
+        { "slovak": "Čo odporúčate?", "english": "What do you recommend?" },
+        { "slovak": "Účet, prosím.", "english": "The bill, please." },
+        { "slovak": "Doručenie", "english": "Delivery" },
+        { "slovak": "Kuriér", "english": "Courier" },
+        { "slovak": "Som pred budovou.", "english": "I'm in front of the building." }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Stôl pre jedného.", "english": "A table for one." },
+        { "slovak": "Jedálny lístok", "english": "Menu" },
+        { "slovak": "Dám si...", "english": "I'll have..." },
+        { "slovak": "Čo odporúčate?", "english": "What do you recommend?" },
+        { "slovak": "Niečo na pitie?", "english": "Something to drink?" },
+        { "slovak": "Účet, prosím.", "english": "The bill, please." },
+        { "slovak": "Doručenie", "english": "Delivery" },
+        { "slovak": "Kuriér", "english": "Courier" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You walk into a restaurant alone. The waiter asks how many people. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Stôl pre dvoch.", "Stôl pre jedného.", "Dám si kávu.", "Účet, prosím."],
+          "answer": "Stôl pre jedného.",
+          "answerMeaning": "Stôl pre jedného = A table for one. Jedného = one (the accusative form of jeden, from the Numbers lesson)."
+        },
+        {
+          "situation": "The waiter brings the menu. You want soup. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Čo odporúčate?", "Dám si polievku.", "Stôl pre dvoch.", "Účet, prosím."],
+          "answer": "Dám si polievku.",
+          "answerMeaning": "Dám si polievku = I'll have the soup. Dám si is the ordering pattern from the Verbs lesson — now applied with real food."
+        },
+        {
+          "situation": "You can't decide what to order. What do you ask the waiter?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Niečo na pitie?", "Čo odporúčate?", "Bolo to chutné?", "Som pred budovou."],
+          "answer": "Čo odporúčate?",
+          "answerMeaning": "Čo odporúčate? = What do you recommend? A great phrase when the menu feels overwhelming."
+        },
+        {
+          "situation": "You finished eating and want to pay. What do you say to the waiter?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Niečo na pitie?", "Dám si polievku.", "Môžem dostať účet?", "Čo odporúčate?"],
+          "answer": "Môžem dostať účet?",
+          "answerMeaning": "Môžem dostať účet? = Can I get the bill? Účet, from the Money lesson — reinforced here in its natural context."
+        },
+        {
+          "situation": "The waiter asks if the meal was good. It was excellent. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Je to pikantné.", "Áno, veľmi chutné.", "Som alergický.", "Niečo na pitie?"],
+          "answer": "Áno, veľmi chutné.",
+          "answerMeaning": "Áno, veľmi chutné = Yes, very tasty. Chutné from the Food lesson — your go-to compliment for good food."
+        },
+        {
+          "situation": "You order food through a delivery app. The courier calls and asks where you are. You're in front of your building. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Idem dole.", "Som pred budovou.", "Kde ste?", "Stôl pre jedného."],
+          "answer": "Som pred budovou.",
+          "answerMeaning": "Som pred budovou = I'm in front of the building. Pred = in front of, from the Positions lesson — used here to meet your delivery."
+        },
+        {
+          "situation": "The courier has arrived but you're still inside. What do you say before heading down?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Idem dole.", "Som vonku.", "Stôl pre dvoch.", "Niečo na pitie?"],
+          "answer": "Idem dole.",
+          "answerMeaning": "Idem dole = I'm coming down. Dole = down, from the Directions lesson — Idem from the Verbs lesson."
+        },
+        {
+          "situation": "You give your delivery address when ordering. What do you start with?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Moja adresa je...", "Dám si...", "Stôl pre jedného.", "Účet, prosím."],
+          "answer": "Moja adresa je...",
+          "answerMeaning": "Moja adresa je... = My address is... — from the My Address lesson, essential for any delivery order."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ pre dvoch, prosím.",
+          "translation": "A table for two, please.",
+          "choices": ["Stôl", "Jedálny lístok", "Účet", "Doručenie"],
+          "answer": "Stôl"
+        },
+        {
+          "sentence": "___ si polievku a chlieb.",
+          "translation": "I'll have the soup and bread.",
+          "choices": ["Mám", "Dám", "Chcem", "Som"],
+          "answer": "Dám"
+        },
+        {
+          "sentence": "Čo ___? Neviem, čo si vybrať.",
+          "translation": "What do you recommend? I don't know what to choose.",
+          "choices": ["chcete", "odporúčate", "máte", "stojí"],
+          "answer": "odporúčate"
+        },
+        {
+          "sentence": "Môžem dostať ___? Skončili sme.",
+          "translation": "Can I get the bill? We're finished.",
+          "choices": ["jedálny lístok", "účet", "doručenie", "kuriéra"],
+          "answer": "účet"
+        },
+        {
+          "sentence": "___ je tu! Idem dole.",
+          "translation": "The courier is here! I'm coming down.",
+          "choices": ["Stôl", "Kuriér", "Účet", "Jedálny lístok"],
+          "answer": "Kuriér"
+        },
+        {
+          "sentence": "Som pred ___. Kde ste?",
+          "translation": "I'm in front of the building. Where are you?",
+          "choices": ["jedálnym lístkom", "účtom", "budovou", "stolom"],
+          "answer": "budovou"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
 }

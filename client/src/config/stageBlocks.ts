@@ -37,8 +37,13 @@ export const stage1Blocks: BlockConfig[] = [
   },
   {
     blockId: 'stage1-block6',
-    blockName: 'Daily Life',
-    lessonIds: ['s1-food', 's1-ordering-food', 's1-transport', 's1-tram-bus', 's1-taxi', 's1-flat-items', 's1-pets', 's1-beverages', 's1-supermarket'],
+    blockName: 'Food & Getting Around',
+    lessonIds: ['s1-food', 's1-ordering-food', 's1-transport', 's1-tram-bus', 's1-taxi'],
+  },
+  {
+    blockId: 'stage1-block7',
+    blockName: 'At Home',
+    lessonIds: ['s1-flat-items', 's1-pets', 's1-beverages', 's1-supermarket'],
   },
 ];
 

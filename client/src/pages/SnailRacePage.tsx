@@ -302,7 +302,7 @@ export function SnailRacePage() {
 
     const blockMessage = blockPassed
       ? isLastBlock(blockId!)
-        ? '🎉 Stage 1 complete! Stage 2 is now unlocked.'
+        ? '🎉 Stage 1 complete! New lessons are on the way.'
         : `🎉 ${currentBlock?.blockName ?? ''} passed! Your next lessons are now unlocked.`
       : null;
 

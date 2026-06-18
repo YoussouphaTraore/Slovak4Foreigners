@@ -1,0 +1,186 @@
+{
+  "id": "block6-dialogue",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "blockId": "stage1-block6",
+  "type": "BLOCK_DIALOGUE",
+  "title": "A Day Out With Marek",
+  "description": "Tram to the restaurant, dinner with Marek, and a taxi home.",
+  "icon": "🍽️",
+  "xpReward": 20,
+  "contact": {
+    "name": "Marek",
+    "initials": "M",
+    "role": "Your friend",
+    "avatar": "👨"
+  },
+  "context": "Marek invites you out for dinner. You take the tram there, eat together, and take a taxi home afterward.",
+  "speakers": {
+    "marek": { "name": "Marek", "initials": "M", "avatar": "👨" },
+    "waitress": { "name": "Waitress", "initials": "W", "avatar": "👩" },
+    "driver": { "name": "Taxi Driver", "initials": "T", "avatar": "🚕" }
+  },
+  "exchanges": [
+    {
+      "id": "ex1",
+      "speaker": "marek",
+      "text": "Ahoj! Poznám dobrú reštauráciu. Ako sa tam dostaneme?",
+      "translation": "Hi! I know a good restaurant. How should we get there?",
+      "prompt": "Marek asks how you should get there. Pick whichever mode of transport you'd choose.",
+      "isOpenQuestion": true,
+      "choices": [
+        { "id": "a", "text": "Poďme električkou.", "translation": "Let's go by tram.", "isCorrect": true },
+        { "id": "b", "text": "Poďme autobusom.", "translation": "Let's go by bus.", "isCorrect": true },
+        { "id": "c", "text": "Poďme pešo.", "translation": "Let's go on foot.", "isCorrect": true },
+        { "id": "d", "text": "Poďme taxíkom.", "translation": "Let's go by taxi.", "isCorrect": true }
+      ],
+      "correctFeedback": "Poďme + mode of transport — correct pattern. Any of these works to suggest how you'll travel together.",
+      "wrongFeedback": "Poďme (Let's go) + mode of transport is the pattern. Any of the four options works grammatically."
+    },
+    {
+      "id": "ex2",
+      "speaker": "marek",
+      "text": "Dobre, poďme električkou. Máš lístok?",
+      "translation": "Good, let's go by tram. Do you have a ticket?",
+      "prompt": "Marek asks if you have a ticket. You don't yet, you need to buy one. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Áno, mám predplatnú kartu.", "translation": "Yes, I have a travel pass.", "isCorrect": false },
+        { "id": "b", "text": "Nie, potrebujem kúpiť jednorazový lístok.", "translation": "No, I need to buy a single ticket.", "isCorrect": true },
+        { "id": "c", "text": "Tu vystupujem.", "translation": "I'm getting off here.", "isCorrect": false },
+        { "id": "d", "text": "Koľko to bude stáť?", "translation": "How much will it cost?", "isCorrect": false }
+      ],
+      "correctFeedback": "Nie, potrebujem kúpiť jednorazový lístok. — correct. Jednorazový lístok = single ticket, from the Tram/Bus lesson.",
+      "wrongFeedback": "Nie, potrebujem kúpiť jednorazový lístok is correct since you don't have a ticket yet."
+    },
+    {
+      "id": "ex3",
+      "speaker": "marek",
+      "text": "Nezabudni ho validovať!",
+      "translation": "Don't forget to validate it!",
+      "prompt": "Marek reminds you to validate your ticket. What do you say after doing it?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Validoval som ho.", "translation": "I validated it.", "isCorrect": true },
+        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
+        { "id": "c", "text": "Kde mám vystúpiť?", "translation": "Where should I get off?", "isCorrect": false },
+        { "id": "d", "text": "Som unavený.", "translation": "I am tired.", "isCorrect": false }
+      ],
+      "correctFeedback": "Validoval som ho. — correct. You confirmed you did it, exactly as instructed.",
+      "wrongFeedback": "Validoval som ho (I validated it) confirms you've done what Marek reminded you to do."
+    },
+    {
+      "id": "ex4",
+      "speaker": "marek",
+      "text": "Výborne. Naša zastávka je ďalšia.",
+      "translation": "Excellent. Our stop is next.",
+      "prompt": "Marek tells you your stop is next. The tram arrives. What do you say as you get off?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Tu vystupujem.", "translation": "I'm getting off here.", "isCorrect": true },
+        { "id": "b", "text": "Ide toto do centra?", "translation": "Does this go downtown?", "isCorrect": false },
+        { "id": "c", "text": "Kedy ide ďalší autobus?", "translation": "When's the next bus?", "isCorrect": false },
+        { "id": "d", "text": "Môžete zastaviť tu?", "translation": "Can you stop here?", "isCorrect": false }
+      ],
+      "correctFeedback": "Tu vystupujem. — correct. You're confirming this is your stop as you step off.",
+      "wrongFeedback": "Tu vystupujem (I'm getting off here) is the right phrase when stepping off at your stop."
+    },
+    {
+      "id": "ex5",
+      "speaker": "waitress",
+      "text": "Dobrý deň! Stôl pre koľkých?",
+      "translation": "Good day! A table for how many?",
+      "prompt": "You arrive at the restaurant with Marek. The waitress asks how many people. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Stôl pre jedného.", "translation": "A table for one.", "isCorrect": false },
+        { "id": "b", "text": "Stôl pre dvoch.", "translation": "A table for two.", "isCorrect": true },
+        { "id": "c", "text": "Účet, prosím.", "translation": "The bill, please.", "isCorrect": false },
+        { "id": "d", "text": "Niečo na pitie?", "translation": "Something to drink?", "isCorrect": false }
+      ],
+      "correctFeedback": "Stôl pre dvoch. — correct. You and Marek together, from the Ordering Food lesson.",
+      "wrongFeedback": "Stôl pre dvoch (a table for two) is correct since you're dining with Marek."
+    },
+    {
+      "id": "ex6",
+      "speaker": "waitress",
+      "text": "Čo si dáte?",
+      "translation": "What will you have?",
+      "prompt": "You don't eat meat. What do you tell the waitress before ordering?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Mám mäso.", "translation": "I have meat.", "isCorrect": false },
+        { "id": "b", "text": "Nejem mäso.", "translation": "I don't eat meat.", "isCorrect": true },
+        { "id": "c", "text": "Je to chutné.", "translation": "It's tasty.", "isCorrect": false },
+        { "id": "d", "text": "Voľné?", "translation": "Available?", "isCorrect": false }
+      ],
+      "correctFeedback": "Nejem mäso. — correct. Important to mention dietary preferences before ordering, from the Food lesson.",
+      "wrongFeedback": "Nejem mäso (I don't eat meat) is the right way to let the waitress know your dietary preference."
+    },
+    {
+      "id": "ex7",
+      "speaker": "marek",
+      "text": "Tak čo si dáš?",
+      "translation": "So what will you have?",
+      "prompt": "Marek asks what you'll order. You want the soup. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Dám si polievku.", "translation": "I'll have the soup.", "isCorrect": true },
+        { "id": "b", "text": "Mám polievku.", "translation": "I have soup.", "isCorrect": false },
+        { "id": "c", "text": "Chcem ísť domov.", "translation": "I want to go home.", "isCorrect": false },
+        { "id": "d", "text": "Stôl pre dvoch.", "translation": "A table for two.", "isCorrect": false }
+      ],
+      "correctFeedback": "Dám si polievku. — correct. Dám si is the ordering pattern from the Verbs lesson.",
+      "wrongFeedback": "Dám si polievku (I'll have the soup) is the right ordering phrase."
+    },
+    {
+      "id": "ex8",
+      "speaker": "marek",
+      "text": "Bolo to chutné?",
+      "translation": "Was it tasty?",
+      "prompt": "Marek asks if the meal was good. It was excellent. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Je to pikantné.", "translation": "It's spicy.", "isCorrect": false },
+        { "id": "b", "text": "Áno, veľmi chutné.", "translation": "Yes, very tasty.", "isCorrect": true },
+        { "id": "c", "text": "Som alergický.", "translation": "I am allergic.", "isCorrect": false },
+        { "id": "d", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false }
+      ],
+      "correctFeedback": "Áno, veľmi chutné. — correct. A genuine compliment for a good meal.",
+      "wrongFeedback": "Áno, veľmi chutné (Yes, very tasty) is the right response when you enjoyed the meal."
+    },
+    {
+      "id": "ex9",
+      "speaker": "marek",
+      "text": "Je už neskoro. Mali by sme zavolať taxi.",
+      "translation": "It's late already. We should call a taxi.",
+      "prompt": "It's late, Marek suggests a taxi. You agree and need to ask the driver for the address. What do you say once inside?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Koľko je hodín?", "translation": "What time is it?", "isCorrect": false },
+        { "id": "b", "text": "Na túto adresu, prosím.", "translation": "To this address, please.", "isCorrect": true },
+        { "id": "c", "text": "Stôl pre dvoch.", "translation": "A table for two.", "isCorrect": false },
+        { "id": "d", "text": "Dám si kávu.", "translation": "I'll have coffee.", "isCorrect": false }
+      ],
+      "correctFeedback": "Na túto adresu, prosím. — correct. Giving the address from the Taxi lesson.",
+      "wrongFeedback": "Na túto adresu, prosím (To this address, please) is correct when giving the driver your destination."
+    },
+    {
+      "id": "ex10",
+      "speaker": "driver",
+      "text": "Tu je to. Sedem eur päťdesiat.",
+      "translation": "Here we are. Seven euros fifty.",
+      "prompt": "You arrive home. You give 8 euros and don't need the change. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Máte drobné?", "translation": "Do you have change?", "isCorrect": false },
+        { "id": "b", "text": "Drobné si nechajte. Ďakujem!", "translation": "Keep the change. Thank you!", "isCorrect": true },
+        { "id": "c", "text": "Je to zadarmo?", "translation": "Is it free?", "isCorrect": false },
+        { "id": "d", "text": "Môžete zastaviť tu?", "translation": "Can you stop here?", "isCorrect": false }
+      ],
+      "correctFeedback": "Drobné si nechajte. Ďakujem! — perfect closing to the night. Tipping politely, from the Taxi lesson.",
+      "wrongFeedback": "Drobné si nechajte. Ďakujem! (Keep the change. Thank you!) is the right way to tip and thank the driver."
+    }
+  ],
+  "completionMessage": "🎉 What a day! You chose how to travel, rode the tram, ordered dinner with Marek, and took a taxi home — using everything you've learned about food and getting around, all in Slovak."
+}

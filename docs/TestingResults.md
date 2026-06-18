@@ -190,3 +190,29 @@ Methodology matches the main pass: DEV jump bar per exercise, full automated tex
 **Completion screens:** guided complete and unguided XP screen both clean. Full run end-to-end without error on both passes.
 
 **QA script:** `client/qa-walk-block4-block5.cjs`. Screenshots in `client/qa-screenshots/block4-block5/` (gitignored). Log at `client/qa-block4-block5-log.json` (gitignored).
+
+---
+
+## Block 6 Lessons, Block 7 Structure & Block 6 Dialogue (Phase 57 QA — 2026-06-18)
+
+**Methodology:** `client/qa-walk-phase55-56.cjs` — Playwright on `devices['Pixel 7']`, dev server `localhost:5173` + prod preview `localhost:4200`. Full progress seeded (Zustand store version 15, all 27 non-coming_soon survival lessons complete, all 7 blocks passed, dialogues 1-6 completed). 10 tests covering block rename, 5 new lessons, Block 6 dialogue, SnailRacePage message, and end-of-feed completion variant.
+
+### Block Structure (Phases 55 & 56)
+**Status:** 🟢 Pass — Block 6 "Food & Getting Around" and Block 7 "At Home" visible in both dev and production. "Daily Life" (old name) absent. Production build confirmed serving new 7-block config.
+
+### 4 New Block 6 Lessons (User additions — 2026-06-18)
+**Status:** 🟢 Pass — s1-ordering-food, s1-transport, s1-tram-bus, s1-taxi all confirmed `coming_soon: false`, registered in `lessons/index.ts`, build-clean. Content reviewed manually: all SITUATIONAL_CHOICE answers match choices, all FILL_IN_BLANK_PICK answers match choices, Slovak diacritics verified throughout.
+
+### s1-flat-items (Codex — Phase 55)
+**Status:** 🟢 Pass (after one correction). Content: rooms, furniture/appliances, reporting a problem. **Correction:** ex7 item 4 had `"Môj ___ je v spálni"` — posteľ is feminine, corrected to `"Moja ___ je v spálni"`. All other choices/answers verified.
+
+### Block 6 Dialogue — "A Day Out With Marek" (Codex — Phase 56)
+**Status:** 🟢 Pass — 11 exchanges walked, zero corruption, 3 speakers (Marek/Waitress/Taxi Driver). Speaker map verified complete. Ex1 open-question (all 4 transport choices correct).
+
+### SnailRacePage — Final Block Message
+**Status:** 🟢 Pass — "Stage 2 is now unlocked" removed; "New lessons are on the way." confirmed in source. Block 7 is now `isLastBlock()`.
+
+### End-of-Feed Complete Variant (7-block requirement)
+**Status:** 🟢 Pass — `allAvailableLessonsComplete` now uses `stage1Blocks[length-1].blockId` = `stage1-block7`. All 6 Phase 54 end-of-feed tests still pass after the seed fix (Zustand version 15).
+
+**QA script:** `client/qa-walk-phase55-56.cjs`. Screenshots in `client/qa-screenshots/phase55-56/` (gitignored). Log: `client/qa-phase55-56-log.json` (gitignored).

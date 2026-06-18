@@ -1,11 +1,222 @@
-﻿{
+{
   "id": "s1-transport",
   "stageId": "survival",
   "stageName": "Stage 1 · Survival",
   "title": "Means of Transportation",
-  "description": "Coming soon",
-  "icon": "🔒",
+  "description": "Name your transport and say how you're getting there",
+  "icon": "🚌",
   "xpReward": 10,
-  "coming_soon": true,
-  "exercises": []
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Modes of Transport",
+      "rows": [
+        { "label": "Bus", "slovak": "Autobus", "english": "Bus" },
+        { "label": "Tram", "slovak": "Električka", "english": "Tram" },
+        { "label": "Train", "slovak": "Vlak", "english": "Train" },
+        { "label": "Car", "slovak": "Auto", "english": "Car" },
+        { "label": "Bike", "slovak": "Bicykel", "english": "Bike" },
+        { "label": "Taxi", "slovak": "Taxi", "english": "Taxi" },
+        { "label": "On foot", "slovak": "Pešo", "english": "On foot" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Going By...",
+      "subtitle": "Notice the ending changes depending on the mode.",
+      "rows": [
+        { "label": "By bus", "slovak": "Idem autobusom.", "english": "I'm going by bus." },
+        { "label": "By tram", "slovak": "Idem električkou.", "english": "I'm going by tram." },
+        { "label": "By train", "slovak": "Idem vlakom.", "english": "I'm going by train." },
+        { "label": "By car", "slovak": "Idem autom.", "english": "I'm going by car." },
+        { "label": "By bike", "slovak": "Idem na bicykli.", "english": "I'm going by bike." },
+        { "label": "On foot", "slovak": "Idem pešo.", "english": "I'm going on foot." }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "General Travel Words",
+      "rows": [
+        { "label": "Ticket", "slovak": "Cestovný lístok", "english": "Ticket" },
+        { "label": "Station", "slovak": "Stanica", "english": "Station" },
+        { "label": "Stop", "slovak": "Zastávka", "english": "Stop" },
+        { "label": "How do I get to...?", "slovak": "Ako sa dostanem do...?", "english": "How do I get to...?" },
+        { "label": "How long does it take?", "slovak": "Ako dlho to trvá?", "english": "How long does it take?" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Autobus", "english": "Bus" },
+        { "slovak": "Električka", "english": "Tram" },
+        { "slovak": "Vlak", "english": "Train" },
+        { "slovak": "Auto", "english": "Car" },
+        { "slovak": "Bicykel", "english": "Bike" },
+        { "slovak": "Pešo", "english": "On foot" },
+        { "slovak": "Stanica", "english": "Station" },
+        { "slovak": "Zastávka", "english": "Stop" },
+        { "slovak": "Cestovný lístok", "english": "Ticket" }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Autobus", "english": "Bus" },
+        { "slovak": "Električka", "english": "Tram" },
+        { "slovak": "Vlak", "english": "Train" },
+        { "slovak": "Auto", "english": "Car" },
+        { "slovak": "Bicykel", "english": "Bike" },
+        { "slovak": "Pešo", "english": "On foot" },
+        { "slovak": "Stanica", "english": "Station" },
+        { "slovak": "Zastávka", "english": "Stop" },
+        { "slovak": "Cestovný lístok", "english": "Ticket" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Idem autobusom.", "english": "I'm going by bus." },
+        { "slovak": "Idem vlakom.", "english": "I'm going by train." },
+        { "slovak": "Idem autom.", "english": "I'm going by car." },
+        { "slovak": "Idem pešo.", "english": "I'm going on foot." },
+        { "slovak": "Cestovný lístok", "english": "Ticket" },
+        { "slovak": "Stanica", "english": "Station" },
+        { "slovak": "Zastávka", "english": "Stop" },
+        { "slovak": "Ako sa dostanem do...?", "english": "How do I get to...?" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your colleague asks how you're getting to work. You take the train. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Idem autobusom.", "Idem vlakom.", "Idem pešo.", "Idem autom."],
+          "answer": "Idem vlakom.",
+          "answerMeaning": "Idem vlakom = I'm going by train. Notice the -om ending on vlak when saying 'by train'."
+        },
+        {
+          "situation": "You live near a tram line and it's the fastest way to the centre. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Idem autobusom.", "Idem električkou.", "Idem pešo.", "Idem na bicykli."],
+          "answer": "Idem električkou.",
+          "answerMeaning": "Idem električkou = I'm going by tram. Električka takes the -ou ending, slightly different from autobus/vlak/auto's -om ending — Slovak noun endings vary by gender."
+        },
+        {
+          "situation": "It's a nice day and your flat is close to work. How do you say you're walking?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Idem pešo.", "Idem autom.", "Idem na bicykli.", "Idem vlakom."],
+          "answer": "Idem pešo.",
+          "answerMeaning": "Idem pešo = I'm going on foot. Pešo doesn't change form — it's already an adverb."
+        },
+        {
+          "situation": "You want to ask how to get to the city centre. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Ako dlho to trvá?",
+            "Ako sa dostanem do centra?",
+            "Koľko to stojí?",
+            "Kde je zastávka?"
+          ],
+          "answer": "Ako sa dostanem do centra?",
+          "answerMeaning": "Ako sa dostanem do centra? = How do I get to the centre? The standard way to ask for travel directions."
+        },
+        {
+          "situation": "You need to buy something before boarding the bus. What do you ask for?",
+          "instruction": "Choose the correct word",
+          "choices": ["Stanica", "Zastávka", "Cestovný lístok", "Autobus"],
+          "answer": "Cestovný lístok",
+          "answerMeaning": "Cestovný lístok = Ticket. Essential before boarding most public transport in Slovakia."
+        },
+        {
+          "situation": "You are looking for where the train departs from. What are you looking for?",
+          "instruction": "Choose the correct word",
+          "choices": ["Zastávka", "Stanica", "Cestovný lístok", "Bicykel"],
+          "answer": "Stanica",
+          "answerMeaning": "Stanica = Station. Used for trains (vlaková stanica) and sometimes buses (autobusová stanica)."
+        },
+        {
+          "situation": "You are looking for where the bus stops nearby, not the main station. What word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": ["Stanica", "Zastávka", "Cestovný lístok", "Auto"],
+          "answer": "Zastávka",
+          "answerMeaning": "Zastávka = Stop. A smaller, local stopping point — different from a stanica (main station)."
+        },
+        {
+          "situation": "You're deciding between car and bike for a short trip across town. You choose the bike. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Idem autom.", "Idem na bicykli.", "Idem vlakom.", "Idem pešo."],
+          "answer": "Idem na bicykli.",
+          "answerMeaning": "Idem na bicykli = I'm going by bike. Unlike the other modes, bicykel uses na + the locative form rather than the -om ending."
+        },
+        {
+          "situation": "You want to know the journey time before deciding how to travel. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Ako sa dostanem tam?",
+            "Ako dlho to trvá?",
+            "Koľko to stojí?",
+            "Kde je stanica?"
+          ],
+          "answer": "Ako dlho to trvá?",
+          "answerMeaning": "Ako dlho to trvá? = How long does it take? Already familiar from the Hospital lesson — now applied to travel."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ autobusom do práce.",
+          "translation": "I go to work by bus.",
+          "choices": ["Idem", "Som", "Mám", "Chcem"],
+          "answer": "Idem"
+        },
+        {
+          "sentence": "Idem ___. Je to blízko.",
+          "translation": "I'm going on foot. It's close.",
+          "choices": ["autom", "vlakom", "pešo", "autobusom"],
+          "answer": "pešo"
+        },
+        {
+          "sentence": "___ sa dostanem na stanicu?",
+          "translation": "How do I get to the station?",
+          "choices": ["Kde", "Kedy", "Ako", "Koľko"],
+          "answer": "Ako"
+        },
+        {
+          "sentence": "Potrebujem kúpiť ___ na vlak.",
+          "translation": "I need to buy a ticket for the train.",
+          "choices": ["zastávku", "stanicu", "cestovný lístok", "bicykel"],
+          "answer": "cestovný lístok"
+        },
+        {
+          "sentence": "Autobus zastavuje na tejto ___.",
+          "translation": "The bus stops at this stop.",
+          "choices": ["stanici", "zastávke", "ceste", "ulici"],
+          "answer": "zastávke"
+        },
+        {
+          "sentence": "Idem na ___. Je to rýchlejšie ako pešo.",
+          "translation": "I'm going by bike. It's faster than walking.",
+          "choices": ["aute", "bicykli", "vlaku", "autobuse"],
+          "answer": "bicykli"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
 }

@@ -42,8 +42,10 @@ const ALL_AVAILABLE_LESSON_IDS = [
   's1-my-address', 's1-directions', 's1-positions', 's1-emergency',
   // Block 5
   's1-hospital', 's1-pharmacy',
-  // Block 6 (only s1-food is non-coming_soon)
-  's1-food',
+  // Block 6 (all live)
+  's1-food', 's1-ordering-food', 's1-transport', 's1-tram-bus', 's1-taxi',
+  // Block 7 (s1-pets, s1-beverages, s1-supermarket still coming_soon)
+  's1-flat-items',
 ];
 
 // Mark all survival non-shell lessons complete + pass block6 race
@@ -56,16 +58,16 @@ async function seedAllComplete(page) {
     // completedLessons — set explicitly to all non-coming_soon survival lessons
     stored.state.completedLessons = lessonIds;
 
-    // passedBlocks — pass all 6 blocks
+    // passedBlocks — pass all 7 blocks
     stored.state.passedBlocks = [
       'stage1-block1', 'stage1-block2', 'stage1-block3',
-      'stage1-block4', 'stage1-block5', 'stage1-block6',
+      'stage1-block4', 'stage1-block5', 'stage1-block6', 'stage1-block7',
     ];
 
     // completedBlockDialogues
     stored.state.completedBlockDialogues = [
       'stage1-block1', 'stage1-block2', 'stage1-block3',
-      'stage1-block4', 'stage1-block5',
+      'stage1-block4', 'stage1-block5', 'stage1-block6',
     ];
 
     stored.state.xp = 1000;

@@ -1936,3 +1936,77 @@ Visual treatment: `text-xs text-gray-400 font-medium tracking-wide` — same qui
 6. **CTA**: Since no next stage is visible, the CTA should point to the Review feature (keep skills sharp) rather than going back to the completed feed with no forward motion.
 
 **Recommended implementation order:** Fix the stale message (item 1) first — it's one line and it's currently incorrect. Stage1CompletePage (item 2-6) can be a separate phase.
+
+---
+
+### [Codex] Phase 55 - 2026-06-18 - Split Stage 1 Daily Life into Blocks 6 and 7
+
+**Scope:** Split the old single Daily Life block into two Stage 1 blocks without adding or migrating any block dialogue.
+
+- Updated `client/src/config/stageBlocks.ts`: `stage1-block6` is now `Food & Getting Around` with five lessons (`s1-food`, `s1-ordering-food`, `s1-transport`, `s1-tram-bus`, `s1-taxi`), and new `stage1-block7` is `At Home` with four lessons (`s1-flat-items`, `s1-pets`, `s1-beverages`, `s1-supermarket`).
+- Verified every new Block 6/7 lesson slug exists in `client/src/data/lessons/` and that each JSON file's internal `id` matches its filename slug exactly.
+- Updated Home production end-of-feed completion logic to use the final Stage 1 block dynamically instead of hardcoding `stage1-block6`, so Stage 1 completion now depends on passing Block 7.
+- Confirmed the Block Race helpers (`getCumulativeLessonIds`, `getBlockNumber`, `isLastBlock`) derive behavior from `stage1Blocks`, so they work with seven blocks without any hardcoded six-block assumption.
+- Updated the final Turbo Snail completion copy to avoid saying Stage 2 is unlocked while Stage 2/3 are hidden in production.
+- Ran a temporary Playwright HomePage verification: exactly seven block race buttons render, including `Food & Getting Around` and `At Home`, and the old `Daily Life` label is gone. Removed the temporary spec after verification.
+- Ran `npx.cmd tsc --noEmit`; zero TypeScript errors.
+- Left everything uncommitted for Claude Code review.
+
+---
+
+### [Codex] Phase 56 - 2026-06-18 - Register Block 6 Dialogue
+
+**Scope:** Register the existing Block 6 dialogue and verify its multi-speaker rendering.
+
+- Registered `client/src/data/block-dialogues/block6-dialogue.json` in `client/src/data/block-dialogues/index.ts`, following the same import/array pattern as Blocks 1-5.
+- Parsed the Block 6 dialogue data directly: 10 exchanges total, with `marek` on ex1-ex4 and ex7-ex9, `waitress` on ex5-ex6, and `driver` on ex10.
+- Verified the `speakers` map contains `marek` (`Marek`, `M`), `waitress` (`Waitress`, `W`), and `driver` (`Taxi Driver`, `T`), so the existing multi-speaker resolver has entries for every exchange speaker.
+- Ran a temporary Playwright check through `/block-dialogue/stage1-block6`: clicked the correct answer for all 10 exchanges and confirmed the visible speaker labels resolve to Marek, Waitress, and Taxi Driver at the expected points. Removed the temporary spec after verification.
+- Ran `npx.cmd tsc --noEmit`; zero TypeScript errors.
+- Left everything uncommitted for Claude Code review.
+
+---
+
+### [Claude Code] Review of Codex Phases 55 & 56 — 2026-06-18
+
+**Verdict on Phase 55 (Block split + s1-flat-items + HomePage + SnailRacePage):** ✅ Clean with one content correction.
+
+- Block 6 → "Food & Getting Around" (5 lessons: s1-food, s1-ordering-food, s1-transport, s1-tram-bus, s1-taxi) and new Block 7 → "At Home" (s1-flat-items, s1-pets, s1-beverages, s1-supermarket). Correct split — Block 7's non-live lessons (s1-pets, s1-beverages, s1-supermarket) remain `coming_soon: true`, so Block 7 race remains locked until those lessons are added.
+- `HomePage.tsx` fix: `finalStage1BlockId = stage1Blocks[stage1Blocks.length - 1]?.blockId` — now dynamically resolves to `stage1-block7`. The `allAvailableLessonsComplete` gate correctly requires Block 7 race to be passed. ✅
+- `SnailRacePage.tsx` fix: "Stage 2 is now unlocked" → "New lessons are on the way." — one-line fix of the stale message flagged in Phase 54 Step 3 investigation. ✅
+- **Correction made:** `s1-flat-items.json` ex7 item 4 had `"Môj ___ je v spálni, pri okne."` with answer `"posteľ"`. `Posteľ` is a feminine noun — `môj` (masculine) is wrong; corrected to `"Moja ___ je v spálni, pri okne."` ✅
+
+**Verdict on Phase 56 (Block 6 dialogue):** ✅ Clean.
+
+- "A Day Out With Marek": tram ride → restaurant dinner → taxi home. 10 exchanges, 3 speakers (Marek/Waitress/Taxi Driver). Ex1 is open-question (all 4 transport options correct), ex2-10 have single correct answers. All Slovak content verified. Speaker map covers all exchange speaker keys. Completion message is warm and contextually appropriate. ✅
+
+**Other fixes applied:**
+- `qa-walk-phase54.cjs` `ALL_AVAILABLE_LESSON_IDS` updated: added s1-ordering-food, s1-transport, s1-tram-bus, s1-taxi, s1-flat-items (27 total non-coming_soon lessons). `passedBlocks` seed updated to include `stage1-block7`; `completedBlockDialogues` seed updated to include `stage1-block6`.
+- `qa-walk-phase54.cjs` `seedAllComplete` now uses correct Zustand store version (`version: 15`) to prevent migration from wiping seeded passedBlocks. ✅
+
+---
+
+### [Claude Code] Phase 57 — 2026-06-18 — QA Pass: User Lessons + Codex Phases 55 & 56
+
+**Scope:** Full Playwright QA covering the user's 4 new Block 6 lessons (s1-ordering-food, s1-transport, s1-tram-bus, s1-taxi), Codex's s1-flat-items, Block 6 dialogue (3 speakers), block structure rename, SnailRacePage message, and end-of-feed complete variant with 7-block requirement.
+
+**Method:** `client/qa-walk-phase55-56.cjs` — Playwright on `devices['Pixel 7']`, dev server `localhost:5173` + prod preview `localhost:4200`. 10 tests, seeded full progress (`version: 15`, all 27 non-coming_soon survival lessons + all 7 blocks passed + dialogues 1-6 completed). Build verified clean (`tsc -b` + Vite) before QA run. Existing Phase 54 tests re-run after seed fix — all 6 still pass.
+
+**Results (10/10):**
+
+| Test | Result |
+|---|---|
+| block-structure (dev) — "Food & Getting Around" + "At Home" present, "Daily Life" gone | ✅ |
+| lesson-s1-ordering-food — no corruption | ✅ |
+| lesson-s1-transport — no corruption | ✅ |
+| lesson-s1-tram-bus — no corruption | ✅ |
+| lesson-s1-taxi — no corruption | ✅ |
+| lesson-s1-flat-items — no corruption | ✅ |
+| block6-dialogue — 11 exchanges walked, 3 speakers, zero corruption | ✅ |
+| snailrace-block7-message — "Stage 2 is now unlocked" absent from source, "New lessons are on the way" present | ✅ |
+| end-of-feed-complete-block7 (prod) — "New lessons on the way soon" shown when block7 passed + all lessons complete | ✅ |
+| prod-block-structure — "Food & Getting Around" + "At Home" in production build | ✅ |
+
+**Phase 54 re-run (6/6):** prod-no-stage2, sentinel-hidden-on-load, sentinel-visible-after-scroll, incomplete-variant, complete-variant (now with 7 blocks), dev-stages-visible — all pass. ✅
+
+**Note on lesson walk depth:** Lessons are walked as "already completed" (progress seeded), so the app redirects to home rather than replaying exercises. Content correctness was verified via manual JSON review (all choice/answer pairs cross-checked, diacritics confirmed). The one correction found (Môj → Moja in s1-flat-items) was made before the QA run.

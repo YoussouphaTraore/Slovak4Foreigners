@@ -114,13 +114,16 @@ export function HomePage() {
 
   const suggestedReviews = store.getSuggestedReviews();
 
-  // All non-coming_soon Stage 1 lessons complete + Block 6 race passed
+  const finalStage1BlockId = stage1Blocks[stage1Blocks.length - 1]?.blockId;
+
+  // All non-coming_soon Stage 1 lessons complete + final Stage 1 block race passed
   const allAvailableLessonsComplete =
     !isDev &&
     lessons
       .filter((l) => l.stageId === 'survival' && !l.coming_soon)
       .every((l) => completedLessons.includes(l.id)) &&
-    passedBlocks.includes('stage1-block6');
+    !!finalStage1BlockId &&
+    passedBlocks.includes(finalStage1BlockId);
 
   useEffect(() => {
     if (headerRef.current) setHeaderHeight(headerRef.current.offsetHeight);
