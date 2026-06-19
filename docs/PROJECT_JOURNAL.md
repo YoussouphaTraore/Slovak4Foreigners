@@ -13,7 +13,7 @@ You are one of two AI coding assistants working on this repository: **Claude Cod
 
 ### Roles
 
-Claude Code is the lead developer. It owns architecture decisions, lesson content structure, primary feature implementation, and is the only tool authorized to commit or push. Codex is the support developer — it assists with debugging, investigates issues, proposes fixes, writes code, and can take over active implementation work when Claude Code is unavailable (e.g. hit a token/context limit mid-task). Codex never commits or pushes under any circumstance, even if explicitly asked to by anyone other than the user relaying a Claude Code instruction.
+Claude Code is the lead developer. It owns architecture decisions, lesson content structure, primary feature implementation, and is the only tool authorized to commit or push. Codex is the support developer — it assists with debugging, investigates issues, proposes fixes, writes code, can take over active implementation work when Claude Code is unavailable (e.g. hit a token/context limit mid-task), and **is expected to run user tests on its own work before leaving it for review**. Codex never commits or pushes under any circumstance, even if explicitly asked to by anyone other than the user relaying a Claude Code instruction.
 
 Neither tool overrides the other's completed decisions without the user's explicit approval. If you disagree with a prior decision recorded in the journal, raise it with the user — don't silently redo it.
 
@@ -38,15 +38,21 @@ Neither tool overrides the other's completed decisions without the user's explic
 - The user gives the final go-ahead to commit, same as always. Claude Code reviewing the diff is a validation step, not a replacement for the user's explicit "commit now" instruction.
 - **Every time Claude Code reviews a `[Codex]` journal entry, it writes its own review back into the journal directly below that entry** — tagged `### [Claude Code review of Codex Phase N]` — stating what was checked (diff, build/typecheck, file structure, consistency with the claim) and whether it matches what Codex claimed. This applies whether or not the work is committed yet.
 
+### User testing — both tools, mandatory
+
+User testing is a required step, not optional. Both Claude Code and Codex are expected to run a Playwright user test after any implementation that touches the UI, lesson content, dialogue content, block structure, or production-gating logic.
+
+**The methodology is in `docs/USER_TESTING_GUIDE.md`. Read it before writing any QA script.** It covers everything: server setup, Playwright patterns, store seeding (including the critical Zustand version number), corruption detection, lesson walking, dialogue walking, block structure checks, production-specific tests, content static checks, script structure, and reporting.
+
+**Codex specifically:** You are now expected to run user tests on your own work. Do not leave changes uncommitted for Claude Code review without having first run a QA pass yourself. Include the QA results in your journal entry. If you couldn't run a specific test (e.g. server not available), say so explicitly and describe what you did check instead.
+
+**Claude Code:** Always runs a full QA pass when reviewing Codex's work, even if Codex already ran one. Claude Code's QA is the final gate before commit.
+
 ### Before ending any session
 
-- **Codex:** confirm with the user that changes are left uncommitted and ready for Claude Code to review. Write a Build History entry tagged `[Codex]` describing exactly what was changed and why, so Claude Code can validate against the actual diff rather than just the description.
-- **Claude Code:** follow the existing rule — never commit or push without the user explicitly saying so. Write a Build History entry tagged `[Claude Code]` after any commit, summarizing what was committed.
+- **Codex:** run a user test on anything you implemented (see `docs/USER_TESTING_GUIDE.md`), then leave changes uncommitted. Write a Build History entry tagged `[Codex]` that includes: what was changed, what was tested, and the QA result (pass/fail per test). Claude Code must be able to validate the diff against this description.
+- **Claude Code:** follow the existing rule — never commit or push without the user explicitly saying so. Write a Build History entry tagged `[Claude Code]` after any commit, summarizing what was committed and the final QA outcome.
 - If the task is incomplete, leave clear notes on exactly where work stopped and what the next step is.
-
-### User testing — Codex
-
-When you (Codex) are asked to run a user test, or when you have implemented something significant and want to verify it works, follow the methodology in **`docs/USER_TESTING_GUIDE.md`**. That guide covers everything: server setup, Playwright patterns, store seeding (including the critical Zustand version number), corruption detection, lesson walking, dialogue walking, block structure checks, production-specific tests, content static checks, and how to write the QA script and report the results. Read it before writing any QA script.
 
 ### Handoff scenario — token limit mid-task
 
