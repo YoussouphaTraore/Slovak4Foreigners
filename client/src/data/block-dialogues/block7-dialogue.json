@@ -1,0 +1,185 @@
+{
+  "id": "block7-dialogue",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "blockId": "stage1-block7",
+  "type": "BLOCK_DIALOGUE",
+  "title": "Marek Visits",
+  "description": "Marek comes over for the first time. Something's broken, his pet questions, and a quick supermarket run.",
+  "icon": "🏠",
+  "xpReward": 20,
+  "contact": {
+    "name": "Marek",
+    "initials": "M",
+    "role": "Your friend",
+    "avatar": "👨"
+  },
+  "context": "Marek visits your flat for the first time. You show him around, offer him a drink, and head to the supermarket together.",
+  "speakers": {
+    "marek": { "name": "Marek", "initials": "M", "avatar": "👨" },
+    "cashier": { "name": "Cashier", "initials": "C", "avatar": "🧑‍💼" }
+  },
+  "exchanges": [
+    {
+      "id": "ex1",
+      "speaker": "marek",
+      "text": "Ahoj! Pekný byt. Toto je obývačka?",
+      "translation": "Hi! Nice flat. Is this the living room?",
+      "prompt": "Marek asks if this room is the living room. Confirm it.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Áno, toto je obývačka.", "translation": "Yes, this is the living room.", "isCorrect": true },
+        { "id": "b", "text": "Toto je kuchyňa.", "translation": "This is the kitchen.", "isCorrect": false },
+        { "id": "c", "text": "Nemám zviera.", "translation": "I don't have a pet.", "isCorrect": false },
+        { "id": "d", "text": "Sú povolené zvieratá?", "translation": "Are pets allowed?", "isCorrect": false }
+      ],
+      "correctFeedback": "Áno, toto je obývačka. — correct. Confirming the room name from the Items in My Flat lesson.",
+      "wrongFeedback": "Áno, toto je obývačka is correct since this is the living room."
+    },
+    {
+      "id": "ex2",
+      "speaker": "marek",
+      "text": "Vidím, že máš mačku! Ako sa volá?",
+      "translation": "I see you have a cat! What's its name?",
+      "prompt": "Marek asks your cat's name. It's called Micka. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Mám psa.", "translation": "I have a dog.", "isCorrect": false },
+        { "id": "b", "text": "Volá sa Micka.", "translation": "Its name is Micka.", "isCorrect": true },
+        { "id": "c", "text": "Sú povolené zvieratá?", "translation": "Are pets allowed?", "isCorrect": false },
+        { "id": "d", "text": "Nemám zviera.", "translation": "I don't have a pet.", "isCorrect": false }
+      ],
+      "correctFeedback": "Volá sa Micka. — correct. Volá sa + name, from the Pets lesson.",
+      "wrongFeedback": "Volá sa Micka (Its name is Micka) is correct since your cat's name is Micka."
+    },
+    {
+      "id": "ex3",
+      "speaker": "marek",
+      "text": "Pekná mačka! Dáš si niečo na pitie?",
+      "translation": "Nice cat! Would you like something to drink?",
+      "prompt": "You're hosting — Marek hints he'd like a drink. What do you ask him?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Dáte si niečo na pitie?", "translation": "Would you like something to drink?", "isCorrect": true },
+        { "id": "b", "text": "Došlo mi mlieko.", "translation": "I'm out of milk.", "isCorrect": false },
+        { "id": "c", "text": "Kde nájdem chlieb?", "translation": "Where can I find bread?", "isCorrect": false },
+        { "id": "d", "text": "Sú povolené zvieratá?", "translation": "Are pets allowed?", "isCorrect": false }
+      ],
+      "correctFeedback": "Dáte si niečo na pitie? — correct. The polite host phrase from the Beverages lesson.",
+      "wrongFeedback": "Dáte si niečo na pitie? is the right phrase for offering a guest a drink."
+    },
+    {
+      "id": "ex4",
+      "speaker": "marek",
+      "text": "Áno, prosím! Kávu alebo čaj?",
+      "translation": "Yes, please! Coffee or tea?",
+      "prompt": "Wait — Marek is asking you back. You'd like coffee. What do you say?",
+      "isOpenQuestion": true,
+      "choices": [
+        { "id": "a", "text": "Kávu, prosím.", "translation": "Coffee, please.", "isCorrect": true },
+        { "id": "b", "text": "Čaj, prosím.", "translation": "Tea, please.", "isCorrect": true },
+        { "id": "c", "text": "Vodu, prosím.", "translation": "Water, please.", "isCorrect": true },
+        { "id": "d", "text": "Pivo, prosím.", "translation": "Beer, please.", "isCorrect": true }
+      ],
+      "correctFeedback": "Correct pattern — [drink], prosím. Any of these works to state your preference politely.",
+      "wrongFeedback": "[Drink], prosím is the pattern for stating what you'd like. Any of the four options works."
+    },
+    {
+      "id": "ex5",
+      "speaker": "marek",
+      "text": "Hmm, počujem zvláštny zvuk. Niečo sa pokazilo?",
+      "translation": "Hmm, I hear a strange sound. Did something break?",
+      "prompt": "Marek notices a strange sound from the kitchen. Your fridge has been making noise. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Áno, chladnička nefunguje dobre.", "translation": "Yes, the fridge isn't working well.", "isCorrect": true },
+        { "id": "b", "text": "Áno, mám psa.", "translation": "Yes, I have a dog.", "isCorrect": false },
+        { "id": "c", "text": "Nie, je to v poriadku.", "translation": "No, it's fine.", "isCorrect": false },
+        { "id": "d", "text": "Kde je pokladňa?", "translation": "Where is the checkout?", "isCorrect": false }
+      ],
+      "correctFeedback": "Áno, chladnička nefunguje dobre. — correct. Nefunguje, from the Items in My Flat lesson.",
+      "wrongFeedback": "Áno, chladnička nefunguje dobre (Yes, the fridge isn't working well) correctly describes the noise."
+    },
+    {
+      "id": "ex6",
+      "speaker": "marek",
+      "text": "To je škoda. A vidím, že chladnička je takmer prázdna.",
+      "translation": "That's a shame. And I see the fridge is almost empty.",
+      "prompt": "Marek notices you're low on groceries. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Došlo mi mlieko a syr.", "translation": "I'm out of milk and cheese.", "isCorrect": true },
+        { "id": "b", "text": "Mám vernostnú kartu.", "translation": "I have a loyalty card.", "isCorrect": false },
+        { "id": "c", "text": "Sú povolené zvieratá?", "translation": "Are pets allowed?", "isCorrect": false },
+        { "id": "d", "text": "Posteľ je v spálni.", "translation": "The bed is in the bedroom.", "isCorrect": false }
+      ],
+      "correctFeedback": "Došlo mi mlieko a syr. — correct. Došlo mi from the Beverages lesson, applied here to groceries too.",
+      "wrongFeedback": "Došlo mi mlieko a syr (I'm out of milk and cheese) correctly explains the empty fridge."
+    },
+    {
+      "id": "ex7",
+      "speaker": "marek",
+      "text": "Poďme spolu do obchodu! Pomôžem ti.",
+      "translation": "Let's go to the shop together! I'll help you.",
+      "prompt": "Marek offers to come with you to the supermarket. You agree. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Dobre, poďme!", "translation": "Okay, let's go!", "isCorrect": true },
+        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
+        { "id": "c", "text": "Dovidenia!", "translation": "Goodbye!", "isCorrect": false },
+        { "id": "d", "text": "Som unavený.", "translation": "I am tired.", "isCorrect": false }
+      ],
+      "correctFeedback": "Dobre, poďme! — correct. Simple agreement, ready to head out together.",
+      "wrongFeedback": "Dobre, poďme! (Okay, let's go!) is the natural response to accept his offer."
+    },
+    {
+      "id": "ex8",
+      "speaker": "marek",
+      "text": "Veľký nákup, alebo len trochu vecí?",
+      "translation": "A big shop, or just a few things?",
+      "prompt": "You only need a few items. What do you say, and which do you grab?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Len trochu, vezmem si košík.", "translation": "Just a little, I'll take a basket.", "isCorrect": true },
+        { "id": "b", "text": "Veľa, vezmem si vozík.", "translation": "A lot, I'll take a trolley.", "isCorrect": false },
+        { "id": "c", "text": "Kde je pokladňa?", "translation": "Where is the checkout?", "isCorrect": false },
+        { "id": "d", "text": "Mám vernostnú kartu.", "translation": "I have a loyalty card.", "isCorrect": false }
+      ],
+      "correctFeedback": "Len trochu, vezmem si košík. — correct. Trochu and košík, from the Supermarket lesson.",
+      "wrongFeedback": "Len trochu, vezmem si košík (Just a little, I'll take a basket) matches needing only a few items."
+    },
+    {
+      "id": "ex9",
+      "speaker": "cashier",
+      "text": "Dobrý deň. Kartou alebo hotovosťou?",
+      "translation": "Good day. Card or cash?",
+      "prompt": "At checkout, the cashier asks how you're paying. You want to pay by card. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Kartou.", "translation": "By card.", "isCorrect": true },
+        { "id": "b", "text": "Hotovosťou.", "translation": "Cash.", "isCorrect": false },
+        { "id": "c", "text": "Taška, prosím.", "translation": "A bag, please.", "isCorrect": false },
+        { "id": "d", "text": "Pol kila.", "translation": "Half a kilo.", "isCorrect": false }
+      ],
+      "correctFeedback": "Kartou. — correct and simple. From the Money lesson and reinforced in Supermarket.",
+      "wrongFeedback": "Kartou (by card) is the correct one-word answer since you want to pay by card."
+    },
+    {
+      "id": "ex10",
+      "speaker": "marek",
+      "text": "Skvelé, máme všetko! Bol to dobrý deň, ďakujem za hosťovanie.",
+      "translation": "Great, we have everything! It was a good day, thanks for having me.",
+      "prompt": "Marek thanks you for hosting him. How do you close out the day warmly?",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Ďakujem aj tebe, bolo to skvelé!", "translation": "Thank you too, it was great!", "isCorrect": true },
+        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
+        { "id": "c", "text": "Sú povolené zvieratá?", "translation": "Are pets allowed?", "isCorrect": false },
+        { "id": "d", "text": "Niečo sa pokazilo.", "translation": "Something broke.", "isCorrect": false }
+      ],
+      "correctFeedback": "Ďakujem aj tebe, bolo to skvelé! — perfect, warm close to a full day with Marek.",
+      "wrongFeedback": "Ďakujem aj tebe, bolo to skvelé! (Thank you too, it was great!) is the warmest way to close out the day."
+    }
+  ],
+  "completionMessage": "🎉 Incredible! You showed Marek your flat, talked about your pet, offered him a drink, explained what was broken, and went shopping together — all in Slovak. You've completed Stage 1: Survival!"
+}

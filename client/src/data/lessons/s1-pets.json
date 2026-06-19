@@ -1,11 +1,197 @@
-﻿{
+{
   "id": "s1-pets",
   "stageId": "survival",
   "stageName": "Stage 1 · Survival",
   "title": "Pets / House Animals",
-  "description": "Coming soon",
-  "icon": "🔒",
+  "description": "Talk about your pet and ask if pets are allowed",
+  "icon": "🐾",
   "xpReward": 10,
-  "coming_soon": true,
-  "exercises": []
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Common Pets",
+      "rows": [
+        { "label": "Dog", "slovak": "Pes", "english": "Dog" },
+        { "label": "Cat", "slovak": "Mačka", "english": "Cat" },
+        { "label": "Bird", "slovak": "Vták", "english": "Bird" },
+        { "label": "Fish", "slovak": "Rybička", "english": "Fish (small/pet)" },
+        { "label": "Hamster", "slovak": "Škrečok", "english": "Hamster" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Talking About Your Pet",
+      "rows": [
+        { "label": "I have a dog", "slovak": "Mám psa.", "english": "I have a dog." },
+        { "label": "I don't have a pet", "slovak": "Nemám zviera.", "english": "I don't have a pet." },
+        { "label": "What's its name?", "slovak": "Ako sa volá?", "english": "What's its name?" },
+        { "label": "It's called...", "slovak": "Volá sa...", "english": "It's called... (its name is)" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "VOCABULARY_TABLE",
+      "title": "Pet Care & Housing",
+      "rows": [
+        { "label": "Are pets allowed?", "slovak": "Sú povolené zvieratá?", "english": "Are pets allowed?" },
+        { "label": "To feed", "slovak": "Kŕmiť", "english": "To feed" },
+        { "label": "To walk (a dog)", "slovak": "Venčiť", "english": "To walk (a dog)" },
+        { "label": "Vet", "slovak": "Veterinár", "english": "Vet" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Pes", "english": "Dog" },
+        { "slovak": "Mačka", "english": "Cat" },
+        { "slovak": "Vták", "english": "Bird" },
+        { "slovak": "Rybička", "english": "Fish" },
+        { "slovak": "Škrečok", "english": "Hamster" },
+        { "slovak": "Ako sa volá?", "english": "What's its name?" },
+        { "slovak": "Veterinár", "english": "Vet" },
+        { "slovak": "Sú povolené zvieratá?", "english": "Are pets allowed?" }
+      ]
+    },
+    {
+      "id": "ex4b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Pes", "english": "Dog" },
+        { "slovak": "Mačka", "english": "Cat" },
+        { "slovak": "Vták", "english": "Bird" },
+        { "slovak": "Rybička", "english": "Fish" },
+        { "slovak": "Škrečok", "english": "Hamster" },
+        { "slovak": "Ako sa volá?", "english": "What's its name?" },
+        { "slovak": "Veterinár", "english": "Vet" },
+        { "slovak": "Sú povolené zvieratá?", "english": "Are pets allowed?" }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Pes", "english": "Dog" },
+        { "slovak": "Mačka", "english": "Cat" },
+        { "slovak": "Mám psa.", "english": "I have a dog." },
+        { "slovak": "Nemám zviera.", "english": "I don't have a pet." },
+        { "slovak": "Volá sa...", "english": "Its name is..." },
+        { "slovak": "Kŕmiť", "english": "To feed" },
+        { "slovak": "Venčiť", "english": "To walk (a dog)" },
+        { "slovak": "Veterinár", "english": "Vet" }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are looking at a flat to rent. You have a cat. What is the most important question to ask the landlord?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Ako sa volá?", "Sú povolené zvieratá?", "Mám psa.", "Kŕmiť?"],
+          "answer": "Sú povolené zvieratá?",
+          "answerMeaning": "Sú povolené zvieratá? = Are pets allowed? Always ask this before signing any rental agreement if you have a pet."
+        },
+        {
+          "situation": "Your neighbour asks if you have any pets. You have a dog. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Mám psa.", "Mám mačku.", "Nemám zviera.", "Som pes."],
+          "answer": "Mám psa.",
+          "answerMeaning": "Mám psa = I have a dog. Mám from the Verbs lesson + psa (the accusative form of pes)."
+        },
+        {
+          "situation": "Your neighbour's dog approaches you. You want to know its name. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Ako sa voláte?", "Ako sa volá?", "Odkiaľ ste?", "Kde bývate?"],
+          "answer": "Ako sa volá?",
+          "answerMeaning": "Ako sa volá? = What's its name? Same pattern as Ako sa voláte? from the Who I Am lesson — but without the formal -te ending, since you're asking about an animal, not a person."
+        },
+        {
+          "situation": "Someone asks your cat's name. It's called Micka. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Ako sa volá?", "Volá sa Micka.", "Mám mačku.", "Nemám zviera."],
+          "answer": "Volá sa Micka.",
+          "answerMeaning": "Volá sa Micka = Its name is Micka. Volá sa + name, the same pattern used for introducing people."
+        },
+        {
+          "situation": "You don't currently have any pets. Someone asks. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": ["Mám psa.", "Mám mačku.", "Nemám zviera.", "Volá sa..."],
+          "answer": "Nemám zviera.",
+          "answerMeaning": "Nemám zviera = I don't have a pet. Nemám from the Verbs lesson — Ne- makes it negative."
+        },
+        {
+          "situation": "Your dog hasn't eaten yet today. What do you need to do?",
+          "instruction": "Choose the correct word",
+          "choices": ["Venčiť", "Kŕmiť", "Volá sa", "Veterinár"],
+          "answer": "Kŕmiť",
+          "answerMeaning": "Kŕmiť = To feed. Potrebujem nakŕmiť psa = I need to feed the dog."
+        },
+        {
+          "situation": "Your dog needs its evening walk. What do you need to do?",
+          "instruction": "Choose the correct word",
+          "choices": ["Kŕmiť", "Venčiť", "Veterinár", "Mám zviera"],
+          "answer": "Venčiť",
+          "answerMeaning": "Venčiť = To walk (a dog). Idem venčiť psa = I'm going to walk the dog."
+        },
+        {
+          "situation": "Your cat is sick. Where do you need to take it?",
+          "instruction": "Choose the correct word",
+          "choices": ["Lekáreň", "Nemocnica", "Veterinár", "Recepcia"],
+          "answer": "Veterinár",
+          "answerMeaning": "Veterinár = Vet. Different from a doctor (lekár) — animals go to the veterinár, not the nemocnica."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ povolené zvieratá v tomto byte?",
+          "translation": "Are pets allowed in this flat?",
+          "choices": ["Sú", "Je", "Mám", "Volá"],
+          "answer": "Sú"
+        },
+        {
+          "sentence": "___ psa. Volá sa Rex.",
+          "translation": "I have a dog. His name is Rex.",
+          "choices": ["Som", "Mám", "Volá sa", "Nemám"],
+          "answer": "Mám"
+        },
+        {
+          "sentence": "Ako sa ___ vaša mačka?",
+          "translation": "What is your cat's name?",
+          "choices": ["máte", "volá", "bývate", "stojí"],
+          "answer": "volá"
+        },
+        {
+          "sentence": "Musím ___ psa, ešte nejedol.",
+          "translation": "I must feed the dog, he hasn't eaten yet.",
+          "choices": ["venčiť", "kŕmiť", "kúpiť", "volať"],
+          "answer": "kŕmiť"
+        },
+        {
+          "sentence": "Idem ___ psa. Potrebuje prechádzku.",
+          "translation": "I'm going to walk the dog. He needs a walk.",
+          "choices": ["kŕmiť", "venčiť", "kúpiť", "nájsť"],
+          "answer": "venčiť"
+        },
+        {
+          "sentence": "Mačka je chorá. Idem k ___.",
+          "translation": "The cat is sick. I'm going to the vet.",
+          "choices": ["lekárovi", "veterinárovi", "recepcii", "doktorovi"],
+          "answer": "veterinárovi"
+        }
+      ]
+    },
+    {
+      "id": "ex8",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
 }
