@@ -55,3 +55,6 @@ Desktop.ini
 # Misc
 *.pem
 
+# Internal development docs — project journal, QA results, testing guide (local only)
+docs/
+

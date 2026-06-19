@@ -36,3 +36,8 @@ dist-ssr
 # QA pass scratch output — screenshots/logs are evidence for a session, not source
 /qa-screenshots/
 qa-*-log.json
+
+# QA/test automation scripts and config — local only, not part of the app
+qa-*.cjs
+playwright.config.ts
+/e2e/
