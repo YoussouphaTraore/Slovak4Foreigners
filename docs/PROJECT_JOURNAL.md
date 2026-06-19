@@ -29,6 +29,7 @@ Neither tool overrides the other's completed decisions without the user's explic
 - If you are taking over a task that another tool left incomplete (e.g. Claude Code hit a token limit mid-implementation), say so explicitly: *"Picking up from Claude Code's incomplete work on X — here's what I see in the current files."* Then verify the actual file state matches what the journal claims before continuing — don't trust the journal blindly, trust `git status` and the files themselves.
 - For debugging tasks: either tool can independently read code, search for the root cause, and propose a fix. Investigation is parallel-safe in conversation (talking to the user) but file edits are not — only one tool edits at a time, confirmed by the user.
 - Do not start a task that requires extensive file changes if you suspect you are near a context/token limit. Flag it to the user early.
+- **Before starting any non-trivial task, estimate whether you have enough remaining context to complete it in full.** If you judge that the task is too large to finish before hitting your token limit, say so immediately — before writing a single line of code. Tell the user: (1) what you estimate the task requires, (2) roughly how much context you have left, and (3) a suggested way to split the work into smaller pieces that each fit within a session. Do not start and get cut off halfway — a half-finished implementation is worse than no implementation.
 
 ### Commit and push — Claude Code only
 
