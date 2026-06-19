@@ -44,6 +44,10 @@ Neither tool overrides the other's completed decisions without the user's explic
 - **Claude Code:** follow the existing rule — never commit or push without the user explicitly saying so. Write a Build History entry tagged `[Claude Code]` after any commit, summarizing what was committed.
 - If the task is incomplete, leave clear notes on exactly where work stopped and what the next step is.
 
+### User testing — Codex
+
+When you (Codex) are asked to run a user test, or when you have implemented something significant and want to verify it works, follow the methodology in **`docs/USER_TESTING_GUIDE.md`**. That guide covers everything: server setup, Playwright patterns, store seeding (including the critical Zustand version number), corruption detection, lesson walking, dialogue walking, block structure checks, production-specific tests, content static checks, and how to write the QA script and report the results. Read it before writing any QA script.
+
 ### Handoff scenario — token limit mid-task
 
 If Claude Code is running low on context mid-task, it stops at a clean point if possible (not mid-edit of a file), tells the user clearly what is done and what remains, and writes the journal entry before running out. Codex picking up afterward always verifies file state against the claim first, not just reads the claim and proceeds. Codex continues the implementation but leaves everything uncommitted for Claude Code to review when it returns.
