@@ -72,6 +72,11 @@ export async function changeAlias(
   userId: string,
   baseName: string,
 ): Promise<{ success: boolean; alias: string; error?: string }> {
+  const trimmed = baseName.trim();
+  if (!trimmed || !/^[A-Za-z0-9]+$/.test(trimmed) || trimmed.length > 30) {
+    return { success: false, alias: '', error: 'Invalid alias name' };
+  }
+
   const { allowed, nextChangeDate } = await canChangeAlias(userId);
   if (!allowed) {
     if (nextChangeDate) {
@@ -86,7 +91,7 @@ export async function changeAlias(
   }
 
   try {
-    const newAlias = await generateUniqueAlias(baseName);
+    const newAlias = await generateUniqueAlias(trimmed);
 
     const { error: updateError } = await supabase
       .from('user_profiles')
