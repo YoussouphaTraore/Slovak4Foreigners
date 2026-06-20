@@ -310,9 +310,10 @@ export function mergeProgress(
   const lastPlayedDate =
     localDate >= cloudDate ? local.lastPlayedDate : cloud.lastPlayedDate;
 
-  // Keep multiplier from whichever side had more XP
-  const streakMultiplier =
+  // Keep multiplier from whichever side had more XP; clamp to valid range
+  const rawMultiplier =
     cloud.xp >= local.xp ? cloud.streakMultiplier : local.streakMultiplier;
+  const streakMultiplier = Math.min(2.0, Math.max(1.0, rawMultiplier));
 
   const unlockedStages = [
     ...new Set([...local.unlockedStages, ...cloud.unlockedStages]),

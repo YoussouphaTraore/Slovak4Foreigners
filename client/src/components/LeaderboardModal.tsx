@@ -41,7 +41,7 @@ export function LeaderboardModal({ onClose }: Props) {
       setLoading(true);
 
       const [realRes, npcRes, winnerRes] = await Promise.all([
-        supabase.from('user_profiles').select('id, alias, weekly_xp').limit(500),
+        supabase.rpc('get_leaderboard'),
         supabase.from('npc_profiles').select('alias, avatar, weekly_xp'),
         supabase.from('weekly_winners').select('alias, avatar, week_of').order('created_at', { ascending: false }).limit(1).maybeSingle(),
       ]);
