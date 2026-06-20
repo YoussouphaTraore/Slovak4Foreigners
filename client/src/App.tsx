@@ -59,7 +59,7 @@ function AppRoutes() {
   const regressionLessonTitle = useProgressStore((s) => s.regressionLessonTitle);
   const applyGuestRegression = useProgressStore((s) => s.applyGuestRegression);
   const completedLessons = useProgressStore((s) => s.completedLessons);
-  const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
+  const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const userId = useAuthStore((s) => s.user?.id);
   const navigate = useNavigate();
@@ -113,10 +113,8 @@ function AppRoutes() {
     const hasEnoughProgress = !!userId || completedLessons.length >= 3;
     if (!hasEnoughProgress) return;
 
-    // Check if 12h have elapsed since the last review
-    if (!lastReviewedAt) return; // First review is user-initiated via banner
-    const hoursElapsed = (Date.now() - new Date(lastReviewedAt).getTime()) / 3_600_000;
-    if (hoursElapsed < 12) return;
+    // Auto-redirect only when at least one lesson is actually due
+    if (reviewTargetIds.length === 0) return;
 
     // Don't conflict with a regression modal that may have just been set
     const { showSaveProgressModal: modalState } = useProgressStore.getState();
@@ -124,7 +122,7 @@ function AppRoutes() {
 
     try { sessionStorage.setItem('autoReviewShown', 'true'); } catch { /* */ }
     navigate('/review', { state: { autoTriggered: true } });
-  }, [isInitialized, userId, completedLessons.length, lastReviewedAt, navigate]);
+  }, [isInitialized, userId, completedLessons.length, reviewTargetIds.length, navigate]);
 
   return (
     <>

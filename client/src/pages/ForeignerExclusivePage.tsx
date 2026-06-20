@@ -66,7 +66,6 @@ export function ForeignerExclusivePage() {
   const streakMultiplier = useProgressStore((s) => s.streakMultiplier);
   const isSyncing = useProgressStore((s) => s.isSyncing);
   const lessonRecords = useProgressStore((s) => s.lessonRecords);
-  const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
   const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
   const completedLessons = useProgressStore((s) => s.completedLessons);
 
@@ -76,22 +75,12 @@ export function ForeignerExclusivePage() {
     return () => clearInterval(t);
   }, []);
 
-  const hoursElapsed = lastReviewedAt
-    ? (nowMs - new Date(lastReviewedAt).getTime()) / 3_600_000
-    : null;
-
-  const needsFirstReview = !lastReviewedAt && completedLessons.length >= 3;
-  const reviewWarning = hoursElapsed !== null && hoursElapsed >= 9 && hoursElapsed < 12;
-  const reviewOverdue = hoursElapsed !== null && hoursElapsed >= 12;
-  const hasLessonsNeedingReview = reviewTargetIds.some((id) => {
+  const reviewCount = reviewTargetIds.length;
+  const reviewOverdue = reviewTargetIds.some((id) => {
     const r = lessonRecords.find((rec) => rec.lessonId === id);
-    return r && computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100;
+    return r && computeStrength(r, nowMs) === 0;
   });
-  const showReviewBanner = isDev || (hasLessonsNeedingReview && (needsFirstReview || reviewWarning || reviewOverdue));
-  const reviewCount = reviewTargetIds.filter((id) => {
-    const r = lessonRecords.find((rec) => rec.lessonId === id);
-    return r && computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100;
-  }).length;
+  const showReviewBanner = isDev ? completedLessons.length > 0 : reviewCount > 0;
 
   return (
     <div className="min-h-screen bg-[#E8F4DC] flex flex-col max-w-lg mx-auto w-full">

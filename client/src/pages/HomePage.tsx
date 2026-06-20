@@ -81,7 +81,6 @@ export function HomePage() {
     snailRaceRecords, isSyncing, passedBlocks, completedBlockDialogues,
   } = store;
   const lessonRecords = useProgressStore((s) => s.lessonRecords);
-  const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
   const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
   const isSessionRegistered = useProgressStore((s) => s.isSessionRegistered);
   const partialLessonProgress = useProgressStore((s) => s.partialLessonProgress);
@@ -94,23 +93,15 @@ export function HomePage() {
     return () => clearInterval(t);
   }, []);
 
-  const hoursElapsed = lastReviewedAt
-    ? (nowMs - new Date(lastReviewedAt).getTime()) / 3_600_000
-    : null;
-
-  const needsFirstReview = !lastReviewedAt && completedLessons.length >= 3;
-  const reviewWarning = hoursElapsed !== null && hoursElapsed >= 9 && hoursElapsed < 12;
-  const reviewOverdue = hoursElapsed !== null && hoursElapsed >= 12;
-  const hasLessonsNeedingReview = reviewTargetIds.some((id) => {
+  // reviewTargetIds = all currently-due lesson IDs (pre-computed by decayLessonStrengths)
+  const reviewCount = reviewTargetIds.length;
+  const reviewOverdue = reviewTargetIds.some((id) => {
     const r = lessonRecords.find((rec) => rec.lessonId === id);
-    return r && computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100;
+    return r && computeStrength(r, nowMs) === 0;
   });
-  const showReviewBanner = isDev || (hasLessonsNeedingReview && (needsFirstReview || reviewWarning || reviewOverdue));
-
-  const reviewCount = reviewTargetIds.filter((id) => {
-    const r = lessonRecords.find((rec) => rec.lessonId === id);
-    return r && computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100;
-  }).length;
+  const showReviewBanner = isDev
+    ? completedLessons.length > 0
+    : reviewCount > 0;
 
   const suggestedReviews = store.getSuggestedReviews();
 
@@ -161,11 +152,8 @@ export function HomePage() {
     lessonRecords.find((r) => r.lessonId === lessonId);
 
   const liveStrength = useCallback(
-    (record: LessonRecord) => {
-      if (!reviewTargetIds.includes(record.lessonId)) return 100;
-      return computeStrength(lastReviewedAt, record.completedAt, nowMs);
-    },
-    [reviewTargetIds, lastReviewedAt, nowMs],
+    (record: LessonRecord) => computeStrength(record, nowMs),
+    [nowMs],
   );
 
   const raceAttemptsToday = (stageId: string): number => {

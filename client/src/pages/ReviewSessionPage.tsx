@@ -30,11 +30,6 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function msUntilNextReview(lastReviewedAt: string): number {
-  const next = new Date(lastReviewedAt).getTime() + 12 * 3_600_000;
-  return Math.max(0, next - Date.now());
-}
-
 function formatCountdown(ms: number): string {
   const s = Math.max(0, Math.floor(ms / 1000));
   const h = Math.floor(s / 3600);
@@ -43,25 +38,35 @@ function formatCountdown(ms: number): string {
   return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${String(sec).padStart(2, '0')}`;
 }
 
-// Distribute `total` exercises across lessons weighted by strikes.
-// Lessons with more strikes get more exercises; each lesson gets at least 1.
+// Milliseconds until the soonest nextReviewDue among all lesson records.
+function msUntilNextDue(lessonRecords: LessonRecord[]): number {
+  const now = Date.now();
+  let soonest = Infinity;
+  for (const r of lessonRecords) {
+    if (r.nextReviewDue) {
+      const due = new Date(r.nextReviewDue).getTime();
+      if (due > now) soonest = Math.min(soonest, due - now);
+    }
+  }
+  return soonest === Infinity ? 0 : soonest;
+}
+
+// Distribute `total` exercises across lessons weighted by strikesInLastReview.
+// Lessons the user struggled with most recently get more exercises; each lesson gets at least 1.
 function weightedCounts(records: LessonRecord[], total: number): Map<string, number> {
   const n = records.length;
   const result = new Map<string, number>();
   if (n === 0) return result;
 
-  const weights = records.map((r) => r.strikes + 1); // +1 so 0-strike lessons still get weight
+  const weights = records.map((r) => r.strikesInLastReview + 1); // +1 so 0-strike lessons still get weight
   const totalW = weights.reduce((a, b) => a + b, 0);
   const raw = weights.map((w) => (w / totalW) * total);
   const counts = raw.map(Math.floor);
   let remaining = total - counts.reduce((a, b) => a + b, 0);
 
-  // Guarantee minimum 1 per lesson
   for (let i = 0; i < n; i++) {
     if (counts[i] === 0) { counts[i] = 1; remaining--; }
   }
-
-  // Distribute leftover to lessons with largest fractional parts
   if (remaining > 0) {
     const order = raw
       .map((v, i) => ({ i, frac: v - Math.floor(v) }))
@@ -75,54 +80,39 @@ function weightedCounts(records: LessonRecord[], total: number): Map<string, num
   return result;
 }
 
-// 6 exercises drawn from the 3 designated review target lessons.
-// Exercise count per lesson is weighted by strikes (harder lessons → more practice).
+// Build a session from due lessons (already sorted/capped by getDueLessons in the store).
+// Each lesson gets 2 exercises (weighted by strikesInLastReview); exercises are shuffled.
+const EXERCISES_PER_LESSON = 2;
+
 function buildSession(
   completedLessonIds: string[],
   lessonRecords: LessonRecord[],
-  lastReviewedAt: string | null,
-  reviewTargetIds: string[],
+  reviewTargetIds: string[], // due lesson IDs, pre-sorted by priority, pre-capped at 8
 ): {
   items: ReviewItem[];
   reviewed: ReviewedLesson[];
 } {
   const nowMs = Date.now();
+  const dueIds = reviewTargetIds.filter((id) => completedLessonIds.includes(id));
+  const targetLessons = lessons.filter((l) => dueIds.includes(l.id));
 
-  // Use designated targets (completed ones only), fall back to weakest 3 if empty
-  const targetIds =
-    reviewTargetIds.length > 0
-      ? reviewTargetIds.filter((id) => completedLessonIds.includes(id))
-      : null;
-
-  const targetLessons =
-    targetIds && targetIds.length > 0
-      ? lessons.filter((l) => targetIds.includes(l.id))
-      : shuffle(
-          lessons.filter((l) => {
-            if (!completedLessonIds.includes(l.id)) return false;
-            const r = lessonRecords.find((rec) => rec.lessonId === l.id);
-            return r && computeStrength(lastReviewedAt, r.completedAt, nowMs) < 100;
-          }),
-        ).slice(0, 3);
-
-  // Sort by strikes desc so higher-strike lessons get more exercises
   const targetRecords = targetLessons
     .map((l) => lessonRecords.find((r) => r.lessonId === l.id))
     .filter((r): r is LessonRecord => !!r)
-    .sort((a, b) => b.strikes - a.strikes);
+    .sort((a, b) => b.strikesInLastReview - a.strikesInLastReview);
 
-  const counts = weightedCounts(targetRecords, 6);
+  const counts = weightedCounts(targetRecords, targetRecords.length * EXERCISES_PER_LESSON);
 
   const items: ReviewItem[] = [];
   const reviewed: ReviewedLesson[] = [];
 
   targetRecords.forEach((record) => {
     const lesson = targetLessons.find((l) => l.id === record.lessonId)!;
-    const strengthBefore = computeStrength(lastReviewedAt, record.completedAt, nowMs);
+    const strengthBefore = computeStrength(record, nowMs);
     reviewed.push({ id: lesson.id, title: lesson.title, strengthBefore });
 
     const pool = lesson.exercises.filter(
-      (e) => e.type !== 'WORD_MATCH_REVIEW' && e.type !== 'VOCABULARY_INTRO',
+      (e) => e.type !== 'WORD_MATCH_REVIEW' && e.type !== 'VOCABULARY_INTRO' && e.type !== 'VOCABULARY_TABLE',
     );
     const n = counts.get(lesson.id) ?? 1;
     const picked = shuffle(pool).slice(0, n);
@@ -134,13 +124,13 @@ function buildSession(
   return { items: shuffle(items), reviewed };
 }
 
-function AlreadyDoneScreen({ lastReviewedAt, onBack }: { lastReviewedAt: string; onBack: () => void }) {
-  const [ms, setMs] = useState(() => msUntilNextReview(lastReviewedAt));
+function AllCaughtUpScreen({ lessonRecords, onBack }: { lessonRecords: LessonRecord[]; onBack: () => void }) {
+  const [ms, setMs] = useState(() => msUntilNextDue(lessonRecords));
 
   useEffect(() => {
-    const t = setInterval(() => setMs(msUntilNextReview(lastReviewedAt)), 1000);
+    const t = setInterval(() => setMs(msUntilNextDue(lessonRecords)), 1000);
     return () => clearInterval(t);
-  }, [lastReviewedAt]);
+  }, [lessonRecords]);
 
   return (
     <div className="min-h-screen bg-[#E8F4DC] flex flex-col items-center justify-center px-6 text-center gap-6 max-w-lg mx-auto w-full">
@@ -148,14 +138,16 @@ function AlreadyDoneScreen({ lastReviewedAt, onBack }: { lastReviewedAt: string;
       <div>
         <h1 className="text-2xl font-extrabold text-gray-800 mb-2">All caught up!</h1>
         <p className="text-sm text-gray-500 leading-relaxed">
-          You've completed your review session.<br />
-          Come back in 12 hours to keep your lessons strong.
+          No lessons are due right now.<br />
+          Your intervals are working — come back when the next one is ready.
         </p>
       </div>
-      <div className="bg-white rounded-2xl px-8 py-5 shadow-sm border border-gray-100">
-        <p className="text-xs text-gray-400 mb-1">Next review available in</p>
-        <p className="text-3xl font-extrabold text-brand-green tabular-nums">{formatCountdown(ms)}</p>
-      </div>
+      {ms > 0 && (
+        <div className="bg-white rounded-2xl px-8 py-5 shadow-sm border border-gray-100">
+          <p className="text-xs text-gray-400 mb-1">Next review due in</p>
+          <p className="text-3xl font-extrabold text-brand-green tabular-nums">{formatCountdown(ms)}</p>
+        </div>
+      )}
       <button
         type="button"
         onClick={onBack}
@@ -173,20 +165,13 @@ export function ReviewSessionPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const store = useProgressStore();
-  const lastReviewedAt = useProgressStore((s) => s.lastReviewedAt);
+  const lessonRecords = useProgressStore((s) => s.lessonRecords);
   const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
 
   const autoTriggered = (location.state as { autoTriggered?: boolean } | null)?.autoTriggered ?? false;
 
-  const hoursElapsed = lastReviewedAt
-    ? (Date.now() - new Date(lastReviewedAt).getTime()) / 3_600_000
-    : null;
-
-  // Already done if reviewed within the last 12 hours
-  const alreadyDone = hoursElapsed !== null && hoursElapsed < 12;
-
   const [session] = useState(() =>
-    buildSession(store.completedLessons, store.lessonRecords, lastReviewedAt, reviewTargetIds)
+    buildSession(store.completedLessons, store.lessonRecords, reviewTargetIds)
   );
   const [screen, setScreen] = useState<Screen>('intro');
   const [exerciseIndex, setExerciseIndex] = useState(0);
@@ -197,27 +182,12 @@ export function ReviewSessionPage() {
 
   const correctCountRef = useRef(0);
   const totalStrikesRef = useRef(0);
+  // Per-lesson strike tracking for per-lesson interval advancement
+  const lessonStrikesRef = useRef<Map<string, number>>(new Map());
 
   // All hooks above — early returns below are safe
-  if (alreadyDone) {
-    return <AlreadyDoneScreen lastReviewedAt={lastReviewedAt!} onBack={() => navigate('/')} />;
-  }
-
   if (session.items.length === 0) {
-    return (
-      <div className="min-h-screen bg-[#E8F4DC] flex flex-col items-center justify-center px-6 text-center gap-6 max-w-lg mx-auto w-full">
-        <img src="/snail.png" alt="" className="w-28 h-28 object-contain" />
-        <h1 className="text-xl font-extrabold text-gray-800">All lessons are fresh!</h1>
-        <p className="text-sm text-gray-500">You've recently practised everything — nothing to review right now.</p>
-        <button
-          type="button"
-          onClick={() => navigate('/')}
-          className="bg-brand-green text-white font-bold py-3 px-10 rounded-xl hover:opacity-90 cursor-pointer"
-        >
-          Back to Home
-        </button>
-      </div>
-    );
+    return <AllCaughtUpScreen lessonRecords={lessonRecords} onBack={() => navigate('/')} />;
   }
 
   if (screen === 'intro') {
@@ -326,7 +296,13 @@ export function ReviewSessionPage() {
   };
 
   const handleAnswer = (correct: boolean) => {
-    if (!correct) totalStrikesRef.current += 1;
+    if (!correct) {
+      totalStrikesRef.current += 1;
+      const lessonId = session.items[exerciseIndex]?.lessonId;
+      if (lessonId) {
+        lessonStrikesRef.current.set(lessonId, (lessonStrikesRef.current.get(lessonId) ?? 0) + 1);
+      }
+    }
   };
 
   const handleComplete = (correct: boolean) => {
@@ -336,7 +312,11 @@ export function ReviewSessionPage() {
     if (isLast) {
       const xp = Math.min(correctCountRef.current, 10) + (totalStrikesRef.current === 0 ? 2 : 0);
       setXpResult(xp);
-      store.completeReview(xp, session.reviewed.map((r) => r.id));
+      const lessonResults = session.reviewed.map((r) => ({
+        lessonId: r.id,
+        strikes: lessonStrikesRef.current.get(r.id) ?? 0,
+      }));
+      store.completeReview(xp, lessonResults);
       setScreen('complete');
     } else if (correct) {
       setCelebrating(true);

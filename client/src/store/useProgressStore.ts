@@ -27,9 +27,14 @@ export interface LessonRecord {
   completedAt: string;      // ISO date string
   lastDecayedAt: string;    // YYYY-MM-DD
   strikes: number;
-  strength: number;         // 0–100, decays over time
+  strength: number;         // 0–100, cached — recomputed by decayLessonStrengths on app load
   xpEarned: number;
   timesCompleted: number;
+  // Spaced-repetition fields (added v16)
+  intervalStage: number;           // 0=never reviewed; 1–5=review stages (grows per pass)
+  nextReviewDue: string;           // ISO timestamp — when this lesson is next due for review
+  timesReviewed: number;           // how many review sessions this lesson has appeared in
+  strikesInLastReview: number;     // strikes accumulated in the most recent review session
 }
 
 export interface SnailRaceRecord {
@@ -58,12 +63,6 @@ const STAGE_UNLOCK_COSTS: Record<string, number> = {
   advanced: 250,
 };
 
-function getStartStrength(strikes: number): number {
-  if (strikes === 0) return 100;
-  if (strikes <= 2) return 85;
-  if (strikes <= 4) return 65;
-  return 40;
-}
 
 function calcLevel(xp: number): number {
   return Math.floor(xp / 200) + 1;
@@ -114,38 +113,45 @@ function todayStr(): string {
   return new Date().toISOString().split('T')[0];
 }
 
-// Pick the `count` lessons that most need review next cycle.
-// Score factors: more strikes → worse; fewer timesCompleted → worse; older completedAt → worse.
-function pickReviewTargets(lessonRecords: LessonRecord[], count = 3): string[] {
-  if (lessonRecords.length === 0) return [];
-  const now = Date.now();
-  return [...lessonRecords]
-    .map((r) => {
-      const daysSince = (now - new Date(r.completedAt).getTime()) / 86_400_000;
-      const score = r.strikes * 3 + daysSince + 10 / Math.max(r.timesCompleted, 1);
-      return { lessonId: r.lessonId, score };
-    })
-    .sort((a, b) => b.score - a.score)
-    .slice(0, count)
-    .map((s) => s.lessonId);
+// Spaced-repetition intervals — index = intervalStage - 1 (stage 0 and 1 both use 1 day).
+const REVIEW_INTERVALS_DAYS = [1, 3, 7, 14, 30] as const;
+const MAX_INTERVAL_STAGE = REVIEW_INTERVALS_DAYS.length; // 5
+
+function intervalDaysForStage(stage: number): number {
+  const idx = Math.min(Math.max(stage - 1, 0), REVIEW_INTERVALS_DAYS.length - 1);
+  return REVIEW_INTERVALS_DAYS[idx];
 }
 
-// Global time-based strength — all lessons share the same decay clock.
-// The clock starts from max(lastReviewedAt, completedAt) so newly completed
-// lessons are always fresh regardless of the last review time.
-export function computeStrength(
-  lastReviewedAt: string | null,
-  completedAt: string,
-  nowMs: number = Date.now(),
-): number {
-  const startMs = lastReviewedAt
-    ? Math.max(new Date(lastReviewedAt).getTime(), new Date(completedAt).getTime())
-    : new Date(completedAt).getTime();
-  const hours = (nowMs - startMs) / 3_600_000;
-  if (hours < 7) return 100;
-  if (hours < 10) return 60;   // yellow zone
-  if (hours < 12) return 20;   // red zone
-  return 0;                    // review overdue
+// Returns all lesson records that are currently due for review, sorted by priority.
+// Priority score: more strikesInLastReview → worse; fewer timesReviewed → worse; older completedAt → worse.
+// Caps at 8 lessons so a single session is never overwhelming.
+const MAX_LESSONS_PER_SESSION = 8;
+
+export function getDueLessons(lessonRecords: LessonRecord[], nowMs: number = Date.now()): LessonRecord[] {
+  return lessonRecords
+    .filter((r) => r.nextReviewDue && new Date(r.nextReviewDue).getTime() <= nowMs)
+    .map((r) => {
+      const daysSince = (nowMs - new Date(r.completedAt).getTime()) / 86_400_000;
+      const score = r.strikesInLastReview * 3 + daysSince + 10 / Math.max(r.timesReviewed, 1);
+      return { record: r, score };
+    })
+    .sort((a, b) => b.score - a.score)
+    .slice(0, MAX_LESSONS_PER_SESSION)
+    .map((x) => x.record);
+}
+
+// Per-lesson strength based on how far through the current review interval we are.
+// Green (<70% elapsed) → yellow (70–90%) → red (90–100%) → overdue (>100%).
+export function computeStrength(record: LessonRecord, nowMs: number = Date.now()): number {
+  if (!record.nextReviewDue) return 100;
+  const due = new Date(record.nextReviewDue).getTime();
+  const totalIntervalMs = intervalDaysForStage(record.intervalStage) * 86_400_000;
+  const startMs = due - totalIntervalMs;
+  const fraction = (nowMs - startMs) / totalIntervalMs;
+  if (fraction < 0.7) return 100;
+  if (fraction < 0.9) return 60;   // 🟡 warning
+  if (fraction < 1.0) return 20;   // 🔴 critical
+  return 0;                         // 🔴 overdue
 }
 
 // Fire-and-forget helper — sets isSyncing, runs promises, clears when done
@@ -261,7 +267,7 @@ interface ProgressStore {
   applyGuestRegression: () => string | null;
 
   // Review cycle
-  completeReview: (xpEarned: number, lessonIds: string[]) => void;
+  completeReview: (xpEarned: number, lessonResults: { lessonId: string; strikes: number }[]) => void;
 
   // Foreigner Exclusive
   unlockReferenceCard: (cardId: string) => void;
@@ -339,19 +345,25 @@ export const useProgressStore = create<ProgressStore>()(
           (rawXp + (perfectBonus ? 5 : 0)) * s.streakMultiplier,
         );
 
-        const newStrength = getStartStrength(totalStrikes);
         const now = new Date().toISOString();
         const today = todayStr();
 
         const existing = s.lessonRecords.find((r) => r.lessonId === lessonId);
+        // On first completion (or re-play) the lesson is fresh — due for first review in 1 day.
+        const nextReviewDue = new Date(Date.now() + 86_400_000).toISOString();
         const updatedRecord: LessonRecord = {
           lessonId,
           completedAt: now,
           lastDecayedAt: today,
           strikes: totalStrikes,
-          strength: newStrength,
+          strength: 100,
           xpEarned,
           timesCompleted: (existing?.timesCompleted ?? 0) + 1,
+          // SR fields — re-playing a lesson doesn't reset review progress
+          intervalStage: existing?.intervalStage ?? 0,
+          nextReviewDue: existing?.nextReviewDue ?? nextReviewDue,
+          timesReviewed: existing?.timesReviewed ?? 0,
+          strikesInLastReview: existing?.strikesInLastReview ?? 0,
         };
 
         const updatedRecords = existing
@@ -400,7 +412,7 @@ export const useProgressStore = create<ProgressStore>()(
           );
         }
 
-        return { xpEarned, perfectBonus, newStrength };
+        return { xpEarned, perfectBonus, newStrength: 100 };
       },
 
       // ── Stage unlock ──────────────────────────────────────────────────────
@@ -624,23 +636,38 @@ export const useProgressStore = create<ProgressStore>()(
 
       // ── Review cycle ──────────────────────────────────────────────────────
 
-      completeReview: (xpEarned, _lessonIds) => {
+      completeReview: (xpEarned, lessonResults) => {
         const now = new Date().toISOString();
+        const nowMs = Date.now();
         const today = todayStr();
         set((s) => {
           const newXp = Math.max(0, s.xp + xpEarned);
-          const updatedRecords = s.lessonRecords.map((r) => ({
-            ...r,
-            strength: 100,
-            lastDecayedAt: today,
-          }));
-          const nextTargets = pickReviewTargets(updatedRecords);
+          const updatedRecords = s.lessonRecords.map((r) => {
+            const result = lessonResults.find((lr) => lr.lessonId === r.lessonId);
+            if (!result) return r; // not in this session — untouched
+            // ≤1 strike in the session = passed → advance stage; ≥2 = struggled → reset
+            const passed = result.strikes <= 1;
+            const newStage = passed ? Math.min(r.intervalStage + 1, MAX_INTERVAL_STAGE) : 0;
+            const intervalDays = intervalDaysForStage(newStage);
+            const nextReviewDue = new Date(nowMs + intervalDays * 86_400_000).toISOString();
+            return {
+              ...r,
+              intervalStage: newStage,
+              nextReviewDue,
+              timesReviewed: r.timesReviewed + 1,
+              strikesInLastReview: result.strikes,
+              strength: 100,
+              lastDecayedAt: today,
+            };
+          });
+          // Recompute due list after advancing intervals
+          const reviewTargetIds = getDueLessons(updatedRecords, nowMs).map((r) => r.lessonId);
           return {
             xp: newXp,
             level: calcLevel(newXp),
             lastReviewedAt: now,
             lessonRecords: updatedRecords,
-            reviewTargetIds: nextTargets,
+            reviewTargetIds,
             weeklyXp: s.weeklyXp + xpEarned,
           };
         });
@@ -861,39 +888,45 @@ export const useProgressStore = create<ProgressStore>()(
       // ── Review helpers ────────────────────────────────────────────────────
 
       getWeakLessons: () =>
-        get().lessonRecords.filter((r) => r.strength < 80),
+        get().lessonRecords.filter((r) => computeStrength(r) < 80),
 
       getSuggestedReviews: () =>
         get()
           .lessonRecords
-          .filter((r) => r.strength < 80)
-          .sort((a, b) => a.strength - b.strength)
+          .filter((r) => computeStrength(r) < 80)
+          .sort((a, b) => computeStrength(a) - computeStrength(b))
           .slice(0, 3),
 
       selectNextReviewTargets: () => {
-        const targets = pickReviewTargets(get().lessonRecords);
+        const nowMs = Date.now();
+        const targets = getDueLessons(get().lessonRecords, nowMs).map((r) => r.lessonId);
         set({ reviewTargetIds: targets });
       },
 
       // ── Decay (time-based, runs on app load) ──────────────────────────────
-      // Strength is now a pure function of hours elapsed since the later of
-      // lastReviewedAt or the lesson's own completedAt. No per-lesson decay
-      // rates — all lessons share the same 12-hour review clock.
+      // Each lesson has its own nextReviewDue derived from its intervalStage.
+      // Migration guard: if SR fields are missing (e.g. after Supabase restore),
+      // bootstrap nextReviewDue from completedAt + 1 day.
 
       decayLessonStrengths: () => {
         const s = get();
         const nowMs = Date.now();
         const updatedRecords = s.lessonRecords.map((record) => {
-          const strength = computeStrength(s.lastReviewedAt, record.completedAt, nowMs);
-          return strength !== record.strength
-            ? { ...record, strength, lastDecayedAt: todayStr() }
-            : record;
+          let r = record;
+          // Bootstrap missing SR fields (migration guard for Supabase-restored records)
+          if (!r.nextReviewDue) {
+            r = {
+              ...r,
+              intervalStage: r.intervalStage ?? 0,
+              nextReviewDue: new Date(new Date(r.completedAt).getTime() + 86_400_000).toISOString(),
+              timesReviewed: r.timesReviewed ?? 0,
+              strikesInLastReview: r.strikesInLastReview ?? 0,
+            };
+          }
+          const strength = computeStrength(r, nowMs);
+          return strength !== r.strength ? { ...r, strength, lastDecayedAt: todayStr() } : r;
         });
-        // Bootstrap review targets on first run (or after migration)
-        const reviewTargetIds =
-          s.reviewTargetIds.length > 0
-            ? s.reviewTargetIds
-            : pickReviewTargets(updatedRecords);
+        const reviewTargetIds = getDueLessons(updatedRecords, nowMs).map((r) => r.lessonId);
         set({ lessonRecords: updatedRecords, reviewTargetIds });
       },
 
@@ -928,7 +961,7 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 15,
+      version: 16,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
@@ -1028,6 +1061,26 @@ export const useProgressStore = create<ProgressStore>()(
 
         if (version < 15) {
           old = { ...old, completedBlockDialogues: [] };
+        }
+
+        if (version < 16) {
+          // Add SR fields to all existing lesson records.
+          // nextReviewDue = completedAt + 1 day — lessons completed long ago will appear
+          // overdue on first open, which is correct. Session cap (8 lessons) keeps it manageable.
+          const records = (old.lessonRecords as Array<Record<string, unknown>>) ?? [];
+          old = {
+            ...old,
+            lessonRecords: records.map((r) => ({
+              ...r,
+              intervalStage: 0,
+              nextReviewDue: new Date(
+                new Date(r.completedAt as string).getTime() + 86_400_000,
+              ).toISOString(),
+              timesReviewed: 0,
+              strikesInLastReview: 0,
+            })),
+            reviewTargetIds: [], // recomputed by decayLessonStrengths on first load
+          };
         }
 
         return old as unknown as ProgressStore;

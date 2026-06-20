@@ -62,6 +62,10 @@ export async function syncLessonRecord(
         times_completed: record.timesCompleted,
         xp_earned: record.xpEarned,
         last_decayed_at: record.lastDecayedAt,
+        interval_stage: record.intervalStage,
+        next_review_due: record.nextReviewDue,
+        times_reviewed: record.timesReviewed,
+        strikes_in_last_review: record.strikesInLastReview,
       },
       { onConflict: 'user_id,lesson_id' },
     );
@@ -120,6 +124,12 @@ export async function loadProgressFromSupabase(
       strength: r.strength as number,
       xpEarned: r.xp_earned as number,
       timesCompleted: r.times_completed as number,
+      intervalStage: (r.interval_stage as number) ?? 0,
+      nextReviewDue:
+        (r.next_review_due as string | null) ??
+        new Date(new Date(r.completed_at as string).getTime() + 86_400_000).toISOString(),
+      timesReviewed: (r.times_reviewed as number) ?? 0,
+      strikesInLastReview: (r.strikes_in_last_review as number) ?? 0,
     }));
 
     const snailRaceRecords: SnailRaceRecord[] = (
@@ -317,12 +327,20 @@ export function mergeProgress(
     ...new Set([...local.completedLessons, ...cloud.completedLessons]),
   ];
 
-  // Lesson records — keep higher timesCompleted per lessonId
+  // Lesson records — prefer the record with the most SR review progress (higher intervalStage).
+  // Tie-break on timesCompleted so lesson-play progress is also never lost.
   const lessonMap = new Map<string, LessonRecord>();
   for (const r of local.lessonRecords) lessonMap.set(r.lessonId, r);
   for (const r of cloud.lessonRecords) {
     const ex = lessonMap.get(r.lessonId);
-    if (!ex || r.timesCompleted > ex.timesCompleted) lessonMap.set(r.lessonId, r);
+    if (!ex) {
+      lessonMap.set(r.lessonId, r);
+    } else {
+      const cloudWins =
+        r.intervalStage > ex.intervalStage ||
+        (r.intervalStage === ex.intervalStage && r.timesCompleted > ex.timesCompleted);
+      if (cloudWins) lessonMap.set(r.lessonId, r);
+    }
   }
 
   // Snail race records — keep higher bestScore per stageId
