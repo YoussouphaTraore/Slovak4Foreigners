@@ -31,12 +31,6 @@ import s1Pets from './s1-pets.json';
 import s1Beverages from './s1-beverages.json';
 import s1Supermarket from './s1-supermarket.json';
 import s2MarekIntroduction from './s2-marek-introduction.json';
-import settling1 from './settling-1.json';
-import settling2 from './settling-2.json';
-import settling3 from './settling-3.json';
-import settling4 from './settling-4.json';
-import settling5 from './settling-5.json';
-import settling6 from './settling-6.json';
 import advanced1 from './advanced-1.json';
 import advanced2 from './advanced-2.json';
 import advanced3 from './advanced-3.json';
@@ -75,12 +69,6 @@ export const lessons: Lesson[] = [
   s1Beverages as unknown as Lesson,
   s1Supermarket as unknown as Lesson,
   s2MarekIntroduction as unknown as Lesson,
-  settling1 as unknown as Lesson,
-  settling2 as unknown as Lesson,
-  settling3 as unknown as Lesson,
-  settling4 as unknown as Lesson,
-  settling5 as unknown as Lesson,
-  settling6 as unknown as Lesson,
   advanced1 as unknown as Lesson,
   advanced2 as unknown as Lesson,
   advanced3 as unknown as Lesson,
