@@ -1,0 +1,168 @@
+{
+  "id": "s2-marek-introduction",
+  "stageId": "settling",
+  "stageName": "Stage 2 · Settling In",
+  "title": "Meet Marek",
+  "description": "Listen to Marek introduce himself, then prove you were listening",
+  "icon": "🎧",
+  "xpReward": 15,
+  "coming_soon": false,
+  "exercises": [
+    {
+  "id": "ex2",
+  "type": "CONVERSATION_WORD_RECOGNITION",
+  "instruction": "Tap every word or expression you heard in the conversation.",
+  "passThresholdPercent": 76,
+  "correctWords": [
+    "Volám sa",
+    "Marek",
+    "Som z",
+    "Nitry",
+    "ale bývam v",
+    "Bratislave",
+    "Som vysoký",
+    "Mám rodinu",
+    "mám sestru a",
+    "brata",
+    "Moji",
+    "rodičia",
+    "bývajú v",
+    "Nitre",
+    "Pracujem tu",
+    "od septembra",
+    "Mám psa",
+    "Volá sa",
+    "Rex",
+    "Som šťastný",
+    "tu na",
+    "Slovensku"
+  ],
+  "distractorWords": [
+    "Žilina",
+    "mačka",
+    "október",
+    "smutný",
+    "deti",
+    "manželka"
+  ]
+},
+    {
+      "id": "ex3",
+      "type": "CONVERSATION_COMPREHENSION",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-marek-introduction.mp3",
+      "conversationTranscriptSk": "Volám sa Marek. Som z Nitry, ale bývam v Bratislave. Som vysoký. Mám rodinu — mám sestru a brata. Moji rodičia bývajú v Nitre. Pracujem tu od septembra. Mám psa. Volá sa Rex. Som šťastný tu na Slovensku.",
+      "speakers": [
+        { "name": "Marek", "avatar": "👨" }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Where does Marek currently live?",
+          "answers": [
+            { "id": "a", "textEn": "Nitra", "isCorrect": false },
+            { "id": "b", "textEn": "Bratislava", "isCorrect": true },
+            { "id": "c", "textEn": "Košice", "isCorrect": false }
+          ],
+          "answerMeaning": "Bývam v Bratislave = I live in Bratislava. Bývam from the Verbs lesson — used for where you currently live.",
+          "reviewPair": { "slovak": "Bývam v Bratislave", "english": "I live in Bratislava" }
+        },
+        {
+          "id": "q2",
+          "questionEn": "How did we know where Marek is originally from?",
+          "answers": [
+            { "id": "a", "textEn": "He said: \"Som z Nitry\"", "isCorrect": true },
+            { "id": "b", "textEn": "He said: \"Bývam v Bratislave\"", "isCorrect": false },
+            { "id": "c", "textEn": "He said: \"Som vysoký\"", "isCorrect": false }
+          ],
+          "answerMeaning": "Som z Nitry = I am from Nitra. Som z... is the pattern for origin — different from Bývam v..., which means where you currently live.",
+          "reviewPair": { "slovak": "Som z Nitry", "english": "I am from Nitra" }
+        },
+        {
+          "id": "q3",
+          "questionEn": "What did Marek say about his family?",
+          "answers": [
+            { "id": "a", "textEn": "He has a sister and a brother", "isCorrect": true },
+            { "id": "b", "textEn": "He has only a sister", "isCorrect": false },
+            { "id": "c", "textEn": "He doesn't have siblings", "isCorrect": false }
+          ],
+          "answerMeaning": "Mám sestru a brata = I have a sister and a brother. Mám from the Verbs lesson, sestra and brat from the Family lesson.",
+          "reviewPair": { "slovak": "Mám sestru a brata", "english": "I have a sister and a brother" }
+        },
+        {
+          "id": "q4",
+          "questionEn": "What is Marek's dog called?",
+          "answers": [
+            { "id": "a", "textEn": "Marek", "isCorrect": false },
+            { "id": "b", "textEn": "Rex", "isCorrect": true },
+            { "id": "c", "textEn": "Micka", "isCorrect": false }
+          ],
+          "answerMeaning": "Volá sa Rex = He's called Rex. Volá sa... from the Pets lesson — the same pattern used to ask any pet's name.",
+          "reviewPair": { "slovak": "Volá sa Rex", "english": "He's called Rex" }
+        },
+        {
+          "id": "q5",
+          "questionEn": "Since when has Marek been working in Bratislava?",
+          "answers": [
+            { "id": "a", "textEn": "October", "isCorrect": false },
+            { "id": "b", "textEn": "September", "isCorrect": true },
+            { "id": "c", "textEn": "He doesn't work in Bratislava", "isCorrect": false }
+          ],
+          "answerMeaning": "Pracujem tu od septembra = I have been working here since September. Od + month, the same pattern from the Months of the Year lesson.",
+          "reviewPair": { "slovak": "Pracujem tu od septembra", "english": "I work here since September" }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Where does Marek's family live?",
+          "answers": [
+            { "id": "a", "textEn": "In Bratislava", "isCorrect": false },
+            { "id": "b", "textEn": "In London", "isCorrect": false },
+            { "id": "c", "textEn": "In Nitra", "isCorrect": true }
+          ],
+          "answerMeaning": "Moji rodičia bývajú v Nitre = My parents live in Nitra. Rodičia from the Family lesson, bývajú from the Verbs lesson.",
+          "reviewPair": { "slovak": "Moji rodičia bývajú v Nitre", "english": "My parents live in Nitra" }
+        }
+      ]
+    },
+    {
+  "id": "ex4",
+  "type": "CONVERSATION_SENTENCE_BUILDER",
+  "sentences": [
+    {
+      "id": "s1",
+      "promptEn": "My name is Marek.",
+      "targetSk": ["Volám sa", "Marek"],
+      "bankChunks": ["Volám sa", "Marek", "Rex"]
+    },
+    {
+      "id": "s2",
+      "promptEn": "I am from Nitra, but I live in Bratislava.",
+      "targetSk": ["Som z", "Nitry", "ale bývam v", "Bratislave"],
+      "bankChunks": ["Som z", "Nitry", "ale bývam v", "Bratislave", "Moji"]
+    },
+    {
+      "id": "s3",
+      "promptEn": "I have a family — I have a sister and a brother.",
+      "targetSk": ["Mám rodinu", "mám sestru a", "brata"],
+      "bankChunks": ["Mám rodinu", "mám sestru a", "brata", "Mám psa"]
+    },
+    {
+      "id": "s4",
+      "promptEn": "My parents live in Nitra.",
+      "targetSk": ["Moji", "rodičia", "bývajú v", "Nitre"],
+      "bankChunks": ["Moji", "rodičia", "bývajú v", "Nitre", "Som vysoký"]
+    },
+    {
+      "id": "s5",
+      "promptEn": "I have been working here since September.",
+      "targetSk": ["Pracujem tu", "od septembra"],
+      "bankChunks": ["Pracujem tu", "od septembra", "Volá sa"]
+    }
+  ]
+},
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

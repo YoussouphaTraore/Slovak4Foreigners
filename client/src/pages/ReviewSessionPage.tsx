@@ -87,7 +87,7 @@ const EXERCISES_PER_LESSON = 2;
 function buildSession(
   completedLessonIds: string[],
   lessonRecords: LessonRecord[],
-  reviewTargetIds: string[], // due lesson IDs, pre-sorted by priority, pre-capped at 8
+  reviewTargetIds: string[], // due lesson IDs, pre-sorted by priority, pre-capped at 4
 ): {
   items: ReviewItem[];
   reviewed: ReviewedLesson[];
@@ -112,7 +112,11 @@ function buildSession(
     reviewed.push({ id: lesson.id, title: lesson.title, strengthBefore });
 
     const pool = lesson.exercises.filter(
-      (e) => e.type !== 'WORD_MATCH_REVIEW' && e.type !== 'VOCABULARY_INTRO' && e.type !== 'VOCABULARY_TABLE',
+      (e) =>
+        e.type !== 'WORD_MATCH_REVIEW' &&
+        e.type !== 'VOCABULARY_INTRO' &&
+        e.type !== 'VOCABULARY_TABLE' &&
+        e.type !== 'LISTEN_AND_PICK',
     );
     const n = counts.get(lesson.id) ?? 1;
     const picked = shuffle(pool).slice(0, n);
@@ -185,6 +189,13 @@ export function ReviewSessionPage() {
   // Per-lesson strike tracking for per-lesson interval advancement
   const lessonStrikesRef = useRef<Map<string, number>>(new Map());
 
+  // Retry queue — wrong answers are appended after each pass until all answered correctly
+  const workingQueueRef = useRef<ReviewItem[]>([...session.items]);
+  const passStartIdxRef = useRef(0);
+  const passEndIdxRef = useRef(session.items.length - 1);
+  const wrongInPassRef = useRef<ReviewItem[]>([]);
+  const [retryRound, setRetryRound] = useState(0);
+
   // All hooks above — early returns below are safe
   if (session.items.length === 0) {
     return <AllCaughtUpScreen lessonRecords={lessonRecords} onBack={() => navigate('/')} />;
@@ -198,7 +209,7 @@ export function ReviewSessionPage() {
         <div className="text-center">
           <h1 className="text-2xl font-extrabold text-gray-800 mb-3">Time to Review! 📚</h1>
           <p className="text-sm text-gray-600 leading-relaxed mb-2">
-            Keep your lessons strong with a quick 6-exercise session.
+            Answer every exercise correctly to finish — wrong answers come back until you get them right.
           </p>
           <p className="text-xs text-gray-400 leading-relaxed">
             After completing it, all your lesson indicators will turn green.
@@ -288,7 +299,7 @@ export function ReviewSessionPage() {
     );
   }
 
-  const currentItem = session.items[exerciseIndex];
+  const currentItem = workingQueueRef.current[exerciseIndex];
 
   const advance = () => {
     setExerciseIndex((i) => i + 1);
@@ -298,7 +309,7 @@ export function ReviewSessionPage() {
   const handleAnswer = (correct: boolean) => {
     if (!correct) {
       totalStrikesRef.current += 1;
-      const lessonId = session.items[exerciseIndex]?.lessonId;
+      const lessonId = workingQueueRef.current[exerciseIndex]?.lessonId;
       if (lessonId) {
         lessonStrikesRef.current.set(lessonId, (lessonStrikesRef.current.get(lessonId) ?? 0) + 1);
       }
@@ -308,17 +319,37 @@ export function ReviewSessionPage() {
   const handleComplete = (correct: boolean) => {
     if (correct) correctCountRef.current += 1;
 
-    const isLast = exerciseIndex >= session.items.length - 1;
-    if (isLast) {
-      const xp = Math.min(correctCountRef.current, 10) + (totalStrikesRef.current === 0 ? 2 : 0);
-      setXpResult(xp);
-      const lessonResults = session.reviewed.map((r) => ({
-        lessonId: r.id,
-        strikes: lessonStrikesRef.current.get(r.id) ?? 0,
-      }));
-      store.completeReview(xp, lessonResults);
-      setScreen('complete');
-    } else if (correct) {
+    // Collect wrong answers for retry
+    if (!correct) wrongInPassRef.current.push(workingQueueRef.current[exerciseIndex]);
+
+    const isPassEnd = exerciseIndex >= passEndIdxRef.current;
+
+    if (isPassEnd) {
+      const retries = [...wrongInPassRef.current];
+      wrongInPassRef.current = [];
+
+      if (retries.length === 0) {
+        // Every exercise answered correctly — session complete
+        const xp = Math.min(correctCountRef.current, 10) + (totalStrikesRef.current === 0 ? 2 : 0);
+        setXpResult(xp);
+        const lessonResults = session.reviewed.map((r) => ({
+          lessonId: r.id,
+          strikes: lessonStrikesRef.current.get(r.id) ?? 0,
+        }));
+        store.completeReview(xp, lessonResults);
+        setScreen('complete');
+        return;
+      }
+
+      // Append wrong answers as the next pass
+      const nextPassStart = passEndIdxRef.current + 1;
+      workingQueueRef.current = [...workingQueueRef.current, ...shuffle(retries)];
+      passStartIdxRef.current = nextPassStart;
+      passEndIdxRef.current = workingQueueRef.current.length - 1;
+      setRetryRound((r) => r + 1);
+    }
+
+    if (correct) {
       setCelebrating(true);
     } else {
       advance();
@@ -336,15 +367,18 @@ export function ReviewSessionPage() {
         >
           ✕
         </button>
-        <ProgressBar current={exerciseIndex} total={session.items.length} />
+        <ProgressBar current={exerciseIndex - passStartIdxRef.current} total={passEndIdxRef.current - passStartIdxRef.current + 1} />
         <span className="text-lg shrink-0">📚</span>
       </div>
 
-      {/* "From: Lesson Title" label */}
-      <div className="flex-none px-4 pb-1">
+      {/* "From: Lesson Title" + retry indicator */}
+      <div className="flex-none px-4 pb-1 flex items-center justify-between">
         <p className="text-xs text-gray-400">
           From: <span className="font-semibold text-gray-500">{currentItem.lessonTitle}</span>
         </p>
+        {retryRound > 0 && (
+          <p className="text-xs font-semibold text-amber-600">🔁 Try again</p>
+        )}
       </div>
 
       {/* Exercise */}

@@ -30,6 +30,7 @@ import s1FlatItems from './s1-flat-items.json';
 import s1Pets from './s1-pets.json';
 import s1Beverages from './s1-beverages.json';
 import s1Supermarket from './s1-supermarket.json';
+import s2MarekIntroduction from './s2-marek-introduction.json';
 import settling1 from './settling-1.json';
 import settling2 from './settling-2.json';
 import settling3 from './settling-3.json';
@@ -73,6 +74,7 @@ export const lessons: Lesson[] = [
   s1Pets as unknown as Lesson,
   s1Beverages as unknown as Lesson,
   s1Supermarket as unknown as Lesson,
+  s2MarekIntroduction as unknown as Lesson,
   settling1 as unknown as Lesson,
   settling2 as unknown as Lesson,
   settling3 as unknown as Lesson,

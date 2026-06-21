@@ -105,6 +105,10 @@ export function LessonPage() {
   const exercises = lesson.exercises;
   const currentExercise = exercises[exerciseIndex];
 
+  const isStage1 = lesson.stageId === 'survival';
+  const snailSuccess = isStage1 ? '/snailExcited.png' : '/snailExcitedListening.png';
+  const snailFail    = isStage1 ? '/snailPerplexed.png' : '/snailPerplexedListening.png';
+
   const resetStrikes = () => {
     const lessonTotal = strikesRef.current.lessonTotal;
     strikesRef.current = { total: 0, consecutive: 0, lessonTotal };
@@ -148,6 +152,15 @@ export function LessonPage() {
     const existing = new Set(failedWordsRef.current.map((w) => w.slovak));
     const novel = words.filter((w) => !existing.has(w.slovak));
     failedWordsRef.current = [...failedWordsRef.current, ...novel];
+  };
+
+  const handleFailRestart = (exerciseId: string) => {
+    const idx = exercises.findIndex((e) => e.id === exerciseId);
+    if (idx < 0) return;
+    triggerPenalty(
+      { title: 'That was not clean!', sub: 'We redo this exercise again.', image: '/snailPerplexedListening.png' },
+      () => setExerciseIndex(idx),
+    );
   };
 
   const triggerPenalty = (info: NonNullable<PenaltyInfo>, doNav: () => void) => {
@@ -201,7 +214,7 @@ export function LessonPage() {
       // Rule 3: exercise is only "clean" with 0 or 1 strike — 2+ means redo
       if (strikesRef.current.total >= MAX_EXERCISE) {
         triggerPenalty(
-          { title: 'That was not clean!', sub: 'We redo this exercise again.', image: '/snailPerplexed.png' },
+          { title: 'That was not clean!', sub: 'We redo this exercise again.', image: snailFail },
           () => { /* stay on same exercise — bumpExerciseKey inside triggerPenalty resets it */ },
         );
         return;
@@ -319,6 +332,7 @@ export function LessonPage() {
           onFailed={handleFailed}
           onAnswer={handleAnswer}
           reviewPairs={failedWordsRef.current}
+          onFailRestart={handleFailRestart}
         />
       </div>
 
@@ -327,7 +341,7 @@ export function LessonPage() {
       )}
 
       {celebrating && (
-        <ExerciseCelebration onDone={() => {
+        <ExerciseCelebration image={snailSuccess} onDone={() => {
           setCelebrating(false);
           const remaining = exercises.length - exerciseIndex - 1;
           const isReplay = store.completedLessons.includes(lesson.id);

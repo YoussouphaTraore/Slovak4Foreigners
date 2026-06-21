@@ -49,6 +49,17 @@ export const stage1Blocks: BlockConfig[] = [
 
 export const stage1LessonOrder = stage1Blocks.flatMap((b) => b.lessonIds);
 
+// Stage 2 — Settling In. Block structure is a work in progress; expand as lessons are added.
+export const stage2Blocks: BlockConfig[] = [
+  {
+    blockId: 'stage2-block1',
+    blockName: 'Real People, Real Slovak',
+    lessonIds: ['s2-marek-introduction'],
+  },
+];
+
+export const stage2LessonOrder = stage2Blocks.flatMap((b) => b.lessonIds);
+
 export function getCumulativeLessonIds(blockId: string): string[] {
   const blockIndex = stage1Blocks.findIndex((b) => b.blockId === blockId);
   if (blockIndex === -1) return [];

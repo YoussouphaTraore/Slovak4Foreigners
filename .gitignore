@@ -58,3 +58,10 @@ Desktop.ini
 # Internal development docs — project journal, QA results, testing guide (local only)
 docs/
 
+# Audio assets — hosted in Supabase Storage, never committed to GitHub
+# Local folder mirrors the 'audio' bucket: filename = lesson ID + .mp3
+audio/
+
+# Playwright test screenshots (local QA artifacts)
+client/test-ss-*.png
+

@@ -17,6 +17,10 @@ import { UnscrambleExercise } from './UnscrambleExercise';
 import { VocabularyTableExercise } from './VocabularyTableExercise';
 import { NumberToWordsExercise } from './NumberToWordsExercise';
 import { SmsDialogueExercise } from './SmsDialogueExercise';
+import { ConversationListenExercise } from './ConversationListenExercise';
+import { ConversationWordRecognitionExercise } from './ConversationWordRecognitionExercise';
+import { ConversationComprehensionExercise } from './ConversationComprehensionExercise';
+import { ConversationSentenceBuilderExercise } from './ConversationSentenceBuilderExercise';
 import { DiacriticKeyboard } from './DiacriticKeyboard';
 import { FeedbackBanner } from '../ui/FeedbackBanner';
 
@@ -30,6 +34,7 @@ interface Props {
   onFailed?: (words: { slovak: string; english: string }[]) => void;
   onAnswer?: (correct: boolean) => void;
   reviewPairs?: { slovak: string; english: string }[];
+  onFailRestart?: (exerciseId: string) => void;
 }
 
 type Phase = 'answering' | 'feedback';
@@ -51,8 +56,12 @@ function getTypeBadge(ex: Exercise): string {
     case 'UNSCRAMBLE':           return 'Unscramble';
     case 'VOCABULARY_TABLE':     return 'Learn these words';
     case 'NUMBER_TO_WORDS':      return 'Number to words';
-    case 'SMS_DIALOGUE':         return 'Conversation';
-    case 'VOCABULARY_INTRO':     return 'Learn these words';
+    case 'SMS_DIALOGUE':                  return 'Conversation';
+    case 'VOCABULARY_INTRO':              return 'Learn these words';
+    case 'CONVERSATION_LISTEN':            return 'Listen';
+    case 'CONVERSATION_WORD_RECOGNITION':  return 'Word recognition';
+    case 'CONVERSATION_COMPREHENSION':     return 'Listen & understand';
+    case 'CONVERSATION_SENTENCE_BUILDER':  return 'Build the sentence';
   }
 }
 
@@ -80,11 +89,15 @@ function validate(exercise: Exercise, answer: string): { correct: boolean; corre
     case 'NUMBER_TO_WORDS':
     case 'SMS_DIALOGUE':
     case 'VOCABULARY_INTRO':
+    case 'CONVERSATION_LISTEN':
+    case 'CONVERSATION_WORD_RECOGNITION':
+    case 'CONVERSATION_COMPREHENSION':
+    case 'CONVERSATION_SENTENCE_BUILDER':
       return { correct: true, correctAnswer: '' };
   }
 }
 
-export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, onAnswer, reviewPairs }: Props) {
+export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, onAnswer, reviewPairs, onFailRestart }: Props) {
   const [phase, setPhase] = useState<Phase>('answering');
   const [answer, setAnswer] = useState('');
   const [feedback, setFeedback] = useState<{ correct: boolean; correctAnswer: string } | null>(null);
@@ -172,6 +185,38 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
     return (
       <div className="flex flex-col flex-1 min-h-0">
         <SmsDialogueExercise exercise={exercise} onDone={() => onComplete(true)} onAnswer={onAnswer} />
+      </div>
+    );
+  }
+
+  if (exercise.type === 'CONVERSATION_LISTEN') {
+    return (
+      <div className="flex flex-col flex-1 min-h-0">
+        <ConversationListenExercise exercise={exercise} onDone={(correct) => onComplete(correct)} />
+      </div>
+    );
+  }
+
+  if (exercise.type === 'CONVERSATION_WORD_RECOGNITION') {
+    return (
+      <div className="flex flex-col flex-1 min-h-0">
+        <ConversationWordRecognitionExercise exercise={exercise} onDone={(correct) => onComplete(correct)} onAnswer={onAnswer} />
+      </div>
+    );
+  }
+
+  if (exercise.type === 'CONVERSATION_COMPREHENSION') {
+    return (
+      <div className="flex flex-col flex-1 min-h-0">
+        <ConversationComprehensionExercise exercise={exercise} onDone={(correct) => onComplete(correct)} onAnswer={onAnswer} onFailed={onFailed} />
+      </div>
+    );
+  }
+
+  if (exercise.type === 'CONVERSATION_SENTENCE_BUILDER') {
+    return (
+      <div className="flex flex-col flex-1 min-h-0">
+        <ConversationSentenceBuilderExercise exercise={exercise} onDone={(correct) => onComplete(correct)} onAnswer={onAnswer} />
       </div>
     );
   }

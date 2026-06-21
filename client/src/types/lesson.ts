@@ -15,7 +15,16 @@ export type ExerciseType =
   | 'VOCABULARY_TABLE'
   | 'NUMBER_TO_WORDS'
   | 'SMS_DIALOGUE'
-  | 'VOCABULARY_INTRO';
+  | 'VOCABULARY_INTRO'
+  | 'CONVERSATION_LISTEN'
+  | 'CONVERSATION_WORD_RECOGNITION'
+  | 'CONVERSATION_COMPREHENSION'
+  | 'CONVERSATION_SENTENCE_BUILDER';
+
+import type { ConversationListenExercise, ConversationWordRecognitionExercise, ConversationComprehensionExercise } from './conversationComprehension';
+export type { ConversationListenExercise, ConversationWordRecognitionExercise, ConversationComprehensionExercise } from './conversationComprehension';
+import type { ConversationSentenceBuilderExercise } from './conversationSentenceBuilder';
+export type { ConversationSentenceBuilderExercise } from './conversationSentenceBuilder';
 
 export interface BaseExercise {
   id: string;
@@ -171,7 +180,11 @@ export type Exercise =
   | VocabularyTableExercise
   | NumberToWordsExercise
   | SmsDialogueExercise
-  | VocabularyIntroExercise;
+  | VocabularyIntroExercise
+  | ConversationListenExercise
+  | ConversationWordRecognitionExercise
+  | ConversationComprehensionExercise
+  | ConversationSentenceBuilderExercise;
 
 export interface Lesson {
   id: string;

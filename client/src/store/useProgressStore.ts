@@ -124,8 +124,8 @@ function intervalDaysForStage(stage: number): number {
 
 // Returns all lesson records that are currently due for review, sorted by priority.
 // Priority score: more strikesInLastReview → worse; fewer timesReviewed → worse; older completedAt → worse.
-// Caps at 8 lessons so a single session is never overwhelming.
-const MAX_LESSONS_PER_SESSION = 8;
+// Caps at 4 lessons so a single session is never overwhelming.
+const MAX_LESSONS_PER_SESSION = 4;
 
 export function getDueLessons(lessonRecords: LessonRecord[], nowMs: number = Date.now()): LessonRecord[] {
   return lessonRecords
@@ -349,8 +349,19 @@ export const useProgressStore = create<ProgressStore>()(
         const today = todayStr();
 
         const existing = s.lessonRecords.find((r) => r.lessonId === lessonId);
-        // On first completion (or re-play) the lesson is fresh — due for first review in 1 day.
-        const nextReviewDue = new Date(Date.now() + 86_400_000).toISOString();
+        // Initial nextReviewDue: 1 day from now, staggered if other lessons land on the same day.
+        // Lessons completed in a burst otherwise share identical due timestamps, causing pile-ups.
+        const baseMs = Date.now() + 86_400_000;
+        const sameWindowCount = !existing
+          ? s.lessonRecords.filter((r) => {
+              if (!r.nextReviewDue) return false;
+              const due = new Date(r.nextReviewDue).getTime();
+              // 28-hour window: 4h before base to 24h after, catches same-burst completions
+              return due >= baseMs - 4 * 3_600_000 && due < baseMs + 24 * 3_600_000;
+            }).length
+          : 0;
+        const staggerMs = Math.min(sameWindowCount * 2.5 * 3_600_000, 12 * 3_600_000);
+        const nextReviewDue = new Date(baseMs + staggerMs).toISOString();
         const updatedRecord: LessonRecord = {
           lessonId,
           completedAt: now,

@@ -37,9 +37,10 @@ const PARTICLES: { emoji: string; style: React.CSSProperties }[] = [
 
 interface Props {
   onDone: () => void;
+  image?: string;
 }
 
-export function ExerciseCelebration({ onDone }: Props) {
+export function ExerciseCelebration({ onDone, image = '/snailExcited.png' }: Props) {
   useEffect(() => {
     playCelebrationSound();
     const t = setTimeout(onDone, 3500);
@@ -67,7 +68,7 @@ export function ExerciseCelebration({ onDone }: Props) {
         className="bg-white rounded-3xl px-10 py-7 text-center shadow-2xl animate-celebrate-pop"
       >
         <img
-          src="/snailExcited.png"
+          src={image}
           alt=""
           className="w-24 h-24 object-contain mx-auto mb-2 animate-bounce-once"
           style={{ animationDelay: '300ms' }}
