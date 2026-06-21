@@ -7,7 +7,7 @@ export interface BlockConfig {
 // Stages with production-ready content. Stages not in this list are fully
 // hidden from production users (still rendered in dev for reference) until
 // they're reworked with the Stage 1 block system and added here.
-export const PRODUCTION_VISIBLE_STAGES = ['survival'];
+export const PRODUCTION_VISIBLE_STAGES = ['survival', 'settling'];
 
 export const stage1Blocks: BlockConfig[] = [
   {
