@@ -154,15 +154,6 @@ export function LessonPage() {
     failedWordsRef.current = [...failedWordsRef.current, ...novel];
   };
 
-  const handleFailRestart = (exerciseId: string) => {
-    const idx = exercises.findIndex((e) => e.id === exerciseId);
-    if (idx < 0) return;
-    triggerPenalty(
-      { title: 'That was not clean!', sub: 'We redo this exercise again.', image: '/snailPerplexedListening.png' },
-      () => setExerciseIndex(idx),
-    );
-  };
-
   const triggerPenalty = (info: NonNullable<PenaltyInfo>, doNav: () => void) => {
     penaltyRef.current = true;
     setPenalty(info);
@@ -332,7 +323,6 @@ export function LessonPage() {
           onFailed={handleFailed}
           onAnswer={handleAnswer}
           reviewPairs={failedWordsRef.current}
-          onFailRestart={handleFailRestart}
         />
       </div>
 

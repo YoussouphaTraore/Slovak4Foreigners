@@ -34,7 +34,6 @@ interface Props {
   onFailed?: (words: { slovak: string; english: string }[]) => void;
   onAnswer?: (correct: boolean) => void;
   reviewPairs?: { slovak: string; english: string }[];
-  onFailRestart?: (exerciseId: string) => void;
 }
 
 type Phase = 'answering' | 'feedback';
