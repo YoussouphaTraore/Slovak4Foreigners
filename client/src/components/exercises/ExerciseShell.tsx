@@ -96,7 +96,7 @@ function validate(exercise: Exercise, answer: string): { correct: boolean; corre
   }
 }
 
-export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, onAnswer, reviewPairs, onFailRestart }: Props) {
+export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, onAnswer, reviewPairs }: Props) {
   const [phase, setPhase] = useState<Phase>('answering');
   const [answer, setAnswer] = useState('');
   const [feedback, setFeedback] = useState<{ correct: boolean; correctAnswer: string } | null>(null);
