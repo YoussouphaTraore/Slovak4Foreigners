@@ -55,7 +55,8 @@ Desktop.ini
 # Misc
 *.pem
 
-# Internal development docs — project journal, QA results, testing guide (local only)
+# Agent collaboration + session rules — local only, not part of the app
+CLAUDE.md
 docs/
 
 # AGENT_QA watcher state — tracks which [OPEN] entries have already triggered a notification
