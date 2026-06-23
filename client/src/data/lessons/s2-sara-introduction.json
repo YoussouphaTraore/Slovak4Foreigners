@@ -1,0 +1,184 @@
+{
+  "id": "s2-sara-introduction",
+  "stageId": "settling",
+  "stageName": "Stage 2 · Settling In",
+  "title": "Meet Sara",
+  "description": "Listen to Sara introduce herself, then prove you were listening",
+  "icon": "🎧",
+  "xpReward": 15,
+  "coming_soon": false,
+  "_voiceScript": {
+    "voice": "Jolana",
+    "script": "Volám sa Sara. Som z Talianska, ale bývam v Bratislave. Som mladá a nízka. Mám hnedé vlasy a zelené oči. Nemám rodinu tu — moji rodičia bývajú v Taliansku. Mám mačku. Volá sa Luna. Pracujem tu od marca. Som šťastná tu na Slovensku."
+  },
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "CONVERSATION_LISTEN",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-sara-introduction.mp3",
+      "conversationTranscriptSk": "Volám sa Sara. Som z Talianska, ale bývam v Bratislave. Som mladá a nízka. Mám hnedé vlasy a zelené oči. Nemám rodinu tu — moji rodičia bývajú v Taliansku. Mám mačku. Volá sa Luna. Pracujem tu od marca. Som šťastná tu na Slovensku.",
+      "speakers": [
+        { "name": "Sara", "avatar": "👩" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "CONVERSATION_WORD_RECOGNITION",
+      "instruction": "Tap every word or expression you heard in the conversation.",
+      "passThresholdPercent": 76,
+      "onFailRestartExerciseId": "ex1",
+      "correctWords": [
+        "Volám sa",
+        "Sara",
+        "Som z",
+        "Talianska",
+        "ale bývam v",
+        "Bratislave",
+        "Som mladá a",
+        "nízka",
+        "Mám hnedé vlasy",
+        "a zelené oči",
+        "Nemám rodinu tu",
+        "Moji",
+        "rodičia",
+        "bývajú v",
+        "Taliansku",
+        "Mám mačku",
+        "Volá sa",
+        "Luna",
+        "Pracujem tu",
+        "od marca",
+        "Som šťastná",
+        "tu na",
+        "Slovensku"
+      ],
+      "distractorWords": [
+        "Marek",
+        "pes",
+        "september",
+        "Som vysoká",
+        "Nemecko",
+        "brat"
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "CONVERSATION_COMPREHENSION",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-sara-introduction.mp3",
+      "conversationTranscriptSk": "Volám sa Sara. Som z Talianska, ale bývam v Bratislave. Som mladá a nízka. Mám hnedé vlasy a zelené oči. Nemám rodinu tu — moji rodičia bývajú v Taliansku. Mám mačku. Volá sa Luna. Pracujem tu od marca. Som šťastná tu na Slovensku.",
+      "speakers": [
+        { "name": "Sara", "avatar": "👩" }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Where is Sara originally from?",
+          "answers": [
+            { "id": "a", "textEn": "Germany", "isCorrect": false },
+            { "id": "b", "textEn": "Italy", "isCorrect": true },
+            { "id": "c", "textEn": "France", "isCorrect": false }
+          ],
+          "answerMeaning": "Som z Talianska = I am from Italy. Same Som z... pattern as Marek's Som z Nitry — the country name changes but the structure is identical.",
+          "reviewPair": { "slovak": "Som z Talianska", "english": "I am from Italy" }
+        },
+        {
+          "id": "q2",
+          "questionEn": "How does Sara describe her appearance?",
+          "answers": [
+            { "id": "a", "textEn": "Tall with blonde hair", "isCorrect": false },
+            { "id": "b", "textEn": "Young and short with brown hair and green eyes", "isCorrect": true },
+            { "id": "c", "textEn": "Old and tall with black hair", "isCorrect": false }
+          ],
+          "answerMeaning": "Som mladá a nízka. Mám hnedé vlasy a zelené oči = I am young and short. I have brown hair and green eyes. Notice mladá and nízka use the female form — Marek said vysoký (male form).",
+          "reviewPair": { "slovak": "Som mladá a nízka", "english": "I am young and short" }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Does Sara have family in Bratislava?",
+          "answers": [
+            { "id": "a", "textEn": "Yes, her whole family lives there", "isCorrect": false },
+            { "id": "b", "textEn": "No, her parents live in Italy", "isCorrect": true },
+            { "id": "c", "textEn": "Yes, she has a sister there", "isCorrect": false }
+          ],
+          "answerMeaning": "Nemám rodinu tu — moji rodičia bývajú v Taliansku = I don't have family here — my parents live in Italy. Nemám = I don't have. The opposite of Mám from the Verbs lesson.",
+          "reviewPair": { "slovak": "Nemám rodinu tu", "english": "I don't have family here" }
+        },
+        {
+          "id": "q4",
+          "questionEn": "What pet does Sara have and what is it called?",
+          "answers": [
+            { "id": "a", "textEn": "A dog called Rex", "isCorrect": false },
+            { "id": "b", "textEn": "A cat called Luna", "isCorrect": true },
+            { "id": "c", "textEn": "A cat called Micka", "isCorrect": false }
+          ],
+          "answerMeaning": "Mám mačku. Volá sa Luna = I have a cat. She's called Luna. Same Volá sa... pattern as Marek's dog Rex — works for any pet's name.",
+          "reviewPair": { "slovak": "Mám mačku. Volá sa Luna.", "english": "I have a cat. She's called Luna." }
+        },
+        {
+          "id": "q5",
+          "questionEn": "Since when has Sara been working in Bratislava?",
+          "answers": [
+            { "id": "a", "textEn": "Since September", "isCorrect": false },
+            { "id": "b", "textEn": "Since March", "isCorrect": true },
+            { "id": "c", "textEn": "Since January", "isCorrect": false }
+          ],
+          "answerMeaning": "Pracujem tu od marca = I have been working here since March. Od + month — same pattern as Marek's od septembra. Different month, same structure.",
+          "reviewPair": { "slovak": "Pracujem tu od marca", "english": "I have been working here since March" }
+        },
+        {
+          "id": "q6",
+          "questionEn": "What do Sara and Marek have in common based on what they said?",
+          "answers": [
+            { "id": "a", "textEn": "They are both from Italy", "isCorrect": false },
+            { "id": "b", "textEn": "They both live in Bratislava and are happy in Slovakia", "isCorrect": true },
+            { "id": "c", "textEn": "They both have a dog", "isCorrect": false }
+          ],
+          "answerMeaning": "Both said: Bývam v Bratislave and Som šťastný/šťastná tu na Slovensku. Notice šťastná (Sara, female form) vs šťastný (Marek, male form) — same feeling, different ending based on gender.",
+          "reviewPair": { "slovak": "Som šťastná tu na Slovensku", "english": "I am happy here in Slovakia" }
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "CONVERSATION_SENTENCE_BUILDER",
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "My name is Sara.",
+          "targetSk": ["Volám sa", "Sara"],
+          "bankChunks": ["Volám sa", "Sara", "Luna"]
+        },
+        {
+          "id": "s2",
+          "promptEn": "I am from Italy, but I live in Bratislava.",
+          "targetSk": ["Som z", "Talianska", "ale bývam v", "Bratislave"],
+          "bankChunks": ["Som z", "Talianska", "ale bývam v", "Bratislave", "Taliansku"]
+        },
+        {
+          "id": "s3",
+          "promptEn": "I have brown hair and green eyes.",
+          "targetSk": ["Mám hnedé vlasy", "a zelené oči"],
+          "bankChunks": ["Mám hnedé vlasy", "a zelené oči", "Som mladá a"]
+        },
+        {
+          "id": "s4",
+          "promptEn": "My parents live in Italy.",
+          "targetSk": ["Moji", "rodičia", "bývajú v", "Taliansku"],
+          "bankChunks": ["Moji", "rodičia", "bývajú v", "Taliansku", "Bratislave"]
+        },
+        {
+          "id": "s5",
+          "promptEn": "I am happy here in Slovakia.",
+          "targetSk": ["Som šťastná", "tu na", "Slovensku"],
+          "bankChunks": ["Som šťastná", "tu na", "Slovensku", "Bratislave"]
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -54,7 +54,7 @@ export const stage2Blocks: BlockConfig[] = [
   {
     blockId: 'stage2-block1',
     blockName: 'Real People, Real Slovak',
-    lessonIds: ['s2-marek-introduction'],
+    lessonIds: ['s2-marek-introduction', 's2-sara-introduction', 's2-marek-sara-meeting'],
   },
 ];
 

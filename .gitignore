@@ -58,6 +58,9 @@ Desktop.ini
 # Internal development docs — project journal, QA results, testing guide (local only)
 docs/
 
+# AGENT_QA watcher state — tracks which [OPEN] entries have already triggered a notification
+.agents/
+
 # Audio assets — hosted in Supabase Storage, never committed to GitHub
 # Local folder mirrors the 'audio' bucket: filename = lesson ID + .mp3
 audio/

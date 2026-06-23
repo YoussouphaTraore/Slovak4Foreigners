@@ -31,6 +31,8 @@ import s1Pets from './s1-pets.json';
 import s1Beverages from './s1-beverages.json';
 import s1Supermarket from './s1-supermarket.json';
 import s2MarekIntroduction from './s2-marek-introduction.json';
+import s2SaraIntroduction from './s2-sara-introduction.json';
+import s2MarekSaraMeeting from './s2-marek-sara-meeting.json';
 import advanced1 from './advanced-1.json';
 import advanced2 from './advanced-2.json';
 import advanced3 from './advanced-3.json';
@@ -69,6 +71,8 @@ export const lessons: Lesson[] = [
   s1Beverages as unknown as Lesson,
   s1Supermarket as unknown as Lesson,
   s2MarekIntroduction as unknown as Lesson,
+  s2SaraIntroduction as unknown as Lesson,
+  s2MarekSaraMeeting as unknown as Lesson,
   advanced1 as unknown as Lesson,
   advanced2 as unknown as Lesson,
   advanced3 as unknown as Lesson,

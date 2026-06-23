@@ -24,9 +24,10 @@ import { DesktopBlock, isMobile } from './components/DesktopBlock';
 import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
 import { useAuthStore } from './store/useAuthStore';
-import { checkSessionRegistration, loadWeeklyXp, loadIsAdmin, checkWeeklyWinner, markWinnerSeen } from './lib/supabase/progressSync';
+import { checkSessionRegistration, loadWeeklyXp, loadIsAdmin, checkWeeklyWinner, markWinnerSeen, loadProfileOnboarding } from './lib/supabase/progressSync';
 import { loadAlias } from './lib/supabase/aliasUtils';
 import { AliasPickerModal } from './components/AliasPickerModal';
+import { OnboardingModal } from './components/OnboardingModal';
 import { startSession, heartbeat, endSession } from './lib/supabase/sessionTracking';
 import { runMagicBoxCheck, claimMagicBox } from './lib/supabase/magicBox';
 import { MagicBoxModal } from './components/MagicBoxModal';
@@ -169,6 +170,7 @@ function AppShell() {
   const alias = useAuthStore((s) => s.alias);
   const setAlias = useAuthStore((s) => s.setAlias);
   const setIsAdmin = useAuthStore((s) => s.setIsAdmin);
+  const setProfileData = useAuthStore((s) => s.setProfileData);
 
   useEffect(() => {
     decayLessonStrengths();
@@ -188,13 +190,18 @@ function AppShell() {
 
   // Load alias on login — show picker if user has none
   const [showAliasPicker, setShowAliasPicker] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
   useEffect(() => {
-    if (!userId) { setShowAliasPicker(false); return; }
+    if (!userId) { setShowAliasPicker(false); setShowOnboarding(false); return; }
     loadAlias(userId).then((result) => {
       if (result === null) {
-        setShowAliasPicker(true); // no alias — must pick
+        setShowAliasPicker(true); // no alias — must pick (onboarding follows after)
       } else if (result) {
-        setAlias(result); // existing alias
+        setAlias(result); // existing alias — load profile data and check onboarding
+        loadProfileOnboarding(userId).then(({ country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender }) => {
+          setProfileData(country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender);
+          if (!country || !gender) setShowOnboarding(true);
+        });
       }
       // '' = DB error — don't show picker, alias stays empty
     });
@@ -418,6 +425,18 @@ function AppShell() {
           onDone={(newAlias) => {
             setAlias(newAlias);
             setShowAliasPicker(false);
+            setShowOnboarding(true); // new users always need onboarding
+          }}
+        />
+      )}
+      {showOnboarding && userId && (
+        <OnboardingModal
+          userId={userId}
+          onDone={() => {
+            setShowOnboarding(false);
+            loadProfileOnboarding(userId).then(({ country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender }) => {
+              setProfileData(country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender);
+            });
           }}
         />
       )}

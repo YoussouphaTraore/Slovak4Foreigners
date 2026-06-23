@@ -4,6 +4,10 @@
   "stageName": "Stage 2 · Settling In",
   "title": "Meet Marek",
   "description": "Listen to Marek introduce himself, then prove you were listening",
+  "_voiceScript": {
+    "voice": "unknown",
+    "script": "Volám sa Marek. Som z Nitry, ale bývam v Bratislave. Som vysoký. Mám rodinu — mám sestru a brata. Moji rodičia bývajú v Nitre. Pracujem tu od septembra. Mám psa. Volá sa Rex. Som šťastný tu na Slovensku."
+  },
   "icon": "🎧",
   "xpReward": 15,
   "coming_soon": false,

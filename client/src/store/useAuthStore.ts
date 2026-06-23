@@ -10,6 +10,15 @@ interface AuthStore {
   alias: string;
   isAdmin: boolean;
   leaderboardPulse: boolean;
+  country: string;
+  country_sk: string;
+  country_sk_genitive: string;
+  country_sk_locative: string;
+  country_sk_adj_masculine: string;
+  country_sk_adj_feminine: string;
+  country_sk_adj_neuter: string;
+  country_sk_adverb: string;
+  gender: string;
 
   signInWithGoogle: () => Promise<{ error: string | null }>;
   signOut: () => Promise<void>;
@@ -17,6 +26,7 @@ interface AuthStore {
   setAlias: (alias: string) => void;
   setIsAdmin: (v: boolean) => void;
   setLeaderboardPulse: (v: boolean) => void;
+  setProfileData: (country: string, country_sk: string, country_sk_genitive: string, country_sk_locative: string, country_sk_adj_masculine: string, country_sk_adj_feminine: string, country_sk_adj_neuter: string, country_sk_adverb: string, gender: string) => void;
 }
 
 export const useAuthStore = create<AuthStore>((set) => ({
@@ -27,6 +37,15 @@ export const useAuthStore = create<AuthStore>((set) => ({
   alias: '',
   isAdmin: false,
   leaderboardPulse: false,
+  country: '',
+  country_sk: '',
+  country_sk_genitive: '',
+  country_sk_locative: '',
+  country_sk_adj_masculine: '',
+  country_sk_adj_feminine: '',
+  country_sk_adj_neuter: '',
+  country_sk_adverb: '',
+  gender: '',
 
   signInWithGoogle: async () => {
     set({ isLoading: true });
@@ -46,7 +65,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
     set({ isLoading: true });
     try {
       await supabase.auth.signOut();
-      set({ user: null, session: null, alias: '', isAdmin: false });
+      set({ user: null, session: null, alias: '', isAdmin: false, country: '', country_sk: '', country_sk_genitive: '', country_sk_locative: '', country_sk_adj_masculine: '', country_sk_adj_feminine: '', country_sk_adj_neuter: '', country_sk_adverb: '', gender: '' });
       // Full reset: wipes in-memory store and causes Zustand persist to overwrite
       // slovak-progress in localStorage with clean defaults. This ensures that if a
       // different user signs in next (even after a page reload), they never inherit
@@ -66,6 +85,7 @@ export const useAuthStore = create<AuthStore>((set) => ({
   setAlias: (alias) => set({ alias }),
   setIsAdmin: (isAdmin) => set({ isAdmin }),
   setLeaderboardPulse: (leaderboardPulse) => set({ leaderboardPulse }),
+  setProfileData: (country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender) => set({ country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender }),
 
   initialize: () => {
     // Safety net: always mark initialized within 3 s even if Supabase hangs

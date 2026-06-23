@@ -6,8 +6,7 @@ import { useProgressStore } from '../store/useProgressStore';
 import { lessons } from '../data/lessons';
 import { PRODUCTION_VISIBLE_STAGES } from '../config/stageBlocks';
 import { foreignPoliceLessons } from '../data/foreigner-exclusive/foreign-police';
-import { BASE_ALIASES } from '../data/aliases';
-import { getAvatarUrl, changeAlias } from '../lib/supabase/aliasUtils';
+import { getAvatarUrl } from '../lib/supabase/aliasUtils';
 import { BottomNav } from '../components/ui/BottomNav';
 import { canInstall, triggerInstall, markInstalled, markShown } from '../lib/pwaInstall';
 
@@ -133,79 +132,6 @@ function ConfirmDeleteModal({
   );
 }
 
-function AliasModal({
-  currentAlias,
-  userId,
-  onClose,
-  onChanged,
-}: {
-  currentAlias: string;
-  userId: string;
-  onClose: () => void;
-  onChanged: (alias: string) => void;
-}) {
-  const [loading, setLoading] = useState(false);
-  const [message, setMessage] = useState<{ text: string; ok: boolean } | null>(null);
-
-  const handlePick = async (base: string) => {
-    if (loading) return;
-    setLoading(true);
-    setMessage(null);
-    const result = await changeAlias(userId, base);
-    setLoading(false);
-    if (result.success) {
-      setMessage({ text: `Your alias is now ${result.alias}`, ok: true });
-      onChanged(result.alias);
-    } else {
-      setMessage({ text: result.error ?? 'Something went wrong.', ok: false });
-    }
-  };
-
-  return (
-    <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 px-4 pb-6 sm:pb-0"
-      onClick={onClose}
-    >
-      <div
-        className="w-full max-w-sm bg-white rounded-3xl shadow-2xl overflow-hidden"
-        onClick={(e) => e.stopPropagation()}
-      >
-        <div className="px-5 pt-5 pb-3 border-b border-gray-100">
-          <div className="flex items-center justify-between">
-            <h2 className="text-base font-extrabold text-gray-800">Choose Your Alias</h2>
-            <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl cursor-pointer leading-none">✕</button>
-          </div>
-          <p className="text-xs text-gray-400 mt-1">You'll get a unique 4-digit tag — e.g. FrogySnail_2847</p>
-        </div>
-
-        {message && (
-          <p className={`text-xs text-center px-5 py-2.5 font-semibold ${message.ok ? 'text-brand-green' : 'text-red-500'}`}>
-            {message.text}
-          </p>
-        )}
-
-        <div className="grid grid-cols-2 gap-3 p-4 overflow-y-auto max-h-[60vh]">
-          {BASE_ALIASES.map((base) => {
-            const isCurrent = currentAlias.replace(/_\d+$/, '') === base;
-            return (
-              <button
-                key={base}
-                type="button"
-                disabled={loading}
-                onClick={() => handlePick(base)}
-                className={`flex flex-col items-center gap-2 p-3 rounded-2xl border-2 transition-all cursor-pointer active:scale-[0.97] disabled:opacity-60
-                  ${isCurrent ? 'border-brand-green bg-green-50' : 'border-gray-100 hover:border-amber-300 hover:bg-amber-50'}`}
-              >
-                <img src={getAvatarUrl(base)} alt={base} className="w-14 h-14 rounded-full object-cover" />
-                <span className="text-xs font-bold text-gray-700 leading-tight text-center">{base}</span>
-              </button>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 // ── Main page ──────────────────────────────────────────────────────────────────
 
@@ -214,8 +140,10 @@ export function ProfilePage() {
   const user = useAuthStore((s) => s.user);
   const signOut = useAuthStore((s) => s.signOut);
   const alias = useAuthStore((s) => s.alias);
-  const setAlias = useAuthStore((s) => s.setAlias);
   const isAdmin = useAuthStore((s) => s.isAdmin);
+  const country = useAuthStore((s) => s.country);
+  const country_sk = useAuthStore((s) => s.country_sk);
+  const gender = useAuthStore((s) => s.gender);
   const xp = useProgressStore((s) => s.xp);
   const level = useProgressStore((s) => s.level);
   const streak = useProgressStore((s) => s.streak);
@@ -233,7 +161,6 @@ export function ProfilePage() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
-  const [showAliasModal, setShowAliasModal] = useState(false);
 
   // PWA install prompt — reads from shared module (captured in AppShell)
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -471,7 +398,7 @@ export function ProfilePage() {
         <div>
           <SectionLabel>Account</SectionLabel>
           <Card>
-            {/* Alias row */}
+            {/* Alias row — read-only */}
             <Row>
               <img
                 src={alias ? getAvatarUrl(alias) : '/pp/FrogySnail.png'}
@@ -483,13 +410,6 @@ export function ProfilePage() {
                 <p className="text-[10px] text-gray-400 leading-none mb-1">This is how others see you</p>
                 <p className="text-sm font-semibold text-gray-800 truncate">{alias || '—'}</p>
               </div>
-              <button
-                type="button"
-                onClick={() => setShowAliasModal(true)}
-                className="text-xs text-brand-green font-semibold cursor-pointer hover:opacity-70 transition-opacity shrink-0"
-              >
-                Change
-              </button>
             </Row>
 
             {/* Display name — read-only, sourced from Google */}
@@ -499,6 +419,27 @@ export function ProfilePage() {
                 <p className="text-xs text-gray-400 leading-none mb-0.5">Your name</p>
                 <p className="text-[10px] text-gray-400 leading-none mb-1">From your Google account</p>
                 <p className="text-sm font-semibold text-gray-800 truncate">{displayName}</p>
+              </div>
+            </Row>
+
+            {/* Country of origin — read-only */}
+            <Row>
+              <span className="text-xl w-7 flex-none text-center leading-none">🌍</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-gray-400 leading-none mb-0.5">Country of origin</p>
+                <p className="text-sm font-semibold text-gray-800 truncate">{country || '—'}</p>
+                {country_sk && (
+                  <p className="text-xs text-gray-400 truncate">{country_sk}</p>
+                )}
+              </div>
+            </Row>
+
+            {/* Gender — read-only */}
+            <Row>
+              <span className="text-xl w-7 flex-none text-center leading-none">👤</span>
+              <div className="flex-1 min-w-0">
+                <p className="text-xs text-gray-400 leading-none mb-0.5">Gender</p>
+                <p className="text-sm font-semibold text-gray-800">{gender || '—'}</p>
               </div>
             </Row>
 
@@ -583,14 +524,7 @@ export function ProfilePage() {
         />
       )}
 
-      {showAliasModal && user && (
-        <AliasModal
-          currentAlias={alias}
-          userId={user.id}
-          onClose={() => setShowAliasModal(false)}
-          onChanged={(newAlias) => { setAlias(newAlias); setShowAliasModal(false); }}
-        />
-      )}
+
     </div>
   );
 }
