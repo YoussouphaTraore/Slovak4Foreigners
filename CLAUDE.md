@@ -42,9 +42,27 @@ node scripts/watch-agent-qa.mjs --agent "Claude Code"
 
 - **Never auto-commit or auto-push.** Only on exact phrases: "commit now" / "push to GitHub" / "save to GitHub".
 - **Local-only files — never commit:** `docs/` (entire folder), `.agents/`, `CountrySK_Validation.md`, `CyberSecurity_Audit.md`, `DATABASE_SCHEMA.md`, `PROJECT_JOURNAL.md`, `TestingResults.md`, `USER_TESTING_GUIDE.md`, `qa-*.cjs`.
-- **Always append a Phase entry to `docs/PROJECT_JOURNAL.md`** after every completed task. No reminder needed.
 - **Slovak number rule:** All digits in Slovak-language text must render as Slovak words via `slovakifyNumbers()`. Numbers with 5+ digits are exempt.
 - **"journal"** shorthand = `docs/PROJECT_JOURNAL.md`.
+
+## MANDATORY POST-TASK ACTIONS (no reminder needed, no exceptions)
+
+After **every** completed task — no matter how small — do both of the following before responding to the user:
+
+### 1. Update `docs/PROJECT_JOURNAL.md`
+- Append a new `### [Claude Code] Phase N — YYYY-MM-DD — <title>` entry
+- Use the next sequential Phase number (check the last `### [Claude Code] Phase N` heading)
+- Include: what changed, which files, why, and any findings
+- One-liner fixes still get a short entry
+
+### 2. Notify colleagues in `docs/AGENT_QA.md` if relevant
+Post a `[DONE]` entry addressed to `Codex + Copilot Studio` whenever:
+- A task was assigned to them and is now resolved
+- A commit/push happened
+- A file they work with was changed by Claude Code
+- Any decision was made that affects their work
+
+For purely internal changes with zero impact on other agents, the AGENT_QA update is optional — but when in doubt, post it.
 
 ---
 
