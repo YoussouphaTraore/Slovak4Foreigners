@@ -33,6 +33,7 @@ export function ForeignerExclusiveLessonPage() {
   const [penalty, setPenalty] = useState<PenaltyInfo>(null);
 
   const strikesRef = useRef({ total: 0, consecutive: 0, lessonTotal: 0 });
+  const wrongAnswersThisRun = useRef(0);
   const [strikesDisplay, setStrikesDisplay] = useState({ total: 0, consecutive: 0 });
   const penaltyRef = useRef(false);
 
@@ -70,7 +71,11 @@ export function ForeignerExclusiveLessonPage() {
   };
 
   const finishLesson = () => {
-    store.completeLesson(lesson.id, strikesRef.current.lessonTotal, exercises.length);
+    store.completeLesson(lesson.id, {
+      lessonXpReward: lesson.xpReward,
+      totalStrikes: strikesRef.current.lessonTotal,
+      wrongAnswersThisRun: wrongAnswersThisRun.current,
+    });
     store.unlockReferenceCard(lesson.unlocksReferenceCard);
     if (lesson.referenceCard) {
       setScreen('referenceCard');
@@ -103,6 +108,7 @@ export function ForeignerExclusiveLessonPage() {
     strikesRef.current.total       += 1;
     strikesRef.current.consecutive += 1;
     strikesRef.current.lessonTotal += 1;
+    wrongAnswersThisRun.current    += 1;
     const { total, consecutive } = strikesRef.current;
     setStrikesDisplay({ total, consecutive });
 

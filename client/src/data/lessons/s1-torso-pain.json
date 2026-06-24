@@ -1,0 +1,249 @@
+{
+  "id": "s1-torso-pain",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Body & Pain",
+  "description": "Core body words and the pain phrase Bolí ma..., which works with any body part",
+  "icon": "🫀",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Body & Pain",
+      "rows": [
+        {
+          "label": "Shoulder / Shoulders",
+          "slovak": "Plece / Plecia",
+          "english": "Shoulder / Shoulders"
+        },
+        {
+          "label": "Chest",
+          "slovak": "Hruď",
+          "english": "Chest"
+        },
+        {
+          "label": "Heart",
+          "slovak": "Srdce",
+          "english": "Heart"
+        },
+        {
+          "label": "Back",
+          "slovak": "Chrbát",
+          "english": "Back"
+        },
+        {
+          "label": "Stomach",
+          "slovak": "Brucho",
+          "english": "Stomach / Belly"
+        },
+        {
+          "label": "Pain pattern",
+          "slovak": "Bolí ma ...",
+          "english": "My ... hurts. Works with any body part."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Plece",
+          "english": "Shoulder"
+        },
+        {
+          "slovak": "Plecia",
+          "english": "Shoulders"
+        },
+        {
+          "slovak": "Hruď",
+          "english": "Chest"
+        },
+        {
+          "slovak": "Srdce",
+          "english": "Heart"
+        },
+        {
+          "slovak": "Chrbát",
+          "english": "Back"
+        },
+        {
+          "slovak": "Brucho",
+          "english": "Stomach"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Plece",
+          "english": "Shoulder"
+        },
+        {
+          "slovak": "Plecia",
+          "english": "Shoulders"
+        },
+        {
+          "slovak": "Hruď",
+          "english": "Chest"
+        },
+        {
+          "slovak": "Srdce",
+          "english": "Heart"
+        },
+        {
+          "slovak": "Chrbát",
+          "english": "Back"
+        },
+        {
+          "slovak": "Brucho",
+          "english": "Stomach"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Plece",
+          "english": "Shoulder"
+        },
+        {
+          "slovak": "Plecia",
+          "english": "Shoulders"
+        },
+        {
+          "slovak": "Hruď",
+          "english": "Chest"
+        },
+        {
+          "slovak": "Srdce",
+          "english": "Heart"
+        },
+        {
+          "slovak": "Chrbát",
+          "english": "Back"
+        },
+        {
+          "slovak": "Brucho",
+          "english": "Stomach"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You have chest pain and call 155. Which word tells the dispatcher where the pain is?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Chrbát",
+            "Brucho",
+            "Hruď",
+            "Plece"
+          ],
+          "answer": "Hruď",
+          "answerMeaning": "Hruď = Chest. Bolí ma hruď = My chest hurts. Chest pain is a 155 call, so say this clearly."
+        },
+        {
+          "situation": "You hurt your back carrying boxes. What do you tell your doctor?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Brucho",
+            "Srdce",
+            "Hruď",
+            "Chrbát"
+          ],
+          "answer": "Chrbát",
+          "answerMeaning": "Chrbát = Back. Bolí ma chrbát = My back hurts. This is a common complaint at Slovak GP offices."
+        },
+        {
+          "situation": "You ate something bad and now your stomach hurts. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Brucho",
+            "Plece",
+            "Srdce",
+            "Hruď"
+          ],
+          "answer": "Brucho",
+          "answerMeaning": "Brucho = Stomach / belly. Bolí ma brucho = My stomach hurts."
+        },
+        {
+          "situation": "You fell on the ice and your shoulder hurts. Which word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Plece",
+            "Srdce",
+            "Brucho",
+            "Chrbát"
+          ],
+          "answer": "Plece",
+          "answerMeaning": "Plece = Shoulder. Bolí ma plece = My shoulder hurts."
+        },
+        {
+          "situation": "A doctor asks if the pain is in your chest or your heart. Which Slovak word means heart?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Hruď",
+            "Srdce",
+            "Chrbát",
+            "Brucho"
+          ],
+          "answer": "Srdce",
+          "answerMeaning": "Srdce = Heart. Hruď is chest. Knowing both helps you describe symptoms more clearly."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Mám bolesť ___. Tlačí ma to za hrudnou kosťou.",
+          "translation": "I have ___ pain. There is pressure behind my breastbone.",
+          "choices": [
+            "Koleno",
+            "Hruď",
+            "Brucho",
+            "Nos"
+          ],
+          "answer": "Hruď"
+        },
+        {
+          "sentence": "Celý deň sedím za počítačom. Bolí ma ___.",
+          "translation": "I sit at the computer all day. My ___ hurts.",
+          "choices": [
+            "Srdce",
+            "Chrbát",
+            "Prst",
+            "Ucho"
+          ],
+          "answer": "Chrbát"
+        },
+        {
+          "sentence": "Bolí ma ___. Niečo zlé som zjedol.",
+          "translation": "My ___ hurts. I ate something bad.",
+          "choices": [
+            "Brucho",
+            "Plece",
+            "Srdce",
+            "Hruď"
+          ],
+          "answer": "Brucho"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

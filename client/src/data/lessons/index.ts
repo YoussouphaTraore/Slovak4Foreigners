@@ -6,7 +6,9 @@ import s1HowAreYou from './s1-how-are-you.json';
 import s1DontUnderstand from './s1-dont-understand.json';
 import s1WhoIAm from './s1-who-i-am.json';
 import s1DescribingYourself from './s1-describing-yourself.json';
-import s1BodyParts from './s1-body-parts.json';
+import s1HeadFace from './s1-head-face.json';
+import s1TorsoPain from './s1-torso-pain.json';
+import s1ArmsLegs from './s1-arms-legs.json';
 import s1Colors from './s1-colors.json';
 import s1Family from './s1-family.json';
 import s1CardinalNumbers from './s1-cardinal-numbers.json';
@@ -46,7 +48,9 @@ export const lessons: Lesson[] = [
   s1DontUnderstand as unknown as Lesson,
   s1WhoIAm as unknown as Lesson,
   s1DescribingYourself as unknown as Lesson,
-  s1BodyParts as unknown as Lesson,
+  s1HeadFace as unknown as Lesson,
+  s1TorsoPain as unknown as Lesson,
+  s1ArmsLegs as unknown as Lesson,
   s1Colors as unknown as Lesson,
   s1Family as unknown as Lesson,
   s1CardinalNumbers as unknown as Lesson,

@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
+import type { NavigateOptions } from 'react-router-dom';
 import { lessons } from '../data/lessons';
 import { useProgressStore, computeStrength } from '../store/useProgressStore';
 import type { LessonRecord } from '../store/useProgressStore';
@@ -69,8 +70,25 @@ const STAGE_UNLOCK_COSTS: Record<string, number> = {
   advanced: 250,
 };
 
+const SCROLL_KEY = 'home_scroll';
+
 export function HomePage() {
   const navigate = useNavigate();
+
+  // Save scroll before leaving; restore on return
+  const go = useCallback((to: string, opts?: NavigateOptions) => {
+    sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
+    navigate(to, opts);
+  }, [navigate]);
+
+  useEffect(() => {
+    const saved = sessionStorage.getItem(SCROLL_KEY);
+    if (!saved) return;
+    sessionStorage.removeItem(SCROLL_KEY);
+    const y = parseInt(saved, 10);
+    requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, y)));
+  }, []);
+
   const store = useProgressStore();
   const headerRef = useRef<HTMLDivElement>(null);
   const endSentinelRef = useRef<HTMLDivElement>(null);
@@ -81,6 +99,7 @@ export function HomePage() {
     snailRaceRecords, isSyncing, passedBlocks, completedBlockDialogues,
   } = store;
   const lessonRecords = useProgressStore((s) => s.lessonRecords);
+  const practiceDaysThisWeek = useProgressStore((s) => s.practiceDaysThisWeek);
   const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
   const isSessionRegistered = useProgressStore((s) => s.isSessionRegistered);
   const partialLessonProgress = useProgressStore((s) => s.partialLessonProgress);
@@ -198,7 +217,7 @@ export function HomePage() {
             <button
               type="button"
               disabled={isLocked}
-              onClick={() => !isLocked && navigate(`/lesson/${lesson.id}`)}
+              onClick={() => !isLocked && go(`/lesson/${lesson.id}`)}
               title={
                 state === 'stage_locked'
                   ? 'Unlock this stage to access'
@@ -240,11 +259,18 @@ export function HomePage() {
               </svg>
             )}
 
-            {record && (
+            {record && !isLocked && (
               <span
                 className={`absolute top-0.5 right-0.5 w-4 h-4 rounded-full border-2 border-white ${strengthDotClass(liveStrength(record))}`}
                 title={`Strength: ${liveStrength(record)}%`}
               />
+            )}
+
+            {record?.mastered && !isLocked && (
+              <span
+                className="absolute bottom-0.5 left-0.5 w-4 h-4 rounded-full bg-yellow-400 border-2 border-white flex items-center justify-center text-[8px]"
+                title="Mastered"
+              >⭐</span>
             )}
           </div>
 
@@ -252,8 +278,11 @@ export function HomePage() {
             <p className={`text-sm font-semibold ${isLocked ? 'text-gray-400' : 'text-gray-700'}`}>
               {lesson.title}
             </p>
-            <p className={`text-xs ${isLocked ? 'text-gray-300' : 'text-gray-400'}`}>
+            <p className={`text-xs ${isLocked ? 'text-gray-300' : 'text-gray-400'} line-clamp-1`}>
               {lesson.description}
+            </p>
+            <p className={`text-xs mt-0.5 text-right ${isLocked ? 'text-gray-300' : 'text-amber-500'} font-semibold`}>
+              ⭐ {lesson.xpReward} XP
             </p>
           </div>
         </div>
@@ -273,7 +302,11 @@ export function HomePage() {
           <img src="/snail.png" alt="" className="w-8 h-8 object-contain shrink-0" />
           <div className="flex-1 min-w-0">
             <h1 className="text-base font-bold text-gray-800 leading-tight">Slovak for Foreigners</h1>
-            <p className="text-xs text-gray-400 leading-tight">Learn Slovak. Live like a local.</p>
+            <p className="text-xs text-gray-400 leading-tight">
+              {practiceDaysThisWeek.length > 0
+                ? `This week: ${practiceDaysThisWeek.length} practice ${practiceDaysThisWeek.length === 1 ? 'day' : 'days'}`
+                : 'Learn Slovak. Live like a local.'}
+            </p>
           </div>
 
           {isSyncing && (
@@ -303,7 +336,7 @@ export function HomePage() {
           {showReviewBanner && (
             <button
               type="button"
-              onClick={() => navigate('/review')}
+              onClick={() => go('/review')}
               className="flex items-center gap-1 px-2.5 py-0.5 bg-amber-50 border border-amber-200 rounded-xl cursor-pointer hover:bg-amber-100 active:scale-[0.97] transition-all animate-pulse"
             >
               <span className="text-sm leading-none">{reviewOverdue ? '🔴' : '⚠️'}</span>
@@ -440,7 +473,7 @@ export function HomePage() {
                             disabled={!dialogueEnabled && !dialogueCompleted}
                             onClick={() => {
                               if (!dialogueEnabled && !dialogueCompleted && !isDev) return;
-                              navigate(`/block-dialogue/${block.blockId}`, { state: { guided: true } });
+                              go(`/block-dialogue/${block.blockId}`, { state: { guided: true } });
                             }}
                             className={`w-full flex items-center gap-4 rounded-2xl px-4 py-4 shadow-sm transition-all mb-0
                               ${dialogueCompleted
@@ -473,7 +506,7 @@ export function HomePage() {
                         <button
                           type="button"
                           disabled={!raceEnabled}
-                          onClick={() => raceEnabled && navigate(`/race/survival/${block.blockId}`)}
+                          onClick={() => raceEnabled && go(`/race/survival/${block.blockId}`)}
                           className={`w-full flex items-center gap-4 rounded-2xl px-4 py-4 shadow-sm transition-all
                             ${raceEnabled
                               ? 'bg-amber-50 border-2 border-amber-300 hover:bg-amber-100 active:scale-[0.98] cursor-pointer'
@@ -532,7 +565,7 @@ export function HomePage() {
                         <button
                           type="button"
                           disabled={!raceEnabled}
-                          onClick={() => raceEnabled && navigate(`/race/${group.stageId}`)}
+                          onClick={() => raceEnabled && go(`/race/${group.stageId}`)}
                           className={`w-full flex items-center gap-4 rounded-2xl px-4 py-4 shadow-sm transition-all cursor-pointer
                             ${raceEnabled
                               ? 'bg-amber-50 border-2 border-amber-300 hover:bg-amber-100 active:scale-[0.98]'

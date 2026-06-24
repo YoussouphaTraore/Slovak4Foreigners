@@ -34,25 +34,25 @@ export function ConversationWordRecognitionExercise({ exercise, onDone, onAnswer
   const handleToggle = (word: string) => {
     setSelected((prev) => {
       const next = new Set(prev);
-      const isSelecting = !next.has(word);
-      if (isSelecting) {
-        next.add(word);
-        if (correctSet.has(word)) {
-          if (!answeredCorrectRef.current.has(word)) {
-            answeredCorrectRef.current.add(word);
-            onAnswer?.(true);
-          }
-        } else {
-          if (!penalizedRef.current.has(word)) {
-            penalizedRef.current.add(word);
-            onAnswer?.(false);
-          }
-        }
-      } else {
-        next.delete(word);
-      }
+      if (!next.has(word)) next.add(word);
+      else next.delete(word);
       return next;
     });
+
+    const isSelecting = !selected.has(word);
+    if (isSelecting) {
+      if (correctSet.has(word)) {
+        if (!answeredCorrectRef.current.has(word)) {
+          answeredCorrectRef.current.add(word);
+          onAnswer?.(true);
+        }
+      } else {
+        if (!penalizedRef.current.has(word)) {
+          penalizedRef.current.add(word);
+          onAnswer?.(false);
+        }
+      }
+    }
   };
 
   const correctSelectedCount = [...selected].filter((w) => correctSet.has(w)).length;

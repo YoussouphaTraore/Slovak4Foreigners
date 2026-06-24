@@ -18,7 +18,7 @@ export const stage1Blocks: BlockConfig[] = [
   {
     blockId: 'stage1-block2',
     blockName: 'Identity',
-    lessonIds: ['s1-who-i-am', 's1-describing-yourself', 's1-body-parts', 's1-colors', 's1-family'],
+    lessonIds: ['s1-who-i-am', 's1-describing-yourself', 's1-head-face', 's1-torso-pain', 's1-arms-legs', 's1-colors', 's1-family'],
   },
   {
     blockId: 'stage1-block3',

@@ -35,6 +35,7 @@ export interface LessonRecord {
   nextReviewDue: string;           // ISO timestamp — when this lesson is next due for review
   timesReviewed: number;           // how many review sessions this lesson has appeared in
   strikesInLastReview: number;     // strikes accumulated in the most recent review session
+  mastered?: boolean;              // true once the user completes a run with zero wrong answers
 }
 
 export interface SnailRaceRecord {
@@ -113,6 +114,14 @@ function todayStr(): string {
   return new Date().toISOString().split('T')[0];
 }
 
+function weekMondayOf(dateStr: string): string {
+  const d = new Date(dateStr + 'T00:00:00');
+  const day = d.getDay(); // 0=Sun
+  const diff = day === 0 ? -6 : 1 - day;
+  d.setDate(d.getDate() + diff);
+  return d.toISOString().split('T')[0];
+}
+
 // Spaced-repetition intervals — index = intervalStage - 1 (stage 0 and 1 both use 1 day).
 const REVIEW_INTERVALS_DAYS = [1, 3, 7, 14, 30] as const;
 const MAX_INTERVAL_STAGE = REVIEW_INTERVALS_DAYS.length; // 5
@@ -170,6 +179,7 @@ interface ProgressStore {
   streak: number;
   lastPlayedDate: string | null;
   streakMultiplier: number;
+  practiceDaysThisWeek: string[];  // YYYY-MM-DD dates of lesson completions in the current ISO week
 
   completedLessons: string[];
   lessonRecords: LessonRecord[];
@@ -220,9 +230,21 @@ interface ProgressStore {
   // Lesson lifecycle
   completeLesson: (
     lessonId: string,
-    totalStrikes: number,
-    exerciseCount: number,
-  ) => { xpEarned: number; perfectBonus: boolean; newStrength: number };
+    params: {
+      lessonXpReward: number;
+      totalStrikes: number;
+      wrongAnswersThisRun: number;
+    },
+  ) => {
+    xpEarned: number;
+    baseXP: number;
+    perfectBonusXP: number;
+    wasPerfectRun: boolean;
+    isFirstMastery: boolean;
+    alreadyMastered: boolean;
+    streakMultiplier: number;
+    newStrength: number;
+  };
 
   // Stage unlocking
   unlockStage: (stageId: string) => {
@@ -293,6 +315,7 @@ export const useProgressStore = create<ProgressStore>()(
       streak: 0,
       lastPlayedDate: null,
       streakMultiplier: 1.0,
+      practiceDaysThisWeek: [],
       completedLessons: [],
       lessonRecords: [],
       unlockedStages: ['survival'],
@@ -333,22 +356,22 @@ export const useProgressStore = create<ProgressStore>()(
 
       // ── Lesson completion ─────────────────────────────────────────────────
 
-      completeLesson: (lessonId, totalStrikes, exerciseCount) => {
+      completeLesson: (lessonId, { lessonXpReward, totalStrikes, wrongAnswersThisRun }) => {
         const s = get();
+
+        const existing = s.lessonRecords.find((r) => r.lessonId === lessonId);
         const isRepeat = s.completedLessons.includes(lessonId);
 
-        const baseXp = isRepeat ? Math.min(8, exerciseCount) : exerciseCount;
-        const strikeXpLoss = Math.floor(totalStrikes * 0.5);
-        const rawXp = Math.max(0, baseXp - strikeXpLoss);
-        const perfectBonus = totalStrikes === 0 && !isRepeat;
-        const xpEarned = Math.round(
-          (rawXp + (perfectBonus ? 5 : 0)) * s.streakMultiplier,
-        );
+        const wasPerfectRun = wrongAnswersThisRun === 0;
+        const alreadyMastered = existing?.mastered === true;
+        const isFirstMastery = wasPerfectRun && !alreadyMastered;
+        const perfectBonusXP = isFirstMastery ? 2 : 0;
+        const baseXP = lessonXpReward;
+        const xpEarned = Math.round((baseXP + perfectBonusXP) * s.streakMultiplier);
 
         const now = new Date().toISOString();
         const today = todayStr();
 
-        const existing = s.lessonRecords.find((r) => r.lessonId === lessonId);
         // Initial nextReviewDue: 1 day from now, staggered if other lessons land on the same day.
         // Lessons completed in a burst otherwise share identical due timestamps, causing pile-ups.
         const baseMs = Date.now() + 86_400_000;
@@ -370,6 +393,7 @@ export const useProgressStore = create<ProgressStore>()(
           strength: 100,
           xpEarned,
           timesCompleted: (existing?.timesCompleted ?? 0) + 1,
+          mastered: alreadyMastered || isFirstMastery,
           // SR fields — re-playing a lesson doesn't reset review progress
           intervalStage: existing?.intervalStage ?? 0,
           nextReviewDue: existing?.nextReviewDue ?? nextReviewDue,
@@ -423,7 +447,16 @@ export const useProgressStore = create<ProgressStore>()(
           );
         }
 
-        return { xpEarned, perfectBonus, newStrength: 100 };
+        return {
+          xpEarned,
+          baseXP,
+          perfectBonusXP,
+          wasPerfectRun,
+          isFirstMastery,
+          alreadyMastered,
+          streakMultiplier: s.streakMultiplier,
+          newStrength: 100,
+        };
       },
 
       // ── Stage unlock ──────────────────────────────────────────────────────
@@ -946,7 +979,16 @@ export const useProgressStore = create<ProgressStore>()(
       checkAndUpdateStreak: () =>
         set((s) => {
           const today = todayStr();
-          if (s.lastPlayedDate === today) return s;
+          const thisMonday = weekMondayOf(today);
+
+          // Keep only dates from the current ISO week, then add today (deduplicated)
+          const daysThisWeek = (s.practiceDaysThisWeek ?? [])
+            .filter((d) => weekMondayOf(d) === thisMonday);
+          if (!daysThisWeek.includes(today)) daysThisWeek.push(today);
+
+          if (s.lastPlayedDate === today) {
+            return { practiceDaysThisWeek: daysThisWeek };
+          }
 
           const yesterday = new Date();
           yesterday.setDate(yesterday.getDate() - 1);
@@ -967,12 +1009,13 @@ export const useProgressStore = create<ProgressStore>()(
             streak: newStreak,
             lastPlayedDate: today,
             streakMultiplier,
+            practiceDaysThisWeek: daysThisWeek,
           };
         }),
     }),
     {
       name: 'slovak-progress',
-      version: 16,
+      version: 18,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
@@ -1092,6 +1135,18 @@ export const useProgressStore = create<ProgressStore>()(
             })),
             reviewTargetIds: [], // recomputed by decayLessonStrengths on first load
           };
+        }
+
+        if (version < 17) {
+          const records = (old.lessonRecords as Array<Record<string, unknown>>) ?? [];
+          old = {
+            ...old,
+            lessonRecords: records.map((r) => ({ ...r, mastered: r.mastered ?? false })),
+          };
+        }
+
+        if (version < 18) {
+          old = { ...old, practiceDaysThisWeek: [] };
         }
 
         return old as unknown as ProgressStore;

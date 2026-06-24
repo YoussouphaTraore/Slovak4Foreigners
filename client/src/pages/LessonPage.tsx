@@ -38,6 +38,7 @@ export function LessonPage() {
   const [showCheckpoint, setShowCheckpoint] = useState(false);
 
   const strikesRef   = useRef({ total: 0, consecutive: 0, lessonTotal: 0 });
+  const wrongAnswersThisRun = useRef(0);
   const [strikesDisplay, setStrikesDisplay] = useState({ total: 0, consecutive: 0 });
   const penaltyRef   = useRef(false);
   const failedWordsRef = useRef<{ slovak: string; english: string }[]>([]);
@@ -127,13 +128,24 @@ export function LessonPage() {
     if (useProgressStore.getState().partialLessonProgress?.lessonId === lesson.id) {
       store.clearPartialProgress();
     }
-    const { xpEarned } = store.completeLesson(
-      lesson.id,
-      strikesRef.current.lessonTotal,
-      exercises.length
-    );
+    const result = store.completeLesson(lesson.id, {
+      lessonXpReward: lesson.xpReward,
+      totalStrikes: strikesRef.current.lessonTotal,
+      wrongAnswersThisRun: wrongAnswersThisRun.current,
+    });
     store.checkAndUpdateStreak();
-    navigate(`/celebration/${lesson.id}`, { state: { xpEarned, totalXP: lesson.xpReward } });
+    navigate(`/celebration/${lesson.id}`, {
+      state: {
+        xpEarned: result.xpEarned,
+        baseXP: result.baseXP,
+        perfectBonusXP: result.perfectBonusXP,
+        wasPerfectRun: result.wasPerfectRun,
+        isFirstMastery: result.isFirstMastery,
+        alreadyMastered: result.alreadyMastered,
+        streakMultiplier: result.streakMultiplier,
+        totalXP: lesson.xpReward,
+      },
+    });
   };
 
   const handleSaveAndExit = () => {
@@ -178,6 +190,7 @@ export function LessonPage() {
     strikesRef.current.total        += 1;
     strikesRef.current.consecutive  += 1;
     strikesRef.current.lessonTotal  += 1;
+    wrongAnswersThisRun.current     += 1;
     const { total, consecutive } = strikesRef.current;
     setStrikesDisplay({ total, consecutive });
 

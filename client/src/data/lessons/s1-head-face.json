@@ -1,0 +1,283 @@
+{
+  "id": "s1-head-face",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Head & Face",
+  "description": "Essential head and face words for descriptions, dentists and basic medical visits",
+  "icon": "🙂",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Head & Face",
+      "rows": [
+        {
+          "label": "Head",
+          "slovak": "Hlava",
+          "english": "Head"
+        },
+        {
+          "label": "Hair",
+          "slovak": "Vlasy",
+          "english": "Hair"
+        },
+        {
+          "label": "Face",
+          "slovak": "Tvár",
+          "english": "Face"
+        },
+        {
+          "label": "Eye / Eyes",
+          "slovak": "Oko / Oči",
+          "english": "Eye / Eyes"
+        },
+        {
+          "label": "Ear / Ears",
+          "slovak": "Ucho / Uši",
+          "english": "Ear / Ears"
+        },
+        {
+          "label": "Nose",
+          "slovak": "Nos",
+          "english": "Nose"
+        },
+        {
+          "label": "Mouth",
+          "slovak": "Ústa",
+          "english": "Mouth"
+        },
+        {
+          "label": "Teeth",
+          "slovak": "Zuby",
+          "english": "Teeth"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Hlava",
+          "english": "Head"
+        },
+        {
+          "slovak": "Vlasy",
+          "english": "Hair"
+        },
+        {
+          "slovak": "Tvár",
+          "english": "Face"
+        },
+        {
+          "slovak": "Oko",
+          "english": "Eye"
+        },
+        {
+          "slovak": "Oči",
+          "english": "Eyes"
+        },
+        {
+          "slovak": "Ucho",
+          "english": "Ear"
+        },
+        {
+          "slovak": "Uši",
+          "english": "Ears"
+        },
+        {
+          "slovak": "Nos",
+          "english": "Nose"
+        },
+        {
+          "slovak": "Ústa",
+          "english": "Mouth"
+        },
+        {
+          "slovak": "Zuby",
+          "english": "Teeth"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Hlava",
+          "english": "Head"
+        },
+        {
+          "slovak": "Vlasy",
+          "english": "Hair"
+        },
+        {
+          "slovak": "Tvár",
+          "english": "Face"
+        },
+        {
+          "slovak": "Oko",
+          "english": "Eye"
+        },
+        {
+          "slovak": "Oči",
+          "english": "Eyes"
+        },
+        {
+          "slovak": "Ucho",
+          "english": "Ear"
+        },
+        {
+          "slovak": "Uši",
+          "english": "Ears"
+        },
+        {
+          "slovak": "Nos",
+          "english": "Nose"
+        },
+        {
+          "slovak": "Ústa",
+          "english": "Mouth"
+        },
+        {
+          "slovak": "Zuby",
+          "english": "Teeth"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Hlava",
+          "english": "Head"
+        },
+        {
+          "slovak": "Vlasy",
+          "english": "Hair"
+        },
+        {
+          "slovak": "Tvár",
+          "english": "Face"
+        },
+        {
+          "slovak": "Oko",
+          "english": "Eye"
+        },
+        {
+          "slovak": "Oči",
+          "english": "Eyes"
+        },
+        {
+          "slovak": "Ucho",
+          "english": "Ear"
+        },
+        {
+          "slovak": "Uši",
+          "english": "Ears"
+        },
+        {
+          "slovak": "Nos",
+          "english": "Nose"
+        },
+        {
+          "slovak": "Ústa",
+          "english": "Mouth"
+        },
+        {
+          "slovak": "Zuby",
+          "english": "Teeth"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are at the doctor. You have a headache. Where do you point and what do you say?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Brucho",
+            "Hlava",
+            "Koleno",
+            "Chrbát"
+          ],
+          "answer": "Hlava",
+          "answerMeaning": "Hlava = Head. Bolí ma hlava = My head hurts. This is one of the most common complaints at a doctor."
+        },
+        {
+          "situation": "The dentist asks you to open your mouth so they can check your teeth. Which two body words are they looking at?",
+          "instruction": "Choose the correct pair",
+          "choices": [
+            "Nos a Ucho",
+            "Ústa a Zuby",
+            "Tvár a Vlasy",
+            "Oko a Nos"
+          ],
+          "answer": "Ústa a Zuby",
+          "answerMeaning": "Ústa = Mouth. Zuby = Teeth. Otvorte ústa = Open your mouth. You will hear this at a dental appointment."
+        },
+        {
+          "situation": "The police need you to describe the person you saw. They had short dark hair. Which word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Tvár",
+            "Hlava",
+            "Vlasy",
+            "Oko"
+          ],
+          "answer": "Vlasy",
+          "answerMeaning": "Vlasy = Hair. Krátke tmavé vlasy = short dark hair. This connects directly to the Colors lesson."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Bolí ma ___. Mám teplotu.",
+          "translation": "My ___ hurts. I have a fever.",
+          "choices": [
+            "Hlava",
+            "Noha",
+            "Chrbát",
+            "Koleno"
+          ],
+          "answer": "Hlava"
+        },
+        {
+          "sentence": "Otvorte ___. Prezriem vám zuby.",
+          "translation": "Open your ___. I will check your teeth.",
+          "choices": [
+            "Nos",
+            "Ucho",
+            "Ústa",
+            "Oko"
+          ],
+          "answer": "Ústa"
+        },
+        {
+          "sentence": "Má modré ___ a tmavé vlasy.",
+          "translation": "She has blue ___ and dark hair.",
+          "choices": [
+            "Ústa",
+            "Nos",
+            "Zuby",
+            "Oči"
+          ],
+          "answer": "Oči"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

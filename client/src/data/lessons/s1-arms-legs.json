@@ -1,0 +1,237 @@
+{
+  "id": "s1-arms-legs",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Arms & Legs",
+  "description": "Words for hand, arm, leg and foot injuries at the doctor or pharmacy",
+  "icon": "🦵",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Arms & Legs",
+      "rows": [
+        {
+          "label": "Hand / Arm",
+          "slovak": "Ruka / Ruky",
+          "english": "Hand / Arm (singular / plural)"
+        },
+        {
+          "label": "Finger",
+          "slovak": "Prst",
+          "english": "Finger"
+        },
+        {
+          "label": "Leg / Foot",
+          "slovak": "Noha / Nohy",
+          "english": "Leg / Foot (singular / plural)"
+        },
+        {
+          "label": "Knee",
+          "slovak": "Koleno",
+          "english": "Knee"
+        },
+        {
+          "label": "Leg / foot note",
+          "slovak": "Noha = leg / foot",
+          "english": "Slovak uses one common word for leg and foot."
+        },
+        {
+          "label": "Finger / toe note",
+          "slovak": "Prst = finger / toe",
+          "english": "Context tells you whether it is on the hand or foot."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Ruka",
+          "english": "Hand / Arm"
+        },
+        {
+          "slovak": "Ruky",
+          "english": "Hands / Arms"
+        },
+        {
+          "slovak": "Prst",
+          "english": "Finger / Toe"
+        },
+        {
+          "slovak": "Noha",
+          "english": "Leg / Foot"
+        },
+        {
+          "slovak": "Nohy",
+          "english": "Legs / Feet"
+        },
+        {
+          "slovak": "Koleno",
+          "english": "Knee"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Ruka",
+          "english": "Hand / Arm"
+        },
+        {
+          "slovak": "Ruky",
+          "english": "Hands / Arms"
+        },
+        {
+          "slovak": "Prst",
+          "english": "Finger / Toe"
+        },
+        {
+          "slovak": "Noha",
+          "english": "Leg / Foot"
+        },
+        {
+          "slovak": "Nohy",
+          "english": "Legs / Feet"
+        },
+        {
+          "slovak": "Koleno",
+          "english": "Knee"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Ruka",
+          "english": "Hand / Arm"
+        },
+        {
+          "slovak": "Ruky",
+          "english": "Hands / Arms"
+        },
+        {
+          "slovak": "Prst",
+          "english": "Finger / Toe"
+        },
+        {
+          "slovak": "Noha",
+          "english": "Leg / Foot"
+        },
+        {
+          "slovak": "Nohy",
+          "english": "Legs / Feet"
+        },
+        {
+          "slovak": "Koleno",
+          "english": "Knee"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You fell and hurt your leg. You are at the emergency room. Which word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Ruka",
+            "Koleno",
+            "Noha",
+            "Plece"
+          ],
+          "answer": "Noha",
+          "answerMeaning": "Noha = Leg / foot. Bolí ma noha = My leg hurts. Slovak uses noha for both leg and foot."
+        },
+        {
+          "situation": "You twisted your knee playing sport. At the doctor you say \"Bolí ma...\" and point. Which word completes the sentence?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Noha",
+            "Prst",
+            "Koleno",
+            "Ruka"
+          ],
+          "answer": "Koleno",
+          "answerMeaning": "Koleno = Knee. Bolí ma koleno = My knee hurts. The phrase Bolí ma + body part is useful in any clinic."
+        },
+        {
+          "situation": "You cut your finger while cooking. At the pharmacy you show them and say \"Bolí ma...\" Which word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Ruka",
+            "Noha",
+            "Koleno",
+            "Prst"
+          ],
+          "answer": "Prst",
+          "answerMeaning": "Prst = Finger / toe. Context makes it clear whether you mean a finger or a toe."
+        },
+        {
+          "situation": "You slipped and landed on your arm. Which word helps you explain what hurts?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Ruka",
+            "Zuby",
+            "Hruď",
+            "Vlasy"
+          ],
+          "answer": "Ruka",
+          "answerMeaning": "Ruka = Hand / arm. Slovak uses one common word for hand and arm."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Spadol som zo schodov. Bolí ma ___. Neviem chodiť.",
+          "translation": "I fell down the stairs. My ___ hurts. I cannot walk.",
+          "choices": [
+            "Ruka",
+            "Vlasy",
+            "Noha",
+            "Plece"
+          ],
+          "answer": "Noha"
+        },
+        {
+          "sentence": "Bolí ma ___. Hral som futbal.",
+          "translation": "My ___ hurts. I played football.",
+          "choices": [
+            "Koleno",
+            "Ústa",
+            "Srdce",
+            "Nos"
+          ],
+          "answer": "Koleno"
+        },
+        {
+          "sentence": "Porezal som si ___.",
+          "translation": "I cut my ___.",
+          "choices": [
+            "Prst",
+            "Ruka",
+            "Koleno",
+            "Noha"
+          ],
+          "answer": "Prst"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

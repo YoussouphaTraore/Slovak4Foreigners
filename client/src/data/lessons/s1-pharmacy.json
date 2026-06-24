@@ -103,7 +103,7 @@
             "Ako to mám užívať?"
           ],
           "answer": "Máte niečo na bolesť hlavy?",
-          "answerMeaning": "Máte niečo na bolesť hlavy? = Do you have something for a headache? Bolesť hlavy combines bolesť (pain) and hlava (head) from the Body Parts and Hospital lessons."
+          "answerMeaning": "Máte niečo na bolesť hlavy? = Do you have something for a headache? Bolesť hlavy combines bolesť (pain) and hlava (head) from the Head & Face and Hospital lessons."
         },
         {
           "situation": "The doctor gave you a prescription. The pharmacist asks if you have it. What do you show them?",
@@ -129,7 +129,7 @@
           "instruction": "Choose the correct word",
           "choices": ["Sirup", "Masť", "Náplasť", "Kvapky"],
           "answer": "Náplasť",
-          "answerMeaning": "Náplasť = Plaster / Band-aid. Bolí ma prst (from the Body Parts lesson) — and now you know what to ask for."
+          "answerMeaning": "Náplasť = Plaster / Band-aid. Bolí ma prst (from the Arms & Legs lesson) — and now you know what to ask for."
         },
         {
           "situation": "The pharmacist hands you tablets and explains the instructions: 'Dvakrát denne, pred jedlom.' When and how often do you take them?",

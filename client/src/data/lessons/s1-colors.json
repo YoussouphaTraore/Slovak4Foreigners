@@ -121,14 +121,14 @@
           "instruction": "Choose the correct phrase",
           "choices": ["Zelené oči.", "Hnedé oči.", "Modré oči.", "Šedé oči."],
           "answer": "Modré oči.",
-          "answerMeaning": "Modré oči = Blue eyes — same color as the sky. Oči = Eyes (plural) from the Body Parts lesson. Color + body part = a complete description."
+          "answerMeaning": "Modré oči = Blue eyes — same color as the sky. Oči = Eyes (plural) from the Head & Face lesson. Color + body part = a complete description."
         },
         {
           "situation": "You are describing a suspect to the police. Their hair is the color of coffee. What do you say?",
           "instruction": "Choose the correct phrase",
           "choices": ["Červené vlasy.", "Blond vlasy.", "Čierne vlasy.", "Hnedé vlasy."],
           "answer": "Hnedé vlasy.",
-          "answerMeaning": "Hnedé vlasy = Brown hair — the color of coffee or earth. Vlasy = hair from the Body Parts lesson."
+          "answerMeaning": "Hnedé vlasy = Brown hair — the color of coffee or earth. Vlasy = hair from the Head & Face lesson."
         },
         {
           "situation": "An important letter arrives from the Foreign Police. The envelope is the color of snow. Which color is it?",

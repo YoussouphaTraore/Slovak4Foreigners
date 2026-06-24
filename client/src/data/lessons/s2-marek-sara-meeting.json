@@ -4,7 +4,7 @@
   "stageName": "Stage 2 · Settling In",
   "title": "Marek Meets Sara",
   "description": "Listen to Marek and Sara meet for the first time",
-  "icon": "🤝",
+  "icon": "🎧",
   "xpReward": 15,
   "coming_soon": false,
   "exercises": [
@@ -15,14 +15,20 @@
       "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-marek-sara-meeting.mp3",
       "conversationTranscriptSk": "Marek: Ahoj! Volám sa Marek. Ako sa voláš? Sara: Ahoj Marek! Volám sa Sara. Teší ma. Marek: Mňa tiež. Odkiaľ si? Sara: Som z Talianska. Marek: Vitaj v Bratislave! Sara: Ďakujem! Si z Bratislavy? Marek: Nie. Som z Nitry, ale bývam tu v Bratislave. Sara: Rozumiem. A tvoja rodina, býva tu v Bratislave? Marek: Nie. Moji rodičia bývajú v Nitre. A ty? Sara: Nie, nemám rodinu tu. Moji rodičia bývajú v Taliansku. Ale bývam s mačkou. Marek: Ako sa volá tvoja mačka? Sara: Volá sa Luna. A ty, máš zviera? Marek: Áno, mám psa. Volá sa Rex. Luna je pekné meno! Sara: Ďakujem! Rex tiež. Som rada, že sme sa spoznali, Marek! Marek: Ja tiež, Sara! Som šťastný tu na Slovensku. Sara: Ja som šťastná tu tiež!",
       "speakers": [
-        { "name": "Marek", "avatar": "👨" },
-        { "name": "Sara", "avatar": "👩" }
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        }
       ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
-      "instruction": "Tap every word or expression you heard in the conversation.",
+      "instruction": "Tap every word or expression you heard in the conversation. (Part 1 of 2)",
       "passThresholdPercent": 76,
       "onFailRestartExerciseId": "ex1",
       "correctWords": [
@@ -38,7 +44,21 @@
         "ale bývam tu v Bratislave",
         "Rozumiem",
         "tvoja rodina",
-        "Moji rodičia bývajú v Nitre",
+        "Moji rodičia bývajú v Nitre"
+      ],
+      "distractorWords": [
+        "Kde bývate?",
+        "Mám sestru",
+        "október"
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "CONVERSATION_WORD_RECOGNITION",
+      "instruction": "Tap every word or expression you heard in the conversation. (Part 2 of 2)",
+      "passThresholdPercent": 76,
+      "onFailRestartExerciseId": "ex1",
+      "correctWords": [
         "nemám rodinu tu",
         "Moji rodičia bývajú v Taliansku",
         "bývam s mačkou",
@@ -53,9 +73,6 @@
         "Som šťastná tu tiež"
       ],
       "distractorWords": [
-        "Kde bývate?",
-        "Mám sestru",
-        "október",
         "Ako sa voláte?",
         "Som z Nemecka"
       ]
@@ -67,75 +84,171 @@
       "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-marek-sara-meeting.mp3",
       "conversationTranscriptSk": "Marek: Ahoj! Volám sa Marek. Ako sa voláš? Sara: Ahoj Marek! Volám sa Sara. Teší ma. Marek: Mňa tiež. Odkiaľ si? Sara: Som z Talianska. Marek: Vitaj v Bratislave! Sara: Ďakujem! Si z Bratislavy? Marek: Nie. Som z Nitry, ale bývam tu v Bratislave. Sara: Rozumiem. A tvoja rodina, býva tu v Bratislave? Marek: Nie. Moji rodičia bývajú v Nitre. A ty? Sara: Nie, nemám rodinu tu. Moji rodičia bývajú v Taliansku. Ale bývam s mačkou. Marek: Ako sa volá tvoja mačka? Sara: Volá sa Luna. A ty, máš zviera? Marek: Áno, mám psa. Volá sa Rex. Luna je pekné meno! Sara: Ďakujem! Rex tiež. Som rada, že sme sa spoznali, Marek! Marek: Ja tiež, Sara! Som šťastný tu na Slovensku. Sara: Ja som šťastná tu tiež!",
       "speakers": [
-        { "name": "Marek", "avatar": "👨" },
-        { "name": "Sara", "avatar": "👩" }
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        }
       ],
       "questions": [
         {
           "id": "q1",
           "questionEn": "How did Marek ask Sara her name?",
           "answers": [
-            { "id": "a", "textEn": "He said: \"Ako sa voláte?\"", "isCorrect": false },
-            { "id": "b", "textEn": "He said: \"Ako sa voláš?\"", "isCorrect": true },
-            { "id": "c", "textEn": "He said: \"Ako sa voláš psa?\"", "isCorrect": false }
+            {
+              "id": "a",
+              "textEn": "He said: \"Ako sa voláte?\"",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "He said: \"Ako sa voláš?\"",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "He said: \"Ako sa voláš psa?\"",
+              "isCorrect": false
+            }
           ],
           "answerMeaning": "Ako sa voláš? = What's your name? (informal Ty form). Marek used the informal form because they are peers — if speaking to a stranger in a formal context, you would say Ako sa voláte? (Vy form).",
-          "reviewPair": { "slovak": "Ako sa voláš?", "english": "What is your name? (informal)" }
+          "reviewPair": {
+            "slovak": "Ako sa voláš?",
+            "english": "What is your name? (informal)"
+          }
         },
         {
           "id": "q2",
           "questionEn": "Where is Sara from and where does she live now?",
           "answers": [
-            { "id": "a", "textEn": "From Italy, lives in Nitra", "isCorrect": false },
-            { "id": "b", "textEn": "From Italy, lives in Bratislava", "isCorrect": true },
-            { "id": "c", "textEn": "From Bratislava, lives in Italy", "isCorrect": false }
+            {
+              "id": "a",
+              "textEn": "From Italy, lives in Nitra",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "From Italy, lives in Bratislava",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "From Bratislava, lives in Italy",
+              "isCorrect": false
+            }
           ],
           "answerMeaning": "Som z Talianska, ale bývam tu v Bratislave = I am from Italy, but I live here in Bratislava. Same Som z... / bývam v... pattern from Lessons 1 and 2.",
-          "reviewPair": { "slovak": "Som z Talianska, ale bývam v Bratislave", "english": "I am from Italy but I live in Bratislava" }
+          "reviewPair": {
+            "slovak": "Som z Talianska, ale bývam v Bratislave",
+            "english": "I am from Italy but I live in Bratislava"
+          }
         },
         {
           "id": "q3",
           "questionEn": "What did Marek say when he found out Sara was new to Bratislava?",
           "answers": [
-            { "id": "a", "textEn": "He said: \"Teší ma\"", "isCorrect": false },
-            { "id": "b", "textEn": "He said: \"Vitaj v Bratislave!\"", "isCorrect": true },
-            { "id": "c", "textEn": "He said: \"Odkiaľ si?\"", "isCorrect": false }
+            {
+              "id": "a",
+              "textEn": "He said: \"Teší ma\"",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "He said: \"Vitaj v Bratislave!\"",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "He said: \"Odkiaľ si?\"",
+              "isCorrect": false
+            }
           ],
           "answerMeaning": "Vitaj v Bratislave! = Welcome to Bratislava! Vitaj is the informal welcome — you would say Vitajte for a more formal situation or a group of people.",
-          "reviewPair": { "slovak": "Vitaj v Bratislave!", "english": "Welcome to Bratislava!" }
+          "reviewPair": {
+            "slovak": "Vitaj v Bratislave!",
+            "english": "Welcome to Bratislava!"
+          }
         },
         {
           "id": "q4",
           "questionEn": "Why doesn't Sara have family in Bratislava?",
           "answers": [
-            { "id": "a", "textEn": "She has no family at all", "isCorrect": false },
-            { "id": "b", "textEn": "Her parents live in Italy", "isCorrect": true },
-            { "id": "c", "textEn": "Her parents live in Nitra", "isCorrect": false }
+            {
+              "id": "a",
+              "textEn": "She has no family at all",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Her parents live in Italy",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Her parents live in Nitra",
+              "isCorrect": false
+            }
           ],
           "answerMeaning": "Nemám rodinu tu. Moji rodičia bývajú v Taliansku = I don't have family here. My parents live in Italy. Nemám = I don't have — the negative of Mám from the Verbs lesson.",
-          "reviewPair": { "slovak": "Moji rodičia bývajú v Taliansku", "english": "My parents live in Italy" }
+          "reviewPair": {
+            "slovak": "Moji rodičia bývajú v Taliansku",
+            "english": "My parents live in Italy"
+          }
         },
         {
           "id": "q5",
           "questionEn": "Who asked about the other person's pet first?",
           "answers": [
-            { "id": "a", "textEn": "Marek asked Sara", "isCorrect": false },
-            { "id": "b", "textEn": "Sara asked Marek", "isCorrect": true },
-            { "id": "c", "textEn": "Neither asked — they both just mentioned it", "isCorrect": false }
+            {
+              "id": "a",
+              "textEn": "Marek asked Sara",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Sara asked Marek",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Neither asked — they both just mentioned it",
+              "isCorrect": false
+            }
           ],
           "answerMeaning": "Sara asked: Máš zviera? = Do you have a pet? Marek then revealed he has a dog called Rex. Máš = Do you have? — the Ty form question from Mám/Máš pattern.",
-          "reviewPair": { "slovak": "Máš zviera?", "english": "Do you have a pet?" }
+          "reviewPair": {
+            "slovak": "Máš zviera?",
+            "english": "Do you have a pet?"
+          }
         },
         {
           "id": "q6",
           "questionEn": "What do Marek and Sara have in common by the end of the conversation?",
           "answers": [
-            { "id": "a", "textEn": "They are both from Nitra", "isCorrect": false },
-            { "id": "b", "textEn": "They both live in Bratislava and are happy in Slovakia", "isCorrect": true },
-            { "id": "c", "textEn": "They both have cats", "isCorrect": false }
+            {
+              "id": "a",
+              "textEn": "They are both from Nitra",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "They both live in Bratislava and are happy in Slovakia",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "They both have cats",
+              "isCorrect": false
+            }
           ],
           "answerMeaning": "Both said they live in Bratislava and both expressed being happy: Som šťastný tu na Slovensku (Marek, male form) and Som šťastná tu tiež (Sara, female form). Notice the -ý vs -á ending difference based on gender.",
-          "reviewPair": { "slovak": "Som šťastný / šťastná tu na Slovensku", "english": "I am happy here in Slovakia" }
+          "reviewPair": {
+            "slovak": "Som šťastný / šťastná tu na Slovensku",
+            "english": "I am happy here in Slovakia"
+          }
         }
       ]
     },
@@ -146,32 +259,71 @@
         {
           "id": "s1",
           "promptEn": "What is your name? (informal)",
-          "targetSk": ["Ako sa", "voláš?"],
-          "bankChunks": ["Ako sa", "voláš?", "voláte?"]
+          "targetSk": [
+            "Ako sa",
+            "voláš?"
+          ],
+          "bankChunks": [
+            "Ako sa",
+            "voláš?",
+            "voláte?"
+          ]
         },
         {
           "id": "s2",
           "promptEn": "Nice to meet you.",
-          "targetSk": ["Teší", "ma."],
-          "bankChunks": ["Teší", "ma.", "mňa"]
+          "targetSk": [
+            "Teší",
+            "ma."
+          ],
+          "bankChunks": [
+            "Teší",
+            "ma.",
+            "mňa"
+          ]
         },
         {
           "id": "s3",
           "promptEn": "Welcome to Bratislava!",
-          "targetSk": ["Vitaj", "v Bratislave!"],
-          "bankChunks": ["Vitaj", "v Bratislave!", "v Nitre!"]
+          "targetSk": [
+            "Vitaj",
+            "v Bratislave!"
+          ],
+          "bankChunks": [
+            "Vitaj",
+            "v Bratislave!",
+            "v Nitre!"
+          ]
         },
         {
           "id": "s4",
           "promptEn": "I don't have family here. I live with my cat.",
-          "targetSk": ["Nemám rodinu tu.", "Ale bývam", "s mačkou."],
-          "bankChunks": ["Nemám rodinu tu.", "Ale bývam", "s mačkou.", "s psom."]
+          "targetSk": [
+            "Nemám rodinu tu.",
+            "Ale bývam",
+            "s mačkou."
+          ],
+          "bankChunks": [
+            "Nemám rodinu tu.",
+            "Ale bývam",
+            "s mačkou.",
+            "s psom."
+          ]
         },
         {
           "id": "s5",
           "promptEn": "I am happy here too!",
-          "targetSk": ["Ja som", "šťastná", "tu tiež!"],
-          "bankChunks": ["Ja som", "šťastná", "tu tiež!", "šťastný"]
+          "targetSk": [
+            "Ja som",
+            "šťastná",
+            "tu tiež!"
+          ],
+          "bankChunks": [
+            "Ja som",
+            "šťastná",
+            "tu tiež!",
+            "šťastný"
+          ]
         }
       ]
     },

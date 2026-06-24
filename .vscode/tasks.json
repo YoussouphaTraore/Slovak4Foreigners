@@ -29,9 +29,9 @@
       }
     },
     {
-      "label": "AGENT_QA Watcher — Copilot Studio",
+      "label": "AGENT_QA Watcher — GitHub Copilot",
       "type": "shell",
-      "command": "node scripts/watch-agent-qa.mjs --agent \"Copilot Studio\"",
+      "command": "node scripts/watch-agent-qa.mjs --agent \"GitHub Copilot\"",
       "isBackground": true,
       "problemMatcher": [],
       "presentation": {

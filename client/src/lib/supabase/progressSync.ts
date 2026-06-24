@@ -66,6 +66,7 @@ export async function syncLessonRecord(
         next_review_due: record.nextReviewDue,
         times_reviewed: record.timesReviewed,
         strikes_in_last_review: record.strikesInLastReview,
+        mastered: record.mastered ?? false,
       },
       { onConflict: 'user_id,lesson_id' },
     );
@@ -130,6 +131,7 @@ export async function loadProgressFromSupabase(
         new Date(new Date(r.completed_at as string).getTime() + 86_400_000).toISOString(),
       timesReviewed: (r.times_reviewed as number) ?? 0,
       strikesInLastReview: (r.strikes_in_last_review as number) ?? 0,
+      mastered: (r.mastered as boolean) ?? false,
     }));
 
     const snailRaceRecords: SnailRaceRecord[] = (
