@@ -192,13 +192,13 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
         clearSafety();
         stopRecognition();
         setStatus('idle');
-        // Distinguish "blocked forever" from "just dismissed the dialog"
         if (navigator.permissions) {
           navigator.permissions.query({ name: 'microphone' as PermissionName }).then((result) => {
+            // 'denied' = permanently blocked; 'prompt' = user dismissed the dialog
             setMicPermission(result.state === 'denied' ? 'blocked' : 'denied');
-          }).catch(() => setMicPermission('denied'));
+          }).catch(() => setMicPermission('blocked'));
         } else {
-          setMicPermission('denied');
+          setMicPermission('blocked');
         }
       } else {
         clearSafety();
@@ -222,23 +222,29 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     }, SAFETY_TIMEOUT_MS);
   }, [status, handleTranscripts, handleNoSpeech, stopRecognition]);
 
-  // When mic is amber (denied), use getUserMedia to reliably re-prompt the
-  // browser permission dialog — SpeechRecognition silently re-rejects after
-  // the first dismissal, but getUserMedia consistently shows the dialog again.
+  // When mic is amber (denied), check the real permission state first.
+  // If already 'denied' at browser level → go straight to blocked (grey) without
+  // calling getUserMedia, which would just flicker and immediately reject.
+  // If state is 'prompt' → call getUserMedia to re-show the browser dialog.
   const requestPermission = useCallback(async () => {
+    // Pre-check: if permission is already permanently denied, skip getUserMedia entirely
+    if (navigator.permissions) {
+      try {
+        const result = await navigator.permissions.query({ name: 'microphone' as PermissionName });
+        if (result.state === 'denied') { setMicPermission('blocked'); return; }
+      } catch { /* permissions API unavailable — fall through to getUserMedia */ }
+    }
+
     if (!navigator.mediaDevices?.getUserMedia) { setMicPermission('blocked'); return; }
+
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       stream.getTracks().forEach(t => t.stop());
       setMicPermission('unknown');
       startRecording();
     } catch {
-      try {
-        const result = await navigator.permissions.query({ name: 'microphone' as PermissionName });
-        setMicPermission(result.state === 'denied' ? 'blocked' : 'denied');
-      } catch {
-        setMicPermission('blocked');
-      }
+      // getUserMedia failed despite state being 'prompt' — treat as blocked
+      setMicPermission('blocked');
     }
   }, [startRecording]);
 
