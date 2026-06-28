@@ -222,6 +222,26 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     }, SAFETY_TIMEOUT_MS);
   }, [status, handleTranscripts, handleNoSpeech, stopRecognition]);
 
+  // When mic is amber (denied), use getUserMedia to reliably re-prompt the
+  // browser permission dialog — SpeechRecognition silently re-rejects after
+  // the first dismissal, but getUserMedia consistently shows the dialog again.
+  const requestPermission = useCallback(async () => {
+    if (!navigator.mediaDevices?.getUserMedia) { setMicPermission('blocked'); return; }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream.getTracks().forEach(t => t.stop());
+      setMicPermission('unknown');
+      startRecording();
+    } catch {
+      try {
+        const result = await navigator.permissions.query({ name: 'microphone' as PermissionName });
+        setMicPermission(result.state === 'denied' ? 'blocked' : 'denied');
+      } catch {
+        setMicPermission('blocked');
+      }
+    }
+  }, [startRecording]);
+
   const handleCantSpeak = useCallback(() => setShowModal(true), []);
   const handleBack = useCallback(() => setShowModal(false), []);
   const handleNoisyPlace = useCallback(() => {
@@ -310,7 +330,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
       <div className="flex flex-col items-center gap-2 flex-none pb-1">
         <button
           type="button"
-          onClick={isRecording ? stopRecognition : startRecording}
+          onClick={isRecording ? stopRecognition : micPermission === 'denied' ? () => { void requestPermission(); } : startRecording}
           disabled={status === 'pass' || micPermission === 'blocked'}
           className={[
             'w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all active:scale-95 cursor-pointer',
