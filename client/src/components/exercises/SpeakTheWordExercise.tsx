@@ -82,6 +82,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   const [attempts, setAttempts] = useState(0);
   const [passedSet, setPassedSet] = useState<Set<number>>(new Set());
   const [showModal, setShowModal] = useState(false);
+  const [micPermission, setMicPermission] = useState<'unknown' | 'denied' | 'blocked'>('unknown');
 
   const activeIdxRef = useRef(0);
   const attemptsRef = useRef(0);
@@ -187,6 +188,18 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     rec.onerror = (event: any) => {
       if (event.error === 'no-speech' || event.error === 'aborted') {
         handleNoSpeech();
+      } else if (event.error === 'not-allowed') {
+        clearSafety();
+        stopRecognition();
+        setStatus('idle');
+        // Distinguish "blocked forever" from "just dismissed the dialog"
+        if (navigator.permissions) {
+          navigator.permissions.query({ name: 'microphone' as PermissionName }).then((result) => {
+            setMicPermission(result.state === 'denied' ? 'blocked' : 'denied');
+          }).catch(() => setMicPermission('denied'));
+        } else {
+          setMicPermission('denied');
+        }
       } else {
         clearSafety();
         stopRecognition();
@@ -201,6 +214,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
 
     recognitionRef.current = recognition;
     rec.start();
+    setMicPermission('unknown');
     setStatus('recording');
 
     safetyTimerRef.current = window.setTimeout(() => {
@@ -220,11 +234,13 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   const prompt =
-    isRecording          ? 'Listening...' :
-    status === 'pass'    ? '✓ Well done!' :
-    status === 'mic_error' ? 'Mic not available — tap "Can\'t speak?"' :
+    isRecording             ? 'Listening...' :
+    status === 'pass'       ? '✓ Well done!' :
+    status === 'mic_error'  ? 'Mic not available — tap "Can\'t speak?"' :
     status === 'fail' && attempts >= MAX_ATTEMPTS ? 'Moving on...' :
-    status === 'fail'    ? 'Try again!' :
+    status === 'fail'       ? 'Try again!' :
+    micPermission === 'blocked' ? 'Microphone blocked — enable it in browser settings.' :
+    micPermission === 'denied'  ? 'Tap the mic to allow microphone access.' :
     'Tap the mic and say the highlighted word!';
 
   return (
@@ -295,13 +311,17 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
         <button
           type="button"
           onClick={isRecording ? stopRecognition : startRecording}
-          disabled={status === 'pass'}
+          disabled={status === 'pass' || micPermission === 'blocked'}
           className={[
             'w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all active:scale-95 cursor-pointer',
             isRecording
               ? 'bg-red-500 animate-pulse'
               : status === 'pass'
               ? 'bg-green-400 cursor-not-allowed'
+              : micPermission === 'blocked'
+              ? 'bg-gray-400 cursor-not-allowed'
+              : micPermission === 'denied'
+              ? 'bg-amber-500 hover:opacity-90 animate-pulse'
               : 'bg-brand-blue hover:opacity-90',
           ].join(' ')}
         >
