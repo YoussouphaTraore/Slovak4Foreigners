@@ -1,4 +1,4 @@
-export type ExerciseType =
+﻿export type ExerciseType =
   | 'LISTEN_AND_PICK'
   | 'PICK_TRANSLATION'
   | 'SITUATIONAL_CHOICE'
@@ -19,17 +19,22 @@ export type ExerciseType =
   | 'CONVERSATION_LISTEN'
   | 'CONVERSATION_WORD_RECOGNITION'
   | 'CONVERSATION_COMPREHENSION'
-  | 'CONVERSATION_SENTENCE_BUILDER';
+  | 'CONVERSATION_SENTENCE_BUILDER'
+  | 'CONVERSATION_SPEAKING'
+  | 'SPEAK_THE_WORD';
 
 import type { ConversationListenExercise, ConversationWordRecognitionExercise, ConversationComprehensionExercise } from './conversationComprehension';
 export type { ConversationListenExercise, ConversationWordRecognitionExercise, ConversationComprehensionExercise } from './conversationComprehension';
 import type { ConversationSentenceBuilderExercise } from './conversationSentenceBuilder';
 export type { ConversationSentenceBuilderExercise } from './conversationSentenceBuilder';
+import type { ConversationSpeakingExercise } from './conversationSpeaking';
+export type { ConversationSpeakingExercise } from './conversationSpeaking';
 
 export interface BaseExercise {
   id: string;
   type: ExerciseType;
   hint?: string;
+  dynamic?: 'countries';
 }
 
 export interface ListenAndPickExercise extends BaseExercise {
@@ -104,7 +109,7 @@ export interface VocabularyTableExercise extends BaseExercise {
   headers?: [string, string, string]; // column labels, defaults to ["When", "Slovak", "English"]
   rows: {
     label: string;   // situation label, e.g. "Morning"
-    slovak: string;  // e.g. "Dobré ráno" — also spoken by TTS on tap
+    slovak: string;  // e.g. "DobrÃ© rÃ¡no" â€” also spoken by TTS on tap
     english: string; // e.g. "Good morning"
   }[];
 }
@@ -112,10 +117,12 @@ export interface VocabularyTableExercise extends BaseExercise {
 export interface FillInBlankPickExercise extends BaseExercise {
   type: 'FILL_IN_BLANK_PICK';
   items: {
-    sentence: string;     // Slovak sentence — blank marked as ___
-    translation?: string; // English translation — blank marked as ___
+    sentence: string;     // Slovak sentence â€” blank marked as ___
+    translation?: string; // English translation â€” blank marked as ___
     choices: string[];    // 4 word options
     answer: string;       // correct choice
+    acceptedAnswers?: string[]; // additional accepted choices
+    answerMeaning?: string; // optional feedback explanation
   }[];
 }
 
@@ -184,7 +191,14 @@ export type Exercise =
   | ConversationListenExercise
   | ConversationWordRecognitionExercise
   | ConversationComprehensionExercise
-  | ConversationSentenceBuilderExercise;
+  | ConversationSentenceBuilderExercise
+  | ConversationSpeakingExercise
+  | SpeakTheWordExercise;
+
+export interface SpeakTheWordExercise extends BaseExercise {
+  type: 'SPEAK_THE_WORD';
+  words: { slovak: string; english: string }[];
+}
 
 export interface Lesson {
   id: string;
@@ -197,3 +211,4 @@ export interface Lesson {
   coming_soon?: boolean;
   exercises: Exercise[];
 }
+

@@ -1,186 +1,647 @@
 {
-  "id": "block6-dialogue",
-  "stageId": "survival",
-  "stageName": "Stage 1 · Survival",
-  "blockId": "stage1-block6",
-  "type": "BLOCK_DIALOGUE",
-  "title": "A Day Out With Marek",
-  "description": "Tram to the restaurant, dinner with Marek, and a taxi home.",
-  "icon": "🍽️",
-  "xpReward": 20,
-  "contact": {
-    "name": "Marek",
-    "initials": "M",
-    "role": "Your friend",
-    "avatar": "👨"
-  },
-  "context": "Marek invites you out for dinner. You take the tram there, eat together, and take a taxi home afterward.",
-  "speakers": {
-    "marek": { "name": "Marek", "initials": "M", "avatar": "👨" },
-    "waitress": { "name": "Waitress", "initials": "W", "avatar": "👩" },
-    "driver": { "name": "Taxi Driver", "initials": "T", "avatar": "🚕" }
-  },
-  "exchanges": [
-    {
-      "id": "ex1",
-      "speaker": "marek",
-      "text": "Ahoj! Poznám dobrú reštauráciu. Ako sa tam dostaneme?",
-      "translation": "Hi! I know a good restaurant. How should we get there?",
-      "prompt": "Marek asks how you should get there. Pick whichever mode of transport you'd choose.",
-      "isOpenQuestion": true,
-      "choices": [
-        { "id": "a", "text": "Poďme električkou.", "translation": "Let's go by tram.", "isCorrect": true },
-        { "id": "b", "text": "Poďme autobusom.", "translation": "Let's go by bus.", "isCorrect": true },
-        { "id": "c", "text": "Poďme pešo.", "translation": "Let's go on foot.", "isCorrect": true },
-        { "id": "d", "text": "Poďme taxíkom.", "translation": "Let's go by taxi.", "isCorrect": true }
-      ],
-      "correctFeedback": "Poďme + mode of transport — correct pattern. Any of these works to suggest how you'll travel together.",
-      "wrongFeedback": "Poďme (Let's go) + mode of transport is the pattern. Any of the four options works grammatically."
-    },
-    {
-      "id": "ex2",
-      "speaker": "marek",
-      "text": "Dobre, poďme električkou. Máš lístok?",
-      "translation": "Good, let's go by tram. Do you have a ticket?",
-      "prompt": "Marek asks if you have a ticket. You don't yet, you need to buy one. What do you say?",
-      "isOpenQuestion": false,
-      "choices": [
-        { "id": "a", "text": "Áno, mám predplatnú kartu.", "translation": "Yes, I have a travel pass.", "isCorrect": false },
-        { "id": "b", "text": "Nie, potrebujem kúpiť jednorazový lístok.", "translation": "No, I need to buy a single ticket.", "isCorrect": true },
-        { "id": "c", "text": "Tu vystupujem.", "translation": "I'm getting off here.", "isCorrect": false },
-        { "id": "d", "text": "Koľko to bude stáť?", "translation": "How much will it cost?", "isCorrect": false }
-      ],
-      "correctFeedback": "Nie, potrebujem kúpiť jednorazový lístok. — correct. Jednorazový lístok = single ticket, from the Tram/Bus lesson.",
-      "wrongFeedback": "Nie, potrebujem kúpiť jednorazový lístok is correct since you don't have a ticket yet."
-    },
-    {
-      "id": "ex3",
-      "speaker": "marek",
-      "text": "Nezabudni ho validovať!",
-      "translation": "Don't forget to validate it!",
-      "prompt": "Marek reminds you to validate your ticket. What do you say after doing it?",
-      "isOpenQuestion": false,
-      "choices": [
-        { "id": "a", "text": "Validoval som ho.", "translation": "I validated it.", "isCorrect": true },
-        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
-        { "id": "c", "text": "Kde mám vystúpiť?", "translation": "Where should I get off?", "isCorrect": false },
-        { "id": "d", "text": "Som unavený.", "translation": "I am tired.", "isCorrect": false }
-      ],
-      "correctFeedback": "Validoval som ho. — correct. You confirmed you did it, exactly as instructed.",
-      "wrongFeedback": "Validoval som ho (I validated it) confirms you've done what Marek reminded you to do."
-    },
-    {
-      "id": "ex4",
-      "speaker": "marek",
-      "text": "Výborne. Naša zastávka je ďalšia.",
-      "translation": "Excellent. Our stop is next.",
-      "prompt": "Marek tells you your stop is next. The tram arrives. What do you say as you get off?",
-      "isOpenQuestion": false,
-      "choices": [
-        { "id": "a", "text": "Tu vystupujem.", "translation": "I'm getting off here.", "isCorrect": true },
-        { "id": "b", "text": "Ide toto do centra?", "translation": "Does this go downtown?", "isCorrect": false },
-        { "id": "c", "text": "Kedy ide ďalší autobus?", "translation": "When's the next bus?", "isCorrect": false },
-        { "id": "d", "text": "Môžete zastaviť tu?", "translation": "Can you stop here?", "isCorrect": false }
-      ],
-      "correctFeedback": "Tu vystupujem. — correct. You're confirming this is your stop as you step off.",
-      "wrongFeedback": "Tu vystupujem (I'm getting off here) is the right phrase when stepping off at your stop."
-    },
-    {
-      "id": "ex5",
-      "speaker": "waitress",
-      "text": "Dobrý deň! Stôl pre koľkých?",
-      "translation": "Good day! A table for how many?",
-      "prompt": "You arrive at the restaurant with Marek. The waitress asks how many people. What do you say?",
-      "isOpenQuestion": false,
-      "choices": [
-        { "id": "a", "text": "Stôl pre jedného.", "translation": "A table for one.", "isCorrect": false },
-        { "id": "b", "text": "Stôl pre dvoch.", "translation": "A table for two.", "isCorrect": true },
-        { "id": "c", "text": "Účet, prosím.", "translation": "The bill, please.", "isCorrect": false },
-        { "id": "d", "text": "Niečo na pitie?", "translation": "Something to drink?", "isCorrect": false }
-      ],
-      "correctFeedback": "Stôl pre dvoch. — correct. You and Marek together, from the Ordering Food lesson.",
-      "wrongFeedback": "Stôl pre dvoch (a table for two) is correct since you're dining with Marek."
-    },
-    {
-      "id": "ex6",
-      "speaker": "waitress",
-      "text": "Čo si dáte?",
-      "translation": "What will you have?",
-      "prompt": "You don't eat meat. What do you tell the waitress before ordering?",
-      "isOpenQuestion": false,
-      "choices": [
-        { "id": "a", "text": "Mám mäso.", "translation": "I have meat.", "isCorrect": false },
-        { "id": "b", "text": "Nejem mäso.", "translation": "I don't eat meat.", "isCorrect": true },
-        { "id": "c", "text": "Je to chutné.", "translation": "It's tasty.", "isCorrect": false },
-        { "id": "d", "text": "Voľné?", "translation": "Available?", "isCorrect": false }
-      ],
-      "correctFeedback": "Nejem mäso. — correct. Important to mention dietary preferences before ordering, from the Food lesson.",
-      "wrongFeedback": "Nejem mäso (I don't eat meat) is the right way to let the waitress know your dietary preference."
-    },
-    {
-      "id": "ex7",
-      "speaker": "marek",
-      "text": "Tak čo si dáš?",
-      "translation": "So what will you have?",
-      "prompt": "Marek asks what you'll order. You want the soup. What do you say?",
-      "isOpenQuestion": false,
-      "choices": [
-        { "id": "a", "text": "Dám si polievku.", "translation": "I'll have the soup.", "isCorrect": true },
-        { "id": "b", "text": "Mám polievku.", "translation": "I have soup.", "isCorrect": false },
-        { "id": "c", "text": "Chcem ísť domov.", "translation": "I want to go home.", "isCorrect": false },
-        { "id": "d", "text": "Stôl pre dvoch.", "translation": "A table for two.", "isCorrect": false }
-      ],
-      "correctFeedback": "Dám si polievku. — correct. Dám si is the ordering pattern from the Verbs lesson.",
-      "wrongFeedback": "Dám si polievku (I'll have the soup) is the right ordering phrase."
-    },
-    {
-      "id": "ex8",
-      "speaker": "marek",
-      "text": "Bolo to chutné?",
-      "translation": "Was it tasty?",
-      "prompt": "Marek asks if the meal was good. It was excellent. What do you say?",
-      "isOpenQuestion": false,
-      "choices": [
-        { "id": "a", "text": "Je to pikantné.", "translation": "It's spicy.", "isCorrect": false },
-        { "id": "b", "text": "Áno, veľmi chutné.", "translation": "Yes, very tasty.", "isCorrect": true },
-        { "id": "c", "text": "Som alergický.", "translation": "I am allergic.", "isCorrect": false },
-        { "id": "d", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false }
-      ],
-      "correctFeedback": "Áno, veľmi chutné. — correct. A genuine compliment for a good meal.",
-      "wrongFeedback": "Áno, veľmi chutné (Yes, very tasty) is the right response when you enjoyed the meal."
-    },
-    {
-      "id": "ex9",
-      "speaker": "marek",
-      "text": "Je už neskoro. Mali by sme zavolať taxi.",
-      "translation": "It's late already. We should call a taxi.",
-      "prompt": "It's late, Marek suggests a taxi. You agree and need to ask the driver for the address. What do you say once inside?",
-      "isOpenQuestion": false,
-      "choices": [
-        { "id": "a", "text": "Koľko je hodín?", "translation": "What time is it?", "isCorrect": false },
-        { "id": "b", "text": "Na túto adresu, prosím.", "translation": "To this address, please.", "isCorrect": true },
-        { "id": "c", "text": "Stôl pre dvoch.", "translation": "A table for two.", "isCorrect": false },
-        { "id": "d", "text": "Dám si kávu.", "translation": "I'll have coffee.", "isCorrect": false }
-      ],
-      "correctFeedback": "Na túto adresu, prosím. — correct. Giving the address from the Taxi lesson.",
-      "wrongFeedback": "Na túto adresu, prosím (To this address, please) is correct when giving the driver your destination."
-    },
-    {
-      "id": "ex10",
-      "speaker": "driver",
-      "text": "Tu je to. Sedem eur päťdesiat.",
-      "translation": "Here we are. Seven euros fifty.",
-      "prompt": "You arrive home. You give 8 euros and don't need the change. What do you say?",
-      "isOpenQuestion": false,
-      "choices": [
-        { "id": "a", "text": "Máte drobné?", "translation": "Do you have change?", "isCorrect": false },
-        { "id": "b", "text": "Drobné si nechajte. Ďakujem!", "translation": "Keep the change. Thank you!", "isCorrect": true },
-        { "id": "c", "text": "Je to zadarmo?", "translation": "Is it free?", "isCorrect": false },
-        { "id": "d", "text": "Môžete zastaviť tu?", "translation": "Can you stop here?", "isCorrect": false }
-      ],
-      "correctFeedback": "Drobné si nechajte. Ďakujem! — perfect closing to the night. Tipping politely, from the Taxi lesson.",
-      "wrongFeedback": "Drobné si nechajte. Ďakujem! (Keep the change. Thank you!) is the right way to tip and thank the driver."
+    "id":  "block6-dialogue",
+    "stageId":  "survival",
+    "stageName":  "Stage 1 · Survival",
+    "blockId":  "stage1-block6",
+    "type":  "BLOCK_DIALOGUE",
+    "title":  "Groceries and Lunch",
+    "description":  "Marek helps you buy food, pay at the supermarket, then order a simple lunch nearby.",
+    "icon":  "🍽",
+    "xpReward":  20,
+    "contact":  {
+                    "name":  "Marek",
+                    "initials":  "M",
+                    "role":  "Your friend",
+                    "avatar":  "👨"
+                },
+    "context":  "You and Marek buy groceries first, then go to a small restaurant nearby. Use Food, Supermarket, and Ordering Food phrases.",
+    "speakers":  {
+                     "marek":  {
+                                   "name":  "Marek",
+                                   "initials":  "M",
+                                   "avatar":  "👨"
+                               },
+                     "cashier":  {
+                                     "name":  "Cashier",
+                                     "initials":  "C",
+                                     "avatar":  "🏪"
+                                 },
+                     "waitress":  {
+                                      "name":  "Waitress",
+                                      "initials":  "W",
+                                      "avatar":  "👩"
+                                  }
+                 },
+    "exchanges":  [
+                      {
+                          "id":  "ex1",
+                          "speaker":  "marek",
+                          "text":  "Čo potrebuješ kúpiť? Chlieb, ovocie alebo zeleninu?",
+                          "translation":  "What do you need to buy? Bread, fruit, or vegetables?",
+                          "prompt":  "Marek asks what you need to buy. Pick a food answer.",
+                          "isOpenQuestion":  true,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Potrebujem chlieb.",
+                                              "translation":  "I need bread.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Potrebujem ovocie.",
+                                              "translation":  "I need fruit.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Potrebujem zeleninu.",
+                                              "translation":  "I need vegetables.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "Potrebujem lístok.",
+                                              "translation":  "I need a ticket.",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Correct. Chlieb, ovocie, and zelenina are food words.",
+                          "wrongFeedback":  "Use a food word here: chlieb, ovocie, or zelenina."
+                      },
+                      {
+                          "id":  "ex2",
+                          "speaker":  "marek",
+                          "text":  "Aké ovocie chceš? Jablko, banán alebo pomaranč?",
+                          "translation":  "What fruit do you want? An apple, a banana, or an orange?",
+                          "prompt":  "Choose a fruit answer.",
+                          "isOpenQuestion":  true,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Chcem jablko.",
+                                              "translation":  "I want an apple.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Chcem banán.",
+                                              "translation":  "I want a banana.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Chcem pomaranč.",
+                                              "translation":  "I want an orange.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "Chcem kabát.",
+                                              "translation":  "I want a coat.",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Correct. Jablko, banán, and pomaranč are fruit words.",
+                          "wrongFeedback":  "Pick a fruit word from the Food topic."
+                      },
+                      {
+                          "id":  "ex3",
+                          "speaker":  "marek",
+                          "text":  "A zeleninu? Mrkvu, papriku alebo paradajku?",
+                          "translation":  "And vegetables? A carrot, a pepper, or a tomato?",
+                          "prompt":  "Choose a vegetable answer.",
+                          "isOpenQuestion":  true,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Prosím si mrkvu.",
+                                              "translation":  "I would like a carrot.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Prosím si papriku.",
+                                              "translation":  "I would like a pepper.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Prosím si paradajku.",
+                                              "translation":  "I would like a tomato.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "Prosím si účtenku.",
+                                              "translation":  "I would like a receipt.",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Correct. Mrkvu, papriku, and paradajku are natural shopping forms of the vegetable words.",
+                          "wrongFeedback":  "Use a vegetable answer here, not a checkout word."
+                      },
+                      {
+                          "id":  "ex4",
+                          "speaker":  "marek",
+                          "text":  "Nevieš, kde je mlieko. Čo sa opýtaš?",
+                          "translation":  "You do not know where the milk is. What do you ask?",
+                          "prompt":  "Ask where you can find milk in the supermarket.",
+                          "isOpenQuestion":  false,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Kde nájdem mlieko?",
+                                              "translation":  "Where can I find milk?",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Účet, prosím.",
+                                              "translation":  "The bill, please.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Dám si polievku.",
+                                              "translation":  "I will have soup.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "Je to pikantné.",
+                                              "translation":  "It is spicy.",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Kde nájdem mlieko? works when you are looking for an item in a shop.",
+                          "wrongFeedback":  "Use Kde nájdem...? when looking for something."
+                      },
+                      {
+                          "id":  "ex5",
+                          "speaker":  "cashier",
+                          "text":  "Máte vernostnú kartu?",
+                          "translation":  "Do you have a loyalty card?",
+                          "prompt":  "The cashier asks about a loyalty card. You do not have one.",
+                          "isOpenQuestion":  false,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Nie, nemám.",
+                                              "translation":  "No, I do not.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Stôl pre dvoch.",
+                                              "translation":  "A table for two.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Mám kašeľ.",
+                                              "translation":  "I have a cough.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "Som pri lekárni.",
+                                              "translation":  "I am by the pharmacy.",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Nie, nemám. is correct and simple.",
+                          "wrongFeedback":  "If you do not have the card, say Nie, nemám."
+                      },
+                      {
+                          "id":  "ex6",
+                          "speaker":  "cashier",
+                          "text":  "Taška? Kartou alebo hotovosťou?",
+                          "translation":  "A bag? Card or cash?",
+                          "prompt":  "You need a bag and want to pay by card.",
+                          "isOpenQuestion":  false,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Taška, prosím. Kartou.",
+                                              "translation":  "A bag, please. By card.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Pol kila syra.",
+                                              "translation":  "Half a kilo of cheese.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Bolo to chutné.",
+                                              "translation":  "It was tasty.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "Idem dole.",
+                                              "translation":  "I am coming down.",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Taška, prosím. Kartou. is correct checkout language.",
+                          "wrongFeedback":  "At checkout, ask for a bag with Taška, prosím, and answer Kartou or Hotovosťou."
+                      },
+                      {
+                          "id":  "ex7",
+                          "speaker":  "marek",
+                          "text":  "Nákup máme. Som hladný. Vedľa je malá reštaurácia. Ideme?",
+                          "translation":  "We have the shopping. I am hungry. There is a small restaurant next door. Shall we go?",
+                          "prompt":  "Marek suggests going to a nearby restaurant.",
+                          "isOpenQuestion":  false,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Áno, poďme.",
+                                              "translation":  "Yes, let\u0027s go.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Kde nájdem mlieko?",
+                                              "translation":  "Where can I find milk?",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Nemám účtenku.",
+                                              "translation":  "I do not have the receipt.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "Potrebujem políciu.",
+                                              "translation":  "I need the police.",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Áno, poďme. accepts the invitation and makes the restaurant transition clear.",
+                          "wrongFeedback":  "Marek is inviting you to go, so answer with Áno, poďme."
+                      },
+                      {
+                          "id":  "ex8",
+                          "speaker":  "waitress",
+                          "text":  "Dobrý deň. Stôl pre koľkých?",
+                          "translation":  "Good day. A table for how many?",
+                          "prompt":  "You arrive with Marek. Ask for a table for two.",
+                          "isOpenQuestion":  false,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Stôl pre dvoch, prosím.",
+                                              "translation":  "A table for two, please.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Taška, prosím.",
+                                              "translation":  "A bag, please.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Kde je obchod?",
+                                              "translation":  "Where is the shop?",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "Som vonku.",
+                                              "translation":  "I am outside.",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Stôl pre dvoch, prosím. is the right restaurant opening.",
+                          "wrongFeedback":  "For two people, say Stôl pre dvoch, prosím."
+                      },
+                      {
+                          "id":  "ex9",
+                          "speaker":  "waitress",
+                          "text":  "Chcete jedálny lístok?",
+                          "translation":  "Do you want the menu?",
+                          "prompt":  "The waitress asks if you want the menu so you can check the food.",
+                          "isOpenQuestion":  false,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Áno, jedálny lístok, prosím.",
+                                              "translation":  "Yes, the menu, please.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Účet, prosím.",
+                                              "translation":  "The bill, please.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Kde nájdem mlieko?",
+                                              "translation":  "Where can I find milk?",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "Taška, prosím.",
+                                              "translation":  "A bag, please.",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Áno, jedálny lístok, prosím. is a natural way to ask for the menu.",
+                          "wrongFeedback":  "Use jedálny lístok when you want the menu to choose food."
+                      },
+                      {
+                          "id":  "ex10",
+                          "speaker":  "marek",
+                          "text":  "Nevieš, čo si vybrať? Čo sa opýtaš?",
+                          "translation":  "You do not know what to choose. What do you ask?",
+                          "prompt":  "Ask for a recommendation.",
+                          "isOpenQuestion":  false,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Čo odporúčate?",
+                                              "translation":  "What do you recommend?",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Čo vás trápi?",
+                                              "translation":  "What is troubling you?",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Kde mám vystúpiť?",
+                                              "translation":  "Where should I get off?",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "Koľko je hodín?",
+                                              "translation":  "What time is it?",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Čo odporúčate? is the right way to ask for a recommendation.",
+                          "wrongFeedback":  "Use Čo odporúčate? when you want advice from staff."
+                      },
+                      {
+                          "id":  "ex11",
+                          "speaker":  "waitress",
+                          "text":  "Čo si dáte?",
+                          "translation":  "What will you have?",
+                          "prompt":  "Order soup and bread.",
+                          "isOpenQuestion":  false,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Dám si polievku a chlieb.",
+                                              "translation":  "I will have soup and bread.",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Mám polievku a chlieb.",
+                                              "translation":  "I have soup and bread.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Potrebujem hasičov.",
+                                              "translation":  "I need firefighters.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "V piatok.",
+                                              "translation":  "On Friday.",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Dám si polievku a chlieb. is a natural ordering phrase.",
+                          "wrongFeedback":  "Use Dám si... when ordering food."
+                      },
+                      {
+                          "id":  "ex12",
+                          "speaker":  "marek",
+                          "text":  "Ďakujem za dnešok. Dobre sme nakúpili aj sa najedli.",
+                          "translation":  "Thank you for today. We shopped well and ate too.",
+                          "prompt":  "Close the conversation politely.",
+                          "isOpenQuestion":  false,
+                          "choices":  [
+                                          {
+                                              "id":  "a",
+                                              "text":  "Aj ja ďakujem. Maj sa!",
+                                              "translation":  "Thank you too. Bye!",
+                                              "isCorrect":  true
+                                          },
+                                          {
+                                              "id":  "b",
+                                              "text":  "Kde nájdem mlieko?",
+                                              "translation":  "Where can I find milk?",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "c",
+                                              "text":  "Taška, prosím. Kartou.",
+                                              "translation":  "A bag, please. By card.",
+                                              "isCorrect":  false
+                                          },
+                                          {
+                                              "id":  "d",
+                                              "text":  "Jedálny lístok, prosím.",
+                                              "translation":  "The menu, please.",
+                                              "isCorrect":  false
+                                          }
+                                      ],
+                          "correctFeedback":  "Aj ja ďakujem. Maj sa! closes the day naturally.",
+                          "wrongFeedback":  "This is the closing exchange, so use a thank-you or goodbye phrase."
+                      }
+                  ],
+    "completionMessage":  "Great work! You handled fruit, vegetables, supermarket checkout, asking for the menu, restaurant ordering, and a polite goodbye in Slovak.",
+    "speakingRound": {
+        "id": "block6-speaking",
+        "type": "CONVERSATION_SPEAKING",
+        "questions": [
+            {
+                "id": "q0",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m1.mp3.mp3",
+                "marekQuestionSk": "Čo potrebuješ kúpiť? Chlieb, ovocie alebo zeleninu?",
+                "marekQuestionEn": "What do you need to buy? Bread, fruit, or vegetables?",
+                "correctAnswerSk": null,
+                "correctAnswerEn": null,
+                "answerChunks": [],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Marek",
+                "choices": [
+                    { "id": "chlieb", "label": "Chlieb", "sk": "Potrebujem chlieb.", "en": "I need bread.", "chunks": ["Potrebujem chlieb."] },
+                    { "id": "ovocie", "label": "Ovocie", "sk": "Potrebujem ovocie.", "en": "I need fruit.", "chunks": ["Potrebujem ovocie."] },
+                    { "id": "zeleninu", "label": "Zeleninu", "sk": "Potrebujem zeleninu.", "en": "I need vegetables.", "chunks": ["Potrebujem zeleninu."] }
+                ]
+            },
+            {
+                "id": "q1",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m2.mp3.mp3",
+                "marekQuestionSk": "Aké ovocie chceš? Jablko, banán alebo pomaranč?",
+                "marekQuestionEn": "What fruit do you want? An apple, a banana, or an orange?",
+                "correctAnswerSk": null,
+                "correctAnswerEn": null,
+                "answerChunks": [],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Marek",
+                "choices": [
+                    { "id": "jablko", "label": "Jablko", "sk": "Chcem jablko.", "en": "I want an apple.", "chunks": ["Chcem jablko."] },
+                    { "id": "banan", "label": "Banán", "sk": "Chcem banán.", "en": "I want a banana.", "chunks": ["Chcem banán."] },
+                    { "id": "pomaranc", "label": "Pomaranč", "sk": "Chcem pomaranč.", "en": "I want an orange.", "chunks": ["Chcem pomaranč."] }
+                ]
+            },
+            {
+                "id": "q2",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m3.mp3.mp3",
+                "marekQuestionSk": "A zeleninu? Mrkvu, papriku alebo paradajku?",
+                "marekQuestionEn": "And vegetables? A carrot, a pepper, or a tomato?",
+                "correctAnswerSk": null,
+                "correctAnswerEn": null,
+                "answerChunks": [],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Marek",
+                "choices": [
+                    { "id": "mrkvu", "label": "Mrkvu", "sk": "Prosím si mrkvu.", "en": "I would like a carrot.", "chunks": ["Prosím si mrkvu."] },
+                    { "id": "papriku", "label": "Papriku", "sk": "Prosím si papriku.", "en": "I would like a pepper.", "chunks": ["Prosím si papriku."] },
+                    { "id": "paradajku", "label": "Paradajku", "sk": "Prosím si paradajku.", "en": "I would like a tomato.", "chunks": ["Prosím si paradajku."] }
+                ]
+            },
+            {
+                "id": "q3",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m4.mp3.mp3",
+                "marekQuestionSk": "Nevieš, kde je mlieko. Čo sa opýtaš?",
+                "marekQuestionEn": "You do not know where the milk is. What do you ask?",
+                "correctAnswerSk": "Kde nájdem mlieko?",
+                "correctAnswerEn": "Where can I find milk?",
+                "answerChunks": ["Kde nájdem mlieko?"],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Marek",
+                "choices": null
+            },
+            {
+                "id": "q4",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m5.mp3.mp3",
+                "marekQuestionSk": "Máte vernostnú kartu?",
+                "marekQuestionEn": "Do you have a loyalty card?",
+                "correctAnswerSk": "Nie, nemám.",
+                "correctAnswerEn": "No, I do not.",
+                "answerChunks": ["Nie, nemám."],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Cashier",
+                "choices": null
+            },
+            {
+                "id": "q5",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m6.mp3.mp3",
+                "marekQuestionSk": "Taška? Kartou alebo hotovosťou?",
+                "marekQuestionEn": "A bag? Card or cash?",
+                "correctAnswerSk": null,
+                "correctAnswerEn": null,
+                "answerChunks": [],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Cashier",
+                "choices": [
+                    { "id": "kartou", "label": "Kartou", "sk": "Taška, prosím. Kartou.", "en": "A bag, please. By card.", "chunks": ["Taška, prosím. Kartou."] },
+                    { "id": "hotovostou", "label": "Hotovosťou", "sk": "Taška, prosím. Hotovosťou.", "en": "A bag, please. In cash.", "chunks": ["Taška, prosím. Hotovosťou."] }
+                ]
+            },
+            {
+                "id": "q6",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m7.mp3.mp3",
+                "marekQuestionSk": "Nákup máme. Som hladný. Vedľa je malá reštaurácia. Ideme?",
+                "marekQuestionEn": "We have the shopping. I am hungry. There is a small restaurant next door. Shall we go?",
+                "correctAnswerSk": "Áno, poďme.",
+                "correctAnswerEn": "Yes, let's go.",
+                "answerChunks": ["Áno, poďme."],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Marek",
+                "choices": null
+            },
+            {
+                "id": "q7",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m8.mp3.mp3",
+                "marekQuestionSk": "Dobrý deň. Stôl pre koľkých?",
+                "marekQuestionEn": "Good day. A table for how many?",
+                "correctAnswerSk": "Stôl pre dvoch, prosím.",
+                "correctAnswerEn": "A table for two, please.",
+                "answerChunks": ["Stôl pre dvoch, prosím."],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Waitress",
+                "choices": null
+            },
+            {
+                "id": "q8",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m9.mp3.mp3",
+                "marekQuestionSk": "Chcete jedálny lístok?",
+                "marekQuestionEn": "Do you want the menu?",
+                "correctAnswerSk": "Áno, jedálny lístok, prosím.",
+                "correctAnswerEn": "Yes, the menu, please.",
+                "answerChunks": ["Áno, jedálny lístok, prosím."],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Waitress",
+                "choices": null
+            },
+            {
+                "id": "q9",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m10.mp3.mp3",
+                "marekQuestionSk": "Nevieš, čo si vybrať. Čo sa opýtaš?",
+                "marekQuestionEn": "You do not know what to choose. What do you ask?",
+                "correctAnswerSk": "Čo odporúčate?",
+                "correctAnswerEn": "What do you recommend?",
+                "answerChunks": ["Čo odporúčate?"],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Marek",
+                "choices": null
+            },
+            {
+                "id": "q10",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m11.mp3.mp3",
+                "marekQuestionSk": "Čo si dáte?",
+                "marekQuestionEn": "What will you have?",
+                "correctAnswerSk": "Dám si polievku a chlieb.",
+                "correctAnswerEn": "I will have soup and bread.",
+                "answerChunks": ["Dám si polievku a chlieb."],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Waitress",
+                "choices": null
+            },
+            {
+                "id": "q11",
+                "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block6-m12.mp3.mp3",
+                "marekQuestionSk": "Ďakujem za dnešok. Dobre sme nakúpili aj sa najedli.",
+                "marekQuestionEn": "Thank you for today. We shopped well and ate too.",
+                "correctAnswerSk": "Aj ja ďakujem. Maj sa!",
+                "correctAnswerEn": "Thank you too. Bye!",
+                "answerChunks": ["Aj ja ďakujem. Maj sa!"],
+                "isYesNo": false,
+                "personalData": null,
+                "speakerName": "Marek",
+                "choices": null
+            }
+        ]
     }
-  ],
-  "completionMessage": "🎉 What a day! You chose how to travel, rode the tram, ordered dinner with Marek, and took a taxi home — using everything you've learned about food and getting around, all in Slovak."
 }

@@ -1,0 +1,286 @@
+{
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "icon": "🔢",
+  "xpReward": 10,
+  "coming_soon": false,
+  "id": "s1-order-6-10",
+  "title": "Order 6-10",
+  "description": "Complete the basic ordinal numbers from sixth to tenth",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Order 6-10",
+      "subtitle": "More ordinal numbers for floors and positions.",
+      "headers": [
+        "Cardinal",
+        "Ordinal",
+        "English"
+      ],
+      "rows": [
+        {
+          "label": "šesť (6)",
+          "slovak": "šiesty",
+          "english": "Sixth (6th)"
+        },
+        {
+          "label": "sedem (7)",
+          "slovak": "siedmy",
+          "english": "Seventh (7th)"
+        },
+        {
+          "label": "osem (8)",
+          "slovak": "ôsmy",
+          "english": "Eighth (8th)"
+        },
+        {
+          "label": "deväť (9)",
+          "slovak": "deviaty",
+          "english": "Ninth (9th)"
+        },
+        {
+          "label": "desať (10)",
+          "slovak": "desiaty",
+          "english": "Tenth (10th)"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "šiesty",
+          "english": "Sixth"
+        },
+        {
+          "slovak": "siedmy",
+          "english": "Seventh"
+        },
+        {
+          "slovak": "ôsmy",
+          "english": "Eighth"
+        },
+        {
+          "slovak": "deviaty",
+          "english": "Ninth"
+        },
+        {
+          "slovak": "desiaty",
+          "english": "Tenth"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "šiesty",
+          "english": "Sixth"
+        },
+        {
+          "slovak": "siedmy",
+          "english": "Seventh"
+        },
+        {
+          "slovak": "ôsmy",
+          "english": "Eighth"
+        },
+        {
+          "slovak": "deviaty",
+          "english": "Ninth"
+        },
+        {
+          "slovak": "desiaty",
+          "english": "Tenth"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "šiesty",
+          "english": "Sixth"
+        },
+        {
+          "slovak": "siedmy",
+          "english": "Seventh"
+        },
+        {
+          "slovak": "ôsmy",
+          "english": "Eighth"
+        },
+        {
+          "slovak": "deviaty",
+          "english": "Ninth"
+        },
+        {
+          "slovak": "desiaty",
+          "english": "Tenth"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "šiesty",
+          "english": "Sixth"
+        },
+        {
+          "slovak": "siedmy",
+          "english": "Seventh"
+        },
+        {
+          "slovak": "ôsmy",
+          "english": "Eighth"
+        },
+        {
+          "slovak": "deviaty",
+          "english": "Ninth"
+        },
+        {
+          "slovak": "desiaty",
+          "english": "Tenth"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your appointment is on the sixth floor. Which word means sixth?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "šiesty",
+            "siedmy",
+            "ôsmy",
+            "desiaty"
+          ],
+          "answer": "šiesty",
+          "answerMeaning": "Šiesty = sixth."
+        },
+        {
+          "situation": "The office is on the seventh floor. Which word means seventh?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "šiesty",
+            "siedmy",
+            "deviaty",
+            "desiaty"
+          ],
+          "answer": "siedmy",
+          "answerMeaning": "Siedmy = seventh."
+        },
+        {
+          "situation": "Your room is on the eighth floor. Which word means eighth?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "siedmy",
+            "ôsmy",
+            "deviaty",
+            "desiaty"
+          ],
+          "answer": "ôsmy",
+          "answerMeaning": "Ôsmy = eighth."
+        },
+        {
+          "situation": "You are ninth in line. Which word means ninth?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "šiesty",
+            "ôsmy",
+            "deviaty",
+            "desiaty"
+          ],
+          "answer": "deviaty",
+          "answerMeaning": "Deviaty = ninth."
+        },
+        {
+          "situation": "You need the tenth counter. Which word means tenth?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "siedmy",
+            "ôsmy",
+            "deviaty",
+            "desiaty"
+          ],
+          "answer": "desiaty",
+          "answerMeaning": "Desiaty = tenth."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Som na ___ poschodí.",
+          "translation": "I am on the sixth floor.",
+          "choices": [
+            "šiestom",
+            "siedmom",
+            "ôsmom",
+            "desiatom"
+          ],
+          "answer": "šiestom"
+        },
+        {
+          "sentence": "Kancelária je na ___ poschodí.",
+          "translation": "The office is on the seventh floor.",
+          "choices": [
+            "šiestom",
+            "siedmom",
+            "deviatom",
+            "desiatom"
+          ],
+          "answer": "siedmom"
+        },
+        {
+          "sentence": "Izba je na ___ poschodí.",
+          "translation": "The room is on the eighth floor.",
+          "choices": [
+            "siedmom",
+            "ôsmom",
+            "deviatom",
+            "desiatom"
+          ],
+          "answer": "ôsmom"
+        },
+        {
+          "sentence": "Som ___ v rade.",
+          "translation": "I am ninth in line.",
+          "choices": [
+            "šiesty",
+            "ôsmy",
+            "deviaty",
+            "desiaty"
+          ],
+          "answer": "deviaty"
+        },
+        {
+          "sentence": "Choďte k ___ prepážke.",
+          "translation": "Go to the tenth counter.",
+          "choices": [
+            "siedmej",
+            "ôsmej",
+            "deviatej",
+            "desiatej"
+          ],
+          "answer": "desiatej"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

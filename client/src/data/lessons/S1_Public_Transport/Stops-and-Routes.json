@@ -1,0 +1,258 @@
+{
+  "id": "s1-stops-routes",
+  "stageId": "survival",
+  "stageName": "Stage 1  Survival",
+  "title": "Stops & Routes",
+  "description": "Ask about next buses, direction, and routes",
+  "icon": "🚏",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Stops & Routes",
+      "rows": [
+        {
+          "label": "When's the next bus?",
+          "slovak": "Kedy ide ďalší autobus?",
+          "english": "When does the next bus go?"
+        },
+        {
+          "label": "Direction...",
+          "slovak": "Smer...",
+          "english": "Direction... / Towards..."
+        },
+        {
+          "label": "Does this go to...?",
+          "slovak": "Ide toto do...?",
+          "english": "Does this go to...?"
+        },
+        {
+          "label": "Where do I get off?",
+          "slovak": "Kde mám vystúpiť?",
+          "english": "Where should I get off?"
+        },
+        {
+          "label": "Next stop",
+          "slovak": "Ďalšia zastávka",
+          "english": "Next stop"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Kedy ide ďalší autobus?",
+          "english": "When does the next bus go?"
+        },
+        {
+          "slovak": "Smer...",
+          "english": "Direction... / Towards..."
+        },
+        {
+          "slovak": "Ide toto do...?",
+          "english": "Does this go to...?"
+        },
+        {
+          "slovak": "Kde mám vystúpiť?",
+          "english": "Where should I get off?"
+        },
+        {
+          "slovak": "Ďalšia zastávka",
+          "english": "Next stop"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Kedy ide ďalší autobus?",
+          "english": "When does the next bus go?"
+        },
+        {
+          "slovak": "Smer...",
+          "english": "Direction... / Towards..."
+        },
+        {
+          "slovak": "Ide toto do...?",
+          "english": "Does this go to...?"
+        },
+        {
+          "slovak": "Kde mám vystúpiť?",
+          "english": "Where should I get off?"
+        },
+        {
+          "slovak": "Ďalšia zastávka",
+          "english": "Next stop"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Ďalšia zastávka",
+          "english": "Next stop"
+        },
+        {
+          "slovak": "Ide toto do...?",
+          "english": "Does this go to...?"
+        },
+        {
+          "slovak": "Kde mám vystúpiť?",
+          "english": "Where should I get off?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Kedy ide ďalší autobus?",
+          "english": "When does the next bus go?"
+        },
+        {
+          "slovak": "Smer...",
+          "english": "Direction... / Towards..."
+        },
+        {
+          "slovak": "Ide toto do...?",
+          "english": "Does this go to...?"
+        },
+        {
+          "slovak": "Kde mám vystúpiť?",
+          "english": "Where should I get off?"
+        },
+        {
+          "slovak": "Ďalšia zastávka",
+          "english": "Next stop"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: When does the next bus go?.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ide toto do...?",
+            "Kde mám vystúpiť?",
+            "Kedy ide ďalší autobus?",
+            "Smer..."
+          ],
+          "answer": "Kedy ide ďalší autobus?",
+          "answerMeaning": "Kedy ide ďalší autobus? = When does the next bus go?"
+        },
+        {
+          "situation": "You need to say: Direction... / Towards...",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ide toto do...?",
+            "Kde mám vystúpiť?",
+            "Kedy ide ďalší autobus?",
+            "Smer..."
+          ],
+          "answer": "Smer...",
+          "answerMeaning": "Smer... = Direction... / Towards..."
+        },
+        {
+          "situation": "You need to say: Does this go to...?.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ide toto do...?",
+            "Kde mám vystúpiť?",
+            "Kedy ide ďalší autobus?",
+            "Smer..."
+          ],
+          "answer": "Ide toto do...?",
+          "answerMeaning": "Ide toto do...? = Does this go to...?"
+        },
+        {
+          "situation": "You need to say: Where should I get off?.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ide toto do...?",
+            "Kde mám vystúpiť?",
+            "Kedy ide ďalší autobus?",
+            "Smer..."
+          ],
+          "answer": "Kde mám vystúpiť?",
+          "answerMeaning": "Kde mám vystúpiť? = Where should I get off?"
+        },
+        {
+          "situation": "You need to say: Next stop.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ďalšia zastávka",
+            "Ide toto do...?",
+            "Kedy ide ďalší autobus?",
+            "Smer..."
+          ],
+          "answer": "Ďalšia zastávka",
+          "answerMeaning": "Ďalšia zastávka = Next stop"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You don't know your stop and want the driver or a passenger to tell you when to get off. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Tu vystupujem.",
+            "Kde mám vystúpiť?",
+            "Ide toto do centra?",
+            "Smer centrum."
+          ],
+          "answer": "Kde mám vystúpiť?",
+          "answerMeaning": "Kde mám vystúpiť? = Where should I get off? Useful when you're unsure of your stop."
+        },
+        {
+          "situation": "You're not sure if the tram in front of you goes downtown. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Ide toto do centra?",
+            "Kde mám vystúpiť?",
+            "Tu vystupujem.",
+            "Validovať lístok."
+          ],
+          "answer": "Ide toto do centra?",
+          "answerMeaning": "Ide toto do centra? = Does this go to the centre? Always confirm before boarding if you're unsure."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ mám vystúpiť?",
+          "translation": "Where should I get off?",
+          "choices": [
+            "Ako",
+            "Kde",
+            "Kedy",
+            "Koľko"
+          ],
+          "answer": "Kde"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

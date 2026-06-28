@@ -1,0 +1,100 @@
+{
+  "id": "s1-moving-living",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Moving & Living",
+  "description": "Go, come, live, and stay",
+  "icon": "\u26A1",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Moving & Living Verbs",
+      "subtitle": "Useful verbs for appointments, addresses, and daily movement.",
+      "rows": [
+        { "label": "I go", "slovak": "Idem", "english": "I go" },
+        { "label": "I will come", "slovak": "Prídem", "english": "I will come" },
+        { "label": "I live", "slovak": "Bývam", "english": "I live" },
+        { "label": "Do you live?", "slovak": "Bývate?", "english": "Do you live? (formal)" },
+        { "label": "I will stay", "slovak": "Zostanem", "english": "I will stay" },
+        { "label": "Stay", "slovak": "Zostaňte", "english": "Stay (formal command)" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Idem", "english": "I go" },
+        { "slovak": "Prídem", "english": "I will come" },
+        { "slovak": "Bývam", "english": "I live" },
+        { "slovak": "Bývate?", "english": "Do you live?" },
+        { "slovak": "Zostanem", "english": "I will stay" },
+        { "slovak": "Zostaňte", "english": "Stay" }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Idem", "english": "I go" },
+        { "slovak": "Prídem", "english": "I will come" },
+        { "slovak": "Bývam", "english": "I live" },
+        { "slovak": "Bývate?", "english": "Do you live?" },
+        { "slovak": "Zostanem", "english": "I will stay" },
+        { "slovak": "Zostaňte", "english": "Stay" }
+      ]
+    },
+    {
+      "id": "ex2c",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        { "slovak": "Idem", "english": "I go" },
+        { "slovak": "Prídem", "english": "I will come" },
+        { "slovak": "Bývam", "english": "I live" },
+        { "slovak": "Bývate?", "english": "Do you live?" },
+        { "slovak": "Zostanem", "english": "I will stay" },
+        { "slovak": "Zostaňte", "english": "Stay" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Idem", "english": "I go" },
+        { "slovak": "Prídem", "english": "I will come" },
+        { "slovak": "Bývam", "english": "I live" },
+        { "slovak": "Bývate?", "english": "Do you live?" },
+        { "slovak": "Zostanem", "english": "I will stay" },
+        { "slovak": "Zostaňte", "english": "Stay" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        { "situation": "You are leaving for work and say: 'I am going to work.' Which starts the sentence?", "instruction": "Choose the correct word", "choices": ["Idem", "Prídem", "Bývam", "Zostanem"], "answer": "Idem", "answerMeaning": "Idem = I go." },
+        { "situation": "You call the doctor's office and say: 'I will come at ten.' Which starts the sentence?", "instruction": "Choose the correct word", "choices": ["Idem", "Prídem", "Bývam", "Zostaňte"], "answer": "Prídem", "answerMeaning": "Prídem = I will come." },
+        { "situation": "A form asks where you live. You answer: 'I live in Bratislava.' Which starts the sentence?", "instruction": "Choose the correct word", "choices": ["Bývam", "Bývate", "Idem", "Zostanem"], "answer": "Bývam", "answerMeaning": "Bývam = I live." },
+        { "situation": "The officer asks formally: 'Where do you live?' Which form means 'do you live'?", "instruction": "Choose the correct form", "choices": ["Bývam", "Bývate", "Býva", "Bývajú"], "answer": "Bývate", "answerMeaning": "Bývate = you live, formal or plural." },
+        { "situation": "You say: 'I will stay home tonight.' Which starts the sentence?", "instruction": "Choose the correct word", "choices": ["Zostanem", "Prídem", "Idem", "Bývate"], "answer": "Zostanem", "answerMeaning": "Zostanem = I will stay." },
+        { "situation": "An officer tells you formally: 'Stay here.' Which word means stay?", "instruction": "Choose the correct word", "choices": ["Idem", "Bývam", "Zostaňte", "Prídem"], "answer": "Zostaňte", "answerMeaning": "Zostaňte = stay, formal command." }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        { "sentence": "___ do práce.", "translation": "I am going to work.", "choices": ["Idem", "Prídem", "Bývam", "Zostanem"], "answer": "Idem" },
+        { "sentence": "___ o tretej.", "translation": "I will come at three.", "choices": ["Idem", "Prídem", "Bývam", "Zostaňte"], "answer": "Prídem" },
+        { "sentence": "___ v Bratislave.", "translation": "I live in Bratislava.", "choices": ["Bývam", "Bývate", "Idem", "Zostanem"], "answer": "Bývam" },
+        { "sentence": "Kde ___?", "translation": "Where do you live? (formal)", "choices": ["bývam", "bývate", "idem", "prídem"], "answer": "bývate" },
+        { "sentence": "___ doma dnes večer.", "translation": "I will stay home tonight.", "choices": ["Prídem", "Zostanem", "Bývam", "Idem"], "answer": "Zostanem" },
+        { "sentence": "Prosím, ___ tu.", "translation": "Please, stay here.", "choices": ["zostaňte", "prídem", "bývam", "idem"], "answer": "zostaňte" }
+      ]
+    },
+    { "id": "ex-review", "type": "WORD_MATCH_REVIEW" }
+  ]
+}

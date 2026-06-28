@@ -6,7 +6,7 @@
   "description": "Listen to Marek and Sara meet for the first time",
   "icon": "🎧",
   "xpReward": 15,
-  "coming_soon": false,
+  "coming_soon": true,
   "exercises": [
     {
       "id": "ex1",
@@ -297,7 +297,7 @@
         },
         {
           "id": "s4",
-          "promptEn": "I don't have family here. I live with my cat.",
+          "promptEn": "I don't have family here. But I live with my cat.",
           "targetSk": [
             "Nemám rodinu tu.",
             "Ale bývam",

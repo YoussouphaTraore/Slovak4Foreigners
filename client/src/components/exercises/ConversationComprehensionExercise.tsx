@@ -24,6 +24,30 @@ export function ConversationComprehensionExercise({ exercise, onDone, onAnswer, 
   const currentQuestion = exercise.questions[questionIdx];
   const correctAnswer = currentQuestion?.answers.find((a) => a.isCorrect);
 
+  if (!currentQuestion) {
+    return (
+      <div className="flex flex-col flex-1 min-h-0 gap-4">
+        <div className="flex-1 flex flex-col items-center justify-center text-center px-6">
+          <div className="w-full rounded-3xl border-2 border-amber-200 bg-amber-50 px-5 py-6">
+            <p className="text-sm font-semibold text-amber-700">Comprehension coming soon</p>
+            <p className="mt-2 text-xs leading-relaxed text-amber-600">
+              This topic comprehension lesson is available, but its questions have not been added yet.
+            </p>
+          </div>
+        </div>
+        <div className="flex-none pb-1">
+          <button
+            type="button"
+            onClick={() => onDone(true)}
+            className="w-full bg-brand-green text-white font-bold py-3.5 rounded-xl text-sm uppercase tracking-widest hover:opacity-90 active:scale-[0.98] shadow-md cursor-pointer transition-all"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   const handleReplay = () => {
     const audio = audioRef.current;
     if (!audio) return;

@@ -1,0 +1,324 @@
+{
+  "id": "s1-vegetables",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Vegetables",
+  "description": "Recognize common vegetable words in a supermarket",
+  "icon": "🥕",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Vegetables",
+      "rows": [
+        {
+          "label": "Potatoes",
+          "slovak": "Zemiaky",
+          "english": "Potatoes"
+        },
+        {
+          "label": "Carrot",
+          "slovak": "Mrkva",
+          "english": "Carrot"
+        },
+        {
+          "label": "Onion",
+          "slovak": "Cibuľa",
+          "english": "Onion"
+        },
+        {
+          "label": "Garlic",
+          "slovak": "Cesnak",
+          "english": "Garlic"
+        },
+        {
+          "label": "Pepper",
+          "slovak": "Paprika",
+          "english": "Pepper"
+        },
+        {
+          "label": "Tomato",
+          "slovak": "Paradajka",
+          "english": "Tomato"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Zemiaky",
+          "english": "Potatoes"
+        },
+        {
+          "slovak": "Mrkva",
+          "english": "Carrot"
+        },
+        {
+          "slovak": "Cibuľa",
+          "english": "Onion"
+        },
+        {
+          "slovak": "Cesnak",
+          "english": "Garlic"
+        },
+        {
+          "slovak": "Paprika",
+          "english": "Pepper"
+        },
+        {
+          "slovak": "Paradajka",
+          "english": "Tomato"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Zemiaky",
+          "english": "Potatoes"
+        },
+        {
+          "slovak": "Mrkva",
+          "english": "Carrot"
+        },
+        {
+          "slovak": "Cibuľa",
+          "english": "Onion"
+        },
+        {
+          "slovak": "Cesnak",
+          "english": "Garlic"
+        },
+        {
+          "slovak": "Paprika",
+          "english": "Pepper"
+        },
+        {
+          "slovak": "Paradajka",
+          "english": "Tomato"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Zemiaky",
+          "english": "Potatoes"
+        },
+        {
+          "slovak": "Mrkva",
+          "english": "Carrot"
+        },
+        {
+          "slovak": "Cibuľa",
+          "english": "Onion"
+        },
+        {
+          "slovak": "Cesnak",
+          "english": "Garlic"
+        },
+        {
+          "slovak": "Paprika",
+          "english": "Pepper"
+        },
+        {
+          "slovak": "Paradajka",
+          "english": "Tomato"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Zemiaky",
+          "english": "Potatoes"
+        },
+        {
+          "slovak": "Mrkva",
+          "english": "Carrot"
+        },
+        {
+          "slovak": "Cibuľa",
+          "english": "Onion"
+        },
+        {
+          "slovak": "Cesnak",
+          "english": "Garlic"
+        },
+        {
+          "slovak": "Paprika",
+          "english": "Pepper"
+        },
+        {
+          "slovak": "Paradajka",
+          "english": "Tomato"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need potatoes. Which Slovak word do you choose?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Zemiaky",
+            "Mrkva",
+            "Cesnak",
+            "Paradajka"
+          ],
+          "answer": "Zemiaky",
+          "answerMeaning": "Zemiaky = Potatoes."
+        },
+        {
+          "situation": "You want a carrot. Which word fits?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Mrkva",
+            "Cibuľa",
+            "Paprika",
+            "Zemiaky"
+          ],
+          "answer": "Mrkva",
+          "answerMeaning": "Mrkva = Carrot."
+        },
+        {
+          "situation": "You need an onion for soup. Which Slovak word means onion?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Cibuľa",
+            "Cesnak",
+            "Paradajka",
+            "Paprika"
+          ],
+          "answer": "Cibuľa",
+          "answerMeaning": "Cibuľa = Onion."
+        },
+        {
+          "situation": "You are looking for garlic. Which word should you recognize?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Cesnak",
+            "Mrkva",
+            "Zemiaky",
+            "Paradajka"
+          ],
+          "answer": "Cesnak",
+          "answerMeaning": "Cesnak = Garlic."
+        },
+        {
+          "situation": "You want a pepper. Which Slovak word means pepper?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Paprika",
+            "Cibuľa",
+            "Mrkva",
+            "Cesnak"
+          ],
+          "answer": "Paprika",
+          "answerMeaning": "Paprika = Pepper."
+        },
+        {
+          "situation": "You want a tomato. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Paradajka",
+            "Paprika",
+            "Cibuľa",
+            "Zemiaky"
+          ],
+          "answer": "Paradajka",
+          "answerMeaning": "Paradajka = Tomato."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Potrebujem ___.",
+          "translation": "I need potatoes.",
+          "choices": [
+            "zemiaky",
+            "mrkvu",
+            "cesnak",
+            "paradajku"
+          ],
+          "answer": "zemiaky"
+        },
+        {
+          "sentence": "Do polievky dám ___.",
+          "translation": "I will put carrot in the soup.",
+          "choices": [
+            "mrkvu",
+            "cibuľu",
+            "papriku",
+            "zemiaky"
+          ],
+          "answer": "mrkvu"
+        },
+        {
+          "sentence": "Kúpim ___.",
+          "translation": "I will buy an onion.",
+          "choices": [
+            "cibuľu",
+            "cesnak",
+            "paradajku",
+            "mrkvu"
+          ],
+          "answer": "cibuľu"
+        },
+        {
+          "sentence": "Máte ___?",
+          "translation": "Do you have garlic?",
+          "choices": [
+            "cesnak",
+            "zemiaky",
+            "papriku",
+            "paradajku"
+          ],
+          "answer": "cesnak"
+        },
+        {
+          "sentence": "Chcem jednu ___.",
+          "translation": "I want one pepper.",
+          "choices": [
+            "papriku",
+            "mrkvu",
+            "cibuľu",
+            "paradajku"
+          ],
+          "answer": "papriku"
+        },
+        {
+          "sentence": "Prosím si jednu ___.",
+          "translation": "I would like one tomato.",
+          "choices": [
+            "paradajku",
+            "papriku",
+            "cibuľu",
+            "mrkvu"
+          ],
+          "answer": "paradajku"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

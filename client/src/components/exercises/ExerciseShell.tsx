@@ -21,6 +21,8 @@ import { ConversationListenExercise } from './ConversationListenExercise';
 import { ConversationWordRecognitionExercise } from './ConversationWordRecognitionExercise';
 import { ConversationComprehensionExercise } from './ConversationComprehensionExercise';
 import { ConversationSentenceBuilderExercise } from './ConversationSentenceBuilderExercise';
+import { ConversationSpeakingExercise } from './ConversationSpeakingExercise';
+import { SpeakTheWordExercise } from './SpeakTheWordExercise';
 import { DiacriticKeyboard } from './DiacriticKeyboard';
 import { FeedbackBanner } from '../ui/FeedbackBanner';
 
@@ -61,6 +63,8 @@ function getTypeBadge(ex: Exercise): string {
     case 'CONVERSATION_WORD_RECOGNITION':  return 'Word recognition';
     case 'CONVERSATION_COMPREHENSION':     return 'Listen & understand';
     case 'CONVERSATION_SENTENCE_BUILDER':  return 'Build the sentence';
+    case 'CONVERSATION_SPEAKING':          return 'Speak it';
+    case 'SPEAK_THE_WORD':                 return 'Say it!';
   }
 }
 
@@ -92,6 +96,8 @@ function validate(exercise: Exercise, answer: string): { correct: boolean; corre
     case 'CONVERSATION_WORD_RECOGNITION':
     case 'CONVERSATION_COMPREHENSION':
     case 'CONVERSATION_SENTENCE_BUILDER':
+    case 'CONVERSATION_SPEAKING':
+    case 'SPEAK_THE_WORD':
       return { correct: true, correctAnswer: '' };
   }
 }
@@ -216,6 +222,22 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
     return (
       <div className="flex flex-col flex-1 min-h-0">
         <ConversationSentenceBuilderExercise exercise={exercise} onDone={(correct) => onComplete(correct)} onAnswer={onAnswer} />
+      </div>
+    );
+  }
+
+  if (exercise.type === 'CONVERSATION_SPEAKING') {
+    return (
+      <div className="flex flex-col flex-1 min-h-0">
+        <ConversationSpeakingExercise exercise={exercise} onDone={(correct) => onComplete(correct)} onAnswer={onAnswer} />
+      </div>
+    );
+  }
+
+  if (exercise.type === 'SPEAK_THE_WORD') {
+    return (
+      <div className="flex flex-col flex-1 min-h-0">
+        <SpeakTheWordExercise exercise={exercise} onDone={() => onComplete(true)} onAnswer={onAnswer} />
       </div>
     );
   }

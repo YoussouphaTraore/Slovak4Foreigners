@@ -1,0 +1,336 @@
+{
+  "id": "tc-greetings",
+  "stageId": "topic-comprehension",
+  "stageName": "",
+  "title": "Greetings — Monologue",
+  "description": "Listen, then prove you were listening",
+  "_voiceScript": {
+    "voice": null,
+    "script": "Recepčná: Dobrý deň. Ako sa máte? Anna: Dobre, ďakujem. A vy? Recepčná: Ujde to, ďakujem. Peter: Ahoj, miláčik. Čo je nové? Anna: Nič nové. Som chorá. Peter: Si unavená. Poďme teda dnu. Anna: Áno. Recepčná: Dovidenia. Peter: Čau."
+  },
+  "icon": "👋",
+  "xpReward": 25,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "CONVERSATION_LISTEN",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Greetings.mp3",
+      "conversationTranscriptSk": "Recepčná: Dobrý deň. Ako sa máte? Anna: Dobre, ďakujem. A vy? Recepčná: Ujde to, ďakujem. Peter: Ahoj, miláčik. Čo je nové? Anna: Nič nové. Som chorá. Peter: Si unavená. Poďme teda dnu. Anna: Áno. Recepčná: Dovidenia. Peter: Čau.",
+      "speakers": [
+        {
+          "name": "Recepčná",
+          "avatar": "👩"
+        },
+        {
+          "name": "Anna",
+          "avatar": "👩"
+        },
+        {
+          "name": "Peter",
+          "avatar": "👨"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "CONVERSATION_WORD_RECOGNITION",
+      "instruction": "Tap every word or expression you heard in the conversation.",
+      "passThresholdPercent": 76,
+      "correctWords": [
+        "Dobrý deň",
+        "Ako sa máte?",
+        "Dobre, ďakujem",
+        "A vy?",
+        "Ujde to",
+        "Ahoj",
+        "miláčik",
+        "Čo je nové?",
+        "Nič nové",
+        "Som chorá",
+        "Si unavená",
+        "Áno",
+        "Dovidenia",
+        "Čau"
+      ],
+      "distractorWords": [
+        "Dobré ráno",
+        "Ako sa máš?",
+        "Veľmi dobre",
+        "Som chorý",
+        "Nie veľmi dobre",
+        "Prosím pomaly"
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "CONVERSATION_COMPREHENSION",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Greetings.mp3",
+      "conversationTranscriptSk": "Recepčná: Dobrý deň. Ako sa máte? Anna: Dobre, ďakujem. A vy? Recepčná: Ujde to, ďakujem. Peter: Ahoj, miláčik. Čo je nové? Anna: Nič nové. Som chorá. Peter: Si unavená. Poďme teda dnu. Anna: Áno. Recepčná: Dovidenia. Peter: Čau.",
+      "speakers": [
+        {
+          "name": "Recepčná",
+          "avatar": "👩"
+        },
+        {
+          "name": "Anna",
+          "avatar": "👩"
+        },
+        {
+          "name": "Peter",
+          "avatar": "👨"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "The receptionist says \"Dobrý deň.\" What greeting is this?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Good morning",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Good day",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Good night",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Dobrý deň\" = Good day. It is a polite formal greeting from the Greetings lesson.",
+          "reviewPair": {
+            "slovak": "Dobrý deň",
+            "english": "Good day"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "The receptionist asks \"Ako sa máte?\" Who is she speaking to?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Peter informally",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "A close friend with ty",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Anna politely / formally",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Ako sa máte?\" = How are you? This is the formal/polite version from the How Are You lesson.",
+          "reviewPair": {
+            "slovak": "Ako sa máte?",
+            "english": "How are you? (formal)"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "How does Anna answer the receptionist?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "\"Dobre, ďakujem. A vy?\"",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "\"Nič nové. Som chorá.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "\"Ujde to, ďakujem.\"",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Dobre, ďakujem. A vy?\" = Good, thank you. And you? Anna answers politely and asks the receptionist back.",
+          "reviewPair": {
+            "slovak": "Dobre, ďakujem. A vy?",
+            "english": "Good, thank you. And you?"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Peter says \"Ahoj, miláčik.\" What kind of greeting is \"Ahoj\" here?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Formal hotel greeting",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Informal hello",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Goodbye only",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Ahoj\" = Hi / hello. Peter uses it informally with Anna, not with the receptionist.",
+          "reviewPair": {
+            "slovak": "Ahoj",
+            "english": "Hi / hello"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "When Peter asks \"Čo je nové?\" what does Anna say?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "\"Veľmi dobre. A ty?\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "\"Dobré ráno.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "\"Nič nové. Som chorá.\"",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Nič nové\" = Nothing new. \"Som chorá\" = I am sick. Anna uses the feminine form chorá.",
+          "reviewPair": {
+            "slovak": "Nič nové. Som chorá.",
+            "english": "Nothing new. I am sick."
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Which goodbye does the receptionist use, and which goodbye does Peter use?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Receptionist: \"Dovidenia.\" Peter: \"Čau.\"",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Receptionist: \"Čau.\" Peter: \"Dovidenia.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Both say \"Dobré ráno.\"",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Dovidenia\" = Goodbye in a polite/formal setting. \"Čau\" = informal bye.",
+          "reviewPair": {
+            "slovak": "Dovidenia / Čau",
+            "english": "Goodbye / Bye"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "CONVERSATION_SENTENCE_BUILDER",
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "Good day. How are you?",
+          "targetSk": [
+            "Dobrý deň",
+            "Ako sa máte?"
+          ],
+          "bankChunks": [
+            "Dobrý deň",
+            "Ako sa máte?",
+            "Čau"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "Good, thank you. And you?",
+          "targetSk": [
+            "Dobre, ďakujem",
+            "A vy?"
+          ],
+          "bankChunks": [
+            "Dobre, ďakujem",
+            "A vy?",
+            "A ty?"
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "It is okay, thank you.",
+          "targetSk": [
+            "Ujde to",
+            "ďakujem"
+          ],
+          "bankChunks": [
+            "Ujde to",
+            "ďakujem",
+            "Veľmi dobre"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "Hi, darling. What is new?",
+          "targetSk": [
+            "Ahoj",
+            "miláčik",
+            "Čo je nové?"
+          ],
+          "bankChunks": [
+            "Ahoj",
+            "miláčik",
+            "Čo je nové?",
+            "Dovidenia"
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "Nothing new. I am sick.",
+          "targetSk": [
+            "Nič nové",
+            "Som chorá"
+          ],
+          "bankChunks": [
+            "Nič nové",
+            "Som chorá",
+            "Som chorý"
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "Goodbye. Bye.",
+          "targetSk": [
+            "Dovidenia",
+            "Čau"
+          ],
+          "bankChunks": [
+            "Dovidenia",
+            "Čau",
+            "Dobré ráno"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

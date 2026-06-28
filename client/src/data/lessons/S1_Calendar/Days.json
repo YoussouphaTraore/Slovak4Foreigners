@@ -1,0 +1,311 @@
+{
+  "id": "s1-days",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Days",
+  "description": "Learn weekdays and weekend days",
+  "icon": "📅",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Weekdays",
+      "rows": [
+        {
+          "label": "Monday",
+          "slovak": "Pondelok",
+          "english": "Monday"
+        },
+        {
+          "label": "Tuesday",
+          "slovak": "Utorok",
+          "english": "Tuesday"
+        },
+        {
+          "label": "Wednesday",
+          "slovak": "Streda",
+          "english": "Wednesday"
+        },
+        {
+          "label": "Thursday",
+          "slovak": "Štvrtok",
+          "english": "Thursday"
+        },
+        {
+          "label": "Friday",
+          "slovak": "Piatok",
+          "english": "Friday"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Weekend",
+      "rows": [
+        {
+          "label": "Saturday",
+          "slovak": "Sobota",
+          "english": "Saturday"
+        },
+        {
+          "label": "Sunday",
+          "slovak": "Nedeľa",
+          "english": "Sunday"
+        },
+        {
+          "label": "Weekend",
+          "slovak": "Víkend",
+          "english": "Weekend"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Pondelok",
+          "english": "Monday"
+        },
+        {
+          "slovak": "Utorok",
+          "english": "Tuesday"
+        },
+        {
+          "slovak": "Streda",
+          "english": "Wednesday"
+        },
+        {
+          "slovak": "Štvrtok",
+          "english": "Thursday"
+        },
+        {
+          "slovak": "Piatok",
+          "english": "Friday"
+        },
+        {
+          "slovak": "Sobota",
+          "english": "Saturday"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Pondelok",
+          "english": "Monday"
+        },
+        {
+          "slovak": "Streda",
+          "english": "Wednesday"
+        },
+        {
+          "slovak": "Piatok",
+          "english": "Friday"
+        },
+        {
+          "slovak": "Sobota",
+          "english": "Saturday"
+        },
+        {
+          "slovak": "Nedeľa",
+          "english": "Sunday"
+        },
+        {
+          "slovak": "Víkend",
+          "english": "Weekend"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Pondelok",
+          "english": "Monday"
+        },
+        {
+          "slovak": "Utorok",
+          "english": "Tuesday"
+        },
+        {
+          "slovak": "Streda",
+          "english": "Wednesday"
+        },
+        {
+          "slovak": "Štvrtok",
+          "english": "Thursday"
+        },
+        {
+          "slovak": "Piatok",
+          "english": "Friday"
+        },
+        {
+          "slovak": "Sobota",
+          "english": "Saturday"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your appointment is on Friday. Which phrase means on Friday?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "V pondelok",
+            "V piatok",
+            "V utorok",
+            "V nedeľu"
+          ],
+          "answer": "V piatok",
+          "answerMeaning": "V piatok = on Friday."
+        },
+        {
+          "situation": "Most offices are closed on Saturday and Sunday. What do you call these days together?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Pracovný deň",
+            "Víkend",
+            "Týždeň",
+            "Streda"
+          ],
+          "answer": "Víkend",
+          "answerMeaning": "Víkend = weekend."
+        },
+        {
+          "situation": "A shop sign says 'Otvorené: pondelok - piatok.' What does it mean?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "Open only Monday",
+            "Open Monday to Friday",
+            "Open weekends only",
+            "Closed Friday"
+          ],
+          "answer": "Open Monday to Friday",
+          "answerMeaning": "Pondelok - piatok = Monday to Friday."
+        },
+        {
+          "situation": "Your friend says 'Uvidíme sa v sobotu.' What are they saying?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "See you tomorrow",
+            "See you on Saturday",
+            "See you yesterday",
+            "See you next week"
+          ],
+          "answer": "See you on Saturday",
+          "answerMeaning": "Uvidíme sa v sobotu = See you on Saturday."
+        },
+        {
+          "situation": "You go to the office every Monday. Which day is Monday?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Pondelok",
+            "Utorok",
+            "Streda",
+            "Nedeľa"
+          ],
+          "answer": "Pondelok",
+          "answerMeaning": "Pondelok = Monday."
+        },
+        {
+          "situation": "Your appointment will be on Monday. Which sentence talks about the future?",
+          "instruction": "Choose the sentence with future bude",
+          "choices": [
+            "Termín bude v pondelok.",
+            "Termín bol v pondelok.",
+            "Termín je včera.",
+            "Termín bol zajtra."
+          ],
+          "answer": "Termín bude v pondelok.",
+          "answerMeaning": "Bude marks the future: Termín bude v pondelok. = The appointment will be on Monday."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Stretnutie je ___ pondelok.",
+          "translation": "The meeting is on Monday.",
+          "choices": [
+            "o",
+            "v",
+            "na",
+            "do"
+          ],
+          "answer": "v"
+        },
+        {
+          "sentence": "Lekár je v ___.",
+          "translation": "The doctor is on Friday.",
+          "choices": [
+            "piatok",
+            "sobotu",
+            "nedeľu",
+            "utorok"
+          ],
+          "answer": "piatok"
+        },
+        {
+          "sentence": "Uvidíme sa v ___.",
+          "translation": "See you on Saturday.",
+          "choices": [
+            "sobotu",
+            "pondelok",
+            "streda",
+            "piatok"
+          ],
+          "answer": "sobotu"
+        },
+        {
+          "sentence": "Obchody sú zatvorené počas ___.",
+          "translation": "Shops are closed during the weekend.",
+          "choices": [
+            "pracovného dňa",
+            "víkendu",
+            "streda",
+            "pondelka"
+          ],
+          "answer": "víkendu"
+        },
+        {
+          "sentence": "Dnes je ___.",
+          "translation": "Today is Wednesday.",
+          "choices": [
+            "streda",
+            "pondelok",
+            "piatok",
+            "nedeľa"
+          ],
+          "answer": "streda"
+        },
+        {
+          "sentence": "Termín ___ v piatok.",
+          "translation": "The appointment was on Friday.",
+          "choices": [
+            "bol",
+            "bude",
+            "je",
+            "som"
+          ],
+          "answer": "bol"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

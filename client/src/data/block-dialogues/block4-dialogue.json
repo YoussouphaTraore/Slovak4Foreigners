@@ -4,182 +4,623 @@
   "stageName": "Stage 1 · Survival",
   "blockId": "stage1-block4",
   "type": "BLOCK_DIALOGUE",
-  "title": "Something Happened",
-  "description": "You witness an accident near your flat and need to call for help — then tell Marek what happened.",
-  "icon": "🚨",
+  "title": "Finding Your Address",
+  "description": "Marek helps you give an address, explain apartment details, and guide someone to the right place.",
+  "icon": "📍",
   "xpReward": 20,
   "contact": {
-    "name": "Dispatcher",
-    "initials": "D",
-    "role": "Emergency dispatcher / Marek",
-    "avatar": "📞"
+    "name": "Marek",
+    "initials": "M",
+    "role": "Your friend",
+    "avatar": "👨"
   },
-  "context": "You are walking near your flat when you see someone fall and get hurt. You call for help, then later tell Marek what happened.",
+  "context": "Marek is coming to meet you and needs to find your building and flat. You give your address, describe the entrance and floor, and guide him with simple directions and position words.",
   "speakers": {
-    "dispatcher": { "name": "Dispatcher", "initials": "D", "avatar": "📞" },
-    "marek": { "name": "Marek", "initials": "M", "avatar": "👨" }
+    "marek": {
+      "name": "Marek",
+      "initials": "M",
+      "avatar": "👨"
+    }
   },
   "exchanges": [
     {
       "id": "ex1",
-      "speaker": "dispatcher",
-      "text": "Tiesňová linka, dobrý deň. Čo sa stalo?",
-      "translation": "Emergency line, good day. What happened?",
-      "prompt": "The dispatcher answers. Someone fell and is injured. What do you say first?",
+      "speaker": "marek",
+      "text": "Ahoj! Chcem prísť za tebou. Aká je tvoja adresa?",
+      "translation": "Hi! I want to come see you. What is your address?",
+      "prompt": "Marek asks for your address. Pick a correct address answer.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Koľko to stojí?", "translation": "How much does it cost?", "isCorrect": false },
-        { "id": "b", "text": "Niekto je zranený! Pošlite záchranku!", "translation": "Someone is injured! Send an ambulance!", "isCorrect": true },
-        { "id": "c", "text": "Aký je dnes deň?", "translation": "What day is it today?", "isCorrect": false },
-        { "id": "d", "text": "Som unavený.", "translation": "I am tired.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Moja adresa je Hlavná ulica 12.",
+          "translation": "My address is Hlavná Street 12.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Platím kartou.",
+          "translation": "I am paying by card.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Bolí ma hruď.",
+          "translation": "My chest hurts.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Som ženatý.",
+          "translation": "I am married.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Niekto je zranený! Pošlite záchranku! — exactly right. State the emergency immediately and clearly.",
-      "wrongFeedback": "Niekto je zranený! Pošlite záchranku! is the correct phrase for a medical emergency — say it immediately."
+      "correctFeedback": "Moja adresa je Hlavná ulica 12. — correct. This is the basic address pattern.",
+      "wrongFeedback": "Use Moja adresa je... when someone asks for your address."
     },
     {
       "id": "ex2",
-      "speaker": "dispatcher",
-      "text": "Rozumiem. Volám zdravotnícku pomoc. Aká je vaša adresa?",
-      "translation": "I understand. I'm sending medical help. What is your address?",
-      "prompt": "The dispatcher asks for your address. Pick whichever address detail you'd give first.",
-      "isOpenQuestion": true,
+      "speaker": "marek",
+      "text": "V ktorom meste bývaš?",
+      "translation": "Which city do you live in?",
+      "prompt": "Marek asks for the city. What do you say?",
+      "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Moja adresa je Hlavná ulica 12.", "translation": "My address is Hlavná street 12.", "isCorrect": true },
-        { "id": "b", "text": "Bývam na ulici Tabaková 5.", "translation": "I live on Tabaková street 5.", "isCorrect": true },
-        { "id": "c", "text": "Moja adresa je Štúrova 8.", "translation": "My address is Štúrova 8.", "isCorrect": true },
-        { "id": "d", "text": "Bývam na ulici Mlynská 3.", "translation": "I live on Mlynská street 3.", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "Bývam v Bratislave.",
+          "translation": "I live in Bratislava.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Bývam na prízemí.",
+          "translation": "I live on the ground floor.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Som vonku.",
+          "translation": "I am outside.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Choďte vpravo.",
+          "translation": "Go right.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Moja adresa je... / Bývam na ulici... — correct pattern. Any address works, the grammar is what matters.",
-      "wrongFeedback": "Moja adresa je... or Bývam na ulici... + street + number is the pattern for giving your address."
+      "correctFeedback": "Bývam v Bratislave. — correct. Bývam v + city is the useful city pattern.",
+      "wrongFeedback": "For city, use Bývam v + city."
     },
     {
       "id": "ex3",
-      "speaker": "dispatcher",
-      "text": "Ďakujem. Ste vnútri alebo vonku?",
-      "translation": "Thank you. Are you inside or outside?",
-      "prompt": "You are standing outside on the street. What do you say?",
+      "speaker": "marek",
+      "text": "Môžeš mi poslať aj PSČ?",
+      "translation": "Can you also send me the postal code?",
+      "prompt": "Marek asks for the postal code. Pick the right field answer.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Som vnútri.", "translation": "I am inside.", "isCorrect": false },
-        { "id": "b", "text": "Som vonku.", "translation": "I am outside.", "isCorrect": true },
-        { "id": "c", "text": "Som hore.", "translation": "I am upstairs.", "isCorrect": false },
-        { "id": "d", "text": "Som doma.", "translation": "I am at home.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Moje PSČ je 811 01.",
+          "translation": "My postal code is 811 01.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Môj vchod je B.",
+          "translation": "My entrance is B.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Je to blízko.",
+          "translation": "It is nearby.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Som pri lekárni.",
+          "translation": "I am by the pharmacy.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Som vonku. — correct. Vonku = outside, exactly where you are.",
-      "wrongFeedback": "Som vonku is correct since you're outside on the street, not inside a building."
+      "correctFeedback": "Moje PSČ je 811 01. — correct. PSČ is the postal-code field on Slovak forms.",
+      "wrongFeedback": "PSČ means postal code, so answer with Moje PSČ je..."
     },
     {
       "id": "ex4",
-      "speaker": "dispatcher",
-      "text": "Dobre. Je to blízko vašej budovy?",
-      "translation": "Good. Is it near your building?",
-      "prompt": "The accident happened right in front of your building. What do you say?",
+      "speaker": "marek",
+      "text": "Som pri budove. Ktorý vchod je tvoj?",
+      "translation": "I am by the building. Which entrance is yours?",
+      "prompt": "Marek asks for the entrance. What do you say?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Je to ďaleko.", "translation": "It's far away.", "isCorrect": false },
-        { "id": "b", "text": "Som pred budovou.", "translation": "I am in front of the building.", "isCorrect": true },
-        { "id": "c", "text": "Je to vnútri.", "translation": "It's inside.", "isCorrect": false },
-        { "id": "d", "text": "Neviem.", "translation": "I don't know.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Môj vchod je B.",
+          "translation": "My entrance is B.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Moje PSČ je 811 01.",
+          "translation": "My postal code is 811 01.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Je to ďaleko.",
+          "translation": "It is far.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "V pondelok.",
+          "translation": "On Monday.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Som pred budovou. — correct and precise. Pred = in front of, exactly where you are standing.",
-      "wrongFeedback": "Som pred budovou (I am in front of the building) gives the dispatcher a precise location."
+      "correctFeedback": "Môj vchod je B. — correct. Vchod means entrance or staircase.",
+      "wrongFeedback": "For entrance, use Môj vchod je..."
     },
     {
       "id": "ex5",
-      "speaker": "dispatcher",
-      "text": "Výborne, presná lokalizácia pomáha. Je niečo iné nablízku, ako obchod alebo lekáreň?",
-      "translation": "Excellent, a precise location helps. Is there anything else nearby, like a shop or pharmacy?",
-      "prompt": "There is a pharmacy right next to your building. What do you say?",
-      "isOpenQuestion": false,
+      "speaker": "marek",
+      "text": "A ktoré poschodie? Mám ísť hore alebo dole?",
+      "translation": "And which floor? Should I go up or down?",
+      "prompt": "Marek asks for the floor. Pick the apartment-detail answer.",
+      "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Som vedľa lekárne.", "translation": "I am next to the pharmacy.", "isCorrect": true },
-        { "id": "b", "text": "Som za lekárňou.", "translation": "I am behind the pharmacy.", "isCorrect": false },
-        { "id": "c", "text": "Lekáreň je ďaleko.", "translation": "The pharmacy is far.", "isCorrect": false },
-        { "id": "d", "text": "Som nad lekárňou.", "translation": "I am above the pharmacy.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Som na druhom poschodí.",
+          "translation": "I am on the second floor.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Bývam na prízemí.",
+          "translation": "I live on the ground floor.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Musíte ísť hore.",
+          "translation": "You need to go up.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Koľko to stojí?",
+          "translation": "How much does it cost?",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Som vedľa lekárne. — correct. Vedľa = next to, an extra landmark that helps the ambulance find you faster.",
-      "wrongFeedback": "Som vedľa lekárne (I am next to the pharmacy) is correct — it gives a precise extra landmark."
+      "correctFeedback": "Correct. Poschodie, prízemie, and hore/dole help someone find the right floor.",
+      "wrongFeedback": "Use poschodie/prízemie or hore/dole when explaining floors."
     },
     {
       "id": "ex6",
-      "speaker": "dispatcher",
-      "text": "Záchranka je na ceste. Bude tam o desiatej minúte. Zostanete s ním?",
-      "translation": "The ambulance is on its way. It will be there in ten minutes. Will you stay with him?",
-      "prompt": "You agree to stay with the injured person. What do you say?",
+      "speaker": "marek",
+      "text": "Kde je výťah?",
+      "translation": "Where is the lift?",
+      "prompt": "Marek asks where the lift is. Pick the direction phrase.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Nie, idem domov.", "translation": "No, I'm going home.", "isCorrect": false },
-        { "id": "b", "text": "Áno, zostanem s ním.", "translation": "Yes, I'll stay with him.", "isCorrect": true },
-        { "id": "c", "text": "Koľko to stojí?", "translation": "How much does it cost?", "isCorrect": false },
-        { "id": "d", "text": "Je to zadarmo?", "translation": "Is it free?", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Choďte priamo a potom vpravo.",
+          "translation": "Go straight and then right.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Mám dve deti.",
+          "translation": "I have two children.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Platím v hotovosti.",
+          "translation": "I am paying in cash.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Dnes prší.",
+          "translation": "It is raining today.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Áno, zostanem s ním. — correct. Zostanem = I will stay, from the Verbs lesson, used exactly as promised in real life.",
-      "wrongFeedback": "Áno, zostanem s ním (Yes, I'll stay with him) is the responsible and correct response here."
+      "correctFeedback": "Choďte priamo a potom vpravo. — correct. This combines straight ahead and right.",
+      "wrongFeedback": "For directions, use Choďte priamo, vpravo, or vľavo."
     },
     {
       "id": "ex7",
       "speaker": "marek",
-      "text": "Ahoj! Počul som sirény pri tvojej budove. Čo sa stalo?",
-      "translation": "Hi! I heard sirens near your building. What happened?",
-      "prompt": "Marek calls later asking what happened. How do you start explaining?",
+      "text": "Som vo vnútri budovy. Kde si ty?",
+      "translation": "I am inside the building. Where are you?",
+      "prompt": "You are waiting outside. What do you say?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Niekto spadol a bol zranený.", "translation": "Someone fell and was injured.", "isCorrect": true },
-        { "id": "b", "text": "Bol tu požiar.", "translation": "There was a fire.", "isCorrect": false },
-        { "id": "c", "text": "Ukradli mi peňaženku.", "translation": "They stole my wallet.", "isCorrect": false },
-        { "id": "d", "text": "Nič sa nestalo.", "translation": "Nothing happened.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Som vonku.",
+          "translation": "I am outside.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Som vnútri.",
+          "translation": "I am inside.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Som v marci.",
+          "translation": "I am in March.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Som z Indie.",
+          "translation": "I am from India.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Niekto spadol a bol zranený. — correct, matches what actually happened.",
-      "wrongFeedback": "Niekto spadol a bol zranený (Someone fell and was injured) correctly describes the situation."
+      "correctFeedback": "Som vonku. — correct. Vonku = outside.",
+      "wrongFeedback": "If you are outside, say Som vonku."
     },
     {
       "id": "ex8",
       "speaker": "marek",
-      "text": "To je hrozné. Kde presne sa to stalo?",
-      "translation": "That's terrible. Where exactly did it happen?",
-      "prompt": "Marek asks exactly where it happened. What do you say?",
-      "isOpenQuestion": false,
+      "text": "Nevidím ťa. Si tu alebo tam?",
+      "translation": "I do not see you. Are you here or over there?",
+      "prompt": "Marek is nearby but looking the wrong way. Pick a here/there answer.",
+      "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Vnútri v byte.", "translation": "Inside the flat.", "isCorrect": false },
-        { "id": "b", "text": "Pred budovou, vedľa lekárne.", "translation": "In front of the building, next to the pharmacy.", "isCorrect": true },
-        { "id": "c", "text": "Na druhom poschodí.", "translation": "On the second floor.", "isCorrect": false },
-        { "id": "d", "text": "Ďaleko odtiaľto.", "translation": "Far from here.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Som tu.",
+          "translation": "I am here.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Je to tam.",
+          "translation": "It is over there.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Je to blízko.",
+          "translation": "It is nearby.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Je to pätnásť eur.",
+          "translation": "It is fifteen euros.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Pred budovou, vedľa lekárne. — correct, exactly matching what you told the dispatcher.",
-      "wrongFeedback": "Pred budovou, vedľa lekárne (in front of the building, next to the pharmacy) matches the actual location."
+      "correctFeedback": "Tu, tam, and blízko are useful when pointing someone to a place.",
+      "wrongFeedback": "Use tu/tam/blízko when someone is trying to locate you."
     },
     {
       "id": "ex9",
       "speaker": "marek",
-      "text": "A zostal si s ním, kým prišla záchranka?",
-      "translation": "And did you stay with him until the ambulance arrived?",
-      "prompt": "Marek asks if you stayed with the injured person. You did. What do you say?",
+      "text": "Čo je vedľa tvojej budovy?",
+      "translation": "What is next to your building?",
+      "prompt": "Marek asks for a landmark. Pick the position phrase.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Áno, zostal som s ním.", "translation": "Yes, I stayed with him.", "isCorrect": true },
-        { "id": "b", "text": "Nie, odišiel som.", "translation": "No, I left.", "isCorrect": false },
-        { "id": "c", "text": "Neviem.", "translation": "I don't know.", "isCorrect": false },
-        { "id": "d", "text": "Som unavený.", "translation": "I am tired.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Lekáreň je vedľa budovy.",
+          "translation": "The pharmacy is next to the building.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Lekáreň je v júni.",
+          "translation": "The pharmacy is in June.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Lekáreň je päť eur.",
+          "translation": "The pharmacy is five euros.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Lekáreň je ženatý.",
+          "translation": "The pharmacy is married.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Áno, zostal som s ním. — correct, confirming you kept your word and stayed.",
-      "wrongFeedback": "Áno, zostal som s ním (Yes, I stayed with him) confirms what you promised the dispatcher."
+      "correctFeedback": "Lekáreň je vedľa budovy. — correct. Vedľa means next to.",
+      "wrongFeedback": "Use vedľa when something is next to a place."
     },
     {
       "id": "ex10",
       "speaker": "marek",
-      "text": "Si dobrý človek. Som rád, že je v poriadku. Potrebuješ niečo?",
-      "translation": "You're a good person. I'm glad he's okay. Do you need anything?",
-      "prompt": "Marek offers help. You're fine but appreciate his concern. What do you say?",
+      "text": "Som pri lekárni. Je tvoj vchod pred ňou alebo za ňou?",
+      "translation": "I am by the pharmacy. Is your entrance in front of it or behind it?",
+      "prompt": "Marek asks for a precise position. Pick a valid position answer.",
+      "isOpenQuestion": true,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Vchod je pred lekárňou.",
+          "translation": "The entrance is in front of the pharmacy.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Vchod je za lekárňou.",
+          "translation": "The entrance is behind the pharmacy.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Vchod je naproti banke.",
+          "translation": "The entrance is opposite the bank.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Vchod je zajtra.",
+          "translation": "The entrance is tomorrow.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Pred, za, and naproti are precise position words for landmarks.",
+      "wrongFeedback": "Use pred, za, or naproti for precise landmark positions."
+    },
+    {
+      "id": "ex11",
+      "speaker": "marek",
+      "text": "Už som skoro tam. Je byt nad obchodom alebo pod obchodom?",
+      "translation": "I am almost there. Is the flat above the shop or below the shop?",
+      "prompt": "Marek asks about above/below. Pick the position phrase.",
+      "isOpenQuestion": true,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Byt je nad obchodom.",
+          "translation": "The flat is above the shop.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Byt je pod obchodom.",
+          "translation": "The flat is below the shop.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Byt je medzi lekárňou a poštou.",
+          "translation": "The flat is between the pharmacy and the post office.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Byt je tridsať eur.",
+          "translation": "The flat is thirty euros.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Nad, pod, and medzi give precise positions in and around buildings.",
+      "wrongFeedback": "Use nad, pod, or medzi for above, below, and between."
+    },
+    {
+      "id": "ex12",
+      "speaker": "marek",
+      "text": "Našiel som to. Ďakujem! Nabudúce mi to môžeš napísať?",
+      "translation": "I found it. Thank you! Next time can you write it for me?",
+      "prompt": "Marek asks if you can write the address details next time. What is the useful phrase?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Som v poriadku, ďakujem za starostlivosť.", "translation": "I'm fine, thank you for caring.", "isCorrect": true },
-        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
-        { "id": "c", "text": "Dobrú noc!", "translation": "Good night!", "isCorrect": false },
-        { "id": "d", "text": "Koľko je hodín?", "translation": "What time is it?", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Napíšte to, prosím.",
+          "translation": "Write it down, please.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Som unavený.",
+          "translation": "I am tired.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Dobrú noc.",
+          "translation": "Good night.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Bolí ma hlava.",
+          "translation": "My head hurts.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Som v poriadku, ďakujem za starostlivosť. — warm and complete. You reassured him and thanked him.",
-      "wrongFeedback": "Som v poriadku, ďakujem za starostlivosť (I'm fine, thank you for caring) is the warm, natural close to this conversation."
+      "correctFeedback": "Napíšte to, prosím. — correct. It is useful for addresses and forms.",
+      "wrongFeedback": "Napíšte to, prosím means Write it down, please."
     }
   ],
-  "completionMessage": "🎉 Well handled! You gave your address, described your exact position, called for help, and explained the whole situation to Marek afterward — all in Slovak."
+  "completionMessage": "🎉 Great job! You gave your address, explained your building and flat, followed directions, and used position words to help Marek find you.",
+  "speakingRound": {
+    "id": "block4-speaking",
+    "type": "CONVERSATION_SPEAKING",
+    "questions": [
+      {
+        "id": "q0",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m1.mp3.mp3",
+        "marekQuestionSk": "Ahoj! Chcem prísť za tebou. Aká je tvoja adresa?",
+        "marekQuestionEn": "Hi! I want to come see you. What is your address?",
+        "correctAnswerSk": "Moja adresa je Hlavná ulica 12.",
+        "correctAnswerEn": "My address is Hlavná Street 12.",
+        "answerChunks": ["Moja adresa je Hlavná ulica 12."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q1",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m2.mp3.mp3",
+        "marekQuestionSk": "V ktorom meste bývaš?",
+        "marekQuestionEn": "Which city do you live in?",
+        "correctAnswerSk": "Bývam v Bratislave.",
+        "correctAnswerEn": "I live in Bratislava.",
+        "answerChunks": ["Bývam v Bratislave."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q2",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m3.mp3.mp3",
+        "marekQuestionSk": "Môžeš mi poslať aj PSČ?",
+        "marekQuestionEn": "Can you also send me the postal code?",
+        "correctAnswerSk": "Moje PSČ je 811 01.",
+        "correctAnswerEn": "My postal code is 811 01.",
+        "answerChunks": ["Moje PSČ je 811 01."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q3",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m4.mp3.mp3",
+        "marekQuestionSk": "Som pri budove. Ktorý vchod je tvoj?",
+        "marekQuestionEn": "I am by the building. Which entrance is yours?",
+        "correctAnswerSk": "Môj vchod je B.",
+        "correctAnswerEn": "My entrance is B.",
+        "answerChunks": ["Môj vchod je B."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q4",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m5.mp3.mp3",
+        "marekQuestionSk": "A ktoré poschodie? Mám ísť hore alebo dole?",
+        "marekQuestionEn": "And which floor? Should I go up or down?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          { "id": "druhe", "label": "Druhé poschodie", "sk": "Som na druhom poschodí.", "en": "I am on the second floor.", "chunks": ["Som na druhom poschodí."] },
+          { "id": "prizemie", "label": "Prízemie", "sk": "Bývam na prízemí.", "en": "I live on the ground floor.", "chunks": ["Bývam na prízemí."] },
+          { "id": "hore", "label": "Ísť hore", "sk": "Musíte ísť hore.", "en": "You need to go up.", "chunks": ["Musíte ísť hore."] }
+        ]
+      },
+      {
+        "id": "q5",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m6.mp3.mp3",
+        "marekQuestionSk": "Kde je výťah?",
+        "marekQuestionEn": "Where is the lift?",
+        "correctAnswerSk": "Choďte priamo a potom vpravo.",
+        "correctAnswerEn": "Go straight and then right.",
+        "answerChunks": ["Choďte priamo a potom vpravo."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q6",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m7.mp3.mp3",
+        "marekQuestionSk": "Som vo vnútri budovy. Kde si ty?",
+        "marekQuestionEn": "I am inside the building. Where are you?",
+        "correctAnswerSk": "Som vonku.",
+        "correctAnswerEn": "I am outside.",
+        "answerChunks": ["Som vonku."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q7",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m8.mp3.mp3",
+        "marekQuestionSk": "Nevidím ťa. Si tu alebo tam?",
+        "marekQuestionEn": "I do not see you. Are you here or over there?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          { "id": "tu", "label": "Som tu", "sk": "Som tu.", "en": "I am here.", "chunks": ["Som tu."] },
+          { "id": "tam", "label": "Je to tam", "sk": "Je to tam.", "en": "It is over there.", "chunks": ["Je to tam."] },
+          { "id": "blizko", "label": "Je to blízko", "sk": "Je to blízko.", "en": "It is nearby.", "chunks": ["Je to blízko."] }
+        ]
+      },
+      {
+        "id": "q8",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m9.mp3.mp3",
+        "marekQuestionSk": "Čo je vedľa tvojej budovy?",
+        "marekQuestionEn": "What is next to your building?",
+        "correctAnswerSk": "Lekáreň je vedľa budovy.",
+        "correctAnswerEn": "The pharmacy is next to the building.",
+        "answerChunks": ["Lekáreň je vedľa budovy."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q9",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m10.mp3.mp3",
+        "marekQuestionSk": "Som pri lekárni. Je tvoj vchod pred ňou alebo za ňou?",
+        "marekQuestionEn": "I am by the pharmacy. Is your entrance in front of it or behind it?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          { "id": "pred", "label": "Pred lekárňou", "sk": "Vchod je pred lekárňou.", "en": "The entrance is in front of the pharmacy.", "chunks": ["Vchod je pred lekárňou."] },
+          { "id": "za", "label": "Za lekárňou", "sk": "Vchod je za lekárňou.", "en": "The entrance is behind the pharmacy.", "chunks": ["Vchod je za lekárňou."] },
+          { "id": "naproti", "label": "Naproti banke", "sk": "Vchod je naproti banke.", "en": "The entrance is opposite the bank.", "chunks": ["Vchod je naproti banke."] }
+        ]
+      },
+      {
+        "id": "q10",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m11.mp3.mp3",
+        "marekQuestionSk": "Už som skoro tam. Je byt nad obchodom alebo pod obchodom?",
+        "marekQuestionEn": "I am almost there. Is the flat above the shop or below the shop?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          { "id": "nad", "label": "Nad obchodom", "sk": "Byt je nad obchodom.", "en": "The flat is above the shop.", "chunks": ["Byt je nad obchodom."] },
+          { "id": "pod", "label": "Pod obchodom", "sk": "Byt je pod obchodom.", "en": "The flat is below the shop.", "chunks": ["Byt je pod obchodom."] },
+          { "id": "medzi", "label": "Medzi", "sk": "Byt je medzi lekárňou a poštou.", "en": "The flat is between the pharmacy and the post office.", "chunks": ["Byt je medzi lekárňou a poštou."] }
+        ]
+      },
+      {
+        "id": "q11",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block4-m12.mp3.mp3",
+        "marekQuestionSk": "Našiel som to. Ďakujem! Nabudúce mi to môžeš napísať?",
+        "marekQuestionEn": "I found it. Thank you! Next time can you write it for me?",
+        "correctAnswerSk": "Napíšte to, prosím.",
+        "correctAnswerEn": "Write it down, please.",
+        "answerChunks": ["Napíšte to, prosím."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      }
+    ]
+  }
 }

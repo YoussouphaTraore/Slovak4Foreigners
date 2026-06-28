@@ -1,0 +1,306 @@
+{
+  "id": "s1-above-below-between",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Above, Below & Between",
+  "description": "Describe more precise positions inside buildings and between landmarks",
+  "icon": "↕️",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Precise Positions",
+      "rows": [
+        {
+          "label": "Above",
+          "slovak": "Nad",
+          "english": "Above / Over"
+        },
+        {
+          "label": "Below",
+          "slovak": "Pod",
+          "english": "Below / Under"
+        },
+        {
+          "label": "Between",
+          "slovak": "Medzi",
+          "english": "Between"
+        },
+        {
+          "label": "Above the restaurant",
+          "slovak": "Nad reštauráciou.",
+          "english": "Above the restaurant."
+        },
+        {
+          "label": "Under the stairs",
+          "slovak": "Pod schodmi.",
+          "english": "Under the stairs."
+        },
+        {
+          "label": "Between pharmacy and post office",
+          "slovak": "Medzi lekárňou a poštou.",
+          "english": "Between the pharmacy and the post office."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Nad",
+          "english": "Above"
+        },
+        {
+          "slovak": "Pod",
+          "english": "Below / Under"
+        },
+        {
+          "slovak": "Medzi",
+          "english": "Between"
+        },
+        {
+          "slovak": "Nad reštauráciou.",
+          "english": "Above the restaurant."
+        },
+        {
+          "slovak": "Pod schodmi.",
+          "english": "Under the stairs."
+        },
+        {
+          "slovak": "Medzi lekárňou a poštou.",
+          "english": "Between the pharmacy and the post office."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Nad",
+          "english": "Above"
+        },
+        {
+          "slovak": "Pod",
+          "english": "Below / Under"
+        },
+        {
+          "slovak": "Medzi",
+          "english": "Between"
+        },
+        {
+          "slovak": "Nad reštauráciou.",
+          "english": "Above the restaurant."
+        },
+        {
+          "slovak": "Pod schodmi.",
+          "english": "Under the stairs."
+        },
+        {
+          "slovak": "Medzi lekárňou a poštou.",
+          "english": "Between the pharmacy and the post office."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Nad",
+          "english": "Above / Over"
+        },
+        {
+          "slovak": "Pod",
+          "english": "Below / Under"
+        },
+        {
+          "slovak": "Medzi",
+          "english": "Between"
+        },
+        {
+          "slovak": "Nad reštauráciou.",
+          "english": "Above the restaurant."
+        },
+        {
+          "slovak": "Pod schodmi.",
+          "english": "Under the stairs."
+        },
+        {
+          "slovak": "Medzi lekárňou a poštou.",
+          "english": "Between the pharmacy and the post office."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Nad",
+          "english": "Above"
+        },
+        {
+          "slovak": "Pod",
+          "english": "Below / Under"
+        },
+        {
+          "slovak": "Medzi",
+          "english": "Between"
+        },
+        {
+          "slovak": "Nad reštauráciou.",
+          "english": "Above the restaurant."
+        },
+        {
+          "slovak": "Pod schodmi.",
+          "english": "Under the stairs."
+        },
+        {
+          "slovak": "Medzi lekárňou a poštou.",
+          "english": "Between the pharmacy and the post office."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The shopping centre map says: Lekáreň je nad reštauráciou. Where is the pharmacy?",
+          "instruction": "Choose the correct location",
+          "choices": [
+            "Above the restaurant",
+            "Below the restaurant",
+            "Next to the restaurant",
+            "Behind the restaurant"
+          ],
+          "answer": "Above the restaurant",
+          "answerMeaning": "Nad = above / over."
+        },
+        {
+          "situation": "Your colleague says the storage room is pod schodmi. Where should you look?",
+          "instruction": "Choose the correct location",
+          "choices": [
+            "Under the stairs",
+            "Above the stairs",
+            "Opposite the stairs",
+            "Next to the bank"
+          ],
+          "answer": "Under the stairs",
+          "answerMeaning": "Pod schodmi = under the stairs."
+        },
+        {
+          "situation": "The police ask your exact location. You are between the pharmacy and the post office. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som medzi lekárňou a poštou.",
+            "Som nad reštauráciou.",
+            "Som pod schodmi.",
+            "Som za bankou."
+          ],
+          "answer": "Som medzi lekárňou a poštou.",
+          "answerMeaning": "Medzi = between."
+        },
+        {
+          "situation": "Which word means below or under?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Pod",
+            "Nad",
+            "Medzi",
+            "Pri"
+          ],
+          "answer": "Pod",
+          "answerMeaning": "Pod = below / under."
+        },
+        {
+          "situation": "Which word means between?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Medzi",
+            "Nad",
+            "Pod",
+            "Pred"
+          ],
+          "answer": "Medzi",
+          "answerMeaning": "Medzi = between."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Lekáreň je ___ reštauráciou.",
+          "translation": "The pharmacy is above the restaurant.",
+          "choices": [
+            "nad",
+            "pod",
+            "medzi",
+            "pri"
+          ],
+          "answer": "nad",
+          "answerMeaning": "Nad = above / over."
+        },
+        {
+          "sentence": "Sklad je ___ schodmi.",
+          "translation": "The storage room is under the stairs.",
+          "choices": [
+            "pod",
+            "nad",
+            "za",
+            "vpravo"
+          ],
+          "answer": "pod",
+          "answerMeaning": "Pod = below / under."
+        },
+        {
+          "sentence": "Som ___ lekárňou a poštou.",
+          "translation": "I am between the pharmacy and the post office.",
+          "choices": [
+            "medzi",
+            "pred",
+            "nad",
+            "za"
+          ],
+          "answer": "medzi",
+          "answerMeaning": "Medzi = between."
+        },
+        {
+          "sentence": "Kancelária je ___ obchodom.",
+          "translation": "The office is above the shop.",
+          "choices": [
+            "nad",
+            "pod",
+            "pri",
+            "vonku"
+          ],
+          "answer": "nad",
+          "answerMeaning": "Nad = above / over."
+        },
+        {
+          "sentence": "Taška je ___ stolom.",
+          "translation": "The bag is under the table.",
+          "choices": [
+            "pod",
+            "nad",
+            "medzi",
+            "pred"
+          ],
+          "answer": "pod",
+          "answerMeaning": "Pod = under."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

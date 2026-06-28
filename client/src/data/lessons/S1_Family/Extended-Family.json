@@ -1,0 +1,324 @@
+{
+  "id": "s1-extended-family",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Extended Family",
+  "description": "Talk about grandparents, aunts, uncles and cousins",
+  "icon": "🌳",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Extended Family",
+      "rows": [
+        {
+          "label": "Grandpa",
+          "slovak": "Dedko",
+          "english": "Grandpa"
+        },
+        {
+          "label": "Grandma",
+          "slovak": "Babička",
+          "english": "Grandma"
+        },
+        {
+          "label": "Grandparents",
+          "slovak": "Starí rodičia",
+          "english": "Grandparents"
+        },
+        {
+          "label": "Uncle",
+          "slovak": "Strýko",
+          "english": "Uncle"
+        },
+        {
+          "label": "Aunt",
+          "slovak": "Teta",
+          "english": "Aunt"
+        },
+        {
+          "label": "Cousins",
+          "slovak": "Bratranci a sesternice",
+          "english": "Cousins"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Dedko",
+          "english": "Grandpa"
+        },
+        {
+          "slovak": "Babička",
+          "english": "Grandma"
+        },
+        {
+          "slovak": "Starí rodičia",
+          "english": "Grandparents"
+        },
+        {
+          "slovak": "Strýko",
+          "english": "Uncle"
+        },
+        {
+          "slovak": "Teta",
+          "english": "Aunt"
+        },
+        {
+          "slovak": "Sesternica",
+          "english": "Cousin (female)"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Dedko",
+          "english": "Grandpa"
+        },
+        {
+          "slovak": "Babička",
+          "english": "Grandma"
+        },
+        {
+          "slovak": "Starí rodičia",
+          "english": "Grandparents"
+        },
+        {
+          "slovak": "Strýko",
+          "english": "Uncle"
+        },
+        {
+          "slovak": "Teta",
+          "english": "Aunt"
+        },
+        {
+          "slovak": "Bratranec",
+          "english": "Cousin (male)"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Dedko",
+          "english": "Grandpa"
+        },
+        {
+          "slovak": "Babička",
+          "english": "Grandma"
+        },
+        {
+          "slovak": "Starí rodičia",
+          "english": "Grandparents"
+        },
+        {
+          "slovak": "Strýko",
+          "english": "Uncle"
+        },
+        {
+          "slovak": "Teta",
+          "english": "Aunt"
+        },
+        {
+          "slovak": "Bratranci a sesternice",
+          "english": "Cousins"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Dedko",
+          "english": "Grandpa"
+        },
+        {
+          "slovak": "Babička",
+          "english": "Grandma"
+        },
+        {
+          "slovak": "Starí rodičia",
+          "english": "Grandparents"
+        },
+        {
+          "slovak": "Strýko",
+          "english": "Uncle"
+        },
+        {
+          "slovak": "Teta",
+          "english": "Aunt"
+        },
+        {
+          "slovak": "Bratranec",
+          "english": "Cousin (male)"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your grandparents are visiting from abroad. Which Slovak phrase means grandparents?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Starí rodičia",
+            "Moji rodičia",
+            "Moje deti",
+            "Moji súrodenci"
+          ],
+          "answer": "Starí rodičia",
+          "answerMeaning": "Starí rodičia = grandparents."
+        },
+        {
+          "situation": "How do you introduce your grandma to a Slovak friend?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "To je môj dedko.",
+            "To je moja babička.",
+            "To je moja teta.",
+            "To je moja sestra."
+          ],
+          "answer": "To je moja babička.",
+          "answerMeaning": "Babička = grandma."
+        },
+        {
+          "situation": "You have an uncle and an aunt who live nearby. Which two words do you use?",
+          "instruction": "Choose the correct pair",
+          "choices": [
+            "Strýko a teta",
+            "Bratranec a sesternica",
+            "Dedko a babička",
+            "Brat a sestra"
+          ],
+          "answer": "Strýko a teta",
+          "answerMeaning": "Strýko = uncle. Teta = aunt."
+        },
+        {
+          "situation": "Your cousin (female) is visiting. How do you introduce her?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "To je môj bratranec.",
+            "To je moja sesternica.",
+            "To je moja sestra.",
+            "To je moja teta."
+          ],
+          "answer": "To je moja sesternica.",
+          "answerMeaning": "Sesternica = female cousin. Bratranec = male cousin."
+        },
+        {
+          "situation": "Your mother's brother is visiting. Which word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Strýko",
+            "Teta",
+            "Dedko",
+            "Brat"
+          ],
+          "answer": "Strýko",
+          "answerMeaning": "Strýko = uncle."
+        },
+        {
+          "situation": "Your father's sister is visiting. Which word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Teta",
+            "Babička",
+            "Sestra",
+            "Dcéra"
+          ],
+          "answer": "Teta",
+          "answerMeaning": "Teta = aunt."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Moja ___ varí najlepšiu kapustnicu.",
+          "translation": "My grandma makes the best cabbage soup.",
+          "choices": [
+            "teta",
+            "sestra",
+            "babička",
+            "manželka"
+          ],
+          "answer": "babička"
+        },
+        {
+          "sentence": "Môj ___ má osemdesiat rokov.",
+          "translation": "My grandpa is eighty years old.",
+          "choices": [
+            "dedko",
+            "brat",
+            "syn",
+            "otec"
+          ],
+          "answer": "dedko"
+        },
+        {
+          "sentence": "Moja ___ a strýko prídu na návštevu.",
+          "translation": "My aunt and uncle are coming to visit.",
+          "choices": [
+            "sestra",
+            "teta",
+            "dcéra",
+            "babička"
+          ],
+          "answer": "teta"
+        },
+        {
+          "sentence": "To je moja ___. Je dcéra mojej tety.",
+          "translation": "This is my cousin. She is my aunt's daughter.",
+          "choices": [
+            "sestra",
+            "sesternica",
+            "babička",
+            "mama"
+          ],
+          "answer": "sesternica"
+        },
+        {
+          "sentence": "Moji ___ bývajú na dedine.",
+          "translation": "My grandparents live in a village.",
+          "choices": [
+            "starí rodičia",
+            "súrodenci",
+            "deti",
+            "svokrovci"
+          ],
+          "answer": "starí rodičia"
+        },
+        {
+          "sentence": "Môj ___ je brat mojej mamy.",
+          "translation": "My uncle is my mother's brother.",
+          "choices": [
+            "strýko",
+            "dedko",
+            "syn",
+            "manžel"
+          ],
+          "answer": "strýko"
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

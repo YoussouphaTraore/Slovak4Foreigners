@@ -1,0 +1,304 @@
+{
+  "id": "s1-weeks-in-month",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Weeks in a Month",
+  "description": "Use first, second, third, and last week of the month",
+  "icon": "📅",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Weeks in a Month",
+      "subtitle": "Using ordinal numbers you already know.",
+      "rows": [
+        {
+          "label": "1st week",
+          "slovak": "Prvý týždeň",
+          "english": "First week"
+        },
+        {
+          "label": "2nd week",
+          "slovak": "Druhý týždeň",
+          "english": "Second week"
+        },
+        {
+          "label": "3rd week",
+          "slovak": "Tretí týždeň",
+          "english": "Third week"
+        },
+        {
+          "label": "Last week of the month",
+          "slovak": "Posledný týždeň mesiaca",
+          "english": "Last week of the month"
+        },
+        {
+          "label": "Every month",
+          "slovak": "Každý mesiac",
+          "english": "Every month"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Prvý týždeň",
+          "english": "First week"
+        },
+        {
+          "slovak": "Druhý týždeň",
+          "english": "Second week"
+        },
+        {
+          "slovak": "Tretí týždeň",
+          "english": "Third week"
+        },
+        {
+          "slovak": "Posledný týždeň",
+          "english": "Last week"
+        },
+        {
+          "slovak": "Každý mesiac",
+          "english": "Every month"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Prvý týždeň",
+          "english": "First week"
+        },
+        {
+          "slovak": "Druhý týždeň",
+          "english": "Second week"
+        },
+        {
+          "slovak": "Tretí týždeň",
+          "english": "Third week"
+        },
+        {
+          "slovak": "Posledný týždeň",
+          "english": "Last week"
+        },
+        {
+          "slovak": "Každý mesiac",
+          "english": "Every month"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Prvý týždeň",
+          "english": "First week"
+        },
+        {
+          "slovak": "Druhý týždeň",
+          "english": "Second week"
+        },
+        {
+          "slovak": "Tretí týždeň",
+          "english": "Third week"
+        },
+        {
+          "slovak": "Posledný týždeň",
+          "english": "Last week"
+        },
+        {
+          "slovak": "Každý mesiac",
+          "english": "Every month"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Prvý týždeň",
+          "english": "First week"
+        },
+        {
+          "slovak": "Druhý týždeň",
+          "english": "Second week"
+        },
+        {
+          "slovak": "Tretí týždeň",
+          "english": "Third week"
+        },
+        {
+          "slovak": "Posledný týždeň mesiaca",
+          "english": "Last week of the month"
+        },
+        {
+          "slovak": "Každý mesiac",
+          "english": "Every month"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your salary is paid during the first week of every month.",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Platia mi posledný týždeň.",
+            "Platia mi prvý týždeň mesiaca.",
+            "Platia mi minulý týždeň.",
+            "Platia mi každý deň."
+          ],
+          "answer": "Platia mi prvý týždeň mesiaca.",
+          "answerMeaning": "Prvý týždeň mesiaca = first week of the month."
+        },
+        {
+          "situation": "Your rent is due during the last week of the month.",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Nájom je prvý týždeň mesiaca.",
+            "Nájom je posledný týždeň mesiaca.",
+            "Nájom je každý deň.",
+            "Nájom je budúci deň."
+          ],
+          "answer": "Nájom je posledný týždeň mesiaca.",
+          "answerMeaning": "Posledný týždeň mesiaca = last week of the month."
+        },
+        {
+          "situation": "You have a meeting in the second week. Which phrase means second week?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Prvý týždeň",
+            "Druhý týždeň",
+            "Tretí týždeň",
+            "Posledný týždeň"
+          ],
+          "answer": "Druhý týždeň",
+          "answerMeaning": "Druhý týždeň = second week."
+        },
+        {
+          "situation": "You pay rent every month. Which phrase means every month?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Každý mesiac",
+            "Každý deň",
+            "Minulý týždeň",
+            "Budúci týždeň"
+          ],
+          "answer": "Každý mesiac",
+          "answerMeaning": "Každý mesiac = every month."
+        },
+        {
+          "situation": "A course begins in the third week of the month. Which phrase means third week?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Prvý týždeň",
+            "Druhý týždeň",
+            "Tretí týždeň",
+            "Každý mesiac"
+          ],
+          "answer": "Tretí týždeň",
+          "answerMeaning": "Tretí týždeň = third week."
+        },
+        {
+          "situation": "Your checkup will be in the third week of the month. Which sentence fits?",
+          "instruction": "Choose the future sentence",
+          "choices": [
+            "Kontrola bude tretí týždeň mesiaca.",
+            "Kontrola bola tretí týždeň mesiaca.",
+            "Kontrola je minulý mesiac.",
+            "Kontrola bude minulý týždeň."
+          ],
+          "answer": "Kontrola bude tretí týždeň mesiaca.",
+          "answerMeaning": "Bude shows the checkup is still in the future."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Dostávam výplatu ___ týždeň mesiaca.",
+          "translation": "I get paid the first week of the month.",
+          "choices": [
+            "prvý",
+            "druhý",
+            "posledný",
+            "tretí"
+          ],
+          "answer": "prvý"
+        },
+        {
+          "sentence": "Účet treba zaplatiť do ___ týždňa mesiaca.",
+          "translation": "The bill must be paid by the last week of the month.",
+          "choices": [
+            "prvého",
+            "druhého",
+            "posledného",
+            "tretieho"
+          ],
+          "answer": "posledného"
+        },
+        {
+          "sentence": "Kurz je ___ týždeň mesiaca.",
+          "translation": "The course is the second week of the month.",
+          "choices": [
+            "prvý",
+            "druhý",
+            "tretí",
+            "posledný"
+          ],
+          "answer": "druhý"
+        },
+        {
+          "sentence": "Kontrola je ___ týždeň mesiaca.",
+          "translation": "The checkup is the third week of the month.",
+          "choices": [
+            "prvý",
+            "druhý",
+            "tretí",
+            "posledný"
+          ],
+          "answer": "tretí"
+        },
+        {
+          "sentence": "Platím nájom ___ mesiac.",
+          "translation": "I pay rent every month.",
+          "choices": [
+            "tento",
+            "minulý",
+            "každý",
+            "budúci"
+          ],
+          "answer": "každý"
+        },
+        {
+          "sentence": "Výplata ___ prvý týždeň mesiaca.",
+          "translation": "The salary payment was in the first week of the month.",
+          "choices": [
+            "bola",
+            "bude",
+            "je",
+            "som"
+          ],
+          "answer": "bola"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

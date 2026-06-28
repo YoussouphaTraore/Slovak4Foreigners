@@ -1,0 +1,214 @@
+{
+  "id": "s1-food-descriptions",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Food Descriptions",
+  "description": "Say whether food is sweet, salty, spicy, or tasty",
+  "icon": "😋",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Food Descriptions",
+      "rows": [
+        {
+          "label": "Sweet",
+          "slovak": "Sladké",
+          "english": "Sweet"
+        },
+        {
+          "label": "Salty",
+          "slovak": "Slané",
+          "english": "Salty"
+        },
+        {
+          "label": "Spicy",
+          "slovak": "Pikantné",
+          "english": "Spicy"
+        },
+        {
+          "label": "Tasty",
+          "slovak": "Chutné",
+          "english": "Tasty"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Sladké",
+          "english": "Sweet"
+        },
+        {
+          "slovak": "Slané",
+          "english": "Salty"
+        },
+        {
+          "slovak": "Pikantné",
+          "english": "Spicy"
+        },
+        {
+          "slovak": "Chutné",
+          "english": "Tasty"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Sladké",
+          "english": "Sweet"
+        },
+        {
+          "slovak": "Slané",
+          "english": "Salty"
+        },
+        {
+          "slovak": "Pikantné",
+          "english": "Spicy"
+        },
+        {
+          "slovak": "Chutné",
+          "english": "Tasty"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Sladké",
+          "english": "Sweet"
+        },
+        {
+          "slovak": "Slané",
+          "english": "Salty"
+        },
+        {
+          "slovak": "Pikantné",
+          "english": "Spicy"
+        },
+        {
+          "slovak": "Chutné",
+          "english": "Tasty"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Sladké",
+          "english": "Sweet"
+        },
+        {
+          "slovak": "Slané",
+          "english": "Salty"
+        },
+        {
+          "slovak": "Pikantné",
+          "english": "Spicy"
+        },
+        {
+          "slovak": "Chutné",
+          "english": "Tasty"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need sweet. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Chutné",
+            "Pikantné",
+            "Sladké",
+            "Slané"
+          ],
+          "answer": "Sladké",
+          "answerMeaning": "Sladké = Sweet"
+        },
+        {
+          "situation": "You need salty. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Chutné",
+            "Pikantné",
+            "Sladké",
+            "Slané"
+          ],
+          "answer": "Slané",
+          "answerMeaning": "Slané = Salty"
+        },
+        {
+          "situation": "You need spicy. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Chutné",
+            "Pikantné",
+            "Sladké",
+            "Slané"
+          ],
+          "answer": "Pikantné",
+          "answerMeaning": "Pikantné = Spicy"
+        },
+        {
+          "situation": "You need tasty. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Chutné",
+            "Pikantné",
+            "Sladké",
+            "Slané"
+          ],
+          "answer": "Chutné",
+          "answerMeaning": "Chutné = Tasty"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Táto polievka je veľmi ___!",
+          "translation": "This soup is very tasty!",
+          "choices": [
+            "sladká",
+            "slaná",
+            "chutná",
+            "pikantná"
+          ],
+          "answer": "chutná"
+        },
+        {
+          "sentence": "Toto jedlo je príliš ___ pre mňa.",
+          "translation": "This dish is too spicy for me.",
+          "choices": [
+            "sladké",
+            "slané",
+            "chutné",
+            "pikantné"
+          ],
+          "answer": "pikantné"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

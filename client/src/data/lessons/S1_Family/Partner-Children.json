@@ -1,0 +1,324 @@
+{
+  "id": "s1-partner-children",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Partner & Children",
+  "description": "Talk about partners, spouses and children",
+  "icon": "💍",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Partner & Children",
+      "rows": [
+        {
+          "label": "Husband",
+          "slovak": "Manžel",
+          "english": "Husband"
+        },
+        {
+          "label": "Wife",
+          "slovak": "Manželka",
+          "english": "Wife"
+        },
+        {
+          "label": "Spouse",
+          "slovak": "Partner / Partnerka",
+          "english": "Partner / spouse"
+        },
+        {
+          "label": "Son",
+          "slovak": "Syn",
+          "english": "Son"
+        },
+        {
+          "label": "Daughter",
+          "slovak": "Dcéra",
+          "english": "Daughter"
+        },
+        {
+          "label": "Children",
+          "slovak": "Deti",
+          "english": "Children"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Manžel",
+          "english": "Husband"
+        },
+        {
+          "slovak": "Manželka",
+          "english": "Wife"
+        },
+        {
+          "slovak": "Partner",
+          "english": "Partner"
+        },
+        {
+          "slovak": "Syn",
+          "english": "Son"
+        },
+        {
+          "slovak": "Dcéra",
+          "english": "Daughter"
+        },
+        {
+          "slovak": "Deti",
+          "english": "Children"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Manžel",
+          "english": "Husband"
+        },
+        {
+          "slovak": "Manželka",
+          "english": "Wife"
+        },
+        {
+          "slovak": "Partner",
+          "english": "Partner"
+        },
+        {
+          "slovak": "Syn",
+          "english": "Son"
+        },
+        {
+          "slovak": "Dcéra",
+          "english": "Daughter"
+        },
+        {
+          "slovak": "Deti",
+          "english": "Children"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Manžel",
+          "english": "Husband"
+        },
+        {
+          "slovak": "Manželka",
+          "english": "Wife"
+        },
+        {
+          "slovak": "Partner",
+          "english": "Partner"
+        },
+        {
+          "slovak": "Syn",
+          "english": "Son"
+        },
+        {
+          "slovak": "Dcéra",
+          "english": "Daughter"
+        },
+        {
+          "slovak": "Deti",
+          "english": "Children"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Manžel",
+          "english": "Husband"
+        },
+        {
+          "slovak": "Manželka",
+          "english": "Wife"
+        },
+        {
+          "slovak": "Partnerka",
+          "english": "Partner (female)"
+        },
+        {
+          "slovak": "Syn",
+          "english": "Son"
+        },
+        {
+          "slovak": "Dcéra",
+          "english": "Daughter"
+        },
+        {
+          "slovak": "Deti",
+          "english": "Children"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your neighbour asks about your wife's parents. Which Slovak word means 'wife'?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Manžel",
+            "Manželka",
+            "Sestra",
+            "Dcéra"
+          ],
+          "answer": "Manželka",
+          "answerMeaning": "Manželka = wife. Manžel = husband."
+        },
+        {
+          "situation": "Someone asks if you have children. You have one son. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Mám syna.",
+            "Mám dcéru.",
+            "Mám brata.",
+            "Mám otca."
+          ],
+          "answer": "Mám syna.",
+          "answerMeaning": "Syn = son. Mám syna = I have a son."
+        },
+        {
+          "situation": "You introduce your daughter to a colleague. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "To je môj syn.",
+            "To je moja dcéra.",
+            "To je moja mama.",
+            "To je moja sestra."
+          ],
+          "answer": "To je moja dcéra.",
+          "answerMeaning": "Dcéra = daughter. To je moja dcéra = This is my daughter."
+        },
+        {
+          "situation": "Someone asks if you have children. You have two children. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Deti",
+            "Rodičia",
+            "Súrodenci",
+            "Svokrovci"
+          ],
+          "answer": "Deti",
+          "answerMeaning": "Deti = children."
+        },
+        {
+          "situation": "You want to say 'This is my husband.' Which phrase is correct?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "To je môj manžel.",
+            "To je moja manželka.",
+            "To je môj syn.",
+            "To je moja dcéra."
+          ],
+          "answer": "To je môj manžel.",
+          "answerMeaning": "Môj manžel = my husband."
+        },
+        {
+          "situation": "You are filling in a form and it asks for your spouse. What does spouse mean here?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "Husband or wife",
+            "Brother or sister",
+            "Mother or father",
+            "Son or daughter"
+          ],
+          "answer": "Husband or wife",
+          "answerMeaning": "Spouse here means your partner: manžel, manželka, partner, or partnerka depending on context."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Toto je moja ___. Volá sa Jana.",
+          "translation": "This is my wife. Her name is Jana.",
+          "choices": [
+            "manželka",
+            "dcéra",
+            "sestra",
+            "mama"
+          ],
+          "answer": "manželka"
+        },
+        {
+          "sentence": "Mám dve ___. Sú ešte malé.",
+          "translation": "I have two children. They are still small.",
+          "choices": [
+            "deti",
+            "otcov",
+            "bratov",
+            "svokrov"
+          ],
+          "answer": "deti"
+        },
+        {
+          "sentence": "Môj ___ má desať rokov.",
+          "translation": "My son is ten years old.",
+          "choices": [
+            "syn",
+            "otec",
+            "strýko",
+            "svokor"
+          ],
+          "answer": "syn"
+        },
+        {
+          "sentence": "Moja ___ študuje v Bratislave.",
+          "translation": "My daughter studies in Bratislava.",
+          "choices": [
+            "dcéra",
+            "manžel",
+            "brat",
+            "dedko"
+          ],
+          "answer": "dcéra"
+        },
+        {
+          "sentence": "To je môj ___. Sme spolu desať rokov.",
+          "translation": "This is my husband. We have been together ten years.",
+          "choices": [
+            "manžel",
+            "syn",
+            "brat",
+            "otec"
+          ],
+          "answer": "manžel"
+        },
+        {
+          "sentence": "Môj ___ je moja najbližšia rodina.",
+          "translation": "My spouse is my closest family.",
+          "choices": [
+            "partner",
+            "strýko",
+            "bratranec",
+            "dedko"
+          ],
+          "answer": "partner"
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,279 @@
+{
+  "id": "s1-home-problems",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Home Problems",
+  "description": "Report something broken at home",
+  "icon": "🔧",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Home Problems",
+      "rows": [
+        {
+          "label": "Something broke",
+          "slovak": "Niečo sa pokazilo.",
+          "english": "Something broke."
+        },
+        {
+          "label": "...doesn't work",
+          "slovak": "Nefunguje...",
+          "english": "...doesn't work."
+        },
+        {
+          "label": "I need to fix...",
+          "slovak": "Potrebujem opraviť...",
+          "english": "I need to fix / repair..."
+        },
+        {
+          "label": "Can you come and look?",
+          "slovak": "Môžete prísť a pozrieť sa?",
+          "english": "Can you come and look?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Niečo sa pokazilo.",
+          "english": "Something broke."
+        },
+        {
+          "slovak": "Nefunguje...",
+          "english": "...doesn't work."
+        },
+        {
+          "slovak": "Potrebujem opraviť...",
+          "english": "I need to fix / repair..."
+        },
+        {
+          "slovak": "Môžete prísť a pozrieť sa?",
+          "english": "Can you come and look?"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Niečo sa pokazilo.",
+          "english": "Something broke."
+        },
+        {
+          "slovak": "Nefunguje...",
+          "english": "...doesn't work."
+        },
+        {
+          "slovak": "Potrebujem opraviť...",
+          "english": "I need to fix / repair..."
+        },
+        {
+          "slovak": "Môžete prísť a pozrieť sa?",
+          "english": "Can you come and look?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Niečo sa pokazilo.",
+          "english": "Something broke."
+        },
+        {
+          "slovak": "Nefunguje...",
+          "english": "...doesn't work."
+        },
+        {
+          "slovak": "Potrebujem opraviť...",
+          "english": "I need to fix / repair..."
+        },
+        {
+          "slovak": "Môžete prísť a pozrieť sa?",
+          "english": "Can you come and look?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Niečo sa pokazilo.",
+          "english": "Something broke."
+        },
+        {
+          "slovak": "Nefunguje...",
+          "english": "...doesn't work."
+        },
+        {
+          "slovak": "Potrebujem opraviť...",
+          "english": "I need to fix / repair..."
+        },
+        {
+          "slovak": "Môžete prísť a pozrieť sa?",
+          "english": "Can you come and look?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: Something broke.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Môžete prísť a pozrieť sa?",
+            "Nefunguje...",
+            "Niečo sa pokazilo.",
+            "Potrebujem opraviť..."
+          ],
+          "answer": "Niečo sa pokazilo.",
+          "answerMeaning": "Niečo sa pokazilo. = Something broke."
+        },
+        {
+          "situation": "You need to say: ...doesn't work.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Môžete prísť a pozrieť sa?",
+            "Nefunguje...",
+            "Niečo sa pokazilo.",
+            "Potrebujem opraviť..."
+          ],
+          "answer": "Nefunguje...",
+          "answerMeaning": "Nefunguje... = ...doesn't work."
+        },
+        {
+          "situation": "You need to say: I need to fix / repair...",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Môžete prísť a pozrieť sa?",
+            "Nefunguje...",
+            "Niečo sa pokazilo.",
+            "Potrebujem opraviť..."
+          ],
+          "answer": "Potrebujem opraviť...",
+          "answerMeaning": "Potrebujem opraviť... = I need to fix / repair..."
+        },
+        {
+          "situation": "You need to say: Can you come and look?.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Môžete prísť a pozrieť sa?",
+            "Nefunguje...",
+            "Niečo sa pokazilo.",
+            "Potrebujem opraviť..."
+          ],
+          "answer": "Môžete prísť a pozrieť sa?",
+          "answerMeaning": "Môžete prísť a pozrieť sa? = Can you come and look?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your fridge stops cooling. What do you tell your landlord?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Práčka nefunguje.",
+            "Chladnička nefunguje.",
+            "Posteľ nefunguje.",
+            "Skriňa nefunguje."
+          ],
+          "answer": "Chladnička nefunguje.",
+          "answerMeaning": "Chladnička nefunguje = The fridge doesn't work. Nefunguje is the key phrase for reporting any broken appliance."
+        },
+        {
+          "situation": "Your washing machine is leaking water. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Práčka sa pokazila.",
+            "Posteľ sa pokazila.",
+            "Kuchyňa sa pokazila.",
+            "Stolička sa pokazila."
+          ],
+          "answer": "Práčka sa pokazila.",
+          "answerMeaning": "Práčka sa pokazila = The washing machine broke. Sa pokazila is the feminine past form — práčka is a feminine noun."
+        },
+        {
+          "situation": "You want the landlord to come see the problem in person. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Môžete prísť a pozrieť sa?",
+            "Potrebujem opraviť posteľ.",
+            "Kde je kúpeľňa?",
+            "Stôl pre dvoch."
+          ],
+          "answer": "Môžete prísť a pozrieť sa?",
+          "answerMeaning": "Môžete prísť a pozrieť sa? = Can you come and look? Useful when you can't describe the problem clearly over the phone."
+        },
+        {
+          "situation": "Your wardrobe door fell off. What do you say you need to do?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Potrebujem opraviť skriňu.",
+            "Potrebujem opraviť kuchyňu.",
+            "Potrebujem opraviť spálňu.",
+            "Potrebujem opraviť obývačku."
+          ],
+          "answer": "Potrebujem opraviť skriňu.",
+          "answerMeaning": "Potrebujem opraviť skriňu = I need to fix the wardrobe. Skriňa = wardrobe/cabinet."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Niečo sa ___ v kúpeľni.",
+          "translation": "Something broke in the bathroom.",
+          "choices": [
+            "pokazilo",
+            "opravilo",
+            "kúpilo",
+            "predalo"
+          ],
+          "answer": "pokazilo"
+        },
+        {
+          "sentence": "Potrebujem ___ chladničku. Je veľmi stará.",
+          "translation": "I need to fix the fridge. It's very old.",
+          "choices": [
+            "kúpiť",
+            "opraviť",
+            "predať",
+            "nájsť"
+          ],
+          "answer": "opraviť"
+        },
+        {
+          "sentence": "Môžete prísť a ___ sa? Nerozumiem, čo je pokazené.",
+          "translation": "Can you come and look? I don't understand what's broken.",
+          "choices": [
+            "pozrieť",
+            "opraviť",
+            "kúpiť",
+            "vidieť"
+          ],
+          "answer": "pozrieť"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

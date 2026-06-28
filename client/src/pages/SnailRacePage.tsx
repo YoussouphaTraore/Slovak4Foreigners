@@ -158,7 +158,6 @@ export function SnailRacePage() {
       } else {
         if (result.isTurboSnail) {
           store.passBlock(blockId);
-          if (isLastBlock(blockId)) store.unlockStage('settling');
         }
         setRaceResult({
           xpEarned: result.xpEarned,

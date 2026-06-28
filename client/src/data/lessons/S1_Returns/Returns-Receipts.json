@@ -1,0 +1,324 @@
+{
+  "id": "s1-returns-receipts",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Returns & Receipts",
+  "description": "Return or exchange something in a shop",
+  "icon": "↩",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Returns and receipts",
+      "rows": [
+        {
+          "label": "Return it",
+          "slovak": "Chcem to vrátiť.",
+          "english": "I want to return it."
+        },
+        {
+          "label": "Exchange it",
+          "slovak": "Chcem to vymeniť.",
+          "english": "I want to exchange it."
+        },
+        {
+          "label": "I have the receipt",
+          "slovak": "Mám účtenku.",
+          "english": "I have the receipt."
+        },
+        {
+          "label": "No receipt",
+          "slovak": "Nemám účtenku.",
+          "english": "I do not have the receipt."
+        },
+        {
+          "label": "Damaged",
+          "slovak": "Je to poškodené.",
+          "english": "It is damaged."
+        },
+        {
+          "label": "Wrong size",
+          "slovak": "Táto veľkosť mi nesedí.",
+          "english": "This size does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Chcem to vrátiť.",
+          "english": "I want to return it."
+        },
+        {
+          "slovak": "Chcem to vymeniť.",
+          "english": "I want to exchange it."
+        },
+        {
+          "slovak": "Mám účtenku.",
+          "english": "I have the receipt."
+        },
+        {
+          "slovak": "Nemám účtenku.",
+          "english": "I do not have the receipt."
+        },
+        {
+          "slovak": "Je to poškodené.",
+          "english": "It is damaged."
+        },
+        {
+          "slovak": "Táto veľkosť mi nesedí.",
+          "english": "This size does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Chcem to vrátiť.",
+          "english": "I want to return it."
+        },
+        {
+          "slovak": "Chcem to vymeniť.",
+          "english": "I want to exchange it."
+        },
+        {
+          "slovak": "Mám účtenku.",
+          "english": "I have the receipt."
+        },
+        {
+          "slovak": "Nemám účtenku.",
+          "english": "I do not have the receipt."
+        },
+        {
+          "slovak": "Je to poškodené.",
+          "english": "It is damaged."
+        },
+        {
+          "slovak": "Táto veľkosť mi nesedí.",
+          "english": "This size does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Chcem to vrátiť.",
+          "english": "I want to return it."
+        },
+        {
+          "slovak": "Chcem to vymeniť.",
+          "english": "I want to exchange it."
+        },
+        {
+          "slovak": "Mám účtenku.",
+          "english": "I have the receipt."
+        },
+        {
+          "slovak": "Nemám účtenku.",
+          "english": "I do not have the receipt."
+        },
+        {
+          "slovak": "Je to poškodené.",
+          "english": "It is damaged."
+        },
+        {
+          "slovak": "Táto veľkosť mi nesedí.",
+          "english": "This size does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Chcem to vrátiť.",
+          "english": "I want to return it."
+        },
+        {
+          "slovak": "Chcem to vymeniť.",
+          "english": "I want to exchange it."
+        },
+        {
+          "slovak": "Mám účtenku.",
+          "english": "I have the receipt."
+        },
+        {
+          "slovak": "Nemám účtenku.",
+          "english": "I do not have the receipt."
+        },
+        {
+          "slovak": "Je to poškodené.",
+          "english": "It is damaged."
+        },
+        {
+          "slovak": "Táto veľkosť mi nesedí.",
+          "english": "This size does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: I want to return it.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Chcem to vrátiť.",
+            "Chcem to vymeniť.",
+            "Mám účtenku.",
+            "Nemám účtenku."
+          ],
+          "answer": "Chcem to vrátiť.",
+          "answerMeaning": "Chcem to vrátiť. = I want to return it."
+        },
+        {
+          "situation": "You need to say: I want to exchange it.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Chcem to vymeniť.",
+            "Chcem to vrátiť.",
+            "Mám účtenku.",
+            "Nemám účtenku."
+          ],
+          "answer": "Chcem to vymeniť.",
+          "answerMeaning": "Chcem to vymeniť. = I want to exchange it."
+        },
+        {
+          "situation": "You need to say: I have the receipt.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Mám účtenku.",
+            "Chcem to vrátiť.",
+            "Chcem to vymeniť.",
+            "Nemám účtenku."
+          ],
+          "answer": "Mám účtenku.",
+          "answerMeaning": "Mám účtenku. = I have the receipt."
+        },
+        {
+          "situation": "You need to say: I do not have the receipt.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Nemám účtenku.",
+            "Chcem to vrátiť.",
+            "Chcem to vymeniť.",
+            "Mám účtenku."
+          ],
+          "answer": "Nemám účtenku.",
+          "answerMeaning": "Nemám účtenku. = I do not have the receipt."
+        },
+        {
+          "situation": "You need to say: It is damaged.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Je to poškodené.",
+            "Chcem to vrátiť.",
+            "Chcem to vymeniť.",
+            "Mám účtenku."
+          ],
+          "answer": "Je to poškodené.",
+          "answerMeaning": "Je to poškodené. = It is damaged."
+        },
+        {
+          "situation": "You need to say: This size does not fit me.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Táto veľkosť mi nesedí.",
+            "Chcem to vrátiť.",
+            "Chcem to vymeniť.",
+            "Mám účtenku."
+          ],
+          "answer": "Táto veľkosť mi nesedí.",
+          "answerMeaning": "Táto veľkosť mi nesedí. = This size does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Chcem to ___.",
+          "translation": "I want to return it.",
+          "choices": [
+            "vrátiť",
+            "platiť",
+            "nosiť",
+            "sedieť"
+          ],
+          "answer": "vrátiť"
+        },
+        {
+          "sentence": "Chcem to ___.",
+          "translation": "I want to exchange it.",
+          "choices": [
+            "vymeniť",
+            "vrátiť",
+            "kúpiť",
+            "piť"
+          ],
+          "answer": "vymeniť"
+        },
+        {
+          "sentence": "Mám ___.",
+          "translation": "I have the receipt.",
+          "choices": [
+            "účtenku",
+            "tašku",
+            "veľkosť",
+            "bundu"
+          ],
+          "answer": "účtenku"
+        },
+        {
+          "sentence": "Nemám ___.",
+          "translation": "I do not have the receipt.",
+          "choices": [
+            "účtenku",
+            "topánky",
+            "kabát",
+            "cenu"
+          ],
+          "answer": "účtenku"
+        },
+        {
+          "sentence": "Je to ___.",
+          "translation": "It is damaged.",
+          "choices": [
+            "poškodené",
+            "lacné",
+            "drahé",
+            "otvorené"
+          ],
+          "answer": "poškodené"
+        },
+        {
+          "sentence": "Táto veľkosť mi ___.",
+          "translation": "This size does not fit me.",
+          "choices": [
+            "nesedí",
+            "sedí",
+            "platí",
+            "stojí"
+          ],
+          "answer": "nesedí"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

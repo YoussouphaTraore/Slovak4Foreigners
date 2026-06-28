@@ -1,0 +1,229 @@
+{
+  "id": "s1-booking-taxi",
+  "stageId": "survival",
+  "stageName": "Stage 1  Survival",
+  "title": "Booking a Taxi",
+  "description": "Ask for a taxi and check availability",
+  "icon": "📞",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Booking a Taxi",
+      "rows": [
+        {
+          "label": "Can you call a taxi?",
+          "slovak": "Môžete zavolať taxi?",
+          "english": "Can you call a taxi?"
+        },
+        {
+          "label": "I need a taxi",
+          "slovak": "Potrebujem taxi.",
+          "english": "I need a taxi."
+        },
+        {
+          "label": "Free / Available",
+          "slovak": "Voľné",
+          "english": "Free / Available (taxi)"
+        },
+        {
+          "label": "How long will it take?",
+          "slovak": "Ako dlho to bude trvať?",
+          "english": "How long will it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Môžete zavolať taxi?",
+          "english": "Can you call a taxi?"
+        },
+        {
+          "slovak": "Potrebujem taxi.",
+          "english": "I need a taxi."
+        },
+        {
+          "slovak": "Voľné",
+          "english": "Free / Available (taxi)"
+        },
+        {
+          "slovak": "Ako dlho to bude trvať?",
+          "english": "How long will it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Môžete zavolať taxi?",
+          "english": "Can you call a taxi?"
+        },
+        {
+          "slovak": "Potrebujem taxi.",
+          "english": "I need a taxi."
+        },
+        {
+          "slovak": "Voľné",
+          "english": "Free / Available (taxi)"
+        },
+        {
+          "slovak": "Ako dlho to bude trvať?",
+          "english": "How long will it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Potrebujem taxi.",
+          "english": "I need a taxi."
+        },
+        {
+          "slovak": "Môžete zavolať taxi?",
+          "english": "Can you call a taxi?"
+        },
+        {
+          "slovak": "Voľné",
+          "english": "Free / Available"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Môžete zavolať taxi?",
+          "english": "Can you call a taxi?"
+        },
+        {
+          "slovak": "Potrebujem taxi.",
+          "english": "I need a taxi."
+        },
+        {
+          "slovak": "Voľné",
+          "english": "Free / Available (taxi)"
+        },
+        {
+          "slovak": "Ako dlho to bude trvať?",
+          "english": "How long will it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: Can you call a taxi?.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ako dlho to bude trvať?",
+            "Môžete zavolať taxi?",
+            "Potrebujem taxi.",
+            "Voľné"
+          ],
+          "answer": "Môžete zavolať taxi?",
+          "answerMeaning": "Môžete zavolať taxi? = Can you call a taxi?"
+        },
+        {
+          "situation": "You need to say: I need a taxi.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ako dlho to bude trvať?",
+            "Môžete zavolať taxi?",
+            "Potrebujem taxi.",
+            "Voľné"
+          ],
+          "answer": "Potrebujem taxi.",
+          "answerMeaning": "Potrebujem taxi. = I need a taxi."
+        },
+        {
+          "situation": "You need to say: Free / Available (taxi).",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ako dlho to bude trvať?",
+            "Môžete zavolať taxi?",
+            "Potrebujem taxi.",
+            "Voľné"
+          ],
+          "answer": "Voľné",
+          "answerMeaning": "Voľné = Free / Available (taxi)"
+        },
+        {
+          "situation": "You need to say: How long will it take?.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ako dlho to bude trvať?",
+            "Môžete zavolať taxi?",
+            "Potrebujem taxi.",
+            "Voľné"
+          ],
+          "answer": "Ako dlho to bude trvať?",
+          "answerMeaning": "Ako dlho to bude trvať? = How long will it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are at a hotel reception and need a taxi. What do you ask the receptionist?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Voľné?",
+            "Môžete zavolať taxi?",
+            "Koľko to bude stáť?",
+            "Tu je to."
+          ],
+          "answer": "Môžete zavolať taxi?",
+          "answerMeaning": "Môžete zavolať taxi? = Can you call a taxi? A polite way to ask someone to book one for you."
+        },
+        {
+          "situation": "A taxi pulls up with its light on. What does this likely mean?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "It's broken",
+            "It's available",
+            "It's expensive",
+            "It's full"
+          ],
+          "answer": "It's available",
+          "answerMeaning": "Voľné = Free/Available. A lit sign on a taxi usually signals it's free to hail."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ taxi. Mám ťažkú tašku.",
+          "translation": "I need a taxi. I have a heavy bag.",
+          "choices": [
+            "Mám",
+            "Potrebujem",
+            "Chcem ísť",
+            "Som"
+          ],
+          "answer": "Potrebujem"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,324 @@
+{
+  "id": "s1-talking-about-months",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Talking About Months",
+  "description": "Say this month, last month, next month, and since a month",
+  "icon": "📅",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Talking About Months",
+      "rows": [
+        {
+          "label": "In January",
+          "slovak": "V januári",
+          "english": "In January"
+        },
+        {
+          "label": "In March",
+          "slovak": "V marci",
+          "english": "In March"
+        },
+        {
+          "label": "This month",
+          "slovak": "Tento mesiac",
+          "english": "This month"
+        },
+        {
+          "label": "Last month",
+          "slovak": "Minulý mesiac",
+          "english": "Last month"
+        },
+        {
+          "label": "Next month",
+          "slovak": "Budúci mesiac",
+          "english": "Next month"
+        },
+        {
+          "label": "Since March",
+          "slovak": "Od marca",
+          "english": "Since March"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "V januári",
+          "english": "In January"
+        },
+        {
+          "slovak": "V marci",
+          "english": "In March"
+        },
+        {
+          "slovak": "Tento mesiac",
+          "english": "This month"
+        },
+        {
+          "slovak": "Minulý mesiac",
+          "english": "Last month"
+        },
+        {
+          "slovak": "Budúci mesiac",
+          "english": "Next month"
+        },
+        {
+          "slovak": "Od marca",
+          "english": "Since March"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "V januári",
+          "english": "In January"
+        },
+        {
+          "slovak": "V marci",
+          "english": "In March"
+        },
+        {
+          "slovak": "Tento mesiac",
+          "english": "This month"
+        },
+        {
+          "slovak": "Minulý mesiac",
+          "english": "Last month"
+        },
+        {
+          "slovak": "Budúci mesiac",
+          "english": "Next month"
+        },
+        {
+          "slovak": "Od marca",
+          "english": "Since March"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "V januári",
+          "english": "In January"
+        },
+        {
+          "slovak": "V marci",
+          "english": "In March"
+        },
+        {
+          "slovak": "Tento mesiac",
+          "english": "This month"
+        },
+        {
+          "slovak": "Minulý mesiac",
+          "english": "Last month"
+        },
+        {
+          "slovak": "Budúci mesiac",
+          "english": "Next month"
+        },
+        {
+          "slovak": "Od marca",
+          "english": "From March"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "V januári",
+          "english": "In January"
+        },
+        {
+          "slovak": "V marci",
+          "english": "In March"
+        },
+        {
+          "slovak": "Tento mesiac",
+          "english": "This month"
+        },
+        {
+          "slovak": "Minulý mesiac",
+          "english": "Last month"
+        },
+        {
+          "slovak": "Budúci mesiac",
+          "english": "Next month"
+        },
+        {
+          "slovak": "Od marca",
+          "english": "Since March"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your landlord says rent increases starting next month. What does that mean?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Tento mesiac",
+            "Minulý mesiac",
+            "Budúci mesiac",
+            "Každý mesiac"
+          ],
+          "answer": "Budúci mesiac",
+          "answerMeaning": "Budúci mesiac = next month."
+        },
+        {
+          "situation": "Your gym membership was paid last month. How do you describe this?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Zaplatil som tento mesiac.",
+            "Zaplatil som minulý mesiac.",
+            "Zaplatím budúci mesiac.",
+            "Platím každý týždeň."
+          ],
+          "answer": "Zaplatil som minulý mesiac.",
+          "answerMeaning": "Minulý mesiac = last month."
+        },
+        {
+          "situation": "You have lived here since March. Which phrase do you need?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Od marca",
+            "V januári",
+            "Budúci mesiac",
+            "Minulý týždeň"
+          ],
+          "answer": "Od marca",
+          "answerMeaning": "Od marca = since March."
+        },
+        {
+          "situation": "A form asks whether you paid this month. Which phrase means this month?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Tento mesiac",
+            "Minulý mesiac",
+            "Budúci mesiac",
+            "Od marca"
+          ],
+          "answer": "Tento mesiac",
+          "answerMeaning": "Tento mesiac = this month."
+        },
+        {
+          "situation": "You need to say something happened in March. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "V marci",
+            "Od marca",
+            "Budúci mesiac",
+            "Minulý mesiac"
+          ],
+          "answer": "V marci",
+          "answerMeaning": "V marci = in March."
+        },
+        {
+          "situation": "Your rent will be higher next month. Which sentence uses bude?",
+          "instruction": "Choose the future sentence",
+          "choices": [
+            "Nájom bude vyšší budúci mesiac.",
+            "Nájom bol vyšší budúci mesiac.",
+            "Nájom je minulý mesiac.",
+            "Nájom bude včera."
+          ],
+          "answer": "Nájom bude vyšší budúci mesiac.",
+          "answerMeaning": "Bude + budúci mesiac points to the future: The rent will be higher next month."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Nájom sa zvyšuje ___ mesiac.",
+          "translation": "The rent goes up next month.",
+          "choices": [
+            "tento",
+            "minulý",
+            "budúci",
+            "každý"
+          ],
+          "answer": "budúci"
+        },
+        {
+          "sentence": "Zaplatil som ___ mesiac.",
+          "translation": "I paid last month.",
+          "choices": [
+            "tento",
+            "minulý",
+            "budúci",
+            "každý"
+          ],
+          "answer": "minulý"
+        },
+        {
+          "sentence": "Pracujem tu ___ marca.",
+          "translation": "I have worked here since March.",
+          "choices": [
+            "v",
+            "na",
+            "do",
+            "od"
+          ],
+          "answer": "od"
+        },
+        {
+          "sentence": "Musím zaplatiť ___ mesiac.",
+          "translation": "I must pay this month.",
+          "choices": [
+            "tento",
+            "minulý",
+            "budúci",
+            "včera"
+          ],
+          "answer": "tento"
+        },
+        {
+          "sentence": "Termín bol ___ marci.",
+          "translation": "The appointment was in March.",
+          "choices": [
+            "v",
+            "od",
+            "do",
+            "na"
+          ],
+          "answer": "v"
+        },
+        {
+          "sentence": "Nájom ___ vyšší budúci mesiac.",
+          "translation": "The rent will be higher next month.",
+          "choices": [
+            "bude",
+            "bol",
+            "je",
+            "som"
+          ],
+          "answer": "bude"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

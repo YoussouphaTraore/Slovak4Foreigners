@@ -1,0 +1,320 @@
+{
+  "id": "s1-describing-colors",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Describing Colors",
+  "description": "Use colors to describe hair, eyes, bags, and people",
+  "icon": "🎨",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Hair and Eye Colors",
+      "rows": [
+        {
+          "label": "Black hair",
+          "slovak": "Čierne vlasy",
+          "english": "Black hair"
+        },
+        {
+          "label": "Brown hair",
+          "slovak": "Hnedé vlasy",
+          "english": "Brown hair"
+        },
+        {
+          "label": "Blonde hair",
+          "slovak": "Blond vlasy",
+          "english": "Blonde hair"
+        },
+        {
+          "label": "Red hair",
+          "slovak": "Červené vlasy",
+          "english": "Red hair"
+        },
+        {
+          "label": "Blue eyes",
+          "slovak": "Modré oči",
+          "english": "Blue eyes"
+        },
+        {
+          "label": "Green eyes",
+          "slovak": "Zelené oči",
+          "english": "Green eyes"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "More Descriptions",
+      "rows": [
+        {
+          "label": "Brown eyes",
+          "slovak": "Hnedé oči",
+          "english": "Brown eyes"
+        },
+        {
+          "label": "Grey eyes",
+          "slovak": "Šedé oči",
+          "english": "Grey eyes"
+        },
+        {
+          "label": "Black bag",
+          "slovak": "Čierna taška",
+          "english": "Black bag"
+        },
+        {
+          "label": "Brown wallet",
+          "slovak": "Hnedá peňaženka",
+          "english": "Brown wallet"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Čierne vlasy",
+          "english": "Black hair"
+        },
+        {
+          "slovak": "Hnedé vlasy",
+          "english": "Brown hair"
+        },
+        {
+          "slovak": "Blond vlasy",
+          "english": "Blonde hair"
+        },
+        {
+          "slovak": "Červené vlasy",
+          "english": "Red hair"
+        },
+        {
+          "slovak": "Modré oči",
+          "english": "Blue eyes"
+        },
+        {
+          "slovak": "Zelené oči",
+          "english": "Green eyes"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Čierne vlasy",
+          "english": "Black hair"
+        },
+        {
+          "slovak": "Hnedé vlasy",
+          "english": "Brown hair"
+        },
+        {
+          "slovak": "Blond vlasy",
+          "english": "Blonde hair"
+        },
+        {
+          "slovak": "Červené vlasy",
+          "english": "Red hair"
+        },
+        {
+          "slovak": "Modré oči",
+          "english": "Blue eyes"
+        },
+        {
+          "slovak": "Zelené oči",
+          "english": "Green eyes"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Čierne vlasy",
+          "english": "Black hair"
+        },
+        {
+          "slovak": "Hnedé vlasy",
+          "english": "Brown hair"
+        },
+        {
+          "slovak": "Blond vlasy",
+          "english": "Blonde hair"
+        },
+        {
+          "slovak": "Červené vlasy",
+          "english": "Red hair"
+        },
+        {
+          "slovak": "Modré oči",
+          "english": "Blue eyes"
+        },
+        {
+          "slovak": "Zelené oči",
+          "english": "Green eyes"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The police are writing a report about a missing person. You describe their eyes as the color of the sky. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Zelené oči.",
+            "Hnedé oči.",
+            "Modré oči.",
+            "Šedé oči."
+          ],
+          "answer": "Modré oči.",
+          "answerMeaning": "Modré oči = Blue eyes. Oči = eyes. Color + body part makes a useful description."
+        },
+        {
+          "situation": "You are describing a person with eyes the color of grass. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Červené oči.",
+            "Zelené oči.",
+            "Čierne oči.",
+            "Blond oči."
+          ],
+          "answer": "Zelené oči.",
+          "answerMeaning": "Zelené oči = Green eyes. The ending changes because oči is plural."
+        },
+        {
+          "situation": "You are describing a suspect. Their hair is the color of coffee. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Červené vlasy.",
+            "Blond vlasy.",
+            "Čierne vlasy.",
+            "Hnedé vlasy."
+          ],
+          "answer": "Hnedé vlasy.",
+          "answerMeaning": "Hnedé vlasy = Brown hair. Vlasy = hair."
+        },
+        {
+          "situation": "A witness says the person has very dark hair. What phrase matches that?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Čierne vlasy.",
+            "Modré oči.",
+            "Zelené oči.",
+            "Biela taška."
+          ],
+          "answer": "Čierne vlasy.",
+          "answerMeaning": "Čierne vlasy = Black hair. This is one of the most common police-description phrases."
+        },
+        {
+          "situation": "You need to describe someone with light yellow hair. What phrase do you use?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Blond vlasy.",
+            "Hnedé oči.",
+            "Čierna taška.",
+            "Zelené oči."
+          ],
+          "answer": "Blond vlasy.",
+          "answerMeaning": "Blond vlasy = Blonde hair. In Slovak, blond often stays the same in this phrase."
+        },
+        {
+          "situation": "You are describing someone with red hair. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Červené vlasy.",
+            "Modré vlasy.",
+            "Šedé oči.",
+            "Hnedá taška."
+          ],
+          "answer": "Červené vlasy.",
+          "answerMeaning": "Červené vlasy = Red hair. This was restored from the earlier trim because it belongs with personal descriptions."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Má ___ oči a blond vlasy.",
+          "translation": "She has ___ eyes and blonde hair.",
+          "choices": [
+            "Hnedé",
+            "Červené",
+            "Modré",
+            "Ružové"
+          ],
+          "answer": "Modré"
+        },
+        {
+          "sentence": "Mám ___ vlasy a zelené oči.",
+          "translation": "I have ___ hair and green eyes.",
+          "choices": [
+            "Modré",
+            "Hnedé",
+            "Žlté",
+            "Šedé"
+          ],
+          "answer": "Hnedé"
+        },
+        {
+          "sentence": "Ten muž má ___ vlasy.",
+          "translation": "The man has ___ hair.",
+          "choices": [
+            "čierne",
+            "zelené",
+            "ružové",
+            "modré"
+          ],
+          "answer": "čierne"
+        },
+        {
+          "sentence": "Tá žena má ___ oči.",
+          "translation": "The woman has ___ eyes.",
+          "choices": [
+            "zelené",
+            "biele",
+            "červené",
+            "žlté"
+          ],
+          "answer": "zelené"
+        },
+        {
+          "sentence": "Dieťa má ___ vlasy.",
+          "translation": "The child has ___ hair.",
+          "choices": [
+            "blond",
+            "hnedá",
+            "čierna",
+            "modrá"
+          ],
+          "answer": "blond"
+        },
+        {
+          "sentence": "Má ___ vlasy.",
+          "translation": "They have ___ hair.",
+          "choices": [
+            "červené",
+            "biele",
+            "modré",
+            "zelené"
+          ],
+          "answer": "červené"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,627 @@
+{
+  "id": "block8-dialogue",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "blockId": "stage1-block8",
+  "type": "BLOCK_DIALOGUE",
+  "title": "Marek Visits Your Home",
+  "description": "Marek visits your flat. You show rooms, talk about pets, offer drinks, and handle a small home problem.",
+  "icon": "🏠",
+  "xpReward": 20,
+  "contact": {
+    "name": "Marek",
+    "initials": "M",
+    "role": "Your friend",
+    "avatar": "👨"
+  },
+  "context": "Marek visits your flat for the first time. You show him around, talk about your pet, offer drinks, and then call the landlord because the washing machine is not working.",
+  "speakers": {
+    "marek": {
+      "name": "Marek",
+      "initials": "M",
+      "avatar": "👨"
+    },
+    "landlord": {
+      "name": "Landlord",
+      "initials": "L",
+      "avatar": "🧑‍💼"
+    }
+  },
+  "exchanges": [
+    {
+      "id": "ex1",
+      "speaker": "marek",
+      "text": "Ahoj! Pekný byt. Ktorá izba je toto?",
+      "translation": "Hi! Nice flat. Which room is this?",
+      "prompt": "Marek asks which room this is. It is the living room.",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Toto je obývačka.",
+          "translation": "This is the living room.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Toto je kúpeľňa.",
+          "translation": "This is the bathroom.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Toto je chladnička.",
+          "translation": "This is the fridge.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Toto je pes.",
+          "translation": "This is a dog.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Toto je obývačka. is correct for the living room.",
+      "wrongFeedback": "Use a room word here: obývačka."
+    },
+    {
+      "id": "ex2",
+      "speaker": "marek",
+      "text": "A kde je kuchyňa?",
+      "translation": "And where is the kitchen?",
+      "prompt": "Show Marek the kitchen.",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Toto je kuchyňa.",
+          "translation": "This is the kitchen.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Toto je spálňa.",
+          "translation": "This is the bedroom.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Toto je práčka.",
+          "translation": "This is the washing machine.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Toto je mačka.",
+          "translation": "This is a cat.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Toto je kuchyňa. is the right room answer.",
+      "wrongFeedback": "Kuchyňa means kitchen."
+    },
+    {
+      "id": "ex3",
+      "speaker": "marek",
+      "text": "Kde spíš?",
+      "translation": "Where do you sleep?",
+      "prompt": "Marek asks where you sleep.",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "V spálni.",
+          "translation": "In the bedroom.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "V obývačke.",
+          "translation": "In the living room.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "V kúpeľni.",
+          "translation": "In the bathroom.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "V kuchyni.",
+          "translation": "In the kitchen.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "V spálni. is correct. Spálňa is the bedroom.",
+      "wrongFeedback": "For sleeping, use spálňa: V spálni."
+    },
+    {
+      "id": "ex4",
+      "speaker": "marek",
+      "text": "Pekná posteľ. Čo je pri okne?",
+      "translation": "Nice bed. What is by the window?",
+      "prompt": "Your bed is by the window.",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Moja posteľ je pri okne.",
+          "translation": "My bed is by the window.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Moja stolička je v kúpeľni.",
+          "translation": "My chair is in the bathroom.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Moja chladnička je pri dverách.",
+          "translation": "My fridge is by the door.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Moja práčka je v spálni.",
+          "translation": "My washing machine is in the bedroom.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Moja posteľ je pri okne. is a useful furniture-location phrase.",
+      "wrongFeedback": "Posteľ is bed, and pri okne means by the window."
+    },
+    {
+      "id": "ex5",
+      "speaker": "marek",
+      "text": "Vidím mačku. V novom byte by som sa opýtal na pravidlá. Čo sa opýtaš?",
+      "translation": "I see a cat. In a new flat I would ask about the rules. What will you ask?",
+      "prompt": "Ask if pets are allowed.",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Sú povolené zvieratá?",
+          "translation": "Are pets allowed?",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Kde je obývačka?",
+          "translation": "Where is the living room?",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Dáte si niečo na pitie?",
+          "translation": "Would you like something to drink?",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Práčka nefunguje.",
+          "translation": "The washing machine does not work.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Sú povolené zvieratá? is the pet-rules question.",
+      "wrongFeedback": "For pet rules, ask Sú povolené zvieratá?"
+    },
+    {
+      "id": "ex6",
+      "speaker": "marek",
+      "text": "Tvoj pes vyzerá hladný. Čo musíš urobiť?",
+      "translation": "Your dog looks hungry. What do you need to do?",
+      "prompt": "The dog is hungry. Choose the pet-care action.",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Musím kŕmiť psa.",
+          "translation": "I must feed the dog.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Musím venčiť mačku.",
+          "translation": "I must walk the cat.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Musím opraviť kávu.",
+          "translation": "I must repair coffee.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Musím spať v kuchyni.",
+          "translation": "I must sleep in the kitchen.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Musím kŕmiť psa. is correct. Kŕmiť means to feed.",
+      "wrongFeedback": "A hungry dog needs kŕmiť, to feed."
+    },
+    {
+      "id": "ex7",
+      "speaker": "marek",
+      "text": "Ďakujem za prehliadku. Som smädný. Čo mi ponúkneš?",
+      "translation": "Thank you for the tour. I am thirsty. What will you offer me?",
+      "prompt": "Offer Marek something to drink.",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Dáte si niečo na pitie?",
+          "translation": "Would you like something to drink?",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Sú povolené zvieratá?",
+          "translation": "Are pets allowed?",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Niečo sa pokazilo.",
+          "translation": "Something broke.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "V spálni.",
+          "translation": "In the bedroom.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Dáte si niečo na pitie? is a polite hosting phrase.",
+      "wrongFeedback": "Use Dáte si niečo na pitie? to offer a guest a drink."
+    },
+    {
+      "id": "ex8",
+      "speaker": "marek",
+      "text": "Áno, prosím. Čo máš?",
+      "translation": "Yes, please. What do you have?",
+      "prompt": "Offer coffee or tea.",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Kávu alebo čaj?",
+          "translation": "Coffee or tea?",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Posteľ alebo stôl?",
+          "translation": "Bed or table?",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Pes alebo mačka?",
+          "translation": "Dog or cat?",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Práčka alebo skriňa?",
+          "translation": "Washing machine or wardrobe?",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Kávu alebo čaj? is a natural drink choice.",
+      "wrongFeedback": "Offer drinks with Kávu alebo čaj?"
+    },
+    {
+      "id": "ex9",
+      "speaker": "marek",
+      "text": "Čaj, prosím. A máš mlieko?",
+      "translation": "Tea, please. And do you have milk?",
+      "prompt": "You are out of milk.",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Došlo mi mlieko.",
+          "translation": "I am out of milk.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Došla mi posteľ.",
+          "translation": "I ran out of a bed.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Došla mi mačka.",
+          "translation": "I ran out of a cat.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Došla mi kúpeľňa.",
+          "translation": "I ran out of a bathroom.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Došlo mi mlieko. is useful when you are out of milk.",
+      "wrongFeedback": "When you are out of milk, say Došlo mi mlieko."
+    },
+    {
+      "id": "ex10",
+      "speaker": "marek",
+      "text": "Počujem zvláštny zvuk z kúpeľne. Čo sa stalo?",
+      "translation": "I hear a strange sound from the bathroom. What happened?",
+      "prompt": "Something broke in the bathroom.",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Niečo sa pokazilo v kúpeľni.",
+          "translation": "Something broke in the bathroom.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Káva je v obývačke.",
+          "translation": "The coffee is in the living room.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Pes je v spálni.",
+          "translation": "The dog is in the bedroom.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Stôl je pri okne.",
+          "translation": "The table is by the window.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Niečo sa pokazilo v kúpeľni. is the home-problem phrase.",
+      "wrongFeedback": "Use Niečo sa pokazilo... when something broke."
+    },
+    {
+      "id": "ex11",
+      "speaker": "landlord",
+      "text": "Dobrý deň. Čo nefunguje?",
+      "translation": "Good day. What does not work?",
+      "prompt": "Tell the landlord the washing machine does not work.",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Práčka nefunguje.",
+          "translation": "The washing machine does not work.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Čaj nefunguje.",
+          "translation": "Tea does not work.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Mačka nefunguje.",
+          "translation": "The cat does not work.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Obývačka nefunguje.",
+          "translation": "The living room does not work.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Práčka nefunguje. is correct and specific.",
+      "wrongFeedback": "For a washing-machine problem, say Práčka nefunguje."
+    },
+    {
+      "id": "ex12",
+      "speaker": "landlord",
+      "text": "Dobrý. Prídem dnes poobede. Dovidenia!",
+      "translation": "Good. I will come this afternoon. Goodbye!",
+      "prompt": "The landlord confirms and says goodbye. How do you respond?",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Ďakujem. Dovidenia!",
+          "translation": "Thank you. Goodbye!",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Práčka nefunguje.",
+          "translation": "The washing machine does not work.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Kávu alebo čaj?",
+          "translation": "Coffee or tea?",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Musím kŕmiť psa.",
+          "translation": "I must feed the dog.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Ďakujem. Dovidenia! is a warm close after the landlord confirms the visit.",
+      "wrongFeedback": "Reply to the landlord's goodbye with Ďakujem. Dovidenia!"
+    }
+  ],
+  "completionMessage": "Great work! You showed Marek your home, talked about pets, offered drinks, and explained a home problem in Slovak.",
+  "speakingRound": {
+    "id": "block8-speaking",
+    "type": "CONVERSATION_SPEAKING",
+    "questions": [
+      {
+        "id": "q0",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m1.mp3.mp3",
+        "marekQuestionSk": "Ahoj! Pekný byt. Ktorá izba je toto?",
+        "marekQuestionEn": "Hi! Nice flat. Which room is this?",
+        "correctAnswerSk": "Toto je obývačka.",
+        "correctAnswerEn": "This is the living room.",
+        "answerChunks": ["Toto je obývačka."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q1",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m2.mp3.mp3",
+        "marekQuestionSk": "A kde je kuchyňa?",
+        "marekQuestionEn": "And where is the kitchen?",
+        "correctAnswerSk": "Toto je kuchyňa.",
+        "correctAnswerEn": "This is the kitchen.",
+        "answerChunks": ["Toto je kuchyňa."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q2",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m3.mp3.mp3",
+        "marekQuestionSk": "Kde spíš?",
+        "marekQuestionEn": "Where do you sleep?",
+        "correctAnswerSk": "V spálni.",
+        "correctAnswerEn": "In the bedroom.",
+        "answerChunks": ["V spálni."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q3",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m4.mp3.mp3",
+        "marekQuestionSk": "Pekná posteľ. Čo je pri okne?",
+        "marekQuestionEn": "Nice bed. What is by the window?",
+        "correctAnswerSk": "Moja posteľ je pri okne.",
+        "correctAnswerEn": "My bed is by the window.",
+        "answerChunks": ["Moja posteľ je pri okne."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q4",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m5.mp3.mp3",
+        "marekQuestionSk": "Vidím mačku. V novom byte by som sa opýtal na pravidlá. Čo sa opýtaš?",
+        "marekQuestionEn": "I see a cat. In a new flat I would ask about the rules. What will you ask?",
+        "correctAnswerSk": "Sú povolené zvieratá?",
+        "correctAnswerEn": "Are pets allowed?",
+        "answerChunks": ["Sú povolené zvieratá?"],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q5",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m6.mp3.mp3",
+        "marekQuestionSk": "Tvoj pes vyzerá hladný. Čo musíš urobiť?",
+        "marekQuestionEn": "Your dog looks hungry. What do you need to do?",
+        "correctAnswerSk": "Musím kŕmiť psa.",
+        "correctAnswerEn": "I must feed the dog.",
+        "answerChunks": ["Musím kŕmiť psa."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q6",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m7.mp3.mp3",
+        "marekQuestionSk": "Ďakujem za prehliadku. Som smädný. Čo mi ponúkneš?",
+        "marekQuestionEn": "Thank you for the tour. I am thirsty. What will you offer me?",
+        "correctAnswerSk": "Dáte si niečo na pitie?",
+        "correctAnswerEn": "Would you like something to drink?",
+        "answerChunks": ["Dáte si niečo na pitie?"],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q7",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m8.mp3.mp3",
+        "marekQuestionSk": "Áno, prosím. Čo máš?",
+        "marekQuestionEn": "Yes, please. What do you have?",
+        "correctAnswerSk": "Kávu alebo čaj?",
+        "correctAnswerEn": "Coffee or tea?",
+        "answerChunks": ["Kávu alebo čaj?"],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q8",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m9.mp3.mp3",
+        "marekQuestionSk": "Čaj, prosím. A máš mlieko?",
+        "marekQuestionEn": "Tea, please. And do you have milk?",
+        "correctAnswerSk": "Došlo mi mlieko.",
+        "correctAnswerEn": "I am out of milk.",
+        "answerChunks": ["Došlo mi mlieko."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q9",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m10.mp3.mp3",
+        "marekQuestionSk": "Počujem zvláštny zvuk z kúpeľne. Čo sa stalo?",
+        "marekQuestionEn": "I hear a strange sound from the bathroom. What happened?",
+        "correctAnswerSk": "Niečo sa pokazilo v kúpeľni.",
+        "correctAnswerEn": "Something broke in the bathroom.",
+        "answerChunks": ["Niečo sa pokazilo v kúpeľni."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q10",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m11.mp3.mp3",
+        "marekQuestionSk": "Dobrý deň. Čo nefunguje?",
+        "marekQuestionEn": "Good day. What does not work?",
+        "correctAnswerSk": "Práčka nefunguje.",
+        "correctAnswerEn": "The washing machine does not work.",
+        "answerChunks": ["Práčka nefunguje."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Landlord",
+        "choices": null
+      },
+      {
+        "id": "q11",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block8-m12.mp3.mp3",
+        "marekQuestionSk": "Dobrý. Prídem dnes poobede. Dovidenia!",
+        "marekQuestionEn": "Good. I will come this afternoon. Goodbye!",
+        "correctAnswerSk": "Ďakujem. Dovidenia!",
+        "correctAnswerEn": "Thank you. Goodbye!",
+        "answerChunks": ["Ďakujem. Dovidenia!"],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Landlord",
+        "choices": null
+      }
+    ]
+  }
+}

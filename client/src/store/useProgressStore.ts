@@ -51,6 +51,12 @@ export interface BlockRaceRecord {
   bestScore: number;
 }
 
+export interface TopicRaceRecord {
+  topicId: string;
+  passed: boolean;
+  bestScore: number;
+}
+
 export interface PartialLessonProgress {
   lessonId: string;
   resumeFromIndex: number;  // exercise index to start from on resume
@@ -59,55 +65,8 @@ export interface PartialLessonProgress {
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
-const STAGE_UNLOCK_COSTS: Record<string, number> = {
-  settling: 100,
-  advanced: 250,
-};
-
-
 function calcLevel(xp: number): number {
   return Math.floor(xp / 200) + 1;
-}
-
-// Returns stage IDs in the order they appear in the lesson data
-function orderedStageIds(): string[] {
-  const seen = new Set<string>();
-  const result: string[] = [];
-  for (const l of lessons) {
-    if (!seen.has(l.stageId)) { seen.add(l.stageId); result.push(l.stageId); }
-  }
-  return result;
-}
-
-// True when every lesson in the stage *before* stageId is in completedLessons
-function isPrevStageComplete(stageId: string, completedLessons: string[]): boolean {
-  const ordered = orderedStageIds();
-  const idx = ordered.indexOf(stageId);
-  if (idx <= 0) return true; // first stage has no predecessor
-  const prevId = ordered[idx - 1];
-  return lessons.filter((l) => l.stageId === prevId).every((l) => completedLessons.includes(l.id));
-}
-
-// Removes stages from unlockedStages that weren't legitimately earned:
-// walks stages in order and stops as soon as the previous stage isn't fully completed.
-function sanitizeUnlockedStages(unlockedStages: string[], completedLessons: string[]): string[] {
-  const ordered = orderedStageIds();
-  const result: string[] = [];
-  for (const stageId of ordered) {
-    if (!unlockedStages.includes(stageId)) break;
-    if (result.length > 0) {
-      // Has a predecessor — check it's fully completed
-      const prevId = ordered[ordered.indexOf(stageId) - 1];
-      const prevComplete = lessons
-        .filter((l) => l.stageId === prevId)
-        .every((l) => completedLessons.includes(l.id));
-      if (!prevComplete) break;
-    }
-    result.push(stageId);
-  }
-  // First stage is always unlocked
-  if (!result.includes(ordered[0])) result.unshift(ordered[0]);
-  return result;
 }
 
 function todayStr(): string {
@@ -183,12 +142,15 @@ interface ProgressStore {
 
   completedLessons: string[];
   lessonRecords: LessonRecord[];
-  unlockedStages: string[];
   snailRaceRecords: SnailRaceRecord[];
   blockRaceRecords: BlockRaceRecord[];
   passedBlocks: string[];
   blockRaceAttemptsToday: number;
   blockRaceLastAttemptDate: string;
+  topicRaceRecords: TopicRaceRecord[];
+  passedTopics: string[];
+  topicRaceAttemptsToday: number;
+  topicRaceLastAttemptDate: string;
   triedEmergencyScenarios: string[];
   completedBlockDialogues: string[];
 
@@ -246,13 +208,6 @@ interface ProgressStore {
     newStrength: number;
   };
 
-  // Stage unlocking
-  unlockStage: (stageId: string) => {
-    success: boolean;
-    xpCost: number;
-    xpRemaining: number;
-  };
-
   // Snail Race
   recordSnailRaceAttempt: (
     stageId: string,
@@ -269,6 +224,17 @@ interface ProgressStore {
   getBlockRaceAttemptsLeft: () => number;
   hasPassedBlock: (blockId: string) => boolean;
   getBlockBestScore: (blockId: string) => number;
+
+  // Topic Race
+  recordTopicRaceAttempt: (
+    topicId: string,
+    correctAnswers: number,
+    accuracy: number,
+  ) => { xpEarned: number; attemptsLeft: number; blocked: boolean; isTurboSnail: boolean };
+  passTopicRace: (topicId: string) => void;
+  getTopicRaceAttemptsLeft: () => number;
+  hasPassedTopic: (topicId: string) => boolean;
+  getTopicBestScore: (topicId: string) => number;
 
   // Review helpers
   getWeakLessons: () => LessonRecord[];
@@ -318,12 +284,15 @@ export const useProgressStore = create<ProgressStore>()(
       practiceDaysThisWeek: [],
       completedLessons: [],
       lessonRecords: [],
-      unlockedStages: ['survival'],
       snailRaceRecords: [],
       blockRaceRecords: [],
       passedBlocks: [],
       blockRaceAttemptsToday: 0,
       blockRaceLastAttemptDate: '',
+      topicRaceRecords: [],
+      passedTopics: [],
+      topicRaceAttemptsToday: 0,
+      topicRaceLastAttemptDate: '',
       triedEmergencyScenarios: [],
       completedBlockDialogues: [],
       isSyncing: false,
@@ -420,21 +389,6 @@ export const useProgressStore = create<ProgressStore>()(
           weeklyXp: newWeeklyXp,
         });
 
-        // hard_stage gate — fires when guest completes the last Stage 1 lesson
-        if (!isRepeat) {
-          const { user, isInitialized } = useAuthStore.getState();
-          if (isInitialized && !user) {
-            const survivalLessons = lessons.filter((l) => l.stageId === 'survival');
-            const survivalIds = survivalLessons.map((l) => l.id);
-            if (survivalIds.includes(lessonId)) {
-              const completedCount = newCompleted.filter((id) => survivalIds.includes(id)).length;
-              if (completedCount === survivalLessons.length) {
-                set({ showSaveProgressModal: 'hard_stage' });
-              }
-            }
-          }
-        }
-
         const { user } = useAuthStore.getState();
         if (user) {
           fireSync(
@@ -457,46 +411,6 @@ export const useProgressStore = create<ProgressStore>()(
           streakMultiplier: s.streakMultiplier,
           newStrength: 100,
         };
-      },
-
-      // ── Stage unlock ──────────────────────────────────────────────────────
-
-      unlockStage: (stageId) => {
-        const s = get();
-        const xpCost = STAGE_UNLOCK_COSTS[stageId] ?? 0;
-
-        if (s.unlockedStages.includes(stageId)) {
-          return { success: true, xpCost, xpRemaining: s.xp };
-        }
-
-        // Gate guests — show sign-in modal instead of unlocking
-        const { user, isInitialized } = useAuthStore.getState();
-        if (isInitialized && !user) {
-          set({ showSaveProgressModal: 'hard_unlock' });
-          return { success: false, xpCost, xpRemaining: xpCost - s.xp };
-        }
-
-        if (s.xp < xpCost) {
-          return { success: false, xpCost, xpRemaining: xpCost - s.xp };
-        }
-
-        // Previous stage must be fully completed
-        if (!isPrevStageComplete(stageId, s.completedLessons)) {
-          return { success: false, xpCost, xpRemaining: 0 };
-        }
-
-        const newXp = Math.max(0, s.xp - xpCost);
-        set({
-          xp: newXp,
-          level: calcLevel(newXp),
-          unlockedStages: [...s.unlockedStages, stageId],
-        });
-
-        if (user) {
-          fireSync([syncProgressToSupabase(user.id, get())], set);
-        }
-
-        return { success: true, xpCost, xpRemaining: newXp };
       },
 
       // ── Snail Race ────────────────────────────────────────────────────────
@@ -618,6 +532,80 @@ export const useProgressStore = create<ProgressStore>()(
 
       getBlockBestScore: (blockId) =>
         get().blockRaceRecords.find((r) => r.blockId === blockId)?.bestScore ?? 0,
+
+      // ── Topic Race ────────────────────────────────────────────────────────
+
+      recordTopicRaceAttempt: (topicId, correctAnswers, accuracy) => {
+        const s = get();
+        const today = new Date().toISOString().slice(0, 10);
+        const attemptsToday = s.topicRaceLastAttemptDate === today ? s.topicRaceAttemptsToday : 0;
+
+        if (attemptsToday >= 5) {
+          return { xpEarned: 0, attemptsLeft: 0, blocked: true, isTurboSnail: false };
+        }
+
+        const isTurboSnail = correctAnswers > 10 && accuracy > 50;
+        const xpEarned = Math.max(1, Math.round(correctAnswers * s.streakMultiplier));
+        const newXp = Math.max(0, s.xp + xpEarned);
+        const newWeeklyXp = s.weeklyXp + xpEarned;
+        const newAttemptsToday = attemptsToday + 1;
+
+        const existing = s.topicRaceRecords.find((r) => r.topicId === topicId);
+        const updatedRecords = existing
+          ? s.topicRaceRecords.map((r) =>
+              r.topicId === topicId
+                ? { ...r, bestScore: Math.max(correctAnswers, r.bestScore), passed: r.passed || isTurboSnail }
+                : r,
+            )
+          : [...s.topicRaceRecords, { topicId, passed: isTurboSnail, bestScore: correctAnswers }];
+
+        const updatedPassedTopics =
+          isTurboSnail && !s.passedTopics.includes(topicId)
+            ? [...s.passedTopics, topicId]
+            : s.passedTopics;
+
+        set({
+          xp: newXp,
+          level: calcLevel(newXp),
+          weeklyXp: newWeeklyXp,
+          topicRaceRecords: updatedRecords,
+          topicRaceAttemptsToday: newAttemptsToday,
+          topicRaceLastAttemptDate: today,
+          passedTopics: updatedPassedTopics,
+        });
+
+        const { user } = useAuthStore.getState();
+        if (user) {
+          fireSync(
+            [syncProgressToSupabase(user.id, get()), syncWeeklyXp(user.id, get().weeklyXp)],
+            set,
+          );
+        }
+
+        return { xpEarned, attemptsLeft: 5 - newAttemptsToday, blocked: false, isTurboSnail };
+      },
+
+      passTopicRace: (topicId) =>
+        set((s) => ({
+          passedTopics: s.passedTopics.includes(topicId)
+            ? s.passedTopics
+            : [...s.passedTopics, topicId],
+          topicRaceRecords: s.topicRaceRecords.map((r) =>
+            r.topicId === topicId ? { ...r, passed: true } : r,
+          ),
+        })),
+
+      getTopicRaceAttemptsLeft: () => {
+        const s = get();
+        const today = new Date().toISOString().slice(0, 10);
+        const attemptsToday = s.topicRaceLastAttemptDate === today ? s.topicRaceAttemptsToday : 0;
+        return Math.max(0, 5 - attemptsToday);
+      },
+
+      hasPassedTopic: (topicId) => get().passedTopics.includes(topicId),
+
+      getTopicBestScore: (topicId) =>
+        get().topicRaceRecords.find((r) => r.topicId === topicId)?.bestScore ?? 0,
 
       // ── Emergency scenarios ───────────────────────────────────────────────
 
@@ -750,7 +738,6 @@ export const useProgressStore = create<ProgressStore>()(
         streakMultiplier: 1.0,
         completedLessons: [],
         lessonRecords: [],
-        unlockedStages: ['survival'],
         snailRaceRecords: [],
         blockRaceRecords: [],
         passedBlocks: [],
@@ -794,14 +781,12 @@ export const useProgressStore = create<ProgressStore>()(
         };
 
         const applyCloud = (cloud: NonNullable<Awaited<ReturnType<typeof loadProgressFromSupabase>>>) => {
-          const sanitizedStages = sanitizeUnlockedStages(cloud.unlockedStages, cloud.completedLessons);
           set({
             xp: cloud.xp,
             level: cloud.level,
             streak: cloud.streak,
             lastPlayedDate: cloud.lastPlayedDate,
             streakMultiplier: cloud.streakMultiplier,
-            unlockedStages: sanitizedStages,
             triedEmergencyScenarios: cloud.triedEmergencyScenarios,
             completedLessons: cloud.completedLessons,
             lessonRecords: cloud.lessonRecords,
@@ -854,7 +839,6 @@ export const useProgressStore = create<ProgressStore>()(
                   streak: s.streak,
                   lastPlayedDate: s.lastPlayedDate,
                   streakMultiplier: s.streakMultiplier,
-                  unlockedStages: s.unlockedStages,
                   triedEmergencyScenarios: s.triedEmergencyScenarios,
                   completedLessons: s.completedLessons,
                   lessonRecords: s.lessonRecords,
@@ -862,14 +846,12 @@ export const useProgressStore = create<ProgressStore>()(
                 },
                 cloud,
               );
-              const sanitizedStages = sanitizeUnlockedStages(merged.unlockedStages, merged.completedLessons);
               set({
                 xp: merged.xp,
                 level: merged.level,
                 streak: merged.streak,
                 lastPlayedDate: merged.lastPlayedDate,
                 streakMultiplier: merged.streakMultiplier,
-                unlockedStages: sanitizedStages,
                 triedEmergencyScenarios: merged.triedEmergencyScenarios,
                 completedLessons: merged.completedLessons,
                 lessonRecords: merged.lessonRecords,
@@ -896,7 +878,6 @@ export const useProgressStore = create<ProgressStore>()(
                   streak: s.streak,
                   lastPlayedDate: s.lastPlayedDate,
                   streakMultiplier: s.streakMultiplier,
-                  unlockedStages: s.unlockedStages,
                   triedEmergencyScenarios: s.triedEmergencyScenarios,
                   completedLessons: s.completedLessons,
                   lessonRecords: s.lessonRecords,
@@ -904,14 +885,12 @@ export const useProgressStore = create<ProgressStore>()(
                 },
                 cloud,
               );
-              const sanitizedStages = sanitizeUnlockedStages(merged.unlockedStages, merged.completedLessons);
               set({
                 xp: merged.xp,
                 level: merged.level,
                 streak: merged.streak,
                 lastPlayedDate: merged.lastPlayedDate,
                 streakMultiplier: merged.streakMultiplier,
-                unlockedStages: sanitizedStages,
                 triedEmergencyScenarios: merged.triedEmergencyScenarios,
                 completedLessons: merged.completedLessons,
                 lessonRecords: merged.lessonRecords,
@@ -1015,16 +994,11 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 18,
+      version: 19,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
           state.regressionLessonTitle = null;
-          // Correct any stages that were unlocked without the previous stage being complete
-          state.unlockedStages = sanitizeUnlockedStages(
-            state.unlockedStages,
-            state.completedLessons,
-          );
         }
       },
       migrate: (persisted: unknown, version: number) => {
@@ -1147,6 +1121,12 @@ export const useProgressStore = create<ProgressStore>()(
 
         if (version < 18) {
           old = { ...old, practiceDaysThisWeek: [] };
+        }
+
+        if (version < 19) {
+          const { unlockedStages: _dropped, ...rest } = old as Record<string, unknown>;
+          void _dropped;
+          old = rest;
         }
 
         return old as unknown as ProgressStore;

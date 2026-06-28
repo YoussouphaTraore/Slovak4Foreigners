@@ -1,0 +1,328 @@
+{
+  "id": "s1-in-laws-status",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "In-Laws & Status",
+  "description": "Talk about in-laws and relationship status",
+  "icon": "📄",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "In-Laws & Status",
+      "rows": [
+        {
+          "label": "Father-in-law",
+          "slovak": "Svokor",
+          "english": "Father-in-law"
+        },
+        {
+          "label": "Mother-in-law",
+          "slovak": "Svokra",
+          "english": "Mother-in-law"
+        },
+        {
+          "label": "In-laws",
+          "slovak": "Svokrovci",
+          "english": "In-laws"
+        },
+        {
+          "label": "Single",
+          "slovak": "Slobodný / Slobodná",
+          "english": "Single (male/female)"
+        },
+        {
+          "label": "Married",
+          "slovak": "Ženatý / Vydatá",
+          "english": "Married (male/female)"
+        },
+        {
+          "label": "Divorced",
+          "slovak": "Rozvedený / Rozvedená",
+          "english": "Divorced (male/female)"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Svokor",
+          "english": "Father-in-law"
+        },
+        {
+          "slovak": "Svokra",
+          "english": "Mother-in-law"
+        },
+        {
+          "slovak": "Svokrovci",
+          "english": "In-laws"
+        },
+        {
+          "slovak": "Slobodný",
+          "english": "Single (male)"
+        },
+        {
+          "slovak": "Ženatý",
+          "english": "Married (man)"
+        },
+        {
+          "slovak": "Rozvedený",
+          "english": "Divorced (male)"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Svokor",
+          "english": "Father-in-law"
+        },
+        {
+          "slovak": "Svokra",
+          "english": "Mother-in-law"
+        },
+        {
+          "slovak": "Svokrovci",
+          "english": "In-laws"
+        },
+        {
+          "slovak": "Slobodná",
+          "english": "Single (female)"
+        },
+        {
+          "slovak": "Vydatá",
+          "english": "Married (woman)"
+        },
+        {
+          "slovak": "Rozvedená",
+          "english": "Divorced (female)"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Svokor",
+          "english": "Father-in-law"
+        },
+        {
+          "slovak": "Svokra",
+          "english": "Mother-in-law"
+        },
+        {
+          "slovak": "Svokrovci",
+          "english": "In-laws"
+        },
+        {
+          "slovak": "Slobodný",
+          "english": "Single"
+        },
+        {
+          "slovak": "Ženatý",
+          "english": "Married"
+        },
+        {
+          "slovak": "Rozvedený",
+          "english": "Divorced"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Svokor",
+          "english": "Father-in-law"
+        },
+        {
+          "slovak": "Svokra",
+          "english": "Mother-in-law"
+        },
+        {
+          "slovak": "Svokrovci",
+          "english": "In-laws"
+        },
+        {
+          "slovak": "Slobodný",
+          "english": "Single (male)"
+        },
+        {
+          "slovak": "Ženatý",
+          "english": "Married (man)"
+        },
+        {
+          "slovak": "Vydatá",
+          "english": "Married (woman)"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your partner's mother is visiting. Which Slovak word means mother-in-law?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Svokor",
+            "Svokra",
+            "Manželka",
+            "Dcéra"
+          ],
+          "answer": "Svokra",
+          "answerMeaning": "Svokra = mother-in-law. Svokor = father-in-law."
+        },
+        {
+          "situation": "Your partner's father is calling. Which word means father-in-law?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Svokor",
+            "Svokra",
+            "Strýko",
+            "Dedko"
+          ],
+          "answer": "Svokor",
+          "answerMeaning": "Svokor = father-in-law."
+        },
+        {
+          "situation": "Kai is not married and has no partner. What can Kai say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som ženatý.",
+            "Som vydatá.",
+            "Som slobodný.",
+            "Mám manželku."
+          ],
+          "answer": "Som slobodný.",
+          "answerMeaning": "Slobodný = single (male form). Slobodná = single (female form). Both can fit Kai."
+        },
+        {
+          "situation": "Someone asks if you are married. You are a man. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som slobodný.",
+            "Som ženatý.",
+            "Som vydatá.",
+            "Som syn."
+          ],
+          "answer": "Som ženatý.",
+          "answerMeaning": "Som ženatý = I am married, said by a man. A married woman says Som vydatá."
+        },
+        {
+          "situation": "A woman says she is married. Which phrase is correct?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som vydatá.",
+            "Som ženatý.",
+            "Som svokra.",
+            "Som svokor."
+          ],
+          "answer": "Som vydatá.",
+          "answerMeaning": "Som vydatá = I am married, said by a woman."
+        },
+        {
+          "situation": "A form asks for your in-laws. Which Slovak word means in-laws?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Svokrovci",
+            "Súrodenci",
+            "Rodičia",
+            "Deti"
+          ],
+          "answer": "Svokrovci",
+          "answerMeaning": "Svokrovci = in-laws."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Moja ___ je mama môjho manžela.",
+          "translation": "My mother-in-law is my husband's mother.",
+          "choices": [
+            "svokra",
+            "svokor",
+            "dcéra",
+            "sestra"
+          ],
+          "answer": "svokra"
+        },
+        {
+          "sentence": "Môj ___ je otec mojej manželky.",
+          "translation": "My father-in-law is my wife's father.",
+          "choices": [
+            "svokor",
+            "brat",
+            "dedko",
+            "syn"
+          ],
+          "answer": "svokor"
+        },
+        {
+          "sentence": "Kai je ___. Nemá partnera.",
+          "translation": "Kai is single. Kai doesn't have a partner.",
+          "choices": [
+            "ženatý",
+            "vydatá",
+            "slobodný",
+            "slobodná"
+          ],
+          "answer": "slobodný",
+          "acceptedAnswers": [
+            "slobodná"
+          ],
+          "answerMeaning": "slobodný = single (male form) · slobodná = single (female form). Both can fit Kai."
+        },
+        {
+          "sentence": "Som ___. Mám manželku.",
+          "translation": "I am married. I have a wife. (said by a man)",
+          "choices": [
+            "ženatý",
+            "vydatá",
+            "slobodný",
+            "rozvedený"
+          ],
+          "answer": "ženatý"
+        },
+        {
+          "sentence": "Ona je ___. Má manžela.",
+          "translation": "She is married. She has a husband.",
+          "choices": [
+            "vydatá",
+            "ženatý",
+            "svokra",
+            "slobodný"
+          ],
+          "answer": "vydatá"
+        },
+        {
+          "sentence": "Moji ___ prídu v nedeľu.",
+          "translation": "My in-laws are coming on Sunday.",
+          "choices": [
+            "svokrovci",
+            "súrodenci",
+            "deti",
+            "rodičia"
+          ],
+          "answer": "svokrovci"
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

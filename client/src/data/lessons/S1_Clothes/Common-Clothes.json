@@ -1,0 +1,324 @@
+{
+  "id": "s1-common-clothes",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Common Clothes",
+  "description": "Name the clothes you buy and wear most often",
+  "icon": "👕",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Clothes",
+      "rows": [
+        {
+          "label": "T-shirt",
+          "slovak": "Tričko",
+          "english": "T-shirt"
+        },
+        {
+          "label": "Trousers",
+          "slovak": "Nohavice",
+          "english": "Trousers / pants"
+        },
+        {
+          "label": "Jacket",
+          "slovak": "Bunda",
+          "english": "Jacket"
+        },
+        {
+          "label": "Dress",
+          "slovak": "Šaty",
+          "english": "Dress"
+        },
+        {
+          "label": "Coat",
+          "slovak": "Kabát",
+          "english": "Coat"
+        },
+        {
+          "label": "Socks",
+          "slovak": "Ponožky",
+          "english": "Socks"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Tričko",
+          "english": "T-shirt"
+        },
+        {
+          "slovak": "Nohavice",
+          "english": "Trousers / pants"
+        },
+        {
+          "slovak": "Bunda",
+          "english": "Jacket"
+        },
+        {
+          "slovak": "Šaty",
+          "english": "Dress"
+        },
+        {
+          "slovak": "Kabát",
+          "english": "Coat"
+        },
+        {
+          "slovak": "Ponožky",
+          "english": "Socks"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Tričko",
+          "english": "T-shirt"
+        },
+        {
+          "slovak": "Nohavice",
+          "english": "Trousers / pants"
+        },
+        {
+          "slovak": "Bunda",
+          "english": "Jacket"
+        },
+        {
+          "slovak": "Šaty",
+          "english": "Dress"
+        },
+        {
+          "slovak": "Kabát",
+          "english": "Coat"
+        },
+        {
+          "slovak": "Ponožky",
+          "english": "Socks"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Tričko",
+          "english": "T-shirt"
+        },
+        {
+          "slovak": "Nohavice",
+          "english": "Trousers / pants"
+        },
+        {
+          "slovak": "Bunda",
+          "english": "Jacket"
+        },
+        {
+          "slovak": "Šaty",
+          "english": "Dress"
+        },
+        {
+          "slovak": "Kabát",
+          "english": "Coat"
+        },
+        {
+          "slovak": "Ponožky",
+          "english": "Socks"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Tričko",
+          "english": "T-shirt"
+        },
+        {
+          "slovak": "Nohavice",
+          "english": "Trousers / pants"
+        },
+        {
+          "slovak": "Bunda",
+          "english": "Jacket"
+        },
+        {
+          "slovak": "Šaty",
+          "english": "Dress"
+        },
+        {
+          "slovak": "Kabát",
+          "english": "Coat"
+        },
+        {
+          "slovak": "Ponožky",
+          "english": "Socks"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: T-shirt",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Tričko",
+            "Nohavice",
+            "Bunda",
+            "Šaty"
+          ],
+          "answer": "Tričko",
+          "answerMeaning": "Tričko = T-shirt"
+        },
+        {
+          "situation": "You need to say: Trousers / pants",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Nohavice",
+            "Tričko",
+            "Bunda",
+            "Šaty"
+          ],
+          "answer": "Nohavice",
+          "answerMeaning": "Nohavice = Trousers / pants"
+        },
+        {
+          "situation": "You need to say: Jacket",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Bunda",
+            "Tričko",
+            "Nohavice",
+            "Šaty"
+          ],
+          "answer": "Bunda",
+          "answerMeaning": "Bunda = Jacket"
+        },
+        {
+          "situation": "You need to say: Dress",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Šaty",
+            "Tričko",
+            "Nohavice",
+            "Bunda"
+          ],
+          "answer": "Šaty",
+          "answerMeaning": "Šaty = Dress"
+        },
+        {
+          "situation": "You need to say: Coat",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Kabát",
+            "Tričko",
+            "Nohavice",
+            "Bunda"
+          ],
+          "answer": "Kabát",
+          "answerMeaning": "Kabát = Coat"
+        },
+        {
+          "situation": "You need to say: Socks",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Ponožky",
+            "Tričko",
+            "Nohavice",
+            "Bunda"
+          ],
+          "answer": "Ponožky",
+          "answerMeaning": "Ponožky = Socks"
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Chcem ___.",
+          "translation": "I want a T-shirt.",
+          "choices": [
+            "tričko",
+            "bundu",
+            "kabát",
+            "ponožky"
+          ],
+          "answer": "tričko"
+        },
+        {
+          "sentence": "Potrebujem nové ___.",
+          "translation": "I need new trousers.",
+          "choices": [
+            "nohavice",
+            "šaty",
+            "tričko",
+            "kabát"
+          ],
+          "answer": "nohavice"
+        },
+        {
+          "sentence": "Táto ___ je teplá.",
+          "translation": "This jacket is warm.",
+          "choices": [
+            "bunda",
+            "ponožka",
+            "veľkosť",
+            "účtenka"
+          ],
+          "answer": "bunda"
+        },
+        {
+          "sentence": "Tieto ___ sú pekné.",
+          "translation": "This dress is nice.",
+          "choices": [
+            "šaty",
+            "topánky",
+            "nohavice",
+            "ponožky"
+          ],
+          "answer": "šaty"
+        },
+        {
+          "sentence": "Hľadám zimný ___.",
+          "translation": "I am looking for a winter coat.",
+          "choices": [
+            "kabát",
+            "opasok",
+            "obchod",
+            "doklad"
+          ],
+          "answer": "kabát"
+        },
+        {
+          "sentence": "Potrebujem ___.",
+          "translation": "I need socks.",
+          "choices": [
+            "ponožky",
+            "bundu",
+            "šaty",
+            "tašku"
+          ],
+          "answer": "ponožky"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

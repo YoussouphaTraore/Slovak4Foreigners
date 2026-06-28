@@ -1,0 +1,75 @@
+{
+  "id": "s1-country-of-origin",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Country of Origin",
+  "description": "Practice countries and saying where someone is from",
+  "icon": "\ud83c\udf0d",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "dynamic": "countries",
+      "title": "Countries - I am from...",
+      "rows": []
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "dynamic": "countries",
+      "words": []
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "dynamic": "countries",
+      "speakLanguage": "en",
+      "words": []
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "dynamic": "countries",
+      "words": []
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "dynamic": "countries",
+      "scenarios": []
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Som ___ Nemecka.",
+          "translation": "I am from Germany.",
+          "choices": ["z", "v", "na", "do"],
+          "answer": "z"
+        },
+        {
+          "sentence": "Pochádzam ___ Brazílie.",
+          "translation": "I come from Brazil.",
+          "choices": ["z", "v", "na", "do"],
+          "answer": "z"
+        },
+        {
+          "sentence": "Ona je ___ Francúzska.",
+          "translation": "She is from France.",
+          "choices": ["z", "v", "na", "do"],
+          "answer": "z"
+        },
+        {
+          "sentence": "Odkiaľ ste? Som ___ Indie.",
+          "translation": "Where are you from? I am from India.",
+          "choices": ["z", "v", "na", "do"],
+          "answer": "z"
+        }
+      ]
+    },
+    { "id": "ex-review", "type": "WORD_MATCH_REVIEW" }
+  ]
+}
+

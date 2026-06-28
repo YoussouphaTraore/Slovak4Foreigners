@@ -1,0 +1,306 @@
+{
+  "id": "s1-apartment-details",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Apartment Details",
+  "description": "Explain flat, entrance, floor, and ground-floor details in Slovak addresses",
+  "icon": "🏢",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Apartment Address",
+      "rows": [
+        {
+          "label": "Flat / apartment",
+          "slovak": "Byt",
+          "english": "Flat / Apartment"
+        },
+        {
+          "label": "Flat number",
+          "slovak": "Číslo bytu",
+          "english": "Flat number"
+        },
+        {
+          "label": "Entrance",
+          "slovak": "Vchod",
+          "english": "Entrance / Staircase"
+        },
+        {
+          "label": "Floor",
+          "slovak": "Poschodie",
+          "english": "Floor"
+        },
+        {
+          "label": "Ground floor",
+          "slovak": "Prízemie",
+          "english": "Ground floor"
+        },
+        {
+          "label": "I live in a flat",
+          "slovak": "Bývam v byte.",
+          "english": "I live in a flat."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Byt",
+          "english": "Flat"
+        },
+        {
+          "slovak": "Číslo bytu",
+          "english": "Flat number"
+        },
+        {
+          "slovak": "Vchod",
+          "english": "Entrance"
+        },
+        {
+          "slovak": "Poschodie",
+          "english": "Floor"
+        },
+        {
+          "slovak": "Prízemie",
+          "english": "Ground floor"
+        },
+        {
+          "slovak": "Bývam v byte.",
+          "english": "I live in a flat."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Byt",
+          "english": "Flat"
+        },
+        {
+          "slovak": "Číslo bytu",
+          "english": "Flat number"
+        },
+        {
+          "slovak": "Vchod",
+          "english": "Entrance"
+        },
+        {
+          "slovak": "Poschodie",
+          "english": "Floor"
+        },
+        {
+          "slovak": "Prízemie",
+          "english": "Ground floor"
+        },
+        {
+          "slovak": "Bývam v byte.",
+          "english": "I live in a flat."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Byt",
+          "english": "Flat / Apartment"
+        },
+        {
+          "slovak": "Číslo bytu",
+          "english": "Flat number"
+        },
+        {
+          "slovak": "Vchod",
+          "english": "Entrance / Staircase"
+        },
+        {
+          "slovak": "Poschodie",
+          "english": "Floor"
+        },
+        {
+          "slovak": "Prízemie",
+          "english": "Ground floor"
+        },
+        {
+          "slovak": "Bývam v byte.",
+          "english": "I live in a flat."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Byt",
+          "english": "Flat"
+        },
+        {
+          "slovak": "Číslo bytu",
+          "english": "Flat number"
+        },
+        {
+          "slovak": "Vchod",
+          "english": "Entrance"
+        },
+        {
+          "slovak": "Poschodie",
+          "english": "Floor"
+        },
+        {
+          "slovak": "Prízemie",
+          "english": "Ground floor"
+        },
+        {
+          "slovak": "Bývam v byte.",
+          "english": "I live in a flat."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "A delivery driver asks for your flat number. Which Slovak phrase do you need?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Číslo bytu",
+            "Číslo domu",
+            "Mesto",
+            "Ulica"
+          ],
+          "answer": "Číslo bytu",
+          "answerMeaning": "Číslo bytu = flat number."
+        },
+        {
+          "situation": "Your apartment block has entrances A, B, and C. A form asks for Vchod. What does it mean?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Entrance / staircase",
+            "Postal code",
+            "City",
+            "Street"
+          ],
+          "answer": "Entrance / staircase",
+          "answerMeaning": "Vchod = entrance / staircase."
+        },
+        {
+          "situation": "Someone asks which floor you live on. Which word means floor?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Poschodie",
+            "Byt",
+            "Vchod",
+            "Mesto"
+          ],
+          "answer": "Poschodie",
+          "answerMeaning": "Poschodie = floor."
+        },
+        {
+          "situation": "You live on the ground floor. Which word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Prízemie",
+            "Poschodie",
+            "Byt",
+            "Vchod"
+          ],
+          "answer": "Prízemie",
+          "answerMeaning": "Prízemie = ground floor."
+        },
+        {
+          "situation": "You live in a flat, not a house. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Bývam v byte.",
+            "Bývam v meste.",
+            "Bývam na ulici.",
+            "Moje PSČ je."
+          ],
+          "answer": "Bývam v byte.",
+          "answerMeaning": "Bývam v byte. = I live in a flat."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Bývam v ___.",
+          "translation": "I live in a flat.",
+          "choices": [
+            "byte",
+            "meste",
+            "ulici",
+            "PSČ"
+          ],
+          "answer": "byte",
+          "answerMeaning": "Byt = flat / apartment."
+        },
+        {
+          "sentence": "Číslo ___ je sedem.",
+          "translation": "The flat number is seven.",
+          "choices": [
+            "bytu",
+            "domu",
+            "mesta",
+            "ulice"
+          ],
+          "answer": "bytu",
+          "answerMeaning": "Číslo bytu = flat number."
+        },
+        {
+          "sentence": "Môj ___ je B.",
+          "translation": "My entrance is B.",
+          "choices": [
+            "vchod",
+            "byt",
+            "PSČ",
+            "ulica"
+          ],
+          "answer": "vchod",
+          "answerMeaning": "Vchod = entrance / staircase."
+        },
+        {
+          "sentence": "Som na druhom ___.",
+          "translation": "I am on the second floor.",
+          "choices": [
+            "poschodí",
+            "byte",
+            "vchode",
+            "meste"
+          ],
+          "answer": "poschodí",
+          "answerMeaning": "Poschodie = floor."
+        },
+        {
+          "sentence": "Bývam na ___.",
+          "translation": "I live on the ground floor.",
+          "choices": [
+            "prízemí",
+            "ulici",
+            "meste",
+            "byte"
+          ],
+          "answer": "prízemí",
+          "answerMeaning": "Prízemie = ground floor."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

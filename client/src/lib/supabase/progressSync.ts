@@ -8,7 +8,6 @@ export interface ProgressSnapshot {
   streak: number;
   lastPlayedDate: string | null;
   streakMultiplier: number;
-  unlockedStages: string[];
   triedEmergencyScenarios: string[];
   completedLessons: string[];
   lessonRecords: LessonRecord[];
@@ -36,7 +35,6 @@ export async function syncProgressToSupabase(
           streak: s.streak,
           last_played_date: s.lastPlayedDate,
           streak_multiplier: s.streakMultiplier,
-          unlocked_stages: s.unlockedStages,
           tried_emergency_scenarios: s.triedEmergencyScenarios,
         },
         { onConflict: 'user_id' },
@@ -149,7 +147,6 @@ export async function loadProgressFromSupabase(
       streak: p.streak as number,
       lastPlayedDate: p.last_played_date as string | null,
       streakMultiplier: p.streak_multiplier as number,
-      unlockedStages: (p.unlocked_stages as string[]) ?? ['survival'],
       triedEmergencyScenarios:
         (p.tried_emergency_scenarios as string[]) ?? [],
       completedLessons: lessonRecords.map((r) => r.lessonId),
@@ -396,9 +393,6 @@ export function mergeProgress(
     cloud.xp >= local.xp ? cloud.streakMultiplier : local.streakMultiplier;
   const streakMultiplier = Math.min(2.0, Math.max(1.0, rawMultiplier));
 
-  const unlockedStages = [
-    ...new Set([...local.unlockedStages, ...cloud.unlockedStages]),
-  ];
   const triedEmergencyScenarios = [
     ...new Set([
       ...local.triedEmergencyScenarios,
@@ -439,7 +433,6 @@ export function mergeProgress(
     streak,
     lastPlayedDate,
     streakMultiplier,
-    unlockedStages,
     triedEmergencyScenarios,
     completedLessons,
     lessonRecords: [...lessonMap.values()],

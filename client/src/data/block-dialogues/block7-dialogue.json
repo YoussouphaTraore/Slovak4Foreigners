@@ -4,9 +4,9 @@
   "stageName": "Stage 1 · Survival",
   "blockId": "stage1-block7",
   "type": "BLOCK_DIALOGUE",
-  "title": "Marek Visits",
-  "description": "Marek comes over for the first time. Something's broken, his pet questions, and a quick supermarket run.",
-  "icon": "🏠",
+  "title": "Getting to the Appointment",
+  "description": "Marek helps you get to an appointment by tram, then finish the trip by taxi.",
+  "icon": "🚌",
   "xpReward": 20,
   "contact": {
     "name": "Marek",
@@ -14,172 +14,529 @@
     "role": "Your friend",
     "avatar": "👨"
   },
-  "context": "Marek visits your flat for the first time. You show him around, offer him a drink, and head to the supermarket together.",
+  "context": "You and Marek have an appointment across town. You walk to the stop, take the tram, handle the ticket and your stop, then take a taxi for the final short part.",
   "speakers": {
-    "marek": { "name": "Marek", "initials": "M", "avatar": "👨" },
-    "cashier": { "name": "Cashier", "initials": "C", "avatar": "🧑‍💼" }
+    "marek": {
+      "name": "Marek",
+      "initials": "M",
+      "avatar": "👨"
+    },
+    "passenger": {
+      "name": "Passenger",
+      "initials": "P",
+      "avatar": "🧍"
+    },
+    "inspector": {
+      "name": "Ticket Inspector",
+      "initials": "I",
+      "avatar": "🎫"
+    },
+    "driver": {
+      "name": "Taxi Driver",
+      "initials": "T",
+      "avatar": "🚕"
+    }
   },
   "exchanges": [
     {
       "id": "ex1",
       "speaker": "marek",
-      "text": "Ahoj! Pekný byt. Toto je obývačka?",
-      "translation": "Hi! Nice flat. Is this the living room?",
-      "prompt": "Marek asks if this room is the living room. Confirm it.",
+      "text": "Ahoj. O chvíľu máme stretnutie pri stanici. Ako pôjdeme cez mesto?",
+      "translation": "Hi. We have a meeting near the station soon. How will we go across town?",
+      "prompt": "Choose a public-transport option for crossing town.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Áno, toto je obývačka.", "translation": "Yes, this is the living room.", "isCorrect": true },
-        { "id": "b", "text": "Toto je kuchyňa.", "translation": "This is the kitchen.", "isCorrect": false },
-        { "id": "c", "text": "Nemám zviera.", "translation": "I don't have a pet.", "isCorrect": false },
-        { "id": "d", "text": "Sú povolené zvieratá?", "translation": "Are pets allowed?", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Pôjdeme električkou.",
+          "translation": "We will go by tram.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Tu vystupujem.",
+          "translation": "I am getting off here.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Validoval som lístok.",
+          "translation": "I validated the ticket.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Na túto adresu, prosím.",
+          "translation": "To this address, please.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Áno, toto je obývačka. — correct. Confirming the room name from the Items in My Flat lesson.",
-      "wrongFeedback": "Áno, toto je obývačka is correct since this is the living room."
+      "correctFeedback": "Pôjdeme električkou. is a clear public-transport choice.",
+      "wrongFeedback": "Marek is asking how to travel across town, so choose the tram."
     },
     {
       "id": "ex2",
       "speaker": "marek",
-      "text": "Vidím, že máš mačku! Ako sa volá?",
-      "translation": "I see you have a cat! What's its name?",
-      "prompt": "Marek asks your cat's name. It's called Micka. What do you say?",
+      "text": "Zastávka je blízko, za rohom. Ako pôjdeme na zastávku?",
+      "translation": "The stop is nearby, around the corner. How will we go to the stop?",
+      "prompt": "The stop is close. Choose the walking answer.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Mám psa.", "translation": "I have a dog.", "isCorrect": false },
-        { "id": "b", "text": "Volá sa Micka.", "translation": "Its name is Micka.", "isCorrect": true },
-        { "id": "c", "text": "Sú povolené zvieratá?", "translation": "Are pets allowed?", "isCorrect": false },
-        { "id": "d", "text": "Nemám zviera.", "translation": "I don't have a pet.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Ideme pešo.",
+          "translation": "We are going on foot.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Idem vlakom.",
+          "translation": "I am going by train.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Potrebujem taxi.",
+          "translation": "I need a taxi.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Kúpim jednorazový lístok.",
+          "translation": "I will buy a single ticket.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Volá sa Micka. — correct. Volá sa + name, from the Pets lesson.",
-      "wrongFeedback": "Volá sa Micka (Its name is Micka) is correct since your cat's name is Micka."
+      "correctFeedback": "Ideme pešo. is natural when the stop is close.",
+      "wrongFeedback": "For a nearby stop, use pešo, on foot."
     },
     {
       "id": "ex3",
       "speaker": "marek",
-      "text": "Pekná mačka! Dáš si niečo na pitie?",
-      "translation": "Nice cat! Would you like something to drink?",
-      "prompt": "You're hosting — Marek hints he'd like a drink. What do you ask him?",
+      "text": "Sme na zastávke, ale nevidím čas. Čo sa opýtaš?",
+      "translation": "We are at the stop, but I cannot see the time. What will you ask?",
+      "prompt": "Ask when the next tram goes.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Dáte si niečo na pitie?", "translation": "Would you like something to drink?", "isCorrect": true },
-        { "id": "b", "text": "Došlo mi mlieko.", "translation": "I'm out of milk.", "isCorrect": false },
-        { "id": "c", "text": "Kde nájdem chlieb?", "translation": "Where can I find bread?", "isCorrect": false },
-        { "id": "d", "text": "Sú povolené zvieratá?", "translation": "Are pets allowed?", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Kedy ide ďalšia električka?",
+          "translation": "When does the next tram go?",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Kde mám vystúpiť?",
+          "translation": "Where should I get off?",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Koľko to bude stáť?",
+          "translation": "How much will it cost?",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Môžete zastaviť tu?",
+          "translation": "Can you stop here?",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Dáte si niečo na pitie? — correct. The polite host phrase from the Beverages lesson.",
-      "wrongFeedback": "Dáte si niečo na pitie? is the right phrase for offering a guest a drink."
+      "correctFeedback": "Kedy ide ďalšia električka? asks for the next tram time.",
+      "wrongFeedback": "Use Kedy ide ďalšia električka? when you need the tram time."
     },
     {
       "id": "ex4",
       "speaker": "marek",
-      "text": "Áno, prosím! Kávu alebo čaj?",
-      "translation": "Yes, please! Coffee or tea?",
-      "prompt": "Wait — Marek is asking you back. You'd like coffee. What do you say?",
-      "isOpenQuestion": true,
+      "text": "Električka prišla. Nie som si istý smerom. Čo sa opýtaš?",
+      "translation": "The tram arrived. I am not sure about the direction. What will you ask?",
+      "prompt": "Ask if this tram goes to the centre.",
+      "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Kávu, prosím.", "translation": "Coffee, please.", "isCorrect": true },
-        { "id": "b", "text": "Čaj, prosím.", "translation": "Tea, please.", "isCorrect": true },
-        { "id": "c", "text": "Vodu, prosím.", "translation": "Water, please.", "isCorrect": true },
-        { "id": "d", "text": "Pivo, prosím.", "translation": "Beer, please.", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "Ide toto do centra?",
+          "translation": "Does this go to the centre?",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Kedy ide ďalšia električka?",
+          "translation": "When does the next tram go?",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Tu máte. Ďakujem.",
+          "translation": "Here you go. Thank you.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Drobné si nechajte.",
+          "translation": "Keep the change.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Correct pattern — [drink], prosím. Any of these works to state your preference politely.",
-      "wrongFeedback": "[Drink], prosím is the pattern for stating what you'd like. Any of the four options works."
+      "correctFeedback": "Ide toto do centra? is the route-confirmation phrase.",
+      "wrongFeedback": "Use Ide toto do...? when checking where public transport goes."
     },
     {
       "id": "ex5",
       "speaker": "marek",
-      "text": "Hmm, počujem zvláštny zvuk. Niečo sa pokazilo?",
-      "translation": "Hmm, I hear a strange sound. Did something break?",
-      "prompt": "Marek notices a strange sound from the kitchen. Your fridge has been making noise. What do you say?",
+      "text": "Áno, ide do centra. Nemáš predplatnú kartu. Čo kúpiš?",
+      "translation": "Yes, it goes to the centre. You do not have a travel pass. What will you buy?",
+      "prompt": "Buy a single ticket for one ride.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Áno, chladnička nefunguje dobre.", "translation": "Yes, the fridge isn't working well.", "isCorrect": true },
-        { "id": "b", "text": "Áno, mám psa.", "translation": "Yes, I have a dog.", "isCorrect": false },
-        { "id": "c", "text": "Nie, je to v poriadku.", "translation": "No, it's fine.", "isCorrect": false },
-        { "id": "d", "text": "Kde je pokladňa?", "translation": "Where is the checkout?", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Kúpim jednorazový lístok.",
+          "translation": "I will buy a single ticket.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Mám predplatnú kartu.",
+          "translation": "I have a travel pass.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Idem pešo.",
+          "translation": "I am going on foot.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Kde je stanica?",
+          "translation": "Where is the station?",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Áno, chladnička nefunguje dobre. — correct. Nefunguje, from the Items in My Flat lesson.",
-      "wrongFeedback": "Áno, chladnička nefunguje dobre (Yes, the fridge isn't working well) correctly describes the noise."
+      "correctFeedback": "Kúpim jednorazový lístok. is right for one ride.",
+      "wrongFeedback": "For one ride, choose jednorazový lístok."
     },
     {
       "id": "ex6",
       "speaker": "marek",
-      "text": "To je škoda. A vidím, že chladnička je takmer prázdna.",
-      "translation": "That's a shame. And I see the fridge is almost empty.",
-      "prompt": "Marek notices you're low on groceries. What do you say?",
+      "text": "Nastúpili sme. Teraz treba validovať lístok.",
+      "translation": "We boarded. Now we need to validate the ticket.",
+      "prompt": "Say that you validated the ticket.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Došlo mi mlieko a syr.", "translation": "I'm out of milk and cheese.", "isCorrect": true },
-        { "id": "b", "text": "Mám vernostnú kartu.", "translation": "I have a loyalty card.", "isCorrect": false },
-        { "id": "c", "text": "Sú povolené zvieratá?", "translation": "Are pets allowed?", "isCorrect": false },
-        { "id": "d", "text": "Posteľ je v spálni.", "translation": "The bed is in the bedroom.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Validoval som lístok.",
+          "translation": "I validated the ticket.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Kúpim jednorazový lístok.",
+          "translation": "I will buy a single ticket.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Kde mám vystúpiť?",
+          "translation": "Where should I get off?",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Potrebujem taxi.",
+          "translation": "I need a taxi.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Došlo mi mlieko a syr. — correct. Došlo mi from the Beverages lesson, applied here to groceries too.",
-      "wrongFeedback": "Došlo mi mlieko a syr (I'm out of milk and cheese) correctly explains the empty fridge."
+      "correctFeedback": "Validoval som lístok. is the right follow-up after boarding.",
+      "wrongFeedback": "After validating, say Validoval som lístok."
     },
     {
       "id": "ex7",
-      "speaker": "marek",
-      "text": "Poďme spolu do obchodu! Pomôžem ti.",
-      "translation": "Let's go to the shop together! I'll help you.",
-      "prompt": "Marek offers to come with you to the supermarket. You agree. What do you say?",
+      "speaker": "inspector",
+      "text": "Kontrola lístkov.",
+      "translation": "Ticket check.",
+      "prompt": "The ticket inspector asks for tickets. Show your ticket.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Dobre, poďme!", "translation": "Okay, let's go!", "isCorrect": true },
-        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
-        { "id": "c", "text": "Dovidenia!", "translation": "Goodbye!", "isCorrect": false },
-        { "id": "d", "text": "Som unavený.", "translation": "I am tired.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Tu je môj lístok.",
+          "translation": "Here is my ticket.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Tu je moja karta poistenca.",
+          "translation": "Here is my insurance card.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Tu je môj bicykel.",
+          "translation": "Here is my bike.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Tu je moja adresa.",
+          "translation": "Here is my address.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Dobre, poďme! — correct. Simple agreement, ready to head out together.",
-      "wrongFeedback": "Dobre, poďme! (Okay, let's go!) is the natural response to accept his offer."
+      "correctFeedback": "Tu je môj lístok. fits a ticket check.",
+      "wrongFeedback": "For Kontrola lístkov, show your ticket."
     },
     {
       "id": "ex8",
       "speaker": "marek",
-      "text": "Veľký nákup, alebo len trochu vecí?",
-      "translation": "A big shop, or just a few things?",
-      "prompt": "You only need a few items. What do you say, and which do you grab?",
+      "text": "Sme blízko centra. Neviem, kde máme vystúpiť.",
+      "translation": "We are near the centre. I do not know where we should get off.",
+      "prompt": "Ask where you should get off.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Len trochu, vezmem si košík.", "translation": "Just a little, I'll take a basket.", "isCorrect": true },
-        { "id": "b", "text": "Veľa, vezmem si vozík.", "translation": "A lot, I'll take a trolley.", "isCorrect": false },
-        { "id": "c", "text": "Kde je pokladňa?", "translation": "Where is the checkout?", "isCorrect": false },
-        { "id": "d", "text": "Mám vernostnú kartu.", "translation": "I have a loyalty card.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Kde mám vystúpiť?",
+          "translation": "Where should I get off?",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Kedy ide ďalšia električka?",
+          "translation": "When does the next tram go?",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Ide toto do centra?",
+          "translation": "Does this go to the centre?",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Koľko to bude stáť?",
+          "translation": "How much will it cost?",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Len trochu, vezmem si košík. — correct. Trochu and košík, from the Supermarket lesson.",
-      "wrongFeedback": "Len trochu, vezmem si košík (Just a little, I'll take a basket) matches needing only a few items."
+      "correctFeedback": "Kde mám vystúpiť? is the right question when you are unsure of the stop.",
+      "wrongFeedback": "Use Kde mám vystúpiť? to ask where to get off."
     },
     {
       "id": "ex9",
-      "speaker": "cashier",
-      "text": "Dobrý deň. Kartou alebo hotovosťou?",
-      "translation": "Good day. Card or cash?",
-      "prompt": "At checkout, the cashier asks how you're paying. You want to pay by card. What do you say?",
+      "speaker": "passenger",
+      "text": "Ďalšia zastávka je vaša. Centrum.",
+      "translation": "The next stop is yours. The centre.",
+      "prompt": "You are getting off at the next stop.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Kartou.", "translation": "By card.", "isCorrect": true },
-        { "id": "b", "text": "Hotovosťou.", "translation": "Cash.", "isCorrect": false },
-        { "id": "c", "text": "Taška, prosím.", "translation": "A bag, please.", "isCorrect": false },
-        { "id": "d", "text": "Pol kila.", "translation": "Half a kilo.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Tu vystupujem.",
+          "translation": "I am getting off here.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Idem vlakom.",
+          "translation": "I am going by train.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Mám predplatnú kartu.",
+          "translation": "I have a travel pass.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Validoval som lístok.",
+          "translation": "I validated the ticket.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Kartou. — correct and simple. From the Money lesson and reinforced in Supermarket.",
-      "wrongFeedback": "Kartou (by card) is the correct one-word answer since you want to pay by card."
+      "correctFeedback": "Tu vystupujem. tells people this is your stop.",
+      "wrongFeedback": "When this is your stop, say Tu vystupujem."
     },
     {
       "id": "ex10",
       "speaker": "marek",
-      "text": "Skvelé, máme všetko! Bol to dobrý deň, ďakujem za hosťovanie.",
-      "translation": "Great, we have everything! It was a good day, thanks for having me.",
-      "prompt": "Marek thanks you for hosting him. How do you close out the day warmly?",
+      "text": "Sme tu. Môžem zastaviť tu?",
+      "translation": "We are here. Can I stop here?",
+      "prompt": "Marek says you have arrived. Confirm it is fine to stop here.",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Ďakujem aj tebe, bolo to skvelé!", "translation": "Thank you too, it was great!", "isCorrect": true },
-        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
-        { "id": "c", "text": "Sú povolené zvieratá?", "translation": "Are pets allowed?", "isCorrect": false },
-        { "id": "d", "text": "Niečo sa pokazilo.", "translation": "Something broke.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Tu je to v poriadku.",
+          "translation": "Right here is fine.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Validoval som lístok.",
+          "translation": "I validated the ticket.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Kedy ide ďalšia električka?",
+          "translation": "When does the next tram go?",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Kde je zastávka?",
+          "translation": "Where is the stop?",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Ďakujem aj tebe, bolo to skvelé! — perfect, warm close to a full day with Marek.",
-      "wrongFeedback": "Ďakujem aj tebe, bolo to skvelé! (Thank you too, it was great!) is the warmest way to close out the day."
+      "correctFeedback": "Tu je to v poriadku. confirms the stop and closes the journey naturally.",
+      "wrongFeedback": "When you have arrived, say Tu je to v poriadku."
     }
   ],
-  "completionMessage": "🎉 Incredible! You showed Marek your flat, talked about your pet, offered him a drink, explained what was broken, and went shopping together — all in Slovak. You've completed Stage 1: Survival!"
+  "completionMessage": "Nice! You got to an appointment by walking to the stop, taking the tram, handling your ticket and stop, then using a taxi for the final part.",
+  "speakingRound": {
+    "id": "block7-speaking",
+    "type": "CONVERSATION_SPEAKING",
+    "questions": [
+      {
+        "id": "q0",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block7-m1.mp3.mp3",
+        "marekQuestionSk": "Ahoj! Potrebujeme ísť cez mesto. Pôjdeme autobusom alebo električkou?",
+        "marekQuestionEn": "Hi! We need to go across town. Shall we go by bus or by tram?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": [
+          { "id": "autobus", "label": "Autobusom", "sk": "Pôjdeme autobusom.", "en": "We will go by bus.", "chunks": ["Pôjdeme autobusom."] },
+          { "id": "elekricka", "label": "Električkou", "sk": "Pôjdeme električkou.", "en": "We will go by tram.", "chunks": ["Pôjdeme električkou."] }
+        ]
+      },
+      {
+        "id": "q1",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block7-m2.mp3.mp3",
+        "marekQuestionSk": "Zastávka je blízko. Ako sa tam dostaneme?",
+        "marekQuestionEn": "The stop is nearby. How will we get there?",
+        "correctAnswerSk": "Ideme pešo.",
+        "correctAnswerEn": "We are going on foot.",
+        "answerChunks": ["Ideme pešo."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q2",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block7-m3.mp3.mp3",
+        "marekQuestionSk": "Sme na zastávke. Chcem vedieť čas. Čo sa opýtaš?",
+        "marekQuestionEn": "We are at the stop. I want to know the time. What do you ask?",
+        "correctAnswerSk": "Kedy ide ďalšia električka?",
+        "correctAnswerEn": "When does the next tram go?",
+        "answerChunks": ["Kedy ide ďalšia električka?"],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q3",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block7-m4.mp3.mp3",
+        "marekQuestionSk": "Prišla električka. Ide toto do centra?",
+        "marekQuestionEn": "The tram arrived. Does this go to the centre?",
+        "correctAnswerSk": "Áno, ide to do centra.",
+        "correctAnswerEn": "Yes, it goes to the centre.",
+        "answerChunks": ["Áno, ide to do centra."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q4",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block7-m5.mp3.mp3",
+        "marekQuestionSk": "Nemáš predplatnú kartu. Aký lístok kúpiš?",
+        "marekQuestionEn": "You do not have a travel pass. What ticket will you buy?",
+        "correctAnswerSk": "Kúpim jednorazový lístok.",
+        "correctAnswerEn": "I will buy a single ticket.",
+        "answerChunks": ["Kúpim jednorazový lístok."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q5",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block7-m6.mp3.mp3",
+        "marekQuestionSk": "Nastúpili sme. Nezabudni validovať lístok.",
+        "marekQuestionEn": "We boarded. Do not forget to validate the ticket.",
+        "correctAnswerSk": "Validoval som lístok.",
+        "correctAnswerEn": "I validated the ticket.",
+        "answerChunks": ["Validoval som lístok."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q6",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block7-m7.mp3.mp3",
+        "marekQuestionSk": "Kontrola lístkov.",
+        "marekQuestionEn": "Ticket check.",
+        "correctAnswerSk": "Tu je môj lístok.",
+        "correctAnswerEn": "Here is my ticket.",
+        "answerChunks": ["Tu je môj lístok."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Ticket Inspector",
+        "choices": null
+      },
+      {
+        "id": "q7",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block7-m8.mp3.mp3",
+        "marekQuestionSk": "Nie som si istý. Kde máme vystúpiť?",
+        "marekQuestionEn": "I am not sure. Where should we get off?",
+        "correctAnswerSk": "Kde mám vystúpiť?",
+        "correctAnswerEn": "Where should I get off?",
+        "answerChunks": ["Kde mám vystúpiť?"],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      },
+      {
+        "id": "q8",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block7-m9.mp3.mp3",
+        "marekQuestionSk": "Ďalšia zastávka je centrum.",
+        "marekQuestionEn": "The next stop is the centre.",
+        "correctAnswerSk": "Tu vystupujem.",
+        "correctAnswerEn": "I am getting off here.",
+        "answerChunks": ["Tu vystupujem."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Passenger",
+        "choices": null
+      },
+      {
+        "id": "q9",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block7-m10.mp3.mp3",
+        "marekQuestionSk": "Sme tu. Môžem zastaviť tu?",
+        "marekQuestionEn": "We are here. Can I stop here?",
+        "correctAnswerSk": "Tu je to v poriadku.",
+        "correctAnswerEn": "Right here is fine.",
+        "answerChunks": ["Tu je to v poriadku."],
+        "isYesNo": false,
+        "personalData": null,
+        "speakerName": "Marek",
+        "choices": null
+      }
+    ]
+  }
 }

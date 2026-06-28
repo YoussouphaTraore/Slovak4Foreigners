@@ -1,0 +1,140 @@
+{
+  "id": "s2-introduce-yourself",
+  "stageId": "settling",
+  "stageName": "Stage 2 · Settling In",
+  "title": "Introduce Yourself",
+  "description": "It's your turn now to speak Slovak and introduce yourself",
+  "icon": "🎤",
+  "xpReward": 20,
+  "coming_soon": true,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "CONVERSATION_SPEAKING",
+      "questions": [
+        {
+          "id": "q0",
+          "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-introduce-yourself-m1.mp3.mp3",
+          "marekQuestionSk": "Ahoj! Teší ma. Rád ťa spoznávam.",
+          "marekQuestionEn": "Hi! Nice to meet you. I'm glad to meet you.",
+          "correctAnswerSk": "Ahoj Marek. Teší ma.",
+          "correctAnswerEn": "Hi Marek. Nice to meet you.",
+          "answerChunks": ["Ahoj", "Marek.", "Teší", "ma."],
+          "isYesNo": false,
+          "personalData": null
+        },
+        {
+          "id": "q1",
+          "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-introduce-yourself-m2.mp3.mp3",
+          "marekQuestionSk": "Ako sa máš?",
+          "marekQuestionEn": "How are you?",
+          "correctAnswerSk": "Mám sa dobre. A ty?",
+          "correctAnswerEn": "I'm fine. And you?",
+          "answerChunks": ["Mám sa", "dobre.", "A ty?"],
+          "isYesNo": false,
+          "personalData": null
+        },
+        {
+          "id": "q2",
+          "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-introduce-yourself-m3.mp3.mp3",
+          "marekQuestionSk": "Mám sa dobre. Ako sa voláš?",
+          "marekQuestionEn": "I'm fine. What's your name?",
+          "correctAnswerSk": "Volám sa {{displayName}}.",
+          "correctAnswerEn": "My name is {{displayName}}.",
+          "answerChunks": ["Volám sa", "{{displayName}}."],
+          "isYesNo": false,
+          "personalData": "displayName"
+        },
+        {
+          "id": "q3",
+          "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-introduce-yourself-m4.mp3.mp3",
+          "marekQuestionSk": "Odkiaľ si?",
+          "marekQuestionEn": "Where are you from?",
+          "correctAnswerSk": "Som z {{countrySkGenitive}}.",
+          "correctAnswerEn": "I am from {{countryEn}}.",
+          "answerChunks": ["Som z", "{{countrySkGenitive}}."],
+          "isYesNo": false,
+          "personalData": "countrySkGenitive"
+        },
+        {
+          "id": "q4",
+          "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-introduce-yourself-m5.mp3.mp3",
+          "marekQuestionSk": "Ako dlho tu bývaš?",
+          "marekQuestionEn": "How long have you been living here?",
+          "correctAnswerSk": "Bývam tu od nedávna.",
+          "correctAnswerEn": "I have been living here recently.",
+          "answerChunks": ["Bývam tu", "od nedávna."],
+          "isYesNo": false,
+          "personalData": null
+        },
+        {
+          "id": "q5",
+          "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-introduce-yourself-m6.mp3.mp3",
+          "marekQuestionSk": "Máš tu rodinu?",
+          "marekQuestionEn": "Do you have family here?",
+          "correctAnswerSk": null,
+          "correctAnswerEn": null,
+          "answerChunks": [],
+          "isYesNo": true,
+          "yesAnswer": {
+            "sk": "Áno, mám tu rodinu.",
+            "en": "Yes, I have family here.",
+            "chunks": ["Áno,", "mám tu", "rodinu."]
+          },
+          "noAnswer": {
+            "sk": "Nie, nemám rodinu tu.",
+            "en": "No, I don't have family here.",
+            "chunks": ["Nie,", "nemám", "rodinu tu."]
+          },
+          "personalData": null
+        },
+        {
+          "id": "q6",
+          "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-introduce-yourself-m7.mp3.mp3",
+          "marekQuestionSk": "Máš nejaké zviera?",
+          "marekQuestionEn": "Do you have any pets?",
+          "correctAnswerSk": null,
+          "correctAnswerEn": null,
+          "answerChunks": [],
+          "isYesNo": true,
+          "yesAnswer": {
+            "sk": "Áno, mám zviera.",
+            "en": "Yes, I have a pet.",
+            "chunks": ["Áno,", "mám", "zviera."]
+          },
+          "noAnswer": {
+            "sk": "Nie, nemám zviera.",
+            "en": "No, I don't have a pet.",
+            "chunks": ["Nie,", "nemám", "zviera."]
+          },
+          "personalData": null
+        },
+        {
+          "id": "q7",
+          "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s2-introduce-yourself-m8.mp3.mp3",
+          "marekQuestionSk": "Si šťastný/šťastná tu na Slovensku?",
+          "marekQuestionEn": "Are you happy here in Slovakia?",
+          "correctAnswerSk": null,
+          "correctAnswerEn": null,
+          "answerChunks": [],
+          "isYesNo": true,
+          "yesAnswer": {
+            "sk": "Áno, som {{happyGender}} tu!",
+            "en": "Yes, I am happy here!",
+            "chunks": ["Áno,", "som", "{{happyGender}}", "tu!"]
+          },
+          "noAnswer": {
+            "sk": "Nie, ešte sa prispôsobujem.",
+            "en": "No, I am still adapting.",
+            "chunks": ["Nie,", "ešte sa", "prispôsobujem."]
+          },
+          "personalData": "gender"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

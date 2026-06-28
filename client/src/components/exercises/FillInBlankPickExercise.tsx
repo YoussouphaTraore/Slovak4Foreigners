@@ -1,4 +1,4 @@
-import { useState, useRef, useMemo } from 'react';
+﻿import { useState, useRef, useMemo } from 'react';
 import type { FillInBlankPickExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
 import { toSlovakLabel, slovakifyNumbers } from '../../utils/numberToSlovak';
@@ -47,10 +47,15 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
   // Split sentence on ___ placeholder
   const [skovBefore, slovAfter] = current.sentence.split('___').map(slovakifyNumbers);
   const [engBefore, engAfter] = current.translation ? current.translation.split('___') : [undefined, undefined];
+  const correctAnswers = useMemo(
+    () => [current.answer, ...(current.acceptedAnswers ?? [])],
+    [current]
+  );
+  const isCorrectChoice = (choice: string) => correctAnswers.includes(choice);
 
   const handleChoice = (choice: string) => {
     if (feedback !== null) return;
-    const correct = choice === current.answer;
+    const correct = isCorrectChoice(choice);
     setTappedChoice(choice);
     setFeedback(correct ? 'correct' : 'wrong');
     onAnswer?.(correct);
@@ -80,6 +85,8 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
   };
 
   const progressPct = Math.round((masteredCount / total) * 100);
+  const selectedAnswerLabel = slovakifyNumbers(tappedChoice ?? current.answer);
+  const correctAnswerLabel = correctAnswers.map(slovakifyNumbers).join(' / ');
 
   const blankWord = tappedChoice ?? '___';
   const blankColor =
@@ -92,7 +99,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
     const base =
       `border-2 rounded-2xl px-3 py-4 ${size} font-bold text-center transition-all duration-200 active:scale-95 cursor-pointer break-words`;
     if (feedback !== null) {
-      if (choice === current.answer)  return `${base} border-brand-green bg-green-50 text-brand-green`;
+      if (isCorrectChoice(choice))    return `${base} border-brand-green bg-green-50 text-brand-green`;
       if (choice === tappedChoice)    return `${base} border-brand-red bg-red-50 text-brand-red animate-shake`;
       return `${base} border-gray-200 bg-white text-gray-400 opacity-40 pointer-events-none`;
     }
@@ -126,7 +133,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
           </span>
           {slovAfter}
         </p>
-        {/* English translation — blank stays as ___ */}
+        {/* English translation â€” blank stays as ___ */}
         {engBefore !== undefined && (
           <p className="text-sm italic text-gray-400 mt-2 leading-relaxed">
             {engBefore}
@@ -148,7 +155,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
               className={getChoiceStyle(choice)}
             >
               {toSlovakLabel(choice)}
-              {feedback !== null && choice === current.answer && ' ✓'}
+              {feedback !== null && isCorrectChoice(choice) && ' âœ“'}
             </button>
           ))}
         </div>
@@ -164,13 +171,18 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0">
               <p className={`font-semibold text-sm mb-1 ${feedback === 'correct' ? 'text-brand-green' : 'text-brand-red'}`}>
-                {feedback === 'correct' ? '✓ Correct!' : '✗ Not quite'}
+                {feedback === 'correct' ? 'âœ“ Correct!' : 'âœ— Not quite'}
               </p>
               <p className={`text-xs leading-snug ${feedback === 'correct' ? 'text-green-700' : 'text-red-700'}`}>
                 {feedback === 'correct'
-                  ? `"${slovakifyNumbers(current.answer)}" fits perfectly!`
-                  : `The correct word is "${slovakifyNumbers(current.answer)}"`}
+                  ? `"${selectedAnswerLabel}" fits perfectly!`
+                  : `The correct answer is "${correctAnswerLabel}"`}
               </p>
+              {current.answerMeaning && (
+                <p className="text-xs leading-snug text-gray-500 mt-2">
+                  {current.answerMeaning}
+                </p>
+              )}
             </div>
             <button
               type="button"
@@ -187,3 +199,4 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
     </div>
   );
 }
+

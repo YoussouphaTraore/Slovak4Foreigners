@@ -1,0 +1,322 @@
+{
+  "id": "tc-dont-understand",
+  "stageId": "topic-comprehension",
+  "stageName": "",
+  "title": "I Don't Understand — Monologue",
+  "description": "Listen, then prove you were listening",
+  "_voiceScript": {
+    "voice": null,
+    "script": "Omar: Dobrý deň. Nerozumiem. Nehovorím po slovensky. Pracovník: Dobrý deň. Dobre. Omar: Hovoríte po anglicky? Pracovník: Trochu. Môžete zopakovať? Omar: Áno. Hovorte pomaly, prosím. Pracovník: Formulár, prosím. Omar: Čo to znamená? Pracovník: Formulár je papier. Omar: Môžete to napísať? Pracovník: Áno. Omar: Moment, prosím. Ďakujem."
+  },
+  "icon": "❓",
+  "xpReward": 25,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "CONVERSATION_LISTEN",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-I-Dont-Understand.mp3",
+      "conversationTranscriptSk": "Omar: Dobrý deň. Nerozumiem. Nehovorím po slovensky. Pracovník: Dobrý deň. Dobre. Omar: Hovoríte po anglicky? Pracovník: Trochu. Môžete zopakovať? Omar: Áno. Hovorte pomaly, prosím. Pracovník: Formulár, prosím. Omar: Čo to znamená? Pracovník: Formulár je papier. Omar: Môžete to napísať? Pracovník: Áno. Omar: Moment, prosím. Ďakujem.",
+      "speakers": [
+        {
+          "name": "Omar",
+          "avatar": "👨"
+        },
+        {
+          "name": "Pracovník",
+          "avatar": "👨"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "CONVERSATION_WORD_RECOGNITION",
+      "instruction": "Tap every word or expression you heard in the conversation.",
+      "passThresholdPercent": 76,
+      "correctWords": [
+        "Nerozumiem",
+        "Nehovorím po slovensky",
+        "Hovoríte po anglicky?",
+        "Môžete zopakovať?",
+        "Hovorte pomaly, prosím",
+        "Formulár",
+        "Čo to znamená?",
+        "Môžete to napísať?",
+        "Moment, prosím",
+        "Ďakujem"
+      ],
+      "distractorWords": [
+        "Rozumiem",
+        "Hovorím dobre",
+        "Koľko to stojí?",
+        "Platím kartou",
+        "Bývam blízko",
+        "Dovidenia"
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "CONVERSATION_COMPREHENSION",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-I-Dont-Understand.mp3",
+      "conversationTranscriptSk": "Omar: Dobrý deň. Nerozumiem. Nehovorím po slovensky. Pracovník: Dobrý deň. Dobre. Omar: Hovoríte po anglicky? Pracovník: Trochu. Môžete zopakovať? Omar: Áno. Hovorte pomaly, prosím. Pracovník: Formulár, prosím. Omar: Čo to znamená? Pracovník: Formulár je papier. Omar: Môžete to napísať? Pracovník: Áno. Omar: Moment, prosím. Ďakujem.",
+      "speakers": [
+        {
+          "name": "Omar",
+          "avatar": "👨"
+        },
+        {
+          "name": "Pracovník",
+          "avatar": "👨"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Omar says \"Nerozumiem.\" What does this mean?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "I understand",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "I do not understand",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "I speak Slovak",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Nerozumiem\" = I do not understand. This is the core phrase from the I Don't Understand lesson.",
+          "reviewPair": {
+            "slovak": "Nerozumiem",
+            "english": "I do not understand"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "What does Omar say about Slovak?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "\"Hovorím po slovensky.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "\"Hovorte pomaly, prosím.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "\"Nehovorím po slovensky.\"",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Nehovorím po slovensky\" = I do not speak Slovak. Nehovorím is the negative form of I speak.",
+          "reviewPair": {
+            "slovak": "Nehovorím po slovensky",
+            "english": "I do not speak Slovak"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Omar asks \"Hovoríte po anglicky?\" What is he asking?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Do you speak English?",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Can you write it down?",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "What does it mean?",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Hovoríte po anglicky?\" = Do you speak English? Hovoríte is the polite/formal you form.",
+          "reviewPair": {
+            "slovak": "Hovoríte po anglicky?",
+            "english": "Do you speak English?"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "The worker says \"Môžete zopakovať?\" What does she ask Omar to do?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Speak faster",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Repeat it",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Pay by card",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Môžete zopakovať?\" = Can you repeat? This comes from the I Don't Understand lesson and helps when you miss something.",
+          "reviewPair": {
+            "slovak": "Môžete zopakovať?",
+            "english": "Can you repeat?"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "Omar says \"Hovorte pomaly, prosím.\" Why does he say this?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "He wants the worker to leave",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "He wants to buy coffee",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "He wants the worker to speak slowly",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Hovorte pomaly, prosím\" = Speak slowly, please. Hovorte is a polite command from the Make It Clearer lesson.",
+          "reviewPair": {
+            "slovak": "Hovorte pomaly, prosím",
+            "english": "Speak slowly, please"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "When Omar hears \"Formulár,\" what does he ask?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "\"Čo to znamená?\"",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "\"Moment, prosím.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "\"Dobrý deň.\"",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Čo to znamená?\" = What does that mean? Omar uses it because he does not know the word formulár.",
+          "reviewPair": {
+            "slovak": "Čo to znamená?",
+            "english": "What does that mean?"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "CONVERSATION_SENTENCE_BUILDER",
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "I do not understand. I do not speak Slovak.",
+          "targetSk": [
+            "Nerozumiem",
+            "Nehovorím po slovensky"
+          ],
+          "bankChunks": [
+            "Nerozumiem",
+            "Nehovorím po slovensky",
+            "Rozumiem"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "Do you speak English?",
+          "targetSk": [
+            "Hovoríte",
+            "po anglicky?"
+          ],
+          "bankChunks": [
+            "Hovoríte",
+            "po anglicky?",
+            "po slovensky"
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "Can you repeat?",
+          "targetSk": [
+            "Môžete",
+            "zopakovať?"
+          ],
+          "bankChunks": [
+            "Môžete",
+            "zopakovať?",
+            "napísať?"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "Speak slowly, please.",
+          "targetSk": [
+            "Hovorte pomaly",
+            "prosím"
+          ],
+          "bankChunks": [
+            "Hovorte pomaly",
+            "prosím",
+            "Moment"
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "What does that mean?",
+          "targetSk": [
+            "Čo to",
+            "znamená?"
+          ],
+          "bankChunks": [
+            "Čo to",
+            "znamená?",
+            "zopakovať?"
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "Can you write it down? One moment, please.",
+          "targetSk": [
+            "Môžete to napísať?",
+            "Moment, prosím"
+          ],
+          "bankChunks": [
+            "Môžete to napísať?",
+            "Moment, prosím",
+            "Hovoríte po anglicky?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

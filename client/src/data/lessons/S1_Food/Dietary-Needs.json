@@ -1,0 +1,224 @@
+{
+  "id": "s1-dietary-needs",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Dietary Needs",
+  "description": "Tell people what you cannot eat safely",
+  "icon": "🥗",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Dietary Needs",
+      "rows": [
+        {
+          "label": "Vegetarian (m/f)",
+          "slovak": "Vegetarián / Vegetariánka",
+          "english": "Vegetarian (male/female)"
+        },
+        {
+          "label": "Allergic to...",
+          "slovak": "Som alergický / alergická na...",
+          "english": "I am allergic to... (m/f)"
+        },
+        {
+          "label": "I don't eat...",
+          "slovak": "Nejem...",
+          "english": "I don't eat..."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Vegetarián / Vegetariánka",
+          "english": "Vegetarian (male/female)"
+        },
+        {
+          "slovak": "Som alergický / alergická na...",
+          "english": "I am allergic to... (m/f)"
+        },
+        {
+          "slovak": "Nejem...",
+          "english": "I don't eat..."
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Vegetarián / Vegetariánka",
+          "english": "Vegetarian (male/female)"
+        },
+        {
+          "slovak": "Som alergický / alergická na...",
+          "english": "I am allergic to... (m/f)"
+        },
+        {
+          "slovak": "Nejem...",
+          "english": "I don't eat..."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Vegetarián",
+          "english": "Vegetarian (male)"
+        },
+        {
+          "slovak": "Vegetariánka",
+          "english": "Vegetarian (female)"
+        },
+        {
+          "slovak": "Som alergický na...",
+          "english": "I am allergic to..."
+        },
+        {
+          "slovak": "Nejem...",
+          "english": "I don't eat..."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Vegetarián / Vegetariánka",
+          "english": "Vegetarian (male/female)"
+        },
+        {
+          "slovak": "Som alergický / alergická na...",
+          "english": "I am allergic to... (m/f)"
+        },
+        {
+          "slovak": "Nejem...",
+          "english": "I don't eat..."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need vegetarian (male/female). What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Nejem...",
+            "Som alergický / alergická na...",
+            "Vegetarián / Vegetariánka"
+          ],
+          "answer": "Vegetarián / Vegetariánka",
+          "answerMeaning": "Vegetarián / Vegetariánka = Vegetarian (male/female)"
+        },
+        {
+          "situation": "You need i am allergic to... (m/f). What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Nejem...",
+            "Som alergický / alergická na...",
+            "Vegetarián / Vegetariánka"
+          ],
+          "answer": "Som alergický / alergická na...",
+          "answerMeaning": "Som alergický / alergická na... = I am allergic to... (m/f)"
+        },
+        {
+          "situation": "You need i don't eat... What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Nejem...",
+            "Som alergický / alergická na...",
+            "Vegetarián / Vegetariánka"
+          ],
+          "answer": "Nejem...",
+          "answerMeaning": "Nejem... = I don't eat..."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are at a restaurant. You don't eat meat. What do you tell the waiter?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Nejem mäso.",
+            "Mám mäso.",
+            "Chcem mäso.",
+            "Som mäso."
+          ],
+          "answer": "Nejem mäso.",
+          "answerMeaning": "Nejem mäso = I don't eat meat. Nejem from the Verbs lesson (Jem = I eat) + Ne- negative prefix."
+        },
+        {
+          "situation": "You are vegetarian and a man. How do you tell the waiter?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som vegetariánka.",
+            "Som vegetarián.",
+            "Nejem zeleninu.",
+            "Mám alergiu."
+          ],
+          "answer": "Som vegetarián.",
+          "answerMeaning": "Som vegetarián = I am vegetarian (male form). Vegetariánka is the female form."
+        },
+        {
+          "situation": "You are allergic to fish. What do you tell the waiter before ordering?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som alergický na ryby.",
+            "Nemám rybu.",
+            "Chcem rybu.",
+            "Mám rybu."
+          ],
+          "answer": "Som alergický na ryby.",
+          "answerMeaning": "Som alergický na ryby = I am allergic to fish (male form). Always say this clearly before ordering — it's important for your safety."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ mäso. Som vegetarián.",
+          "translation": "I don't eat meat. I am vegetarian.",
+          "choices": [
+            "Mám",
+            "Chcem",
+            "Nejem",
+            "Som"
+          ],
+          "answer": "Nejem"
+        },
+        {
+          "sentence": "Som alergický ___ ryby.",
+          "translation": "I am allergic to fish.",
+          "choices": [
+            "z",
+            "na",
+            "v",
+            "do"
+          ],
+          "answer": "na"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "id": "s1-speak-understand",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Speak & Understand",
+  "description": "Speak, understand, and ask if someone knows",
+  "icon": "⚡",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Communication Verbs",
+      "subtitle": "Use these when language or information is the problem.",
+      "rows": [
+        {
+          "label": "I speak",
+          "slovak": "Hovorím",
+          "english": "I speak"
+        },
+        {
+          "label": "Do you speak?",
+          "slovak": "Hovoríte?",
+          "english": "Do you speak? (formal)"
+        },
+        {
+          "label": "I understand",
+          "slovak": "Rozumiem",
+          "english": "I understand"
+        },
+        {
+          "label": "I don't understand",
+          "slovak": "Nerozumiem",
+          "english": "I don't understand"
+        },
+        {
+          "label": "Do you know?",
+          "slovak": "Viete?",
+          "english": "Do you know? (formal)"
+        },
+        {
+          "label": "Do you know?",
+          "slovak": "Vieš?",
+          "english": "Do you know? (informal)"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Hovorím",
+          "english": "I speak"
+        },
+        {
+          "slovak": "Hovoríte?",
+          "english": "Do you speak?"
+        },
+        {
+          "slovak": "Rozumiem",
+          "english": "I understand"
+        },
+        {
+          "slovak": "Nerozumiem",
+          "english": "I don't understand"
+        },
+        {
+          "slovak": "Viete?",
+          "english": "Do you know? formal"
+        },
+        {
+          "slovak": "Vieš?",
+          "english": "Do you know? informal"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Hovorím",
+          "english": "I speak"
+        },
+        {
+          "slovak": "Hovoríte?",
+          "english": "Do you speak?"
+        },
+        {
+          "slovak": "Rozumiem",
+          "english": "I understand"
+        },
+        {
+          "slovak": "Nerozumiem",
+          "english": "I don't understand"
+        },
+        {
+          "slovak": "Viete?",
+          "english": "Do you know? formal"
+        },
+        {
+          "slovak": "Vieš?",
+          "english": "Do you know? informal"
+        }
+      ]
+    },
+    {
+      "id": "ex2c",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Hovorím",
+          "english": "I speak"
+        },
+        {
+          "slovak": "Hovoríte?",
+          "english": "Do you speak?"
+        },
+        {
+          "slovak": "Rozumiem",
+          "english": "I understand"
+        },
+        {
+          "slovak": "Nerozumiem",
+          "english": "I don't understand"
+        },
+        {
+          "slovak": "Viete?",
+          "english": "Do you know? formal"
+        },
+        {
+          "slovak": "Vieš?",
+          "english": "Do you know? informal"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Hovorím",
+          "english": "I speak"
+        },
+        {
+          "slovak": "Hovoríte?",
+          "english": "Do you speak?"
+        },
+        {
+          "slovak": "Rozumiem",
+          "english": "I understand"
+        },
+        {
+          "slovak": "Nerozumiem",
+          "english": "I don't understand"
+        },
+        {
+          "slovak": "Viete?",
+          "english": "Do you know? formal"
+        },
+        {
+          "slovak": "Vieš?",
+          "english": "Do you know? informal"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The officer asks if you speak Slovak. You say: 'I speak a little.'",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Hovorí trochu.",
+            "Hovoríte trochu.",
+            "Hovorím trochu.",
+            "Hovoríš trochu."
+          ],
+          "answer": "Hovorím trochu.",
+          "answerMeaning": "Hovorím = I speak."
+        },
+        {
+          "situation": "You want to ask a doctor formally: 'Do you speak English?'",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Hovorím po anglicky?",
+            "Hovorí po anglicky?",
+            "Hovoríte po anglicky?",
+            "Hovoria po anglicky?"
+          ],
+          "answer": "Hovoríte po anglicky?",
+          "answerMeaning": "Hovoríte = you speak, formal or plural."
+        },
+        {
+          "situation": "You understand the instructions. What can you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Rozumiem.",
+            "Nerozumiem.",
+            "Hovoríte?",
+            "Viete?"
+          ],
+          "answer": "Rozumiem.",
+          "answerMeaning": "Rozumiem = I understand."
+        },
+        {
+          "situation": "You do not understand what the officer said. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Rozumiem.",
+            "Nerozumiem.",
+            "Viete?",
+            "Vieš?"
+          ],
+          "answer": "Nerozumiem.",
+          "answerMeaning": "Nerozumiem = I don't understand."
+        },
+        {
+          "situation": "You ask a receptionist formally: 'Do you know where the office is?' Which opening is correct?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Vieš",
+            "Viem",
+            "Viete",
+            "Vie"
+          ],
+          "answer": "Viete",
+          "answerMeaning": "Viete = do you know, formal or plural."
+        },
+        {
+          "situation": "You ask a friend informally: 'Do you know where the office is?' Which opening is correct?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Viete",
+            "Viem",
+            "Vieš",
+            "Vie"
+          ],
+          "answer": "Vieš",
+          "answerMeaning": "Vieš = do you know, informal."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ trochu po slovensky.",
+          "translation": "I speak Slovak a little.",
+          "choices": [
+            "Hovorím",
+            "Hovoríte",
+            "Rozumiem",
+            "Viete"
+          ],
+          "answer": "Hovorím"
+        },
+        {
+          "sentence": "___ po anglicky?",
+          "translation": "Do you speak English? (formal)",
+          "choices": [
+            "Hovorím",
+            "Hovoríte",
+            "Hovorí",
+            "Hovoria"
+          ],
+          "answer": "Hovoríte"
+        },
+        {
+          "sentence": "Áno, ___.",
+          "translation": "Yes, I understand.",
+          "choices": [
+            "rozumiem",
+            "nerozumiem",
+            "viete",
+            "vieš"
+          ],
+          "answer": "rozumiem"
+        },
+        {
+          "sentence": "Prepáčte, ___.",
+          "translation": "Sorry, I don't understand.",
+          "choices": [
+            "rozumiem",
+            "nerozumiem",
+            "hovorím",
+            "viete"
+          ],
+          "answer": "nerozumiem"
+        },
+        {
+          "sentence": "___, kde je úrad?",
+          "translation": "Do you know where the office is? (formal)",
+          "choices": [
+            "Viem",
+            "Vieš",
+            "Viete",
+            "Vie"
+          ],
+          "answer": "Viete"
+        },
+        {
+          "sentence": "___, kde je lekáreň?",
+          "translation": "Do you know where the pharmacy is? (informal)",
+          "choices": [
+            "Viete",
+            "Vieš",
+            "Viem",
+            "Vie"
+          ],
+          "answer": "Vieš"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

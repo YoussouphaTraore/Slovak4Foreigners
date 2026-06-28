@@ -1,0 +1,318 @@
+{
+  "id": "tc-first-words",
+  "stageId": "topic-comprehension",
+  "stageName": "",
+  "title": "First Words â€” Monologue",
+  "description": "Listen, then prove you were listening",
+  "_voiceScript": {
+    "voice": null,
+    "script": "Prepáčte, neviem, kde som. Prosím, pomoc. Rozumiete? Áno? Dobre, ďakujem. Nie, prepáčte, neviem po slovensky dobre. Prosím, pomaly. Ďakujem."
+  },
+  "icon": "💬",
+  "xpReward": 25,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "CONVERSATION_LISTEN",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-first-words.mp3",
+      "conversationTranscriptSk": "Prepáčte, neviem, kde som. Prosím, pomoc. Rozumiete? Áno? Dobre, ďakujem. Nie, prepáčte, neviem po slovensky dobre. Prosím, pomaly. Ďakujem.",
+      "speakers": [
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "CONVERSATION_WORD_RECOGNITION",
+      "instruction": "Tap every word or expression you heard in the conversation.",
+      "passThresholdPercent": 76,
+      "correctWords": [
+        "Prepáčte",
+        "neviem",
+        "kde som",
+        "Prosím",
+        "pomoc",
+        "Rozumiete?",
+        "Áno?",
+        "Dobre",
+        "ďakujem",
+        "Nie",
+        "po slovensky",
+        "dobre",
+        "pomaly"
+      ],
+      "distractorWords": [
+        "Ahoj",
+        "volám sa",
+        "chcem toto",
+        "mám lístok",
+        "kde je obchod",
+        "zle"
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "CONVERSATION_COMPREHENSION",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-first-words.mp3",
+      "conversationTranscriptSk": "Prepáčte, neviem, kde som. Prosím, pomoc. Rozumiete? Áno? Dobre, ďakujem. Nie, prepáčte, neviem po slovensky dobre. Prosím, pomaly. Ďakujem.",
+      "speakers": [
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "What does Marek say at the beginning?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Ďakujem.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Prepáčte.",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Dobre.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Prepáčte = Excuse me / Sorry. Marek starts politely before asking for help.",
+          "reviewPair": {
+            "slovak": "Prepáčte",
+            "english": "Excuse me / Sorry"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "How do we know Marek is lost or unsure?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "He says \"Dobre, ďakujem.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "He says \"Áno?\"",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "He says \"neviem, kde som.\"",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Neviem, kde som = I do not know where I am. Neviem is the key First Words phrase.",
+          "reviewPair": {
+            "slovak": "Neviem, kde som",
+            "english": "I do not know where I am"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "What does Marek ask for?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Prosím, pomoc.",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Prosím, pomaly.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Dobre, ďakujem.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Prosím, pomoc = Please, help. This is a direct help request.",
+          "reviewPair": {
+            "slovak": "Prosím, pomoc",
+            "english": "Please, help"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "What question does Marek ask to check understanding?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Kde som?",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Rozumiete?",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Áno?",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Rozumiete? = Do you understand? This is the exact question Marek asks.",
+          "reviewPair": {
+            "slovak": "Rozumiete?",
+            "english": "Do you understand?"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "How does Marek ask the person to speak?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Prosím, pomoc.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Prepáčte, neviem.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Prosím, pomaly.",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Prosím, pomaly = Please, slowly. This is the polite expression Marek uses.",
+          "reviewPair": {
+            "slovak": "Prosím, pomaly",
+            "english": "Please, slowly"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "What polite phrase does Marek use after things are okay?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Dobre, ďakujem.",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Nie, prepáčte.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Prosím, pomoc.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Dobre, ďakujem = Good, thank you. Ďakujem is the polite thank-you phrase.",
+          "reviewPair": {
+            "slovak": "Dobre, ďakujem",
+            "english": "Good, thank you"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "CONVERSATION_SENTENCE_BUILDER",
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "Excuse me, I do not know where I am.",
+          "targetSk": [
+            "Prepáčte",
+            "neviem",
+            "kde som"
+          ],
+          "bankChunks": [
+            "Prepáčte",
+            "neviem",
+            "kde som",
+            "ďakujem"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "Please, help.",
+          "targetSk": [
+            "Prosím",
+            "pomoc"
+          ],
+          "bankChunks": [
+            "Prosím",
+            "pomoc",
+            "Dobre"
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "Do you understand? Yes? Good, thank you.",
+          "targetSk": [
+            "Rozumiete?",
+            "Áno?",
+            "Dobre",
+            "ďakujem"
+          ],
+          "bankChunks": [
+            "Rozumiete?",
+            "Áno?",
+            "Dobre",
+            "ďakujem",
+            "Nie"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "No, sorry, I do not know Slovak well.",
+          "targetSk": [
+            "Nie",
+            "prepáčte",
+            "neviem",
+            "po slovensky",
+            "dobre"
+          ],
+          "bankChunks": [
+            "Nie",
+            "prepáčte",
+            "neviem",
+            "po slovensky",
+            "dobre",
+            "pomoc"
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "Please, slowly. Thank you.",
+          "targetSk": [
+            "Prosím",
+            "pomaly",
+            "Ďakujem"
+          ],
+          "bankChunks": [
+            "Prosím",
+            "pomaly",
+            "Ďakujem",
+            "Rozumiete?"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

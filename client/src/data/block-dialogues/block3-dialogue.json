@@ -4,9 +4,9 @@
   "stageName": "Stage 1 · Survival",
   "blockId": "stage1-block3",
   "type": "BLOCK_DIALOGUE",
-  "title": "Coffee with Marek",
-  "description": "You meet Marek at a coffee shop. After ordering, he helps you book a Foreign Police appointment.",
-  "icon": "☕",
+  "title": "Planning with Marek",
+  "description": "Marek helps you plan an appointment using numbers, prices, time, calendar words, and weather.",
+  "icon": "📅",
   "xpReward": 20,
   "contact": {
     "name": "Marek",
@@ -15,171 +15,571 @@
     "avatar": "👨"
   },
   "speakers": {
-    "waitress": { "name": "Waitress", "initials": "W", "avatar": "👩" },
-    "marek": { "name": "Marek", "initials": "M", "avatar": "👨" }
+    "waitress": {
+      "name": "Waitress",
+      "initials": "W",
+      "avatar": "👩"
+    },
+    "marek": {
+      "name": "Marek",
+      "initials": "M",
+      "avatar": "👨"
+    }
   },
-  "context": "You and Marek are now friends. You meet him at a coffee shop. First you order from the waitress, then Marek helps you book an appointment at the Foreign Police.",
+  "context": "You meet Marek to plan a Foreign Police appointment and the trip there. You talk about prices, payment, days, weeks, months, exact times, numbers, and the weather.",
   "exchanges": [
     {
       "id": "ex1",
-      "speaker": "waitress",
-      "text": "Dobrý deň! Čo si dáte?",
-      "translation": "Good day! What will you have?",
-      "prompt": "The waitress asks what you want. You want a coffee. What do you say?",
+      "speaker": "marek",
+      "text": "Ahoj! Dnes máme naplánovať termín na cudzineckej polícii.",
+      "translation": "Hi! Today we need to plan an appointment at the Foreign Police.",
+      "prompt": "Marek says you need to plan the appointment today. Which answer fits?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Dám si kávu, prosím.", "translation": "I'll have a coffee, please.", "isCorrect": true },
-        { "id": "b", "text": "Koľko to stojí?", "translation": "How much does it cost?", "isCorrect": false },
-        { "id": "c", "text": "Máte drobné?", "translation": "Do you have change?", "isCorrect": false },
-        { "id": "d", "text": "Platím kartou.", "translation": "I'm paying by card.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Áno, dnes mám čas.",
+          "translation": "Yes, I have time today.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Som z Indie.",
+          "translation": "I am from India.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Bolí ma hlava.",
+          "translation": "My head hurts.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Mám hnedé vlasy.",
+          "translation": "I have brown hair.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Dám si kávu, prosím. — correct. Dám si is the standard ordering phrase in any café or restaurant.",
-      "wrongFeedback": "Dám si... + what you want is how you order. Save the payment phrases for after you've ordered."
+      "correctFeedback": "Áno, dnes mám čas. — correct. Dnes = today, and čas = time.",
+      "wrongFeedback": "Use dnes when the plan is happening today."
     },
     {
       "id": "ex2",
-      "speaker": "waitress",
-      "text": "Dobre. To je tri eurá päťdesiat. Platíte kartou alebo v hotovosti?",
-      "translation": "Good. That's three euros fifty. Do you pay by card or cash?",
-      "prompt": "The waitress asks whether you pay by card or cash. What do you say?",
-      "isOpenQuestion": false,
+      "speaker": "marek",
+      "text": "Ktorý deň ti vyhovuje? Pondelok, streda alebo piatok?",
+      "translation": "Which day works for you? Monday, Wednesday, or Friday?",
+      "prompt": "Marek asks which day works. Pick a valid day answer.",
+      "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Máte drobné?", "translation": "Do you have change?", "isCorrect": false },
-        { "id": "b", "text": "Platím v hotovosti.", "translation": "I'm paying in cash.", "isCorrect": true },
-        { "id": "c", "text": "Platím kartou.", "translation": "I'm paying by card.", "isCorrect": true },
-        { "id": "d", "text": "Koľko je hodín?", "translation": "What time is it?", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "V pondelok.",
+          "translation": "On Monday.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "V stredu.",
+          "translation": "On Wednesday.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "V piatok.",
+          "translation": "On Friday.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Päť eur.",
+          "translation": "Five euros.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Correct. Platím kartou means I'm paying by card; Platím v hotovosti means I'm paying in cash.",
-      "wrongFeedback": "Use Platím kartou for card, or Platím v hotovosti for cash."
+      "correctFeedback": "Correct. Use v + day for days like v pondelok, v stredu, v piatok.",
+      "wrongFeedback": "Answer with a day phrase: v pondelok, v stredu, or v piatok."
     },
     {
       "id": "ex3",
-      "speaker": "waitress",
-      "text": "Tu máte. Chcete účtenku?",
-      "translation": "Here you are. Do you want a receipt?",
-      "prompt": "The waitress asks if you want a receipt. What do you say?",
-      "isOpenQuestion": false,
+      "speaker": "marek",
+      "text": "Tento týždeň alebo budúci týždeň?",
+      "translation": "This week or next week?",
+      "prompt": "Marek asks which week. Pick a correct planning phrase.",
+      "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Nie, ďakujem.", "translation": "No, thank you.", "isCorrect": true },
-        { "id": "b", "text": "Áno, môžem dostať účtenku?", "translation": "Yes, can I get a receipt?", "isCorrect": true },
-        { "id": "c", "text": "Mám drobné.", "translation": "I have change.", "isCorrect": false },
-        { "id": "d", "text": "Som vegetarián.", "translation": "I am vegetarian.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Tento týždeň.",
+          "translation": "This week.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Budúci týždeň.",
+          "translation": "Next week.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Minulý týždeň.",
+          "translation": "Last week.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Koľko to stojí?",
+          "translation": "How much does it cost?",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Correct. You can say Nie, ďakujem if you don't want a receipt, or Áno, môžem dostať účtenku? if you do.",
-      "wrongFeedback": "Answer the receipt question directly: Nie, ďakujem or Áno, môžem dostať účtenku?"
+      "correctFeedback": "Tento týždeň, budúci týždeň, and minulý týždeň are the key week phrases.",
+      "wrongFeedback": "Use a week phrase here: tento týždeň, budúci týždeň, or minulý týždeň."
     },
     {
       "id": "ex4",
       "speaker": "marek",
-      "text": "Ahoj! Ako sa máš? Počul som, že potrebuješ pomoc s niečím na cudzineckej polícii.",
-      "translation": "Hi! How are you? I heard you need help with something at the Foreign Police.",
-      "prompt": "Marek greets you and mentions the Foreign Police. How do you respond?",
-      "isOpenQuestion": false,
+      "text": "A v ktorom mesiaci končí tvoj pobyt?",
+      "translation": "And in which month does your residence expire?",
+      "prompt": "Marek asks which month. Pick a valid month answer.",
+      "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Ahoj! Áno, potrebujem urobiť stretnutie.", "translation": "Hi! Yes, I need to make an appointment.", "isCorrect": true },
-        { "id": "b", "text": "Dobrú noc!", "translation": "Good night!", "isCorrect": false },
-        { "id": "c", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
-        { "id": "d", "text": "Koľko to stojí?", "translation": "How much does it cost?", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "V marci.",
+          "translation": "In March.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "V júni.",
+          "translation": "In June.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "V novembri.",
+          "translation": "In November.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "O deviatej.",
+          "translation": "At nine.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Ahoj! Áno, potrebujem urobiť stretnutie. — exactly right. You greeted him back and confirmed what you need.",
-      "wrongFeedback": "Ahoj! Áno, potrebujem urobiť stretnutie is the natural response — greeting him back and confirming the appointment need."
+      "correctFeedback": "Correct. Months often use v + month form: v marci, v júni, v novembri.",
+      "wrongFeedback": "For a month, use a phrase like v marci, v júni, or v novembri."
     },
     {
       "id": "ex5",
       "speaker": "marek",
-      "text": "Dobre, pomôžem ti. Aký deň by si chcel ísť?",
-      "translation": "Good, I'll help you. What day would you like to go?",
-      "prompt": "Marek asks what day works for you. Pick the day that suits you.",
+      "text": "O koľkej chceš ísť?",
+      "translation": "At what time do you want to go?",
+      "prompt": "Marek asks for the appointment time. Pick a valid time answer.",
       "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Pondelok by bol dobrý.", "translation": "Monday would be good.", "isCorrect": true },
-        { "id": "b", "text": "Streda by bola dobrá.", "translation": "Wednesday would be good.", "isCorrect": true },
-        { "id": "c", "text": "Piatok by bol dobrý.", "translation": "Friday would be good.", "isCorrect": true },
-        { "id": "d", "text": "Utorok by bol dobrý.", "translation": "Tuesday would be good.", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "O deviatej ráno.",
+          "translation": "At nine in the morning.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "O druhej popoludní.",
+          "translation": "At two in the afternoon.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "O desiatej.",
+          "translation": "At ten.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "V pondelok.",
+          "translation": "On Monday.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Correct pattern — [Day] by bol/bola dobrý/dobrá. Any day works, the grammar is what matters.",
-      "wrongFeedback": "[Day] by bol/bola dobrý/dobrá is the pattern for suggesting a day. Pick whichever day suits you."
+      "correctFeedback": "O + time is the pattern for exact time: o deviatej, o druhej, o desiatej.",
+      "wrongFeedback": "Use O + time when someone asks O koľkej?"
     },
     {
       "id": "ex6",
       "speaker": "marek",
-      "text": "Dobre, zapíšem to. A o koľkej by si chcel ísť?",
-      "translation": "Good, I'll note that down. And what time would you like to go?",
-      "prompt": "Marek asks what time works for you. Pick a time.",
-      "isOpenQuestion": true,
+      "text": "Napíšem číslo termínu. Prvé číslo je päť, druhé je sedem.",
+      "translation": "I will write the appointment number. The first number is five, the second is seven.",
+      "prompt": "Marek says the first digit is 5. Which number is five?",
+      "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "O deviatej ráno.", "translation": "At nine in the morning.", "isCorrect": true },
-        { "id": "b", "text": "O druhej popoludní.", "translation": "At two in the afternoon.", "isCorrect": true },
-        { "id": "c", "text": "O desiatej ráno.", "translation": "At ten in the morning.", "isCorrect": true },
-        { "id": "d", "text": "O tretej popoludní.", "translation": "At three in the afternoon.", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "Tri.",
+          "translation": "Three.",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "text": "Päť.",
+          "translation": "Five.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Sedem.",
+          "translation": "Seven.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Desať.",
+          "translation": "Ten.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "O + time — correct pattern for saying 'at' a specific time. Pick whichever time suits you.",
-      "wrongFeedback": "O + time is the pattern. Any time works as long as the grammar is correct."
+      "correctFeedback": "Päť. — correct. Reading numbers digit by digit is useful for document and appointment numbers.",
+      "wrongFeedback": "Päť means five."
     },
     {
       "id": "ex7",
       "speaker": "marek",
-      "text": "Super. A v ktorom mesiaci to potrebuješ vybaviť? Tvoj pobyt platí dokedy?",
-      "translation": "Great. And which month do you need to sort this out? Until when is your residence valid?",
-      "prompt": "Marek asks which month your permit expires. Pick a month.",
-      "isOpenQuestion": true,
+      "text": "Je to tvoja prvá návšteva alebo druhá návšteva?",
+      "translation": "Is it your first visit or second visit?",
+      "prompt": "Marek asks about visit order. It is your first visit. What do you say?",
+      "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Platí do marca.", "translation": "It's valid until March.", "isCorrect": true },
-        { "id": "b", "text": "Platí do júna.", "translation": "It's valid until June.", "isCorrect": true },
-        { "id": "c", "text": "Platí do septembra.", "translation": "It's valid until September.", "isCorrect": true },
-        { "id": "d", "text": "Platí do decembra.", "translation": "It's valid until December.", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "Je to moja prvá návšteva.",
+          "translation": "It is my first visit.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Je to moja druhá návšteva.",
+          "translation": "It is my second visit.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Je to moja desiata návšteva.",
+          "translation": "It is my tenth visit.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Je to päť eur.",
+          "translation": "It is five euros.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Platí do + month — correct pattern for saying when something expires. Any month works here.",
-      "wrongFeedback": "Platí do + month is the pattern for expiry dates. Pick whichever month fits your situation."
+      "correctFeedback": "Je to moja prvá návšteva. — correct. Prvá means first.",
+      "wrongFeedback": "Use prvá when it is the first visit."
     },
     {
       "id": "ex8",
       "speaker": "marek",
-      "text": "Dobre, máme čas. Je to tvoja prvá návšteva na cudzineckej polícii?",
-      "translation": "Good, we have time. Is this your first visit to the Foreign Police?",
-      "prompt": "Marek asks if this is your first visit. What do you say if it IS your first time?",
-      "isOpenQuestion": false,
+      "text": "Na úrade môže byť poplatok. Koľko to stojí?",
+      "translation": "At the office there may be a fee. How much does it cost?",
+      "prompt": "Marek asks about price. Pick a money answer.",
+      "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Áno, je to moja prvá návšteva.", "translation": "Yes, it's my first visit.", "isCorrect": true },
-        { "id": "b", "text": "Áno, je to moja druhá návšteva.", "translation": "Yes, it's my second visit.", "isCorrect": false },
-        { "id": "c", "text": "Nie, som tu už desiaty raz.", "translation": "No, I'm here for the tenth time already.", "isCorrect": false },
-        { "id": "d", "text": "Neviem.", "translation": "I don't know.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Stojí to pätnásť eur.",
+          "translation": "It costs fifteen euros.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Stojí to tridsať eur.",
+          "translation": "It costs thirty euros.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Je to zadarmo.",
+          "translation": "It is free.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "V stredu.",
+          "translation": "On Wednesday.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Áno, je to moja prvá návšteva. — correct. Prvá = first, the ordinal you learned in the Numbers lesson.",
-      "wrongFeedback": "If it's your first time, Áno, je to moja prvá návšteva is correct — prvá means first."
+      "correctFeedback": "Correct. Prices use Stojí to..., and free is zadarmo.",
+      "wrongFeedback": "Use a price phrase like Stojí to pätnásť eur, or Je to zadarmo."
     },
     {
       "id": "ex9",
       "speaker": "marek",
-      "text": "Rozumiem. Teraz mi povedz svoje číslo pasu. Začni prvým číslom.",
-      "translation": "I understand. Now tell me your passport number. Start with the first digit.",
-      "prompt": "Marek asks for the first digit of your passport number. It's 5. What do you say?",
-      "isOpenQuestion": false,
+      "text": "Ak treba platiť, platíš kartou alebo v hotovosti?",
+      "translation": "If you need to pay, are you paying by card or in cash?",
+      "prompt": "Marek asks how you will pay. Pick a payment answer.",
+      "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Tri.", "translation": "Three.", "isCorrect": false },
-        { "id": "b", "text": "Päť.", "translation": "Five.", "isCorrect": true },
-        { "id": "c", "text": "Sedem.", "translation": "Seven.", "isCorrect": false },
-        { "id": "d", "text": "Desať.", "translation": "Ten.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Platím kartou.",
+          "translation": "I am paying by card.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Platím v hotovosti.",
+          "translation": "I am paying in cash.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Môžem dostať účtenku?",
+          "translation": "Can I get a receipt?",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Je zima.",
+          "translation": "It is cold.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Päť. — correct, five. Reading numbers digit by digit is exactly how you'll give document numbers in Slovak.",
-      "wrongFeedback": "Päť = five. When reading a document number aloud, say each digit using the cardinal numbers you learned."
+      "correctFeedback": "Correct. Kartou, v hotovosti, and účtenka are all money/payment words from Block 3.",
+      "wrongFeedback": "Use Platím kartou, Platím v hotovosti, or ask for an účtenka in a payment situation."
     },
     {
       "id": "ex10",
       "speaker": "marek",
-      "text": "Výborne, zapísal som všetko. Stretnutie je dohodnuté. Ešte niečo k káve?",
-      "translation": "Excellent, I noted everything down. The appointment is arranged. Anything else with the coffee?",
-      "prompt": "Marek finishes helping and asks if you need anything else. How do you thank him?",
+      "text": "Pozrime počasie. Vonku prší alebo je pekné počasie?",
+      "translation": "Let us check the weather. Is it raining outside or is the weather nice?",
+      "prompt": "Marek asks about the weather. Pick a weather sentence.",
+      "isOpenQuestion": true,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Dnes prší.",
+          "translation": "It is raining today.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Je pekné počasie.",
+          "translation": "The weather is nice.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Vonku je zima.",
+          "translation": "It is cold outside.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Mám brata.",
+          "translation": "I have a brother.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Good. Prší, je pekné počasie, and vonku je zima are useful weather phrases.",
+      "wrongFeedback": "Answer with a weather sentence: Dnes prší, Je pekné počasie, or Vonku je zima."
+    },
+    {
+      "id": "ex11",
+      "speaker": "marek",
+      "text": "Ak bude pršať, pôjdeme zajtra. Ak bude pekne, pôjdeme dnes.",
+      "translation": "If it rains, we will go tomorrow. If it is nice, we will go today.",
+      "prompt": "Marek gives two plan options. If it rains, when will you go?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Ďakujem veľmi pekne za pomoc!", "translation": "Thank you very much for the help!", "isCorrect": true },
-        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
-        { "id": "c", "text": "Dobrú noc!", "translation": "Good night!", "isCorrect": false },
-        { "id": "d", "text": "Som unavený.", "translation": "I am tired.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Zajtra.",
+          "translation": "Tomorrow.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Včera.",
+          "translation": "Yesterday.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Minulý mesiac.",
+          "translation": "Last month.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "O polnoci.",
+          "translation": "At midnight.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Ďakujem veľmi pekne za pomoc! — perfect. A warm, genuine thank you for Marek's help with the appointment.",
-      "wrongFeedback": "Ďakujem veľmi pekne za pomoc! is the right way to thank Marek warmly for everything he just helped with."
+      "correctFeedback": "Zajtra. — correct. Zajtra means tomorrow.",
+      "wrongFeedback": "If it rains, Marek said you will go zajtra — tomorrow."
     }
   ],
-  "completionMessage": "🎉 Great job! You ordered coffee, paid, and worked with Marek to book your Foreign Police appointment — confirming the day, time, month, and even reading out your passport number. All in Slovak."
+  "completionMessage": "🎉 Great job! You planned an appointment with numbers, prices, payment, days, weeks, months, time, and weather — all in Slovak.",
+  "speakingRound": {
+    "id": "block3-speaking",
+    "type": "CONVERSATION_SPEAKING",
+    "questions": [
+      {
+        "id": "q0",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block3-m1.mp3.mp3",
+        "marekQuestionSk": "Ahoj! Dnes máme naplánovať termín na cudzineckej polícii.",
+        "marekQuestionEn": "Hi! Today we need to plan an appointment at the Foreign Police.",
+        "correctAnswerSk": "Áno, dnes mám čas.",
+        "correctAnswerEn": "Yes, I have time today.",
+        "answerChunks": ["Áno, dnes mám čas."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q1",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block3-m2.mp3.mp3",
+        "marekQuestionSk": "Ktorý deň ti vyhovuje? Pondelok, streda alebo piatok?",
+        "marekQuestionEn": "Which day works for you? Monday, Wednesday, or Friday?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          { "id": "pondelok", "label": "Pondelok", "sk": "V pondelok.", "en": "On Monday.", "chunks": ["V pondelok."] },
+          { "id": "streda", "label": "Streda", "sk": "V stredu.", "en": "On Wednesday.", "chunks": ["V stredu."] },
+          { "id": "piatok", "label": "Piatok", "sk": "V piatok.", "en": "On Friday.", "chunks": ["V piatok."] }
+        ]
+      },
+      {
+        "id": "q2",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block3-m3.mp3.mp3",
+        "marekQuestionSk": "Tento týždeň alebo budúci týždeň?",
+        "marekQuestionEn": "This week or next week?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          { "id": "tento", "label": "Tento týždeň", "sk": "Tento týždeň.", "en": "This week.", "chunks": ["Tento týždeň."] },
+          { "id": "buduci", "label": "Budúci týždeň", "sk": "Budúci týždeň.", "en": "Next week.", "chunks": ["Budúci týždeň."] },
+          { "id": "minuly", "label": "Minulý týždeň", "sk": "Minulý týždeň.", "en": "Last week.", "chunks": ["Minulý týždeň."] }
+        ]
+      },
+      {
+        "id": "q3",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block3-m4.mp3.mp3",
+        "marekQuestionSk": "A v ktorom mesiaci končí tvoj pobyt?",
+        "marekQuestionEn": "And in which month does your residence expire?",
+        "correctAnswerSk": "V júni.",
+        "correctAnswerEn": "In June.",
+        "answerChunks": ["V júni."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q4",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block3-m5.mp3.mp3",
+        "marekQuestionSk": "O koľkej chceš ísť?",
+        "marekQuestionEn": "At what time do you want to go?",
+        "correctAnswerSk": "O deviatej ráno.",
+        "correctAnswerEn": "At nine in the morning.",
+        "answerChunks": ["O deviatej ráno."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q5",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block3-m6.mp3.mp3",
+        "marekQuestionSk": "Napíšem číslo termínu. Prvé číslo je päť, druhé je sedem.",
+        "marekQuestionEn": "I will write the appointment number. The first number is five, the second is seven.",
+        "correctAnswerSk": "Päť.",
+        "correctAnswerEn": "Five.",
+        "answerChunks": ["Päť."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q6",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block3-m7.mp3.mp3",
+        "marekQuestionSk": "Je to tvoja prvá návšteva alebo druhá návšteva?",
+        "marekQuestionEn": "Is it your first visit or second visit?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          { "id": "prva", "label": "Prvá", "sk": "Je to moja prvá návšteva.", "en": "It is my first visit.", "chunks": ["Je to moja prvá návšteva."] },
+          { "id": "druha", "label": "Druhá", "sk": "Je to moja druhá návšteva.", "en": "It is my second visit.", "chunks": ["Je to moja druhá návšteva."] }
+        ]
+      },
+      {
+        "id": "q7",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block3-m8.mp3.mp3",
+        "marekQuestionSk": "Na úrade môže byť poplatok. Koľko to stojí?",
+        "marekQuestionEn": "At the office there may be a fee. How much does it cost?",
+        "correctAnswerSk": "Stojí to pätnásť eur.",
+        "correctAnswerEn": "It costs fifteen euros.",
+        "answerChunks": ["Stojí to pätnásť eur."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q8",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block3-m9.mp3.mp3",
+        "marekQuestionSk": "Ak treba platiť, platíš kartou alebo v hotovosti?",
+        "marekQuestionEn": "If you need to pay, are you paying by card or in cash?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          { "id": "kartou", "label": "Kartou", "sk": "Platím kartou.", "en": "I am paying by card.", "chunks": ["Platím kartou."] },
+          { "id": "hotovost", "label": "V hotovosti", "sk": "Platím v hotovosti.", "en": "I am paying in cash.", "chunks": ["Platím v hotovosti."] }
+        ]
+      },
+      {
+        "id": "q9",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block3-m10.mp3.mp3",
+        "marekQuestionSk": "Pozrime počasie. Vonku prší alebo je pekné počasie?",
+        "marekQuestionEn": "Let us check the weather. Is it raining outside or is the weather nice?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          { "id": "prsi", "label": "Prší", "sk": "Dnes prší.", "en": "It is raining today.", "chunks": ["Dnes prší."] },
+          { "id": "pekne", "label": "Pekné počasie", "sk": "Je pekné počasie.", "en": "The weather is nice.", "chunks": ["Je pekné počasie."] },
+          { "id": "zima", "label": "Je zima", "sk": "Vonku je zima.", "en": "It is cold outside.", "chunks": ["Vonku je zima."] }
+        ]
+      },
+      {
+        "id": "q10",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block3-m11.mp3.mp3",
+        "marekQuestionSk": "Ak bude pršať, pôjdeme zajtra. Ak bude pekne, pôjdeme dnes.",
+        "marekQuestionEn": "If it rains, we will go tomorrow. If it is nice, we will go today.",
+        "correctAnswerSk": "Zajtra.",
+        "correctAnswerEn": "Tomorrow.",
+        "answerChunks": ["Zajtra."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      }
+    ]
+  }
 }

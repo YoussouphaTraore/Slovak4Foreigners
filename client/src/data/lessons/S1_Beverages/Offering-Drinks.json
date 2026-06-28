@@ -1,0 +1,352 @@
+{
+  "id": "s1-offering-drinks",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Offering Drinks",
+  "description": "Offer a guest a drink and ask for the kind of water or wine you want",
+  "icon": "☕",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Offering a Guest",
+      "subtitle": "Offering something to drink is an important social custom in Slovakia.",
+      "rows": [
+        {
+          "label": "Would you like something to drink?",
+          "slovak": "Dáte si niečo na pitie?",
+          "english": "Would you like something to drink?"
+        },
+        {
+          "label": "Yes, please",
+          "slovak": "Áno, prosím.",
+          "english": "Yes, please."
+        },
+        {
+          "label": "No thank you, I'm fine",
+          "slovak": "Nie, ďakujem, som v poriadku.",
+          "english": "No thank you, I'm fine."
+        },
+        {
+          "label": "Coffee or tea?",
+          "slovak": "Kávu alebo čaj?",
+          "english": "Coffee or tea?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "VOCABULARY_TABLE",
+      "title": "Water, Wine, and Running Out",
+      "rows": [
+        {
+          "label": "Wine",
+          "slovak": "Víno",
+          "english": "Wine"
+        },
+        {
+          "label": "Sparkling water",
+          "slovak": "Sýtená voda",
+          "english": "Sparkling water"
+        },
+        {
+          "label": "Still water",
+          "slovak": "Neperlivá voda",
+          "english": "Still water"
+        },
+        {
+          "label": "Hot / cold",
+          "slovak": "Teplé / studené",
+          "english": "Hot / cold"
+        },
+        {
+          "label": "I'm out of milk",
+          "slovak": "Došlo mi mlieko.",
+          "english": "I'm out of milk."
+        },
+        {
+          "label": "Would you like wine?",
+          "slovak": "Dáte si víno?",
+          "english": "Would you like some wine?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Dáte si niečo na pitie?",
+          "english": "Would you like something to drink?"
+        },
+        {
+          "slovak": "Áno, prosím.",
+          "english": "Yes, please."
+        },
+        {
+          "slovak": "Nie, ďakujem, som v poriadku.",
+          "english": "No thank you, I'm fine."
+        },
+        {
+          "slovak": "Kávu alebo čaj?",
+          "english": "Coffee or tea?"
+        },
+        {
+          "slovak": "Sýtená voda",
+          "english": "Sparkling water"
+        },
+        {
+          "slovak": "Neperlivá voda",
+          "english": "Still water"
+        }
+      ]
+    },
+    {
+      "id": "ex3b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Dáte si niečo na pitie?",
+          "english": "Would you like something to drink?"
+        },
+        {
+          "slovak": "Áno, prosím.",
+          "english": "Yes, please."
+        },
+        {
+          "slovak": "Nie, ďakujem, som v poriadku.",
+          "english": "No thank you, I'm fine."
+        },
+        {
+          "slovak": "Kávu alebo čaj?",
+          "english": "Coffee or tea?"
+        },
+        {
+          "slovak": "Sýtená voda",
+          "english": "Sparkling water"
+        },
+        {
+          "slovak": "Neperlivá voda",
+          "english": "Still water"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Dáte si niečo na pitie?",
+          "english": "Would you like something to drink?"
+        },
+        {
+          "slovak": "Kávu alebo čaj?",
+          "english": "Coffee or tea?"
+        },
+        {
+          "slovak": "Sýtená voda",
+          "english": "Sparkling water"
+        },
+        {
+          "slovak": "Neperlivá voda",
+          "english": "Still water"
+        },
+        {
+          "slovak": "Došlo mi mlieko.",
+          "english": "I'm out of milk."
+        },
+        {
+          "slovak": "Dáte si víno?",
+          "english": "Would you like some wine?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Dáte si niečo na pitie?",
+          "english": "Would you like something to drink?"
+        },
+        {
+          "slovak": "Áno, prosím.",
+          "english": "Yes, please."
+        },
+        {
+          "slovak": "Kávu alebo čaj?",
+          "english": "Coffee or tea?"
+        },
+        {
+          "slovak": "Sýtená voda",
+          "english": "Sparkling water"
+        },
+        {
+          "slovak": "Neperlivá voda",
+          "english": "Still water"
+        },
+        {
+          "slovak": "Došlo mi mlieko.",
+          "english": "I'm out of milk."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "A friend visits your flat. What is the polite first thing to ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Kávu alebo čaj?",
+            "Dáte si niečo na pitie?",
+            "Sú povolené zvieratá?",
+            "Mám psa."
+          ],
+          "answer": "Dáte si niečo na pitie?",
+          "answerMeaning": "Dáte si niečo na pitie? = Would you like something to drink?"
+        },
+        {
+          "situation": "Your guest says yes to a drink. You want to know which they prefer. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Kávu alebo čaj?",
+            "Áno, prosím.",
+            "Došlo mi mlieko.",
+            "Som v poriadku."
+          ],
+          "answer": "Kávu alebo čaj?",
+          "answerMeaning": "Kávu alebo čaj? = Coffee or tea?"
+        },
+        {
+          "situation": "Someone offers you a drink but you genuinely don't want one. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Áno, prosím.",
+            "Nie, ďakujem, som v poriadku.",
+            "Dáte si niečo na pitie?",
+            "Kávu alebo čaj?"
+          ],
+          "answer": "Nie, ďakujem, som v poriadku.",
+          "answerMeaning": "Nie, ďakujem, som v poriadku. = No thank you, I'm fine."
+        },
+        {
+          "situation": "You check the fridge and realize there's no more milk. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Mám mlieko.",
+            "Došlo mi mlieko.",
+            "Chcem mlieko.",
+            "Je to mlieko."
+          ],
+          "answer": "Došlo mi mlieko.",
+          "answerMeaning": "Došlo mi mlieko. = I'm out of milk."
+        },
+        {
+          "situation": "At the supermarket you need bottled water with bubbles. What is it called?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Neperlivá voda",
+            "Sýtená voda",
+            "Teplá voda",
+            "Studená voda"
+          ],
+          "answer": "Sýtená voda",
+          "answerMeaning": "Sýtená voda = Sparkling water."
+        },
+        {
+          "situation": "You're hosting dinner and want to offer wine with the meal. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Dáte si víno?",
+            "Došlo mi víno.",
+            "Je to víno.",
+            "Mám víno."
+          ],
+          "answer": "Dáte si víno?",
+          "answerMeaning": "Dáte si víno? = Would you like some wine?"
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ si niečo na pitie?",
+          "translation": "Would you like something to drink?",
+          "choices": [
+            "Mám",
+            "Dáte",
+            "Chcem",
+            "Idem"
+          ],
+          "answer": "Dáte"
+        },
+        {
+          "sentence": "Kávu ___ čaj?",
+          "translation": "Coffee or tea?",
+          "choices": [
+            "a",
+            "alebo",
+            "ale",
+            "ani"
+          ],
+          "answer": "alebo"
+        },
+        {
+          "sentence": "Nie, ďakujem, som v ___.",
+          "translation": "No thank you, I'm fine.",
+          "choices": [
+            "meste",
+            "poriadku",
+            "byte",
+            "centre"
+          ],
+          "answer": "poriadku"
+        },
+        {
+          "sentence": "___ mi mlieko. Musím ísť do obchodu.",
+          "translation": "I'm out of milk. I need to go to the shop.",
+          "choices": [
+            "Mám",
+            "Došlo",
+            "Chcem",
+            "Kúpil"
+          ],
+          "answer": "Došlo"
+        },
+        {
+          "sentence": "Chcem ___ vodu, nie sýtenú.",
+          "translation": "I want still water, not sparkling.",
+          "choices": [
+            "teplú",
+            "studenú",
+            "neperlivú",
+            "sýtenú"
+          ],
+          "answer": "neperlivú"
+        },
+        {
+          "sentence": "Dáte si ___ k večeri?",
+          "translation": "Would you like wine with dinner?",
+          "choices": [
+            "víno",
+            "mlieko",
+            "džús",
+            "vodu"
+          ],
+          "answer": "víno"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

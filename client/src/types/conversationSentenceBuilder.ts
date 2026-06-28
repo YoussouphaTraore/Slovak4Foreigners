@@ -9,4 +9,5 @@ export interface ConversationSentenceBuilderExercise {
   id: string;
   type: 'CONVERSATION_SENTENCE_BUILDER';
   sentences: SentenceBuilderItem[];
+  dynamic?: 'countries';
 }

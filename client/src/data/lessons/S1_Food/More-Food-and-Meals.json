@@ -1,0 +1,252 @@
+{
+  "id": "s1-more-food-meals",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "More Food & Meals",
+  "description": "Extra food words plus breakfast, lunch, and dinner",
+  "icon": "🍳",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "More Food & Meals",
+      "rows": [
+        {
+          "label": "Egg",
+          "slovak": "Vajce",
+          "english": "Egg"
+        },
+        {
+          "label": "Rice",
+          "slovak": "Ryža",
+          "english": "Rice"
+        },
+        {
+          "label": "Pasta",
+          "slovak": "Cestoviny",
+          "english": "Pasta"
+        },
+        {
+          "label": "Breakfast",
+          "slovak": "Raňajky",
+          "english": "Breakfast"
+        },
+        {
+          "label": "Lunch",
+          "slovak": "Obed",
+          "english": "Lunch"
+        },
+        {
+          "label": "Dinner",
+          "slovak": "Večera",
+          "english": "Dinner"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Vajce",
+          "english": "Egg"
+        },
+        {
+          "slovak": "Ryža",
+          "english": "Rice"
+        },
+        {
+          "slovak": "Cestoviny",
+          "english": "Pasta"
+        },
+        {
+          "slovak": "Raňajky",
+          "english": "Breakfast"
+        },
+        {
+          "slovak": "Obed",
+          "english": "Lunch"
+        },
+        {
+          "slovak": "Večera",
+          "english": "Dinner"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Vajce",
+          "english": "Egg"
+        },
+        {
+          "slovak": "Ryža",
+          "english": "Rice"
+        },
+        {
+          "slovak": "Cestoviny",
+          "english": "Pasta"
+        },
+        {
+          "slovak": "Raňajky",
+          "english": "Breakfast"
+        },
+        {
+          "slovak": "Obed",
+          "english": "Lunch"
+        },
+        {
+          "slovak": "Večera",
+          "english": "Dinner"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Vajce",
+          "english": "Egg"
+        },
+        {
+          "slovak": "Ryža",
+          "english": "Rice"
+        },
+        {
+          "slovak": "Cestoviny",
+          "english": "Pasta"
+        },
+        {
+          "slovak": "Raňajky",
+          "english": "Breakfast"
+        },
+        {
+          "slovak": "Obed",
+          "english": "Lunch"
+        },
+        {
+          "slovak": "Večera",
+          "english": "Dinner"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Vajce",
+          "english": "Egg"
+        },
+        {
+          "slovak": "Ryža",
+          "english": "Rice"
+        },
+        {
+          "slovak": "Cestoviny",
+          "english": "Pasta"
+        },
+        {
+          "slovak": "Raňajky",
+          "english": "Breakfast"
+        },
+        {
+          "slovak": "Obed",
+          "english": "Lunch"
+        },
+        {
+          "slovak": "Večera",
+          "english": "Dinner"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need egg. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Cestoviny",
+            "Raňajky",
+            "Ryža",
+            "Vajce"
+          ],
+          "answer": "Vajce",
+          "answerMeaning": "Vajce = Egg"
+        },
+        {
+          "situation": "You need rice. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Cestoviny",
+            "Raňajky",
+            "Ryža",
+            "Vajce"
+          ],
+          "answer": "Ryža",
+          "answerMeaning": "Ryža = Rice"
+        },
+        {
+          "situation": "You need pasta. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Cestoviny",
+            "Raňajky",
+            "Ryža",
+            "Vajce"
+          ],
+          "answer": "Cestoviny",
+          "answerMeaning": "Cestoviny = Pasta"
+        },
+        {
+          "situation": "You need breakfast. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Cestoviny",
+            "Raňajky",
+            "Ryža",
+            "Vajce"
+          ],
+          "answer": "Raňajky",
+          "answerMeaning": "Raňajky = Breakfast"
+        },
+        {
+          "situation": "You need lunch. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Cestoviny",
+            "Obed",
+            "Ryža",
+            "Vajce"
+          ],
+          "answer": "Obed",
+          "answerMeaning": "Obed = Lunch"
+        },
+        {
+          "situation": "You need dinner. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Cestoviny",
+            "Ryža",
+            "Vajce",
+            "Večera"
+          ],
+          "answer": "Večera",
+          "answerMeaning": "Večera = Dinner"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

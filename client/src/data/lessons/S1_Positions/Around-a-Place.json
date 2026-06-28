@@ -1,0 +1,306 @@
+{
+  "id": "s1-around-a-place",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Around a Place",
+  "description": "Use landmarks to say in front of, behind, next to, opposite, and right by",
+  "icon": "📍",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Around Landmarks",
+      "rows": [
+        {
+          "label": "In front of",
+          "slovak": "Pred",
+          "english": "In front of"
+        },
+        {
+          "label": "Behind",
+          "slovak": "Za",
+          "english": "Behind / After"
+        },
+        {
+          "label": "Next to",
+          "slovak": "Vedľa",
+          "english": "Next to / Beside"
+        },
+        {
+          "label": "Opposite",
+          "slovak": "Naproti",
+          "english": "Opposite / Across from"
+        },
+        {
+          "label": "At / by",
+          "slovak": "Pri",
+          "english": "At / By / Right next to"
+        },
+        {
+          "label": "I am right by...",
+          "slovak": "Som pri...",
+          "english": "I am at / right by..."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Pred",
+          "english": "In front of"
+        },
+        {
+          "slovak": "Za",
+          "english": "Behind"
+        },
+        {
+          "slovak": "Vedľa",
+          "english": "Next to"
+        },
+        {
+          "slovak": "Naproti",
+          "english": "Opposite"
+        },
+        {
+          "slovak": "Pri",
+          "english": "At / Right next to"
+        },
+        {
+          "slovak": "Som pri...",
+          "english": "I am right by..."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Pred",
+          "english": "In front of"
+        },
+        {
+          "slovak": "Za",
+          "english": "Behind"
+        },
+        {
+          "slovak": "Vedľa",
+          "english": "Next to"
+        },
+        {
+          "slovak": "Naproti",
+          "english": "Opposite"
+        },
+        {
+          "slovak": "Pri",
+          "english": "At / Right next to"
+        },
+        {
+          "slovak": "Som pri...",
+          "english": "I am right by..."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Pred",
+          "english": "In front of"
+        },
+        {
+          "slovak": "Za",
+          "english": "Behind / After"
+        },
+        {
+          "slovak": "Vedľa",
+          "english": "Next to / Beside"
+        },
+        {
+          "slovak": "Naproti",
+          "english": "Opposite / Across from"
+        },
+        {
+          "slovak": "Pri",
+          "english": "At / By / Right next to"
+        },
+        {
+          "slovak": "Som pri...",
+          "english": "I am right by..."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Pred nemocnicou.",
+          "english": "In front of the hospital."
+        },
+        {
+          "slovak": "Za kaviarňou.",
+          "english": "Behind the café."
+        },
+        {
+          "slovak": "Vedľa banky.",
+          "english": "Next to the bank."
+        },
+        {
+          "slovak": "Naproti banke.",
+          "english": "Opposite the bank."
+        },
+        {
+          "slovak": "Som pri lekárni.",
+          "english": "I am right by the pharmacy."
+        },
+        {
+          "slovak": "Som pri...",
+          "english": "I am at / right by..."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your friend texts: Čakám pred nemocnicou. Where are they waiting?",
+          "instruction": "Choose the correct location",
+          "choices": [
+            "In front of the hospital",
+            "Behind the hospital",
+            "Inside the hospital",
+            "Above the hospital"
+          ],
+          "answer": "In front of the hospital",
+          "answerMeaning": "Pred nemocnicou = in front of the hospital."
+        },
+        {
+          "situation": "You want to meet at the café directly across from the bank. Which phrase means opposite the bank?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Naproti banke",
+            "Vedľa banky",
+            "Pred bankou",
+            "Za bankou"
+          ],
+          "answer": "Naproti banke",
+          "answerMeaning": "Naproti = opposite / across from."
+        },
+        {
+          "situation": "You call emergency services and are right next to the pharmacy. What do you say?",
+          "instruction": "Choose the most precise phrase",
+          "choices": [
+            "Som pri lekárni.",
+            "Som za lekárňou.",
+            "Som nad lekárňou.",
+            "Som vnútri lekárne."
+          ],
+          "answer": "Som pri lekárni.",
+          "answerMeaning": "Pri = at / right next to. Som pri lekárni = I am right by the pharmacy."
+        },
+        {
+          "situation": "You walked past the café entrance and are now behind it. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som za kaviarňou.",
+            "Som pred kaviarňou.",
+            "Som pri lekárni.",
+            "Som naproti banke."
+          ],
+          "answer": "Som za kaviarňou.",
+          "answerMeaning": "Za = behind / past."
+        },
+        {
+          "situation": "The police station is next to the hospital. Which word means next to?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Vedľa",
+            "Naproti",
+            "Pred",
+            "Za"
+          ],
+          "answer": "Vedľa",
+          "answerMeaning": "Vedľa = next to / beside."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Stretávame sa ___ nemocnicou.",
+          "translation": "We are meeting in front of the hospital.",
+          "choices": [
+            "pred",
+            "za",
+            "nad",
+            "pod"
+          ],
+          "answer": "pred",
+          "answerMeaning": "Pred = in front of."
+        },
+        {
+          "sentence": "Policajná stanica je ___ nemocnice.",
+          "translation": "The police station is next to the hospital.",
+          "choices": [
+            "vedľa",
+            "medzi",
+            "vonku",
+            "hore"
+          ],
+          "answer": "vedľa",
+          "answerMeaning": "Vedľa = next to."
+        },
+        {
+          "sentence": "Kaviareň je ___ banke.",
+          "translation": "The café is opposite the bank.",
+          "choices": [
+            "naproti",
+            "pri",
+            "pod",
+            "nad"
+          ],
+          "answer": "naproti",
+          "answerMeaning": "Naproti = opposite / across from."
+        },
+        {
+          "sentence": "Som ___ lekárni. Vidím ju.",
+          "translation": "I am right by the pharmacy. I can see it.",
+          "choices": [
+            "pri",
+            "za",
+            "nad",
+            "medzi"
+          ],
+          "answer": "pri",
+          "answerMeaning": "Pri = at / right next to."
+        },
+        {
+          "sentence": "Som ___ kaviarňou, nie pred ňou.",
+          "translation": "I am behind the café, not in front of it.",
+          "choices": [
+            "za",
+            "pred",
+            "vedľa",
+            "pri"
+          ],
+          "answer": "za",
+          "answerMeaning": "Za = behind / past."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

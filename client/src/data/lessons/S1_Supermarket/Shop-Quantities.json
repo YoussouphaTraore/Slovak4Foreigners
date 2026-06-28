@@ -1,0 +1,208 @@
+{
+  "id": "s1-shop-quantities",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Shop Quantities",
+  "description": "Ask for a little, a lot, or half a kilo",
+  "icon": "📦",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Shop Quantities",
+      "rows": [
+        {
+          "label": "A little",
+          "slovak": "Trochu",
+          "english": "A little"
+        },
+        {
+          "label": "A lot",
+          "slovak": "Veľa",
+          "english": "A lot"
+        },
+        {
+          "label": "Half a kilo",
+          "slovak": "Pol kila",
+          "english": "Half a kilo"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Trochu",
+          "english": "A little"
+        },
+        {
+          "slovak": "Veľa",
+          "english": "A lot"
+        },
+        {
+          "slovak": "Pol kila",
+          "english": "Half a kilo"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Trochu",
+          "english": "A little"
+        },
+        {
+          "slovak": "Veľa",
+          "english": "A lot"
+        },
+        {
+          "slovak": "Pol kila",
+          "english": "Half a kilo"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Trochu",
+          "english": "A little"
+        },
+        {
+          "slovak": "Veľa",
+          "english": "A lot"
+        },
+        {
+          "slovak": "Pol kila",
+          "english": "Half a kilo"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Trochu",
+          "english": "A little"
+        },
+        {
+          "slovak": "Veľa",
+          "english": "A lot"
+        },
+        {
+          "slovak": "Pol kila",
+          "english": "Half a kilo"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need a little. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Pol kila",
+            "Trochu",
+            "Veľa"
+          ],
+          "answer": "Trochu",
+          "answerMeaning": "Trochu = A little"
+        },
+        {
+          "situation": "You need a lot. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Pol kila",
+            "Trochu",
+            "Veľa"
+          ],
+          "answer": "Veľa",
+          "answerMeaning": "Veľa = A lot"
+        },
+        {
+          "situation": "You need half a kilo. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Pol kila",
+            "Trochu",
+            "Veľa"
+          ],
+          "answer": "Pol kila",
+          "answerMeaning": "Pol kila = Half a kilo"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "At the deli counter, you want half a kilo of cheese. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Veľa syra, prosím.",
+            "Trochu syra, prosím.",
+            "Pol kila syra, prosím.",
+            "Kde je syr?"
+          ],
+          "answer": "Pol kila syra, prosím.",
+          "answerMeaning": "Pol kila syra, prosím = Half a kilo of cheese, please. Pol kila is a common way to order at deli counters."
+        },
+        {
+          "situation": "You're buying spices and only need a small amount, not much. What word fits?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Veľa",
+            "Trochu",
+            "Pol kila",
+            "Vozík"
+          ],
+          "answer": "Trochu",
+          "answerMeaning": "Trochu = A little. The opposite of veľa (a lot) — useful when buying small quantities."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Potrebujem len ___ vecí. Vezmem si košík.",
+          "translation": "I only need a few things. I'll take a basket.",
+          "choices": [
+            "veľa",
+            "pár",
+            "pol kila",
+            "vozík"
+          ],
+          "answer": "pár"
+        },
+        {
+          "sentence": "Chcem ___ kila syra, nie viac.",
+          "translation": "I want half a kilo of cheese, not more.",
+          "choices": [
+            "veľa",
+            "trochu",
+            "pol",
+            "regál"
+          ],
+          "answer": "pol"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

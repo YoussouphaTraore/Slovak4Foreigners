@@ -1,0 +1,286 @@
+{
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "icon": "🔢",
+  "xpReward": 10,
+  "coming_soon": false,
+  "id": "s1-order-1-5",
+  "title": "Order 1-5",
+  "description": "Use first through fifth for floors, queues, and visits",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Order 1-5",
+      "subtitle": "Cardinal and ordinal side by side.",
+      "headers": [
+        "Cardinal",
+        "Ordinal",
+        "English"
+      ],
+      "rows": [
+        {
+          "label": "jeden (1)",
+          "slovak": "prvý",
+          "english": "First (1st)"
+        },
+        {
+          "label": "dva (2)",
+          "slovak": "druhý",
+          "english": "Second (2nd)"
+        },
+        {
+          "label": "tri (3)",
+          "slovak": "tretí",
+          "english": "Third (3rd)"
+        },
+        {
+          "label": "štyri (4)",
+          "slovak": "štvrtý",
+          "english": "Fourth (4th)"
+        },
+        {
+          "label": "päť (5)",
+          "slovak": "piaty",
+          "english": "Fifth (5th)"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "prvý",
+          "english": "First"
+        },
+        {
+          "slovak": "druhý",
+          "english": "Second"
+        },
+        {
+          "slovak": "tretí",
+          "english": "Third"
+        },
+        {
+          "slovak": "štvrtý",
+          "english": "Fourth"
+        },
+        {
+          "slovak": "piaty",
+          "english": "Fifth"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "prvý",
+          "english": "First"
+        },
+        {
+          "slovak": "druhý",
+          "english": "Second"
+        },
+        {
+          "slovak": "tretí",
+          "english": "Third"
+        },
+        {
+          "slovak": "štvrtý",
+          "english": "Fourth"
+        },
+        {
+          "slovak": "piaty",
+          "english": "Fifth"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "prvý",
+          "english": "First"
+        },
+        {
+          "slovak": "druhý",
+          "english": "Second"
+        },
+        {
+          "slovak": "tretí",
+          "english": "Third"
+        },
+        {
+          "slovak": "štvrtý",
+          "english": "Fourth"
+        },
+        {
+          "slovak": "piaty",
+          "english": "Fifth"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "prvý",
+          "english": "First"
+        },
+        {
+          "slovak": "druhý",
+          "english": "Second"
+        },
+        {
+          "slovak": "tretí",
+          "english": "Third"
+        },
+        {
+          "slovak": "štvrtý",
+          "english": "Fourth"
+        },
+        {
+          "slovak": "piaty",
+          "english": "Fifth"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are queueing and you are first. What word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "jeden",
+            "prvý",
+            "druhý",
+            "piaty"
+          ],
+          "answer": "prvý",
+          "answerMeaning": "Prvý = first. Jeden means one, not first in line."
+        },
+        {
+          "situation": "Your apartment is on the second floor. How do you tell a delivery driver?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som na prvom poschodí.",
+            "Som na druhom poschodí.",
+            "Som na treťom poschodí.",
+            "Som na piatom poschodí."
+          ],
+          "answer": "Som na druhom poschodí.",
+          "answerMeaning": "Som na druhom poschodí = I am on the second floor."
+        },
+        {
+          "situation": "The receptionist says tretie poschodie. Which floor is that?",
+          "instruction": "Choose the correct floor",
+          "choices": [
+            "1st floor",
+            "2nd floor",
+            "3rd floor",
+            "5th floor"
+          ],
+          "answer": "3rd floor",
+          "answerMeaning": "Tretie poschodie = third floor."
+        },
+        {
+          "situation": "It is your first visit to Slovakia. Which form fits návšteva?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "prvá",
+            "druhá",
+            "tretia",
+            "piata"
+          ],
+          "answer": "prvá",
+          "answerMeaning": "Prvá návšteva = first visit."
+        },
+        {
+          "situation": "This is your second question. Which word fits otázka?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "prvá",
+            "druhá",
+            "tretia",
+            "štvrtá"
+          ],
+          "answer": "druhá",
+          "answerMeaning": "Druhá otázka = second question."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Som na ___ poschodí.",
+          "translation": "I am on the first floor.",
+          "choices": [
+            "prvom",
+            "druhom",
+            "treťom",
+            "piatom"
+          ],
+          "answer": "prvom"
+        },
+        {
+          "sentence": "Som na ___ poschodí.",
+          "translation": "I am on the second floor.",
+          "choices": [
+            "prvom",
+            "druhom",
+            "treťom",
+            "štvrtom"
+          ],
+          "answer": "druhom"
+        },
+        {
+          "sentence": "Toto je moja ___ návšteva na Slovensku.",
+          "translation": "This is my first visit to Slovakia.",
+          "choices": [
+            "prvá",
+            "druhá",
+            "tretia",
+            "piata"
+          ],
+          "answer": "prvá"
+        },
+        {
+          "sentence": "Toto je ___ otázka, ktorú mám.",
+          "translation": "This is the second question I have.",
+          "choices": [
+            "prvá",
+            "druhá",
+            "tretia",
+            "štvrtá"
+          ],
+          "answer": "druhá"
+        },
+        {
+          "sentence": "Recepcia je na ___ poschodí.",
+          "translation": "Reception is on the third floor.",
+          "choices": [
+            "prvom",
+            "druhom",
+            "treťom",
+            "piatom"
+          ],
+          "answer": "treťom"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

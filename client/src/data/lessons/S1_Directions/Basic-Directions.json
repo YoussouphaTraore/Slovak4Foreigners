@@ -1,0 +1,306 @@
+{
+  "id": "s1-basic-directions",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Basic Directions",
+  "description": "Understand up, down, left, right, straight, and asking where something is",
+  "icon": "🧭",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Direction Words",
+      "rows": [
+        {
+          "label": "Up",
+          "slovak": "Hore",
+          "english": "Up / Upstairs"
+        },
+        {
+          "label": "Down",
+          "slovak": "Dole",
+          "english": "Down / Downstairs"
+        },
+        {
+          "label": "Left",
+          "slovak": "Vľavo",
+          "english": "Left / To the left"
+        },
+        {
+          "label": "Right",
+          "slovak": "Vpravo",
+          "english": "Right / To the right"
+        },
+        {
+          "label": "Straight",
+          "slovak": "Priamo",
+          "english": "Straight ahead"
+        },
+        {
+          "label": "Where is...?",
+          "slovak": "Kde je...?",
+          "english": "Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Hore",
+          "english": "Up"
+        },
+        {
+          "slovak": "Dole",
+          "english": "Down"
+        },
+        {
+          "slovak": "Vľavo",
+          "english": "Left"
+        },
+        {
+          "slovak": "Vpravo",
+          "english": "Right"
+        },
+        {
+          "slovak": "Priamo",
+          "english": "Straight ahead"
+        },
+        {
+          "slovak": "Kde je...?",
+          "english": "Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Hore",
+          "english": "Up"
+        },
+        {
+          "slovak": "Dole",
+          "english": "Down"
+        },
+        {
+          "slovak": "Vľavo",
+          "english": "Left"
+        },
+        {
+          "slovak": "Vpravo",
+          "english": "Right"
+        },
+        {
+          "slovak": "Priamo",
+          "english": "Straight ahead"
+        },
+        {
+          "slovak": "Kde je...?",
+          "english": "Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Hore",
+          "english": "Up / Upstairs"
+        },
+        {
+          "slovak": "Dole",
+          "english": "Down / Downstairs"
+        },
+        {
+          "slovak": "Vľavo",
+          "english": "Left"
+        },
+        {
+          "slovak": "Vpravo",
+          "english": "Right"
+        },
+        {
+          "slovak": "Priamo",
+          "english": "Straight ahead"
+        },
+        {
+          "slovak": "Kde je...?",
+          "english": "Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Hore",
+          "english": "Up"
+        },
+        {
+          "slovak": "Dole",
+          "english": "Down"
+        },
+        {
+          "slovak": "Vľavo",
+          "english": "Left"
+        },
+        {
+          "slovak": "Vpravo",
+          "english": "Right"
+        },
+        {
+          "slovak": "Priamo",
+          "english": "Straight ahead"
+        },
+        {
+          "slovak": "Kde je...?",
+          "english": "Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "At the hospital, the receptionist says the doctor's office is vpravo. Which way do you go?",
+          "instruction": "Choose the correct direction",
+          "choices": [
+            "Left",
+            "Right",
+            "Up",
+            "Down"
+          ],
+          "answer": "Right",
+          "answerMeaning": "Vpravo = right."
+        },
+        {
+          "situation": "Someone says the office is vľavo. Which way do you go?",
+          "instruction": "Choose the correct direction",
+          "choices": [
+            "Left",
+            "Right",
+            "Straight",
+            "Down"
+          ],
+          "answer": "Left",
+          "answerMeaning": "Vľavo = left."
+        },
+        {
+          "situation": "The lift is broken and the office is on the third floor. Which direction do you need?",
+          "instruction": "Choose the correct direction",
+          "choices": [
+            "Hore",
+            "Dole",
+            "Vľavo",
+            "Vpravo"
+          ],
+          "answer": "Hore",
+          "answerMeaning": "Hore = up / upstairs."
+        },
+        {
+          "situation": "You are on the second floor and the pharmacy is on the ground floor. Which direction do you need?",
+          "instruction": "Choose the correct direction",
+          "choices": [
+            "Hore",
+            "Dole",
+            "Vľavo",
+            "Priamo"
+          ],
+          "answer": "Dole",
+          "answerMeaning": "Dole = down / downstairs."
+        },
+        {
+          "situation": "You need to ask where the bathroom is. Which phrase starts the question?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Kde je...?",
+            "Moja adresa je...",
+            "Koľko to stojí?",
+            "Dobrú noc."
+          ],
+          "answer": "Kde je...?",
+          "answerMeaning": "Kde je...? = Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Choďte ___. Potom odbočte vpravo.",
+          "translation": "Go straight. Then turn right.",
+          "choices": [
+            "priamo",
+            "vľavo",
+            "hore",
+            "dole"
+          ],
+          "answer": "priamo",
+          "answerMeaning": "Priamo = straight ahead."
+        },
+        {
+          "sentence": "Výťah nefunguje. Musíte ísť ___.",
+          "translation": "The lift is not working. You must go up.",
+          "choices": [
+            "hore",
+            "dole",
+            "vľavo",
+            "vpravo"
+          ],
+          "answer": "hore",
+          "answerMeaning": "Hore = up / upstairs."
+        },
+        {
+          "sentence": "Lekáreň je ___. Choďte dole.",
+          "translation": "The pharmacy is downstairs. Go down.",
+          "choices": [
+            "dole",
+            "hore",
+            "priamo",
+            "vpravo"
+          ],
+          "answer": "dole",
+          "answerMeaning": "Dole = down / downstairs."
+        },
+        {
+          "sentence": "Kde ___ nemocnica?",
+          "translation": "Where is the hospital?",
+          "choices": [
+            "je",
+            "som",
+            "má",
+            "idem"
+          ],
+          "answer": "je",
+          "answerMeaning": "Kde je...? = Where is...?"
+        },
+        {
+          "sentence": "Choďte ___, potom vľavo.",
+          "translation": "Go right, then left.",
+          "choices": [
+            "vpravo",
+            "dole",
+            "hore",
+            "ďaleko"
+          ],
+          "answer": "vpravo",
+          "answerMeaning": "Vpravo = right."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

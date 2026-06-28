@@ -1,0 +1,324 @@
+{
+  "id": "s1-fruit",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Fruit",
+  "description": "Recognize common fruit words in a shop or at home",
+  "icon": "🍎",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Fruit",
+      "rows": [
+        {
+          "label": "Apple",
+          "slovak": "Jablko",
+          "english": "Apple"
+        },
+        {
+          "label": "Pear",
+          "slovak": "Hruška",
+          "english": "Pear"
+        },
+        {
+          "label": "Banana",
+          "slovak": "Banán",
+          "english": "Banana"
+        },
+        {
+          "label": "Orange",
+          "slovak": "Pomaranč",
+          "english": "Orange"
+        },
+        {
+          "label": "Strawberry",
+          "slovak": "Jahoda",
+          "english": "Strawberry"
+        },
+        {
+          "label": "Grapes",
+          "slovak": "Hrozno",
+          "english": "Grapes"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Jablko",
+          "english": "Apple"
+        },
+        {
+          "slovak": "Hruška",
+          "english": "Pear"
+        },
+        {
+          "slovak": "Banán",
+          "english": "Banana"
+        },
+        {
+          "slovak": "Pomaranč",
+          "english": "Orange"
+        },
+        {
+          "slovak": "Jahoda",
+          "english": "Strawberry"
+        },
+        {
+          "slovak": "Hrozno",
+          "english": "Grapes"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Jablko",
+          "english": "Apple"
+        },
+        {
+          "slovak": "Hruška",
+          "english": "Pear"
+        },
+        {
+          "slovak": "Banán",
+          "english": "Banana"
+        },
+        {
+          "slovak": "Pomaranč",
+          "english": "Orange"
+        },
+        {
+          "slovak": "Jahoda",
+          "english": "Strawberry"
+        },
+        {
+          "slovak": "Hrozno",
+          "english": "Grapes"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Jablko",
+          "english": "Apple"
+        },
+        {
+          "slovak": "Hruška",
+          "english": "Pear"
+        },
+        {
+          "slovak": "Banán",
+          "english": "Banana"
+        },
+        {
+          "slovak": "Pomaranč",
+          "english": "Orange"
+        },
+        {
+          "slovak": "Jahoda",
+          "english": "Strawberry"
+        },
+        {
+          "slovak": "Hrozno",
+          "english": "Grapes"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Jablko",
+          "english": "Apple"
+        },
+        {
+          "slovak": "Hruška",
+          "english": "Pear"
+        },
+        {
+          "slovak": "Banán",
+          "english": "Banana"
+        },
+        {
+          "slovak": "Pomaranč",
+          "english": "Orange"
+        },
+        {
+          "slovak": "Jahoda",
+          "english": "Strawberry"
+        },
+        {
+          "slovak": "Hrozno",
+          "english": "Grapes"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You want an apple. Which Slovak word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Jablko",
+            "Hruška",
+            "Banán",
+            "Hrozno"
+          ],
+          "answer": "Jablko",
+          "answerMeaning": "Jablko = Apple."
+        },
+        {
+          "situation": "You want a pear. Which Slovak word fits?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Hruška",
+            "Jablko",
+            "Pomaranč",
+            "Jahoda"
+          ],
+          "answer": "Hruška",
+          "answerMeaning": "Hruška = Pear."
+        },
+        {
+          "situation": "You need a banana for breakfast. Which word means banana?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Banán",
+            "Pomaranč",
+            "Jablko",
+            "Hrozno"
+          ],
+          "answer": "Banán",
+          "answerMeaning": "Banán = Banana."
+        },
+        {
+          "situation": "You want an orange. Which word do you choose?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Pomaranč",
+            "Jahoda",
+            "Hruška",
+            "Banán"
+          ],
+          "answer": "Pomaranč",
+          "answerMeaning": "Pomaranč = Orange."
+        },
+        {
+          "situation": "You want strawberries. Which Slovak word should you recognize?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Jahoda",
+            "Hrozno",
+            "Jablko",
+            "Pomaranč"
+          ],
+          "answer": "Jahoda",
+          "answerMeaning": "Jahoda = Strawberry."
+        },
+        {
+          "situation": "You want grapes. Which Slovak word means grapes?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Hrozno",
+            "Banán",
+            "Hruška",
+            "Jahoda"
+          ],
+          "answer": "Hrozno",
+          "answerMeaning": "Hrozno = Grapes."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Chcem ___.",
+          "translation": "I want an apple.",
+          "choices": [
+            "jablko",
+            "hrušku",
+            "banán",
+            "hrozno"
+          ],
+          "answer": "jablko"
+        },
+        {
+          "sentence": "Prosím si ___.",
+          "translation": "I would like a pear.",
+          "choices": [
+            "hrušku",
+            "jablko",
+            "pomaranč",
+            "jahodu"
+          ],
+          "answer": "hrušku"
+        },
+        {
+          "sentence": "Na raňajky chcem ___.",
+          "translation": "For breakfast I want a banana.",
+          "choices": [
+            "banán",
+            "hrozno",
+            "jablko",
+            "hrušku"
+          ],
+          "answer": "banán"
+        },
+        {
+          "sentence": "Dieťa chce ___.",
+          "translation": "The child wants an orange.",
+          "choices": [
+            "pomaranč",
+            "jahodu",
+            "hrušku",
+            "hrozno"
+          ],
+          "answer": "pomaranč"
+        },
+        {
+          "sentence": "Kúpim ___.",
+          "translation": "I will buy a strawberry.",
+          "choices": [
+            "jahodu",
+            "hrozno",
+            "banán",
+            "jablko"
+          ],
+          "answer": "jahodu"
+        },
+        {
+          "sentence": "Máte čerstvé ___?",
+          "translation": "Do you have fresh grapes?",
+          "choices": [
+            "hrozno",
+            "jablko",
+            "pomaranč",
+            "hrušku"
+          ],
+          "answer": "hrozno"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

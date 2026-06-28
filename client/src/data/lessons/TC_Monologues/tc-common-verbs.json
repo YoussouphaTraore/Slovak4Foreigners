@@ -1,0 +1,337 @@
+{
+  "id": "tc-common-verbs",
+  "stageId": "topic-comprehension",
+  "stageName": "",
+  "title": "Common Verbs — Monologue",
+  "description": "Listen, then prove you were listening",
+  "_voiceScript": {
+    "voice": null,
+    "script": "Sara: Dobrý deň. Som Sara. Hovorím trochu po slovensky. Predavač: Dobrý deň. Rozumiem. Čo potrebujete? Sara: Potrebujem vodu a chcem kávu. Nemám hotovosť. Predavač: Kartou? Sara: Áno, platím kartou. Kúpim vodu a kávu. Predavač: Bývate blízko? Sara: Áno, bývam blízko. Predavač: Dobre. Káva bude o chvíľu. Zostaňte tu, prosím. Sara: Ďakujem. Prídem zajtra tiež."
+  },
+  "icon": "⚡",
+  "xpReward": 25,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "CONVERSATION_LISTEN",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-first-words-Common-Verbs.mp3",
+      "conversationTranscriptSk": "Sara: Dobrý deň. Som Sara. Hovorím trochu po slovensky. Predavač: Dobrý deň. Rozumiem. Čo potrebujete? Sara: Potrebujem vodu a chcem kávu. Nemám hotovosť. Predavač: Kartou? Sara: Áno, platím kartou. Kúpim vodu a kávu. Predavač: Bývate blízko? Sara: Áno, bývam blízko. Predavač: Dobre. Káva bude o chvíľu. Zostaňte tu, prosím. Sara: Ďakujem. Prídem zajtra tiež.",
+      "speakers": [
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        },
+        {
+          "name": "Predavač",
+          "avatar": "👨"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "CONVERSATION_WORD_RECOGNITION",
+      "instruction": "Tap every word or expression you heard in the conversation.",
+      "passThresholdPercent": 76,
+      "correctWords": [
+        "Som Sara",
+        "Hovorím trochu",
+        "po slovensky",
+        "Rozumiem",
+        "Čo potrebujete?",
+        "Potrebujem vodu",
+        "chcem kávu",
+        "Nemám hotovosť",
+        "Kartou?",
+        "platím kartou",
+        "Kúpim vodu",
+        "Bývate blízko?",
+        "bývam blízko",
+        "Káva bude",
+        "Zostaňte tu",
+        "Prídem zajtra"
+      ],
+      "distractorWords": [
+        "Som Jana",
+        "Nerozumiem",
+        "Idem domov",
+        "Mám lístok",
+        "Prosím pomaly",
+        "Viem, čo mám robiť"
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "CONVERSATION_COMPREHENSION",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-first-words-Common-Verbs.mp3",
+      "conversationTranscriptSk": "Sara: Dobrý deň. Som Sara. Hovorím trochu po slovensky. Predavač: Dobrý deň. Rozumiem. Čo potrebujete? Sara: Potrebujem vodu a chcem kávu. Nemám hotovosť. Predavač: Kartou? Sara: Áno, platím kartou. Kúpim vodu a kávu. Predavač: Bývate blízko? Sara: Áno, bývam blízko. Predavač: Dobre. Káva bude o chvíľu. Zostaňte tu, prosím. Sara: Ďakujem. Prídem zajtra tiež.",
+      "speakers": [
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        },
+        {
+          "name": "Predavač",
+          "avatar": "👨"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Sara said \"Hovorím trochu po slovensky.\" What does this mean?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "I speak Slovak fluently",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "I speak a little Slovak",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "I don't speak Slovak",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Hovorím trochu po slovensky\" = I speak a little Slovak. Hovorím comes from the Speak & Understand lesson — trochu means a little.",
+          "reviewPair": {
+            "slovak": "Hovorím trochu po slovensky",
+            "english": "I speak a little Slovak"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "What did Sara say she needed and wanted?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "\"Potrebujem chlieb a chcem syr.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "\"Potrebujem kávu a chcem vodu.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "\"Potrebujem vodu a chcem kávu.\"",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Potrebujem vodu a chcem kávu\" = I need water and I want coffee. Notice two different verbs — Potrebujem (I need) vs Chcem (I want) — from the Need & Want lesson.",
+          "reviewPair": {
+            "slovak": "Potrebujem vodu a chcem kávu",
+            "english": "I need water and I want coffee"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "The clerk asked \"Kartou?\" Why did he ask this?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Because Sara said \"Nemám hotovosť\"",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Because Sara said \"Nepijem alkohol\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Because Sara said \"Bývam blízko\"",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Nemám hotovosť\" = I do not have cash. The clerk understood immediately and offered card as the alternative. Nemám comes from the Need & Want lesson.",
+          "reviewPair": {
+            "slovak": "Nemám hotovosť",
+            "english": "I do not have cash"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "The clerk said \"Zostaňte tu, prosím.\" What did he say just before that explains why?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "\"Bývate blízko?\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "\"Káva bude o chvíľu.\"",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "\"Čo potrebujete?\"",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Káva bude o chvíľu. Zostaňte tu, prosím.\" = The coffee will be ready in a moment. Stay here, please. The clerk asked Sara to stay because the coffee was not ready yet. Zostaňte comes from the Moving & Living lesson — formal command.",
+          "reviewPair": {
+            "slovak": "Zostaňte tu, prosím",
+            "english": "Stay here, please"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "How did Sara answer when the clerk asked \"Bývate blízko?\"",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "\"Áno, prídem zajtra.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "\"Nie, bývam ďaleko.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "\"Áno, bývam blízko.\"",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Bývam blízko\" = I live nearby. Notice the clerk used the formal Bývate (Vy form) and Sara answered with Bývam (Ja form) — same verb, different person.",
+          "reviewPair": {
+            "slovak": "Bývam blízko",
+            "english": "I live nearby"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "What does \"Prídem zajtra tiež\" tell us about Sara?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "She will come back tomorrow",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "She forgot something",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "She doesn't like the shop",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Prídem zajtra tiež\" = I will come tomorrow too. Prídem comes from the Moving & Living lesson and shows a future arrival.",
+          "reviewPair": {
+            "slovak": "Prídem zajtra tiež",
+            "english": "I will come tomorrow too"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "CONVERSATION_SENTENCE_BUILDER",
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "I am Sara. I speak a little Slovak.",
+          "targetSk": [
+            "Som Sara",
+            "Hovorím trochu",
+            "po slovensky"
+          ],
+          "bankChunks": [
+            "Som Sara",
+            "Hovorím trochu",
+            "po slovensky",
+            "Bývam blízko"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "What do you need?",
+          "targetSk": [
+            "Čo",
+            "potrebujete?"
+          ],
+          "bankChunks": [
+            "Čo",
+            "potrebujete?",
+            "chcem",
+            "kartou?"
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "I need water and I want coffee.",
+          "targetSk": [
+            "Potrebujem vodu",
+            "a",
+            "chcem kávu"
+          ],
+          "bankChunks": [
+            "Potrebujem vodu",
+            "a",
+            "chcem kávu",
+            "kúpim vodu"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "I do not have cash. I pay by card.",
+          "targetSk": [
+            "Nemám hotovosť",
+            "platím kartou"
+          ],
+          "bankChunks": [
+            "Nemám hotovosť",
+            "platím kartou",
+            "Bývate blízko?"
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "The coffee will be ready in a moment. Stay here, please.",
+          "targetSk": [
+            "Káva bude",
+            "o chvíľu",
+            "Zostaňte tu, prosím"
+          ],
+          "bankChunks": [
+            "Káva bude",
+            "o chvíľu",
+            "Zostaňte tu, prosím",
+            "Prídem zajtra"
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "I will come tomorrow too.",
+          "targetSk": [
+            "Prídem",
+            "zajtra",
+            "tiež"
+          ],
+          "bankChunks": [
+            "Prídem",
+            "zajtra",
+            "tiež",
+            "bývam"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

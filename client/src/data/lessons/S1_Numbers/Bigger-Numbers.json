@@ -1,0 +1,265 @@
+{
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "icon": "🔢",
+  "xpReward": 10,
+  "coming_soon": false,
+  "id": "s1-bigger-numbers",
+  "title": "Bigger Numbers",
+  "description": "Use larger numbers for prices, forms, and addresses",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Bigger Numbers",
+      "headers": [
+        "Number",
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "label": "30",
+          "slovak": "tridsať",
+          "english": "Thirty"
+        },
+        {
+          "label": "50",
+          "slovak": "päťdesiat",
+          "english": "Fifty"
+        },
+        {
+          "label": "100",
+          "slovak": "sto",
+          "english": "One hundred"
+        },
+        {
+          "label": "1000",
+          "slovak": "tisíc",
+          "english": "One thousand"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "tridsať",
+          "english": "Thirty"
+        },
+        {
+          "slovak": "päťdesiat",
+          "english": "Fifty"
+        },
+        {
+          "slovak": "sto",
+          "english": "One hundred"
+        },
+        {
+          "slovak": "tisíc",
+          "english": "One thousand"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "tridsať",
+          "english": "Thirty"
+        },
+        {
+          "slovak": "päťdesiat",
+          "english": "Fifty"
+        },
+        {
+          "slovak": "sto",
+          "english": "One hundred"
+        },
+        {
+          "slovak": "tisíc",
+          "english": "One thousand"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "tridsať",
+          "english": "Thirty"
+        },
+        {
+          "slovak": "päťdesiat",
+          "english": "Fifty"
+        },
+        {
+          "slovak": "sto",
+          "english": "One hundred"
+        },
+        {
+          "slovak": "tisíc",
+          "english": "One thousand"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "NUMBER_TO_WORDS",
+      "items": [
+        {
+          "number": "30",
+          "choices": [
+            "dvadsať",
+            "tridsať",
+            "päťdesiat",
+            "sto"
+          ],
+          "answer": "tridsať"
+        },
+        {
+          "number": "50",
+          "choices": [
+            "tridsať",
+            "päťdesiat",
+            "sto",
+            "tisíc"
+          ],
+          "answer": "päťdesiat"
+        },
+        {
+          "number": "100",
+          "choices": [
+            "desať",
+            "päťdesiat",
+            "sto",
+            "tisíc"
+          ],
+          "answer": "sto"
+        },
+        {
+          "number": "1000",
+          "choices": [
+            "sto",
+            "tisíc",
+            "päťdesiat",
+            "dvadsať"
+          ],
+          "answer": "tisíc"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The shop assistant tells you the price is sto eur. How much is that?",
+          "instruction": "Choose the correct amount",
+          "choices": [
+            "10 eur",
+            "50 eur",
+            "100 eur",
+            "1000 eur"
+          ],
+          "answer": "100 eur",
+          "answerMeaning": "Sto = one hundred. A key number for prices."
+        },
+        {
+          "situation": "Rent is tisíc eur. Which amount is that?",
+          "instruction": "Choose the correct amount",
+          "choices": [
+            "100 eur",
+            "1000 eur",
+            "50 eur",
+            "30 eur"
+          ],
+          "answer": "1000 eur",
+          "answerMeaning": "Tisíc = one thousand."
+        },
+        {
+          "situation": "A ticket costs tridsať eur. Which amount is that?",
+          "instruction": "Choose the correct amount",
+          "choices": [
+            "20 eur",
+            "30 eur",
+            "50 eur",
+            "100 eur"
+          ],
+          "answer": "30 eur",
+          "answerMeaning": "Tridsať = thirty."
+        },
+        {
+          "situation": "A deposit is päťdesiat eur. Which amount is that?",
+          "instruction": "Choose the correct amount",
+          "choices": [
+            "30 eur",
+            "50 eur",
+            "100 eur",
+            "1000 eur"
+          ],
+          "answer": "50 eur",
+          "answerMeaning": "Päťdesiat = fifty."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Stojí to ___ eur.",
+          "translation": "It costs one hundred euros.",
+          "choices": [
+            "tridsať",
+            "päťdesiat",
+            "sto",
+            "tisíc"
+          ],
+          "answer": "sto"
+        },
+        {
+          "sentence": "Nájom je ___ eur.",
+          "translation": "The rent is one thousand euros.",
+          "choices": [
+            "sto",
+            "tisíc",
+            "päťdesiat",
+            "desať"
+          ],
+          "answer": "tisíc"
+        },
+        {
+          "sentence": "Poplatok je ___ eur.",
+          "translation": "The fee is thirty euros.",
+          "choices": [
+            "tridsať",
+            "päťdesiat",
+            "sto",
+            "dvadsať"
+          ],
+          "answer": "tridsať"
+        },
+        {
+          "sentence": "Záloha je ___ eur.",
+          "translation": "The deposit is fifty euros.",
+          "choices": [
+            "tridsať",
+            "päťdesiat",
+            "sto",
+            "tisíc"
+          ],
+          "answer": "päťdesiat"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

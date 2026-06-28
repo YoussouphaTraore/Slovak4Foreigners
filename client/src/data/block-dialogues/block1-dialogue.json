@@ -14,23 +14,43 @@
     "role": "Someone you just met in Slovakia",
     "avatar": "👨"
   },
-  "context": "You just arrived in Slovakia. You bump into Marek, a friendly Slovak, and start a conversation. Use what you know.",
+  "context": "You just arrived in Bratislava. You bump into Marek, a friendly Slovak, on the street. Start a conversation using what you know.",
   "exchanges": [
     {
       "id": "ex1",
       "speaker": "marek",
       "text": "Dobrý deň!",
       "translation": "Good day!",
-      "prompt": "Marek greets you. What do you say back?",
+      "prompt": "Marek greets you formally. How do you respond?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Dobrý deň!", "translation": "Good day!", "isCorrect": true },
-        { "id": "b", "text": "Dovidenia!", "translation": "Goodbye!", "isCorrect": false },
-        { "id": "c", "text": "Dobré ráno!", "translation": "Good morning!", "isCorrect": false },
-        { "id": "d", "text": "Pomoc!", "translation": "Help!", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Dobrý deň!",
+          "translation": "Good day!",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Dobrý večer!",
+          "translation": "Good evening!",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Dobré ráno!",
+          "translation": "Good morning!",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Dovidenia!",
+          "translation": "Goodbye!",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Dobrý deň! — matching the register. He greeted you formally, you respond formally.",
-      "wrongFeedback": "Dobrý deň is the right match — always mirror the greeting you receive."
+      "correctFeedback": "Dobrý deň! — the right formal daytime greeting. Always mirror the greeting you receive.",
+      "wrongFeedback": "Dobrý deň is for daytime. Dobré ráno is morning only, Dobrý večer is evening — and Dovidenia is goodbye, not hello."
     },
     {
       "id": "ex2",
@@ -40,78 +60,414 @@
       "prompt": "Marek asks how you are. You are doing well. What do you say?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Nie veľmi dobre.", "translation": "Not very well.", "isCorrect": false },
-        { "id": "b", "text": "Neviem.", "translation": "I don't know.", "isCorrect": false },
-        { "id": "c", "text": "Dobre, ďakujem. A vy?", "translation": "Fine, thank you. And you?", "isCorrect": true },
-        { "id": "d", "text": "Pomoc!", "translation": "Help!", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Dobre, ďakujem. A vy?",
+          "translation": "Fine, thank you. And you?",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Nie veľmi dobre.",
+          "translation": "Not very well.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Som unavený.",
+          "translation": "I am tired.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Ujde to.",
+          "translation": "So-so.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Dobre, ďakujem. A vy? — perfect. You answered and returned the question. That's exactly how Slovaks expect this exchange to go.",
-      "wrongFeedback": "The natural response is Dobre, ďakujem — and always return the question with A vy? when speaking formally."
+      "correctFeedback": "Dobre, ďakujem. A vy? — you answered and returned the question. That is exactly how Slovaks expect this exchange to go.",
+      "wrongFeedback": "You are doing well — so Dobre, ďakujem is right. Always return the question with A vy? when speaking formally."
     },
     {
       "id": "ex3",
       "speaker": "marek",
-      "text": "Veľmi dobre, ďakujem. Hovoríte po slovensky?",
-      "translation": "Very well, thank you. Do you speak Slovak?",
-      "prompt": "Marek asks if you speak Slovak. You speak a little. What do you say?",
+      "text": "Hovoríte po slovensky?",
+      "translation": "Do you speak Slovak?",
+      "prompt": "Marek asks if you speak Slovak. You speak a little but not well. What do you say?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Áno, hovorím plynne.", "translation": "Yes, I speak fluently.", "isCorrect": false },
-        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
-        { "id": "c", "text": "Nie, nehovorím.", "translation": "No, I don't speak.", "isCorrect": false },
-        { "id": "d", "text": "Hovorím trochu. Nehovorím dobre.", "translation": "I speak a little. I don't speak well.", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "Hovorím trochu. Nehovorím dobre.",
+          "translation": "I speak a little. I don’t speak well.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Áno, hovorím plynne.",
+          "translation": "Yes, I speak fluently.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Hovoríte po anglicky?",
+          "translation": "Do you speak English?",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Nehovorím po slovensky.",
+          "translation": "I don’t speak Slovak.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Hovorím trochu. Nehovorím dobre. — honest and clear. Slovaks will immediately adjust and speak more simply for you.",
-      "wrongFeedback": "Hovorím trochu is the most accurate answer — it tells Marek to keep things simple without shutting down the conversation."
+      "correctFeedback": "Hovorím trochu. Nehovorím dobre. — honest and clear. Marek will immediately speak more simply for you.",
+      "wrongFeedback": "Hovorím trochu is the most accurate answer — it keeps the conversation open and tells Marek to keep it simple."
     },
     {
       "id": "ex4",
       "speaker": "marek",
-      "text": "Rozumiem. Potrebujete pomoc s niečím?",
-      "translation": "I understand. Do you need help with anything?",
-      "prompt": "Marek speaks too fast and you missed part of what he said. What do you do?",
+      "text": "Ste tu prvýkrát?",
+      "translation": "Is this your first time here?",
+      "prompt": "Marek asks if this is your first time in Slovakia. It is. What do you say?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Áno, ďakujem.", "translation": "Yes, thank you.", "isCorrect": false },
-        { "id": "b", "text": "Hovorte pomaly, prosím.", "translation": "Please speak slowly.", "isCorrect": true },
-        { "id": "c", "text": "Dovidenia.", "translation": "Goodbye.", "isCorrect": false },
-        { "id": "d", "text": "Neviem.", "translation": "I don't know.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Áno, som tu prvýkrát. Som turista.",
+          "translation": "Yes, it’s my first time. I’m a tourist.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Nie, sú tu prvýkrát.",
+          "translation": "No, it’s their first time here.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Áno, je tu prvýkrát.",
+          "translation": "Yes, it’s his first time here.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Nie, nie som turista.",
+          "translation": "No, I’m not a tourist.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Hovorte pomaly, prosím. — exactly right. Marek will slow down and you will understand much more.",
-      "wrongFeedback": "When someone speaks too fast, Hovorte pomaly, prosím is your go-to. It's polite and always works."
+      "correctFeedback": "Som tu prvýkrát — Som means I am. Je means he/she is, Sú means they are. When talking about yourself, always use Som.",
+      "wrongFeedback": "You are talking about yourself — use Som, not Je or Sú. Som tu prvýkrát. Som turista."
     },
     {
       "id": "ex5",
       "speaker": "marek",
-      "text": "Prepáčte! Rozumiete teraz?",
-      "translation": "Sorry! Do you understand now?",
-      "prompt": "Marek slowed down and repeated. You understood this time. What do you say?",
+      "text": "Kde bývate?",
+      "translation": "Where are you staying?",
+      "prompt": "Marek asks where you are staying. You are at a hotel in the city centre. What do you say?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
-        { "id": "b", "text": "Áno, rozumiem. Ďakujem!", "translation": "Yes, I understand. Thank you!", "isCorrect": true },
-        { "id": "c", "text": "Môžete zopakovať?", "translation": "Can you repeat that?", "isCorrect": false },
-        { "id": "d", "text": "Čo to znamená?", "translation": "What does that mean?", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Bývam v hoteli v centre.",
+          "translation": "I’m staying at a hotel in the centre.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Idem do centra.",
+          "translation": "I’m going to the centre.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Prídem zajtra.",
+          "translation": "I’ll come tomorrow.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Zostanem tu dlho.",
+          "translation": "I’ll stay here for a long time.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Áno, rozumiem. Ďakujem! — great. You confirmed you understood and thanked him. Natural and warm.",
-      "wrongFeedback": "You understood this time — so Áno, rozumiem. Ďakujem! is the right response."
+      "correctFeedback": "Bývam v hoteli v centre — Bývam means where you live or stay. Idem is for where you are going right now.",
+      "wrongFeedback": "Kde bývate asks where you are staying — use Bývam. Idem means I am going, Prídem means I will come, Zostanem means I will stay."
     },
     {
       "id": "ex6",
       "speaker": "marek",
-      "text": "Potrebujem ísť. Dovidenia!",
-      "translation": "I need to go. Goodbye!",
-      "prompt": "Marek is leaving. How do you say goodbye formally?",
+      "text": "Čo potrebujete v Bratislave?",
+      "translation": "What do you need in Bratislava?",
+      "prompt": "Marek asks what you need. You want to eat and need a good restaurant. What do you say?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Čau!", "translation": "Bye! (informal)", "isCorrect": false },
-        { "id": "b", "text": "Ahoj!", "translation": "Hi / Bye (informal)", "isCorrect": false },
-        { "id": "c", "text": "Dovidenia! Ďakujem!", "translation": "Goodbye! Thank you!", "isCorrect": true },
-        { "id": "d", "text": "Pomoc!", "translation": "Help!", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Chcem jesť. Potrebujem dobrú reštauráciu.",
+          "translation": "I want to eat. I need a good restaurant.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Platím kartou.",
+          "translation": "I’m paying by card.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Zabudol som.",
+          "translation": "I forgot.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Nepijem alkohol.",
+          "translation": "I don’t drink alcohol.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Dovidenia! Ďakujem! — perfect formal farewell. You closed the conversation politely and with gratitude.",
-      "wrongFeedback": "Dovidenia is the formal goodbye — always use it with people you don't know well. Čau and Ahoj are only for friends."
+      "correctFeedback": "Chcem jesť. Potrebujem dobrú reštauráciu. — Chcem + verb for what you want to do, Potrebujem + noun for what you need.",
+      "wrongFeedback": "Use Chcem jesť for what you want to do, and Potrebujem reštauráciu for what you need."
+    },
+    {
+      "id": "ex7",
+      "speaker": "marek",
+      "text": "Výborne! Je tu skvelá reštaurácia — choďte hore ulicou, potom na druhom rohu doprava, je to vedľa lekárne.",
+      "translation": "Excellent! There is a great restaurant — go up the street, then right at the second corner, it is next to the pharmacy.",
+      "prompt": "Marek gives you directions but speaks too fast. What do you say?",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Hovorte pomaly, prosím.",
+          "translation": "Please speak slowly.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Áno, rozumiem!",
+          "translation": "Yes, I understand!",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Ďakujem, dovidenia.",
+          "translation": "Thank you, goodbye.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Nehovorím po slovensky.",
+          "translation": "I don’t speak Slovak.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Hovorte pomaly, prosím — your most important survival phrase. Every Slovak will slow down immediately when they hear it.",
+      "wrongFeedback": "When someone speaks too fast, Hovorte pomaly, prosím is always the right move. Polite and effective."
+    },
+    {
+      "id": "ex8",
+      "speaker": "marek",
+      "text": "Prepáčte! Rozumiete teraz?",
+      "translation": "Sorry! Do you understand now?",
+      "prompt": "Marek slowed down but you still did not catch all the directions. What do you ask?",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Môžete to napísať, prosím?",
+          "translation": "Can you write that down, please?",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Áno, rozumiem. ďakujem!",
+          "translation": "Yes, I understand. Thank you!",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Moment, prosím.",
+          "translation": "One moment, please.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Nerozumiem. Hovoríte po anglicky?",
+          "translation": "I don’t understand. Do you speak English?",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Môžete to napísať, prosím? — perfect. Written directions are much easier to follow than spoken ones in a new language.",
+      "wrongFeedback": "You still did not catch everything — so Môžete to napísať is better than pretending you understood."
+    },
+    {
+      "id": "ex9",
+      "speaker": "marek",
+      "text": "Samozrejme! Tu máte. Potrebujem ísť teraz. Dovidenia!",
+      "translation": "Of course! Here you go. I need to go now. Goodbye!",
+      "prompt": "Marek hands you the written directions and says goodbye. How do you close warmly and formally?",
+      "isOpenQuestion": false,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Dovidenia! Ďakujem za pomoc!",
+          "translation": "Goodbye! Thank you for the help!",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Čau! Ahoj!",
+          "translation": "Bye! Hi!",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Pomoc!",
+          "translation": "Help!",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Dobré ráno!",
+          "translation": "Good morning!",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Dovidenia! ďakujem za pomoc! — warm, polite, and perfect. You closed your first Slovak conversation like a pro.",
+      "wrongFeedback": "Dovidenia is the formal goodbye — Čau and Ahoj are only for friends. Always say ďakujem when someone helps you."
     }
   ],
-  "completionMessage": "🎉 Well done! You just had your first real conversation in Slovakia. You greeted, answered, admitted you don't speak Slovak well, asked him to slow down, and said goodbye — all in Slovak."
+  "completionMessage": "🎉 Well done! You greeted Marek, said how you are, admitted you are still learning Slovak, confirmed it is your first time in Slovakia, said where you are staying, explained what you want to eat, asked him to slow down, and said a warm formal goodbye. That is a complete real first conversation in Slovak!",
+  "speakingRound": {
+    "id": "ex-speaking",
+    "type": "CONVERSATION_SPEAKING",
+    "questions": [
+      {
+        "id": "q0",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block1-m1.mp3.mp3",
+        "marekQuestionSk": "Dobrý deň!",
+        "marekQuestionEn": "Good day!",
+        "correctAnswerSk": "Dobrý deň!",
+        "correctAnswerEn": "Good day!",
+        "answerChunks": [
+          "Dobrý deň!"
+        ],
+        "isYesNo": false,
+        "personalData": null
+      },
+      {
+        "id": "q1",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block1-m2.mp3.mp3",
+        "marekQuestionSk": "Ako sa máte?",
+        "marekQuestionEn": "How are you?",
+        "correctAnswerSk": "Dobre, ďakujem. A vy?",
+        "correctAnswerEn": "Fine, thank you. And you?",
+        "answerChunks": [
+          "Dobre, ďakujem.",
+          "A vy?"
+        ],
+        "isYesNo": false,
+        "personalData": null
+      },
+      {
+        "id": "q2",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block1-m3.mp3.mp3",
+        "marekQuestionSk": "Hovoríte po slovensky?",
+        "marekQuestionEn": "Do you speak Slovak?",
+        "correctAnswerSk": "Hovorím trochu. Nehovorím dobre.",
+        "correctAnswerEn": "I speak a little. I don’t speak well.",
+        "answerChunks": [
+          "Hovorím trochu.",
+          "Nehovorím dobre."
+        ],
+        "isYesNo": false,
+        "personalData": null
+      },
+      {
+        "id": "q3",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block1-m4.mp3.mp3",
+        "marekQuestionSk": "Ste tu prvýkrát?",
+        "marekQuestionEn": "Is this your first time here?",
+        "correctAnswerSk": "Áno, som tu prvýkrát. Som turista.",
+        "correctAnswerEn": "Yes, it’s my first time. I’m a tourist.",
+        "answerChunks": [
+          "Áno, som tu prvýkrát.",
+          "Som turista."
+        ],
+        "isYesNo": false,
+        "personalData": null
+      },
+      {
+        "id": "q4",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block1-m5.mp3.mp3",
+        "marekQuestionSk": "Kde bývate?",
+        "marekQuestionEn": "Where are you staying?",
+        "correctAnswerSk": "Bývam v hoteli v centre.",
+        "correctAnswerEn": "I’m staying at a hotel in the centre.",
+        "answerChunks": [
+          "Bývam v hoteli v centre."
+        ],
+        "isYesNo": false,
+        "personalData": null
+      },
+      {
+        "id": "q5",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block1-m6.mp3.mp3",
+        "marekQuestionSk": "Čo potrebujete v Bratislave?",
+        "marekQuestionEn": "What do you need in Bratislava?",
+        "correctAnswerSk": "Chcem jesť. Potrebujem dobrú reštauráciu.",
+        "correctAnswerEn": "I want to eat. I need a good restaurant.",
+        "answerChunks": [
+          "Chcem jesť.",
+          "Potrebujem dobrú reštauráciu."
+        ],
+        "isYesNo": false,
+        "personalData": null
+      },
+      {
+        "id": "q6",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block1-m7.mp3.mp3",
+        "marekQuestionSk": "Výborne! Je tu skvelá reštaurácia — choďte hore ulicou, potom na druhom rohu doprava, je to vedľa lekárne.",
+        "marekQuestionEn": "Excellent! There is a great restaurant — go up the street, then right at the second corner, it is next to the pharmacy.",
+        "correctAnswerSk": "Hovorte pomaly, prosím.",
+        "correctAnswerEn": "Please speak slowly.",
+        "answerChunks": [
+          "Hovorte pomaly, prosím."
+        ],
+        "isYesNo": false,
+        "personalData": null
+      },
+      {
+        "id": "q7",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block1-m8.mp3.mp3",
+        "marekQuestionSk": "Prepáčte! Rozumiete teraz?",
+        "marekQuestionEn": "Sorry! Do you understand now?",
+        "correctAnswerSk": "Môžete to napísať, prosím?",
+        "correctAnswerEn": "Can you write that down, please?",
+        "answerChunks": [
+          "Môžete to napísať, prosím?"
+        ],
+        "isYesNo": false,
+        "personalData": null
+      },
+      {
+        "id": "q8",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block1-m9.mp3.mp3",
+        "marekQuestionSk": "Samozrejme! Tu máte. Potrebujem ísť teraz. Dovidenia!",
+        "marekQuestionEn": "Of course! Here you go. I need to go now. Goodbye!",
+        "correctAnswerSk": "Dovidenia! Ďakujem za pomoc!",
+        "correctAnswerEn": "Goodbye! Thank you for the help!",
+        "answerChunks": [
+          "Dovidenia!",
+          "Ďakujem za pomoc!"
+        ],
+        "isYesNo": false,
+        "personalData": null
+      }
+    ]
+  }
 }

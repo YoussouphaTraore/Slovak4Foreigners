@@ -1,0 +1,306 @@
+{
+  "id": "s1-address-on-forms",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Address on Forms",
+  "description": "Recognize address fields on Slovak forms and ask someone to write details down",
+  "icon": "📋",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Form Words",
+      "rows": [
+        {
+          "label": "Municipality",
+          "slovak": "Obec",
+          "english": "Municipality / city field on forms"
+        },
+        {
+          "label": "Region",
+          "slovak": "Kraj",
+          "english": "Region / county"
+        },
+        {
+          "label": "Square",
+          "slovak": "Námestie",
+          "english": "Square / plaza"
+        },
+        {
+          "label": "I live on...",
+          "slovak": "Bývam na ulici...",
+          "english": "I live on... street"
+        },
+        {
+          "label": "My postal code is...",
+          "slovak": "Moje PSČ je...",
+          "english": "My postal code is..."
+        },
+        {
+          "label": "Write it down, please",
+          "slovak": "Napíšte to, prosím.",
+          "english": "Write it down, please."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Obec",
+          "english": "Municipality"
+        },
+        {
+          "slovak": "Kraj",
+          "english": "Region"
+        },
+        {
+          "slovak": "Námestie",
+          "english": "Square"
+        },
+        {
+          "slovak": "Bývam na ulici...",
+          "english": "I live on... street"
+        },
+        {
+          "slovak": "Moje PSČ je...",
+          "english": "My postal code is..."
+        },
+        {
+          "slovak": "Napíšte to, prosím.",
+          "english": "Write it down, please."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Obec",
+          "english": "Municipality"
+        },
+        {
+          "slovak": "Kraj",
+          "english": "Region"
+        },
+        {
+          "slovak": "Námestie",
+          "english": "Square"
+        },
+        {
+          "slovak": "Bývam na ulici...",
+          "english": "I live on... street"
+        },
+        {
+          "slovak": "Moje PSČ je...",
+          "english": "My postal code is..."
+        },
+        {
+          "slovak": "Napíšte to, prosím.",
+          "english": "Write it down, please."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Obec",
+          "english": "Municipality / Town"
+        },
+        {
+          "slovak": "Kraj",
+          "english": "Region"
+        },
+        {
+          "slovak": "Námestie",
+          "english": "Square / Plaza"
+        },
+        {
+          "slovak": "Bývam na ulici...",
+          "english": "I live on the street..."
+        },
+        {
+          "slovak": "Moje PSČ je...",
+          "english": "My postcode is..."
+        },
+        {
+          "slovak": "Napíšte to, prosím.",
+          "english": "Please write it down."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Obec",
+          "english": "Municipality"
+        },
+        {
+          "slovak": "Kraj",
+          "english": "Region"
+        },
+        {
+          "slovak": "Námestie",
+          "english": "Square"
+        },
+        {
+          "slovak": "Bývam na ulici...",
+          "english": "I live on... street"
+        },
+        {
+          "slovak": "Moje PSČ je...",
+          "english": "My postal code is..."
+        },
+        {
+          "slovak": "Napíšte to, prosím.",
+          "english": "Write it down, please."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "A Slovak form says Obec. You live in Košice. What do you write?",
+          "instruction": "Choose the best answer",
+          "choices": [
+            "Košice",
+            "Slovensko",
+            "040 01",
+            "Hlavná"
+          ],
+          "answer": "Košice",
+          "answerMeaning": "Obec means municipality. Cities count too, so you write the city name."
+        },
+        {
+          "situation": "A form asks for Kraj. What kind of information is it asking for?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Region / county",
+            "Street",
+            "Flat number",
+            "Postal code"
+          ],
+          "answer": "Region / county",
+          "answerMeaning": "Kraj = region / county."
+        },
+        {
+          "situation": "Your address is on a square, not a street. Which word helps?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Námestie",
+            "Poschodie",
+            "Byt",
+            "PSČ"
+          ],
+          "answer": "Námestie",
+          "answerMeaning": "Námestie = square / plaza."
+        },
+        {
+          "situation": "Someone is speaking too fast while giving an address. What can you ask?",
+          "instruction": "Choose the useful phrase",
+          "choices": [
+            "Napíšte to, prosím.",
+            "Koľko to stojí?",
+            "Som hladný.",
+            "Dobrú noc."
+          ],
+          "answer": "Napíšte to, prosím.",
+          "answerMeaning": "Napíšte to, prosím. = Write it down, please."
+        },
+        {
+          "situation": "You need to say your postal code clearly. Which phrase starts it?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Moje PSČ je...",
+            "Moja ulica je...",
+            "Bývam v byte.",
+            "Aká je vaša adresa?"
+          ],
+          "answer": "Moje PSČ je...",
+          "answerMeaning": "Moje PSČ je... = My postal code is..."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Moja ___ je Bratislava.",
+          "translation": "My municipality is Bratislava.",
+          "choices": [
+            "obec",
+            "ulica",
+            "byt",
+            "adresa"
+          ],
+          "answer": "obec",
+          "answerMeaning": "Obec is the municipality/city field on forms."
+        },
+        {
+          "sentence": "Môj ___ je Bratislavský.",
+          "translation": "My region is Bratislava Region.",
+          "choices": [
+            "kraj",
+            "byt",
+            "vchod",
+            "PSČ"
+          ],
+          "answer": "kraj",
+          "answerMeaning": "Kraj = region / county."
+        },
+        {
+          "sentence": "Bývam na ___ Hlavná.",
+          "translation": "I live on Hlavná street.",
+          "choices": [
+            "ulici",
+            "obci",
+            "kraji",
+            "byte"
+          ],
+          "answer": "ulici",
+          "answerMeaning": "Bývam na ulici... = I live on... street."
+        },
+        {
+          "sentence": "Moje ___ je 811 01.",
+          "translation": "My postal code is 811 01.",
+          "choices": [
+            "PSČ",
+            "mesto",
+            "číslo bytu",
+            "námestie"
+          ],
+          "answer": "PSČ",
+          "answerMeaning": "PSČ = postal code."
+        },
+        {
+          "sentence": "___ to, prosím.",
+          "translation": "Write it down, please.",
+          "choices": [
+            "Napíšte",
+            "Bývam",
+            "Mesto",
+            "Kraj"
+          ],
+          "answer": "Napíšte",
+          "answerMeaning": "Napíšte to, prosím. = Write it down, please."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

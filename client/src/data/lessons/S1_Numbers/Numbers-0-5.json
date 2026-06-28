@@ -1,0 +1,365 @@
+{
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "icon": "🔢",
+  "xpReward": 10,
+  "coming_soon": false,
+  "id": "s1-numbers-0-5",
+  "title": "Numbers 0-5",
+  "description": "Start counting with zero through five",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Numbers 0-5",
+      "headers": [
+        "Number",
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "label": "0",
+          "slovak": "nula",
+          "english": "Zero"
+        },
+        {
+          "label": "1",
+          "slovak": "jeden",
+          "english": "One"
+        },
+        {
+          "label": "2",
+          "slovak": "dva",
+          "english": "Two"
+        },
+        {
+          "label": "3",
+          "slovak": "tri",
+          "english": "Three"
+        },
+        {
+          "label": "4",
+          "slovak": "štyri",
+          "english": "Four"
+        },
+        {
+          "label": "5",
+          "slovak": "päť",
+          "english": "Five"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "nula",
+          "english": "Zero"
+        },
+        {
+          "slovak": "jeden",
+          "english": "One"
+        },
+        {
+          "slovak": "dva",
+          "english": "Two"
+        },
+        {
+          "slovak": "tri",
+          "english": "Three"
+        },
+        {
+          "slovak": "štyri",
+          "english": "Four"
+        },
+        {
+          "slovak": "päť",
+          "english": "Five"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "nula",
+          "english": "Zero"
+        },
+        {
+          "slovak": "jeden",
+          "english": "One"
+        },
+        {
+          "slovak": "dva",
+          "english": "Two"
+        },
+        {
+          "slovak": "tri",
+          "english": "Three"
+        },
+        {
+          "slovak": "štyri",
+          "english": "Four"
+        },
+        {
+          "slovak": "päť",
+          "english": "Five"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "nula",
+          "english": "Zero"
+        },
+        {
+          "slovak": "jeden",
+          "english": "One"
+        },
+        {
+          "slovak": "dva",
+          "english": "Two"
+        },
+        {
+          "slovak": "tri",
+          "english": "Three"
+        },
+        {
+          "slovak": "štyri",
+          "english": "Four"
+        },
+        {
+          "slovak": "päť",
+          "english": "Five"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "NUMBER_TO_WORDS",
+      "items": [
+        {
+          "number": "0",
+          "choices": [
+            "nula",
+            "jeden",
+            "dva",
+            "tri"
+          ],
+          "answer": "nula"
+        },
+        {
+          "number": "1",
+          "choices": [
+            "nula",
+            "jeden",
+            "dva",
+            "päť"
+          ],
+          "answer": "jeden"
+        },
+        {
+          "number": "2",
+          "choices": [
+            "jeden",
+            "dva",
+            "tri",
+            "štyri"
+          ],
+          "answer": "dva"
+        },
+        {
+          "number": "3",
+          "choices": [
+            "dva",
+            "tri",
+            "štyri",
+            "päť"
+          ],
+          "answer": "tri"
+        },
+        {
+          "number": "4",
+          "choices": [
+            "jeden",
+            "tri",
+            "štyri",
+            "päť"
+          ],
+          "answer": "štyri"
+        },
+        {
+          "number": "5",
+          "choices": [
+            "nula",
+            "dva",
+            "štyri",
+            "päť"
+          ],
+          "answer": "päť"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You have one bag. Which Slovak word means one?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "nula",
+            "jeden",
+            "dva",
+            "tri"
+          ],
+          "answer": "jeden",
+          "answerMeaning": "Jeden = one."
+        },
+        {
+          "situation": "You want two loaves of bread. Which number do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "jeden",
+            "dva",
+            "štyri",
+            "päť"
+          ],
+          "answer": "dva",
+          "answerMeaning": "Dva = two."
+        },
+        {
+          "situation": "You are buying three apples. How do you say three?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "dva",
+            "tri",
+            "štyri",
+            "päť"
+          ],
+          "answer": "tri",
+          "answerMeaning": "Tri = three. Tri jablká = three apples."
+        },
+        {
+          "situation": "Your family has four people. Which word means four?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "jeden",
+            "tri",
+            "štyri",
+            "päť"
+          ],
+          "answer": "štyri",
+          "answerMeaning": "Štyri = four."
+        },
+        {
+          "situation": "The bus number is five. Which word means five?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "nula",
+            "dva",
+            "štyri",
+            "päť"
+          ],
+          "answer": "päť",
+          "answerMeaning": "Päť = five."
+        },
+        {
+          "situation": "A form asks how many children you have. You have none. Which word means zero?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "nula",
+            "jeden",
+            "dva",
+            "tri"
+          ],
+          "answer": "nula",
+          "answerMeaning": "Nula = zero."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Chcem ___ chleby, prosím.",
+          "translation": "I want two loaves of bread, please.",
+          "choices": [
+            "jeden",
+            "dva",
+            "tri",
+            "päť"
+          ],
+          "answer": "dva"
+        },
+        {
+          "sentence": "Mám ___ deti.",
+          "translation": "I have three children.",
+          "choices": [
+            "jeden",
+            "dva",
+            "tri",
+            "štyri"
+          ],
+          "answer": "tri"
+        },
+        {
+          "sentence": "Linka číslo ___.",
+          "translation": "Line number five.",
+          "choices": [
+            "nula",
+            "päť",
+            "dva",
+            "štyri"
+          ],
+          "answer": "päť"
+        },
+        {
+          "sentence": "Mám ___ tašku.",
+          "translation": "I have one bag.",
+          "choices": [
+            "jeden",
+            "jednu",
+            "dva",
+            "tri"
+          ],
+          "answer": "jednu"
+        },
+        {
+          "sentence": "Izba má ___ okná.",
+          "translation": "The room has four windows.",
+          "choices": [
+            "dva",
+            "tri",
+            "štyri",
+            "päť"
+          ],
+          "answer": "štyri"
+        },
+        {
+          "sentence": "Nemám ani ___.",
+          "translation": "I do not have even one euro.",
+          "choices": [
+            "euro",
+            "dva",
+            "päť",
+            "tri"
+          ],
+          "answer": "euro"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

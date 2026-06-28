@@ -1,0 +1,330 @@
+{
+  "id": "s1-need-want",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Need & Want",
+  "description": "Have, want, need, know, do, and forgot",
+  "icon": "⚡",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Need & Want Verbs",
+      "subtitle": "Useful I-form verbs for solving everyday problems.",
+      "headers": [
+        "Infinitive",
+        "I form",
+        "English"
+      ],
+      "rows": [
+        {
+          "label": "Mať",
+          "slovak": "Mám",
+          "english": "To have / I have"
+        },
+        {
+          "label": "Chcieť",
+          "slovak": "Chcem",
+          "english": "To want / I want"
+        },
+        {
+          "label": "Potrebovať",
+          "slovak": "Potrebujem",
+          "english": "To need / I need"
+        },
+        {
+          "label": "Vedieť",
+          "slovak": "Viem",
+          "english": "To know or can / I know or can"
+        },
+        {
+          "label": "Robiť",
+          "slovak": "Robím",
+          "english": "To do / I do"
+        },
+        {
+          "label": "Zabudnúť",
+          "slovak": "Zabudol som",
+          "english": "To forget / I forgot"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Mám",
+          "english": "I have"
+        },
+        {
+          "slovak": "Chcem",
+          "english": "I want"
+        },
+        {
+          "slovak": "Potrebujem",
+          "english": "I need"
+        },
+        {
+          "slovak": "Viem",
+          "english": "I know / I can"
+        },
+        {
+          "slovak": "Robím",
+          "english": "I do"
+        },
+        {
+          "slovak": "Zabudol som",
+          "english": "I forgot"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Mám",
+          "english": "I have"
+        },
+        {
+          "slovak": "Chcem",
+          "english": "I want"
+        },
+        {
+          "slovak": "Potrebujem",
+          "english": "I need"
+        },
+        {
+          "slovak": "Viem",
+          "english": "I know / I can"
+        },
+        {
+          "slovak": "Robím",
+          "english": "I do"
+        },
+        {
+          "slovak": "Zabudol som",
+          "english": "I forgot"
+        }
+      ]
+    },
+    {
+      "id": "ex2c",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Mám",
+          "english": "I have"
+        },
+        {
+          "slovak": "Chcem",
+          "english": "I want"
+        },
+        {
+          "slovak": "Potrebujem",
+          "english": "I need"
+        },
+        {
+          "slovak": "Viem",
+          "english": "I know / I can"
+        },
+        {
+          "slovak": "Robím",
+          "english": "I do"
+        },
+        {
+          "slovak": "Zabudol som",
+          "english": "I forgot"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Mám",
+          "english": "I have"
+        },
+        {
+          "slovak": "Chcem",
+          "english": "I want"
+        },
+        {
+          "slovak": "Potrebujem",
+          "english": "I need"
+        },
+        {
+          "slovak": "Viem",
+          "english": "I know / I can"
+        },
+        {
+          "slovak": "Robím",
+          "english": "I do"
+        },
+        {
+          "slovak": "Zabudol som",
+          "english": "I forgot"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are at the office and say: 'I have a document.' Which phrase is correct?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Mám dokument.",
+            "Má dokument.",
+            "Máte dokument.",
+            "Majú dokument."
+          ],
+          "answer": "Mám dokument.",
+          "answerMeaning": "Mám = I have."
+        },
+        {
+          "situation": "Your flatmate asks if you want coffee. You do. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Chce kávu.",
+            "Chcem kávu.",
+            "Chcete kávu.",
+            "Chceš kávu."
+          ],
+          "answer": "Chcem kávu.",
+          "answerMeaning": "Chcem = I want."
+        },
+        {
+          "situation": "At Foreign Police, you say: 'I need a document.' Which is correct?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Potrebuje dokument.",
+            "Potrebujem dokument.",
+            "Potrebujete dokument.",
+            "Potrebujú dokument."
+          ],
+          "answer": "Potrebujem dokument.",
+          "answerMeaning": "Potrebujem = I need."
+        },
+        {
+          "situation": "A friend asks if you can speak Slovak a little. You can. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Viem trochu.",
+            "Vieš trochu.",
+            "Viete trochu.",
+            "Vie trochu."
+          ],
+          "answer": "Viem trochu.",
+          "answerMeaning": "Viem can mean I know or I can."
+        },
+        {
+          "situation": "Someone asks what you do at work. You want to say: 'I do cleaning.' Which starts the answer?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Robím",
+            "Robíš",
+            "Robí",
+            "Robíte"
+          ],
+          "answer": "Robím",
+          "answerMeaning": "Robím = I do."
+        },
+        {
+          "situation": "You arrive without your wallet. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Mám peňaženku.",
+            "Chcem peňaženku.",
+            "Zabudol som peňaženku.",
+            "Potrebujem peňaženku."
+          ],
+          "answer": "Zabudol som peňaženku.",
+          "answerMeaning": "Zabudol som = I forgot."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ pas.",
+          "translation": "I have a passport.",
+          "choices": [
+            "Mám",
+            "Chcem",
+            "Viem",
+            "Robím"
+          ],
+          "answer": "Mám"
+        },
+        {
+          "sentence": "___ kávu.",
+          "translation": "I want coffee.",
+          "choices": [
+            "Mám",
+            "Chcem",
+            "Potrebujem",
+            "Viem"
+          ],
+          "answer": "Chcem"
+        },
+        {
+          "sentence": "___ lekára.",
+          "translation": "I need a doctor.",
+          "choices": [
+            "Robím",
+            "Potrebujem",
+            "Mám",
+            "Viem"
+          ],
+          "answer": "Potrebujem"
+        },
+        {
+          "sentence": "___ trochu po slovensky.",
+          "translation": "I can speak a little Slovak.",
+          "choices": [
+            "Mám",
+            "Chcem",
+            "Viem",
+            "Robím"
+          ],
+          "answer": "Viem"
+        },
+        {
+          "sentence": "Čo ___?",
+          "translation": "What should I do?",
+          "choices": [
+            "mám robiť",
+            "robím",
+            "chcem",
+            "viem"
+          ],
+          "answer": "mám robiť"
+        },
+        {
+          "sentence": "___ PIN.",
+          "translation": "I forgot the PIN.",
+          "choices": [
+            "Mám",
+            "Zabudol som",
+            "Potrebujem",
+            "Chcem"
+          ],
+          "answer": "Zabudol som"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

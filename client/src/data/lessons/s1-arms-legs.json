@@ -15,33 +15,33 @@
       "rows": [
         {
           "label": "Hand / Arm",
-          "slovak": "Ruka / Ruky",
-          "english": "Hand / Arm (singular / plural)"
+          "slovak": "Ruka",
+          "english": "Hand / Arm. Slovak uses one word for both."
         },
         {
-          "label": "Finger",
+          "label": "Hands / Arms",
+          "slovak": "Ruky",
+          "english": "Hands / Arms (plural)"
+        },
+        {
+          "label": "Finger / Toe",
           "slovak": "Prst",
-          "english": "Finger"
+          "english": "Finger / Toe. Context tells you which one."
         },
         {
           "label": "Leg / Foot",
-          "slovak": "Noha / Nohy",
-          "english": "Leg / Foot (singular / plural)"
+          "slovak": "Noha",
+          "english": "Leg / Foot. Slovak uses one word for both."
+        },
+        {
+          "label": "Legs / Feet",
+          "slovak": "Nohy",
+          "english": "Legs / Feet (plural)"
         },
         {
           "label": "Knee",
           "slovak": "Koleno",
           "english": "Knee"
-        },
-        {
-          "label": "Leg / foot note",
-          "slovak": "Noha = leg / foot",
-          "english": "Slovak uses one common word for leg and foot."
-        },
-        {
-          "label": "Finger / toe note",
-          "slovak": "Prst = finger / toe",
-          "english": "Context tells you whether it is on the hand or foot."
         }
       ]
     },

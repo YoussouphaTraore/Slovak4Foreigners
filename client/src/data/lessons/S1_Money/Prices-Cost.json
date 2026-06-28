@@ -1,0 +1,301 @@
+{
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "icon": "💶",
+  "xpReward": 10,
+  "coming_soon": false,
+  "id": "s1-prices-cost",
+  "title": "Prices & Cost",
+  "description": "Ask prices and understand free or paid entry",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Prices & Cost",
+      "rows": [
+        {
+          "label": "Money",
+          "slovak": "Peniaze",
+          "english": "Money"
+        },
+        {
+          "label": "Price",
+          "slovak": "Cena",
+          "english": "Price / cost"
+        },
+        {
+          "label": "How much?",
+          "slovak": "Koľko to stojí?",
+          "english": "How much does it cost?"
+        },
+        {
+          "label": "Free",
+          "slovak": "Zadarmo",
+          "english": "Free of charge"
+        },
+        {
+          "label": "Euro",
+          "slovak": "Euro",
+          "english": "Euro"
+        },
+        {
+          "label": "Cent",
+          "slovak": "Cent",
+          "english": "Cent"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Peniaze",
+          "english": "Money"
+        },
+        {
+          "slovak": "Cena",
+          "english": "Price"
+        },
+        {
+          "slovak": "Koľko to stojí?",
+          "english": "How much does it cost?"
+        },
+        {
+          "slovak": "Zadarmo",
+          "english": "Free"
+        },
+        {
+          "slovak": "Euro",
+          "english": "Euro"
+        },
+        {
+          "slovak": "Cent",
+          "english": "Cent"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Peniaze",
+          "english": "Money"
+        },
+        {
+          "slovak": "Cena",
+          "english": "Price"
+        },
+        {
+          "slovak": "Koľko to stojí?",
+          "english": "How much does it cost?"
+        },
+        {
+          "slovak": "Zadarmo",
+          "english": "Free"
+        },
+        {
+          "slovak": "Euro",
+          "english": "Euro"
+        },
+        {
+          "slovak": "Cent",
+          "english": "Cent"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Peniaze",
+          "english": "Money"
+        },
+        {
+          "slovak": "Cena",
+          "english": "Price"
+        },
+        {
+          "slovak": "Koľko to stojí?",
+          "english": "How much does it cost?"
+        },
+        {
+          "slovak": "Zadarmo",
+          "english": "Free"
+        },
+        {
+          "slovak": "Euro",
+          "english": "Euro"
+        },
+        {
+          "slovak": "Cent",
+          "english": "Cent"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Peniaze",
+          "english": "Money"
+        },
+        {
+          "slovak": "Cena",
+          "english": "Price"
+        },
+        {
+          "slovak": "Koľko to stojí?",
+          "english": "How much does it cost?"
+        },
+        {
+          "slovak": "Zadarmo",
+          "english": "Free of charge"
+        },
+        {
+          "slovak": "Euro",
+          "english": "Euro"
+        },
+        {
+          "slovak": "Cent",
+          "english": "Cent"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You pick up an item at a market stall. What is the first thing you ask the seller?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Koľko to stojí?",
+            "Platím kartou.",
+            "Chcem zaplatiť.",
+            "Zadarmo?"
+          ],
+          "answer": "Koľko to stojí?",
+          "answerMeaning": "Koľko to stojí? = How much does it cost? This is the natural opening when buying anything."
+        },
+        {
+          "situation": "The price tag reads 15 eur. How much is the item?",
+          "instruction": "Choose the correct amount",
+          "choices": [
+            "5 eur",
+            "14 eur",
+            "15 eur",
+            "50 eur"
+          ],
+          "answer": "15 eur",
+          "answerMeaning": "Pätnásť = fifteen, from the Numbers topic. Eur is the short everyday form of euro."
+        },
+        {
+          "situation": "You see a sign in a museum that says 'Vstup zadarmo.' What does it mean?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "Entry costs money",
+            "Entry is free",
+            "Entry needs a card",
+            "Entry needs cash"
+          ],
+          "answer": "Entry is free",
+          "answerMeaning": "Vstup zadarmo = Entry is free. Zadarmo = free of charge."
+        },
+        {
+          "situation": "A plastic bag costs 5 centov. What is centov connected to?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "Cents",
+            "Cards",
+            "Receipts",
+            "Bills"
+          ],
+          "answer": "Cents",
+          "answerMeaning": "Cent / centov = cent / cents. You will hear this for small prices."
+        },
+        {
+          "situation": "The shelf label says cena. What does the label show?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "The price",
+            "The receipt",
+            "The card",
+            "The change"
+          ],
+          "answer": "The price",
+          "answerMeaning": "Cena = price / cost. Shelf labels and menus use this word."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ to stojí? — Päť eur.",
+          "translation": "___ does it cost? — Five euros.",
+          "choices": [
+            "Koľko",
+            "Kedy",
+            "Kde",
+            "Ako"
+          ],
+          "answer": "Koľko"
+        },
+        {
+          "sentence": "Vstup je ___. Nemusíte platiť.",
+          "translation": "Entry is ___. You don't need to pay.",
+          "choices": [
+            "drahý",
+            "zadarmo",
+            "hotovosť",
+            "cena"
+          ],
+          "answer": "zadarmo"
+        },
+        {
+          "sentence": "Aká je ___?",
+          "translation": "What is the price?",
+          "choices": [
+            "cena",
+            "karta",
+            "účtenka",
+            "hotovosť"
+          ],
+          "answer": "cena"
+        },
+        {
+          "sentence": "Stojí to päť ___.",
+          "translation": "It costs five euros.",
+          "choices": [
+            "eur",
+            "centov",
+            "kariet",
+            "účtov"
+          ],
+          "answer": "eur"
+        },
+        {
+          "sentence": "Taška stojí päť ___.",
+          "translation": "The bag costs five cents.",
+          "choices": [
+            "centov",
+            "eur",
+            "účteniek",
+            "kariet"
+          ],
+          "answer": "centov"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

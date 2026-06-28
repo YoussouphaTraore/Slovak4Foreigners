@@ -1,0 +1,275 @@
+{
+  "id": "s1-during-taxi-ride",
+  "stageId": "survival",
+  "stageName": "Stage 1  Survival",
+  "title": "During the Ride",
+  "description": "Stop, pay, and close the taxi ride",
+  "icon": "🚕",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "During the Ride",
+      "rows": [
+        {
+          "label": "Can you stop here?",
+          "slovak": "Môžete zastaviť tu?",
+          "english": "Can you stop here?"
+        },
+        {
+          "label": "Right here is fine",
+          "slovak": "Tu je to v poriadku.",
+          "english": "Right here is fine."
+        },
+        {
+          "label": "Here you go. Thanks.",
+          "slovak": "Tu máte. Ďakujem.",
+          "english": "Here you go. Thanks."
+        },
+        {
+          "label": "Keep the change",
+          "slovak": "Drobné si nechajte.",
+          "english": "Keep the change."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Môžete zastaviť tu?",
+          "english": "Can you stop here?"
+        },
+        {
+          "slovak": "Tu je to v poriadku.",
+          "english": "Right here is fine."
+        },
+        {
+          "slovak": "Tu máte. Ďakujem.",
+          "english": "Here you go. Thanks."
+        },
+        {
+          "slovak": "Drobné si nechajte.",
+          "english": "Keep the change."
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Môžete zastaviť tu?",
+          "english": "Can you stop here?"
+        },
+        {
+          "slovak": "Tu je to v poriadku.",
+          "english": "Right here is fine."
+        },
+        {
+          "slovak": "Tu máte. Ďakujem.",
+          "english": "Here you go. Thanks."
+        },
+        {
+          "slovak": "Drobné si nechajte.",
+          "english": "Keep the change."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Môžete zastaviť tu?",
+          "english": "Can you stop here?"
+        },
+        {
+          "slovak": "Tu je to v poriadku.",
+          "english": "Right here is fine."
+        },
+        {
+          "slovak": "Drobné si nechajte.",
+          "english": "Keep the change."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Môžete zastaviť tu?",
+          "english": "Can you stop here?"
+        },
+        {
+          "slovak": "Tu je to v poriadku.",
+          "english": "Right here is fine."
+        },
+        {
+          "slovak": "Tu máte. Ďakujem.",
+          "english": "Here you go. Thanks."
+        },
+        {
+          "slovak": "Drobné si nechajte.",
+          "english": "Keep the change."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: Can you stop here?.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Drobné si nechajte.",
+            "Môžete zastaviť tu?",
+            "Tu je to v poriadku.",
+            "Tu máte. Ďakujem."
+          ],
+          "answer": "Môžete zastaviť tu?",
+          "answerMeaning": "Môžete zastaviť tu? = Can you stop here?"
+        },
+        {
+          "situation": "You need to say: Right here is fine.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Drobné si nechajte.",
+            "Môžete zastaviť tu?",
+            "Tu je to v poriadku.",
+            "Tu máte. Ďakujem."
+          ],
+          "answer": "Tu je to v poriadku.",
+          "answerMeaning": "Tu je to v poriadku. = Right here is fine."
+        },
+        {
+          "situation": "You need to say: Here you go. Thanks.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Drobné si nechajte.",
+            "Môžete zastaviť tu?",
+            "Tu je to v poriadku.",
+            "Tu máte. Ďakujem."
+          ],
+          "answer": "Tu máte. Ďakujem.",
+          "answerMeaning": "Tu máte. Ďakujem. = Here you go. Thanks."
+        },
+        {
+          "situation": "You need to say: Keep the change.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Drobné si nechajte.",
+            "Môžete zastaviť tu?",
+            "Tu je to v poriadku.",
+            "Tu máte. Ďakujem."
+          ],
+          "answer": "Drobné si nechajte.",
+          "answerMeaning": "Drobné si nechajte. = Keep the change."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You see your destination is just ahead, slightly before the exact address. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Môžete zastaviť tu?",
+            "Potrebujem ísť do...",
+            "Koľko to bude stáť?",
+            "Voľné?"
+          ],
+          "answer": "Môžete zastaviť tu?",
+          "answerMeaning": "Môžete zastaviť tu? = Can you stop here? Useful when you want to get out before the exact destination."
+        },
+        {
+          "situation": "The driver stops exactly where you wanted. What do you confirm?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Tu je to v poriadku.",
+            "Potrebujem taxi.",
+            "Ako dlho to bude trvať?",
+            "Na túto adresu, prosím."
+          ],
+          "answer": "Tu je to v poriadku.",
+          "answerMeaning": "Tu je to v poriadku = Right here is fine. Let the driver know this is exactly where you want to be dropped off."
+        },
+        {
+          "situation": "The fare is 8 eur. You give a 10 eur note and don't need change back. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Máte drobné?",
+            "Drobné si nechajte.",
+            "Koľko to bude stáť?",
+            "Je to zadarmo?"
+          ],
+          "answer": "Drobné si nechajte.",
+          "answerMeaning": "Drobné si nechajte = Keep the change. Drobné from the Money topic \u001d a polite way to tip."
+        },
+        {
+          "situation": "You hand over the exact fare and want to thank the driver as you get out. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Tu máte. Ďakujem.",
+            "Môžete zastaviť tu?",
+            "Voľné?",
+            "Potrebujem taxi."
+          ],
+          "answer": "Tu máte. Ďakujem.",
+          "answerMeaning": "Tu je to. Ďakujem = Here you go. Thanks. A simple, warm way to end the ride."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Môžete ___ tu? Toto je dobré miesto.",
+          "translation": "Can you stop here? This is a good spot.",
+          "choices": [
+            "ísť",
+            "zastaviť",
+            "platiť",
+            "vidieť"
+          ],
+          "answer": "zastaviť"
+        },
+        {
+          "sentence": "Tu je to v ___. Ďakujem.",
+          "translation": "Right here is fine. Thank you.",
+          "choices": [
+            "poriadku",
+            "centre",
+            "meste",
+            "byte"
+          ],
+          "answer": "poriadku"
+        },
+        {
+          "sentence": "Drobné si ___. Ďakujem za odvoz.",
+          "translation": "Keep the change. Thanks for the ride.",
+          "choices": [
+            "vezmite",
+            "nechajte",
+            "dajte",
+            "platte"
+          ],
+          "answer": "nechajte"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

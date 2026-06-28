@@ -1,0 +1,324 @@
+{
+  "id": "s1-parents-siblings",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Parents & Siblings",
+  "description": "Talk about parents, brothers, sisters and siblings",
+  "icon": "👪",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Parents & Siblings",
+      "rows": [
+        {
+          "label": "Mother",
+          "slovak": "Mama",
+          "english": "Mother / Mum"
+        },
+        {
+          "label": "Father",
+          "slovak": "Otec",
+          "english": "Father / Dad"
+        },
+        {
+          "label": "Parents",
+          "slovak": "Rodičia",
+          "english": "Parents"
+        },
+        {
+          "label": "Brother",
+          "slovak": "Brat",
+          "english": "Brother"
+        },
+        {
+          "label": "Sister",
+          "slovak": "Sestra",
+          "english": "Sister"
+        },
+        {
+          "label": "Siblings",
+          "slovak": "Súrodenci",
+          "english": "Siblings"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Mama",
+          "english": "Mother"
+        },
+        {
+          "slovak": "Otec",
+          "english": "Father"
+        },
+        {
+          "slovak": "Rodičia",
+          "english": "Parents"
+        },
+        {
+          "slovak": "Brat",
+          "english": "Brother"
+        },
+        {
+          "slovak": "Sestra",
+          "english": "Sister"
+        },
+        {
+          "slovak": "Súrodenci",
+          "english": "Siblings"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Mama",
+          "english": "Mother"
+        },
+        {
+          "slovak": "Otec",
+          "english": "Father"
+        },
+        {
+          "slovak": "Rodičia",
+          "english": "Parents"
+        },
+        {
+          "slovak": "Brat",
+          "english": "Brother"
+        },
+        {
+          "slovak": "Sestra",
+          "english": "Sister"
+        },
+        {
+          "slovak": "Súrodenci",
+          "english": "Siblings"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Mama",
+          "english": "Mother"
+        },
+        {
+          "slovak": "Otec",
+          "english": "Father"
+        },
+        {
+          "slovak": "Rodičia",
+          "english": "Parents"
+        },
+        {
+          "slovak": "Brat",
+          "english": "Brother"
+        },
+        {
+          "slovak": "Sestra",
+          "english": "Sister"
+        },
+        {
+          "slovak": "Súrodenci",
+          "english": "Siblings"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Mama",
+          "english": "Mother"
+        },
+        {
+          "slovak": "Otec",
+          "english": "Father"
+        },
+        {
+          "slovak": "Rodičia",
+          "english": "Parents"
+        },
+        {
+          "slovak": "Brat",
+          "english": "Brother"
+        },
+        {
+          "slovak": "Sestra",
+          "english": "Sister"
+        },
+        {
+          "slovak": "Súrodenci",
+          "english": "Siblings"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your colleague asks if you have brothers or sisters. You have one brother. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Mám sestru.",
+            "Mám brata.",
+            "Mám syna.",
+            "Mám otca."
+          ],
+          "answer": "Mám brata.",
+          "answerMeaning": "Brat = brother. Mám brata = I have a brother."
+        },
+        {
+          "situation": "Someone asks where your parents live. What word means parents?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Rodičia",
+            "Súrodenci",
+            "Deti",
+            "Svokrovci"
+          ],
+          "answer": "Rodičia",
+          "answerMeaning": "Rodičia = parents."
+        },
+        {
+          "situation": "You are an only child. What do you say about siblings?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Mám súrodencov.",
+            "Nemám súrodencov.",
+            "Mám rodičov.",
+            "Nemám rodičov."
+          ],
+          "answer": "Nemám súrodencov.",
+          "answerMeaning": "Súrodenci = siblings. Nemám súrodencov = I don't have siblings."
+        },
+        {
+          "situation": "You introduce your sister to a friend. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "To je môj brat.",
+            "To je moja sestra.",
+            "To je moja mama.",
+            "To je môj otec."
+          ],
+          "answer": "To je moja sestra.",
+          "answerMeaning": "Sestra = sister."
+        },
+        {
+          "situation": "You want to say your mother lives in Košice. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Mama",
+            "Otec",
+            "Brat",
+            "Sestra"
+          ],
+          "answer": "Mama",
+          "answerMeaning": "Mama = mother / mum."
+        },
+        {
+          "situation": "You want to say your father is from Prešov. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Otec",
+            "Mama",
+            "Dcéra",
+            "Teta"
+          ],
+          "answer": "Otec",
+          "answerMeaning": "Otec = father / dad."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Mám jedného ___ a jednu sestru.",
+          "translation": "I have one brother and one sister.",
+          "choices": [
+            "otca",
+            "brata",
+            "syna",
+            "dedka"
+          ],
+          "answer": "brata"
+        },
+        {
+          "sentence": "Moji ___ bývajú v Košiciach.",
+          "translation": "My parents live in Košice.",
+          "choices": [
+            "rodičia",
+            "súrodenci",
+            "deti",
+            "manželia"
+          ],
+          "answer": "rodičia"
+        },
+        {
+          "sentence": "Nemám ___. Som jediné dieťa.",
+          "translation": "I don't have siblings. I am the only child.",
+          "choices": [
+            "rodinu",
+            "súrodencov",
+            "rodičov",
+            "deti"
+          ],
+          "answer": "súrodencov"
+        },
+        {
+          "sentence": "Moja ___ sa volá Eva.",
+          "translation": "My mother is called Eva.",
+          "choices": [
+            "mama",
+            "otec",
+            "brat",
+            "syn"
+          ],
+          "answer": "mama"
+        },
+        {
+          "sentence": "Môj ___ pracuje v nemocnici.",
+          "translation": "My father works in a hospital.",
+          "choices": [
+            "otec",
+            "sestra",
+            "dcéra",
+            "teta"
+          ],
+          "answer": "otec"
+        },
+        {
+          "sentence": "To je moja ___. Má dvadsať rokov.",
+          "translation": "This is my sister. She is twenty years old.",
+          "choices": [
+            "sestra",
+            "brat",
+            "mama",
+            "syn"
+          ],
+          "answer": "sestra"
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

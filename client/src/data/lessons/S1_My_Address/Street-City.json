@@ -1,0 +1,306 @@
+{
+  "id": "s1-street-city",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Street & City",
+  "description": "Give the basic parts of your address: street, house number, city, and postal code",
+  "icon": "🏠",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Basic Address",
+      "rows": [
+        {
+          "label": "Street",
+          "slovak": "Ulica",
+          "english": "Street"
+        },
+        {
+          "label": "House number",
+          "slovak": "Číslo domu",
+          "english": "House number"
+        },
+        {
+          "label": "City / Town",
+          "slovak": "Mesto",
+          "english": "City / Town"
+        },
+        {
+          "label": "Postal code",
+          "slovak": "PSČ",
+          "english": "Postal code"
+        },
+        {
+          "label": "My address is...",
+          "slovak": "Moja adresa je...",
+          "english": "My address is..."
+        },
+        {
+          "label": "What's your address?",
+          "slovak": "Aká je vaša adresa?",
+          "english": "What is your address?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Ulica",
+          "english": "Street"
+        },
+        {
+          "slovak": "Číslo domu",
+          "english": "House number"
+        },
+        {
+          "slovak": "Mesto",
+          "english": "City"
+        },
+        {
+          "slovak": "PSČ",
+          "english": "Postal code"
+        },
+        {
+          "slovak": "Moja adresa je...",
+          "english": "My address is..."
+        },
+        {
+          "slovak": "Aká je vaša adresa?",
+          "english": "What is your address?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Ulica",
+          "english": "Street"
+        },
+        {
+          "slovak": "Číslo domu",
+          "english": "House number"
+        },
+        {
+          "slovak": "Mesto",
+          "english": "City"
+        },
+        {
+          "slovak": "PSČ",
+          "english": "Postal code"
+        },
+        {
+          "slovak": "Moja adresa je...",
+          "english": "My address is..."
+        },
+        {
+          "slovak": "Aká je vaša adresa?",
+          "english": "What is your address?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Ulica",
+          "english": "Street"
+        },
+        {
+          "slovak": "Číslo domu",
+          "english": "House number"
+        },
+        {
+          "slovak": "Mesto",
+          "english": "City / Town"
+        },
+        {
+          "slovak": "PSČ",
+          "english": "Postal code"
+        },
+        {
+          "slovak": "Moja adresa je...",
+          "english": "My address is..."
+        },
+        {
+          "slovak": "Aká je vaša adresa?",
+          "english": "What is your address?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Ulica",
+          "english": "Street"
+        },
+        {
+          "slovak": "Číslo domu",
+          "english": "House number"
+        },
+        {
+          "slovak": "Mesto",
+          "english": "City"
+        },
+        {
+          "slovak": "PSČ",
+          "english": "Postal code"
+        },
+        {
+          "slovak": "Moja adresa je...",
+          "english": "My address is..."
+        },
+        {
+          "slovak": "Aká je vaša adresa?",
+          "english": "What is your address?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "A dispatcher asks: Aká je vaša adresa? What do they need?",
+          "instruction": "Choose the best answer",
+          "choices": [
+            "Your full address",
+            "Your age",
+            "Your nationality",
+            "Your job"
+          ],
+          "answer": "Your full address",
+          "answerMeaning": "Aká je vaša adresa? = What is your address?"
+        },
+        {
+          "situation": "A courier asks for your address. Which phrase starts the answer?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Moja adresa je...",
+            "Koľko to stojí?",
+            "Neviem.",
+            "Dobrú noc."
+          ],
+          "answer": "Moja adresa je...",
+          "answerMeaning": "Moja adresa je... = My address is..."
+        },
+        {
+          "situation": "A form asks for Číslo domu. What do you write?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "House number",
+            "City",
+            "Street",
+            "Postal code"
+          ],
+          "answer": "House number",
+          "answerMeaning": "Číslo domu = house number."
+        },
+        {
+          "situation": "A form asks for PSČ. What does it mean?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Postal code",
+            "Street",
+            "Country",
+            "Floor"
+          ],
+          "answer": "Postal code",
+          "answerMeaning": "PSČ = postal code."
+        },
+        {
+          "situation": "You say: Moja adresa je Hlavná 12, Bratislava. Which part is the city?",
+          "instruction": "Choose the city",
+          "choices": [
+            "Bratislava",
+            "Hlavná",
+            "12",
+            "Moja"
+          ],
+          "answer": "Bratislava",
+          "answerMeaning": "Mesto = city. Bratislava is the city in this address."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Moja ___ je Hlavná 12.",
+          "translation": "My address is Hlavná 12.",
+          "choices": [
+            "adresa",
+            "mesto",
+            "ulica",
+            "PSČ"
+          ],
+          "answer": "adresa",
+          "answerMeaning": "Moja adresa je... = My address is..."
+        },
+        {
+          "sentence": "___ domu je 12.",
+          "translation": "The house number is 12.",
+          "choices": [
+            "Číslo",
+            "Mesto",
+            "Ulica",
+            "Adresa"
+          ],
+          "answer": "Číslo",
+          "answerMeaning": "Číslo domu = house number."
+        },
+        {
+          "sentence": "Bývam v meste ___.",
+          "translation": "I live in the city of Bratislava.",
+          "choices": [
+            "Bratislava",
+            "Hlavná",
+            "dvanásť",
+            "PSČ"
+          ],
+          "answer": "Bratislava",
+          "answerMeaning": "Mesto = city / town."
+        },
+        {
+          "sentence": "Moje ___ je 811 01.",
+          "translation": "My postal code is 811 01.",
+          "choices": [
+            "PSČ",
+            "mesto",
+            "ulica",
+            "číslo domu"
+          ],
+          "answer": "PSČ",
+          "answerMeaning": "PSČ = postal code."
+        },
+        {
+          "sentence": "Aká je vaša ___?",
+          "translation": "What is your address?",
+          "choices": [
+            "adresa",
+            "ulica",
+            "mesto",
+            "krajina"
+          ],
+          "answer": "adresa",
+          "answerMeaning": "Aká je vaša adresa? = What is your address?"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

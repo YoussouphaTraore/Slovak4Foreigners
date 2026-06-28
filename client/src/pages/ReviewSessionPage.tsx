@@ -288,6 +288,8 @@ export function ReviewSessionPage() {
 
         <p className="text-xs text-gray-400 text-center">All lessons restored to full strength 🟢</p>
 
+        <p className="text-xs text-gray-400 text-center mt-1">This counts toward your weekly practice days ✓</p>
+
         <button
           type="button"
           onClick={() => navigate('/')}

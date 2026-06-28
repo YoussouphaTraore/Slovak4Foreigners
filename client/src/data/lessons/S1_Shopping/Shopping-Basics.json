@@ -1,0 +1,324 @@
+{
+  "id": "s1-shopping-basics",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Shopping Basics",
+  "description": "Use the first words you need in a shop",
+  "icon": "🛒",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Basic shopping words",
+      "rows": [
+        {
+          "label": "Shop",
+          "slovak": "Obchod",
+          "english": "Shop"
+        },
+        {
+          "label": "Price",
+          "slovak": "Cena",
+          "english": "Price"
+        },
+        {
+          "label": "Cheap",
+          "slovak": "Je to lacné.",
+          "english": "It is cheap."
+        },
+        {
+          "label": "Expensive",
+          "slovak": "Je to drahé.",
+          "english": "It is expensive."
+        },
+        {
+          "label": "I want this",
+          "slovak": "Chcem toto.",
+          "english": "I want this."
+        },
+        {
+          "label": "Just looking",
+          "slovak": "Len sa pozerám.",
+          "english": "I am just looking."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Obchod",
+          "english": "Shop"
+        },
+        {
+          "slovak": "Cena",
+          "english": "Price"
+        },
+        {
+          "slovak": "Je to lacné.",
+          "english": "It is cheap."
+        },
+        {
+          "slovak": "Je to drahé.",
+          "english": "It is expensive."
+        },
+        {
+          "slovak": "Chcem toto.",
+          "english": "I want this."
+        },
+        {
+          "slovak": "Len sa pozerám.",
+          "english": "I am just looking."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Obchod",
+          "english": "Shop"
+        },
+        {
+          "slovak": "Cena",
+          "english": "Price"
+        },
+        {
+          "slovak": "Je to lacné.",
+          "english": "It is cheap."
+        },
+        {
+          "slovak": "Je to drahé.",
+          "english": "It is expensive."
+        },
+        {
+          "slovak": "Chcem toto.",
+          "english": "I want this."
+        },
+        {
+          "slovak": "Len sa pozerám.",
+          "english": "I am just looking."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Obchod",
+          "english": "Shop"
+        },
+        {
+          "slovak": "Cena",
+          "english": "Price"
+        },
+        {
+          "slovak": "Je to lacné.",
+          "english": "It is cheap."
+        },
+        {
+          "slovak": "Je to drahé.",
+          "english": "It is expensive."
+        },
+        {
+          "slovak": "Chcem toto.",
+          "english": "I want this."
+        },
+        {
+          "slovak": "Len sa pozerám.",
+          "english": "I am just looking."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Obchod",
+          "english": "Shop"
+        },
+        {
+          "slovak": "Cena",
+          "english": "Price"
+        },
+        {
+          "slovak": "Je to lacné.",
+          "english": "It is cheap."
+        },
+        {
+          "slovak": "Je to drahé.",
+          "english": "It is expensive."
+        },
+        {
+          "slovak": "Chcem toto.",
+          "english": "I want this."
+        },
+        {
+          "slovak": "Len sa pozerám.",
+          "english": "I am just looking."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: Shop",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Obchod",
+            "Cena",
+            "Je to lacné.",
+            "Je to drahé."
+          ],
+          "answer": "Obchod",
+          "answerMeaning": "Obchod = Shop"
+        },
+        {
+          "situation": "You need to say: Price",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Cena",
+            "Obchod",
+            "Je to lacné.",
+            "Je to drahé."
+          ],
+          "answer": "Cena",
+          "answerMeaning": "Cena = Price"
+        },
+        {
+          "situation": "You need to say: It is cheap.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Je to lacné.",
+            "Obchod",
+            "Cena",
+            "Je to drahé."
+          ],
+          "answer": "Je to lacné.",
+          "answerMeaning": "Je to lacné. = It is cheap."
+        },
+        {
+          "situation": "You need to say: It is expensive.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Je to drahé.",
+            "Obchod",
+            "Cena",
+            "Je to lacné."
+          ],
+          "answer": "Je to drahé.",
+          "answerMeaning": "Je to drahé. = It is expensive."
+        },
+        {
+          "situation": "You need to say: I want this.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Chcem toto.",
+            "Obchod",
+            "Cena",
+            "Je to lacné."
+          ],
+          "answer": "Chcem toto.",
+          "answerMeaning": "Chcem toto. = I want this."
+        },
+        {
+          "situation": "You need to say: I am just looking.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Len sa pozerám.",
+            "Obchod",
+            "Cena",
+            "Je to lacné."
+          ],
+          "answer": "Len sa pozerám.",
+          "answerMeaning": "Len sa pozerám. = I am just looking."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Len sa ___.",
+          "translation": "I am just looking.",
+          "choices": [
+            "pozerám",
+            "platím",
+            "vrátim",
+            "sedí"
+          ],
+          "answer": "pozerám"
+        },
+        {
+          "sentence": "Chcem ___.",
+          "translation": "I want this.",
+          "choices": [
+            "toto",
+            "včera",
+            "piatok",
+            "zima"
+          ],
+          "answer": "toto"
+        },
+        {
+          "sentence": "Aká je ___?",
+          "translation": "What is the price?",
+          "choices": [
+            "cena",
+            "taška",
+            "bunda",
+            "veľkosť"
+          ],
+          "answer": "cena"
+        },
+        {
+          "sentence": "Je to ___.",
+          "translation": "It is cheap.",
+          "choices": [
+            "lacné",
+            "drahé",
+            "malé",
+            "zatvorené"
+          ],
+          "answer": "lacné"
+        },
+        {
+          "sentence": "Je to príliš ___.",
+          "translation": "It is too expensive.",
+          "choices": [
+            "drahé",
+            "lacné",
+            "nízke",
+            "otvorené"
+          ],
+          "answer": "drahé"
+        },
+        {
+          "sentence": "Kde je ___?",
+          "translation": "Where is the shop?",
+          "choices": [
+            "obchod",
+            "účtenka",
+            "ponožka",
+            "kabát"
+          ],
+          "answer": "obchod"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

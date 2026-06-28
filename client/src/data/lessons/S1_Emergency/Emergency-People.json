@@ -1,0 +1,306 @@
+{
+  "id": "s1-emergency-people",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Emergency People",
+  "description": "Understand the people and services involved in emergencies",
+  "icon": "🚑",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "People & Services",
+      "rows": [
+        {
+          "label": "Doctor",
+          "slovak": "Doktor",
+          "english": "Doctor"
+        },
+        {
+          "label": "Police officer",
+          "slovak": "Policajt",
+          "english": "Police officer"
+        },
+        {
+          "label": "Paramedic",
+          "slovak": "Záchranár",
+          "english": "Paramedic"
+        },
+        {
+          "label": "Ambulance",
+          "slovak": "Sanitka",
+          "english": "Ambulance vehicle"
+        },
+        {
+          "label": "Hospital",
+          "slovak": "Nemocnica",
+          "english": "Hospital"
+        },
+        {
+          "label": "Fire department",
+          "slovak": "Hasiči",
+          "english": "Firefighters / fire department"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Doktor",
+          "english": "Doctor"
+        },
+        {
+          "slovak": "Policajt",
+          "english": "Police officer"
+        },
+        {
+          "slovak": "Záchranár",
+          "english": "Paramedic"
+        },
+        {
+          "slovak": "Sanitka",
+          "english": "Ambulance"
+        },
+        {
+          "slovak": "Nemocnica",
+          "english": "Hospital"
+        },
+        {
+          "slovak": "Hasiči",
+          "english": "Fire department"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Doktor",
+          "english": "Doctor"
+        },
+        {
+          "slovak": "Policajt",
+          "english": "Police officer"
+        },
+        {
+          "slovak": "Záchranár",
+          "english": "Paramedic"
+        },
+        {
+          "slovak": "Sanitka",
+          "english": "Ambulance"
+        },
+        {
+          "slovak": "Nemocnica",
+          "english": "Hospital"
+        },
+        {
+          "slovak": "Hasiči",
+          "english": "Fire department"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Doktor",
+          "english": "Doctor"
+        },
+        {
+          "slovak": "Policajt",
+          "english": "Police officer"
+        },
+        {
+          "slovak": "Záchranár",
+          "english": "Paramedic"
+        },
+        {
+          "slovak": "Sanitka",
+          "english": "Ambulance"
+        },
+        {
+          "slovak": "Nemocnica",
+          "english": "Hospital"
+        },
+        {
+          "slovak": "Hasiči",
+          "english": "Firefighters"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Doktor",
+          "english": "Doctor"
+        },
+        {
+          "slovak": "Policajt",
+          "english": "Police officer"
+        },
+        {
+          "slovak": "Záchranár",
+          "english": "Paramedic"
+        },
+        {
+          "slovak": "Sanitka",
+          "english": "Ambulance"
+        },
+        {
+          "slovak": "Nemocnica",
+          "english": "Hospital"
+        },
+        {
+          "slovak": "Hasiči",
+          "english": "Fire department"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are injured and the dispatcher says a sanitka is coming. What is coming?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Ambulance",
+            "Police officer",
+            "Hospital",
+            "Doctor"
+          ],
+          "answer": "Ambulance",
+          "answerMeaning": "Sanitka = ambulance vehicle."
+        },
+        {
+          "situation": "Someone says záchranár is helping the injured person. Who is helping?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Paramedic",
+            "Police officer",
+            "Firefighter",
+            "Pharmacist"
+          ],
+          "answer": "Paramedic",
+          "answerMeaning": "Záchranár = paramedic."
+        },
+        {
+          "situation": "You need police help. Which word means police officer?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Policajt",
+            "Doktor",
+            "Hasiči",
+            "Sanitka"
+          ],
+          "answer": "Policajt",
+          "answerMeaning": "Policajt = police officer."
+        },
+        {
+          "situation": "There is a fire. Which service do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Hasiči",
+            "Doktor",
+            "Nemocnica",
+            "Policajt"
+          ],
+          "answer": "Hasiči",
+          "answerMeaning": "Hasiči = firefighters / fire department."
+        },
+        {
+          "situation": "The ambulance takes someone to the nemocnica. Where are they going?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Hospital",
+            "Police station",
+            "Pharmacy",
+            "Restaurant"
+          ],
+          "answer": "Hospital",
+          "answerMeaning": "Nemocnica = hospital."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Pošlite ___! Niekto je zranený.",
+          "translation": "Send an ambulance! Someone is injured.",
+          "choices": [
+            "sanitku",
+            "policajta",
+            "hasičov",
+            "doktora"
+          ],
+          "answer": "sanitku",
+          "answerMeaning": "Sanitka = ambulance vehicle."
+        },
+        {
+          "sentence": "___ pomáha zranenému človeku.",
+          "translation": "A paramedic is helping the injured person.",
+          "choices": [
+            "Záchranár",
+            "Policajt",
+            "Doktor",
+            "Hasiči"
+          ],
+          "answer": "Záchranár",
+          "answerMeaning": "Záchranár = paramedic."
+        },
+        {
+          "sentence": "Potrebujem ___. Ukradli mi tašku.",
+          "translation": "I need the police. They stole my bag.",
+          "choices": [
+            "políciu",
+            "sanitku",
+            "hasičov",
+            "nemocnicu"
+          ],
+          "answer": "políciu",
+          "answerMeaning": "Polícia = police."
+        },
+        {
+          "sentence": "Je tu požiar. Potrebujem ___.",
+          "translation": "There is a fire. I need firefighters.",
+          "choices": [
+            "hasičov",
+            "doktora",
+            "policajta",
+            "lekáreň"
+          ],
+          "answer": "hasičov",
+          "answerMeaning": "Hasiči = firefighters."
+        },
+        {
+          "sentence": "Ideme do ___.",
+          "translation": "We are going to the hospital.",
+          "choices": [
+            "nemocnice",
+            "polície",
+            "sanitky",
+            "hasičov"
+          ],
+          "answer": "nemocnice",
+          "answerMeaning": "Nemocnica = hospital."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

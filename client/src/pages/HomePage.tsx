@@ -2,73 +2,17 @@ import { useRef, useEffect, useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { NavigateOptions } from 'react-router-dom';
 import { lessons } from '../data/lessons';
-import { useProgressStore, computeStrength } from '../store/useProgressStore';
-import type { LessonRecord } from '../store/useProgressStore';
+import { useProgressStore } from '../store/useProgressStore';
 import { BottomNav } from '../components/ui/BottomNav';
 import { SessionRegistrationModal } from '../components/SessionRegistrationModal';
-import { stage1Blocks, PRODUCTION_VISIBLE_STAGES } from '../config/stageBlocks';
+import { stage1Blocks, getBlockLessonIds } from '../config/stageBlocks';
+import { topicById } from '../config/stage1Topics';
+import type { LessonTopic } from '../config/stage1Topics';
 import { getBlockDialogueById } from '../data/block-dialogues';
-
-type NodeState = 'completed' | 'available' | 'locked' | 'stage_locked' | 'block_locked';
+import { getLessonState } from '../utils/lessonState';
 
 const isDev = import.meta.env.DEV;
 
-function getLessonState(
-  index: number,
-  completedLessons: string[],
-  unlockedStages: string[],
-  passedBlocks: string[],
-): NodeState {
-  const lesson = lessons[index];
-
-  // Shell lessons are always locked — they have no exercises
-  if (lesson.coming_soon) return 'locked';
-
-  if (isDev) return completedLessons.includes(lesson.id) ? 'completed' : 'available';
-
-  if (!unlockedStages.includes(lesson.stageId)) return 'stage_locked';
-
-  // Block gate — if this lesson is in block N > 1, the previous block race must be passed
-  const blockIndex = stage1Blocks.findIndex((b) => b.lessonIds.includes(lesson.id));
-  if (blockIndex > 0) {
-    const previousBlock = stage1Blocks[blockIndex - 1];
-    if (!passedBlocks.includes(previousBlock.blockId)) return 'block_locked';
-  }
-
-  if (completedLessons.includes(lesson.id)) return 'completed';
-
-  // Sequential lock — find nearest non-shell predecessor
-  let prevIndex = index - 1;
-  while (prevIndex >= 0 && lessons[prevIndex].coming_soon) prevIndex--;
-
-  if (prevIndex < 0 || completedLessons.includes(lessons[prevIndex].id)) return 'available';
-  return 'locked';
-}
-
-function groupByStage(lessonList: typeof lessons) {
-  const groups: { stageId: string; stageName: string; indices: number[] }[] = [];
-  lessonList.forEach((lesson, index) => {
-    const existing = groups.find((g) => g.stageId === lesson.stageId);
-    if (existing) existing.indices.push(index);
-    else groups.push({ stageId: lesson.stageId, stageName: lesson.stageName, indices: [index] });
-  });
-  return groups;
-}
-
-function todayStr() {
-  return new Date().toISOString().split('T')[0];
-}
-
-function strengthDotClass(strength: number): string {
-  if (strength >= 80) return 'bg-brand-green';
-  if (strength >= 40) return 'bg-amber-400';
-  return 'bg-red-500';
-}
-
-const STAGE_UNLOCK_COSTS: Record<string, number> = {
-  settling: 100,
-  advanced: 250,
-};
 
 const SCROLL_KEY = 'home_scroll';
 
@@ -92,37 +36,23 @@ export function HomePage() {
   const store = useProgressStore();
   const headerRef = useRef<HTMLDivElement>(null);
   const endSentinelRef = useRef<HTMLDivElement>(null);
-  const [headerHeight, setHeaderHeight] = useState(0);
   const [hasReachedEnd, setHasReachedEnd] = useState(false);
   const {
-    xp, streak, streakMultiplier, completedLessons, unlockedStages,
-    snailRaceRecords, isSyncing, passedBlocks, completedBlockDialogues,
+    xp, streak, streakMultiplier, completedLessons,
+    isSyncing, passedBlocks, passedTopics, completedBlockDialogues,
   } = store;
-  const lessonRecords = useProgressStore((s) => s.lessonRecords);
   const practiceDaysThisWeek = useProgressStore((s) => s.practiceDaysThisWeek);
   const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
   const isSessionRegistered = useProgressStore((s) => s.isSessionRegistered);
-  const partialLessonProgress = useProgressStore((s) => s.partialLessonProgress);
   const [showSessionModal, setShowSessionModal] = useState(false);
-  const groups = groupByStage(lessons);
-
-  const [nowMs, setNowMs] = useState(() => Date.now());
-  useEffect(() => {
-    const t = setInterval(() => setNowMs(Date.now()), 60_000);
-    return () => clearInterval(t);
-  }, []);
 
   // reviewTargetIds = all currently-due lesson IDs (pre-computed by decayLessonStrengths)
   const reviewCount = reviewTargetIds.length;
-  const reviewOverdue = reviewTargetIds.some((id) => {
-    const r = lessonRecords.find((rec) => rec.lessonId === id);
-    return r && computeStrength(r, nowMs) === 0;
-  });
+  const reviewDisplayCount = Math.min(reviewCount, 3);
+  const reviewBannerLabel = reviewCount >= 3 ? 'Keep these fresh' : 'Quick warm-up';
   const showReviewBanner = isDev
     ? completedLessons.length > 0
     : reviewCount > 0;
-
-  const suggestedReviews = store.getSuggestedReviews();
 
   const finalStage1BlockId = stage1Blocks[stage1Blocks.length - 1]?.blockId;
 
@@ -130,14 +60,10 @@ export function HomePage() {
   const allAvailableLessonsComplete =
     !isDev &&
     lessons
-      .filter((l) => l.stageId === 'survival' && !l.coming_soon)
+      .filter((l) => l.stageId !== 'topic-comprehension' && !l.coming_soon)
       .every((l) => completedLessons.includes(l.id)) &&
     !!finalStage1BlockId &&
     passedBlocks.includes(finalStage1BlockId);
-
-  useEffect(() => {
-    if (headerRef.current) setHeaderHeight(headerRef.current.offsetHeight);
-  }, [showReviewBanner]);
 
   // Show end-of-feed message when user scrolls to the bottom sentinel (prod only)
   useEffect(() => {
@@ -167,127 +93,69 @@ export function HomePage() {
     } catch { /* */ }
   }, []);
 
-  const recordFor = (lessonId: string): LessonRecord | undefined =>
-    lessonRecords.find((r) => r.lessonId === lessonId);
+  // Topic node for multi-lesson topics — tapping opens the detail sheet
+  function renderTopicNode(topic: LessonTopic, showBottomConnector: boolean, isTopicGateLocked = false) {
+    const lessonIndices = topic.lessonIds
+      .map(id => lessons.findIndex(l => l.id === id))
+      .filter(i => i >= 0);
+    if (lessonIndices.length === 0) return null;
 
-  const liveStrength = useCallback(
-    (record: LessonRecord) => computeStrength(record, nowMs),
-    [nowMs],
-  );
-
-  const raceAttemptsToday = (stageId: string): number => {
-    const rec = snailRaceRecords.find((r) => r.stageId === stageId);
-    if (!rec || rec.lastAttemptDate !== todayStr()) return 0;
-    return rec.attemptsToday;
-  };
-
-  // Shared renderer for a single lesson node
-  function renderLessonNode(
-    lessonIndex: number,
-    posInGroup: number,
-    isLastInGroup: boolean,
-    showBottomConnector: boolean,
-  ) {
-    const lesson = lessons[lessonIndex];
-    const state = getLessonState(lessonIndex, completedLessons, unlockedStages, passedBlocks);
-    const record = recordFor(lesson.id);
-    const isLocked = state === 'locked' || state === 'stage_locked' || state === 'block_locked';
-    const isPartial =
-      !isLocked &&
-      state !== 'completed' &&
-      partialLessonProgress?.lessonId === lesson.id;
-    const partialFraction = isPartial
-      ? Math.min(1, partialLessonProgress!.resumeFromIndex / Math.max(1, lesson.exercises.length))
-      : 0;
-    const arcCircumference = 2 * Math.PI * 44;
-
-    void posInGroup; // used by caller for context, not needed here
+    const firstState = getLessonState(lessonIndices[0], completedLessons, passedBlocks, passedTopics);
+    const isLocked = isTopicGateLocked || firstState === 'locked' || firstState === 'block_locked' || firstState === 'topic_locked';
+    const completedCount = topic.lessonIds.filter(id => completedLessons.includes(id)).length;
+    const totalCount = topic.lessonIds.length;
+    const isComplete = completedCount === totalCount;
+    const hasProgress = completedCount > 0 && !isComplete;
 
     return (
-      <div key={lesson.id} className="flex flex-col items-center">
+      <div key={topic.id} className="flex flex-col items-center">
         <div className="w-0.5 h-8 border-l-2 border-dashed border-gray-300" />
 
         <div className="relative flex flex-col items-center">
-          {state === 'available' && (
-            <span className="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full text-xs font-bold text-brand-green uppercase tracking-widest">
-              {isPartial ? 'RESUME' : 'START'}
+          {!isLocked && !isComplete && (
+            <span className={`absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full text-xs font-bold uppercase tracking-widest ${hasProgress ? 'text-amber-500' : 'text-brand-green'}`}>
+              {hasProgress ? 'CONTINUE' : 'START'}
             </span>
           )}
+
           <div className="relative">
             <button
               type="button"
               disabled={isLocked}
-              onClick={() => !isLocked && go(`/lesson/${lesson.id}`)}
-              title={
-                state === 'stage_locked'
-                  ? 'Unlock this stage to access'
-                  : state === 'block_locked'
-                  ? 'Complete the Block Race to unlock'
-                  : state === 'locked'
-                  ? 'Complete the previous lesson to unlock'
-                  : lesson.title
-              }
+              onClick={() => !isLocked && go(`/topic/${topic.id}`)}
               className={`relative w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold shadow-md transition-all duration-200 cursor-pointer
-                ${state === 'completed'
+                ${isComplete
                   ? 'bg-brand-green text-white hover:opacity-90'
-                  : isPartial
+                  : isLocked
+                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : hasProgress
                   ? 'bg-brand-green text-white hover:opacity-90'
-                  : state === 'available'
-                  ? 'bg-brand-green text-white hover:opacity-90 ring-4 ring-brand-green/30 animate-pulse'
-                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  : 'bg-brand-green text-white hover:opacity-90 ring-4 ring-brand-green/30 animate-pulse'
                 }`}
             >
-              {state === 'completed' ? '✓' : isLocked ? '🔒' : lesson.icon}
+              {isComplete ? '✓' : isLocked ? '🔒' : topic.icon}
             </button>
 
-            {isPartial && (
-              <svg
-                className="absolute pointer-events-none"
-                style={{ inset: -8, width: 'calc(100% + 16px)', height: 'calc(100% + 16px)' }}
-                viewBox="0 0 96 96"
+            {!isLocked && (
+              <span className={`absolute -bottom-1 -right-1 min-w-[22px] h-[22px] rounded-full border-2 flex items-center justify-center text-[9px] font-extrabold px-1
+                ${isComplete ? 'bg-brand-green border-white text-white' : 'bg-white border-brand-green text-brand-green'}`}
               >
-                <circle cx="48" cy="48" r="44" fill="none" stroke="#E5E7EB" strokeWidth="4" />
-                <circle
-                  cx="48" cy="48" r="44"
-                  fill="none"
-                  stroke="#22c55e"
-                  strokeWidth="4"
-                  strokeLinecap="round"
-                  strokeDasharray={`${partialFraction * arcCircumference} ${arcCircumference}`}
-                  transform="rotate(-90 48 48)"
-                />
-              </svg>
-            )}
-
-            {record && !isLocked && (
-              <span
-                className={`absolute top-0.5 right-0.5 w-4 h-4 rounded-full border-2 border-white ${strengthDotClass(liveStrength(record))}`}
-                title={`Strength: ${liveStrength(record)}%`}
-              />
-            )}
-
-            {record?.mastered && !isLocked && (
-              <span
-                className="absolute bottom-0.5 left-0.5 w-4 h-4 rounded-full bg-yellow-400 border-2 border-white flex items-center justify-center text-[8px]"
-                title="Mastered"
-              >⭐</span>
+                {completedCount}/{totalCount}
+              </span>
             )}
           </div>
 
-          <div className="mt-2 text-center">
+          <div className="mt-3 text-center">
             <p className={`text-sm font-semibold ${isLocked ? 'text-gray-400' : 'text-gray-700'}`}>
-              {lesson.title}
+              {topic.title}
             </p>
-            <p className={`text-xs ${isLocked ? 'text-gray-300' : 'text-gray-400'} line-clamp-1`}>
-              {lesson.description}
-            </p>
-            <p className={`text-xs mt-0.5 text-right ${isLocked ? 'text-gray-300' : 'text-amber-500'} font-semibold`}>
-              ⭐ {lesson.xpReward} XP
+            <p className={`text-xs ${isLocked ? 'text-gray-300' : 'text-gray-400'}`}>
+              {isTopicGateLocked ? 'Pass the Topic Race to unlock' : `${totalCount} ${totalCount === 1 ? 'lesson' : 'lessons'}`}
             </p>
           </div>
         </div>
 
-        {(isLastInGroup || showBottomConnector) && (
+        {showBottomConnector && (
           <div className="w-0.5 h-8 border-l-2 border-dashed border-gray-300 mt-2" />
         )}
       </div>
@@ -337,15 +205,15 @@ export function HomePage() {
             <button
               type="button"
               onClick={() => go('/review')}
-              className="flex items-center gap-1 px-2.5 py-0.5 bg-amber-50 border border-amber-200 rounded-xl cursor-pointer hover:bg-amber-100 active:scale-[0.97] transition-all animate-pulse"
+              className="flex items-center gap-1 px-2.5 py-0.5 bg-emerald-50 border border-emerald-200 rounded-xl cursor-pointer hover:bg-emerald-100 active:scale-[0.97] transition-all"
             >
-              <span className="text-sm leading-none">{reviewOverdue ? '🔴' : '⚠️'}</span>
+              <span className="text-sm leading-none">🐌</span>
               {reviewCount > 0 && (
-                <span className={`text-xs font-extrabold tabular-nums ${reviewOverdue ? 'text-red-600' : 'text-amber-600'}`}>
-                  {reviewCount}+
+                <span className="text-xs font-extrabold tabular-nums text-emerald-700">
+                  {reviewDisplayCount}
                 </span>
               )}
-              <span className="text-[8px] font-bold text-amber-800">Review</span>
+              <span className="text-[8px] font-bold text-emerald-800">{reviewBannerLabel}</span>
             </button>
           )}
 
@@ -390,250 +258,117 @@ export function HomePage() {
       {/* Skill path */}
       <div className="flex-1 px-6 py-8 pb-24">
         <div className="flex flex-col items-center gap-0">
-          {groups.map((group, groupIndex) => {
-            const nextGroup = groups[groupIndex + 1];
-            const nextStageId = nextGroup?.stageId;
-            const nextStageLocked = nextStageId && !unlockedStages.includes(nextStageId);
-            const nextStageCost = nextStageId ? (STAGE_UNLOCK_COSTS[nextStageId] ?? 0) : 0;
-            const xpNeeded = Math.max(0, nextStageCost - xp);
-            const canAffordNext = xp >= nextStageCost;
-            const completableIndices = group.indices.filter((i) => !lessons[i].coming_soon);
-            const allInStageCompleted =
-              completableIndices.length > 0 &&
-              completableIndices.every((i) => completedLessons.includes(lessons[i].id));
-            const canUnlockNext = canAffordNext && allInStageCompleted;
-            const isStageHiddenInProd = !isDev && !PRODUCTION_VISIBLE_STAGES.includes(group.stageId);
-
-            // In production, hide Stage 2/3 entirely — no banner, no content, no connector
-            if (isStageHiddenInProd) return null;
+          {stage1Blocks.map((block, blockIdx) => {
+            const blockLessonIds = getBlockLessonIds(block);
+            const completableLessonIds = blockLessonIds.filter((id) => {
+              const l = lessons.find((le) => le.id === id);
+              return l && !l.coming_soon;
+            });
+            const blockTopics = (block.topicIds ?? [])
+              .map(id => topicById[id])
+              .filter(Boolean) as LessonTopic[];
+            const allBlockLessonsCompleted =
+              completableLessonIds.length > 0
+                ? completableLessonIds.every((id) => completedLessons.includes(id))
+                : false;
+            const blockDialogue = getBlockDialogueById(block.blockId);
+            const dialogueCompleted = completedBlockDialogues.includes(block.blockId);
+            const dialogueUnlocked = isDev || allBlockLessonsCompleted;
+            const dialogueEnabled = isDev || (allBlockLessonsCompleted && !dialogueCompleted);
+            const blockRacePassed = passedBlocks.includes(block.blockId);
+            const blockAttemptsLeft = store.getBlockRaceAttemptsLeft();
+            const raceUnlocked = isDev || (allBlockLessonsCompleted && (dialogueCompleted || !blockDialogue));
+            const raceEnabled = isDev || (raceUnlocked && blockAttemptsLeft > 0);
 
             return (
-              <div key={group.stageId} className="w-full flex flex-col items-center">
-                {groupIndex > 0 && (
-                  <div className="w-0.5 h-8 border-l-2 border-dashed border-gray-300" />
-                )}
-
-                {/* Stage banner */}
-                <div
-                  className="w-full flex items-center gap-3 bg-white rounded-2xl border border-gray-200 px-4 py-3 mb-2 shadow-sm sticky z-10"
-                  style={{ top: headerHeight }}
-                >
-                  <span className="text-xl">🏆</span>
-                  <span className="text-sm font-bold text-gray-700">{group.stageName}</span>
+              <div key={block.blockId} className="w-full flex flex-col items-center">
+                {/* Block label */}
+                <div className="w-full flex items-center gap-2 my-1">
+                  <div className="flex-1 h-px bg-gray-200" />
+                  <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider px-2 whitespace-nowrap">
+                    {block.blockName}
+                  </span>
+                  <div className="flex-1 h-px bg-gray-200" />
                 </div>
 
-                {/* ── Stage 1 (survival): render by block ── */}
-                {group.stageId === 'survival' ? (
-                  stage1Blocks.map((block, blockIdx) => {
-                    const blockLessonIndices = group.indices.filter((i) =>
-                      block.lessonIds.includes(lessons[i].id),
-                    );
+                {/* Topic nodes in this block */}
+                {blockTopics.map((topic, topicIdx) => {
+                  const isLast = topicIdx === blockTopics.length - 1;
+                  const prevTopicId = topicIdx > 0 ? blockTopics[topicIdx - 1].id : null;
+                  const isTopicGateLocked = !isDev && prevTopicId !== null && !passedTopics.includes(prevTopicId);
+                  return renderTopicNode(topic, isLast, isTopicGateLocked);
+                })}
 
-                    // Only count completable (non-shell) lessons for the race gate
-                    const completableLessonIds = block.lessonIds.filter((id) => {
-                      const l = lessons.find((le) => le.id === id);
-                      return l && !l.coming_soon;
-                    });
-                    const allBlockLessonsCompleted =
-                      completableLessonIds.length > 0
-                        ? completableLessonIds.every((id) => completedLessons.includes(id))
-                        : false;
-
-                    const blockDialogue = getBlockDialogueById(block.blockId);
-                    const dialogueCompleted = completedBlockDialogues.includes(block.blockId);
-                    const dialogueUnlocked = isDev || allBlockLessonsCompleted;
-                    const dialogueEnabled = isDev || (allBlockLessonsCompleted && !dialogueCompleted);
-
-                    const blockRacePassed = passedBlocks.includes(block.blockId);
-                    const blockAttemptsLeft = store.getBlockRaceAttemptsLeft();
-                    const raceUnlocked = isDev || (allBlockLessonsCompleted && (dialogueCompleted || !blockDialogue));
-                    const raceEnabled = isDev || (raceUnlocked && blockAttemptsLeft > 0);
-
-                    return (
-                      <div key={block.blockId} className="w-full flex flex-col items-center">
-                        {/* Block label */}
-                        <div className="w-full flex items-center gap-2 my-1">
-                          <div className="flex-1 h-px bg-gray-200" />
-                          <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider px-2 whitespace-nowrap">
-                            {block.blockName}
-                          </span>
-                          <div className="flex-1 h-px bg-gray-200" />
-                        </div>
-
-                        {/* Lesson nodes in this block */}
-                        {blockLessonIndices.map((lessonIndex, posInBlock) => {
-                          const isLastInBlock = posInBlock === blockLessonIndices.length - 1;
-                          return renderLessonNode(lessonIndex, posInBlock, false, isLastInBlock);
-                        })}
-
-                        {/* Block Dialogue node — shown when a dialogue exists for this block */}
-                        {blockDialogue && (
-                          <button
-                            type="button"
-                            disabled={!dialogueEnabled && !dialogueCompleted}
-                            onClick={() => {
-                              if (!dialogueEnabled && !dialogueCompleted && !isDev) return;
-                              go(`/block-dialogue/${block.blockId}`, { state: { guided: true } });
-                            }}
-                            className={`w-full flex items-center gap-4 rounded-2xl px-4 py-4 shadow-sm transition-all mb-0
-                              ${dialogueCompleted
-                                ? 'bg-green-50 border-2 border-green-200 cursor-pointer hover:bg-green-100 active:scale-[0.98]'
-                                : dialogueUnlocked
-                                ? 'bg-blue-50 border-2 border-blue-300 hover:bg-blue-100 active:scale-[0.98] cursor-pointer animate-pulse'
-                                : 'bg-gray-100 border-2 border-gray-200 cursor-not-allowed opacity-60'
-                              }`}
-                          >
-                            <span className="text-3xl shrink-0">{blockDialogue.contact.avatar}</span>
-                            <div className="text-left flex-1">
-                              <p className={`text-sm font-extrabold leading-snug ${dialogueCompleted ? 'text-green-700' : dialogueUnlocked ? 'text-blue-800' : 'text-gray-400'}`}>
-                                {dialogueCompleted ? '✅' : dialogueUnlocked ? '💬' : '🔒'} {blockDialogue.title}
-                              </p>
-                              <p className={`text-xs mt-0.5 ${dialogueCompleted ? 'text-green-600' : dialogueUnlocked ? 'text-blue-600' : 'text-gray-400'}`}>
-                                {dialogueCompleted
-                                  ? `Completed · +${blockDialogue.xpReward} XP earned`
-                                  : dialogueUnlocked
-                                  ? `Talk to ${blockDialogue.contact.name} — ${blockDialogue.contact.role}`
-                                  : 'Complete all lessons to unlock'}
-                              </p>
-                            </div>
-                            {(dialogueEnabled || isDev) && !dialogueCompleted && (
-                              <span className="text-blue-400 text-lg shrink-0">▶</span>
-                            )}
-                          </button>
-                        )}
-
-                        {/* Block race button */}
-                        <button
-                          type="button"
-                          disabled={!raceEnabled}
-                          onClick={() => raceEnabled && go(`/race/survival/${block.blockId}`)}
-                          className={`w-full flex items-center gap-4 rounded-2xl px-4 py-4 shadow-sm transition-all
-                            ${raceEnabled
-                              ? 'bg-amber-50 border-2 border-amber-300 hover:bg-amber-100 active:scale-[0.98] cursor-pointer'
-                              : 'bg-gray-100 border-2 border-gray-200 cursor-not-allowed opacity-60'
-                            }`}
-                        >
-                          <img src="/snailTurbo.png" alt="" className="w-12 h-12 object-contain shrink-0" />
-                          <div className="text-left flex-1">
-                            <p className={`text-sm font-extrabold leading-snug ${raceUnlocked ? 'text-amber-800' : 'text-gray-400'}`}>
-                              {blockRacePassed ? '✅' : raceUnlocked ? '🏁' : '🔒'} Block Race — {block.blockName}
-                            </p>
-                            <p className={`text-xs mt-0.5 ${raceUnlocked ? 'text-amber-600' : 'text-gray-400'}`}>
-                              {blockRacePassed
-                                ? `Turbo Snail achieved! Tap to race again (${blockAttemptsLeft}/5 today)`
-                                : raceUnlocked
-                                ? blockAttemptsLeft > 0
-                                  ? `Reach Turbo Snail to unlock the next block! (${blockAttemptsLeft}/5 today)`
-                                  : 'No attempts left — resets at midnight'
-                                : blockDialogue && !dialogueCompleted
-                                ? 'Complete the Block Dialogue first'
-                                : 'Complete all lessons to unlock'}
-                            </p>
-                          </div>
-                          {raceEnabled && <span className="text-amber-400 text-lg shrink-0">▶</span>}
-                        </button>
-
-                        {/* Connector between blocks (not after the last block) */}
-                        {blockIdx < stage1Blocks.length - 1 && (
-                          <div className="w-0.5 h-6 border-l-2 border-dashed border-gray-300" />
-                        )}
-                      </div>
-                    );
-                  })
-                ) : isStageHiddenInProd ? (
-                  /* ── Production: stage not rebuilt yet — teaser banner only, no content ── */
-                  <div className="w-full bg-white border-2 border-dashed border-gray-200 rounded-2xl px-4 py-6 text-center">
-                    <p className="text-2xl mb-1">🚧</p>
-                    <p className="text-sm font-semibold text-gray-500">More coming soon!</p>
-                    <p className="text-xs text-gray-400 mt-1">This stage is being rebuilt with the new lesson system.</p>
-                  </div>
-                ) : (
-                  /* ── Other stages: existing single-race rendering (dev only) ── */
-                  <>
-                    {group.indices.map((lessonIndex, posInGroup) => {
-                      const isLastInGroup = posInGroup === group.indices.length - 1;
-                      return renderLessonNode(lessonIndex, posInGroup, isLastInGroup, false);
-                    })}
-
-                    {/* Stage-level Snail Race button */}
-                    {(() => {
-                      const attemptsUsed = raceAttemptsToday(group.stageId);
-                      const attemptsLeft = 5 - attemptsUsed;
-                      const raceEnabled = isDev || (allInStageCompleted && attemptsLeft > 0);
-                      const raceUnlocked = isDev || allInStageCompleted;
-                      return (
-                        <button
-                          type="button"
-                          disabled={!raceEnabled}
-                          onClick={() => raceEnabled && go(`/race/${group.stageId}`)}
-                          className={`w-full flex items-center gap-4 rounded-2xl px-4 py-4 shadow-sm transition-all cursor-pointer
-                            ${raceEnabled
-                              ? 'bg-amber-50 border-2 border-amber-300 hover:bg-amber-100 active:scale-[0.98]'
-                              : 'bg-gray-100 border-2 border-gray-200 cursor-not-allowed opacity-60'
-                            }`}
-                        >
-                          <img src="/snailTurbo.png" alt="" className="w-12 h-12 object-contain shrink-0" />
-                          <div className="text-left flex-1">
-                            <p className={`text-sm font-extrabold leading-snug ${raceUnlocked ? 'text-amber-800' : 'text-gray-400'}`}>
-                              {raceUnlocked ? '🏁' : '🔒'} Snail Race — Become the Turbo-Snail by Racing Other Snails and Earn XP
-                            </p>
-                            <p className={`text-xs mt-0.5 ${raceUnlocked ? 'text-amber-600' : 'text-gray-400'}`}>
-                              {raceUnlocked
-                                ? attemptsLeft > 0
-                                  ? `Answer as many as you can in 60 seconds! (${attemptsLeft}/5 today)`
-                                  : 'No attempts left today — come back tomorrow!'
-                                : 'Complete all lessons in this stage to unlock'}
-                            </p>
-                          </div>
-                          {raceEnabled && <span className="text-amber-400 text-lg shrink-0">▶</span>}
-                        </button>
-                      );
-                    })()}
-                  </>
-                )}
-
-                {/* Stage gate to NEXT stage — only for stages production is actually ready to show */}
-                {!isDev && nextStageId && nextStageLocked && PRODUCTION_VISIBLE_STAGES.includes(nextStageId) && (
-                  <>
-                    <div className="w-0.5 h-6 border-l-2 border-dashed border-gray-300" />
-                    <div className="w-full bg-white border-2 border-gray-200 rounded-2xl px-4 py-4 shadow-sm">
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="text-2xl">🔐</span>
-                        <div>
-                          <p className="text-sm font-bold text-gray-700">{nextGroup.stageName}</p>
-                          <p className="text-xs text-gray-400">Unlock for {nextStageCost} XP</p>
-                        </div>
-                      </div>
-                      <button
-                        type="button"
-                        disabled={!canUnlockNext}
-                        onClick={() => { if (canUnlockNext) store.unlockStage(nextStageId); }}
-                        className={`w-full py-2.5 rounded-xl text-sm font-bold uppercase tracking-wide transition-all cursor-pointer
-                          ${canUnlockNext
-                            ? 'bg-amber-400 text-white hover:bg-amber-500 active:scale-[0.98]'
-                            : 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                          }`}
-                      >
-                        {!allInStageCompleted
-                          ? 'Complete all lessons first'
-                          : !canAffordNext
-                          ? `Need ${xpNeeded} more XP`
-                          : `Unlock — ${nextStageCost} XP`}
-                      </button>
-                      {!canUnlockNext && suggestedReviews.length > 0 && (
-                        <p className="text-xs text-gray-400 text-center mt-2">
-                          Review: {suggestedReviews.slice(0, 2).map((r) => {
-                            const l = lessons.find((le) => le.id === r.lessonId);
-                            return l?.title ?? r.lessonId;
-                          }).join(' · ')}
-                        </p>
-                      )}
+                {/* Block Dialogue node */}
+                {blockDialogue && (
+                  <button
+                    type="button"
+                    disabled={!dialogueEnabled && !dialogueCompleted}
+                    onClick={() => {
+                      if (!dialogueEnabled && !dialogueCompleted && !isDev) return;
+                      go(`/block-dialogue/${block.blockId}`);
+                    }}
+                    className={`w-full flex items-center gap-4 rounded-2xl px-4 py-4 shadow-sm transition-all mb-0
+                      ${dialogueCompleted
+                        ? 'bg-green-50 border-2 border-green-200 cursor-pointer hover:bg-green-100 active:scale-[0.98]'
+                        : dialogueUnlocked
+                        ? 'bg-blue-50 border-2 border-blue-300 hover:bg-blue-100 active:scale-[0.98] cursor-pointer animate-pulse'
+                        : 'bg-gray-100 border-2 border-gray-200 cursor-not-allowed opacity-60'
+                      }`}
+                  >
+                    <span className="text-3xl shrink-0">{blockDialogue.contact.avatar}</span>
+                    <div className="text-left flex-1">
+                      <p className={`text-sm font-extrabold leading-snug ${dialogueCompleted ? 'text-green-700' : dialogueUnlocked ? 'text-blue-800' : 'text-gray-400'}`}>
+                        {dialogueCompleted ? '✅' : dialogueUnlocked ? '💬' : '🔒'} {blockDialogue.title}
+                      </p>
+                      <p className={`text-xs mt-0.5 ${dialogueCompleted ? 'text-green-600' : dialogueUnlocked ? 'text-blue-600' : 'text-gray-400'}`}>
+                        {dialogueCompleted
+                          ? `Completed · +${blockDialogue.xpReward} XP earned`
+                          : dialogueUnlocked
+                          ? `Talk to ${blockDialogue.contact.name} — ${blockDialogue.contact.role}`
+                          : 'Complete all lessons to unlock'}
+                      </p>
                     </div>
-                  </>
+                    {(dialogueEnabled || isDev) && !dialogueCompleted && (
+                      <span className="text-blue-400 text-lg shrink-0">▶</span>
+                    )}
+                  </button>
                 )}
 
-                {groupIndex < groups.length - 1 && (isDev || !nextStageLocked) && (
-                  <div className="w-0.5 h-8 border-l-2 border-dashed border-gray-300" />
+                {/* Block race button */}
+                <button
+                  type="button"
+                  disabled={!raceEnabled}
+                  onClick={() => raceEnabled && go(`/race/survival/${block.blockId}`)}
+                  className={`w-full flex items-center gap-4 rounded-2xl px-4 py-4 shadow-sm transition-all
+                    ${raceEnabled
+                      ? 'bg-amber-50 border-2 border-amber-300 hover:bg-amber-100 active:scale-[0.98] cursor-pointer'
+                      : 'bg-gray-100 border-2 border-gray-200 cursor-not-allowed opacity-60'
+                    }`}
+                >
+                  <img src="/snailTurbo.png" alt="" className="w-12 h-12 object-contain shrink-0" />
+                  <div className="text-left flex-1">
+                    <p className={`text-sm font-extrabold leading-snug ${raceUnlocked ? 'text-amber-800' : 'text-gray-400'}`}>
+                      {blockRacePassed ? '✅' : raceUnlocked ? '🏁' : '🔒'} Block Race — {block.blockName}
+                    </p>
+                    <p className={`text-xs mt-0.5 ${raceUnlocked ? 'text-amber-600' : 'text-gray-400'}`}>
+                      {blockRacePassed
+                        ? `Turbo Snail achieved! Tap to race again (${blockAttemptsLeft}/5 today)`
+                        : raceUnlocked
+                        ? blockAttemptsLeft > 0
+                          ? `Reach Turbo Snail to unlock the next block! (${blockAttemptsLeft}/5 today)`
+                          : 'No attempts left — resets at midnight'
+                        : blockDialogue && !dialogueCompleted
+                        ? 'Complete the Block Dialogue first'
+                        : 'Complete all lessons to unlock'}
+                    </p>
+                  </div>
+                  {raceEnabled && <span className="text-amber-400 text-lg shrink-0">▶</span>}
+                </button>
+
+                {/* Connector between blocks */}
+                {blockIdx < stage1Blocks.length - 1 && (
+                  <div className="w-0.5 h-6 border-l-2 border-dashed border-gray-300" />
                 )}
               </div>
             );

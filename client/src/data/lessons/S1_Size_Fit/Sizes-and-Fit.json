@@ -1,0 +1,324 @@
+{
+  "id": "s1-sizes-fit",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Sizes & Fit",
+  "description": "Say your size and whether clothes fit",
+  "icon": "📏",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Size and fit",
+      "rows": [
+        {
+          "label": "What size?",
+          "slovak": "Aká veľkosť?",
+          "english": "What size?"
+        },
+        {
+          "label": "Size M",
+          "slovak": "Veľkosť M",
+          "english": "Size M"
+        },
+        {
+          "label": "Too small",
+          "slovak": "Je to malé.",
+          "english": "It is small / too small."
+        },
+        {
+          "label": "Too big",
+          "slovak": "Je to veľké.",
+          "english": "It is big / too big."
+        },
+        {
+          "label": "Fits me",
+          "slovak": "Sedí mi to.",
+          "english": "It fits me."
+        },
+        {
+          "label": "Does not fit",
+          "slovak": "Nesedí mi to.",
+          "english": "It does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Aká veľkosť?",
+          "english": "What size?"
+        },
+        {
+          "slovak": "Veľkosť M",
+          "english": "Size M"
+        },
+        {
+          "slovak": "Je to malé.",
+          "english": "It is small / too small."
+        },
+        {
+          "slovak": "Je to veľké.",
+          "english": "It is big / too big."
+        },
+        {
+          "slovak": "Sedí mi to.",
+          "english": "It fits me."
+        },
+        {
+          "slovak": "Nesedí mi to.",
+          "english": "It does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Aká veľkosť?",
+          "english": "What size?"
+        },
+        {
+          "slovak": "Veľkosť M",
+          "english": "Size M"
+        },
+        {
+          "slovak": "Je to malé.",
+          "english": "It is small / too small."
+        },
+        {
+          "slovak": "Je to veľké.",
+          "english": "It is big / too big."
+        },
+        {
+          "slovak": "Sedí mi to.",
+          "english": "It fits me."
+        },
+        {
+          "slovak": "Nesedí mi to.",
+          "english": "It does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Aká veľkosť?",
+          "english": "What size?"
+        },
+        {
+          "slovak": "Veľkosť M",
+          "english": "Size M"
+        },
+        {
+          "slovak": "Je to malé.",
+          "english": "It is small / too small."
+        },
+        {
+          "slovak": "Je to veľké.",
+          "english": "It is big / too big."
+        },
+        {
+          "slovak": "Sedí mi to.",
+          "english": "It fits me."
+        },
+        {
+          "slovak": "Nesedí mi to.",
+          "english": "It does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Aká veľkosť?",
+          "english": "What size?"
+        },
+        {
+          "slovak": "Veľkosť M",
+          "english": "Size M"
+        },
+        {
+          "slovak": "Je to malé.",
+          "english": "It is small / too small."
+        },
+        {
+          "slovak": "Je to veľké.",
+          "english": "It is big / too big."
+        },
+        {
+          "slovak": "Sedí mi to.",
+          "english": "It fits me."
+        },
+        {
+          "slovak": "Nesedí mi to.",
+          "english": "It does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: What size?",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Aká veľkosť?",
+            "Veľkosť M",
+            "Je to malé.",
+            "Je to veľké."
+          ],
+          "answer": "Aká veľkosť?",
+          "answerMeaning": "Aká veľkosť? = What size?"
+        },
+        {
+          "situation": "You need to say: Size M",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Veľkosť M",
+            "Aká veľkosť?",
+            "Je to malé.",
+            "Je to veľké."
+          ],
+          "answer": "Veľkosť M",
+          "answerMeaning": "Veľkosť M = Size M"
+        },
+        {
+          "situation": "You need to say: It is small / too small.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Je to malé.",
+            "Aká veľkosť?",
+            "Veľkosť M",
+            "Je to veľké."
+          ],
+          "answer": "Je to malé.",
+          "answerMeaning": "Je to malé. = It is small / too small."
+        },
+        {
+          "situation": "You need to say: It is big / too big.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Je to veľké.",
+            "Aká veľkosť?",
+            "Veľkosť M",
+            "Je to malé."
+          ],
+          "answer": "Je to veľké.",
+          "answerMeaning": "Je to veľké. = It is big / too big."
+        },
+        {
+          "situation": "You need to say: It fits me.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Sedí mi to.",
+            "Aká veľkosť?",
+            "Veľkosť M",
+            "Je to malé."
+          ],
+          "answer": "Sedí mi to.",
+          "answerMeaning": "Sedí mi to. = It fits me."
+        },
+        {
+          "situation": "You need to say: It does not fit me.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Nesedí mi to.",
+            "Aká veľkosť?",
+            "Veľkosť M",
+            "Je to malé."
+          ],
+          "answer": "Nesedí mi to.",
+          "answerMeaning": "Nesedí mi to. = It does not fit me."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Aká ___?",
+          "translation": "What size?",
+          "choices": [
+            "veľkosť",
+            "cena",
+            "taška",
+            "účtenka"
+          ],
+          "answer": "veľkosť"
+        },
+        {
+          "sentence": "Mám veľkosť ___.",
+          "translation": "I have size M.",
+          "choices": [
+            "M",
+            "cena",
+            "taška",
+            "včera"
+          ],
+          "answer": "M"
+        },
+        {
+          "sentence": "Je to ___.",
+          "translation": "It is too small.",
+          "choices": [
+            "malé",
+            "veľké",
+            "drahé",
+            "otvorené"
+          ],
+          "answer": "malé"
+        },
+        {
+          "sentence": "Je to ___.",
+          "translation": "It is too big.",
+          "choices": [
+            "veľké",
+            "malé",
+            "lacné",
+            "zatvorené"
+          ],
+          "answer": "veľké"
+        },
+        {
+          "sentence": "___ mi to.",
+          "translation": "It fits me.",
+          "choices": [
+            "Sedí",
+            "Nesedí",
+            "Platí",
+            "Bude"
+          ],
+          "answer": "Sedí"
+        },
+        {
+          "sentence": "___ mi to.",
+          "translation": "It does not fit me.",
+          "choices": [
+            "Nesedí",
+            "Sedí",
+            "Platím",
+            "Mám"
+          ],
+          "answer": "Nesedí"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

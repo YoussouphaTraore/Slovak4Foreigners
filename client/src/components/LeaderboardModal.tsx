@@ -25,6 +25,7 @@ function rankLabel(rank: number): string {
 
 export function LeaderboardModal({ onClose }: Props) {
   const user = useAuthStore((s) => s.user);
+  const signInWithGoogle = useAuthStore((s) => s.signInWithGoogle);
   const weeklyXp = useProgressStore((s) => s.weeklyXp);
 
   const [allRows, setAllRows] = useState<MergedRow[]>([]);
@@ -38,6 +39,7 @@ export function LeaderboardModal({ onClose }: Props) {
 
   useEffect(() => {
     async function load() {
+      if (!user) { setLoading(false); return; }
       setLoading(true);
 
       const [realRes, npcRes, winnerRes] = await Promise.all([
@@ -202,6 +204,25 @@ export function LeaderboardModal({ onClose }: Props) {
           )}
         </div>
 
+        {/* Guest gate */}
+        {!user ? (
+          <div className="flex flex-col items-center justify-center gap-5 px-6 py-12 text-center">
+            <span className="text-5xl">🏆</span>
+            <div>
+              <p className="text-base font-extrabold text-gray-800 leading-snug">Sign in to join the competition</p>
+              <p className="text-sm text-gray-400 mt-1 leading-snug">Create a free account to earn XP and compete on the weekly leaderboard.</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => void signInWithGoogle()}
+              className="w-full bg-brand-blue text-white font-bold py-3 rounded-2xl text-sm cursor-pointer"
+            >
+              Sign in with Google
+            </button>
+          </div>
+        ) : (
+          <>
+
         {/* Banner — always visible, not scrollable */}
         <div className={`px-4 py-2.5 shrink-0 ${bannerClass}`}>
           <p className="text-xs font-semibold text-center">{bannerText}</p>
@@ -245,6 +266,8 @@ export function LeaderboardModal({ onClose }: Props) {
             </ul>
           )}
         </div>
+          </>
+        )}
       </div>
     </div>
   );

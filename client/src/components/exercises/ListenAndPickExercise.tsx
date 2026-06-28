@@ -61,39 +61,52 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
   const [tappedId, setTappedId] = useState<number | null>(null);
   const [feedback, setFeedback] = useState<Feedback>(null);
 
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const timeoutHandledRef = useRef(false);
+
+  // ── onAnswer for timeout fires outside the countdown updater ─────────────
+  useEffect(() => {
+    if (feedback === 'timeout') onAnswer?.(false);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [feedback]);
+
   const currentWord = playQueue[session.wordIdx];
 
-  // ── Speak + countdown (re-fires on each session change) ──────────────────
+  // ── Speak + pure countdown (re-fires on each session change) ─────────────
   useEffect(() => {
     if (phase !== 'listening') return;
 
     speak(getSpokenText(currentWord), lang);
     setTimeLeft(COUNTDOWN);
+    timeoutHandledRef.current = false;
 
-    const id = setInterval(() => {
-      setTimeLeft((t) => {
-        if (t > 1) return t - 1;
-
-        // Timer expired
-        clearInterval(id);
-        const { wordIdx, retryCount } = sessionRef.current;
-
-        if (retryCount < MAX_RETRIES) {
-          // Replay the word
-          setSession({ wordIdx, retryCount: retryCount + 1 });
-        } else {
-          // Auto-fail after max retries
-          onAnswer?.(false);
-          setFeedback('timeout');
-          setPhase('feedback');
-        }
-        return 0;
-      });
+    intervalRef.current = setInterval(() => {
+      setTimeLeft((t) => Math.max(0, t - 1));
     }, 1000);
 
-    return () => clearInterval(id);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
+
+  // ── Timeout handler — fires when countdown reaches zero ───────────────────
+  useEffect(() => {
+    if (timeLeft !== 0 || phase !== 'listening') return;
+    if (timeoutHandledRef.current) return;
+    timeoutHandledRef.current = true;
+
+    if (intervalRef.current) clearInterval(intervalRef.current);
+
+    const { wordIdx, retryCount } = sessionRef.current;
+    if (retryCount < MAX_RETRIES) {
+      setSession({ wordIdx, retryCount: retryCount + 1 });
+    } else {
+      setFeedback('timeout');
+      setPhase('feedback');
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [timeLeft, phase]);
 
   // ── Advance to next word after feedback delay ─────────────────────────────
   useEffect(() => {

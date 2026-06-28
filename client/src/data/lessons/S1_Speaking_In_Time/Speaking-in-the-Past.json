@@ -1,0 +1,325 @@
+{
+  "id": "s1-speaking-past",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Speaking in the Past",
+  "description": "Understand bol, bola, and simple past sentences about yourself",
+  "icon": "⏪",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Past about yourself",
+      "subtitle": "For I was / I did, Slovak often changes the ending for a male or female speaker.",
+      "rows": [
+        {
+          "label": "I was home - male",
+          "slovak": "Bol som doma.",
+          "english": "I was at home. (male speaker)"
+        },
+        {
+          "label": "I was home - female",
+          "slovak": "Bola som doma.",
+          "english": "I was at home. (female speaker)"
+        },
+        {
+          "label": "I was sick - male",
+          "slovak": "Bol som chorý.",
+          "english": "I was sick. (male speaker)"
+        },
+        {
+          "label": "I was sick - female",
+          "slovak": "Bola som chorá.",
+          "english": "I was sick. (female speaker)"
+        },
+        {
+          "label": "I lost - male",
+          "slovak": "Stratil som peňaženku.",
+          "english": "I lost my wallet. (male speaker)"
+        },
+        {
+          "label": "I lost - female",
+          "slovak": "Stratila som peňaženku.",
+          "english": "I lost my wallet. (female speaker)"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Bol som doma.",
+          "english": "I was at home. (male speaker)"
+        },
+        {
+          "slovak": "Bola som doma.",
+          "english": "I was at home. (female speaker)"
+        },
+        {
+          "slovak": "Bol som chorý.",
+          "english": "I was sick. (male speaker)"
+        },
+        {
+          "slovak": "Bola som chorá.",
+          "english": "I was sick. (female speaker)"
+        },
+        {
+          "slovak": "Stratil som peňaženku.",
+          "english": "I lost my wallet. (male speaker)"
+        },
+        {
+          "slovak": "Stratila som peňaženku.",
+          "english": "I lost my wallet. (female speaker)"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Bol som doma.",
+          "english": "I was at home. (male speaker)"
+        },
+        {
+          "slovak": "Bola som doma.",
+          "english": "I was at home. (female speaker)"
+        },
+        {
+          "slovak": "Bol som chorý.",
+          "english": "I was sick. (male speaker)"
+        },
+        {
+          "slovak": "Bola som chorá.",
+          "english": "I was sick. (female speaker)"
+        },
+        {
+          "slovak": "Stratil som peňaženku.",
+          "english": "I lost my wallet. (male speaker)"
+        },
+        {
+          "slovak": "Stratila som peňaženku.",
+          "english": "I lost my wallet. (female speaker)"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Bol som doma.",
+          "english": "I was at home. (male speaker)"
+        },
+        {
+          "slovak": "Bola som doma.",
+          "english": "I was at home. (female speaker)"
+        },
+        {
+          "slovak": "Bol som chorý.",
+          "english": "I was sick. (male speaker)"
+        },
+        {
+          "slovak": "Bola som chorá.",
+          "english": "I was sick. (female speaker)"
+        },
+        {
+          "slovak": "Stratil som peňaženku.",
+          "english": "I lost my wallet. (male speaker)"
+        },
+        {
+          "slovak": "Stratila som peňaženku.",
+          "english": "I lost my wallet. (female speaker)"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Bol som doma.",
+          "english": "I was at home. (male speaker)"
+        },
+        {
+          "slovak": "Bola som doma.",
+          "english": "I was at home. (female speaker)"
+        },
+        {
+          "slovak": "Bol som chorý.",
+          "english": "I was sick. (male speaker)"
+        },
+        {
+          "slovak": "Bola som chorá.",
+          "english": "I was sick. (female speaker)"
+        },
+        {
+          "slovak": "Stratil som peňaženku.",
+          "english": "I lost my wallet. (male speaker)"
+        },
+        {
+          "slovak": "Stratila som peňaženku.",
+          "english": "I lost my wallet. (female speaker)"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Kai is speaking as a man and says he was at home yesterday. Which phrase fits?",
+          "instruction": "Choose the male-speaker form",
+          "choices": [
+            "Bol som doma.",
+            "Bola som doma.",
+            "Bude doma.",
+            "Som doma."
+          ],
+          "answer": "Bol som doma.",
+          "answerMeaning": "Bol som doma. = I was at home, said by a male speaker."
+        },
+        {
+          "situation": "Kai is speaking as a woman and says she was at home yesterday. Which phrase fits?",
+          "instruction": "Choose the female-speaker form",
+          "choices": [
+            "Bola som doma.",
+            "Bol som doma.",
+            "Bude doma.",
+            "Som doma."
+          ],
+          "answer": "Bola som doma.",
+          "answerMeaning": "Bola som doma. = I was at home, said by a female speaker."
+        },
+        {
+          "situation": "A male speaker tells the doctor he was sick. Which phrase is correct?",
+          "instruction": "Choose the male-speaker form",
+          "choices": [
+            "Bol som chorý.",
+            "Bola som chorá.",
+            "Bude pršať.",
+            "Je mi dobre."
+          ],
+          "answer": "Bol som chorý.",
+          "answerMeaning": "Bol som chorý. = I was sick, said by a male speaker."
+        },
+        {
+          "situation": "A female speaker tells the doctor she was sick. Which phrase is correct?",
+          "instruction": "Choose the female-speaker form",
+          "choices": [
+            "Bola som chorá.",
+            "Bol som chorý.",
+            "Som lekár.",
+            "Bude otvorené."
+          ],
+          "answer": "Bola som chorá.",
+          "answerMeaning": "Bola som chorá. = I was sick, said by a female speaker."
+        },
+        {
+          "situation": "A male speaker reports a lost wallet. Which phrase fits?",
+          "instruction": "Choose the male-speaker form",
+          "choices": [
+            "Stratil som peňaženku.",
+            "Stratila som peňaženku.",
+            "Našiel som peňaženku.",
+            "Koľko to stojí?"
+          ],
+          "answer": "Stratil som peňaženku.",
+          "answerMeaning": "Stratil som peňaženku. = I lost my wallet, said by a male speaker."
+        },
+        {
+          "situation": "A female speaker reports a lost wallet. Which phrase fits?",
+          "instruction": "Choose the female-speaker form",
+          "choices": [
+            "Stratila som peňaženku.",
+            "Stratil som peňaženku.",
+            "Mám peňaženku.",
+            "Koľko to bude stáť?"
+          ],
+          "answer": "Stratila som peňaženku.",
+          "answerMeaning": "Stratila som peňaženku. = I lost my wallet, said by a female speaker."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Včera som ___ doma.",
+          "translation": "Yesterday I was at home. (male speaker)",
+          "choices": [
+            "bol",
+            "bola",
+            "bude",
+            "som"
+          ],
+          "answer": "bol"
+        },
+        {
+          "sentence": "Včera som ___ doma.",
+          "translation": "Yesterday I was at home. (female speaker)",
+          "choices": [
+            "bola",
+            "bol",
+            "bude",
+            "je"
+          ],
+          "answer": "bola"
+        },
+        {
+          "sentence": "Bol som ___.",
+          "translation": "I was sick. (male speaker)",
+          "choices": [
+            "chorý",
+            "chorá",
+            "doma",
+            "zajtra"
+          ],
+          "answer": "chorý"
+        },
+        {
+          "sentence": "Bola som ___.",
+          "translation": "I was sick. (female speaker)",
+          "choices": [
+            "chorá",
+            "chorý",
+            "doma",
+            "bude"
+          ],
+          "answer": "chorá"
+        },
+        {
+          "sentence": "___ som peňaženku.",
+          "translation": "I lost my wallet. (male speaker)",
+          "choices": [
+            "Stratil",
+            "Stratila",
+            "Bude",
+            "Som"
+          ],
+          "answer": "Stratil"
+        },
+        {
+          "sentence": "___ som peňaženku.",
+          "translation": "I lost my wallet. (female speaker)",
+          "choices": [
+            "Stratila",
+            "Stratil",
+            "Bude",
+            "Je"
+          ],
+          "answer": "Stratila"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

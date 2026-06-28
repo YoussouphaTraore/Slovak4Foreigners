@@ -1,0 +1,306 @@
+{
+  "id": "s1-transport-modes",
+  "stageId": "survival",
+  "stageName": "Stage 1  Survival",
+  "title": "Transport Modes",
+  "description": "Name the main ways to get around",
+  "icon": "🚌",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Transport Modes",
+      "rows": [
+        {
+          "label": "Bus",
+          "slovak": "Autobus",
+          "english": "Bus"
+        },
+        {
+          "label": "Tram",
+          "slovak": "Električka",
+          "english": "Tram"
+        },
+        {
+          "label": "Train",
+          "slovak": "Vlak",
+          "english": "Train"
+        },
+        {
+          "label": "Car",
+          "slovak": "Auto",
+          "english": "Car"
+        },
+        {
+          "label": "Bike",
+          "slovak": "Bicykel",
+          "english": "Bike"
+        },
+        {
+          "label": "On foot",
+          "slovak": "Pešo",
+          "english": "On foot"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Autobus",
+          "english": "Bus"
+        },
+        {
+          "slovak": "Električka",
+          "english": "Tram"
+        },
+        {
+          "slovak": "Vlak",
+          "english": "Train"
+        },
+        {
+          "slovak": "Auto",
+          "english": "Car"
+        },
+        {
+          "slovak": "Bicykel",
+          "english": "Bike"
+        },
+        {
+          "slovak": "Pešo",
+          "english": "On foot"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Autobus",
+          "english": "Bus"
+        },
+        {
+          "slovak": "Električka",
+          "english": "Tram"
+        },
+        {
+          "slovak": "Vlak",
+          "english": "Train"
+        },
+        {
+          "slovak": "Auto",
+          "english": "Car"
+        },
+        {
+          "slovak": "Bicykel",
+          "english": "Bike"
+        },
+        {
+          "slovak": "Pešo",
+          "english": "On foot"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Autobus",
+          "english": "Bus"
+        },
+        {
+          "slovak": "Električka",
+          "english": "Tram"
+        },
+        {
+          "slovak": "Vlak",
+          "english": "Train"
+        },
+        {
+          "slovak": "Auto",
+          "english": "Car"
+        },
+        {
+          "slovak": "Bicykel",
+          "english": "Bike"
+        },
+        {
+          "slovak": "Pešo",
+          "english": "On foot"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Autobus",
+          "english": "Bus"
+        },
+        {
+          "slovak": "Električka",
+          "english": "Tram"
+        },
+        {
+          "slovak": "Vlak",
+          "english": "Train"
+        },
+        {
+          "slovak": "Auto",
+          "english": "Car"
+        },
+        {
+          "slovak": "Bicykel",
+          "english": "Bike"
+        },
+        {
+          "slovak": "Pešo",
+          "english": "On foot"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: Bus.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Auto",
+            "Autobus",
+            "Električka",
+            "Vlak"
+          ],
+          "answer": "Autobus",
+          "answerMeaning": "Autobus = Bus"
+        },
+        {
+          "situation": "You need to say: Tram.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Auto",
+            "Autobus",
+            "Električka",
+            "Vlak"
+          ],
+          "answer": "Električka",
+          "answerMeaning": "Električka = Tram"
+        },
+        {
+          "situation": "You need to say: Train.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Auto",
+            "Autobus",
+            "Električka",
+            "Vlak"
+          ],
+          "answer": "Vlak",
+          "answerMeaning": "Vlak = Train"
+        },
+        {
+          "situation": "You need to say: Car.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Auto",
+            "Autobus",
+            "Električka",
+            "Vlak"
+          ],
+          "answer": "Auto",
+          "answerMeaning": "Auto = Car"
+        },
+        {
+          "situation": "You need to say: Bike.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Autobus",
+            "Bicykel",
+            "Električka",
+            "Vlak"
+          ],
+          "answer": "Bicykel",
+          "answerMeaning": "Bicykel = Bike"
+        },
+        {
+          "situation": "You need to say: On foot.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Autobus",
+            "Električka",
+            "Pešo",
+            "Vlak"
+          ],
+          "answer": "Pešo",
+          "answerMeaning": "Pešo = On foot"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your colleague asks how you're getting to work. You take the train. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Idem autobusom.",
+            "Idem vlakom.",
+            "Idem pešo.",
+            "Idem autom."
+          ],
+          "answer": "Idem vlakom.",
+          "answerMeaning": "Idem vlakom = I'm going by train. Notice the -om ending on vlak when saying 'by train'."
+        },
+        {
+          "situation": "You live near a tram line and it's the fastest way to the centre. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Idem autobusom.",
+            "Idem električkou.",
+            "Idem pešo.",
+            "Idem na bicykli."
+          ],
+          "answer": "Idem električkou.",
+          "answerMeaning": "Idem električkou = I'm going by tram. Električka takes the -ou ending, slightly different from autobus/vlak/auto's -om ending — Slovak noun endings vary by gender."
+        },
+        {
+          "situation": "It's a nice day and your flat is close to work. How do you say you're walking?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Idem pešo.",
+            "Idem autom.",
+            "Idem na bicykli.",
+            "Idem vlakom."
+          ],
+          "answer": "Idem pešo.",
+          "answerMeaning": "Idem pešo = I'm going on foot. Pešo doesn't change form — it's already an adverb."
+        },
+        {
+          "situation": "You're deciding between car and bike for a short trip across town. You choose the bike. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Idem autom.",
+            "Idem na bicykli.",
+            "Idem vlakom.",
+            "Idem pešo."
+          ],
+          "answer": "Idem na bicykli.",
+          "answerMeaning": "Idem na bicykli = I'm going by bike. Unlike the other modes, bicykel uses na + the locative form rather than the -om ending."
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

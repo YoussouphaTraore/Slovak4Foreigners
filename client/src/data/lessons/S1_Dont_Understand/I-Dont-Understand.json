@@ -1,0 +1,235 @@
+{
+  "id": "s1-i-dont-understand",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "I Don't Understand",
+  "description": "Say you do not understand and ask for English or repetition",
+  "icon": "🤷",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "When You Don't Understand",
+      "rows": [
+        {
+          "label": "Don't understand",
+          "slovak": "Nerozumiem.",
+          "english": "I don't understand."
+        },
+        {
+          "label": "Don't speak Slovak",
+          "slovak": "Nehovorím po slovensky.",
+          "english": "I don't speak Slovak."
+        },
+        {
+          "label": "Speak English?",
+          "slovak": "Hovoríte po anglicky?",
+          "english": "Do you speak English?"
+        },
+        {
+          "label": "Please repeat",
+          "slovak": "Môžete zopakovať?",
+          "english": "Can you repeat that?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Nerozumiem.",
+          "english": "I don't understand."
+        },
+        {
+          "slovak": "Nehovorím po slovensky.",
+          "english": "I don't speak Slovak."
+        },
+        {
+          "slovak": "Hovoríte po anglicky?",
+          "english": "Do you speak English?"
+        },
+        {
+          "slovak": "Môžete zopakovať?",
+          "english": "Can you repeat that?"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Nerozumiem.",
+          "english": "I don't understand."
+        },
+        {
+          "slovak": "Nehovorím po slovensky.",
+          "english": "I don't speak Slovak."
+        },
+        {
+          "slovak": "Hovoríte po anglicky?",
+          "english": "Do you speak English?"
+        },
+        {
+          "slovak": "Môžete zopakovať?",
+          "english": "Can you repeat that?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Nerozumiem.",
+          "english": "I don't understand."
+        },
+        {
+          "slovak": "Nehovorím po slovensky.",
+          "english": "I don't speak Slovak."
+        },
+        {
+          "slovak": "Hovoríte po anglicky?",
+          "english": "Do you speak English?"
+        },
+        {
+          "slovak": "Môžete zopakovať?",
+          "english": "Can you repeat?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Nerozumiem.",
+          "english": "I don't understand."
+        },
+        {
+          "slovak": "Nehovorím po slovensky.",
+          "english": "I don't speak Slovak."
+        },
+        {
+          "slovak": "Hovoríte po anglicky?",
+          "english": "Do you speak English?"
+        },
+        {
+          "slovak": "Môžete zopakovať?",
+          "english": "Can you repeat that?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The Foreign Police officer says something in Slovak you completely missed. What is the first thing you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Hovoríte po anglicky?",
+            "Nerozumiem.",
+            "Môžete zopakovať?",
+            "Nehovorím po slovensky."
+          ],
+          "answer": "Nerozumiem.",
+          "answerMeaning": "Nerozumiem = I don't understand. Short, clear, and universally understood."
+        },
+        {
+          "situation": "Someone starts a long conversation in Slovak. You need to say you do not speak Slovak.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Nehovorím po slovensky.",
+            "Nerozumiem.",
+            "Hovoríte po anglicky?",
+            "Môžete zopakovať?"
+          ],
+          "answer": "Nehovorím po slovensky.",
+          "answerMeaning": "Nehovorím po slovensky = I don't speak Slovak. Useful when the whole conversation is too hard."
+        },
+        {
+          "situation": "You are at a reception desk and want to ask if the person speaks English.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Nerozumiem.",
+            "Môžete zopakovať?",
+            "Hovoríte po anglicky?",
+            "Nehovorím po slovensky."
+          ],
+          "answer": "Hovoríte po anglicky?",
+          "answerMeaning": "Hovoríte po anglicky? = Do you speak English? Use the formal version with officials and strangers."
+        },
+        {
+          "situation": "You heard part of the sentence, but you need them to say it again.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Môžete zopakovať?",
+            "Nehovorím po slovensky.",
+            "Hovoríte po anglicky?",
+            "Nerozumiem."
+          ],
+          "answer": "Môžete zopakovať?",
+          "answerMeaning": "Môžete zopakovať? = Can you repeat that? Use it when repeating once may solve the problem."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Prepáčte, ___. Hovoríte po anglicky?",
+          "translation": "Excuse me, ___. Do you speak English?",
+          "choices": [
+            "rozumiem",
+            "nerozumiem",
+            "hovorím",
+            "neviem"
+          ],
+          "answer": "nerozumiem"
+        },
+        {
+          "sentence": "___ po slovensky.",
+          "translation": "I don't speak Slovak.",
+          "choices": [
+            "Hovorím",
+            "Rozumiem",
+            "Nehovorím",
+            "Neviem"
+          ],
+          "answer": "Nehovorím"
+        },
+        {
+          "sentence": "___ po anglicky?",
+          "translation": "Do you speak English?",
+          "choices": [
+            "Hovorím",
+            "Hovoríte",
+            "Rozumiem",
+            "Zopakovať"
+          ],
+          "answer": "Hovoríte"
+        },
+        {
+          "sentence": "Môžete ___? Nerozumel som prvýkrát.",
+          "translation": "Can you ___? I didn't understand the first time.",
+          "choices": [
+            "napísať",
+            "zopakovať",
+            "hovoriť",
+            "pomôcť"
+          ],
+          "answer": "zopakovať"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

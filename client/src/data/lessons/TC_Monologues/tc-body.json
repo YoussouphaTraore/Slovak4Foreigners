@@ -1,0 +1,344 @@
+{
+  "id": "tc-body",
+  "stageId": "topic-comprehension",
+  "stageName": "",
+  "title": "Parts of Body — Monologue",
+  "description": "Listen, then prove you were listening",
+  "_voiceScript": {
+    "voice": null,
+    "script": "Lekár: Takže ste spadli zo schodov. Čo vás bolí? Ivan: Bolí ma hlava, krk a chrbát. Lekár: Bolí vás aj hruď alebo brucho? Ivan: Brucho nie, ale bolí ma hruď a boky. Lekár: Prezriem vám tvár, oči, uši, nos a ústa, po jednom. Dobre? Ivan: Dobre. Lekár: Bolí vás ruka alebo noha? Ivan: Bolí ma rameno a tento malý prst. Bolí ma aj koleno. Lekár: A chodidlá alebo prsty na nohách? Ivan: Nie. Chodidlá sú v poriadku."
+  },
+  "icon": "💪",
+  "xpReward": 25,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "CONVERSATION_LISTEN",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Parts-of-Body.mp3",
+      "conversationTranscriptSk": "Lekár: Takže ste spadli zo schodov. Čo vás bolí? Ivan: Bolí ma hlava, krk a chrbát. Lekár: Bolí vás aj hruď alebo brucho? Ivan: Brucho nie, ale bolí ma hruď a boky. Lekár: Prezriem vám tvár, oči, uši, nos a ústa, po jednom. Dobre? Ivan: Dobre. Lekár: Bolí vás ruka alebo noha? Ivan: Bolí ma rameno a tento malý prst. Bolí ma aj koleno. Lekár: A chodidlá alebo prsty na nohách? Ivan: Nie. Chodidlá sú v poriadku.",
+      "speakers": [
+        {
+          "name": "Lekár",
+          "avatar": "👨‍⚕️"
+        },
+        {
+          "name": "Ivan",
+          "avatar": "👨"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "CONVERSATION_WORD_RECOGNITION",
+      "instruction": "Tap every word or expression you heard in the conversation.",
+      "passThresholdPercent": 76,
+      "correctWords": [
+        "spadli zo schodov",
+        "Čo vás bolí?",
+        "Bolí ma hlava",
+        "krk",
+        "chrbát",
+        "hruď",
+        "brucho",
+        "boky",
+        "tvár",
+        "oči",
+        "uši",
+        "nos",
+        "ústa",
+        "ruka",
+        "noha",
+        "rameno",
+        "malý prst",
+        "koleno",
+        "chodidlá",
+        "prsty na nohách"
+      ],
+      "distractorWords": [
+        "vlasy",
+        "srdce",
+        "stehno",
+        "zuby",
+        "brucho bolí nie",
+        "pravá ruka je dobrá"
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "CONVERSATION_COMPREHENSION",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Parts-of-Body.mp3",
+      "conversationTranscriptSk": "Lekár: Takže ste spadli zo schodov. Čo vás bolí? Ivan: Bolí ma hlava, krk a chrbát. Lekár: Bolí vás aj hruď alebo brucho? Ivan: Brucho nie, ale bolí ma hruď a boky. Lekár: Prezriem vám tvár, oči, uši, nos a ústa, po jednom. Dobre? Ivan: Dobre. Lekár: Bolí vás ruka alebo noha? Ivan: Bolí ma rameno a tento malý prst. Bolí ma aj koleno. Lekár: A chodidlá alebo prsty na nohách? Ivan: Nie. Chodidlá sú v poriadku.",
+      "speakers": [
+        {
+          "name": "Lekár",
+          "avatar": "👨‍⚕️"
+        },
+        {
+          "name": "Ivan",
+          "avatar": "👨"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "The doctor says \"Čo vás bolí?\" What is he asking?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Where do you live?",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "What hurts?",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "What is your name?",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Čo vás bolí?\" = What hurts? Bolí comes from the Body Pain lesson and is used to ask about pain.",
+          "reviewPair": {
+            "slovak": "Čo vás bolí?",
+            "english": "What hurts?"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "What hurts first after Ivan fell from the stairs?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "His foot, toes, and hair",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "His teeth and mouth only",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "His head, neck, and back",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Bolí ma hlava, krk a chrbát\" = My head, neck, and back hurt. These body words come from Head Area and Body Pain.",
+          "reviewPair": {
+            "slovak": "Bolí ma hlava, krk a chrbát",
+            "english": "My head, neck, and back hurt"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Ivan says \"Brucho nie, ale bolí ma hruď a boky.\" What does this mean?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Not the stomach, but his chest and sides hurt",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "His stomach hurts, but his chest is fine",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Only his back hurts",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Brucho nie, ale bolí ma hruď a boky\" = Not the stomach, but my chest and sides hurt. Brucho, hruď, and boky are body-area words.",
+          "reviewPair": {
+            "slovak": "hruď a boky",
+            "english": "chest and sides"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Which head-area parts will the doctor inspect?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Shoulder, finger, knee, and foot",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Face, eyes, ears, nose, and mouth",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Chest, stomach, side, and back",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"tvár, oči, uši, nos a ústa\" = face, eyes, ears, nose, and mouth. This groups the Head Area vocabulary in one doctor instruction.",
+          "reviewPair": {
+            "slovak": "tvár, oči, uši, nos a ústa",
+            "english": "face, eyes, ears, nose, and mouth"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "When the doctor asks about arm or leg, what does Ivan say hurts?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "His foot and toes",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "His hair and eyes",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "His shoulder, little finger, and knee",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Bolí ma rameno a tento malý prst. Bolí ma aj koleno\" = My shoulder and this little finger hurt. My knee hurts too. Rameno, prst, and koleno come from Limbs and Body Pain.",
+          "reviewPair": {
+            "slovak": "rameno, prst, koleno",
+            "english": "shoulder, finger, knee"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "What does Ivan say about his feet?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "His feet are okay",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "His toes are broken",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "His feet hurt a lot",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Chodidlá sú v poriadku\" = The feet are okay. Chodidlá is the anatomical word for feet from the Limbs lesson.",
+          "reviewPair": {
+            "slovak": "Chodidlá sú v poriadku",
+            "english": "The feet are okay"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "CONVERSATION_SENTENCE_BUILDER",
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "What hurts?",
+          "targetSk": [
+            "Čo vás",
+            "bolí?"
+          ],
+          "bankChunks": [
+            "Čo vás",
+            "bolí?",
+            "Dobre"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "My head, neck, and back hurt.",
+          "targetSk": [
+            "Bolí ma hlava",
+            "krk",
+            "a chrbát"
+          ],
+          "bankChunks": [
+            "Bolí ma hlava",
+            "krk",
+            "a chrbát",
+            "a ústa"
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "Not my stomach, but my chest and sides hurt.",
+          "targetSk": [
+            "Brucho nie",
+            "ale bolí ma",
+            "hruď a boky"
+          ],
+          "bankChunks": [
+            "Brucho nie",
+            "ale bolí ma",
+            "hruď a boky",
+            "chodidlá"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "Face, eyes, ears, nose, and mouth.",
+          "targetSk": [
+            "tvár",
+            "oči",
+            "uši",
+            "nos",
+            "a ústa"
+          ],
+          "bankChunks": [
+            "tvár",
+            "oči",
+            "uši",
+            "nos",
+            "a ústa",
+            "rameno"
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "My shoulder, little finger, and knee hurt.",
+          "targetSk": [
+            "Bolí ma rameno",
+            "malý prst",
+            "a koleno"
+          ],
+          "bankChunks": [
+            "Bolí ma rameno",
+            "malý prst",
+            "a koleno",
+            "brucho"
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "The feet are okay.",
+          "targetSk": [
+            "Chodidlá",
+            "sú v poriadku"
+          ],
+          "bankChunks": [
+            "Chodidlá",
+            "sú v poriadku",
+            "Bolí ma noha"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

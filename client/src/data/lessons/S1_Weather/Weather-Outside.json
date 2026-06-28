@@ -1,0 +1,324 @@
+{
+  "id": "s1-weather-outside",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Weather Outside",
+  "description": "Say if it is hot, cold, raining, snowing, windy, or nice outside",
+  "icon": "🌧",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "The Day Outside",
+      "rows": [
+        {
+          "label": "It is hot",
+          "slovak": "Je teplo.",
+          "english": "It is warm / hot."
+        },
+        {
+          "label": "It is cold",
+          "slovak": "Je zima.",
+          "english": "It is cold."
+        },
+        {
+          "label": "It is raining",
+          "slovak": "Prší.",
+          "english": "It is raining."
+        },
+        {
+          "label": "It is snowing",
+          "slovak": "Sneží.",
+          "english": "It is snowing."
+        },
+        {
+          "label": "It is windy",
+          "slovak": "Fúka vietor.",
+          "english": "It is windy."
+        },
+        {
+          "label": "The weather is nice",
+          "slovak": "Je pekné počasie.",
+          "english": "The weather is nice."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Je teplo.",
+          "english": "It is warm / hot."
+        },
+        {
+          "slovak": "Je zima.",
+          "english": "It is cold."
+        },
+        {
+          "slovak": "Prší.",
+          "english": "It is raining."
+        },
+        {
+          "slovak": "Sneží.",
+          "english": "It is snowing."
+        },
+        {
+          "slovak": "Fúka vietor.",
+          "english": "It is windy."
+        },
+        {
+          "slovak": "Je pekné počasie.",
+          "english": "The weather is nice."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Je teplo.",
+          "english": "It is warm / hot."
+        },
+        {
+          "slovak": "Je zima.",
+          "english": "It is cold."
+        },
+        {
+          "slovak": "Prší.",
+          "english": "It is raining."
+        },
+        {
+          "slovak": "Sneží.",
+          "english": "It is snowing."
+        },
+        {
+          "slovak": "Fúka vietor.",
+          "english": "It is windy."
+        },
+        {
+          "slovak": "Je pekné počasie.",
+          "english": "The weather is nice."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Je teplo.",
+          "english": "It is warm / hot."
+        },
+        {
+          "slovak": "Je zima.",
+          "english": "It is cold."
+        },
+        {
+          "slovak": "Prší.",
+          "english": "It is raining."
+        },
+        {
+          "slovak": "Sneží.",
+          "english": "It is snowing."
+        },
+        {
+          "slovak": "Fúka vietor.",
+          "english": "It is windy."
+        },
+        {
+          "slovak": "Je pekné počasie.",
+          "english": "The weather is nice."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Je teplo.",
+          "english": "It is warm / hot."
+        },
+        {
+          "slovak": "Je zima.",
+          "english": "It is cold."
+        },
+        {
+          "slovak": "Prší.",
+          "english": "It is raining."
+        },
+        {
+          "slovak": "Sneží.",
+          "english": "It is snowing."
+        },
+        {
+          "slovak": "Fúka vietor.",
+          "english": "It is windy."
+        },
+        {
+          "slovak": "Je pekné počasie.",
+          "english": "The weather is nice."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You look outside and see rain. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Prší.",
+            "Sneží.",
+            "Je teplo.",
+            "Je pekné počasie."
+          ],
+          "answer": "Prší.",
+          "answerMeaning": "Prší. = It is raining."
+        },
+        {
+          "situation": "Snow is falling outside. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Sneží.",
+            "Prší.",
+            "Fúka vietor.",
+            "Je teplo."
+          ],
+          "answer": "Sneží.",
+          "answerMeaning": "Sneží. = It is snowing."
+        },
+        {
+          "situation": "You step outside and it feels very cold. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Je zima.",
+            "Je teplo.",
+            "Je pekné počasie.",
+            "Slnko."
+          ],
+          "answer": "Je zima.",
+          "answerMeaning": "Je zima. = It is cold. This is also the word for winter, but here it means the weather is cold."
+        },
+        {
+          "situation": "It is sunny and pleasant. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Je pekné počasie.",
+            "Fúka vietor.",
+            "Sneží.",
+            "Je zima."
+          ],
+          "answer": "Je pekné počasie.",
+          "answerMeaning": "Je pekné počasie. = The weather is nice."
+        },
+        {
+          "situation": "The wind is strong. What phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Fúka vietor.",
+            "Je teplo.",
+            "Prší.",
+            "Sneh."
+          ],
+          "answer": "Fúka vietor.",
+          "answerMeaning": "Fúka vietor. = It is windy / the wind is blowing."
+        },
+        {
+          "situation": "It feels warm outside. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Je teplo.",
+            "Je zima.",
+            "Sneží.",
+            "Fúka vietor."
+          ],
+          "answer": "Je teplo.",
+          "answerMeaning": "Je teplo. = It is warm / hot."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Dnes ___. Potrebujem dáždnik.",
+          "translation": "It is raining today. I need an umbrella.",
+          "choices": [
+            "prší",
+            "sneží",
+            "fúka",
+            "svieti"
+          ],
+          "answer": "prší"
+        },
+        {
+          "sentence": "Vonku je ___. Potrebujem kabát.",
+          "translation": "It is cold outside. I need a coat.",
+          "choices": [
+            "teplo",
+            "zima",
+            "slnko",
+            "oblak"
+          ],
+          "answer": "zima"
+        },
+        {
+          "sentence": "Dnes je pekné ___.",
+          "translation": "The weather is nice today.",
+          "choices": [
+            "počasie",
+            "dážď",
+            "sneh",
+            "vietor"
+          ],
+          "answer": "počasie"
+        },
+        {
+          "sentence": "V zime často ___.",
+          "translation": "In winter it often snows.",
+          "choices": [
+            "prší",
+            "sneží",
+            "fúka",
+            "svieti"
+          ],
+          "answer": "sneží"
+        },
+        {
+          "sentence": "___ vietor. Zatvor okno, prosím.",
+          "translation": "It is windy. Close the window, please.",
+          "choices": [
+            "Fúka",
+            "Prší",
+            "Sneží",
+            "Je"
+          ],
+          "answer": "Fúka"
+        },
+        {
+          "sentence": "Dnes je ___. Otvor okno, prosím.",
+          "translation": "It is warm today. Open the window, please.",
+          "choices": [
+            "teplo",
+            "zima",
+            "sneh",
+            "vietor"
+          ],
+          "answer": "teplo"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

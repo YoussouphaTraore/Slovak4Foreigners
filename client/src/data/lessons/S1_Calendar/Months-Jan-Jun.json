@@ -1,0 +1,324 @@
+{
+  "id": "s1-months-jan-jun",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Months Jan-Jun",
+  "description": "Learn January through June",
+  "icon": "📅",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Months Jan-Jun",
+      "rows": [
+        {
+          "label": "January",
+          "slovak": "Január",
+          "english": "January"
+        },
+        {
+          "label": "February",
+          "slovak": "Február",
+          "english": "February"
+        },
+        {
+          "label": "March",
+          "slovak": "Marec",
+          "english": "March"
+        },
+        {
+          "label": "April",
+          "slovak": "Apríl",
+          "english": "April"
+        },
+        {
+          "label": "May",
+          "slovak": "Máj",
+          "english": "May"
+        },
+        {
+          "label": "June",
+          "slovak": "Jún",
+          "english": "June"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Január",
+          "english": "January"
+        },
+        {
+          "slovak": "Február",
+          "english": "February"
+        },
+        {
+          "slovak": "Marec",
+          "english": "March"
+        },
+        {
+          "slovak": "Apríl",
+          "english": "April"
+        },
+        {
+          "slovak": "Máj",
+          "english": "May"
+        },
+        {
+          "slovak": "Jún",
+          "english": "June"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Január",
+          "english": "January"
+        },
+        {
+          "slovak": "Február",
+          "english": "February"
+        },
+        {
+          "slovak": "Marec",
+          "english": "March"
+        },
+        {
+          "slovak": "Apríl",
+          "english": "April"
+        },
+        {
+          "slovak": "Máj",
+          "english": "May"
+        },
+        {
+          "slovak": "Jún",
+          "english": "June"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Január",
+          "english": "January"
+        },
+        {
+          "slovak": "Február",
+          "english": "February"
+        },
+        {
+          "slovak": "Marec",
+          "english": "March"
+        },
+        {
+          "slovak": "Apríl",
+          "english": "April"
+        },
+        {
+          "slovak": "Máj",
+          "english": "May"
+        },
+        {
+          "slovak": "Jún",
+          "english": "June"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Január",
+          "english": "January"
+        },
+        {
+          "slovak": "Február",
+          "english": "February"
+        },
+        {
+          "slovak": "Marec",
+          "english": "March"
+        },
+        {
+          "slovak": "Apríl",
+          "english": "April"
+        },
+        {
+          "slovak": "Máj",
+          "english": "May"
+        },
+        {
+          "slovak": "Jún",
+          "english": "June"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your residence permit expires in March. Which month is March?",
+          "instruction": "Choose the correct month",
+          "choices": [
+            "Január",
+            "Marec",
+            "Jún",
+            "December"
+          ],
+          "answer": "Marec",
+          "answerMeaning": "Marec = March."
+        },
+        {
+          "situation": "You arrived in Slovakia in January. Which word means January?",
+          "instruction": "Choose the correct month",
+          "choices": [
+            "Január",
+            "Február",
+            "Máj",
+            "Jún"
+          ],
+          "answer": "Január",
+          "answerMeaning": "Január = January."
+        },
+        {
+          "situation": "Your appointment is in June. Which word means June?",
+          "instruction": "Choose the correct month",
+          "choices": [
+            "Marec",
+            "Apríl",
+            "Máj",
+            "Jún"
+          ],
+          "answer": "Jún",
+          "answerMeaning": "Jún = June."
+        },
+        {
+          "situation": "A form says April. Which Slovak word matches?",
+          "instruction": "Choose the correct month",
+          "choices": [
+            "Apríl",
+            "Máj",
+            "Jún",
+            "Február"
+          ],
+          "answer": "Apríl",
+          "answerMeaning": "Apríl = April."
+        },
+        {
+          "situation": "Your birthday is in May. Which word means May?",
+          "instruction": "Choose the correct month",
+          "choices": [
+            "Marec",
+            "Máj",
+            "Jún",
+            "Január"
+          ],
+          "answer": "Máj",
+          "answerMeaning": "Máj = May."
+        },
+        {
+          "situation": "Your appointment will be in March. Which sentence uses bude?",
+          "instruction": "Choose the future sentence",
+          "choices": [
+            "Termín bude v marci.",
+            "Termín bol v marci.",
+            "Termín je včera.",
+            "Termín bol zajtra."
+          ],
+          "answer": "Termín bude v marci.",
+          "answerMeaning": "Termín bude v marci. = The appointment will be in March."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Môj pobyt platí do ___.",
+          "translation": "My residence permit is valid until March.",
+          "choices": [
+            "januára",
+            "marca",
+            "júna",
+            "decembra"
+          ],
+          "answer": "marca"
+        },
+        {
+          "sentence": "Prišiel som v ___.",
+          "translation": "I arrived in January.",
+          "choices": [
+            "januári",
+            "marci",
+            "máji",
+            "júni"
+          ],
+          "answer": "januári"
+        },
+        {
+          "sentence": "Termín je v ___.",
+          "translation": "The appointment is in June.",
+          "choices": [
+            "februári",
+            "apríli",
+            "máji",
+            "júni"
+          ],
+          "answer": "júni"
+        },
+        {
+          "sentence": "Narodeniny mám v ___.",
+          "translation": "My birthday is in May.",
+          "choices": [
+            "januári",
+            "marci",
+            "máji",
+            "júni"
+          ],
+          "answer": "máji"
+        },
+        {
+          "sentence": "Zmluva začína v ___.",
+          "translation": "The contract starts in April.",
+          "choices": [
+            "apríli",
+            "máji",
+            "júni",
+            "februári"
+          ],
+          "answer": "apríli"
+        },
+        {
+          "sentence": "Termín ___ v júni.",
+          "translation": "The appointment was in June.",
+          "choices": [
+            "bol",
+            "bude",
+            "je",
+            "som"
+          ],
+          "answer": "bol"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

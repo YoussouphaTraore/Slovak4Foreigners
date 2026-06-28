@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useRef, useEffect, useMemo } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { getLessonById, lessons } from '../data/lessons';
 import { useProgressStore } from '../store/useProgressStore';
 import { useAuthStore } from '../store/useAuthStore';
@@ -8,6 +8,9 @@ import { ExerciseShell } from '../components/exercises/ExerciseShell';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ConfirmModal } from '../components/ui/ConfirmModal';
 import { ExerciseCelebration } from '../components/ui/ExerciseCelebration';
+import { pickSessionCountries } from '../utils/pickSessionCountries';
+import { hydrateCountryExercise } from '../utils/hydrateCountryExercise';
+import type { Country } from '../data/countries';
 
 const MAX_TOTAL      = 5;           // 5 total strikes → back to previous exercise
 const MAX_CONSEC     = 3;           // 3 consecutive strikes → restart from exercise 1
@@ -19,9 +22,36 @@ type PenaltyInfo = { title: string; sub: string; image?: string } | null;
 export function LessonPage() {
   const { lessonId } = useParams<{ lessonId: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
+  const exitTarget = (location.state as { topicId?: string } | null)?.topicId
+    ? `/topic/${(location.state as { topicId: string }).topicId}`
+    : '/';
   const store = useProgressStore();
 
   const lesson = lessonId ? getLessonById(lessonId) : undefined;
+
+  // Async country fetch — populated once on mount, stable for lesson lifetime
+  const [sessionCountries, setSessionCountries] = useState<Country[]>([]);
+  const [countriesLoaded, setCountriesLoaded] = useState(false);
+
+  useEffect(() => {
+    const needsCountries = lesson?.exercises.some(e => e.dynamic === 'countries');
+    if (!needsCountries) { setCountriesLoaded(true); return; }
+    pickSessionCountries(useAuthStore.getState().country || undefined)
+      .then(countries => { setSessionCountries(countries); })
+      .catch(() => { /* fetchCountries already fell back to local data — countries stays [] */ })
+      .finally(() => { setCountriesLoaded(true); });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  // Hydrate any dynamic exercises with the session country set
+  const exercises = useMemo(() => {
+    if (!lesson) return [];
+    if (!sessionCountries.length) return lesson.exercises;
+    return lesson.exercises.map(e =>
+      e.dynamic === 'countries' ? hydrateCountryExercise(e, sessionCountries) : e
+    );
+  }, [lesson, sessionCountries]);
 
   // Resume from partial progress if this lesson was saved mid-way
   const initialIndex = (() => {
@@ -103,7 +133,14 @@ export function LessonPage() {
     );
   }
 
-  const exercises = lesson.exercises;
+  if (!countriesLoaded) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[#E8F4DC]">
+        <div className="w-8 h-8 rounded-full border-4 border-brand-green border-t-transparent animate-spin" />
+      </div>
+    );
+  }
+
   const currentExercise = exercises[exerciseIndex];
 
   const isStage1 = lesson.stageId === 'survival';
@@ -150,7 +187,7 @@ export function LessonPage() {
 
   const handleSaveAndExit = () => {
     store.savePartialProgress(lesson.id, exerciseIndex + 1);
-    navigate('/');
+    navigate(exitTarget);
   };
 
   const handleKeepGoing = () => {
@@ -340,7 +377,7 @@ export function LessonPage() {
       </div>
 
       {showExit && (
-        <ConfirmModal onConfirm={() => navigate('/')} onCancel={() => setShowExit(false)} />
+        <ConfirmModal onConfirm={() => navigate(exitTarget)} onCancel={() => setShowExit(false)} />
       )}
 
       {celebrating && (

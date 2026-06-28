@@ -1,0 +1,275 @@
+{
+  "id": "s1-tickets-passes",
+  "stageId": "survival",
+  "stageName": "Stage 1  Survival",
+  "title": "Tickets & Passes",
+  "description": "Buy and validate public transport tickets",
+  "icon": "🎫",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Tickets & Passes",
+      "rows": [
+        {
+          "label": "Single ticket",
+          "slovak": "Jednorazový lístok",
+          "english": "Single ticket"
+        },
+        {
+          "label": "Travel pass/card",
+          "slovak": "Predplatná karta",
+          "english": "Travel pass / Card"
+        },
+        {
+          "label": "Validate the ticket",
+          "slovak": "Validovať lístok",
+          "english": "To validate the ticket"
+        },
+        {
+          "label": "Ticket check",
+          "slovak": "Kontrola lístkov",
+          "english": "Ticket check"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Jednorazový lístok",
+          "english": "Single ticket"
+        },
+        {
+          "slovak": "Predplatná karta",
+          "english": "Travel pass / Card"
+        },
+        {
+          "slovak": "Validovať lístok",
+          "english": "To validate the ticket"
+        },
+        {
+          "slovak": "Kontrola lístkov",
+          "english": "Ticket check"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Jednorazový lístok",
+          "english": "Single ticket"
+        },
+        {
+          "slovak": "Predplatná karta",
+          "english": "Travel pass / Card"
+        },
+        {
+          "slovak": "Validovať lístok",
+          "english": "To validate the ticket"
+        },
+        {
+          "slovak": "Kontrola lístkov",
+          "english": "Ticket check"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Jednorazový lístok",
+          "english": "Single ticket"
+        },
+        {
+          "slovak": "Predplatná karta",
+          "english": "Travel pass"
+        },
+        {
+          "slovak": "Validovať lístok",
+          "english": "To validate the ticket"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Jednorazový lístok",
+          "english": "Single ticket"
+        },
+        {
+          "slovak": "Predplatná karta",
+          "english": "Travel pass / Card"
+        },
+        {
+          "slovak": "Validovať lístok",
+          "english": "To validate the ticket"
+        },
+        {
+          "slovak": "Kontrola lístkov",
+          "english": "Ticket check"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: Single ticket.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Jednorazový lístok",
+            "Kontrola lístkov",
+            "Predplatná karta",
+            "Validovať lístok"
+          ],
+          "answer": "Jednorazový lístok",
+          "answerMeaning": "Jednorazový lístok = Single ticket"
+        },
+        {
+          "situation": "You need to say: Travel pass / Card.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Jednorazový lístok",
+            "Kontrola lístkov",
+            "Predplatná karta",
+            "Validovať lístok"
+          ],
+          "answer": "Predplatná karta",
+          "answerMeaning": "Predplatná karta = Travel pass / Card"
+        },
+        {
+          "situation": "You need to say: To validate the ticket.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Jednorazový lístok",
+            "Kontrola lístkov",
+            "Predplatná karta",
+            "Validovať lístok"
+          ],
+          "answer": "Validovať lístok",
+          "answerMeaning": "Validovať lístok = To validate the ticket"
+        },
+        {
+          "situation": "You need to say: Ticket check.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Jednorazový lístok",
+            "Kontrola lístkov",
+            "Predplatná karta",
+            "Validovať lístok"
+          ],
+          "answer": "Kontrola lístkov",
+          "answerMeaning": "Kontrola lístkov = Ticket check"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You only need to take the tram once today. What kind of ticket do you buy?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Predplatná karta",
+            "Jednorazový lístok",
+            "Kontrola lístkov",
+            "Smer centrum"
+          ],
+          "answer": "Jednorazový lístok",
+          "answerMeaning": "Jednorazový lístok = Single ticket. The right choice for a one-time trip rather than a longer pass."
+        },
+        {
+          "situation": "You use public transport every day. What should you get instead of buying single tickets each time?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Jednorazový lístok",
+            "Kontrola lístkov",
+            "Predplatná karta",
+            "Ďalšia zastávka"
+          ],
+          "answer": "Predplatná karta",
+          "answerMeaning": "Predplatná karta = Travel pass/card. Much cheaper than buying single tickets if you travel often."
+        },
+        {
+          "situation": "You board the bus with a paper ticket. What must you do immediately?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Tu vystupujem.",
+            "Validovať lístok.",
+            "Kde mám vystúpiť?",
+            "Smer centrum."
+          ],
+          "answer": "Validovať lístok.",
+          "answerMeaning": "Validovať lístok = Validate the ticket. In most Slovak cities you must stamp/validate your ticket in a machine right after boarding."
+        },
+        {
+          "situation": "An inspector boards and starts checking everyone's tickets. What is this called?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Kontrola lístkov",
+            "Ďalšia zastávka",
+            "Jednorazový lístok",
+            "Smer centrum"
+          ],
+          "answer": "Kontrola lístkov",
+          "answerMeaning": "Kontrola lístkov = Ticket check. Always validate your ticket — this happens regularly, especially in Bratislava."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Kúpil som ___. Idem len jeden raz.",
+          "translation": "I bought a single ticket. I'm only going once.",
+          "choices": [
+            "predplatnú kartu",
+            "jednorazový lístok",
+            "kontrolu lístkov",
+            "zastávku"
+          ],
+          "answer": "jednorazový lístok"
+        },
+        {
+          "sentence": "Nezabudni ___ lístok hneď po nastúpení.",
+          "translation": "Don't forget to validate the ticket right after boarding.",
+          "choices": [
+            "kúpiť",
+            "validovať",
+            "stratiť",
+            "predať"
+          ],
+          "answer": "validovať"
+        },
+        {
+          "sentence": "___ lístkov je dnes na linke 4.",
+          "translation": "There's a ticket check today on line 4.",
+          "choices": [
+            "Jednorazový",
+            "Predplatná",
+            "Kontrola",
+            "Zastávka"
+          ],
+          "answer": "Kontrola"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

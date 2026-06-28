@@ -1,0 +1,309 @@
+{
+  "id": "s1-hospital-check-in",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Hospital Check-In",
+  "description": "Check in at reception, show your insurance card, and explain appointment status",
+  "icon": "🏥",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Check-In",
+      "rows": [
+        {
+          "label": "Waiting room",
+          "slovak": "Čakáreň",
+          "english": "Waiting room"
+        },
+        {
+          "label": "Insurance card",
+          "slovak": "Karta poistenca",
+          "english": "Insurance card"
+        },
+        {
+          "label": "I have an appointment",
+          "slovak": "Som objednaný / objednaná.",
+          "english": "I have an appointment. (m/f)"
+        },
+        {
+          "label": "Without appointment",
+          "slovak": "Bez objednania",
+          "english": "Without an appointment / walk-in"
+        },
+        {
+          "label": "Reception",
+          "slovak": "Recepcia",
+          "english": "Reception"
+        },
+        {
+          "label": "Emergency room",
+          "slovak": "Urgentný príjem",
+          "english": "Emergency room / A&E"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Čakáreň",
+          "english": "Waiting room"
+        },
+        {
+          "slovak": "Karta poistenca",
+          "english": "Insurance card"
+        },
+        {
+          "slovak": "Som objednaný.",
+          "english": "I have an appointment."
+        },
+        {
+          "slovak": "Bez objednania",
+          "english": "Without appointment"
+        },
+        {
+          "slovak": "Recepcia",
+          "english": "Reception"
+        },
+        {
+          "slovak": "Urgentný príjem",
+          "english": "Emergency room"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Čakáreň",
+          "english": "Waiting room"
+        },
+        {
+          "slovak": "Karta poistenca",
+          "english": "Insurance card"
+        },
+        {
+          "slovak": "Som objednaný.",
+          "english": "I have an appointment."
+        },
+        {
+          "slovak": "Bez objednania",
+          "english": "Without appointment"
+        },
+        {
+          "slovak": "Recepcia",
+          "english": "Reception"
+        },
+        {
+          "slovak": "Urgentný príjem",
+          "english": "Emergency room"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Čakáreň",
+          "english": "Waiting room"
+        },
+        {
+          "slovak": "Karta poistenca",
+          "english": "Insurance card"
+        },
+        {
+          "slovak": "Som objednaný.",
+          "english": "I have an appointment."
+        },
+        {
+          "slovak": "Bez objednania",
+          "english": "Without an appointment"
+        },
+        {
+          "slovak": "Recepcia",
+          "english": "Reception"
+        },
+        {
+          "slovak": "Urgentný príjem",
+          "english": "Emergency room / A&E"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Čakáreň",
+          "english": "Waiting room"
+        },
+        {
+          "slovak": "Karta poistenca",
+          "english": "Insurance card"
+        },
+        {
+          "slovak": "Som objednaný.",
+          "english": "I have an appointment."
+        },
+        {
+          "slovak": "Bez objednania",
+          "english": "Without appointment"
+        },
+        {
+          "slovak": "Recepcia",
+          "english": "Reception"
+        },
+        {
+          "slovak": "Urgentný príjem",
+          "english": "Emergency room"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You arrive at reception and have an appointment. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som objednaný.",
+            "Bez objednania.",
+            "Je mi zle.",
+            "Čakáreň."
+          ],
+          "answer": "Som objednaný.",
+          "answerMeaning": "Som objednaný = I have an appointment. Som objednaná for female."
+        },
+        {
+          "situation": "You do not have an appointment but need to see a doctor urgently. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som bez objednania, je to urgentné.",
+            "Som objednaný.",
+            "Karta poistenca.",
+            "Dvakrát denne."
+          ],
+          "answer": "Som bez objednania, je to urgentné.",
+          "answerMeaning": "Bez objednania = without appointment."
+        },
+        {
+          "situation": "The receptionist asks for your health insurance details. What do you hand over?",
+          "instruction": "Choose the correct item",
+          "choices": [
+            "Karta poistenca",
+            "Predpis",
+            "Náplasť",
+            "Tabletky"
+          ],
+          "answer": "Karta poistenca",
+          "answerMeaning": "Karta poistenca = insurance card."
+        },
+        {
+          "situation": "You are waiting to be called before your appointment. Where are you?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Čakáreň",
+            "Recepcia",
+            "Urgentný príjem",
+            "Lekáreň"
+          ],
+          "answer": "Čakáreň",
+          "answerMeaning": "Čakáreň = waiting room."
+        },
+        {
+          "situation": "It is serious and life-threatening, not a regular appointment. Where do you go?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Urgentný príjem",
+            "Čakáreň",
+            "Recepcia",
+            "Karta poistenca"
+          ],
+          "answer": "Urgentný príjem",
+          "answerMeaning": "Urgentný príjem = emergency room / A&E."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Kai je ___. Má stretnutie o desiatej.",
+          "translation": "Kai has an appointment. Kai has a meeting at ten.",
+          "choices": [
+            "objednaný",
+            "objednaná",
+            "bez objednania",
+            "urgentný"
+          ],
+          "answer": "objednaný",
+          "acceptedAnswers": [
+            "objednaná"
+          ],
+          "answerMeaning": "objednaný = with an appointment (male) · objednaná = with an appointment (female)."
+        },
+        {
+          "sentence": "Vašu kartu ___, prosím.",
+          "translation": "Your insurance card, please.",
+          "choices": [
+            "poistenca",
+            "predpis",
+            "recept",
+            "čakáreň"
+          ],
+          "answer": "poistenca",
+          "answerMeaning": "Karta poistenca = insurance card."
+        },
+        {
+          "sentence": "Som bez ___. Je to urgentné.",
+          "translation": "I am without an appointment. It is urgent.",
+          "choices": [
+            "objednania",
+            "čakárne",
+            "recepcie",
+            "predpisu"
+          ],
+          "answer": "objednania",
+          "answerMeaning": "Bez objednania = without appointment."
+        },
+        {
+          "sentence": "Čakám v ___.",
+          "translation": "I am waiting in the waiting room.",
+          "choices": [
+            "čakárni",
+            "recepcii",
+            "lekárni",
+            "sanitke"
+          ],
+          "answer": "čakárni",
+          "answerMeaning": "Čakáreň = waiting room."
+        },
+        {
+          "sentence": "Je to vážne. Idem na ___.",
+          "translation": "It is serious. I am going to the emergency room.",
+          "choices": [
+            "urgentný príjem",
+            "recepciu",
+            "čakáreň",
+            "lekáreň"
+          ],
+          "answer": "urgentný príjem",
+          "answerMeaning": "Urgentný príjem = emergency room / A&E."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

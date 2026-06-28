@@ -1,0 +1,306 @@
+{
+  "id": "s1-what-happened",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "What Happened?",
+  "description": "Say the emergency clearly: fire, accident, thief, injury, and help",
+  "icon": "🆘",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Emergency Phrases",
+      "rows": [
+        {
+          "label": "Fire",
+          "slovak": "Požiar",
+          "english": "Fire"
+        },
+        {
+          "label": "Accident",
+          "slovak": "Nehoda",
+          "english": "Accident"
+        },
+        {
+          "label": "Thief",
+          "slovak": "Zlodej",
+          "english": "Thief"
+        },
+        {
+          "label": "It's an emergency",
+          "slovak": "Je to núdza!",
+          "english": "It's an emergency!"
+        },
+        {
+          "label": "Someone is injured",
+          "slovak": "Niekto je zranený!",
+          "english": "Someone is injured!"
+        },
+        {
+          "label": "Send an ambulance",
+          "slovak": "Pošlite záchranku!",
+          "english": "Send an ambulance!"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Požiar",
+          "english": "Fire"
+        },
+        {
+          "slovak": "Nehoda",
+          "english": "Accident"
+        },
+        {
+          "slovak": "Zlodej",
+          "english": "Thief"
+        },
+        {
+          "slovak": "Je to núdza!",
+          "english": "It's an emergency!"
+        },
+        {
+          "slovak": "Niekto je zranený!",
+          "english": "Someone is injured!"
+        },
+        {
+          "slovak": "Pošlite záchranku!",
+          "english": "Send an ambulance!"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Požiar",
+          "english": "Fire"
+        },
+        {
+          "slovak": "Nehoda",
+          "english": "Accident"
+        },
+        {
+          "slovak": "Zlodej",
+          "english": "Thief"
+        },
+        {
+          "slovak": "Je to núdza!",
+          "english": "It's an emergency!"
+        },
+        {
+          "slovak": "Niekto je zranený!",
+          "english": "Someone is injured!"
+        },
+        {
+          "slovak": "Pošlite záchranku!",
+          "english": "Send an ambulance!"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Požiar",
+          "english": "Fire"
+        },
+        {
+          "slovak": "Nehoda",
+          "english": "Accident"
+        },
+        {
+          "slovak": "Zlodej",
+          "english": "Thief"
+        },
+        {
+          "slovak": "Je to núdza!",
+          "english": "It's an emergency!"
+        },
+        {
+          "slovak": "Niekto je zranený!",
+          "english": "Someone is injured!"
+        },
+        {
+          "slovak": "Pošlite záchranku!",
+          "english": "Send an ambulance!"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Požiar",
+          "english": "Fire"
+        },
+        {
+          "slovak": "Nehoda",
+          "english": "Accident"
+        },
+        {
+          "slovak": "Zlodej",
+          "english": "Thief"
+        },
+        {
+          "slovak": "Je to núdza!",
+          "english": "It's an emergency!"
+        },
+        {
+          "slovak": "Niekto je zranený!",
+          "english": "Someone is injured!"
+        },
+        {
+          "slovak": "Pošlite záchranku!",
+          "english": "Send an ambulance!"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Smoke is coming out of a building. What is the emergency word?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Požiar",
+            "Nehoda",
+            "Zlodej",
+            "Doktor"
+          ],
+          "answer": "Požiar",
+          "answerMeaning": "Požiar = fire."
+        },
+        {
+          "situation": "Two cars crashed and people are hurt. What is the word for accident?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Nehoda",
+            "Požiar",
+            "Zlodej",
+            "Sanitka"
+          ],
+          "answer": "Nehoda",
+          "answerMeaning": "Nehoda = accident."
+        },
+        {
+          "situation": "Someone snatches your bag and runs. What do you shout?",
+          "instruction": "Choose the best word",
+          "choices": [
+            "Zlodej!",
+            "Požiar!",
+            "Nehoda!",
+            "Záchranár!"
+          ],
+          "answer": "Zlodej!",
+          "answerMeaning": "Zlodej! = Thief!"
+        },
+        {
+          "situation": "Someone collapses and is injured. What do you say to emergency services?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Niekto je zranený!",
+            "Som z Indie.",
+            "Dobrý deň!",
+            "Je to ďaleko."
+          ],
+          "answer": "Niekto je zranený!",
+          "answerMeaning": "Niekto je zranený! = Someone is injured!"
+        },
+        {
+          "situation": "You need an ambulance immediately. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Pošlite záchranku!",
+            "Koľko to stojí?",
+            "Napíšte to, prosím.",
+            "Som vonku."
+          ],
+          "answer": "Pošlite záchranku!",
+          "answerMeaning": "Pošlite záchranku! = Send an ambulance!"
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___! Dom horí!",
+          "translation": "Fire! The house is burning!",
+          "choices": [
+            "Požiar",
+            "Zlodej",
+            "Nehoda",
+            "Doktor"
+          ],
+          "answer": "Požiar",
+          "answerMeaning": "Požiar = fire."
+        },
+        {
+          "sentence": "Bola tu ___. Auto narazilo do stromu.",
+          "translation": "There was an accident. A car hit a tree.",
+          "choices": [
+            "nehoda",
+            "požiar",
+            "sanitka",
+            "lekáreň"
+          ],
+          "answer": "nehoda",
+          "answerMeaning": "Nehoda = accident."
+        },
+        {
+          "sentence": "___! Ukradol mi tašku!",
+          "translation": "Thief! He stole my bag!",
+          "choices": [
+            "Zlodej",
+            "Požiar",
+            "Záchranár",
+            "Doktor"
+          ],
+          "answer": "Zlodej",
+          "answerMeaning": "Zlodej = thief."
+        },
+        {
+          "sentence": "Niekto je ___!",
+          "translation": "Someone is injured!",
+          "choices": [
+            "zranený",
+            "zadarmo",
+            "blízko",
+            "vľavo"
+          ],
+          "answer": "zranený",
+          "answerMeaning": "Zranený = injured."
+        },
+        {
+          "sentence": "Pošlite ___!",
+          "translation": "Send an ambulance!",
+          "choices": [
+            "záchranku",
+            "kartu",
+            "účet",
+            "vodu"
+          ],
+          "answer": "záchranku",
+          "answerMeaning": "Záchranka = ambulance service."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

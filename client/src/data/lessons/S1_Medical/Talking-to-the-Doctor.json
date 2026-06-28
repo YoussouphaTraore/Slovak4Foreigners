@@ -1,0 +1,306 @@
+{
+  "id": "s1-talking-to-doctor",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Talking to the Doctor",
+  "description": "Understand the doctor's basic questions and the prescription flow",
+  "icon": "🩺",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Doctor Talk",
+      "rows": [
+        {
+          "label": "What's wrong?",
+          "slovak": "Čo vás trápi?",
+          "english": "What's troubling you?"
+        },
+        {
+          "label": "How long?",
+          "slovak": "Ako dlho to trvá?",
+          "english": "How long has this been going on?"
+        },
+        {
+          "label": "Since yesterday",
+          "slovak": "Od včera.",
+          "english": "Since yesterday."
+        },
+        {
+          "label": "My head hurts",
+          "slovak": "Bolí ma hlava.",
+          "english": "My head hurts."
+        },
+        {
+          "label": "Prescription",
+          "slovak": "Predpis",
+          "english": "Prescription"
+        },
+        {
+          "label": "Take this medicine",
+          "slovak": "Berte tento liek.",
+          "english": "Take this medicine."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Čo vás trápi?",
+          "english": "What's wrong?"
+        },
+        {
+          "slovak": "Ako dlho to trvá?",
+          "english": "How long?"
+        },
+        {
+          "slovak": "Od včera.",
+          "english": "Since yesterday."
+        },
+        {
+          "slovak": "Bolí ma hlava.",
+          "english": "My head hurts."
+        },
+        {
+          "slovak": "Predpis",
+          "english": "Prescription"
+        },
+        {
+          "slovak": "Berte tento liek.",
+          "english": "Take this medicine."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Čo vás trápi?",
+          "english": "What's wrong?"
+        },
+        {
+          "slovak": "Ako dlho to trvá?",
+          "english": "How long?"
+        },
+        {
+          "slovak": "Od včera.",
+          "english": "Since yesterday."
+        },
+        {
+          "slovak": "Bolí ma hlava.",
+          "english": "My head hurts."
+        },
+        {
+          "slovak": "Predpis",
+          "english": "Prescription"
+        },
+        {
+          "slovak": "Berte tento liek.",
+          "english": "Take this medicine."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Čo vás trápi?",
+          "english": "What's troubling you?"
+        },
+        {
+          "slovak": "Ako dlho to trvá?",
+          "english": "How long has this been going on?"
+        },
+        {
+          "slovak": "Od včera.",
+          "english": "Since yesterday."
+        },
+        {
+          "slovak": "Bolí ma hlava.",
+          "english": "My head hurts."
+        },
+        {
+          "slovak": "Predpis",
+          "english": "Prescription"
+        },
+        {
+          "slovak": "Berte tento liek.",
+          "english": "Take this medicine."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Čo vás trápi?",
+          "english": "What's troubling you?"
+        },
+        {
+          "slovak": "Ako dlho to trvá?",
+          "english": "How long has this been going on?"
+        },
+        {
+          "slovak": "Od včera.",
+          "english": "Since yesterday."
+        },
+        {
+          "slovak": "Bolí ma hlava.",
+          "english": "My head hurts."
+        },
+        {
+          "slovak": "Predpis",
+          "english": "Prescription"
+        },
+        {
+          "slovak": "Berte tento liek.",
+          "english": "Take this medicine."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The doctor asks: Čo vás trápi? What do they want to know?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "What's wrong?",
+            "Where do you live?",
+            "How much is it?",
+            "What is your name?"
+          ],
+          "answer": "What's wrong?",
+          "answerMeaning": "Čo vás trápi? = What's troubling you?"
+        },
+        {
+          "situation": "The doctor asks how long this has been going on. Which phrase did they use?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Ako dlho to trvá?",
+            "Čo vás trápi?",
+            "Kde je lekáreň?",
+            "Je potrebný predpis?"
+          ],
+          "answer": "Ako dlho to trvá?",
+          "answerMeaning": "Ako dlho to trvá? = How long has this been going on?"
+        },
+        {
+          "situation": "Your symptoms started yesterday. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Od včera.",
+            "Zajtra.",
+            "Dvakrát denne.",
+            "Som objednaný."
+          ],
+          "answer": "Od včera.",
+          "answerMeaning": "Od včera. = Since yesterday."
+        },
+        {
+          "situation": "The doctor gives you a paper for the pharmacy. What is it called?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Predpis",
+            "Čakáreň",
+            "Karta poistenca",
+            "Recepcia"
+          ],
+          "answer": "Predpis",
+          "answerMeaning": "Predpis = prescription."
+        },
+        {
+          "situation": "The doctor says: Berte tento liek. What should you do?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Take this medicine.",
+            "Show your card.",
+            "Wait here.",
+            "Call police."
+          ],
+          "answer": "Take this medicine.",
+          "answerMeaning": "Berte tento liek. = Take this medicine."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ vás trápi?",
+          "translation": "What is troubling you?",
+          "choices": [
+            "Čo",
+            "Kde",
+            "Kedy",
+            "Ako"
+          ],
+          "answer": "Čo",
+          "answerMeaning": "Čo vás trápi? = What's troubling you?"
+        },
+        {
+          "sentence": "Ako dlho to ___?",
+          "translation": "How long has this been going on?",
+          "choices": [
+            "trvá",
+            "stojí",
+            "bolí",
+            "volá"
+          ],
+          "answer": "trvá",
+          "answerMeaning": "Ako dlho to trvá? = How long has this been going on?"
+        },
+        {
+          "sentence": "Mám tieto symptómy ___ včera.",
+          "translation": "I have had these symptoms since yesterday.",
+          "choices": [
+            "od",
+            "do",
+            "na",
+            "v"
+          ],
+          "answer": "od",
+          "answerMeaning": "Od včera = since yesterday."
+        },
+        {
+          "sentence": "___ ma hlava.",
+          "translation": "My head hurts.",
+          "choices": [
+            "Bolí",
+            "Mám",
+            "Som",
+            "Idem"
+          ],
+          "answer": "Bolí",
+          "answerMeaning": "Bolí ma hlava. = My head hurts."
+        },
+        {
+          "sentence": "Lekár mi dal ___. Idem do lekárne.",
+          "translation": "The doctor gave me a prescription. I am going to the pharmacy.",
+          "choices": [
+            "predpis",
+            "kartu poistenca",
+            "čakáreň",
+            "recepciu"
+          ],
+          "answer": "predpis",
+          "answerMeaning": "Predpis = prescription."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

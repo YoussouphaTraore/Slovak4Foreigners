@@ -4,8 +4,8 @@
   "stageName": "Stage 1 · Survival",
   "blockId": "stage1-block2",
   "type": "BLOCK_DIALOGUE",
-  "title": "Your First Conversation — Part 2",
-  "description": "You meet Marek again. This time he wants to know more about you and your family.",
+  "title": "Your First Conversation — About You",
+  "description": "You meet Marek again. This time he asks about you, your body, colors, and your family.",
   "icon": "🙋",
   "xpReward": 20,
   "contact": {
@@ -14,7 +14,7 @@
     "role": "The Slovak you met before",
     "avatar": "👨"
   },
-  "context": "You run into Marek again. He remembers you and wants to get to know you better. Use what you know.",
+  "context": "You run into Marek again. He remembers you and wants to get to know you better. Use Block 2 words to talk about yourself, describe people, mention body pain, and talk about family.",
   "exchanges": [
     {
       "id": "ex1",
@@ -24,10 +24,30 @@
       "prompt": "Marek asks your name. What do you say?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Som z Anglicka.", "translation": "I am from England.", "isCorrect": false },
-        { "id": "b", "text": "Volám sa Kai.", "translation": "My name is Kai.", "isCorrect": true },
-        { "id": "c", "text": "Ako sa máte?", "translation": "How are you?", "isCorrect": false },
-        { "id": "d", "text": "Teší ma.", "translation": "Nice to meet you.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Som z Anglicka.",
+          "translation": "I am from England.",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "text": "Volám sa Kai.",
+          "translation": "My name is Kai.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Ako sa máte?",
+          "translation": "How are you?",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Teší ma.",
+          "translation": "Nice to meet you.",
+          "isCorrect": false
+        }
       ],
       "correctFeedback": "Volám sa Kai. — perfect introduction. Volám sa is the standard way to give your name.",
       "wrongFeedback": "Volám sa + your name is the correct response when someone asks for your name."
@@ -37,113 +57,573 @@
       "speaker": "marek",
       "text": "Teší ma! Odkiaľ ste?",
       "translation": "Nice to meet you! Where are you from?",
-      "prompt": "Marek asks where you are from. Pick the country that is true for you.",
+      "prompt": "Marek asks where you are from. Pick a correct country-of-origin answer.",
       "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Som z Nemecka.", "translation": "I am from Germany.", "isCorrect": true },
-        { "id": "b", "text": "Som z Francúzska.", "translation": "I am from France.", "isCorrect": true },
-        { "id": "c", "text": "Som z Indie.", "translation": "I am from India.", "isCorrect": true },
-        { "id": "d", "text": "Som z Brazílie.", "translation": "I am from Brazil.", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "Som z Nemecka.",
+          "translation": "I am from Germany.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Som z Francúzska.",
+          "translation": "I am from France.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Som z Indie.",
+          "translation": "I am from India.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Som z Brazílie.",
+          "translation": "I am from Brazil.",
+          "isCorrect": true
+        }
       ],
-      "correctFeedback": "Som z... — correct pattern, any country works. The grammar is what matters here.",
-      "wrongFeedback": "Som z... + country is the correct pattern for saying where you're from."
+      "correctFeedback": "Som z... — correct pattern. The country can change, but the structure stays the same.",
+      "wrongFeedback": "Som z... + country is the pattern for saying where you are from."
     },
     {
       "id": "ex3",
       "speaker": "marek",
-      "text": "Zaujímavé! A ako vyzeráte? Som zlý v opisovaní ľudí.",
-      "translation": "Interesting! And what do you look like? I'm bad at describing people.",
-      "prompt": "Marek jokes that he's bad with descriptions. Pick the description that is true for you.",
+      "text": "Ste muž alebo žena?",
+      "translation": "Are you a man or a woman?",
+      "prompt": "Marek asks your gender. Pick whichever applies to you.",
       "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Som vysoký.", "translation": "I am tall. (male)", "isCorrect": true },
-        { "id": "b", "text": "Som nízky.", "translation": "I am short. (male)", "isCorrect": true },
-        { "id": "c", "text": "Som vysoká.", "translation": "I am tall. (female)", "isCorrect": true },
-        { "id": "d", "text": "Som nízka.", "translation": "I am short. (female)", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "Som muž.",
+          "translation": "I am a man.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Som žena.",
+          "translation": "I am a woman.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Som z Indie.",
+          "translation": "I am from India.",
+          "isCorrect": false
+        },
+        {
+          "id": "d",
+          "text": "Mám brata.",
+          "translation": "I have a brother.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Correct grammar — Slovak adjectives change ending based on gender. Pick whichever describes you.",
-      "wrongFeedback": "Som vysoký/vysoká or Som nízky/nízka — pick the form that matches you."
+      "correctFeedback": "Som muž / Som žena — both are correct identity answers depending on the person.",
+      "wrongFeedback": "Use Som muž or Som žena when the question is about gender."
     },
     {
       "id": "ex4",
       "speaker": "marek",
-      "text": "Aha, rozumiem. A aké máte vlasy?",
-      "translation": "Ah, I understand. And what color is your hair?",
-      "prompt": "Marek asks about your hair color. Pick the color that is true for you.",
+      "text": "A aký je váš stav? Ste ženatý, vydatá alebo slobodný?",
+      "translation": "And what is your status? Are you married or single?",
+      "prompt": "Marek asks about marital status. Pick a valid status answer.",
       "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Mám čierne vlasy.", "translation": "I have black hair.", "isCorrect": true },
-        { "id": "b", "text": "Mám hnedé vlasy.", "translation": "I have brown hair.", "isCorrect": true },
-        { "id": "c", "text": "Mám blond vlasy.", "translation": "I have blonde hair.", "isCorrect": true },
-        { "id": "d", "text": "Mám červené vlasy.", "translation": "I have red hair.", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "Som ženatý.",
+          "translation": "I am married. (said by a man)",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Som vydatá.",
+          "translation": "I am married. (said by a woman)",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Som slobodný.",
+          "translation": "I am single. (male form)",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Som dospelý.",
+          "translation": "I am an adult.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Mám + color + vlasy. Correct pattern — combining a color word with a body part word.",
-      "wrongFeedback": "Mám [color] vlasy is the pattern. Pick whichever color matches you."
+      "correctFeedback": "Ženatý, vydatá, and slobodný/slobodná are relationship-status words from Block 2.",
+      "wrongFeedback": "For marital status, use Som ženatý, Som vydatá, or Som slobodný/slobodná."
     },
     {
       "id": "ex5",
       "speaker": "marek",
-      "text": "Dobre, teraz si vás predstavím lepšie! A máte tu rodinu?",
-      "translation": "Good, now I can picture you better! And do you have family here?",
-      "prompt": "Marek asks if you have family in Slovakia. Pick whichever is true for you.",
+      "text": "Ako vyzeráte? Ste vysoký alebo nízky?",
+      "translation": "What do you look like? Are you tall or short?",
+      "prompt": "Marek asks about height. Pick a grammatically correct description.",
       "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Mám tu rodinu.", "translation": "I have family here.", "isCorrect": true },
-        { "id": "b", "text": "Nemám tu rodinu.", "translation": "I don't have family here.", "isCorrect": true },
-        { "id": "c", "text": "Mám tu manželku.", "translation": "I have a wife here.", "isCorrect": true },
-        { "id": "d", "text": "Mám tu manžela.", "translation": "I have a husband here.", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "Som vysoký.",
+          "translation": "I am tall. (male)",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Som nízky.",
+          "translation": "I am short. (male)",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Som vysoká.",
+          "translation": "I am tall. (female)",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Som nízka.",
+          "translation": "I am short. (female)",
+          "isCorrect": true
+        }
       ],
-      "correctFeedback": "Mám / Nemám + rodinu — correct grammar either way. Mám = I have, Nemám = I don't have.",
-      "wrongFeedback": "Mám tu rodinu or Nemám tu rodinu — both are grammatically correct, pick what's true for you."
+      "correctFeedback": "Correct. Slovak adjectives change ending depending on gender: vysoký/vysoká, nízky/nízka.",
+      "wrongFeedback": "Use Som vysoký/vysoká or Som nízky/nízka to describe height."
     },
     {
       "id": "ex6",
       "speaker": "marek",
-      "text": "Chápem. A máte súrodencov? Brata alebo sestru?",
-      "translation": "I understand. Do you have siblings? A brother or a sister?",
-      "prompt": "Marek asks if you have siblings. Pick whichever is true for you.",
+      "text": "A aké máte vlasy alebo oči?",
+      "translation": "And what hair or eyes do you have?",
+      "prompt": "Marek asks for a color description. Pick a correct phrase.",
       "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Mám brata.", "translation": "I have a brother.", "isCorrect": true },
-        { "id": "b", "text": "Mám sestru.", "translation": "I have a sister.", "isCorrect": true },
-        { "id": "c", "text": "Nemám súrodencov.", "translation": "I don't have siblings.", "isCorrect": true },
-        { "id": "d", "text": "Mám brata a sestru.", "translation": "I have a brother and a sister.", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "Mám hnedé vlasy.",
+          "translation": "I have brown hair.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Mám modré oči.",
+          "translation": "I have blue eyes.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Mám zelené oči.",
+          "translation": "I have green eyes.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Semafor je červený.",
+          "translation": "The traffic light is red.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "All correct grammar. Mám = I have, Nemám = I don't have, súrodenci = siblings.",
-      "wrongFeedback": "Mám/Nemám + brata/sestru/súrodencov — pick whichever is true for you."
+      "correctFeedback": "Mám + color + vlasy/oči is the useful color-description pattern.",
+      "wrongFeedback": "For describing yourself, use Mám hnedé vlasy, Mám modré oči, or another color + body part phrase."
     },
     {
       "id": "ex7",
       "speaker": "marek",
-      "text": "Pekné! A bývajú vaši rodičia ešte doma?",
-      "translation": "Nice! And do your parents still live back home?",
-      "prompt": "Marek asks if your parents still live in your home country. Pick whichever is true for you.",
+      "text": "Prepáčte, vyzeráte unavene. Bolí vás niečo?",
+      "translation": "Sorry, you look tired. Does something hurt?",
+      "prompt": "Marek asks if something hurts. Choose the body-pain sentence.",
       "isOpenQuestion": true,
       "choices": [
-        { "id": "a", "text": "Moji rodičia bývajú doma.", "translation": "My parents live back home.", "isCorrect": true },
-        { "id": "b", "text": "Moji rodičia bývajú tu.", "translation": "My parents live here.", "isCorrect": true },
-        { "id": "c", "text": "Nemám rodičov.", "translation": "I don't have parents.", "isCorrect": true },
-        { "id": "d", "text": "Moji rodičia bývajú v inej krajine.", "translation": "My parents live in another country.", "isCorrect": true }
+        {
+          "id": "a",
+          "text": "Bolí ma hlava.",
+          "translation": "My head hurts.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Bolí ma hruď.",
+          "translation": "My chest hurts.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Bolí ma brucho.",
+          "translation": "My stomach hurts.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Mám čierne vlasy.",
+          "translation": "I have black hair.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Correct grammar. Rodičia = parents, bývajú = they live, doma = at home.",
-      "wrongFeedback": "Moji rodičia bývajú... — pick whichever is true for your own situation."
+      "correctFeedback": "Bolí ma... is the key body-pain pattern from Block 2.",
+      "wrongFeedback": "Use Bolí ma + body part when you need to say what hurts."
     },
     {
       "id": "ex8",
       "speaker": "marek",
-      "text": "To je super, teraz vás poznám lepšie. Ďakujem, Kai!",
-      "translation": "That's great, now I know you better. Thank you, Kai!",
+      "text": "Rozumiem. A máte tu partnerku alebo partnera?",
+      "translation": "I understand. And do you have a female or male partner here?",
+      "prompt": "Marek asks if you have a partner. Pick whichever can be true.",
+      "isOpenQuestion": true,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Mám tu manželku.",
+          "translation": "I have my wife here.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Mám tu manžela.",
+          "translation": "I have my husband here.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Nie, nemám.",
+          "translation": "No, I don't.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Mám dve deti.",
+          "translation": "I have two children.",
+          "isCorrect": false
+        }
+      ],
+      "correctFeedback": "Manželku, manžela, and Nie, nemám are the three natural partner answers.",
+      "wrongFeedback": "The question is about a partner. Use Mám tu manželku, Mám tu manžela, or Nie, nemám."
+    },
+    {
+      "id": "ex9",
+      "speaker": "marek",
+      "text": "A čo rodičia alebo súrodenci?",
+      "translation": "And what about parents or siblings?",
+      "prompt": "Marek asks about parents and siblings. Pick a correct answer.",
+      "isOpenQuestion": true,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Moji rodičia bývajú doma.",
+          "translation": "My parents live back home.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Mám brata.",
+          "translation": "I have a brother.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Mám sestru.",
+          "translation": "I have a sister.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Nemám súrodencov.",
+          "translation": "I do not have siblings.",
+          "isCorrect": true
+        }
+      ],
+      "correctFeedback": "Rodičia, brat, sestra, and súrodenci are the core parents-and-siblings words.",
+      "wrongFeedback": "For this question, answer with rodičia, brat, sestra, or súrodenci."
+    },
+    {
+      "id": "ex10",
+      "speaker": "marek",
+      "text": "Máte aj starých rodičov, tetu alebo strýka?",
+      "translation": "Do you also have grandparents, an aunt, or an uncle?",
+      "prompt": "Marek asks about extended family. Pick the extended-family phrase.",
+      "isOpenQuestion": true,
+      "choices": [
+        {
+          "id": "a",
+          "text": "Mám starých rodičov.",
+          "translation": "I have grandparents.",
+          "isCorrect": true
+        },
+        {
+          "id": "b",
+          "text": "Mám tetu.",
+          "translation": "I have an aunt.",
+          "isCorrect": true
+        },
+        {
+          "id": "c",
+          "text": "Mám strýka.",
+          "translation": "I have an uncle.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Mám svokrovcov.",
+          "translation": "I have in-laws.",
+          "isCorrect": true
+        }
+      ],
+      "correctFeedback": "Good. This reviews extended family and in-laws from the Family topic.",
+      "wrongFeedback": "Use starí rodičia, teta, strýko, or svokrovci for extended-family answers."
+    },
+    {
+      "id": "ex11",
+      "speaker": "marek",
+      "text": "Výborne, teraz vás poznám lepšie. Ďakujem, Kai!",
+      "translation": "Excellent, now I know you better. Thank you, Kai!",
       "prompt": "Marek thanks you for sharing. How do you respond warmly?",
       "isOpenQuestion": false,
       "choices": [
-        { "id": "a", "text": "Dovidenia.", "translation": "Goodbye.", "isCorrect": false },
-        { "id": "b", "text": "Nerozumiem.", "translation": "I don't understand.", "isCorrect": false },
-        { "id": "c", "text": "Ďakujem aj vám! Teší ma.", "translation": "Thank you too! Nice to meet you.", "isCorrect": true },
-        { "id": "d", "text": "Som unavený.", "translation": "I am tired.", "isCorrect": false }
+        {
+          "id": "a",
+          "text": "Dovidenia.",
+          "translation": "Goodbye.",
+          "isCorrect": false
+        },
+        {
+          "id": "b",
+          "text": "Nerozumiem.",
+          "translation": "I do not understand.",
+          "isCorrect": false
+        },
+        {
+          "id": "c",
+          "text": "Ďakujem aj vám! Teší ma.",
+          "translation": "Thank you too! Nice to meet you.",
+          "isCorrect": true
+        },
+        {
+          "id": "d",
+          "text": "Bolí ma brucho.",
+          "translation": "My stomach hurts.",
+          "isCorrect": false
+        }
       ],
-      "correctFeedback": "Ďakujem aj vám! Teší ma. — warm and natural. You returned the thanks and used the phrase from when you met.",
-      "wrongFeedback": "Ďakujem aj vám! Teší ma is the warmest natural reply here — returning thanks and closing the introduction nicely."
+      "correctFeedback": "Ďakujem aj vám! Teší ma. — warm and natural. You returned the thanks and closed the conversation nicely.",
+      "wrongFeedback": "Ďakujem aj vám! Teší ma is the warmest natural reply here."
     }
   ],
-  "completionMessage": "🎉 Excellent! You introduced yourself, described how you look, and talked about your family — all in Slovak. Marek knows you much better now."
+  "completionMessage": "🎉 Excellent! You introduced yourself, talked about identity and appearance, used colors and body-pain phrases, and described family in Slovak.",
+  "speakingRound": {
+    "id": "block2-speaking",
+    "type": "CONVERSATION_SPEAKING",
+    "questions": [
+      {
+        "id": "q0",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block2-m1.mp3.mp3",
+        "marekQuestionSk": "Ahoj! Ako sa voláte?",
+        "marekQuestionEn": "Hi! What is your name?",
+        "correctAnswerSk": "Volám sa Kai.",
+        "correctAnswerEn": "My name is Kai.",
+        "answerChunks": ["Volám sa Kai."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q1",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block2-m2.mp3.mp3",
+        "marekQuestionSk": "Teší ma! Odkiaľ ste?",
+        "marekQuestionEn": "Nice to meet you! Where are you from?",
+        "correctAnswerSk": "Som z Nemecka.",
+        "correctAnswerEn": "I am from Germany.",
+        "answerChunks": ["Som z Nemecka."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q2",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block2-m3..mp3.mp3",
+        "marekQuestionSk": "Ste muž alebo žena?",
+        "marekQuestionEn": "Are you a man or a woman?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          {
+            "id": "muz",
+            "label": "Muž",
+            "sk": "Som muž.",
+            "en": "I am a man.",
+            "chunks": ["Som muž."]
+          },
+          {
+            "id": "zena",
+            "label": "Žena",
+            "sk": "Som žena.",
+            "en": "I am a woman.",
+            "chunks": ["Som žena."]
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block2-m4.mp3.mp3",
+        "marekQuestionSk": "A aký je váš stav? Ste ženatý, vydatá alebo slobodný?",
+        "marekQuestionEn": "And what is your status? Are you married or single?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          {
+            "id": "zenatý",
+            "label": "Ženatý",
+            "sk": "Som ženatý.",
+            "en": "I am married.",
+            "chunks": ["Som ženatý."]
+          },
+          {
+            "id": "vydata",
+            "label": "Vydatá",
+            "sk": "Som vydatá.",
+            "en": "I am married.",
+            "chunks": ["Som vydatá."]
+          },
+          {
+            "id": "slobodny",
+            "label": "Slobodný",
+            "sk": "Som slobodný.",
+            "en": "I am single.",
+            "chunks": ["Som slobodný."]
+          }
+        ]
+      },
+      {
+        "id": "q4",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block2-m5.mp3.mp3",
+        "marekQuestionSk": "Ako vyzeráte? Ste vysoký alebo nízky?",
+        "marekQuestionEn": "What do you look like? Are you tall or short?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          {
+            "id": "vysoky",
+            "label": "Vysoký",
+            "sk": "Som vysoký.",
+            "en": "I am tall.",
+            "chunks": ["Som vysoký."]
+          },
+          {
+            "id": "nizka",
+            "label": "Nízka",
+            "sk": "Som nízka.",
+            "en": "I am short.",
+            "chunks": ["Som nízka."]
+          }
+        ]
+      },
+      {
+        "id": "q5",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block2-m6.mp3.mp3",
+        "marekQuestionSk": "A aké máte vlasy alebo oči?",
+        "marekQuestionEn": "And what hair or eyes do you have?",
+        "correctAnswerSk": "Mám hnedé vlasy.",
+        "correctAnswerEn": "I have brown hair.",
+        "answerChunks": ["Mám hnedé vlasy."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q6",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block2-m7.mp3.mp3",
+        "marekQuestionSk": "Prepáčte, vyzeráte unavene. Bolí vás niečo?",
+        "marekQuestionEn": "Sorry, you look tired. Does something hurt?",
+        "correctAnswerSk": "Bolí ma hlava.",
+        "correctAnswerEn": "My head hurts.",
+        "answerChunks": ["Bolí ma hlava."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q7",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block2-m8.mp3.mp3",
+        "marekQuestionSk": "Rozumiem. A máte tu partnerku alebo partnera?",
+        "marekQuestionEn": "I understand. And do you have a female or male partner here?",
+        "correctAnswerSk": null,
+        "correctAnswerEn": null,
+        "answerChunks": [],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": [
+          {
+            "id": "manzelku",
+            "label": "Manželku",
+            "sk": "Mám tu manželku.",
+            "en": "I have my wife here.",
+            "chunks": ["Mám tu manželku."]
+          },
+          {
+            "id": "manzela",
+            "label": "Manžela",
+            "sk": "Mám tu manžela.",
+            "en": "I have my husband here.",
+            "chunks": ["Mám tu manžela."]
+          },
+          {
+            "id": "nie",
+            "label": "Nie, nemám",
+            "sk": "Nie, nemám.",
+            "en": "No, I don't.",
+            "chunks": ["Nie, nemám."]
+          }
+        ]
+      },
+      {
+        "id": "q8",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block2-m9.mp3.mp3",
+        "marekQuestionSk": "A čo rodičia alebo súrodenci?",
+        "marekQuestionEn": "And what about parents or siblings?",
+        "correctAnswerSk": "Mám brata.",
+        "correctAnswerEn": "I have a brother.",
+        "answerChunks": ["Mám brata."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q9",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block2-m10.mp3.mp3",
+        "marekQuestionSk": "Máte aj starých rodičov, tetu alebo strýka?",
+        "marekQuestionEn": "Do you also have grandparents, an aunt, or an uncle?",
+        "correctAnswerSk": "Mám starých rodičov.",
+        "correctAnswerEn": "I have grandparents.",
+        "answerChunks": ["Mám starých rodičov."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      },
+      {
+        "id": "q10",
+        "marekAudioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/s1-Dialogue-block2-m11.mp3.mp3",
+        "marekQuestionSk": "Výborne, teraz vás poznám lepšie. Ďakujem, Kai!",
+        "marekQuestionEn": "Excellent, now I know you better. Thank you, Kai!",
+        "correctAnswerSk": "Ďakujem aj vám! Teší ma.",
+        "correctAnswerEn": "Thank you too! Nice to meet you.",
+        "answerChunks": ["Ďakujem aj vám!", "Teší ma."],
+        "isYesNo": false,
+        "personalData": null,
+        "choices": null
+      }
+    ]
+  }
 }

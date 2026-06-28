@@ -25,7 +25,7 @@ interface SlideProps {
   onComplete: (correct: boolean) => void;
 }
 
-function SentenceBuildSlide({ sentence, sentenceNum, totalSentences, onComplete }: SlideProps) {
+export function SentenceBuildSlide({ sentence, sentenceNum, totalSentences, onComplete }: SlideProps) {
   const shuffledBank = useMemo(
     () => shuffle([...sentence.bankChunks]),
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -185,7 +185,7 @@ function SentenceBuildSlide({ sentence, sentenceNum, totalSentences, onComplete 
 
       {/* English prompt */}
       <div className="bg-white rounded-2xl border-2 border-gray-100 shadow-sm px-5 py-4">
-        <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1">Translate to Slovak</p>
+        <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1">Say it in Slovak</p>
         <p className="text-base font-bold text-gray-800 leading-snug">{sentence.promptEn}</p>
       </div>
 
@@ -272,6 +272,30 @@ function SentenceBuildSlide({ sentence, sentenceNum, totalSentences, onComplete 
 
 export function ConversationSentenceBuilderExercise({ exercise, onDone, onAnswer }: Props) {
   const [sentenceIdx, setSentenceIdx] = useState(0);
+
+  if (exercise.sentences.length === 0) {
+    return (
+      <div className="flex flex-col flex-1 min-h-0 gap-4">
+        <div className="flex-1 flex flex-col items-center justify-center text-center px-6">
+          <div className="w-full rounded-3xl border-2 border-amber-200 bg-amber-50 px-5 py-6">
+            <p className="text-sm font-semibold text-amber-700">Sentence practice coming soon</p>
+            <p className="mt-2 text-xs leading-relaxed text-amber-600">
+              This topic comprehension lesson is available, but its sentence builder has not been added yet.
+            </p>
+          </div>
+        </div>
+        <div className="flex-none pb-1">
+          <button
+            type="button"
+            onClick={() => onDone(true)}
+            className="w-full bg-brand-green text-white font-bold py-3.5 rounded-xl text-sm uppercase tracking-widest hover:opacity-90 active:scale-[0.98] shadow-md cursor-pointer transition-all"
+          >
+            Continue
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const handleComplete = (correct: boolean) => {
     onAnswer?.(correct);

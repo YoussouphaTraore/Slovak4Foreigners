@@ -1,0 +1,327 @@
+{
+  "id": "s1-height-appearance",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Height & Appearance",
+  "description": "Describe height and basic appearance when needed",
+  "icon": "🪪",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Height & Appearance",
+      "rows": [
+        {
+          "label": "Tall (m)",
+          "slovak": "Som vysoký.",
+          "english": "I am tall. (male)"
+        },
+        {
+          "label": "Tall (f)",
+          "slovak": "Som vysoká.",
+          "english": "I am tall. (female)"
+        },
+        {
+          "label": "Short (m)",
+          "slovak": "Som nízky.",
+          "english": "I am short. (male)"
+        },
+        {
+          "label": "Short (f)",
+          "slovak": "Som nízka.",
+          "english": "I am short. (female)"
+        },
+        {
+          "label": "White",
+          "slovak": "Som biely / biela.",
+          "english": "I am white. (m/f)"
+        },
+        {
+          "label": "Black",
+          "slovak": "Som čierny / čierna.",
+          "english": "I am Black. (m/f)"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Som vysoký.",
+          "english": "I am tall. (male)"
+        },
+        {
+          "slovak": "Som vysoká.",
+          "english": "I am tall. (female)"
+        },
+        {
+          "slovak": "Som nízky.",
+          "english": "I am short. (male)"
+        },
+        {
+          "slovak": "Som nízka.",
+          "english": "I am short. (female)"
+        },
+        {
+          "slovak": "Som biely.",
+          "english": "I am white. (male)"
+        },
+        {
+          "slovak": "Som čierna.",
+          "english": "I am Black. (female)"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Som vysoký.",
+          "english": "I am tall. (male)"
+        },
+        {
+          "slovak": "Som vysoká.",
+          "english": "I am tall. (female)"
+        },
+        {
+          "slovak": "Som nízky.",
+          "english": "I am short. (male)"
+        },
+        {
+          "slovak": "Som nízka.",
+          "english": "I am short. (female)"
+        },
+        {
+          "slovak": "Som biely.",
+          "english": "I am white. (male)"
+        },
+        {
+          "slovak": "Som čierna.",
+          "english": "I am Black. (female)"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "vysoký",
+          "english": "tall (male)"
+        },
+        {
+          "slovak": "vysoká",
+          "english": "tall (female)"
+        },
+        {
+          "slovak": "nízky",
+          "english": "short (male)"
+        },
+        {
+          "slovak": "nízka",
+          "english": "short (female)"
+        },
+        {
+          "slovak": "biely",
+          "english": "white (male)"
+        },
+        {
+          "slovak": "čierny",
+          "english": "Black (male)"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Som vysoký.",
+          "english": "I am tall. (male)"
+        },
+        {
+          "slovak": "Som vysoká.",
+          "english": "I am tall. (female)"
+        },
+        {
+          "slovak": "Som nízky.",
+          "english": "I am short. (male)"
+        },
+        {
+          "slovak": "Som nízka.",
+          "english": "I am short. (female)"
+        },
+        {
+          "slovak": "Som biely.",
+          "english": "I am white. (male)"
+        },
+        {
+          "slovak": "Som čierna.",
+          "english": "I am Black. (female)"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are a tall man. What do you say about your height?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som nízky.",
+            "Som vysoký.",
+            "Som vysoká.",
+            "Som nízka."
+          ],
+          "answer": "Som vysoký.",
+          "answerMeaning": "Som vysoký = I am tall, male form."
+        },
+        {
+          "situation": "You are a tall woman. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som vysoký.",
+            "Som nízky.",
+            "Som vysoká.",
+            "Som nízka."
+          ],
+          "answer": "Som vysoká.",
+          "answerMeaning": "Som vysoká = I am tall, female form."
+        },
+        {
+          "situation": "You are a short man. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som nízky.",
+            "Som nízka.",
+            "Som vysoký.",
+            "Som vysoká."
+          ],
+          "answer": "Som nízky.",
+          "answerMeaning": "Som nízky = I am short, male form."
+        },
+        {
+          "situation": "You are a short woman. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som vysoký.",
+            "Som vysoká.",
+            "Som nízky.",
+            "Som nízka."
+          ],
+          "answer": "Som nízka.",
+          "answerMeaning": "Som nízka = I am short, female form."
+        },
+        {
+          "situation": "A police report describes a white man. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Je biely.",
+            "Je biela.",
+            "Je čierny.",
+            "Je nízka."
+          ],
+          "answer": "Je biely.",
+          "answerMeaning": "Je biely = He is white. Use Je when describing someone else."
+        },
+        {
+          "situation": "A police report describes a Black woman. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Je čierny.",
+            "Je čierna.",
+            "Je biela.",
+            "Je vysoký."
+          ],
+          "answer": "Je čierna.",
+          "answerMeaning": "Je čierna = She is Black. Use Je when describing someone else."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Kai je ___. Hrá basketbal.",
+          "translation": "Kai is ___. Kai plays basketball.",
+          "choices": [
+            "nízky",
+            "vysoký",
+            "vysoká",
+            "nízka"
+          ],
+          "answer": "vysoký",
+          "acceptedAnswers": [
+            "vysoká"
+          ],
+          "answerMeaning": "vysoký = tall (male form) · vysoká = tall (female form). Both can fit Kai."
+        },
+        {
+          "sentence": "Ona je ___. Je menšia ako ostatní.",
+          "translation": "She is ___. She is smaller than the others.",
+          "choices": [
+            "nízky",
+            "nízka",
+            "vysoký",
+            "vysoká"
+          ],
+          "answer": "nízka"
+        },
+        {
+          "sentence": "On nie je vysoký. On je ___.",
+          "translation": "He is not tall. He is ___.",
+          "choices": [
+            "nízky",
+            "nízka",
+            "vysoký",
+            "vysoká"
+          ],
+          "answer": "nízky"
+        },
+        {
+          "sentence": "Ona nie je nízka. Ona je ___.",
+          "translation": "She is not short. She is ___.",
+          "choices": [
+            "vysoký",
+            "vysoká",
+            "nízky",
+            "nízka"
+          ],
+          "answer": "vysoká"
+        },
+        {
+          "sentence": "Je ___. Je to biely muž.",
+          "translation": "He is ___. He is a white man.",
+          "choices": [
+            "biely",
+            "biela",
+            "čierny",
+            "čierna"
+          ],
+          "answer": "biely"
+        },
+        {
+          "sentence": "Je ___. Je to čierna žena.",
+          "translation": "She is ___. She is a Black woman.",
+          "choices": [
+            "čierny",
+            "čierna",
+            "biely",
+            "biela"
+          ],
+          "answer": "čierna"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,306 @@
+{
+  "id": "s1-inside-outside",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Inside & Outside",
+  "description": "Say whether you or something important is inside or outside",
+  "icon": "🚪",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Inside & Outside",
+      "rows": [
+        {
+          "label": "Inside",
+          "slovak": "Vnútri",
+          "english": "Inside"
+        },
+        {
+          "label": "Outside",
+          "slovak": "Vonku",
+          "english": "Outside"
+        },
+        {
+          "label": "I am inside",
+          "slovak": "Som vnútri.",
+          "english": "I am inside."
+        },
+        {
+          "label": "I am outside",
+          "slovak": "Som vonku.",
+          "english": "I am outside."
+        },
+        {
+          "label": "The card is outside",
+          "slovak": "Karta je vonku.",
+          "english": "The card is outside."
+        },
+        {
+          "label": "The ATM is inside",
+          "slovak": "Bankomat je vnútri.",
+          "english": "The ATM is inside."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Vnútri",
+          "english": "Inside"
+        },
+        {
+          "slovak": "Vonku",
+          "english": "Outside"
+        },
+        {
+          "slovak": "Som vnútri.",
+          "english": "I am inside."
+        },
+        {
+          "slovak": "Som vonku.",
+          "english": "I am outside."
+        },
+        {
+          "slovak": "Karta je vonku.",
+          "english": "The card is outside."
+        },
+        {
+          "slovak": "Bankomat je vnútri.",
+          "english": "The ATM is inside."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Vnútri",
+          "english": "Inside"
+        },
+        {
+          "slovak": "Vonku",
+          "english": "Outside"
+        },
+        {
+          "slovak": "Som vnútri.",
+          "english": "I am inside."
+        },
+        {
+          "slovak": "Som vonku.",
+          "english": "I am outside."
+        },
+        {
+          "slovak": "Karta je vonku.",
+          "english": "The card is outside."
+        },
+        {
+          "slovak": "Bankomat je vnútri.",
+          "english": "The ATM is inside."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Vnútri",
+          "english": "Inside"
+        },
+        {
+          "slovak": "Vonku",
+          "english": "Outside"
+        },
+        {
+          "slovak": "Som vnútri.",
+          "english": "I am inside."
+        },
+        {
+          "slovak": "Som vonku.",
+          "english": "I am outside."
+        },
+        {
+          "slovak": "Karta je vonku.",
+          "english": "The card is outside."
+        },
+        {
+          "slovak": "Bankomat je vnútri.",
+          "english": "The ATM is inside."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Vnútri",
+          "english": "Inside"
+        },
+        {
+          "slovak": "Vonku",
+          "english": "Outside"
+        },
+        {
+          "slovak": "Som vnútri.",
+          "english": "I am inside."
+        },
+        {
+          "slovak": "Som vonku.",
+          "english": "I am outside."
+        },
+        {
+          "slovak": "Karta je vonku.",
+          "english": "The card is outside."
+        },
+        {
+          "slovak": "Bankomat je vnútri.",
+          "english": "The ATM is inside."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You call emergency services and need to say you are outside the building. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Vonku",
+            "Vnútri",
+            "Pred",
+            "Vedľa"
+          ],
+          "answer": "Vonku",
+          "answerMeaning": "Vonku = outside."
+        },
+        {
+          "situation": "A shop worker says the ATM is inside. Which phrase means that?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Bankomat je vnútri.",
+            "Bankomat je vonku.",
+            "Karta je vonku.",
+            "Som vonku."
+          ],
+          "answer": "Bankomat je vnútri.",
+          "answerMeaning": "Bankomat je vnútri. = The ATM is inside."
+        },
+        {
+          "situation": "At the supermarket checkout, your card is in the car outside. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Karta je vonku.",
+            "Karta je vnútri.",
+            "Som pri karte.",
+            "Bankomat je vnútri."
+          ],
+          "answer": "Karta je vonku.",
+          "answerMeaning": "Karta je vonku. = The card is outside."
+        },
+        {
+          "situation": "A courier calls. You are already outside waiting. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som vonku.",
+            "Som vnútri.",
+            "Karta je vonku.",
+            "Je to ďaleko."
+          ],
+          "answer": "Som vonku.",
+          "answerMeaning": "Som vonku. = I am outside."
+        },
+        {
+          "situation": "Someone asks if you are inside the office. You are. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som vnútri.",
+            "Som vonku.",
+            "Je to tam.",
+            "Choďte vpravo."
+          ],
+          "answer": "Som vnútri.",
+          "answerMeaning": "Som vnútri. = I am inside."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Som ___. Čakám pred budovou.",
+          "translation": "I am outside. I am waiting in front of the building.",
+          "choices": [
+            "vonku",
+            "vnútri",
+            "vedľa",
+            "medzi"
+          ],
+          "answer": "vonku",
+          "answerMeaning": "Vonku = outside."
+        },
+        {
+          "sentence": "Bankomat je ___, nie vonku.",
+          "translation": "The ATM is inside, not outside.",
+          "choices": [
+            "vnútri",
+            "vonku",
+            "pred",
+            "za"
+          ],
+          "answer": "vnútri",
+          "answerMeaning": "Vnútri = inside."
+        },
+        {
+          "sentence": "Karta je ___. Idem ju zobrať z auta.",
+          "translation": "The card is outside. I am going to get it from the car.",
+          "choices": [
+            "vonku",
+            "vnútri",
+            "medzi",
+            "nad"
+          ],
+          "answer": "vonku",
+          "answerMeaning": "Karta je vonku. = The card is outside."
+        },
+        {
+          "sentence": "Som ___. Otvorte, prosím.",
+          "translation": "I am inside. Open, please.",
+          "choices": [
+            "vnútri",
+            "vonku",
+            "pri",
+            "oproti"
+          ],
+          "answer": "vnútri",
+          "answerMeaning": "Som vnútri. = I am inside."
+        },
+        {
+          "sentence": "Nie som vnútri. Som ___.",
+          "translation": "I am not inside. I am outside.",
+          "choices": [
+            "vonku",
+            "nad",
+            "pod",
+            "vedľa"
+          ],
+          "answer": "vonku",
+          "answerMeaning": "Vonku = outside."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

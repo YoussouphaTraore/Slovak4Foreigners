@@ -4,28 +4,11 @@ import { supabase } from '../lib/supabase/client';
 import { useAuthStore } from '../store/useAuthStore';
 import { useProgressStore } from '../store/useProgressStore';
 import { lessons } from '../data/lessons';
-import { PRODUCTION_VISIBLE_STAGES } from '../config/stageBlocks';
+import { stage1Blocks, getBlockLessonIds } from '../config/stageBlocks';
 import { foreignPoliceLessons } from '../data/foreigner-exclusive/foreign-police';
 import { getAvatarUrl } from '../lib/supabase/aliasUtils';
 import { BottomNav } from '../components/ui/BottomNav';
 import { canInstall, triggerInstall, markInstalled, markShown } from '../lib/pwaInstall';
-
-// ── Stage metadata ─────────────────────────────────────────────────────────────
-
-const STAGE_NAMES: Record<string, string> = {
-  survival: 'Stage 1 — Survival',
-  settling: 'Stage 2 — Settling In',
-  advanced: 'Stage 3 — Advanced',
-};
-
-const isDev = import.meta.env.DEV;
-
-// Ordered list of all stages present in lesson data (preserves source order).
-// In production, only stages with rebuilt content are shown (see Step 2 of
-// the Settling/Advanced hide-in-prod work) — dev still sees every stage.
-const ALL_STAGE_IDS = isDev
-  ? [...new Set(lessons.map((l) => l.stageId))]
-  : [...new Set(lessons.map((l) => l.stageId))].filter((id) => PRODUCTION_VISIBLE_STAGES.includes(id));
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
@@ -150,7 +133,7 @@ export function ProfilePage() {
   const completedLessons = useProgressStore((s) => s.completedLessons);
   const lessonRecords = useProgressStore((s) => s.lessonRecords);
   const snailRaceRecords = useProgressStore((s) => s.snailRaceRecords);
-  const unlockedStages = useProgressStore((s) => s.unlockedStages);
+  const passedBlocks = useProgressStore((s) => s.passedBlocks);
   const unlockedReferenceCards = useProgressStore((s) => s.unlockedReferenceCards);
 
   // All useState hooks must be before any conditional return
@@ -221,13 +204,13 @@ export function ProfilePage() {
     catch { return 0; }
   })();
 
-  // Stage progress rows
-  const stageProgress = ALL_STAGE_IDS.map((stageId) => {
-    const stageLessons = lessons.filter((l) => l.stageId === stageId);
-    const completed = stageLessons.filter((l) => completedLessons.includes(l.id)).length;
-    const unlocked = unlockedStages.includes(stageId);
-    const isDone = unlocked && completed === stageLessons.length;
-    return { stageId, name: STAGE_NAMES[stageId] ?? stageId, total: stageLessons.length, completed, unlocked, isDone };
+  // Block progress rows
+  const blockProgress = stage1Blocks.map((block) => {
+    const blockLessonIds = getBlockLessonIds(block);
+    const blockLessons = lessons.filter((l) => blockLessonIds.includes(l.id) && !l.coming_soon);
+    const completed = blockLessons.filter((l) => completedLessons.includes(l.id)).length;
+    const isPassed = passedBlocks.includes(block.blockId);
+    return { blockId: block.blockId, name: block.blockName, total: blockLessons.length, completed, isPassed };
   });
 
   // ── Handlers ─────────────────────────────────────────────────────────────────
@@ -325,7 +308,7 @@ export function ProfilePage() {
               { icon: '💬', label: 'Dialogues practiced', value: String(dialoguesCompleted) },
               { icon: '🐌', label: 'Best Snail Race score', value: bestSnailScore !== null ? String(bestSnailScore) : '—' },
               { icon: '📅', label: 'Days active', value: String(daysActive) },
-              { icon: '🏆', label: 'Stages unlocked', value: `${unlockedStages.length} / ${ALL_STAGE_IDS.length}` },
+              { icon: '🏆', label: 'Blocks completed', value: `${passedBlocks.length} / ${stage1Blocks.length}` },
             ] as const).map(({ icon, label, value }, i, arr) => (
               <Row key={label} last={i === arr.length - 1}>
                 <span className="text-xl w-7 flex-none text-center leading-none">{icon}</span>
@@ -336,27 +319,23 @@ export function ProfilePage() {
           </Card>
         </div>
 
-        {/* ── 5. Stage progress ──────────────────────────────────────────────── */}
+        {/* ── 5. Block progress ──────────────────────────────────────────────── */}
         <div>
-          <SectionLabel>Stage progress</SectionLabel>
+          <SectionLabel>Block progress</SectionLabel>
           <Card>
-            {stageProgress.map((s, i) => (
-              <Row key={s.stageId} last={i === stageProgress.length - 1}>
+            {blockProgress.map((b, i) => (
+              <Row key={b.blockId} last={i === blockProgress.length - 1}>
                 <span className="text-xl w-7 flex-none text-center leading-none">
-                  {!s.unlocked ? '🔒' : s.isDone ? '✅' : '🔓'}
+                  {b.isPassed ? '✅' : b.completed > 0 ? '🔓' : '🔒'}
                 </span>
-                <span className="text-sm text-gray-700 flex-1">{s.name}</span>
-                {!s.unlocked ? (
-                  <span className="text-xs bg-gray-100 text-gray-400 px-2.5 py-0.5 rounded-full font-semibold">
-                    Locked
-                  </span>
-                ) : s.isDone ? (
+                <span className="text-sm text-gray-700 flex-1">{b.name}</span>
+                {b.isPassed ? (
                   <span className="text-xs bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full font-semibold">
                     Complete
                   </span>
                 ) : (
                   <span className="text-xs font-semibold text-gray-500">
-                    {s.completed} / {s.total}
+                    {b.completed} / {b.total}
                   </span>
                 )}
               </Row>

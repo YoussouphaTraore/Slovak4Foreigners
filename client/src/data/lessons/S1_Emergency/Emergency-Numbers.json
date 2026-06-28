@@ -1,0 +1,315 @@
+{
+  "id": "s1-emergency-numbers",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Emergency Numbers",
+  "description": "Know which Slovak emergency number to call",
+  "icon": "🚨",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Emergency Numbers",
+      "rows": [
+        {
+          "label": "112",
+          "slovak": "sto dvanásť",
+          "english": "Any emergency — fire, medical, or crime"
+        },
+        {
+          "label": "155",
+          "slovak": "sto päťdesiatpäť",
+          "english": "Medical emergency / ambulance"
+        },
+        {
+          "label": "158",
+          "slovak": "sto päťdesiatosem",
+          "english": "Police — theft, crime, violence"
+        },
+        {
+          "label": "150",
+          "slovak": "sto päťdesiat",
+          "english": "Fire — fire, explosion, gas leak"
+        },
+        {
+          "label": "156",
+          "slovak": "sto päťdesiatšesť",
+          "english": "City Police — local issues"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "sto dvanásť",
+          "english": "112"
+        },
+        {
+          "slovak": "sto päťdesiatpäť",
+          "english": "155"
+        },
+        {
+          "slovak": "sto päťdesiatosem",
+          "english": "158"
+        },
+        {
+          "slovak": "sto päťdesiat",
+          "english": "150"
+        },
+        {
+          "slovak": "sto päťdesiatšesť",
+          "english": "156"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "sto dvanásť",
+          "english": "112"
+        },
+        {
+          "slovak": "sto päťdesiatpäť",
+          "english": "155"
+        },
+        {
+          "slovak": "sto päťdesiatosem",
+          "english": "158"
+        },
+        {
+          "slovak": "sto päťdesiat",
+          "english": "150"
+        },
+        {
+          "slovak": "sto päťdesiatšesť",
+          "english": "156"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "sto dvanásť",
+          "english": "112 — General Emergency"
+        },
+        {
+          "slovak": "sto päťdesiatpäť",
+          "english": "155 — Ambulance"
+        },
+        {
+          "slovak": "sto päťdesiatosem",
+          "english": "158 — Police"
+        },
+        {
+          "slovak": "sto päťdesiat",
+          "english": "150 — Fire Brigade"
+        },
+        {
+          "slovak": "sto päťdesiatšesť",
+          "english": "156 — City Police"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "NUMBER_TO_WORDS",
+      "items": [
+        {
+          "number": "112",
+          "choices": [
+            "sto dvanásť",
+            "sto päťdesiat",
+            "sto päťdesiatpäť",
+            "sto päťdesiatosem"
+          ],
+          "answer": "sto dvanásť"
+        },
+        {
+          "number": "155",
+          "choices": [
+            "sto dvanásť",
+            "sto päťdesiatpäť",
+            "sto päťdesiatosem",
+            "sto päťdesiat"
+          ],
+          "answer": "sto päťdesiatpäť"
+        },
+        {
+          "number": "158",
+          "choices": [
+            "sto päťdesiatšesť",
+            "sto päťdesiatpäť",
+            "sto päťdesiatosem",
+            "sto dvanásť"
+          ],
+          "answer": "sto päťdesiatosem"
+        },
+        {
+          "number": "150",
+          "choices": [
+            "sto päťdesiat",
+            "sto päťdesiatpäť",
+            "sto päťdesiatšesť",
+            "sto dvanásť"
+          ],
+          "answer": "sto päťdesiat"
+        },
+        {
+          "number": "156",
+          "choices": [
+            "sto päťdesiatosem",
+            "sto päťdesiat",
+            "sto päťdesiatšesť",
+            "sto päťdesiatpäť"
+          ],
+          "answer": "sto päťdesiatšesť"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You witness a road crash with injured people and fire. Which single number reaches all emergency services?",
+          "instruction": "Choose the correct number",
+          "choices": [
+            "112",
+            "155",
+            "158",
+            "150"
+          ],
+          "answer": "112",
+          "answerMeaning": "112 is the general emergency number across the EU."
+        },
+        {
+          "situation": "Someone collapses on the street and needs an ambulance. Which number do you call?",
+          "instruction": "Choose the correct number",
+          "choices": [
+            "155",
+            "158",
+            "150",
+            "156"
+          ],
+          "answer": "155",
+          "answerMeaning": "155 is for medical emergencies and ambulance help."
+        },
+        {
+          "situation": "Your wallet was stolen on the tram. Which number do you call?",
+          "instruction": "Choose the correct number",
+          "choices": [
+            "158",
+            "150",
+            "155",
+            "156"
+          ],
+          "answer": "158",
+          "answerMeaning": "158 is the police number for crime and theft."
+        },
+        {
+          "situation": "There is smoke and fire in a building. Which number do you call?",
+          "instruction": "Choose the correct number",
+          "choices": [
+            "150",
+            "155",
+            "158",
+            "156"
+          ],
+          "answer": "150",
+          "answerMeaning": "150 is for fire emergencies."
+        },
+        {
+          "situation": "There is a local parking or city-police issue. Which number can help?",
+          "instruction": "Choose the correct number",
+          "choices": [
+            "156",
+            "112",
+            "155",
+            "150"
+          ],
+          "answer": "156",
+          "answerMeaning": "156 is City Police for local issues."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Zavolajte ___! Platí v celej EÚ.",
+          "translation": "Call 112! It works across the EU.",
+          "choices": [
+            "112",
+            "155",
+            "158",
+            "150"
+          ],
+          "answer": "112",
+          "answerMeaning": "112 is the general EU emergency number."
+        },
+        {
+          "sentence": "Niekto skolaboval. Zavolajte ___!",
+          "translation": "Someone collapsed. Call 155!",
+          "choices": [
+            "155",
+            "150",
+            "158",
+            "156"
+          ],
+          "answer": "155",
+          "answerMeaning": "155 is for medical emergencies."
+        },
+        {
+          "sentence": "Ukradli mi tašku. Volám ___.",
+          "translation": "They stole my bag. I am calling 158.",
+          "choices": [
+            "158",
+            "150",
+            "155",
+            "112"
+          ],
+          "answer": "158",
+          "answerMeaning": "158 is the police number."
+        },
+        {
+          "sentence": "Dom horí. Zavolajte ___!",
+          "translation": "The house is on fire. Call 150!",
+          "choices": [
+            "150",
+            "155",
+            "156",
+            "158"
+          ],
+          "answer": "150",
+          "answerMeaning": "150 is for fire emergencies."
+        },
+        {
+          "sentence": "Mestská polícia má číslo ___.",
+          "translation": "City Police has the number 156.",
+          "choices": [
+            "156",
+            "112",
+            "150",
+            "155"
+          ],
+          "answer": "156",
+          "answerMeaning": "156 = City Police."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

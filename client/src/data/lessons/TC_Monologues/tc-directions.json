@@ -1,0 +1,47 @@
+{
+  "id": "tc-directions",
+  "stageId": "topic-comprehension",
+  "stageName": "",
+  "title": "Directions — Monologue",
+  "description": "Listen, then prove you were listening",
+  "_voiceScript": { "voice": null, "script": "" },
+  "icon": "🎧",
+  "xpReward": 25,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "CONVERSATION_LISTEN",
+      "coverImage": "",
+      "audioUrl": "",
+      "conversationTranscriptSk": "",
+      "speakers": []
+    },
+    {
+      "id": "ex2",
+      "type": "CONVERSATION_WORD_RECOGNITION",
+      "instruction": "Tap every word or expression you heard in the conversation.",
+      "passThresholdPercent": 76,
+      "correctWords": [],
+      "distractorWords": []
+    },
+    {
+      "id": "ex3",
+      "type": "CONVERSATION_COMPREHENSION",
+      "coverImage": "",
+      "audioUrl": "",
+      "conversationTranscriptSk": "",
+      "speakers": [],
+      "questions": []
+    },
+    {
+      "id": "ex4",
+      "type": "CONVERSATION_SENTENCE_BUILDER",
+      "sentences": []
+    },
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "id": "s1-supermarket-basics",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Supermarket Basics",
+  "description": "Find your way around the shop",
+  "icon": "🛒",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Supermarket Basics",
+      "rows": [
+        {
+          "label": "Checkout",
+          "slovak": "Pokladňa",
+          "english": "Checkout"
+        },
+        {
+          "label": "Basket",
+          "slovak": "Košík",
+          "english": "Basket"
+        },
+        {
+          "label": "Trolley",
+          "slovak": "Vozík",
+          "english": "Trolley / Cart"
+        },
+        {
+          "label": "Shelf / Aisle",
+          "slovak": "Regál",
+          "english": "Shelf / Aisle"
+        },
+        {
+          "label": "Where can I find...?",
+          "slovak": "Kde nájdem...?",
+          "english": "Where can I find...?"
+        },
+        {
+          "label": "Where is...?",
+          "slovak": "Kde je...?",
+          "english": "Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Pokladňa",
+          "english": "Checkout"
+        },
+        {
+          "slovak": "Košík",
+          "english": "Basket"
+        },
+        {
+          "slovak": "Vozík",
+          "english": "Trolley / Cart"
+        },
+        {
+          "slovak": "Regál",
+          "english": "Shelf / Aisle"
+        },
+        {
+          "slovak": "Kde nájdem...?",
+          "english": "Where can I find...?"
+        },
+        {
+          "slovak": "Kde je...?",
+          "english": "Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Pokladňa",
+          "english": "Checkout"
+        },
+        {
+          "slovak": "Košík",
+          "english": "Basket"
+        },
+        {
+          "slovak": "Vozík",
+          "english": "Trolley / Cart"
+        },
+        {
+          "slovak": "Regál",
+          "english": "Shelf / Aisle"
+        },
+        {
+          "slovak": "Kde nájdem...?",
+          "english": "Where can I find...?"
+        },
+        {
+          "slovak": "Kde je...?",
+          "english": "Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Pokladňa",
+          "english": "Checkout"
+        },
+        {
+          "slovak": "Košík",
+          "english": "Basket"
+        },
+        {
+          "slovak": "Vozík",
+          "english": "Trolley / Cart"
+        },
+        {
+          "slovak": "Regál",
+          "english": "Shelf / Aisle"
+        },
+        {
+          "slovak": "Kde nájdem...?",
+          "english": "Where can I find...?"
+        },
+        {
+          "slovak": "Kde je...?",
+          "english": "Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Pokladňa",
+          "english": "Checkout"
+        },
+        {
+          "slovak": "Košík",
+          "english": "Basket"
+        },
+        {
+          "slovak": "Vozík",
+          "english": "Trolley / Cart"
+        },
+        {
+          "slovak": "Regál",
+          "english": "Shelf / Aisle"
+        },
+        {
+          "slovak": "Kde nájdem...?",
+          "english": "Where can I find...?"
+        },
+        {
+          "slovak": "Kde je...?",
+          "english": "Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need checkout. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Košík",
+            "Pokladňa",
+            "Regál",
+            "Vozík"
+          ],
+          "answer": "Pokladňa",
+          "answerMeaning": "Pokladňa = Checkout"
+        },
+        {
+          "situation": "You need basket. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Košík",
+            "Pokladňa",
+            "Regál",
+            "Vozík"
+          ],
+          "answer": "Košík",
+          "answerMeaning": "Košík = Basket"
+        },
+        {
+          "situation": "You need trolley / cart. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Košík",
+            "Pokladňa",
+            "Regál",
+            "Vozík"
+          ],
+          "answer": "Vozík",
+          "answerMeaning": "Vozík = Trolley / Cart"
+        },
+        {
+          "situation": "You need shelf / aisle. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Košík",
+            "Pokladňa",
+            "Regál",
+            "Vozík"
+          ],
+          "answer": "Regál",
+          "answerMeaning": "Regál = Shelf / Aisle"
+        },
+        {
+          "situation": "You need where can i find...?. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Kde nájdem...?",
+            "Košík",
+            "Pokladňa",
+            "Vozík"
+          ],
+          "answer": "Kde nájdem...?",
+          "answerMeaning": "Kde nájdem...? = Where can I find...?"
+        },
+        {
+          "situation": "You need where is...?. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Kde je...?",
+            "Košík",
+            "Pokladňa",
+            "Vozík"
+          ],
+          "answer": "Kde je...?",
+          "answerMeaning": "Kde je...? = Where is...?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You only need a few items, not a full trolley load. What do you grab at the entrance?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Vozík",
+            "Košík",
+            "Regál",
+            "Pokladňa"
+          ],
+          "answer": "Košík",
+          "answerMeaning": "Košík = Basket. Perfect for a quick shop with just a few items."
+        },
+        {
+          "situation": "You're doing a big weekly shop with lots of items. What should you use instead?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Košík",
+            "Vozík",
+            "Regál",
+            "Účtenka"
+          ],
+          "answer": "Vozík",
+          "answerMeaning": "Vozík = Trolley/Cart. Better for a larger shop than a basket."
+        },
+        {
+          "situation": "You can't find the bread section. What do you ask a staff member?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Kde nájdem chlieb?",
+            "Máte vernostnú kartu?",
+            "Pol kila, prosím.",
+            "Taška, prosím."
+          ],
+          "answer": "Kde nájdem chlieb?",
+          "answerMeaning": "Kde nájdem chlieb? = Where can I find bread? Kde nájdem...? works for locating any item in the shop."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ nájdem mlieko? Neviem, kde je.",
+          "translation": "Where can I find milk? I don't know where it is.",
+          "choices": [
+            "Ako",
+            "Kde",
+            "Kedy",
+            "Koľko"
+          ],
+          "answer": "Kde"
+        },
+        {
+          "sentence": "Idem na veľký nákup. Vezmem si ___.",
+          "translation": "I'm going for a big shop. I'll take a trolley.",
+          "choices": [
+            "košík",
+            "vozík",
+            "tašku",
+            "regál"
+          ],
+          "answer": "vozík"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

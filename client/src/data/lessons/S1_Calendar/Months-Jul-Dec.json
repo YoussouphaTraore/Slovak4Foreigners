@@ -1,0 +1,324 @@
+{
+  "id": "s1-months-jul-dec",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Months Jul-Dec",
+  "description": "Learn July through December",
+  "icon": "📅",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Months Jul-Dec",
+      "rows": [
+        {
+          "label": "July",
+          "slovak": "Júl",
+          "english": "July"
+        },
+        {
+          "label": "August",
+          "slovak": "August",
+          "english": "August"
+        },
+        {
+          "label": "September",
+          "slovak": "September",
+          "english": "September"
+        },
+        {
+          "label": "October",
+          "slovak": "Október",
+          "english": "October"
+        },
+        {
+          "label": "November",
+          "slovak": "November",
+          "english": "November"
+        },
+        {
+          "label": "December",
+          "slovak": "December",
+          "english": "December"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Júl",
+          "english": "July"
+        },
+        {
+          "slovak": "August",
+          "english": "August"
+        },
+        {
+          "slovak": "September",
+          "english": "September"
+        },
+        {
+          "slovak": "Október",
+          "english": "October"
+        },
+        {
+          "slovak": "November",
+          "english": "November"
+        },
+        {
+          "slovak": "December",
+          "english": "December"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Júl",
+          "english": "July"
+        },
+        {
+          "slovak": "August",
+          "english": "August"
+        },
+        {
+          "slovak": "September",
+          "english": "September"
+        },
+        {
+          "slovak": "Október",
+          "english": "October"
+        },
+        {
+          "slovak": "November",
+          "english": "November"
+        },
+        {
+          "slovak": "December",
+          "english": "December"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Júl",
+          "english": "July"
+        },
+        {
+          "slovak": "August",
+          "english": "August"
+        },
+        {
+          "slovak": "September",
+          "english": "September"
+        },
+        {
+          "slovak": "Október",
+          "english": "October"
+        },
+        {
+          "slovak": "November",
+          "english": "November"
+        },
+        {
+          "slovak": "December",
+          "english": "December"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Júl",
+          "english": "July"
+        },
+        {
+          "slovak": "August",
+          "english": "August"
+        },
+        {
+          "slovak": "September",
+          "english": "September"
+        },
+        {
+          "slovak": "Október",
+          "english": "October"
+        },
+        {
+          "slovak": "November",
+          "english": "November"
+        },
+        {
+          "slovak": "December",
+          "english": "December"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your birthday is in July. Which month is July?",
+          "instruction": "Choose the correct month",
+          "choices": [
+            "Júl",
+            "Marec",
+            "September",
+            "Január"
+          ],
+          "answer": "Júl",
+          "answerMeaning": "Júl = July."
+        },
+        {
+          "situation": "An official letter says your appointment is in October. Which month do you look for?",
+          "instruction": "Choose the correct month",
+          "choices": [
+            "August",
+            "September",
+            "Október",
+            "November"
+          ],
+          "answer": "Október",
+          "answerMeaning": "Október = October."
+        },
+        {
+          "situation": "You started work in September. Which word means September?",
+          "instruction": "Choose the correct month",
+          "choices": [
+            "Júl",
+            "August",
+            "September",
+            "December"
+          ],
+          "answer": "September",
+          "answerMeaning": "September = September."
+        },
+        {
+          "situation": "Your yearly renewal is in December. Which word means December?",
+          "instruction": "Choose the correct month",
+          "choices": [
+            "Október",
+            "November",
+            "December",
+            "August"
+          ],
+          "answer": "December",
+          "answerMeaning": "December = December."
+        },
+        {
+          "situation": "A form says November. Which Slovak word matches?",
+          "instruction": "Choose the correct month",
+          "choices": [
+            "August",
+            "September",
+            "November",
+            "Júl"
+          ],
+          "answer": "November",
+          "answerMeaning": "November = November."
+        },
+        {
+          "situation": "Your appointment will be in October. Which sentence uses bude?",
+          "instruction": "Choose the future sentence",
+          "choices": [
+            "Termín bude v októbri.",
+            "Termín bol v októbri.",
+            "Termín je minulý týždeň.",
+            "Termín bude včera."
+          ],
+          "answer": "Termín bude v októbri.",
+          "answerMeaning": "Bude + v októbri makes this a future month sentence."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Moje narodeniny sú v ___.",
+          "translation": "My birthday is in July.",
+          "choices": [
+            "júli",
+            "marci",
+            "septembri",
+            "januári"
+          ],
+          "answer": "júli"
+        },
+        {
+          "sentence": "Schôdza s úradom je v ___.",
+          "translation": "The meeting with the office is in October.",
+          "choices": [
+            "auguste",
+            "októbri",
+            "máji",
+            "februári"
+          ],
+          "answer": "októbri"
+        },
+        {
+          "sentence": "Pracujem tu od ___.",
+          "translation": "I have worked here since September.",
+          "choices": [
+            "septembra",
+            "júla",
+            "októbra",
+            "decembra"
+          ],
+          "answer": "septembra"
+        },
+        {
+          "sentence": "Poistenie obnovujem každý rok v ___.",
+          "translation": "I renew my insurance every year in December.",
+          "choices": [
+            "januári",
+            "júni",
+            "septembri",
+            "decembri"
+          ],
+          "answer": "decembri"
+        },
+        {
+          "sentence": "Termín je v ___.",
+          "translation": "The appointment is in November.",
+          "choices": [
+            "novembri",
+            "auguste",
+            "septembri",
+            "júli"
+          ],
+          "answer": "novembri"
+        },
+        {
+          "sentence": "Termín ___ v novembri.",
+          "translation": "The appointment was in November.",
+          "choices": [
+            "bol",
+            "bude",
+            "je",
+            "som"
+          ],
+          "answer": "bol"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

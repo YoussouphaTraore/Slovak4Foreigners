@@ -1,0 +1,306 @@
+{
+  "id": "s1-symptoms",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Symptoms",
+  "description": "Say common symptoms clearly at the doctor or hospital",
+  "icon": "🤒",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Symptoms",
+      "rows": [
+        {
+          "label": "Fever",
+          "slovak": "Horúčka",
+          "english": "Fever"
+        },
+        {
+          "label": "Pain",
+          "slovak": "Bolesť",
+          "english": "Pain"
+        },
+        {
+          "label": "Dizziness",
+          "slovak": "Závrat",
+          "english": "Dizziness"
+        },
+        {
+          "label": "Nausea",
+          "slovak": "Nevoľnosť",
+          "english": "Nausea"
+        },
+        {
+          "label": "Cough",
+          "slovak": "Kašeľ",
+          "english": "Cough"
+        },
+        {
+          "label": "I feel sick",
+          "slovak": "Je mi zle.",
+          "english": "I feel unwell."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Horúčka",
+          "english": "Fever"
+        },
+        {
+          "slovak": "Bolesť",
+          "english": "Pain"
+        },
+        {
+          "slovak": "Závrat",
+          "english": "Dizziness"
+        },
+        {
+          "slovak": "Nevoľnosť",
+          "english": "Nausea"
+        },
+        {
+          "slovak": "Kašeľ",
+          "english": "Cough"
+        },
+        {
+          "slovak": "Je mi zle.",
+          "english": "I feel unwell."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Horúčka",
+          "english": "Fever"
+        },
+        {
+          "slovak": "Bolesť",
+          "english": "Pain"
+        },
+        {
+          "slovak": "Závrat",
+          "english": "Dizziness"
+        },
+        {
+          "slovak": "Nevoľnosť",
+          "english": "Nausea"
+        },
+        {
+          "slovak": "Kašeľ",
+          "english": "Cough"
+        },
+        {
+          "slovak": "Je mi zle.",
+          "english": "I feel unwell."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Horúčka",
+          "english": "Fever"
+        },
+        {
+          "slovak": "Bolesť",
+          "english": "Pain"
+        },
+        {
+          "slovak": "Závrat",
+          "english": "Dizziness"
+        },
+        {
+          "slovak": "Nevoľnosť",
+          "english": "Nausea"
+        },
+        {
+          "slovak": "Kašeľ",
+          "english": "Cough"
+        },
+        {
+          "slovak": "Je mi zle.",
+          "english": "I feel unwell."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Horúčka",
+          "english": "Fever"
+        },
+        {
+          "slovak": "Bolesť",
+          "english": "Pain"
+        },
+        {
+          "slovak": "Závrat",
+          "english": "Dizziness"
+        },
+        {
+          "slovak": "Nevoľnosť",
+          "english": "Nausea"
+        },
+        {
+          "slovak": "Kašeľ",
+          "english": "Cough"
+        },
+        {
+          "slovak": "Je mi zle.",
+          "english": "I feel unwell."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You have a high temperature. Which word means fever?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Horúčka",
+            "Kašeľ",
+            "Závrat",
+            "Predpis"
+          ],
+          "answer": "Horúčka",
+          "answerMeaning": "Horúčka = fever."
+        },
+        {
+          "situation": "Your head hurts. Which word means pain?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Bolesť",
+            "Nevoľnosť",
+            "Kašeľ",
+            "Čakáreň"
+          ],
+          "answer": "Bolesť",
+          "answerMeaning": "Bolesť = pain."
+        },
+        {
+          "situation": "You feel dizzy. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Závrat",
+            "Horúčka",
+            "Kašeľ",
+            "Predpis"
+          ],
+          "answer": "Závrat",
+          "answerMeaning": "Závrat = dizziness."
+        },
+        {
+          "situation": "You feel like vomiting. Which word means nausea?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Nevoľnosť",
+            "Bolesť",
+            "Kašeľ",
+            "Recepcia"
+          ],
+          "answer": "Nevoľnosť",
+          "answerMeaning": "Nevoľnosť = nausea."
+        },
+        {
+          "situation": "You feel very unwell. What can you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Je mi zle.",
+            "Som objednaný.",
+            "Dvakrát denne.",
+            "Karta poistenca."
+          ],
+          "answer": "Je mi zle.",
+          "answerMeaning": "Je mi zle. = I feel unwell."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Mám ___ a bolesť hlavy.",
+          "translation": "I have a fever and a headache.",
+          "choices": [
+            "horúčku",
+            "predpis",
+            "kartu",
+            "čakáreň"
+          ],
+          "answer": "horúčku",
+          "answerMeaning": "Horúčka = fever."
+        },
+        {
+          "sentence": "Mám ___ hlavy.",
+          "translation": "I have a headache.",
+          "choices": [
+            "bolesť",
+            "kašeľ",
+            "závrat",
+            "nevoľnosť"
+          ],
+          "answer": "bolesť",
+          "answerMeaning": "Bolesť hlavy = headache / head pain."
+        },
+        {
+          "sentence": "Mám ___ a točí sa mi hlava.",
+          "translation": "I have dizziness and my head is spinning.",
+          "choices": [
+            "závrat",
+            "kašeľ",
+            "predpis",
+            "kartu"
+          ],
+          "answer": "závrat",
+          "answerMeaning": "Závrat = dizziness."
+        },
+        {
+          "sentence": "Je mi ___.",
+          "translation": "I feel unwell.",
+          "choices": [
+            "zle",
+            "dobre",
+            "blízko",
+            "vpravo"
+          ],
+          "answer": "zle",
+          "answerMeaning": "Je mi zle. = I feel unwell."
+        },
+        {
+          "sentence": "Mám silný ___.",
+          "translation": "I have a strong cough.",
+          "choices": [
+            "kašeľ",
+            "predpis",
+            "sirup",
+            "doktor"
+          ],
+          "answer": "kašeľ",
+          "answerMeaning": "Kašeľ = cough."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

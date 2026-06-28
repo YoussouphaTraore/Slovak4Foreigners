@@ -1,0 +1,324 @@
+{
+  "id": "s1-shoes-accessories",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Shoes & Accessories",
+  "description": "Ask for shoes and simple accessories",
+  "icon": "👟",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Shoes and accessories",
+      "rows": [
+        {
+          "label": "Shoes",
+          "slovak": "Topánky",
+          "english": "Shoes"
+        },
+        {
+          "label": "Sneakers",
+          "slovak": "Tenisky",
+          "english": "Sneakers"
+        },
+        {
+          "label": "Boots",
+          "slovak": "Čižmy",
+          "english": "Boots"
+        },
+        {
+          "label": "Hat",
+          "slovak": "Čiapka",
+          "english": "Hat / cap"
+        },
+        {
+          "label": "Bag",
+          "slovak": "Taška",
+          "english": "Bag"
+        },
+        {
+          "label": "Belt",
+          "slovak": "Opasok",
+          "english": "Belt"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Topánky",
+          "english": "Shoes"
+        },
+        {
+          "slovak": "Tenisky",
+          "english": "Sneakers"
+        },
+        {
+          "slovak": "Čižmy",
+          "english": "Boots"
+        },
+        {
+          "slovak": "Čiapka",
+          "english": "Hat / cap"
+        },
+        {
+          "slovak": "Taška",
+          "english": "Bag"
+        },
+        {
+          "slovak": "Opasok",
+          "english": "Belt"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Topánky",
+          "english": "Shoes"
+        },
+        {
+          "slovak": "Tenisky",
+          "english": "Sneakers"
+        },
+        {
+          "slovak": "Čižmy",
+          "english": "Boots"
+        },
+        {
+          "slovak": "Čiapka",
+          "english": "Hat / cap"
+        },
+        {
+          "slovak": "Taška",
+          "english": "Bag"
+        },
+        {
+          "slovak": "Opasok",
+          "english": "Belt"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Topánky",
+          "english": "Shoes"
+        },
+        {
+          "slovak": "Tenisky",
+          "english": "Sneakers"
+        },
+        {
+          "slovak": "Čižmy",
+          "english": "Boots"
+        },
+        {
+          "slovak": "Čiapka",
+          "english": "Hat / cap"
+        },
+        {
+          "slovak": "Taška",
+          "english": "Bag"
+        },
+        {
+          "slovak": "Opasok",
+          "english": "Belt"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Topánky",
+          "english": "Shoes"
+        },
+        {
+          "slovak": "Tenisky",
+          "english": "Sneakers"
+        },
+        {
+          "slovak": "Čižmy",
+          "english": "Boots"
+        },
+        {
+          "slovak": "Čiapka",
+          "english": "Hat / cap"
+        },
+        {
+          "slovak": "Taška",
+          "english": "Bag"
+        },
+        {
+          "slovak": "Opasok",
+          "english": "Belt"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: Shoes",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Topánky",
+            "Tenisky",
+            "Čižmy",
+            "Čiapka"
+          ],
+          "answer": "Topánky",
+          "answerMeaning": "Topánky = Shoes"
+        },
+        {
+          "situation": "You need to say: Sneakers",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Tenisky",
+            "Topánky",
+            "Čižmy",
+            "Čiapka"
+          ],
+          "answer": "Tenisky",
+          "answerMeaning": "Tenisky = Sneakers"
+        },
+        {
+          "situation": "You need to say: Boots",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Čižmy",
+            "Topánky",
+            "Tenisky",
+            "Čiapka"
+          ],
+          "answer": "Čižmy",
+          "answerMeaning": "Čižmy = Boots"
+        },
+        {
+          "situation": "You need to say: Hat / cap",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Čiapka",
+            "Topánky",
+            "Tenisky",
+            "Čižmy"
+          ],
+          "answer": "Čiapka",
+          "answerMeaning": "Čiapka = Hat / cap"
+        },
+        {
+          "situation": "You need to say: Bag",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Taška",
+            "Topánky",
+            "Tenisky",
+            "Čižmy"
+          ],
+          "answer": "Taška",
+          "answerMeaning": "Taška = Bag"
+        },
+        {
+          "situation": "You need to say: Belt",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Opasok",
+            "Topánky",
+            "Tenisky",
+            "Čižmy"
+          ],
+          "answer": "Opasok",
+          "answerMeaning": "Opasok = Belt"
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Hľadám nové ___.",
+          "translation": "I am looking for new shoes.",
+          "choices": [
+            "topánky",
+            "šaty",
+            "účtenky",
+            "ceny"
+          ],
+          "answer": "topánky"
+        },
+        {
+          "sentence": "Chcem športové ___.",
+          "translation": "I want sports sneakers.",
+          "choices": [
+            "tenisky",
+            "čižmy",
+            "kabát",
+            "tašku"
+          ],
+          "answer": "tenisky"
+        },
+        {
+          "sentence": "V zime nosím ___.",
+          "translation": "In winter I wear boots.",
+          "choices": [
+            "čižmy",
+            "tenisky",
+            "opasok",
+            "účtenku"
+          ],
+          "answer": "čižmy"
+        },
+        {
+          "sentence": "Potrebujem teplú ___.",
+          "translation": "I need a warm hat.",
+          "choices": [
+            "čiapku",
+            "tašku",
+            "topánku",
+            "cenu"
+          ],
+          "answer": "čiapku"
+        },
+        {
+          "sentence": "Potrebujem ___.",
+          "translation": "I need a bag.",
+          "choices": [
+            "tašku",
+            "opasok",
+            "tenisky",
+            "čižmy"
+          ],
+          "answer": "tašku"
+        },
+        {
+          "sentence": "Hľadám ___.",
+          "translation": "I am looking for a belt.",
+          "choices": [
+            "opasok",
+            "tašku",
+            "čiapku",
+            "ponožky"
+          ],
+          "answer": "opasok"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

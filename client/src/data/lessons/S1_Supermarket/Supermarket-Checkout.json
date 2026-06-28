@@ -1,0 +1,256 @@
+{
+  "id": "s1-supermarket-checkout",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Supermarket Checkout",
+  "description": "Pay, ask for a bag, and understand cashier questions",
+  "icon": "🧾",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Supermarket Checkout",
+      "rows": [
+        {
+          "label": "Do you have a loyalty card?",
+          "slovak": "Máte vernostnú kartu?",
+          "english": "Do you have a loyalty card?"
+        },
+        {
+          "label": "A bag, please",
+          "slovak": "Taška, prosím.",
+          "english": "A bag, please."
+        },
+        {
+          "label": "Card or cash?",
+          "slovak": "Kartou alebo hotovosťou?",
+          "english": "Card or cash?"
+        },
+        {
+          "label": "Receipt?",
+          "slovak": "Účtenku?",
+          "english": "Receipt?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Máte vernostnú kartu?",
+          "english": "Do you have a loyalty card?"
+        },
+        {
+          "slovak": "Taška, prosím.",
+          "english": "A bag, please."
+        },
+        {
+          "slovak": "Kartou alebo hotovosťou?",
+          "english": "Card or cash?"
+        },
+        {
+          "slovak": "Účtenku?",
+          "english": "Receipt?"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Máte vernostnú kartu?",
+          "english": "Do you have a loyalty card?"
+        },
+        {
+          "slovak": "Taška, prosím.",
+          "english": "A bag, please."
+        },
+        {
+          "slovak": "Kartou alebo hotovosťou?",
+          "english": "Card or cash?"
+        },
+        {
+          "slovak": "Účtenku?",
+          "english": "Receipt?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Máte vernostnú kartu?",
+          "english": "Do you have a loyalty card?"
+        },
+        {
+          "slovak": "Taška, prosím.",
+          "english": "A bag, please."
+        },
+        {
+          "slovak": "Kartou alebo hotovosťou?",
+          "english": "Card or cash?"
+        },
+        {
+          "slovak": "Účtenku?",
+          "english": "Receipt?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Máte vernostnú kartu?",
+          "english": "Do you have a loyalty card?"
+        },
+        {
+          "slovak": "Taška, prosím.",
+          "english": "A bag, please."
+        },
+        {
+          "slovak": "Kartou alebo hotovosťou?",
+          "english": "Card or cash?"
+        },
+        {
+          "slovak": "Účtenku?",
+          "english": "Receipt?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need do you have a loyalty card?. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Kartou alebo hotovosťou?",
+            "Máte vernostnú kartu?",
+            "Taška, prosím.",
+            "Účtenku?"
+          ],
+          "answer": "Máte vernostnú kartu?",
+          "answerMeaning": "Máte vernostnú kartu? = Do you have a loyalty card?"
+        },
+        {
+          "situation": "You need a bag, please. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Kartou alebo hotovosťou?",
+            "Máte vernostnú kartu?",
+            "Taška, prosím.",
+            "Účtenku?"
+          ],
+          "answer": "Taška, prosím.",
+          "answerMeaning": "Taška, prosím. = A bag, please."
+        },
+        {
+          "situation": "You need card or cash?. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Kartou alebo hotovosťou?",
+            "Máte vernostnú kartu?",
+            "Taška, prosím.",
+            "Účtenku?"
+          ],
+          "answer": "Kartou alebo hotovosťou?",
+          "answerMeaning": "Kartou alebo hotovosťou? = Card or cash?"
+        },
+        {
+          "situation": "You need receipt?. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Kartou alebo hotovosťou?",
+            "Máte vernostnú kartu?",
+            "Taška, prosím.",
+            "Účtenku?"
+          ],
+          "answer": "Účtenku?",
+          "answerMeaning": "Účtenku? = Receipt?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The cashier scans your items and asks how you're paying. You want to pay by card. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Hotovosťou.",
+            "Kartou.",
+            "Veľa.",
+            "Trochu."
+          ],
+          "answer": "Kartou.",
+          "answerMeaning": "Kartou = By card. Simple one-word answer to the very common question Kartou alebo hotovosťou?"
+        },
+        {
+          "situation": "The cashier asks 'Máte vernostnú kartu?' What are they asking?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "Do you have a receipt?",
+            "Do you have a loyalty card?",
+            "Do you have cash?",
+            "Do you have a bag?"
+          ],
+          "answer": "Do you have a loyalty card?",
+          "answerMeaning": "Máte vernostnú kartu? = Do you have a loyalty card? Many Slovak supermarkets offer discounts with loyalty cards."
+        },
+        {
+          "situation": "You didn't bring your own bag. What do you ask the cashier for?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Taška, prosím.",
+            "Pol kila, prosím.",
+            "Vozík, prosím.",
+            "Účtenku?"
+          ],
+          "answer": "Taška, prosím.",
+          "answerMeaning": "Taška, prosím = A bag, please. In Slovakia bags are usually not free — you may need to ask and pay a small amount."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Platíte ___ alebo hotovosťou?",
+          "translation": "Are you paying by card or cash?",
+          "choices": [
+            "kartou",
+            "tašku",
+            "košíkom",
+            "vozíkom"
+          ],
+          "answer": "kartou"
+        },
+        {
+          "sentence": "Nemám tašku. Môžem dostať ___?",
+          "translation": "I don't have a bag. Can I get one?",
+          "choices": [
+            "košík",
+            "vozík",
+            "tašku",
+            "účtenku"
+          ],
+          "answer": "tašku"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

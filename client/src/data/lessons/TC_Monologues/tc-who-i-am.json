@@ -1,0 +1,338 @@
+{
+  "id": "tc-who-i-am",
+  "stageId": "topic-comprehension",
+  "stageName": "",
+  "title": "About Me — Monologue",
+  "description": "Listen, then prove you were listening",
+  "_voiceScript": {
+    "voice": null,
+    "script": "Amina: Dobrý deň. Volám sa Amina. Pochádzam zo Senegalu. Som žena. Som mladá. Som slobodná. Som vysoká. Som čierna a mám čierne vlasy. Teší ma. Paolo: Dobrý deň. Volám sa Paolo. Som z Talianska. Som biely muž. Som dospelý. Som ženatý. Mám sivé vlasy a modré oči. Nie som vysoký ako Amina. Som nízky. Teší ma."
+  },
+  "icon": "🙋",
+  "xpReward": 25,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "CONVERSATION_LISTEN",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-About-Me.mp3",
+      "conversationTranscriptSk": "Amina: Dobrý deň. Volám sa Amina. Pochádzam zo Senegalu. Som žena. Som mladá. Som slobodná. Som vysoká. Som čierna a mám čierne vlasy. Teší ma. Paolo: Dobrý deň. Volám sa Paolo. Som z Talianska. Som biely muž. Som dospelý. Som ženatý. Mám sivé vlasy a modré oči. Nie som vysoký ako Amina. Som nízky. Teší ma.",
+      "speakers": [
+        {
+          "name": "Amina",
+          "avatar": "👩🏾‍🦱"
+        },
+        {
+          "name": "Paolo",
+          "avatar": "👨"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "CONVERSATION_WORD_RECOGNITION",
+      "instruction": "Tap every word or expression you heard in the conversation.",
+      "passThresholdPercent": 76,
+      "correctWords": [
+        "Volám sa Amina",
+        "Pochádzam zo Senegalu",
+        "Som žena",
+        "Som mladá",
+        "Som slobodná",
+        "Som vysoká",
+        "Som čierna",
+        "mám čierne vlasy",
+        "Volám sa Paolo",
+        "Som z Talianska",
+        "Som biely muž",
+        "Som dospelý",
+        "Som ženatý",
+        "Mám sivé vlasy",
+        "modré oči",
+        "Nie som vysoký",
+        "Som nízky",
+        "Teší ma"
+      ],
+      "distractorWords": [
+        "Som z Indie",
+        "Som vydatá",
+        "Som nízka",
+        "Som čierny muž",
+        "Mám zelené oči",
+        "Nie som slobodný"
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "CONVERSATION_COMPREHENSION",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-About-Me.mp3",
+      "conversationTranscriptSk": "Amina: Dobrý deň. Volám sa Amina. Pochádzam zo Senegalu. Som žena. Som mladá. Som slobodná. Som vysoká. Som čierna a mám čierne vlasy. Teší ma. Paolo: Dobrý deň. Volám sa Paolo. Som z Talianska. Som biely muž. Som dospelý. Som ženatý. Mám sivé vlasy a modré oči. Nie som vysoký ako Amina. Som nízky. Teší ma.",
+      "speakers": [
+        {
+          "name": "Amina",
+          "avatar": "👩🏾‍🦱"
+        },
+        {
+          "name": "Paolo",
+          "avatar": "👨"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Amina says \"Pochádzam zo Senegalu.\" What does this mean?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "I am from Italy",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "I come from Senegal",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "I live in Senegal",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Pochádzam zo Senegalu\" = I come from Senegal. Pochádzam z/zo comes from the Name & Origin lesson.",
+          "reviewPair": {
+            "slovak": "Pochádzam zo Senegalu",
+            "english": "I come from Senegal"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "What does Amina say about her gender, age, and status?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "\"Som muž. Som dospelý. Som ženatý.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "\"Som žena. Som dospelá. Som vydatá.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "\"Som žena. Som mladá. Som slobodná.\"",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Som žena. Som mladá. Som slobodná\" = I am a woman. I am young. I am single. These are feminine forms from Gender, Age & Status.",
+          "reviewPair": {
+            "slovak": "Som žena. Som mladá. Som slobodná.",
+            "english": "I am a woman. I am young. I am single."
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "How does Amina describe her appearance?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "She is tall, black, and has black hair",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "She is short, white, and has grey hair",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "She has blue eyes and is not tall",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Som vysoká. Som čierna a mám čierne vlasy\" = I am tall. I am black and I have black hair. Vysoká and čierna are feminine forms.",
+          "reviewPair": {
+            "slovak": "Som vysoká. Som čierna.",
+            "english": "I am tall. I am black."
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Paolo says \"Som z Talianska.\" What does this mean?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "I come from Senegal",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "I am from Italy",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "I am Italian coffee",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Som z Talianska\" = I am from Italy. Som z comes from the Name & Origin lesson.",
+          "reviewPair": {
+            "slovak": "Som z Talianska",
+            "english": "I am from Italy"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "What does Paolo say about gender, age, and marital status?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "\"Som čierna žena. Som mladá. Som slobodná.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "\"Som biely muž. Som mladý. Som slobodný.\"",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "\"Som biely muž. Som dospelý. Som ženatý.\"",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Som biely muž. Som dospelý. Som ženatý\" = I am a white man. I am an adult. I am married. These are masculine forms.",
+          "reviewPair": {
+            "slovak": "Som biely muž. Som dospelý. Som ženatý.",
+            "english": "I am a white man. I am an adult. I am married."
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Paolo says \"Nie som vysoký ako Amina. Som nízky.\" What does this tell us?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "He is not tall like Amina. He is short.",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "He is tall like Amina.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "He is younger than Amina.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Nie som vysoký ako Amina. Som nízky\" = I am not tall like Amina. I am short. Vysoký and nízky are masculine forms from Height & Appearance.",
+          "reviewPair": {
+            "slovak": "Nie som vysoký. Som nízky.",
+            "english": "I am not tall. I am short."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "CONVERSATION_SENTENCE_BUILDER",
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "My name is Amina. I come from Senegal.",
+          "targetSk": [
+            "Volám sa Amina",
+            "Pochádzam zo Senegalu"
+          ],
+          "bankChunks": [
+            "Volám sa Amina",
+            "Pochádzam zo Senegalu",
+            "Som z Talianska"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "I am a woman. I am young. I am single.",
+          "targetSk": [
+            "Som žena",
+            "Som mladá",
+            "Som slobodná"
+          ],
+          "bankChunks": [
+            "Som žena",
+            "Som mladá",
+            "Som slobodná",
+            "Som ženatý"
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "I am tall. I am black and I have black hair.",
+          "targetSk": [
+            "Som vysoká",
+            "Som čierna",
+            "mám čierne vlasy"
+          ],
+          "bankChunks": [
+            "Som vysoká",
+            "Som čierna",
+            "mám čierne vlasy",
+            "mám sivé vlasy"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "My name is Paolo. I am from Italy.",
+          "targetSk": [
+            "Volám sa Paolo",
+            "Som z Talianska"
+          ],
+          "bankChunks": [
+            "Volám sa Paolo",
+            "Som z Talianska",
+            "Pochádzam zo Senegalu"
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "I am a white man. I am an adult. I am married.",
+          "targetSk": [
+            "Som biely muž",
+            "Som dospelý",
+            "Som ženatý"
+          ],
+          "bankChunks": [
+            "Som biely muž",
+            "Som dospelý",
+            "Som ženatý",
+            "Som slobodná"
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "I am not tall like Amina. I am short.",
+          "targetSk": [
+            "Nie som vysoký",
+            "ako Amina",
+            "Som nízky"
+          ],
+          "bankChunks": [
+            "Nie som vysoký",
+            "ako Amina",
+            "Som nízky",
+            "Som vysoká"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

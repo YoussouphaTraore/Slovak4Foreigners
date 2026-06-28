@@ -1,0 +1,325 @@
+{
+  "id": "s1-speaking-future",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Speaking in the Future",
+  "description": "Recognize bude and use simple future survival phrases",
+  "icon": "🔮",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Future with bude",
+      "subtitle": "Bude often tells you something will happen or will be true later.",
+      "rows": [
+        {
+          "label": "It will rain",
+          "slovak": "Bude pršať.",
+          "english": "It will rain."
+        },
+        {
+          "label": "It will snow",
+          "slovak": "Bude snežiť.",
+          "english": "It will snow."
+        },
+        {
+          "label": "It will be open",
+          "slovak": "Bude otvorené.",
+          "english": "It will be open."
+        },
+        {
+          "label": "It will be closed",
+          "slovak": "Bude zatvorené.",
+          "english": "It will be closed."
+        },
+        {
+          "label": "Will cost",
+          "slovak": "Koľko to bude stáť?",
+          "english": "How much will it cost?"
+        },
+        {
+          "label": "Will take",
+          "slovak": "Ako dlho to bude trvať?",
+          "english": "How long will it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Bude pršať.",
+          "english": "It will rain."
+        },
+        {
+          "slovak": "Bude snežiť.",
+          "english": "It will snow."
+        },
+        {
+          "slovak": "Bude otvorené.",
+          "english": "It will be open."
+        },
+        {
+          "slovak": "Bude zatvorené.",
+          "english": "It will be closed."
+        },
+        {
+          "slovak": "Koľko to bude stáť?",
+          "english": "How much will it cost?"
+        },
+        {
+          "slovak": "Ako dlho to bude trvať?",
+          "english": "How long will it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Bude pršať.",
+          "english": "It will rain."
+        },
+        {
+          "slovak": "Bude snežiť.",
+          "english": "It will snow."
+        },
+        {
+          "slovak": "Bude otvorené.",
+          "english": "It will be open."
+        },
+        {
+          "slovak": "Bude zatvorené.",
+          "english": "It will be closed."
+        },
+        {
+          "slovak": "Koľko to bude stáť?",
+          "english": "How much will it cost?"
+        },
+        {
+          "slovak": "Ako dlho to bude trvať?",
+          "english": "How long will it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Bude pršať.",
+          "english": "It will rain."
+        },
+        {
+          "slovak": "Bude snežiť.",
+          "english": "It will snow."
+        },
+        {
+          "slovak": "Bude otvorené.",
+          "english": "It will be open."
+        },
+        {
+          "slovak": "Bude zatvorené.",
+          "english": "It will be closed."
+        },
+        {
+          "slovak": "Koľko to bude stáť?",
+          "english": "How much will it cost?"
+        },
+        {
+          "slovak": "Ako dlho to bude trvať?",
+          "english": "How long will it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Bude pršať.",
+          "english": "It will rain."
+        },
+        {
+          "slovak": "Bude snežiť.",
+          "english": "It will snow."
+        },
+        {
+          "slovak": "Bude otvorené.",
+          "english": "It will be open."
+        },
+        {
+          "slovak": "Bude zatvorené.",
+          "english": "It will be closed."
+        },
+        {
+          "slovak": "Koľko to bude stáť?",
+          "english": "How much will it cost?"
+        },
+        {
+          "slovak": "Ako dlho to bude trvať?",
+          "english": "How long will it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The forecast says rain is coming tomorrow. What phrase do you need?",
+          "instruction": "Choose the future phrase",
+          "choices": [
+            "Bude pršať.",
+            "Prší.",
+            "Pršalo.",
+            "Je teplo."
+          ],
+          "answer": "Bude pršať.",
+          "answerMeaning": "Bude pršať. = It will rain."
+        },
+        {
+          "situation": "You want to ask how much the taxi will cost. What do you ask?",
+          "instruction": "Choose the future question",
+          "choices": [
+            "Koľko to bude stáť?",
+            "Koľko to stojí?",
+            "Kde je taxi?",
+            "Mám lístok."
+          ],
+          "answer": "Koľko to bude stáť?",
+          "answerMeaning": "Koľko to bude stáť? = How much will it cost?"
+        },
+        {
+          "situation": "You want to ask how long the repair will take. What do you ask?",
+          "instruction": "Choose the future question",
+          "choices": [
+            "Ako dlho to bude trvať?",
+            "Ako sa voláte?",
+            "Kedy je otvorené?",
+            "Čo sa stalo?"
+          ],
+          "answer": "Ako dlho to bude trvať?",
+          "answerMeaning": "Ako dlho to bude trvať? = How long will it take?"
+        },
+        {
+          "situation": "The office opens later today. Which phrase says it will be open?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Bude otvorené.",
+            "Bude zatvorené.",
+            "Je zatvorené.",
+            "Bolo otvorené."
+          ],
+          "answer": "Bude otvorené.",
+          "answerMeaning": "Bude otvorené. = It will be open."
+        },
+        {
+          "situation": "The shop will not open tomorrow. Which phrase says it will be closed?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Bude zatvorené.",
+            "Bude otvorené.",
+            "Je otvorené.",
+            "Bola som doma."
+          ],
+          "answer": "Bude zatvorené.",
+          "answerMeaning": "Bude zatvorené. = It will be closed."
+        },
+        {
+          "situation": "Snow is expected later. Which phrase uses bude for the future?",
+          "instruction": "Choose the future phrase",
+          "choices": [
+            "Bude snežiť.",
+            "Sneží.",
+            "Je zima.",
+            "Snežilo."
+          ],
+          "answer": "Bude snežiť.",
+          "answerMeaning": "Bude snežiť. = It will snow."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Zajtra ___ pršať.",
+          "translation": "Tomorrow it will rain.",
+          "choices": [
+            "bude",
+            "bolo",
+            "som",
+            "je"
+          ],
+          "answer": "bude"
+        },
+        {
+          "sentence": "Koľko to bude ___?",
+          "translation": "How much will it cost?",
+          "choices": [
+            "stáť",
+            "trvať",
+            "pršať",
+            "otvorené"
+          ],
+          "answer": "stáť"
+        },
+        {
+          "sentence": "Ako dlho to bude ___?",
+          "translation": "How long will it take?",
+          "choices": [
+            "trvať",
+            "stáť",
+            "snežiť",
+            "zatvorené"
+          ],
+          "answer": "trvať"
+        },
+        {
+          "sentence": "Zajtra bude ___.",
+          "translation": "Tomorrow it will be open.",
+          "choices": [
+            "otvorené",
+            "zatvorené",
+            "včera",
+            "bol"
+          ],
+          "answer": "otvorené"
+        },
+        {
+          "sentence": "V nedeľu bude ___.",
+          "translation": "On Sunday it will be closed.",
+          "choices": [
+            "zatvorené",
+            "otvorené",
+            "stáť",
+            "som"
+          ],
+          "answer": "zatvorené"
+        },
+        {
+          "sentence": "Večer bude ___.",
+          "translation": "In the evening it will snow.",
+          "choices": [
+            "snežiť",
+            "pršať",
+            "doma",
+            "chorý"
+          ],
+          "answer": "snežiť"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

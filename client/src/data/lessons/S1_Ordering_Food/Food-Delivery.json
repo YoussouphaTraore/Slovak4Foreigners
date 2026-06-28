@@ -1,0 +1,289 @@
+{
+  "id": "s1-food-delivery",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Food Delivery",
+  "description": "Handle a courier call and delivery location",
+  "icon": "🛵",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Food Delivery",
+      "rows": [
+        {
+          "label": "Delivery",
+          "slovak": "Doručenie",
+          "english": "Delivery"
+        },
+        {
+          "label": "Courier",
+          "slovak": "Kuriér",
+          "english": "Courier"
+        },
+        {
+          "label": "Where are you?",
+          "slovak": "Kde ste?",
+          "english": "Where are you? (courier asking)"
+        },
+        {
+          "label": "I'm in front of the building",
+          "slovak": "Som pred budovou.",
+          "english": "I'm in front of the building."
+        },
+        {
+          "label": "I'm coming down",
+          "slovak": "Idem dole.",
+          "english": "I'm coming down."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Doručenie",
+          "english": "Delivery"
+        },
+        {
+          "slovak": "Kuriér",
+          "english": "Courier"
+        },
+        {
+          "slovak": "Kde ste?",
+          "english": "Where are you? (courier asking)"
+        },
+        {
+          "slovak": "Som pred budovou.",
+          "english": "I'm in front of the building."
+        },
+        {
+          "slovak": "Idem dole.",
+          "english": "I'm coming down."
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Doručenie",
+          "english": "Delivery"
+        },
+        {
+          "slovak": "Kuriér",
+          "english": "Courier"
+        },
+        {
+          "slovak": "Kde ste?",
+          "english": "Where are you? (courier asking)"
+        },
+        {
+          "slovak": "Som pred budovou.",
+          "english": "I'm in front of the building."
+        },
+        {
+          "slovak": "Idem dole.",
+          "english": "I'm coming down."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Doručenie",
+          "english": "Delivery"
+        },
+        {
+          "slovak": "Kuriér",
+          "english": "Courier"
+        },
+        {
+          "slovak": "Kde ste?",
+          "english": "Where are you?"
+        },
+        {
+          "slovak": "Som pred budovou.",
+          "english": "I'm in front of the building."
+        },
+        {
+          "slovak": "Idem dole.",
+          "english": "I'm coming down."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Doručenie",
+          "english": "Delivery"
+        },
+        {
+          "slovak": "Kuriér",
+          "english": "Courier"
+        },
+        {
+          "slovak": "Kde ste?",
+          "english": "Where are you? (courier asking)"
+        },
+        {
+          "slovak": "Som pred budovou.",
+          "english": "I'm in front of the building."
+        },
+        {
+          "slovak": "Idem dole.",
+          "english": "I'm coming down."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need delivery. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Doručenie",
+            "Kde ste?",
+            "Kuriér",
+            "Som pred budovou."
+          ],
+          "answer": "Doručenie",
+          "answerMeaning": "Doručenie = Delivery"
+        },
+        {
+          "situation": "You need courier. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Doručenie",
+            "Kde ste?",
+            "Kuriér",
+            "Som pred budovou."
+          ],
+          "answer": "Kuriér",
+          "answerMeaning": "Kuriér = Courier"
+        },
+        {
+          "situation": "You need where are you? (courier asking). What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Doručenie",
+            "Kde ste?",
+            "Kuriér",
+            "Som pred budovou."
+          ],
+          "answer": "Kde ste?",
+          "answerMeaning": "Kde ste? = Where are you? (courier asking)"
+        },
+        {
+          "situation": "You need i'm in front of the building. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Doručenie",
+            "Kde ste?",
+            "Kuriér",
+            "Som pred budovou."
+          ],
+          "answer": "Som pred budovou.",
+          "answerMeaning": "Som pred budovou. = I'm in front of the building."
+        },
+        {
+          "situation": "You need i'm coming down. What do you choose?",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Doručenie",
+            "Idem dole.",
+            "Kde ste?",
+            "Kuriér"
+          ],
+          "answer": "Idem dole.",
+          "answerMeaning": "Idem dole. = I'm coming down."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You order food through a delivery app. The courier calls and asks where you are. You're in front of your building. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Idem dole.",
+            "Som pred budovou.",
+            "Kde ste?",
+            "Stôl pre jedného."
+          ],
+          "answer": "Som pred budovou.",
+          "answerMeaning": "Som pred budovou = I'm in front of the building. Pred = in front of, from the Positions topic — used here to meet your delivery."
+        },
+        {
+          "situation": "The courier has arrived but you're still inside. What do you say before heading down?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Idem dole.",
+            "Som vonku.",
+            "Stôl pre dvoch.",
+            "Niečo na pitie?"
+          ],
+          "answer": "Idem dole.",
+          "answerMeaning": "Idem dole = I'm coming down. Dole = down, from the Directions topic — Idem from the Verbs lesson."
+        },
+        {
+          "situation": "You give your delivery address when ordering. What do you start with?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Moja adresa je...",
+            "Dám si...",
+            "Stôl pre jedného.",
+            "Účet, prosím."
+          ],
+          "answer": "Moja adresa je...",
+          "answerMeaning": "Moja adresa je... = My address is... — from the My Address topic, essential for any delivery order."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ je tu! Idem dole.",
+          "translation": "The courier is here! I'm coming down.",
+          "choices": [
+            "Stôl",
+            "Kuriér",
+            "Účet",
+            "Jedálny lístok"
+          ],
+          "answer": "Kuriér"
+        },
+        {
+          "sentence": "Som pred ___. Kde ste?",
+          "translation": "I'm in front of the building. Where are you?",
+          "choices": [
+            "jedálnym lístkom",
+            "účtom",
+            "budovou",
+            "stolom"
+          ],
+          "answer": "budovou"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

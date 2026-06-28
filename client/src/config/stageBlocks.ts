@@ -1,73 +1,54 @@
+import { topicById, block1TopicIds, block2TopicIds, block3TopicIds, block4TopicIds, block5TopicIds, block6TopicIds, block7TopicIds, block8TopicIds, block9TopicIds } from './stage1Topics';
+
 export interface BlockConfig {
   blockId: string;
   blockName: string;
-  lessonIds: string[];
+  topicIds?: string[];
+  lessonIds?: string[];
 }
 
-// Stages with production-ready content. Stages not in this list are fully
-// hidden from production users (still rendered in dev for reference) until
-// they're reworked with the Stage 1 block system and added here.
-export const PRODUCTION_VISIBLE_STAGES = ['survival', 'settling'];
+// Returns the flat ordered lesson ID list for a block, regardless of whether it
+// uses topicIds (Stage 1) or lessonIds (Stage 2+).
+export function getBlockLessonIds(block: BlockConfig): string[] {
+  if (block.topicIds) {
+    return block.topicIds.flatMap(id => topicById[id]?.lessonIds ?? []);
+  }
+  return block.lessonIds ?? [];
+}
 
 export const stage1Blocks: BlockConfig[] = [
-  {
-    blockId: 'stage1-block1',
-    blockName: 'Core Communication',
-    lessonIds: ['s1-first-words', 's1-verbs', 's1-greetings', 's1-how-are-you', 's1-dont-understand'],
-  },
-  {
-    blockId: 'stage1-block2',
-    blockName: 'Identity',
-    lessonIds: ['s1-who-i-am', 's1-describing-yourself', 's1-head-face', 's1-torso-pain', 's1-arms-legs', 's1-colors', 's1-family'],
-  },
-  {
-    blockId: 'stage1-block3',
-    blockName: 'Numbers & Time',
-    lessonIds: ['s1-cardinal-numbers', 's1-money', 's1-times-of-day', 's1-days-of-week', 's1-weeks-of-month', 's1-months-of-year'],
-  },
-  {
-    blockId: 'stage1-block4',
-    blockName: 'Where You Are',
-    lessonIds: ['s1-my-address', 's1-directions', 's1-positions', 's1-emergency'],
-  },
-  {
-    blockId: 'stage1-block5',
-    blockName: 'Emergency',
-    lessonIds: ['s1-hospital', 's1-pharmacy'],
-  },
-  {
-    blockId: 'stage1-block6',
-    blockName: 'Food & Getting Around',
-    lessonIds: ['s1-food', 's1-ordering-food', 's1-transport', 's1-tram-bus', 's1-taxi'],
-  },
-  {
-    blockId: 'stage1-block7',
-    blockName: 'At Home',
-    lessonIds: ['s1-flat-items', 's1-pets', 's1-beverages', 's1-supermarket'],
-  },
+  { blockId: 'stage1-block1', blockName: 'Core Communication', topicIds: block1TopicIds },
+  { blockId: 'stage1-block2', blockName: 'Identity',           topicIds: block2TopicIds },
+  { blockId: 'stage1-block3', blockName: 'Numbers & Time',     topicIds: block3TopicIds },
+  { blockId: 'stage1-block4', blockName: 'Where You Are',      topicIds: block4TopicIds },
+  { blockId: 'stage1-block5', blockName: 'Emergency & Medical', topicIds: block5TopicIds },
+  { blockId: 'stage1-block6', blockName: 'Food',           topicIds: block6TopicIds },
+  { blockId: 'stage1-block7', blockName: 'Getting Around', topicIds: block7TopicIds },
+  { blockId: 'stage1-block8', blockName: 'At Home',        topicIds: block8TopicIds },
+  { blockId: 'stage1-block9', blockName: 'Shopping & Clothes', topicIds: block9TopicIds },
 ];
 
-export const stage1LessonOrder = stage1Blocks.flatMap((b) => b.lessonIds);
+export const stage1LessonOrder = stage1Blocks.flatMap(b => getBlockLessonIds(b));
 
-// Stage 2 — Settling In. Block structure is a work in progress; expand as lessons are added.
+// Stage 2 - Settling In. Block structure is a work in progress; expand as lessons are added.
 export const stage2Blocks: BlockConfig[] = [
   {
     blockId: 'stage2-block1',
     blockName: 'Real People, Real Slovak',
-    lessonIds: ['s2-marek-introduction', 's2-sara-introduction', 's2-marek-sara-meeting'],
+    lessonIds: ['s2-marek-introduction', 's2-sara-introduction', 's2-marek-sara-meeting', 's2-introduce-yourself'],
   },
 ];
 
-export const stage2LessonOrder = stage2Blocks.flatMap((b) => b.lessonIds);
+export const stage2LessonOrder = stage2Blocks.flatMap(b => getBlockLessonIds(b));
 
 export function getCumulativeLessonIds(blockId: string): string[] {
-  const blockIndex = stage1Blocks.findIndex((b) => b.blockId === blockId);
+  const blockIndex = stage1Blocks.findIndex(b => b.blockId === blockId);
   if (blockIndex === -1) return [];
-  return stage1Blocks.slice(0, blockIndex + 1).flatMap((b) => b.lessonIds);
+  return stage1Blocks.slice(0, blockIndex + 1).flatMap(b => getBlockLessonIds(b));
 }
 
 export function getNextBlock(blockId: string): BlockConfig | null {
-  const blockIndex = stage1Blocks.findIndex((b) => b.blockId === blockId);
+  const blockIndex = stage1Blocks.findIndex(b => b.blockId === blockId);
   if (blockIndex === -1 || blockIndex === stage1Blocks.length - 1) return null;
   return stage1Blocks[blockIndex + 1];
 }
@@ -75,3 +56,4 @@ export function getNextBlock(blockId: string): BlockConfig | null {
 export function isLastBlock(blockId: string): boolean {
   return stage1Blocks[stage1Blocks.length - 1].blockId === blockId;
 }
+

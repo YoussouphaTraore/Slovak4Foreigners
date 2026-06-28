@@ -6,7 +6,7 @@
   "description": "Listen to Sara introduce herself, then prove you were listening",
   "icon": "🎧",
   "xpReward": 15,
-  "coming_soon": false,
+  "coming_soon": true,
   "_voiceScript": {
     "voice": "Jolana",
     "script": "Volám sa Sara. Som z Talianska, ale bývam v Bratislave. Som mladá a nízka. Mám hnedé vlasy a zelené oči. Nemám rodinu tu — moji rodičia bývajú v Taliansku. Mám mačku. Volá sa Luna. Pracujem tu od marca. Som šťastná tu na Slovensku."

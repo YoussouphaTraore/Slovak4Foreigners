@@ -1,0 +1,267 @@
+{
+  "id": "s1-limbs",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Limbs",
+  "description": "Arms, hands, legs, feet, fingers and toes",
+  "icon": "🦵",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Limbs",
+      "rows": [
+        {
+          "label": "Hand / Arm  ·  Hands / Arms",
+          "slovak": "Ruka / Ruky",
+          "english": "Hand / Arm  ·  Hands / Arms. One word for both."
+        },
+        {
+          "label": "Shoulder  ·  Shoulders",
+          "slovak": "Rameno / Ramená",
+          "english": "Shoulder · Shoulders"
+        },
+        {
+          "label": "Finger  ·  Fingers",
+          "slovak": "Prst / Prsty",
+          "english": "Finger · Fingers"
+        },
+        {
+          "label": "Toe  ·  Toes",
+          "slovak": "Prst na nohe / Prsty na nohách",
+          "english": "Toe · Toes"
+        },
+        {
+          "label": "Leg / Foot  ·  Legs / Feet",
+          "slovak": "Noha / Nohy",
+          "english": "Leg / Foot  ·  Legs / Feet. One word for both."
+        },
+        {
+          "label": "Foot  ·  Feet (anatomical)",
+          "slovak": "Chodidlo / Chodidlá",
+          "english": "Sole of the foot · Soles. More anatomically exact than Noha."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Ruka",
+          "english": "Hand / Arm"
+        },
+        {
+          "slovak": "Ruky",
+          "english": "Hands / Arms"
+        },
+        {
+          "slovak": "Rameno",
+          "english": "Shoulder"
+        },
+        {
+          "slovak": "Prst",
+          "english": "Finger"
+        },
+        {
+          "slovak": "Noha",
+          "english": "Leg / Foot"
+        },
+        {
+          "slovak": "Chodidlo",
+          "english": "Foot (anatomical)"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Ruka",
+          "english": "Hand / Arm"
+        },
+        {
+          "slovak": "Noha",
+          "english": "Leg / Foot"
+        },
+        {
+          "slovak": "Rameno",
+          "english": "Shoulder"
+        },
+        {
+          "slovak": "Prst",
+          "english": "Finger"
+        },
+        {
+          "slovak": "Chodidlo",
+          "english": "Foot (anatomical)"
+        },
+        {
+          "slovak": "Ruky",
+          "english": "Hands / Arms"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Ruka",
+          "english": "Hand / Arm"
+        },
+        {
+          "slovak": "Rameno",
+          "english": "Shoulder"
+        },
+        {
+          "slovak": "Prst",
+          "english": "Finger"
+        },
+        {
+          "slovak": "Noha",
+          "english": "Leg / Foot"
+        },
+        {
+          "slovak": "Chodidlo",
+          "english": "Sole of the foot"
+        },
+        {
+          "slovak": "Prst na nohe",
+          "english": "Toe"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Ruka",
+          "english": "Hand / Arm"
+        },
+        {
+          "slovak": "Rameno",
+          "english": "Shoulder"
+        },
+        {
+          "slovak": "Prst",
+          "english": "Finger"
+        },
+        {
+          "slovak": "Noha",
+          "english": "Leg / Foot"
+        },
+        {
+          "slovak": "Chodidlo",
+          "english": "Foot (anatomical)"
+        },
+        {
+          "slovak": "Ruky",
+          "english": "Hands / Arms"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You slipped on ice and hurt your ankle. The doctor points to the sole of your foot. Which word are they using?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Noha",
+            "Prst",
+            "Chodidlo",
+            "Rameno"
+          ],
+          "answer": "Chodidlo",
+          "answerMeaning": "Chodidlo = the sole of the foot, anatomically exact. Noha covers the whole leg and foot. At a doctor, chodidlo is more precise."
+        },
+        {
+          "situation": "You dropped a pot of boiling water on your toe. Which word tells the pharmacist where you were burned?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Prst na ruke",
+            "Prst na nohe",
+            "Chodidlo",
+            "Noha"
+          ],
+          "answer": "Prst na nohe",
+          "answerMeaning": "Prst na nohe = toe. Prst alone usually means finger. Add 'na nohe' to specify toe."
+        },
+        {
+          "situation": "You injured your shoulder playing sport. Which word do you use when calling the doctor?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Ruka",
+            "Prst",
+            "Noha",
+            "Rameno"
+          ],
+          "answer": "Rameno",
+          "answerMeaning": "Rameno = Shoulder. Bolí ma rameno = My shoulder hurts. Use this at any Slovak clinic or pharmacy."
+        },
+        {
+          "situation": "Slovak uses one word for both hand AND arm. Which is it?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Prst",
+            "Rameno",
+            "Ruka",
+            "Chodidlo"
+          ],
+          "answer": "Ruka",
+          "answerMeaning": "Ruka = Hand / Arm. Context tells you which one. Bolí ma ruka is the phrase for both arm pain and hand pain."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Bolí ma ___. Pravdepodobne som si ju zlomil.",
+          "translation": "My ___ hurts. I probably broke it.",
+          "choices": [
+            "Vlasy",
+            "Nos",
+            "Ruka",
+            "Krk"
+          ],
+          "answer": "Ruka"
+        },
+        {
+          "sentence": "Spadol som. Bolí ma ___. Nemôžem chodiť.",
+          "translation": "I fell. My ___ hurts. I cannot walk.",
+          "choices": [
+            "Ruka",
+            "Rameno",
+            "Noha",
+            "Prst"
+          ],
+          "answer": "Noha"
+        },
+        {
+          "sentence": "Porezal som si ___ nožom.",
+          "translation": "I cut my ___ with a knife.",
+          "choices": [
+            "Prst",
+            "Ruka",
+            "Noha",
+            "Rameno"
+          ],
+          "answer": "Prst"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

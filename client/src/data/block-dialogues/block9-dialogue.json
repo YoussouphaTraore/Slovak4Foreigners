@@ -1,0 +1,222 @@
+{
+  "id": "block9-shopping-clothes-dialogue",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "blockId": "stage1-block9",
+  "type": "BLOCK_DIALOGUE",
+  "title": "Shopping for Clothes",
+  "description": "Go shopping with Marek, ask about clothes and sizes, pay, keep the receipt, and exchange damaged sneakers.",
+  "icon": "🛍",
+  "xpReward": 25,
+  "contact": {
+    "name": "Marek",
+    "avatar": "👨",
+    "status": "online"
+  },
+  "context": "Marek goes with you to buy clothes. You choose a T-shirt and sneakers, ask about price, pay by card, keep the receipt, then come back to exchange damaged sneakers.",
+  "speakers": {
+    "marek": {
+      "name": "Marek",
+      "avatar": "👨"
+    },
+    "seller": {
+      "name": "Predavačka",
+      "avatar": "🛒"
+    }
+  },
+  "exchanges": [
+    {
+      "id": "ex1",
+      "speaker": "seller",
+      "text": "Dobrý deň. Pomôžem vám?",
+      "translation": "Good day. Can I help you?",
+      "prompt": "You are just looking first.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Len sa pozerám.", "translation": "I am just looking.", "isCorrect": true },
+        { "id": "b", "text": "Platím kartou.", "translation": "I am paying by card.", "isCorrect": false },
+        { "id": "c", "text": "Mám účtenku.", "translation": "I have the receipt.", "isCorrect": false },
+        { "id": "d", "text": "Táto veľkosť mi nesedí.", "translation": "This size does not fit me.", "isCorrect": false }
+      ],
+      "correctFeedback": "Len sa pozerám. is a natural first answer in a shop.",
+      "wrongFeedback": "Use Len sa pozerám when you are only browsing."
+    },
+    {
+      "id": "ex2",
+      "speaker": "marek",
+      "text": "Páči sa ti toto tričko?",
+      "translation": "Do you like this T-shirt?",
+      "prompt": "You want this item.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Chcem toto.", "translation": "I want this.", "isCorrect": true },
+        { "id": "b", "text": "Nemám účtenku.", "translation": "I do not have the receipt.", "isCorrect": false },
+        { "id": "c", "text": "Kde je pokladňa?", "translation": "Where is the checkout?", "isCorrect": false },
+        { "id": "d", "text": "Chcem to vymeniť.", "translation": "I want to exchange it.", "isCorrect": false }
+      ],
+      "correctFeedback": "Chcem toto. is clear when you want the item.",
+      "wrongFeedback": "Use Chcem toto when you want this item."
+    },
+    {
+      "id": "ex3",
+      "speaker": "seller",
+      "text": "Aká veľkosť?",
+      "translation": "What size?",
+      "prompt": "Ask for size M.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Veľkosť M.", "translation": "Size M.", "isCorrect": true },
+        { "id": "b", "text": "Cena M.", "translation": "Price M.", "isCorrect": false },
+        { "id": "c", "text": "Pokladňa M.", "translation": "Checkout M.", "isCorrect": false },
+        { "id": "d", "text": "Účtenka M.", "translation": "Receipt M.", "isCorrect": false }
+      ],
+      "correctFeedback": "Veľkosť M. answers the size question.",
+      "wrongFeedback": "Aká veľkosť? asks for size, so answer Veľkosť M."
+    },
+    {
+      "id": "ex4",
+      "speaker": "marek",
+      "text": "Sedí ti to tričko?",
+      "translation": "Does the T-shirt fit you?",
+      "prompt": "It fits now.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Sedí mi to.", "translation": "It fits me.", "isCorrect": true },
+        { "id": "b", "text": "Je to poškodené.", "translation": "It is damaged.", "isCorrect": false },
+        { "id": "c", "text": "Potrebujem tašku.", "translation": "I need a bag.", "isCorrect": false },
+        { "id": "d", "text": "Nemám účtenku.", "translation": "I do not have the receipt.", "isCorrect": false }
+      ],
+      "correctFeedback": "Sedí mi to. is the right fit answer.",
+      "wrongFeedback": "If it fits, say Sedí mi to."
+    },
+    {
+      "id": "ex5",
+      "speaker": "seller",
+      "text": "Chcete ešte niečo? Máme aj tenisky a tašky.",
+      "translation": "Do you want anything else? We also have sneakers and bags.",
+      "prompt": "Ask for sneakers.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Chcem tenisky.", "translation": "I want sneakers.", "isCorrect": true },
+        { "id": "b", "text": "Chcem účtenku.", "translation": "I want a receipt.", "isCorrect": false },
+        { "id": "c", "text": "Chcem to vrátiť.", "translation": "I want to return it.", "isCorrect": false },
+        { "id": "d", "text": "Chcem veľkosť.", "translation": "I want size.", "isCorrect": false }
+      ],
+      "correctFeedback": "Chcem tenisky. asks for sneakers.",
+      "wrongFeedback": "Tenisky means sneakers."
+    },
+    {
+      "id": "ex6",
+      "speaker": "marek",
+      "text": "Máš tričko aj tenisky. Čo sa opýtaš na cenu?",
+      "translation": "You have a T-shirt and sneakers. What will you ask about the price?",
+      "prompt": "Ask how much it costs.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Koľko to stojí?", "translation": "How much does it cost?", "isCorrect": true },
+        { "id": "b", "text": "Kde je pokladňa?", "translation": "Where is the checkout?", "isCorrect": false },
+        { "id": "c", "text": "Aká veľkosť?", "translation": "What size?", "isCorrect": false },
+        { "id": "d", "text": "Máte toto?", "translation": "Do you have this?", "isCorrect": false }
+      ],
+      "correctFeedback": "Koľko to stojí? asks about the price.",
+      "wrongFeedback": "Use Koľko to stojí? to ask the price."
+    },
+    {
+      "id": "ex7",
+      "speaker": "seller",
+      "text": "Spolu je to tridsať eur. Potrebujete tašku?",
+      "translation": "Together it is thirty euros. Do you need a bag?",
+      "prompt": "You need a bag for the clothes.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Potrebujem tašku.", "translation": "I need a bag.", "isCorrect": true },
+        { "id": "b", "text": "Potrebujem veľkosť.", "translation": "I need a size.", "isCorrect": false },
+        { "id": "c", "text": "Potrebujem pokladňu.", "translation": "I need checkout.", "isCorrect": false },
+        { "id": "d", "text": "Potrebujem účtenku.", "translation": "I need a receipt.", "isCorrect": false }
+      ],
+      "correctFeedback": "Potrebujem tašku. is the right bag phrase.",
+      "wrongFeedback": "Use Potrebujem tašku when you need a bag."
+    },
+    {
+      "id": "ex8",
+      "speaker": "seller",
+      "text": "Ako platíte?",
+      "translation": "How are you paying?",
+      "prompt": "Pay by card.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Platím kartou.", "translation": "I am paying by card.", "isCorrect": true },
+        { "id": "b", "text": "Platím tričkom.", "translation": "I am paying with a T-shirt.", "isCorrect": false },
+        { "id": "c", "text": "Platím veľkosťou.", "translation": "I am paying with a size.", "isCorrect": false },
+        { "id": "d", "text": "Platím taškou.", "translation": "I am paying with a bag.", "isCorrect": false }
+      ],
+      "correctFeedback": "Platím kartou. answers how you pay.",
+      "wrongFeedback": "Use Platím kartou for paying by card."
+    },
+    {
+      "id": "ex9",
+      "speaker": "seller",
+      "text": "Tu je taška. Chcete účtenku?",
+      "translation": "Here is the bag. Do you want the receipt?",
+      "prompt": "Ask for a receipt.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Prosím účtenku.", "translation": "Receipt, please.", "isCorrect": true },
+        { "id": "b", "text": "Prosím topánky.", "translation": "Shoes, please.", "isCorrect": false },
+        { "id": "c", "text": "Prosím veľkosť.", "translation": "Size, please.", "isCorrect": false },
+        { "id": "d", "text": "Prosím pokladňu.", "translation": "Checkout, please.", "isCorrect": false }
+      ],
+      "correctFeedback": "Prosím účtenku. is the receipt phrase.",
+      "wrongFeedback": "Ask for the receipt with Prosím účtenku."
+    },
+    {
+      "id": "ex10",
+      "speaker": "marek",
+      "text": "Doma vidíš, že tenisky sú poškodené. Čo povieš v obchode?",
+      "translation": "At home you see that the sneakers are damaged. What will you say in the shop?",
+      "prompt": "Say that it is damaged.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Je to poškodené.", "translation": "It is damaged.", "isCorrect": true },
+        { "id": "b", "text": "Sedí mi to.", "translation": "It fits me.", "isCorrect": false },
+        { "id": "c", "text": "Je to lacné.", "translation": "It is cheap.", "isCorrect": false },
+        { "id": "d", "text": "Platím v hotovosti.", "translation": "I am paying in cash.", "isCorrect": false }
+      ],
+      "correctFeedback": "Je to poškodené. explains the problem clearly.",
+      "wrongFeedback": "For a damaged item, say Je to poškodené."
+    },
+    {
+      "id": "ex11",
+      "speaker": "seller",
+      "text": "Máte účtenku?",
+      "translation": "Do you have the receipt?",
+      "prompt": "You have the receipt.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Mám účtenku.", "translation": "I have the receipt.", "isCorrect": true },
+        { "id": "b", "text": "Nemám veľkosť.", "translation": "I do not have size.", "isCorrect": false },
+        { "id": "c", "text": "Mám pokladňu.", "translation": "I have checkout.", "isCorrect": false },
+        { "id": "d", "text": "Mám obchod.", "translation": "I have a shop.", "isCorrect": false }
+      ],
+      "correctFeedback": "Mám účtenku. is the correct receipt answer.",
+      "wrongFeedback": "If you have the receipt, say Mám účtenku."
+    },
+    {
+      "id": "ex12",
+      "speaker": "seller",
+      "text": "Chcete to vrátiť alebo vymeniť?",
+      "translation": "Do you want to return it or exchange it?",
+      "prompt": "The sneakers are damaged. Ask to exchange them.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Chcem to vymeniť.", "translation": "I want to exchange it.", "isCorrect": true },
+        { "id": "b", "text": "Chcem toto.", "translation": "I want this.", "isCorrect": false },
+        { "id": "c", "text": "Chcem tenisky.", "translation": "I want sneakers.", "isCorrect": false },
+        { "id": "d", "text": "Chcem účtenku.", "translation": "I want a receipt.", "isCorrect": false }
+      ],
+      "correctFeedback": "Chcem to vymeniť. is natural when you want a replacement.",
+      "wrongFeedback": "For an exchange, say Chcem to vymeniť."
+    }
+  ],
+  "completionMessage": "Great! You can shop for clothes, ask about size and price, pay, keep the receipt, and exchange a damaged item in Slovak."
+}

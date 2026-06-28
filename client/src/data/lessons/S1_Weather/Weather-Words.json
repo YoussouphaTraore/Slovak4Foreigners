@@ -1,0 +1,324 @@
+{
+  "id": "s1-weather-words",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Weather Words",
+  "description": "Learn the basic words for weather, sun, rain, snow, wind, and cloud",
+  "icon": "🌧",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Weather Words",
+      "rows": [
+        {
+          "label": "Weather",
+          "slovak": "Počasie",
+          "english": "Weather"
+        },
+        {
+          "label": "Sun",
+          "slovak": "Slnko",
+          "english": "Sun"
+        },
+        {
+          "label": "Rain",
+          "slovak": "Dážď",
+          "english": "Rain"
+        },
+        {
+          "label": "Snow",
+          "slovak": "Sneh",
+          "english": "Snow"
+        },
+        {
+          "label": "Wind",
+          "slovak": "Vietor",
+          "english": "Wind"
+        },
+        {
+          "label": "Cloud",
+          "slovak": "Oblak",
+          "english": "Cloud"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Počasie",
+          "english": "Weather"
+        },
+        {
+          "slovak": "Slnko",
+          "english": "Sun"
+        },
+        {
+          "slovak": "Dážď",
+          "english": "Rain"
+        },
+        {
+          "slovak": "Sneh",
+          "english": "Snow"
+        },
+        {
+          "slovak": "Vietor",
+          "english": "Wind"
+        },
+        {
+          "slovak": "Oblak",
+          "english": "Cloud"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Počasie",
+          "english": "Weather"
+        },
+        {
+          "slovak": "Slnko",
+          "english": "Sun"
+        },
+        {
+          "slovak": "Dážď",
+          "english": "Rain"
+        },
+        {
+          "slovak": "Sneh",
+          "english": "Snow"
+        },
+        {
+          "slovak": "Vietor",
+          "english": "Wind"
+        },
+        {
+          "slovak": "Oblak",
+          "english": "Cloud"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Počasie",
+          "english": "Weather"
+        },
+        {
+          "slovak": "Slnko",
+          "english": "Sun"
+        },
+        {
+          "slovak": "Dážď",
+          "english": "Rain"
+        },
+        {
+          "slovak": "Sneh",
+          "english": "Snow"
+        },
+        {
+          "slovak": "Vietor",
+          "english": "Wind"
+        },
+        {
+          "slovak": "Oblak",
+          "english": "Cloud"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Počasie",
+          "english": "Weather"
+        },
+        {
+          "slovak": "Slnko",
+          "english": "Sun"
+        },
+        {
+          "slovak": "Dážď",
+          "english": "Rain"
+        },
+        {
+          "slovak": "Sneh",
+          "english": "Snow"
+        },
+        {
+          "slovak": "Vietor",
+          "english": "Wind"
+        },
+        {
+          "slovak": "Oblak",
+          "english": "Cloud"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Someone asks what the Slovak word for weather is. What do you answer?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Počasie",
+            "Slnko",
+            "Oblak",
+            "Dážď"
+          ],
+          "answer": "Počasie",
+          "answerMeaning": "Počasie = Weather."
+        },
+        {
+          "situation": "You see clouds in the sky. Which word means cloud?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Oblak",
+            "Slnko",
+            "Sneh",
+            "Vietor"
+          ],
+          "answer": "Oblak",
+          "answerMeaning": "Oblak = Cloud."
+        },
+        {
+          "situation": "It is bright outside. Which word means sun?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Slnko",
+            "Dážď",
+            "Sneh",
+            "Vietor"
+          ],
+          "answer": "Slnko",
+          "answerMeaning": "Slnko = Sun."
+        },
+        {
+          "situation": "Water is falling from the sky. Which word means rain?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Dážď",
+            "Sneh",
+            "Oblak",
+            "Slnko"
+          ],
+          "answer": "Dážď",
+          "answerMeaning": "Dážď = Rain."
+        },
+        {
+          "situation": "White flakes are falling outside. Which word means snow?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Sneh",
+            "Dážď",
+            "Vietor",
+            "Počasie"
+          ],
+          "answer": "Sneh",
+          "answerMeaning": "Sneh = Snow."
+        },
+        {
+          "situation": "The air is moving strongly. Which word means wind?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Vietor",
+            "Oblak",
+            "Slnko",
+            "Dážď"
+          ],
+          "answer": "Vietor",
+          "answerMeaning": "Vietor = Wind."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Na nebi je veľký ___.",
+          "translation": "There is a big cloud in the sky.",
+          "choices": [
+            "oblak",
+            "sneh",
+            "dážď",
+            "vietor"
+          ],
+          "answer": "oblak"
+        },
+        {
+          "sentence": "Dnes svieti ___.",
+          "translation": "The sun is shining today.",
+          "choices": [
+            "slnko",
+            "vietor",
+            "sneh",
+            "oblak"
+          ],
+          "answer": "slnko"
+        },
+        {
+          "sentence": "Vidím ___. Potrebujem dáždnik.",
+          "translation": "I see rain. I need an umbrella.",
+          "choices": [
+            "dážď",
+            "sneh",
+            "vietor",
+            "slnko"
+          ],
+          "answer": "dážď"
+        },
+        {
+          "sentence": "V zime je často ___.",
+          "translation": "In winter there is often snow.",
+          "choices": [
+            "sneh",
+            "dážď",
+            "oblak",
+            "slnko"
+          ],
+          "answer": "sneh"
+        },
+        {
+          "sentence": "Silný ___ zatvára dvere.",
+          "translation": "A strong wind closes the door.",
+          "choices": [
+            "vietor",
+            "oblak",
+            "slnko",
+            "dážď"
+          ],
+          "answer": "vietor"
+        },
+        {
+          "sentence": "Aké je dnes ___?",
+          "translation": "What is the weather like today?",
+          "choices": [
+            "počasie",
+            "slnko",
+            "sneh",
+            "oblak"
+          ],
+          "answer": "počasie"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

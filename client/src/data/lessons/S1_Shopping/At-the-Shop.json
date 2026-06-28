@@ -1,0 +1,324 @@
+{
+  "id": "s1-at-the-shop",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "At the Shop",
+  "description": "Ask for items, pay, and handle checkout basics",
+  "icon": "🏪",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Useful shop phrases",
+      "rows": [
+        {
+          "label": "Do you have this?",
+          "slovak": "Máte toto?",
+          "english": "Do you have this?"
+        },
+        {
+          "label": "Where is checkout?",
+          "slovak": "Kde je pokladňa?",
+          "english": "Where is the checkout?"
+        },
+        {
+          "label": "Pay by card",
+          "slovak": "Platím kartou.",
+          "english": "I am paying by card."
+        },
+        {
+          "label": "Pay cash",
+          "slovak": "Platím v hotovosti.",
+          "english": "I am paying in cash."
+        },
+        {
+          "label": "Need a bag",
+          "slovak": "Potrebujem tašku.",
+          "english": "I need a bag."
+        },
+        {
+          "label": "Receipt please",
+          "slovak": "Prosím účtenku.",
+          "english": "Receipt, please."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Máte toto?",
+          "english": "Do you have this?"
+        },
+        {
+          "slovak": "Kde je pokladňa?",
+          "english": "Where is the checkout?"
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "I am paying by card."
+        },
+        {
+          "slovak": "Platím v hotovosti.",
+          "english": "I am paying in cash."
+        },
+        {
+          "slovak": "Potrebujem tašku.",
+          "english": "I need a bag."
+        },
+        {
+          "slovak": "Prosím účtenku.",
+          "english": "Receipt, please."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Máte toto?",
+          "english": "Do you have this?"
+        },
+        {
+          "slovak": "Kde je pokladňa?",
+          "english": "Where is the checkout?"
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "I am paying by card."
+        },
+        {
+          "slovak": "Platím v hotovosti.",
+          "english": "I am paying in cash."
+        },
+        {
+          "slovak": "Potrebujem tašku.",
+          "english": "I need a bag."
+        },
+        {
+          "slovak": "Prosím účtenku.",
+          "english": "Receipt, please."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Máte toto?",
+          "english": "Do you have this?"
+        },
+        {
+          "slovak": "Kde je pokladňa?",
+          "english": "Where is the checkout?"
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "I am paying by card."
+        },
+        {
+          "slovak": "Platím v hotovosti.",
+          "english": "I am paying in cash."
+        },
+        {
+          "slovak": "Potrebujem tašku.",
+          "english": "I need a bag."
+        },
+        {
+          "slovak": "Prosím účtenku.",
+          "english": "Receipt, please."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Máte toto?",
+          "english": "Do you have this?"
+        },
+        {
+          "slovak": "Kde je pokladňa?",
+          "english": "Where is the checkout?"
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "I am paying by card."
+        },
+        {
+          "slovak": "Platím v hotovosti.",
+          "english": "I am paying in cash."
+        },
+        {
+          "slovak": "Potrebujem tašku.",
+          "english": "I need a bag."
+        },
+        {
+          "slovak": "Prosím účtenku.",
+          "english": "Receipt, please."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: Do you have this?",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Máte toto?",
+            "Kde je pokladňa?",
+            "Platím kartou.",
+            "Platím v hotovosti."
+          ],
+          "answer": "Máte toto?",
+          "answerMeaning": "Máte toto? = Do you have this?"
+        },
+        {
+          "situation": "You need to say: Where is the checkout?",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Kde je pokladňa?",
+            "Máte toto?",
+            "Platím kartou.",
+            "Platím v hotovosti."
+          ],
+          "answer": "Kde je pokladňa?",
+          "answerMeaning": "Kde je pokladňa? = Where is the checkout?"
+        },
+        {
+          "situation": "You need to say: I am paying by card.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Platím kartou.",
+            "Máte toto?",
+            "Kde je pokladňa?",
+            "Platím v hotovosti."
+          ],
+          "answer": "Platím kartou.",
+          "answerMeaning": "Platím kartou. = I am paying by card."
+        },
+        {
+          "situation": "You need to say: I am paying in cash.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Platím v hotovosti.",
+            "Máte toto?",
+            "Kde je pokladňa?",
+            "Platím kartou."
+          ],
+          "answer": "Platím v hotovosti.",
+          "answerMeaning": "Platím v hotovosti. = I am paying in cash."
+        },
+        {
+          "situation": "You need to say: I need a bag.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Potrebujem tašku.",
+            "Máte toto?",
+            "Kde je pokladňa?",
+            "Platím kartou."
+          ],
+          "answer": "Potrebujem tašku.",
+          "answerMeaning": "Potrebujem tašku. = I need a bag."
+        },
+        {
+          "situation": "You need to say: Receipt, please.",
+          "instruction": "Choose the Slovak phrase",
+          "choices": [
+            "Prosím účtenku.",
+            "Máte toto?",
+            "Kde je pokladňa?",
+            "Platím kartou."
+          ],
+          "answer": "Prosím účtenku.",
+          "answerMeaning": "Prosím účtenku. = Receipt, please."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ toto?",
+          "translation": "Do you have this?",
+          "choices": [
+            "Máte",
+            "Som",
+            "Bude",
+            "Idem"
+          ],
+          "answer": "Máte"
+        },
+        {
+          "sentence": "Kde je ___?",
+          "translation": "Where is the checkout?",
+          "choices": [
+            "pokladňa",
+            "taška",
+            "účtenka",
+            "topánka"
+          ],
+          "answer": "pokladňa"
+        },
+        {
+          "sentence": "Platím ___.",
+          "translation": "I am paying by card.",
+          "choices": [
+            "kartou",
+            "taškou",
+            "účtenkou",
+            "bundou"
+          ],
+          "answer": "kartou"
+        },
+        {
+          "sentence": "Platím v ___.",
+          "translation": "I am paying in cash.",
+          "choices": [
+            "hotovosti",
+            "októbri",
+            "obchode",
+            "sobotu"
+          ],
+          "answer": "hotovosti"
+        },
+        {
+          "sentence": "Potrebujem ___.",
+          "translation": "I need a bag.",
+          "choices": [
+            "tašku",
+            "účtenku",
+            "veľkosť",
+            "cenu"
+          ],
+          "answer": "tašku"
+        },
+        {
+          "sentence": "Prosím ___.",
+          "translation": "Receipt, please.",
+          "choices": [
+            "účtenku",
+            "tašku",
+            "tenisky",
+            "opasok"
+          ],
+          "answer": "účtenku"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

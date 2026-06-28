@@ -24,19 +24,9 @@
           "english": "Hair"
         },
         {
-          "label": "Face",
-          "slovak": "Tvár",
-          "english": "Face"
-        },
-        {
-          "label": "Eye / Eyes",
-          "slovak": "Oko / Oči",
-          "english": "Eye / Eyes"
-        },
-        {
-          "label": "Ear / Ears",
-          "slovak": "Ucho / Uši",
-          "english": "Ear / Ears"
+          "label": "Eyes",
+          "slovak": "Oči",
+          "english": "Eyes"
         },
         {
           "label": "Nose",
@@ -68,24 +58,8 @@
           "english": "Hair"
         },
         {
-          "slovak": "Tvár",
-          "english": "Face"
-        },
-        {
-          "slovak": "Oko",
-          "english": "Eye"
-        },
-        {
           "slovak": "Oči",
           "english": "Eyes"
-        },
-        {
-          "slovak": "Ucho",
-          "english": "Ear"
-        },
-        {
-          "slovak": "Uši",
-          "english": "Ears"
         },
         {
           "slovak": "Nos",
@@ -115,24 +89,8 @@
           "english": "Hair"
         },
         {
-          "slovak": "Tvár",
-          "english": "Face"
-        },
-        {
-          "slovak": "Oko",
-          "english": "Eye"
-        },
-        {
           "slovak": "Oči",
           "english": "Eyes"
-        },
-        {
-          "slovak": "Ucho",
-          "english": "Ear"
-        },
-        {
-          "slovak": "Uši",
-          "english": "Ears"
         },
         {
           "slovak": "Nos",
@@ -161,24 +119,8 @@
           "english": "Hair"
         },
         {
-          "slovak": "Tvár",
-          "english": "Face"
-        },
-        {
-          "slovak": "Oko",
-          "english": "Eye"
-        },
-        {
           "slovak": "Oči",
           "english": "Eyes"
-        },
-        {
-          "slovak": "Ucho",
-          "english": "Ear"
-        },
-        {
-          "slovak": "Uši",
-          "english": "Ears"
         },
         {
           "slovak": "Nos",

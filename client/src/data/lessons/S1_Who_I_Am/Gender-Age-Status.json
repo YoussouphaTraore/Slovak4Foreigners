@@ -1,0 +1,339 @@
+{
+  "id": "s1-gender-age-status",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Gender, Age & Status",
+  "description": "Say your gender, age group, and marital status",
+  "icon": "🪪",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Gender, Age & Status",
+      "rows": [
+        {
+          "label": "Man",
+          "slovak": "Som muž.",
+          "english": "I am a man."
+        },
+        {
+          "label": "Woman",
+          "slovak": "Som žena.",
+          "english": "I am a woman."
+        },
+        {
+          "label": "Young",
+          "slovak": "Som mladý / mladá.",
+          "english": "I am young. (m/f)"
+        },
+        {
+          "label": "Adult",
+          "slovak": "Som dospelý / dospelá.",
+          "english": "I am an adult. (m/f)"
+        },
+        {
+          "label": "Married",
+          "slovak": "Som ženatý / vydatá.",
+          "english": "I am married. (man/woman)"
+        },
+        {
+          "label": "Single",
+          "slovak": "Som slobodný / slobodná.",
+          "english": "I am single. (m/f)"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Som muž.",
+          "english": "I am a man."
+        },
+        {
+          "slovak": "Som žena.",
+          "english": "I am a woman."
+        },
+        {
+          "slovak": "Som mladý.",
+          "english": "I am young. (male)"
+        },
+        {
+          "slovak": "Som dospelá.",
+          "english": "I am an adult. (female)"
+        },
+        {
+          "slovak": "Som ženatý.",
+          "english": "I am married. (man)"
+        },
+        {
+          "slovak": "Som slobodná.",
+          "english": "I am single. (female)"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Som muž.",
+          "english": "I am a man."
+        },
+        {
+          "slovak": "Som žena.",
+          "english": "I am a woman."
+        },
+        {
+          "slovak": "Som mladý.",
+          "english": "I am young. (male)"
+        },
+        {
+          "slovak": "Som dospelá.",
+          "english": "I am an adult. (female)"
+        },
+        {
+          "slovak": "Som ženatý.",
+          "english": "I am married. (man)"
+        },
+        {
+          "slovak": "Som slobodná.",
+          "english": "I am single. (female)"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "muž",
+          "english": "man"
+        },
+        {
+          "slovak": "žena",
+          "english": "woman"
+        },
+        {
+          "slovak": "mladý",
+          "english": "young"
+        },
+        {
+          "slovak": "dospelý",
+          "english": "adult"
+        },
+        {
+          "slovak": "ženatý",
+          "english": "married (male)"
+        },
+        {
+          "slovak": "slobodný",
+          "english": "single (male)"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Som muž.",
+          "english": "I am a man."
+        },
+        {
+          "slovak": "Som žena.",
+          "english": "I am a woman."
+        },
+        {
+          "slovak": "Som mladý.",
+          "english": "I am young. (male)"
+        },
+        {
+          "slovak": "Som dospelá.",
+          "english": "I am an adult. (female)"
+        },
+        {
+          "slovak": "Som ženatý.",
+          "english": "I am married. (man)"
+        },
+        {
+          "slovak": "Som slobodná.",
+          "english": "I am single. (female)"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The doctor's report says you are a woman, and that is correct. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som muž.",
+            "Som žena.",
+            "Som mladý.",
+            "Som slobodný."
+          ],
+          "answer": "Som žena.",
+          "answerMeaning": "Som žena = I am a woman."
+        },
+        {
+          "situation": "A man is identifying himself on a form. Which phrase says he is a man?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som žena.",
+            "Som muž.",
+            "Som vydatá.",
+            "Som dospelá."
+          ],
+          "answer": "Som muž.",
+          "answerMeaning": "Som muž = I am a man."
+        },
+        {
+          "situation": "Kai is young. Which phrase can Kai use?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som mladý.",
+            "Som ženatý.",
+            "Som dospelý.",
+            "Som žena."
+          ],
+          "answer": "Som mladý.",
+          "answerMeaning": "Som mladý = I am young, male form. Som mladá is the female form."
+        },
+        {
+          "situation": "A woman says she is an adult. Which phrase is correct?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som dospelá.",
+            "Som dospelý.",
+            "Som mladý.",
+            "Som muž."
+          ],
+          "answer": "Som dospelá.",
+          "answerMeaning": "Som dospelá = I am an adult, female form. Som dospelý is the male form."
+        },
+        {
+          "situation": "A married man says he is married. Which phrase is correct?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som slobodný.",
+            "Som ženatý.",
+            "Som vydatá.",
+            "Som žena."
+          ],
+          "answer": "Som ženatý.",
+          "answerMeaning": "Som ženatý = I am married, said by a man. A married woman says Som vydatá."
+        },
+        {
+          "situation": "Kai is not married and has no partner. What can Kai say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Som ženatý.",
+            "Som vydatá.",
+            "Som slobodný.",
+            "Som muž."
+          ],
+          "answer": "Som slobodný.",
+          "answerMeaning": "Som slobodný = I am single, male form. Som slobodná is the female form. Both can fit Kai."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Polícia sa pýta. Kai hovorí: Som ___.",
+          "translation": "The police ask. Kai says: I am ___.",
+          "choices": [
+            "muž",
+            "žena",
+            "mladý",
+            "dospelý"
+          ],
+          "answer": "muž",
+          "acceptedAnswers": [
+            "žena"
+          ],
+          "answerMeaning": "muž = man · žena = woman. Kai can be understood either way."
+        },
+        {
+          "sentence": "Kai má šestnásť rokov. Kai je ___.",
+          "translation": "Kai is sixteen years old. Kai is ___.",
+          "choices": [
+            "mladý",
+            "mladá",
+            "dospelý",
+            "dospelá"
+          ],
+          "answer": "mladý",
+          "acceptedAnswers": [
+            "mladá"
+          ],
+          "answerMeaning": "mladý = young (male form) · mladá = young (female form)."
+        },
+        {
+          "sentence": "Kai má tridsať rokov. Kai je ___.",
+          "translation": "Kai is thirty years old. Kai is an ___.",
+          "choices": [
+            "mladý",
+            "mladá",
+            "dospelý",
+            "dospelá"
+          ],
+          "answer": "dospelý",
+          "acceptedAnswers": [
+            "dospelá"
+          ],
+          "answerMeaning": "dospelý = adult (male form) · dospelá = adult (female form)."
+        },
+        {
+          "sentence": "Som ___. Mám manželku.",
+          "translation": "I am married. I have a wife. (said by a man)",
+          "choices": [
+            "ženatý",
+            "vydatá",
+            "slobodný",
+            "slobodná"
+          ],
+          "answer": "ženatý"
+        },
+        {
+          "sentence": "Som ___. Mám manžela.",
+          "translation": "I am married. I have a husband. (said by a woman)",
+          "choices": [
+            "ženatý",
+            "vydatá",
+            "slobodný",
+            "slobodná"
+          ],
+          "answer": "vydatá"
+        },
+        {
+          "sentence": "Kai je ___. Nemá partnera.",
+          "translation": "Kai is single. Kai doesn't have a partner.",
+          "choices": [
+            "ženatý",
+            "vydatá",
+            "slobodný",
+            "slobodná"
+          ],
+          "answer": "slobodný",
+          "acceptedAnswers": [
+            "slobodná"
+          ],
+          "answerMeaning": "slobodný = single (male form) · slobodná = single (female form). Both can fit Kai."
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

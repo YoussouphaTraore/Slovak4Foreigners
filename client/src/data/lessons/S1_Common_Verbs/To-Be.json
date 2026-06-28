@@ -1,0 +1,136 @@
+{
+  "id": "s1-to-be",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "To Be",
+  "description": "The forms of byť you need first",
+  "icon": "\u26A1",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Byť - To Be",
+      "subtitle": "This verb is unique. Learn each form as its own word.",
+      "rows": [
+        { "label": "Ja", "slovak": "Som", "english": "I am" },
+        { "label": "Ty", "slovak": "Si", "english": "You are (informal)" },
+        { "label": "On / Ona", "slovak": "Je", "english": "He / She is" },
+        { "label": "My", "slovak": "Sme", "english": "We are" },
+        { "label": "Vy", "slovak": "Ste", "english": "You are (formal / plural)" },
+        { "label": "Oni / Ony", "slovak": "Sú", "english": "They are" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Som", "english": "I am" },
+        { "slovak": "Si", "english": "You are" },
+        { "slovak": "Je", "english": "He / She is" },
+        { "slovak": "Sme", "english": "We are" },
+        { "slovak": "Ste", "english": "You are formal / plural" },
+        { "slovak": "Sú", "english": "They are" }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Som", "english": "I am" },
+        { "slovak": "Si", "english": "You are" },
+        { "slovak": "Je", "english": "He / She is" },
+        { "slovak": "Sme", "english": "We are" },
+        { "slovak": "Ste", "english": "You are formal / plural" },
+        { "slovak": "Sú", "english": "They are" }
+      ]
+    },
+    {
+      "id": "ex2c",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        { "slovak": "Som", "english": "I am" },
+        { "slovak": "Si", "english": "You are" },
+        { "slovak": "Je", "english": "He / She is" },
+        { "slovak": "Sme", "english": "We are" },
+        { "slovak": "Ste", "english": "You are formal / plural" },
+        { "slovak": "Sú", "english": "They are" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Som", "english": "I am" },
+        { "slovak": "Si", "english": "You are" },
+        { "slovak": "Je", "english": "He / She is" },
+        { "slovak": "Sme", "english": "We are" },
+        { "slovak": "Ste", "english": "You are formal / plural" },
+        { "slovak": "Sú", "english": "They are" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You introduce yourself: 'I am Kai.' Which word starts the sentence?",
+          "instruction": "Choose the correct form",
+          "choices": ["Je", "Som", "Ste", "Sú"],
+          "answer": "Som",
+          "answerMeaning": "Som = I am. Som Kai = I am Kai."
+        },
+        {
+          "situation": "You ask a friend: 'Are you here?' Which form means 'you are' informally?",
+          "instruction": "Choose the correct form",
+          "choices": ["Si", "Som", "Sme", "Je"],
+          "answer": "Si",
+          "answerMeaning": "Si = you are, used with one person you know well."
+        },
+        {
+          "situation": "The officer asks where your husband is. You answer: 'He is at home.' Which form do you need?",
+          "instruction": "Choose the correct form",
+          "choices": ["Som", "Je", "Ste", "Sú"],
+          "answer": "Je",
+          "answerMeaning": "Je = he is / she is."
+        },
+        {
+          "situation": "You and your child are at the reception desk. You say: 'We are here.' Which form is correct?",
+          "instruction": "Choose the correct form",
+          "choices": ["Sme", "Ste", "Sú", "Si"],
+          "answer": "Sme",
+          "answerMeaning": "Sme = we are."
+        },
+        {
+          "situation": "You ask an officer formally: 'Are you the officer?' Which form do you use?",
+          "instruction": "Choose the correct form",
+          "choices": ["Si", "Je", "Ste", "Sú"],
+          "answer": "Ste",
+          "answerMeaning": "Ste = you are, formal or plural."
+        },
+        {
+          "situation": "You point to two documents and say: 'They are here.' Which form is correct?",
+          "instruction": "Choose the correct form",
+          "choices": ["Je", "Sú", "Som", "Sme"],
+          "answer": "Sú",
+          "answerMeaning": "Sú = they are."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        { "sentence": "___ Kai.", "translation": "I am Kai.", "choices": ["Som", "Si", "Je", "Sú"], "answer": "Som" },
+        { "sentence": "Ty ___ doma?", "translation": "Are you home?", "choices": ["Som", "Si", "Ste", "Sme"], "answer": "Si" },
+        { "sentence": "Ona ___ doktorka.", "translation": "She is a doctor.", "choices": ["Je", "Sú", "Sme", "Ste"], "answer": "Je" },
+        { "sentence": "My ___ tu.", "translation": "We are here.", "choices": ["Ste", "Som", "Sme", "Si"], "answer": "Sme" },
+        { "sentence": "Vy ___ policajt?", "translation": "Are you a police officer? (formal)", "choices": ["Si", "Ste", "Je", "Sú"], "answer": "Ste" },
+        { "sentence": "Oni ___ v práci.", "translation": "They are at work.", "choices": ["Som", "Sú", "Sme", "Je"], "answer": "Sú" }
+      ]
+    },
+    { "id": "ex-review", "type": "WORD_MATCH_REVIEW" }
+  ]
+}

@@ -30,6 +30,8 @@ export interface BlockDialogueSpeaker {
   avatar: string;
 }
 
+import type { ConversationSpeakingExercise } from './conversationSpeaking';
+
 export interface BlockDialogue {
   id: string;
   stageId: string;
@@ -45,4 +47,5 @@ export interface BlockDialogue {
   context: string;
   exchanges: BlockDialogueExchange[];
   completionMessage: string;
+  speakingRound?: ConversationSpeakingExercise;
 }

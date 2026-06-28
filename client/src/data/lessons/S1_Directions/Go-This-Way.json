@@ -1,0 +1,306 @@
+{
+  "id": "s1-go-this-way",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Go This Way",
+  "description": "Follow practical directions like go right, go left, go straight, and then right",
+  "icon": "➡️",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Direction Phrases",
+      "rows": [
+        {
+          "label": "Go right",
+          "slovak": "Choďte vpravo.",
+          "english": "Go right / Turn right."
+        },
+        {
+          "label": "Go left",
+          "slovak": "Choďte vľavo.",
+          "english": "Go left / Turn left."
+        },
+        {
+          "label": "Go straight",
+          "slovak": "Choďte priamo.",
+          "english": "Go straight ahead."
+        },
+        {
+          "label": "It's near",
+          "slovak": "Je to blízko.",
+          "english": "It's nearby."
+        },
+        {
+          "label": "It's far",
+          "slovak": "Je to ďaleko.",
+          "english": "It's far away."
+        },
+        {
+          "label": "Then right",
+          "slovak": "Potom vpravo.",
+          "english": "Then right."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Choďte vpravo.",
+          "english": "Go right."
+        },
+        {
+          "slovak": "Choďte vľavo.",
+          "english": "Go left."
+        },
+        {
+          "slovak": "Choďte priamo.",
+          "english": "Go straight."
+        },
+        {
+          "slovak": "Je to blízko.",
+          "english": "It's nearby."
+        },
+        {
+          "slovak": "Je to ďaleko.",
+          "english": "It's far away."
+        },
+        {
+          "slovak": "Potom vpravo.",
+          "english": "Then right."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Choďte vpravo.",
+          "english": "Go right."
+        },
+        {
+          "slovak": "Choďte vľavo.",
+          "english": "Go left."
+        },
+        {
+          "slovak": "Choďte priamo.",
+          "english": "Go straight."
+        },
+        {
+          "slovak": "Je to blízko.",
+          "english": "It's nearby."
+        },
+        {
+          "slovak": "Je to ďaleko.",
+          "english": "It's far away."
+        },
+        {
+          "slovak": "Potom vpravo.",
+          "english": "Then right."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Choďte vpravo.",
+          "english": "Go right / Turn right."
+        },
+        {
+          "slovak": "Choďte vľavo.",
+          "english": "Go left / Turn left."
+        },
+        {
+          "slovak": "Choďte priamo.",
+          "english": "Go straight ahead."
+        },
+        {
+          "slovak": "Je to blízko.",
+          "english": "It's nearby."
+        },
+        {
+          "slovak": "Je to ďaleko.",
+          "english": "It's far away."
+        },
+        {
+          "slovak": "Potom vpravo.",
+          "english": "Then right."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Choďte vpravo.",
+          "english": "Go right."
+        },
+        {
+          "slovak": "Choďte vľavo.",
+          "english": "Go left."
+        },
+        {
+          "slovak": "Choďte priamo.",
+          "english": "Go straight ahead."
+        },
+        {
+          "slovak": "Je to blízko.",
+          "english": "It's nearby."
+        },
+        {
+          "slovak": "Je to ďaleko.",
+          "english": "It's far away."
+        },
+        {
+          "slovak": "Potom vpravo.",
+          "english": "Then right."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "A tourist asks where the police station is. It's straight ahead. What do you tell them?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Choďte priamo.",
+            "Choďte vľavo.",
+            "Je to ďaleko.",
+            "Potom vpravo."
+          ],
+          "answer": "Choďte priamo.",
+          "answerMeaning": "Choďte priamo. = Go straight ahead."
+        },
+        {
+          "situation": "The nurse says: Choďte vpravo. Which way do you go?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Go right",
+            "Go left",
+            "Go down",
+            "Go far"
+          ],
+          "answer": "Go right",
+          "answerMeaning": "Choďte vpravo. = Go right."
+        },
+        {
+          "situation": "Someone says: Choďte vľavo. Which way do you go?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Go left",
+            "Go right",
+            "Go straight",
+            "Go upstairs"
+          ],
+          "answer": "Go left",
+          "answerMeaning": "Choďte vľavo. = Go left."
+        },
+        {
+          "situation": "A passer-by says: Choďte priamo, potom vpravo pri nemocnici. Where do you turn?",
+          "instruction": "Choose the best answer",
+          "choices": [
+            "After going straight",
+            "Before starting",
+            "Downstairs",
+            "At home"
+          ],
+          "answer": "After going straight",
+          "answerMeaning": "Potom vpravo = then right."
+        },
+        {
+          "situation": "You ask if the pharmacy is walkable. Someone says: Je to ďaleko. What does it mean?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "It's far away.",
+            "It's nearby.",
+            "It's here.",
+            "It's left."
+          ],
+          "answer": "It's far away.",
+          "answerMeaning": "Je to ďaleko. = It's far away."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Choďte ___. Potom vpravo.",
+          "translation": "Go straight. Then right.",
+          "choices": [
+            "priamo",
+            "ďaleko",
+            "blízko",
+            "tu"
+          ],
+          "answer": "priamo",
+          "answerMeaning": "Choďte priamo. = Go straight."
+        },
+        {
+          "sentence": "Choďte ___. Lekáreň je napravo.",
+          "translation": "Go right. The pharmacy is on the right.",
+          "choices": [
+            "vpravo",
+            "vľavo",
+            "dole",
+            "tam"
+          ],
+          "answer": "vpravo",
+          "answerMeaning": "Vpravo = right."
+        },
+        {
+          "sentence": "Choďte ___. Kancelária je naľavo.",
+          "translation": "Go left. The office is on the left.",
+          "choices": [
+            "vľavo",
+            "vpravo",
+            "hore",
+            "ďaleko"
+          ],
+          "answer": "vľavo",
+          "answerMeaning": "Vľavo = left."
+        },
+        {
+          "sentence": "Je to ___. Päť minút pešo.",
+          "translation": "It's nearby. Five minutes on foot.",
+          "choices": [
+            "blízko",
+            "ďaleko",
+            "vpravo",
+            "tam"
+          ],
+          "answer": "blízko",
+          "answerMeaning": "Je to blízko. = It's nearby."
+        },
+        {
+          "sentence": "Je to ___. Choďte taxíkom.",
+          "translation": "It's far away. Take a taxi.",
+          "choices": [
+            "ďaleko",
+            "blízko",
+            "tu",
+            "vľavo"
+          ],
+          "answer": "ďaleko",
+          "answerMeaning": "Je to ďaleko. = It's far away."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

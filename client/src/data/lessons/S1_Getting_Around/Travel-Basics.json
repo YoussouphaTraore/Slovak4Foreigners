@@ -1,0 +1,320 @@
+{
+  "id": "s1-travel-basics",
+  "stageId": "survival",
+  "stageName": "Stage 1  Survival",
+  "title": "Travel Basics",
+  "description": "Ask for routes, stops, stations, and travel time",
+  "icon": "🌍",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Travel Basics",
+      "rows": [
+        {
+          "label": "Ticket",
+          "slovak": "Cestovný lístok",
+          "english": "Ticket"
+        },
+        {
+          "label": "Station",
+          "slovak": "Stanica",
+          "english": "Station"
+        },
+        {
+          "label": "Stop",
+          "slovak": "Zastávka",
+          "english": "Stop"
+        },
+        {
+          "label": "How do I get to...?",
+          "slovak": "Ako sa dostanem do...?",
+          "english": "How do I get to...?"
+        },
+        {
+          "label": "How long does it take?",
+          "slovak": "Ako dlho to trvá?",
+          "english": "How long does it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Cestovný lístok",
+          "english": "Ticket"
+        },
+        {
+          "slovak": "Stanica",
+          "english": "Station"
+        },
+        {
+          "slovak": "Zastávka",
+          "english": "Stop"
+        },
+        {
+          "slovak": "Ako sa dostanem do...?",
+          "english": "How do I get to...?"
+        },
+        {
+          "slovak": "Ako dlho to trvá?",
+          "english": "How long does it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Cestovný lístok",
+          "english": "Ticket"
+        },
+        {
+          "slovak": "Stanica",
+          "english": "Station"
+        },
+        {
+          "slovak": "Zastávka",
+          "english": "Stop"
+        },
+        {
+          "slovak": "Ako sa dostanem do...?",
+          "english": "How do I get to...?"
+        },
+        {
+          "slovak": "Ako dlho to trvá?",
+          "english": "How long does it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Cestovný lístok",
+          "english": "Ticket"
+        },
+        {
+          "slovak": "Stanica",
+          "english": "Station"
+        },
+        {
+          "slovak": "Zastávka",
+          "english": "Stop"
+        },
+        {
+          "slovak": "Ako dlho to trvá?",
+          "english": "How long does it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Cestovný lístok",
+          "english": "Ticket"
+        },
+        {
+          "slovak": "Stanica",
+          "english": "Station"
+        },
+        {
+          "slovak": "Zastávka",
+          "english": "Stop"
+        },
+        {
+          "slovak": "Ako sa dostanem do...?",
+          "english": "How do I get to...?"
+        },
+        {
+          "slovak": "Ako dlho to trvá?",
+          "english": "How long does it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: Ticket.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ako sa dostanem do...?",
+            "Cestovný lístok",
+            "Stanica",
+            "Zastávka"
+          ],
+          "answer": "Cestovný lístok",
+          "answerMeaning": "Cestovný lístok = Ticket"
+        },
+        {
+          "situation": "You need to say: Station.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ako sa dostanem do...?",
+            "Cestovný lístok",
+            "Stanica",
+            "Zastávka"
+          ],
+          "answer": "Stanica",
+          "answerMeaning": "Stanica = Station"
+        },
+        {
+          "situation": "You need to say: Stop.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ako sa dostanem do...?",
+            "Cestovný lístok",
+            "Stanica",
+            "Zastávka"
+          ],
+          "answer": "Zastávka",
+          "answerMeaning": "Zastávka = Stop"
+        },
+        {
+          "situation": "You need to say: How do I get to...?.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ako sa dostanem do...?",
+            "Cestovný lístok",
+            "Stanica",
+            "Zastávka"
+          ],
+          "answer": "Ako sa dostanem do...?",
+          "answerMeaning": "Ako sa dostanem do...? = How do I get to...?"
+        },
+        {
+          "situation": "You need to say: How long does it take?.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Ako dlho to trvá?",
+            "Cestovný lístok",
+            "Stanica",
+            "Zastávka"
+          ],
+          "answer": "Ako dlho to trvá?",
+          "answerMeaning": "Ako dlho to trvá? = How long does it take?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You want to ask how to get to the city centre. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Ako dlho to trvá?",
+            "Ako sa dostanem do centra?",
+            "Koľko to stojí?",
+            "Kde je zastávka?"
+          ],
+          "answer": "Ako sa dostanem do centra?",
+          "answerMeaning": "Ako sa dostanem do centra? = How do I get to the centre? The standard way to ask for travel directions."
+        },
+        {
+          "situation": "You need to buy something before boarding the bus. What do you ask for?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Stanica",
+            "Zastávka",
+            "Cestovný lístok",
+            "Autobus"
+          ],
+          "answer": "Cestovný lístok",
+          "answerMeaning": "Cestovný lístok = Ticket. Essential before boarding most public transport in Slovakia."
+        },
+        {
+          "situation": "You are looking for where the train departs from. What are you looking for?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Zastávka",
+            "Stanica",
+            "Cestovný lístok",
+            "Bicykel"
+          ],
+          "answer": "Stanica",
+          "answerMeaning": "Stanica = Station. Used for trains (vlaková stanica) and sometimes buses (autobusová stanica)."
+        },
+        {
+          "situation": "You are looking for where the bus stops nearby, not the main station. What word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Stanica",
+            "Zastávka",
+            "Cestovný lístok",
+            "Auto"
+          ],
+          "answer": "Zastávka",
+          "answerMeaning": "Zastávka = Stop. A smaller, local stopping point — different from a stanica (main station)."
+        },
+        {
+          "situation": "You want to know the journey time before deciding how to travel. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Ako sa dostanem tam?",
+            "Ako dlho to trvá?",
+            "Koľko to stojí?",
+            "Kde je stanica?"
+          ],
+          "answer": "Ako dlho to trvá?",
+          "answerMeaning": "Ako dlho to trvá? = How long does it take? Already familiar from the Talking to the Doctor lesson — now applied to travel."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ sa dostanem na stanicu?",
+          "translation": "How do I get to the station?",
+          "choices": [
+            "Kde",
+            "Kedy",
+            "Ako",
+            "Koľko"
+          ],
+          "answer": "Ako"
+        },
+        {
+          "sentence": "Potrebujem kúpiť ___ na vlak.",
+          "translation": "I need to buy a ticket for the train.",
+          "choices": [
+            "zastávku",
+            "stanicu",
+            "cestovný lístok",
+            "bicykel"
+          ],
+          "answer": "cestovný lístok"
+        },
+        {
+          "sentence": "Autobus zastavuje na tejto ___.",
+          "translation": "The bus stops at this stop.",
+          "choices": [
+            "stanici",
+            "zastávke",
+            "ceste",
+            "ulici"
+          ],
+          "answer": "zastávke"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

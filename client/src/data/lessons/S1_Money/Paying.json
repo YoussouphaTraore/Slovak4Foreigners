@@ -1,0 +1,301 @@
+{
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "icon": "💶",
+  "xpReward": 10,
+  "coming_soon": false,
+  "id": "s1-paying",
+  "title": "Paying",
+  "description": "Pay by card, cash, or exact amount",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Paying",
+      "rows": [
+        {
+          "label": "I want to pay",
+          "slovak": "Chcem zaplatiť.",
+          "english": "I want to pay."
+        },
+        {
+          "label": "Cash",
+          "slovak": "Hotovosť",
+          "english": "Cash"
+        },
+        {
+          "label": "Card",
+          "slovak": "Karta",
+          "english": "Bank card"
+        },
+        {
+          "label": "By card",
+          "slovak": "Platím kartou.",
+          "english": "I'm paying by card."
+        },
+        {
+          "label": "In cash",
+          "slovak": "Platím v hotovosti.",
+          "english": "I'm paying in cash."
+        },
+        {
+          "label": "Exact amount",
+          "slovak": "Presná suma",
+          "english": "Exact amount"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Chcem zaplatiť.",
+          "english": "I want to pay."
+        },
+        {
+          "slovak": "Hotovosť",
+          "english": "Cash"
+        },
+        {
+          "slovak": "Karta",
+          "english": "Card"
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "I'm paying by card."
+        },
+        {
+          "slovak": "Platím v hotovosti.",
+          "english": "I'm paying in cash."
+        },
+        {
+          "slovak": "Presná suma",
+          "english": "Exact amount"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Chcem zaplatiť.",
+          "english": "I want to pay."
+        },
+        {
+          "slovak": "Hotovosť",
+          "english": "Cash"
+        },
+        {
+          "slovak": "Karta",
+          "english": "Card"
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "I'm paying by card."
+        },
+        {
+          "slovak": "Platím v hotovosti.",
+          "english": "I'm paying in cash."
+        },
+        {
+          "slovak": "Presná suma",
+          "english": "Exact amount"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Chcem zaplatiť.",
+          "english": "I want to pay."
+        },
+        {
+          "slovak": "Hotovosť",
+          "english": "Cash"
+        },
+        {
+          "slovak": "Karta",
+          "english": "Card"
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "Paying by card."
+        },
+        {
+          "slovak": "Platím v hotovosti.",
+          "english": "Paying in cash."
+        },
+        {
+          "slovak": "Presná suma",
+          "english": "Exact amount"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Chcem zaplatiť.",
+          "english": "I want to pay."
+        },
+        {
+          "slovak": "Hotovosť",
+          "english": "Cash"
+        },
+        {
+          "slovak": "Karta",
+          "english": "Card"
+        },
+        {
+          "slovak": "Platím kartou.",
+          "english": "I'm paying by card."
+        },
+        {
+          "slovak": "Platím v hotovosti.",
+          "english": "I'm paying in cash."
+        },
+        {
+          "slovak": "Presná suma",
+          "english": "Exact amount"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The cashier asks 'Hotovosť alebo karta?' You want to pay by card.",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Platím v hotovosti.",
+            "Platím kartou.",
+            "Chcem drobné.",
+            "Koľko to stojí?"
+          ],
+          "answer": "Platím kartou.",
+          "answerMeaning": "Platím kartou = I'm paying by card. You will hear Hotovosť alebo karta? at many checkouts."
+        },
+        {
+          "situation": "You left your bank card at home and have cash. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Platím kartou.",
+            "Platím v hotovosti.",
+            "Mám účtenku.",
+            "Zadarmo."
+          ],
+          "answer": "Platím v hotovosti.",
+          "answerMeaning": "Platím v hotovosti = I'm paying in cash. Hotovosť = cash."
+        },
+        {
+          "situation": "You are ready to pay at the counter. What phrase starts the payment?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Chcem zaplatiť.",
+            "Mám drobné?",
+            "Koľko je karta?",
+            "Vstup zadarmo."
+          ],
+          "answer": "Chcem zaplatiť.",
+          "answerMeaning": "Chcem zaplatiť = I want to pay."
+        },
+        {
+          "situation": "You have only a 20 eur note. The item costs exactly 20 eur. What is ideal about this situation?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Platím kartou.",
+            "Máte drobné?",
+            "Platím v hotovosti. Presná suma.",
+            "Môžem dostať účtenku?"
+          ],
+          "answer": "Platím v hotovosti. Presná suma.",
+          "answerMeaning": "Presná suma = exact amount. You don't need change."
+        },
+        {
+          "situation": "A terminal says karta. What does it need?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "A bank card",
+            "A receipt",
+            "Small change",
+            "Free entry"
+          ],
+          "answer": "A bank card",
+          "answerMeaning": "Karta = card / bank card."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Platím ___. Nemám hotovosť.",
+          "translation": "I'm paying by ___. I don't have cash.",
+          "choices": [
+            "kartou",
+            "drobné",
+            "zadarmo",
+            "účet"
+          ],
+          "answer": "kartou"
+        },
+        {
+          "sentence": "Nemám kartu. Platím ___.",
+          "translation": "I don't have a card. I'm paying ___.",
+          "choices": [
+            "v hotovosti",
+            "kartou",
+            "zadarmo",
+            "drobné"
+          ],
+          "answer": "v hotovosti"
+        },
+        {
+          "sentence": "Chcem ___.",
+          "translation": "I want to pay.",
+          "choices": [
+            "zaplatiť",
+            "zadarmo",
+            "drobné",
+            "cenu"
+          ],
+          "answer": "zaplatiť"
+        },
+        {
+          "sentence": "Mám ___ sumu.",
+          "translation": "I have the exact amount.",
+          "choices": [
+            "presnú",
+            "kartou",
+            "drahú",
+            "voľnú"
+          ],
+          "answer": "presnú"
+        },
+        {
+          "sentence": "Nemám ___. Platím kartou.",
+          "translation": "I don't have cash. I'm paying by card.",
+          "choices": [
+            "hotovosť",
+            "účtenku",
+            "cenu",
+            "účet"
+          ],
+          "answer": "hotovosť"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

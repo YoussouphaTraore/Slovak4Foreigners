@@ -1,0 +1,236 @@
+{
+  "id": "s1-more-colors",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "More Colors",
+  "description": "Add the extra colors you will hear in descriptions and everyday situations",
+  "icon": "🎨",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "More Colors",
+      "rows": [
+        {
+          "label": "Orange",
+          "slovak": "Oranžová",
+          "english": "Orange"
+        },
+        {
+          "label": "Pink",
+          "slovak": "Ružová",
+          "english": "Pink"
+        },
+        {
+          "label": "Grey",
+          "slovak": "Šedá",
+          "english": "Grey"
+        },
+        {
+          "label": "Brown",
+          "slovak": "Hnedá",
+          "english": "Brown"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Oranžová",
+          "english": "Orange"
+        },
+        {
+          "slovak": "Ružová",
+          "english": "Pink"
+        },
+        {
+          "slovak": "Šedá",
+          "english": "Grey"
+        },
+        {
+          "slovak": "Hnedá",
+          "english": "Brown"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Oranžová",
+          "english": "Orange"
+        },
+        {
+          "slovak": "Ružová",
+          "english": "Pink"
+        },
+        {
+          "slovak": "Šedá",
+          "english": "Grey"
+        },
+        {
+          "slovak": "Hnedá",
+          "english": "Brown"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Oranžová",
+          "english": "Orange"
+        },
+        {
+          "slovak": "Ružová",
+          "english": "Pink"
+        },
+        {
+          "slovak": "Šedá",
+          "english": "Grey"
+        },
+        {
+          "slovak": "Hnedá",
+          "english": "Brown"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Oranžová",
+          "english": "Orange"
+        },
+        {
+          "slovak": "Ružová",
+          "english": "Pink"
+        },
+        {
+          "slovak": "Šedá",
+          "english": "Grey"
+        },
+        {
+          "slovak": "Hnedá",
+          "english": "Brown"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "A worker points to an oranžová vest. Which color is the vest?",
+          "instruction": "Choose the correct color",
+          "choices": [
+            "Orange",
+            "Pink",
+            "Grey",
+            "Brown"
+          ],
+          "answer": "Orange",
+          "answerMeaning": "Oranžová = Orange. Safety vests and warning signs are often orange."
+        },
+        {
+          "situation": "At the pharmacy you ask for the ružová box of medicine. What color is the box?",
+          "instruction": "Choose the correct color",
+          "choices": [
+            "Grey",
+            "Pink",
+            "Brown",
+            "Black"
+          ],
+          "answer": "Pink",
+          "answerMeaning": "Ružová = Pink. It is useful when pointing to packages or labels."
+        },
+        {
+          "situation": "The sky is šedá and it may rain. Which color is it?",
+          "instruction": "Choose the correct color",
+          "choices": [
+            "Grey",
+            "Green",
+            "White",
+            "Yellow"
+          ],
+          "answer": "Grey",
+          "answerMeaning": "Šedá = Grey. You will hear it for sky, cars, coats, and buildings."
+        },
+        {
+          "situation": "The police ask about a hnedá wallet. Which color is the wallet?",
+          "instruction": "Choose the correct color",
+          "choices": [
+            "Red",
+            "Blue",
+            "Brown",
+            "White"
+          ],
+          "answer": "Brown",
+          "answerMeaning": "Hnedá = Brown. It is common for wallets, bags, coats, hair, and eyes."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Pracovník má ___ vestu.",
+          "translation": "The worker has an ___ vest.",
+          "choices": [
+            "oranžovú",
+            "ružovú",
+            "šedú",
+            "hnedú"
+          ],
+          "answer": "oranžovú"
+        },
+        {
+          "sentence": "Krabička je ___.",
+          "translation": "The box is ___.",
+          "choices": [
+            "ružová",
+            "hnedá",
+            "čierna",
+            "zelená"
+          ],
+          "answer": "ružová"
+        },
+        {
+          "sentence": "Obloha je ___.",
+          "translation": "The sky is ___.",
+          "choices": [
+            "šedá",
+            "žltá",
+            "červená",
+            "biela"
+          ],
+          "answer": "šedá"
+        },
+        {
+          "sentence": "Peňaženka je ___.",
+          "translation": "The wallet is ___.",
+          "choices": [
+            "modrá",
+            "hnedá",
+            "ružová",
+            "oranžová"
+          ],
+          "answer": "hnedá"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,322 @@
+{
+  "id": "s1-furniture-appliances",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Furniture & Appliances",
+  "description": "Name useful furniture and home appliances",
+  "icon": "📺",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Furniture & Appliances",
+      "rows": [
+        {
+          "label": "Bed",
+          "slovak": "Posteľ",
+          "english": "Bed"
+        },
+        {
+          "label": "Table",
+          "slovak": "Stôl",
+          "english": "Table"
+        },
+        {
+          "label": "Chair",
+          "slovak": "Stolička",
+          "english": "Chair"
+        },
+        {
+          "label": "Wardrobe",
+          "slovak": "Skriňa",
+          "english": "Wardrobe / Cabinet"
+        },
+        {
+          "label": "Fridge",
+          "slovak": "Chladnička",
+          "english": "Fridge"
+        },
+        {
+          "label": "Washing machine",
+          "slovak": "Práčka",
+          "english": "Washing machine"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Posteľ",
+          "english": "Bed"
+        },
+        {
+          "slovak": "Stôl",
+          "english": "Table"
+        },
+        {
+          "slovak": "Stolička",
+          "english": "Chair"
+        },
+        {
+          "slovak": "Skriňa",
+          "english": "Wardrobe / Cabinet"
+        },
+        {
+          "slovak": "Chladnička",
+          "english": "Fridge"
+        },
+        {
+          "slovak": "Práčka",
+          "english": "Washing machine"
+        }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Posteľ",
+          "english": "Bed"
+        },
+        {
+          "slovak": "Stôl",
+          "english": "Table"
+        },
+        {
+          "slovak": "Stolička",
+          "english": "Chair"
+        },
+        {
+          "slovak": "Skriňa",
+          "english": "Wardrobe / Cabinet"
+        },
+        {
+          "slovak": "Chladnička",
+          "english": "Fridge"
+        },
+        {
+          "slovak": "Práčka",
+          "english": "Washing machine"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Posteľ",
+          "english": "Bed"
+        },
+        {
+          "slovak": "Stôl",
+          "english": "Table"
+        },
+        {
+          "slovak": "Stolička",
+          "english": "Chair"
+        },
+        {
+          "slovak": "Skriňa",
+          "english": "Wardrobe / Cabinet"
+        },
+        {
+          "slovak": "Chladnička",
+          "english": "Fridge"
+        },
+        {
+          "slovak": "Práčka",
+          "english": "Washing machine"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Posteľ",
+          "english": "Bed"
+        },
+        {
+          "slovak": "Stôl",
+          "english": "Table"
+        },
+        {
+          "slovak": "Stolička",
+          "english": "Chair"
+        },
+        {
+          "slovak": "Skriňa",
+          "english": "Wardrobe / Cabinet"
+        },
+        {
+          "slovak": "Chladnička",
+          "english": "Fridge"
+        },
+        {
+          "slovak": "Práčka",
+          "english": "Washing machine"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to say: Bed.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Posteľ",
+            "Skriňa",
+            "Stôl",
+            "Stolička"
+          ],
+          "answer": "Posteľ",
+          "answerMeaning": "Posteľ = Bed"
+        },
+        {
+          "situation": "You need to say: Table.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Posteľ",
+            "Skriňa",
+            "Stôl",
+            "Stolička"
+          ],
+          "answer": "Stôl",
+          "answerMeaning": "Stôl = Table"
+        },
+        {
+          "situation": "You need to say: Chair.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Posteľ",
+            "Skriňa",
+            "Stôl",
+            "Stolička"
+          ],
+          "answer": "Stolička",
+          "answerMeaning": "Stolička = Chair"
+        },
+        {
+          "situation": "You need to say: Wardrobe / Cabinet.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Posteľ",
+            "Skriňa",
+            "Stôl",
+            "Stolička"
+          ],
+          "answer": "Skriňa",
+          "answerMeaning": "Skriňa = Wardrobe / Cabinet"
+        },
+        {
+          "situation": "You need to say: Fridge.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Chladnička",
+            "Posteľ",
+            "Stôl",
+            "Stolička"
+          ],
+          "answer": "Chladnička",
+          "answerMeaning": "Chladnička = Fridge"
+        },
+        {
+          "situation": "You need to say: Washing machine.",
+          "instruction": "Choose the correct Slovak",
+          "choices": [
+            "Posteľ",
+            "Práčka",
+            "Stôl",
+            "Stolička"
+          ],
+          "answer": "Práčka",
+          "answerMeaning": "Práčka = Washing machine"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your fridge stops cooling. What do you tell your landlord?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Práčka nefunguje.",
+            "Chladnička nefunguje.",
+            "Posteľ nefunguje.",
+            "Skriňa nefunguje."
+          ],
+          "answer": "Chladnička nefunguje.",
+          "answerMeaning": "Chladnička nefunguje = The fridge doesn't work. Nefunguje is the key phrase for reporting any broken appliance."
+        },
+        {
+          "situation": "Your washing machine is leaking water. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Práčka sa pokazila.",
+            "Posteľ sa pokazila.",
+            "Kuchyňa sa pokazila.",
+            "Stolička sa pokazila."
+          ],
+          "answer": "Práčka sa pokazila.",
+          "answerMeaning": "Práčka sa pokazila = The washing machine broke. Sa pokazila is the feminine past form — práčka is a feminine noun."
+        },
+        {
+          "situation": "Your wardrobe door fell off. What do you say you need to do?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Potrebujem opraviť skriňu.",
+            "Potrebujem opraviť kuchyňu.",
+            "Potrebujem opraviť spálňu.",
+            "Potrebujem opraviť obývačku."
+          ],
+          "answer": "Potrebujem opraviť skriňu.",
+          "answerMeaning": "Potrebujem opraviť skriňu = I need to fix the wardrobe. Skriňa = wardrobe/cabinet."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ nefunguje. Oblečenie je stále mokré.",
+          "translation": "The washing machine doesn't work. The clothes are still wet.",
+          "choices": [
+            "Posteľ",
+            "Práčka",
+            "Stolička",
+            "Skriňa"
+          ],
+          "answer": "Práčka"
+        },
+        {
+          "sentence": "Moja ___ je v spálni, pri okne.",
+          "translation": "My bed is in the bedroom, by the window.",
+          "choices": [
+            "stôl",
+            "posteľ",
+            "stolička",
+            "skriňa"
+          ],
+          "answer": "posteľ"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "icon": "💶",
+  "xpReward": 10,
+  "coming_soon": false,
+  "id": "s1-bills-receipts",
+  "title": "Bills & Receipts",
+  "description": "Ask for the bill, receipt, and change",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Bills & Receipts",
+      "rows": [
+        {
+          "label": "Bill",
+          "slovak": "Účet",
+          "english": "Bill / check"
+        },
+        {
+          "label": "Receipt",
+          "slovak": "Účtenka",
+          "english": "Receipt"
+        },
+        {
+          "label": "Small change",
+          "slovak": "Drobné",
+          "english": "Small change / coins"
+        },
+        {
+          "label": "Can I get the bill?",
+          "slovak": "Môžem dostať účet?",
+          "english": "Can I get the bill?"
+        },
+        {
+          "label": "Can I get a receipt?",
+          "slovak": "Môžem dostať účtenku?",
+          "english": "Can I get a receipt?"
+        },
+        {
+          "label": "Do you have change?",
+          "slovak": "Máte drobné?",
+          "english": "Do you have change?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Účet",
+          "english": "Bill"
+        },
+        {
+          "slovak": "Účtenka",
+          "english": "Receipt"
+        },
+        {
+          "slovak": "Drobné",
+          "english": "Small change"
+        },
+        {
+          "slovak": "Môžem dostať účet?",
+          "english": "Can I get the bill?"
+        },
+        {
+          "slovak": "Môžem dostať účtenku?",
+          "english": "Can I get a receipt?"
+        },
+        {
+          "slovak": "Máte drobné?",
+          "english": "Do you have change?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Účet",
+          "english": "Bill"
+        },
+        {
+          "slovak": "Účtenka",
+          "english": "Receipt"
+        },
+        {
+          "slovak": "Drobné",
+          "english": "Small change"
+        },
+        {
+          "slovak": "Môžem dostať účet?",
+          "english": "Can I get the bill?"
+        },
+        {
+          "slovak": "Môžem dostať účtenku?",
+          "english": "Can I get a receipt?"
+        },
+        {
+          "slovak": "Máte drobné?",
+          "english": "Do you have change?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Účet",
+          "english": "Bill"
+        },
+        {
+          "slovak": "Účtenka",
+          "english": "Receipt"
+        },
+        {
+          "slovak": "Drobné",
+          "english": "Change"
+        },
+        {
+          "slovak": "Môžem dostať účet?",
+          "english": "Can I get the bill?"
+        },
+        {
+          "slovak": "Môžem dostať účtenku?",
+          "english": "Can I get the receipt?"
+        },
+        {
+          "slovak": "Máte drobné?",
+          "english": "Do you have change?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Účet",
+          "english": "Bill"
+        },
+        {
+          "slovak": "Účtenka",
+          "english": "Receipt"
+        },
+        {
+          "slovak": "Drobné",
+          "english": "Small change"
+        },
+        {
+          "slovak": "Môžem dostať účet?",
+          "english": "Can I get the bill?"
+        },
+        {
+          "slovak": "Môžem dostať účtenku?",
+          "english": "Can I get a receipt?"
+        },
+        {
+          "slovak": "Máte drobné?",
+          "english": "Do you have change?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "At a restaurant you ask for the bill. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Môžem dostať účet?",
+            "Máte drobné?",
+            "Chcem peniaze.",
+            "Koľko to stojí?"
+          ],
+          "answer": "Môžem dostať účet?",
+          "answerMeaning": "Môžem dostať účet? = Can I get the bill? Účet is the restaurant bill."
+        },
+        {
+          "situation": "You're expensing a business lunch and need proof of purchase. What do you ask before leaving?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Koľko to stojí?",
+            "Môžem dostať účtenku?",
+            "Platím v hotovosti.",
+            "Chcem drobné."
+          ],
+          "answer": "Môžem dostať účtenku?",
+          "answerMeaning": "Môžem dostať účtenku? = Can I get a receipt? Účtenka is proof of purchase."
+        },
+        {
+          "situation": "You hand a 5 eur note for a 2.50 eur coffee. The barista owes you coins. What word means small change?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Účtenka",
+            "Karta",
+            "Drobné",
+            "Cena"
+          ],
+          "answer": "Drobné",
+          "answerMeaning": "Drobné = small change / coins."
+        },
+        {
+          "situation": "You only have a 20 eur note and need coins for a machine. What do you ask?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Máte drobné?",
+            "Je to zadarmo?",
+            "Platím kartou.",
+            "Mám účet."
+          ],
+          "answer": "Máte drobné?",
+          "answerMeaning": "Máte drobné? = Do you have change?"
+        },
+        {
+          "situation": "A waiter brings účet. What did they bring?",
+          "instruction": "Choose the correct meaning",
+          "choices": [
+            "The bill",
+            "The bank card",
+            "Free entry",
+            "Small coins"
+          ],
+          "answer": "The bill",
+          "answerMeaning": "Účet = bill. Účtenka = receipt."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Môžem dostať ___?",
+          "translation": "Can I get the bill?",
+          "choices": [
+            "účet",
+            "kartu",
+            "cenu",
+            "hotovosť"
+          ],
+          "answer": "účet"
+        },
+        {
+          "sentence": "Môžem dostať ___?",
+          "translation": "Can I get a receipt?",
+          "choices": [
+            "účtenku",
+            "kartu",
+            "koľko",
+            "cenu"
+          ],
+          "answer": "účtenku"
+        },
+        {
+          "sentence": "Nemáte ___? Mám len dvadsaťeurovú bankovku.",
+          "translation": "Don't you have change? I only have a twenty euro note.",
+          "choices": [
+            "drobné",
+            "kartu",
+            "účet",
+            "cenu"
+          ],
+          "answer": "drobné"
+        },
+        {
+          "sentence": "Potrebujem ___ do práce.",
+          "translation": "I need a receipt for work.",
+          "choices": [
+            "účtenku",
+            "účet",
+            "kartu",
+            "peniaze"
+          ],
+          "answer": "účtenku"
+        },
+        {
+          "sentence": "V reštaurácii prosím o ___.",
+          "translation": "In a restaurant I ask for the bill.",
+          "choices": [
+            "účet",
+            "cent",
+            "kartu",
+            "zadarmo"
+          ],
+          "answer": "účet"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

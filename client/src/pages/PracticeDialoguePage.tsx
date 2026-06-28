@@ -16,7 +16,6 @@ const TIER_LABELS: Record<number, string> = {
 
 export function PracticeDialoguePage() {
   const navigate = useNavigate();
-  const { unlockedStages } = useProgressStore();
   const xp = useProgressStore((s) => s.xp);
   const streak = useProgressStore((s) => s.streak);
   const streakMultiplier = useProgressStore((s) => s.streakMultiplier);
@@ -121,12 +120,10 @@ export function PracticeDialoguePage() {
       {/* Dialogue cards */}
       <div className="flex-1 px-4 py-6 pb-28 space-y-4">
         {dialogues.map((dialogue, index) => {
-          const isStageLocked = !unlockedStages.includes(dialogue.stageRequired);
           const isAuthLocked = !user && index >= 2;
-          const isLocked = isStageLocked;
+          const isLocked = false;
 
           const handleStart = () => {
-            if (isStageLocked) return;
             if (isAuthLocked) { setShowAuthGate(true); return; }
             navigate(`/practice/dialogue/${dialogue.id}`);
           };
@@ -157,15 +154,10 @@ export function PracticeDialoguePage() {
 
               <button
                 type="button"
-                disabled={isLocked}
                 onClick={handleStart}
-                className={`w-full py-3.5 rounded-xl text-sm font-bold uppercase tracking-wide transition-all cursor-pointer
-                  ${isLocked
-                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-brand-green text-white hover:opacity-90 active:scale-[0.98]'
-                  }`}
+                className="w-full py-3.5 rounded-xl text-sm font-bold uppercase tracking-wide transition-all cursor-pointer bg-brand-green text-white hover:opacity-90 active:scale-[0.98]"
               >
-                {isLocked ? `🔒 Unlock ${dialogue.stageRequired} stage first` : 'Start Conversation →'}
+                Start Conversation →
               </button>
             </div>
           );

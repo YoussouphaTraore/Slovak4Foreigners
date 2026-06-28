@@ -1,0 +1,301 @@
+{
+  "id": "s1-parts-of-day",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Parts of the Day",
+  "description": "Use morning, afternoon, evening, night, noon, and midnight",
+  "icon": "📅",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Parts of the Day",
+      "rows": [
+        {
+          "label": "Morning",
+          "slovak": "Ráno",
+          "english": "Morning"
+        },
+        {
+          "label": "Noon",
+          "slovak": "Poludnie",
+          "english": "Noon / midday"
+        },
+        {
+          "label": "Afternoon",
+          "slovak": "Popoludnie",
+          "english": "Afternoon"
+        },
+        {
+          "label": "Evening",
+          "slovak": "Večer",
+          "english": "Evening"
+        },
+        {
+          "label": "Night",
+          "slovak": "Noc",
+          "english": "Night"
+        },
+        {
+          "label": "Midnight",
+          "slovak": "Polnoc",
+          "english": "Midnight"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Ráno",
+          "english": "Morning"
+        },
+        {
+          "slovak": "Poludnie",
+          "english": "Noon"
+        },
+        {
+          "slovak": "Popoludnie",
+          "english": "Afternoon"
+        },
+        {
+          "slovak": "Večer",
+          "english": "Evening"
+        },
+        {
+          "slovak": "Noc",
+          "english": "Night"
+        },
+        {
+          "slovak": "Polnoc",
+          "english": "Midnight"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Ráno",
+          "english": "Morning"
+        },
+        {
+          "slovak": "Poludnie",
+          "english": "Noon"
+        },
+        {
+          "slovak": "Popoludnie",
+          "english": "Afternoon"
+        },
+        {
+          "slovak": "Večer",
+          "english": "Evening"
+        },
+        {
+          "slovak": "Noc",
+          "english": "Night"
+        },
+        {
+          "slovak": "Polnoc",
+          "english": "Midnight"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Ráno",
+          "english": "Morning"
+        },
+        {
+          "slovak": "Poludnie",
+          "english": "Noon"
+        },
+        {
+          "slovak": "Popoludnie",
+          "english": "Afternoon"
+        },
+        {
+          "slovak": "Večer",
+          "english": "Evening"
+        },
+        {
+          "slovak": "Noc",
+          "english": "Night"
+        },
+        {
+          "slovak": "Polnoc",
+          "english": "Midnight"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Ráno",
+          "english": "Morning"
+        },
+        {
+          "slovak": "Poludnie",
+          "english": "Noon"
+        },
+        {
+          "slovak": "Popoludnie",
+          "english": "Afternoon"
+        },
+        {
+          "slovak": "Večer",
+          "english": "Evening"
+        },
+        {
+          "slovak": "Noc",
+          "english": "Night"
+        },
+        {
+          "slovak": "Polnoc",
+          "english": "Midnight"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You greet your colleague at 7am. Which phrase fits?",
+          "instruction": "Choose the best answer",
+          "choices": [
+            "Dobré ráno",
+            "Dobrý večer",
+            "Dobrú noc",
+            "Dobrý deň"
+          ],
+          "answer": "Dobré ráno",
+          "answerMeaning": "Dobré ráno = Good morning. Ráno = morning."
+        },
+        {
+          "situation": "You are leaving a friend very late and they are going to sleep. Which phrase fits?",
+          "instruction": "Choose the best answer",
+          "choices": [
+            "Dobré ráno",
+            "Dobrú noc",
+            "Dobrý deň",
+            "Ahoj ráno"
+          ],
+          "answer": "Dobrú noc",
+          "answerMeaning": "Dobrú noc = Good night."
+        },
+        {
+          "situation": "A meeting is exactly in the middle of the day. Which word means noon?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Ráno",
+            "Poludnie",
+            "Večer",
+            "Polnoc"
+          ],
+          "answer": "Poludnie",
+          "answerMeaning": "Poludnie = noon / midday."
+        },
+        {
+          "situation": "A bus leaves at midnight. Which word means midnight?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Polnoc",
+            "Popoludnie",
+            "Ráno",
+            "Večer"
+          ],
+          "answer": "Polnoc",
+          "answerMeaning": "Polnoc = midnight."
+        },
+        {
+          "situation": "The shop closes in the evening. Which word means evening?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Ráno",
+            "Večer",
+            "Noc",
+            "Poludnie"
+          ],
+          "answer": "Večer",
+          "answerMeaning": "Večer = evening."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Vstávam ___ o šiestej.",
+          "translation": "I get up in the morning at six.",
+          "choices": [
+            "ráno",
+            "večer",
+            "noc",
+            "poludnie"
+          ],
+          "answer": "ráno"
+        },
+        {
+          "sentence": "Obed je na ___.",
+          "translation": "Lunch is at noon.",
+          "choices": [
+            "poludnie",
+            "polnoc",
+            "večer",
+            "noc"
+          ],
+          "answer": "poludnie"
+        },
+        {
+          "sentence": "Obchod zatvára ___.",
+          "translation": "The shop closes in the evening.",
+          "choices": [
+            "večer",
+            "ráno",
+            "poludnie",
+            "polnoc"
+          ],
+          "answer": "večer"
+        },
+        {
+          "sentence": "Dobrú ___! Idem spať.",
+          "translation": "Good night! I am going to sleep.",
+          "choices": [
+            "noc",
+            "ráno",
+            "deň",
+            "večer"
+          ],
+          "answer": "noc"
+        },
+        {
+          "sentence": "Autobus ide o ___.",
+          "translation": "The bus goes at midnight.",
+          "choices": [
+            "polnoci",
+            "poludní",
+            "ráne",
+            "večeri"
+          ],
+          "answer": "polnoci"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

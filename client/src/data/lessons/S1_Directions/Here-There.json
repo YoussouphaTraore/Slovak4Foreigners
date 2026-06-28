@@ -1,0 +1,306 @@
+{
+  "id": "s1-here-there",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Here & There",
+  "description": "Understand here, there, near, and far when someone points or explains a place",
+  "icon": "📍",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Place Words",
+      "rows": [
+        {
+          "label": "Here",
+          "slovak": "Tu",
+          "english": "Here"
+        },
+        {
+          "label": "There",
+          "slovak": "Tam",
+          "english": "There / Over there"
+        },
+        {
+          "label": "Near",
+          "slovak": "Blízko",
+          "english": "Near / Close"
+        },
+        {
+          "label": "Far",
+          "slovak": "Ďaleko",
+          "english": "Far / Away"
+        },
+        {
+          "label": "It's here",
+          "slovak": "Je to tu.",
+          "english": "It's here."
+        },
+        {
+          "label": "It's there",
+          "slovak": "Je to tam.",
+          "english": "It's over there."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Tu",
+          "english": "Here"
+        },
+        {
+          "slovak": "Tam",
+          "english": "There"
+        },
+        {
+          "slovak": "Blízko",
+          "english": "Near"
+        },
+        {
+          "slovak": "Ďaleko",
+          "english": "Far"
+        },
+        {
+          "slovak": "Je to tu.",
+          "english": "It's here."
+        },
+        {
+          "slovak": "Je to tam.",
+          "english": "It's there."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Tu",
+          "english": "Here"
+        },
+        {
+          "slovak": "Tam",
+          "english": "There"
+        },
+        {
+          "slovak": "Blízko",
+          "english": "Near"
+        },
+        {
+          "slovak": "Ďaleko",
+          "english": "Far"
+        },
+        {
+          "slovak": "Je to tu.",
+          "english": "It's here."
+        },
+        {
+          "slovak": "Je to tam.",
+          "english": "It's there."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Tu",
+          "english": "Here"
+        },
+        {
+          "slovak": "Tam",
+          "english": "There / Over there"
+        },
+        {
+          "slovak": "Blízko",
+          "english": "Near / Close"
+        },
+        {
+          "slovak": "Ďaleko",
+          "english": "Far / Away"
+        },
+        {
+          "slovak": "Je to tu.",
+          "english": "It's here."
+        },
+        {
+          "slovak": "Je to tam.",
+          "english": "It's over there."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Tu",
+          "english": "Here"
+        },
+        {
+          "slovak": "Tam",
+          "english": "There"
+        },
+        {
+          "slovak": "Blízko",
+          "english": "Near"
+        },
+        {
+          "slovak": "Ďaleko",
+          "english": "Far"
+        },
+        {
+          "slovak": "Je to tu.",
+          "english": "It's here."
+        },
+        {
+          "slovak": "Je to tam.",
+          "english": "It's over there."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The ambulance dispatcher asks where you are. You are at that exact spot. What do you say?",
+          "instruction": "Choose the best answer",
+          "choices": [
+            "Som tu.",
+            "Som tam.",
+            "Som ďaleko.",
+            "Som vľavo."
+          ],
+          "answer": "Som tu.",
+          "answerMeaning": "Tu = here. Som tu = I am here."
+        },
+        {
+          "situation": "You can see the bank across the street. What do you say while pointing?",
+          "instruction": "Choose the best answer",
+          "choices": [
+            "Je to tam.",
+            "Je to tu.",
+            "Je to hore.",
+            "Je to dole."
+          ],
+          "answer": "Je to tam.",
+          "answerMeaning": "Tam = there / over there."
+        },
+        {
+          "situation": "A passer-by says: Je to blízko, päť minút pešo. Do you need a taxi?",
+          "instruction": "Choose the best answer",
+          "choices": [
+            "No, it's near.",
+            "Yes, it's far.",
+            "No, it's left.",
+            "Yes, it's upstairs."
+          ],
+          "answer": "No, it's near.",
+          "answerMeaning": "Blízko = near / close."
+        },
+        {
+          "situation": "Someone says: Je to ďaleko. What does that mean?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "It's far.",
+            "It's here.",
+            "It's left.",
+            "It's upstairs."
+          ],
+          "answer": "It's far.",
+          "answerMeaning": "Ďaleko = far / away."
+        },
+        {
+          "situation": "You arrive at the correct door and want to say 'It's here.' Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Je to tu.",
+            "Je to tam.",
+            "Je to ďaleko.",
+            "Je to vpravo."
+          ],
+          "answer": "Je to tu.",
+          "answerMeaning": "Je to tu. = It's here."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Som ___.",
+          "translation": "I am here.",
+          "choices": [
+            "tu",
+            "tam",
+            "ďaleko",
+            "vpravo"
+          ],
+          "answer": "tu",
+          "answerMeaning": "Tu = here."
+        },
+        {
+          "sentence": "Banka je ___. Vidíte ju?",
+          "translation": "The bank is over there. Do you see it?",
+          "choices": [
+            "tam",
+            "tu",
+            "hore",
+            "dole"
+          ],
+          "answer": "tam",
+          "answerMeaning": "Tam = there / over there."
+        },
+        {
+          "sentence": "Lekáreň je ___. Päť minút pešo.",
+          "translation": "The pharmacy is nearby. Five minutes on foot.",
+          "choices": [
+            "blízko",
+            "ďaleko",
+            "vľavo",
+            "hore"
+          ],
+          "answer": "blízko",
+          "answerMeaning": "Blízko = near."
+        },
+        {
+          "sentence": "Nemocnica je ___. Choďte taxíkom.",
+          "translation": "The hospital is far. Take a taxi.",
+          "choices": [
+            "ďaleko",
+            "tu",
+            "blízko",
+            "tam"
+          ],
+          "answer": "ďaleko",
+          "answerMeaning": "Ďaleko = far."
+        },
+        {
+          "sentence": "Záchod nie je tu. Je to ___.",
+          "translation": "The bathroom is not here. It is over there.",
+          "choices": [
+            "tam",
+            "tu",
+            "blízko",
+            "dole"
+          ],
+          "answer": "tam",
+          "answerMeaning": "Je to tam. = It's over there."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -1,0 +1,324 @@
+{
+  "id": "s1-weeks",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Weeks",
+  "description": "Talk about this week, last week, next week, and every week",
+  "icon": "📅",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Weeks",
+      "rows": [
+        {
+          "label": "Week",
+          "slovak": "Týždeň",
+          "english": "Week"
+        },
+        {
+          "label": "Month",
+          "slovak": "Mesiac",
+          "english": "Month"
+        },
+        {
+          "label": "This week",
+          "slovak": "Tento týždeň",
+          "english": "This week"
+        },
+        {
+          "label": "Last week",
+          "slovak": "Minulý týždeň",
+          "english": "Last week"
+        },
+        {
+          "label": "Next week",
+          "slovak": "Budúci týždeň",
+          "english": "Next week"
+        },
+        {
+          "label": "Every week",
+          "slovak": "Každý týždeň",
+          "english": "Every week"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Týždeň",
+          "english": "Week"
+        },
+        {
+          "slovak": "Mesiac",
+          "english": "Month"
+        },
+        {
+          "slovak": "Tento týždeň",
+          "english": "This week"
+        },
+        {
+          "slovak": "Minulý týždeň",
+          "english": "Last week"
+        },
+        {
+          "slovak": "Budúci týždeň",
+          "english": "Next week"
+        },
+        {
+          "slovak": "Každý týždeň",
+          "english": "Every week"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Týždeň",
+          "english": "Week"
+        },
+        {
+          "slovak": "Mesiac",
+          "english": "Month"
+        },
+        {
+          "slovak": "Tento týždeň",
+          "english": "This week"
+        },
+        {
+          "slovak": "Minulý týždeň",
+          "english": "Last week"
+        },
+        {
+          "slovak": "Budúci týždeň",
+          "english": "Next week"
+        },
+        {
+          "slovak": "Každý týždeň",
+          "english": "Every week"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Týždeň",
+          "english": "Week"
+        },
+        {
+          "slovak": "Mesiac",
+          "english": "Month"
+        },
+        {
+          "slovak": "Tento týždeň",
+          "english": "This week"
+        },
+        {
+          "slovak": "Minulý týždeň",
+          "english": "Last week"
+        },
+        {
+          "slovak": "Budúci týždeň",
+          "english": "Next week"
+        },
+        {
+          "slovak": "Každý týždeň",
+          "english": "Every week"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Týždeň",
+          "english": "Week"
+        },
+        {
+          "slovak": "Mesiac",
+          "english": "Month"
+        },
+        {
+          "slovak": "Tento týždeň",
+          "english": "This week"
+        },
+        {
+          "slovak": "Minulý týždeň",
+          "english": "Last week"
+        },
+        {
+          "slovak": "Budúci týždeň",
+          "english": "Next week"
+        },
+        {
+          "slovak": "Každý týždeň",
+          "english": "Every week"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The team meeting was last week. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Schôdza bola budúci týždeň.",
+            "Schôdza bola minulý týždeň.",
+            "Schôdza bola tento mesiac.",
+            "Schôdza je zajtra."
+          ],
+          "answer": "Schôdza bola minulý týždeň.",
+          "answerMeaning": "Minulý týždeň = last week."
+        },
+        {
+          "situation": "Your next dentist appointment is next week. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Je budúci týždeň.",
+            "Je minulý týždeň.",
+            "Je každý mesiac.",
+            "Je dnes."
+          ],
+          "answer": "Je budúci týždeň.",
+          "answerMeaning": "Budúci týždeň = next week."
+        },
+        {
+          "situation": "You go to the gym every week. How do you describe this?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Idem tento týždeň.",
+            "Idem každý týždeň.",
+            "Idem budúci týždeň.",
+            "Idem minulý týždeň."
+          ],
+          "answer": "Idem každý týždeň.",
+          "answerMeaning": "Každý týždeň = every week."
+        },
+        {
+          "situation": "You need to say something is happening this week. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Tento týždeň",
+            "Minulý týždeň",
+            "Budúci týždeň",
+            "Každý mesiac"
+          ],
+          "answer": "Tento týždeň",
+          "answerMeaning": "Tento týždeň = this week."
+        },
+        {
+          "situation": "A form asks for a month, not a week. Which word means month?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Týždeň",
+            "Mesiac",
+            "Deň",
+            "Víkend"
+          ],
+          "answer": "Mesiac",
+          "answerMeaning": "Mesiac = month."
+        },
+        {
+          "situation": "The repair will be next week. What sentence uses bude correctly?",
+          "instruction": "Choose the future sentence",
+          "choices": [
+            "Oprava bude budúci týždeň.",
+            "Oprava bola budúci týždeň.",
+            "Oprava je minulý týždeň.",
+            "Oprava bola zajtra."
+          ],
+          "answer": "Oprava bude budúci týždeň.",
+          "answerMeaning": "Bude + budúci týždeň points to the future: The repair will be next week."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Stretnutie bolo ___ týždeň, nie tento.",
+          "translation": "The meeting was last week, not this one.",
+          "choices": [
+            "tento",
+            "minulý",
+            "budúci",
+            "každý"
+          ],
+          "answer": "minulý"
+        },
+        {
+          "sentence": "Moja dovolenka je ___ týždeň.",
+          "translation": "My holiday is next week.",
+          "choices": [
+            "tento",
+            "minulý",
+            "budúci",
+            "každý"
+          ],
+          "answer": "budúci"
+        },
+        {
+          "sentence": "Chodím tam ___ týždeň.",
+          "translation": "I go there every week.",
+          "choices": [
+            "každý",
+            "tento",
+            "minulý",
+            "budúci"
+          ],
+          "answer": "každý"
+        },
+        {
+          "sentence": "Mám termín ___ týždeň.",
+          "translation": "I have an appointment this week.",
+          "choices": [
+            "tento",
+            "včera",
+            "zajtra",
+            "každý"
+          ],
+          "answer": "tento"
+        },
+        {
+          "sentence": "Toto je môj prvý ___.",
+          "translation": "This is my first month.",
+          "choices": [
+            "týždeň",
+            "mesiac",
+            "rok",
+            "deň"
+          ],
+          "answer": "mesiac"
+        },
+        {
+          "sentence": "Oprava ___ minulý týždeň.",
+          "translation": "The repair was last week.",
+          "choices": [
+            "bola",
+            "bude",
+            "je",
+            "som"
+          ],
+          "answer": "bola"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

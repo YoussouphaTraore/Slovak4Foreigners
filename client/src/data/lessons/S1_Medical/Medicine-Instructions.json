@@ -1,0 +1,306 @@
+{
+  "id": "s1-medicine-instructions",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Medicine Instructions",
+  "description": "Ask how to take medicine and understand basic timing instructions",
+  "icon": "⏱️",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Instructions",
+      "rows": [
+        {
+          "label": "How should I take it?",
+          "slovak": "Ako to mám užívať?",
+          "english": "How should I take it?"
+        },
+        {
+          "label": "Twice a day",
+          "slovak": "Dvakrát denne",
+          "english": "Twice a day"
+        },
+        {
+          "label": "Before meals",
+          "slovak": "Pred jedlom",
+          "english": "Before meals"
+        },
+        {
+          "label": "After meals",
+          "slovak": "Po jedle",
+          "english": "After meals"
+        },
+        {
+          "label": "Side effects",
+          "slovak": "Vedľajšie účinky",
+          "english": "Side effects"
+        },
+        {
+          "label": "Can you repeat?",
+          "slovak": "Nerozumiem. Môžete zopakovať?",
+          "english": "I don't understand. Can you repeat?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Ako to mám užívať?",
+          "english": "How should I take it?"
+        },
+        {
+          "slovak": "Dvakrát denne",
+          "english": "Twice a day"
+        },
+        {
+          "slovak": "Pred jedlom",
+          "english": "Before meals"
+        },
+        {
+          "slovak": "Po jedle",
+          "english": "After meals"
+        },
+        {
+          "slovak": "Vedľajšie účinky",
+          "english": "Side effects"
+        },
+        {
+          "slovak": "Môžete zopakovať?",
+          "english": "Can you repeat?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Ako to mám užívať?",
+          "english": "How should I take it?"
+        },
+        {
+          "slovak": "Dvakrát denne",
+          "english": "Twice a day"
+        },
+        {
+          "slovak": "Pred jedlom",
+          "english": "Before meals"
+        },
+        {
+          "slovak": "Po jedle",
+          "english": "After meals"
+        },
+        {
+          "slovak": "Vedľajšie účinky",
+          "english": "Side effects"
+        },
+        {
+          "slovak": "Môžete zopakovať?",
+          "english": "Can you repeat?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Ako to mám užívať?",
+          "english": "How should I take it?"
+        },
+        {
+          "slovak": "Dvakrát denne",
+          "english": "Twice a day"
+        },
+        {
+          "slovak": "Pred jedlom",
+          "english": "Before meals"
+        },
+        {
+          "slovak": "Po jedle",
+          "english": "After meals"
+        },
+        {
+          "slovak": "Vedľajšie účinky",
+          "english": "Side effects"
+        },
+        {
+          "slovak": "Nerozumiem. Môžete zopakovať?",
+          "english": "I don't understand. Can you repeat?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Ako to mám užívať?",
+          "english": "How should I take it?"
+        },
+        {
+          "slovak": "Dvakrát denne",
+          "english": "Twice a day"
+        },
+        {
+          "slovak": "Pred jedlom",
+          "english": "Before meals"
+        },
+        {
+          "slovak": "Po jedle",
+          "english": "After meals"
+        },
+        {
+          "slovak": "Vedľajšie účinky",
+          "english": "Side effects"
+        },
+        {
+          "slovak": "Nerozumiem. Môžete zopakovať?",
+          "english": "I don't understand. Can you repeat?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The pharmacist hands you tablets. You want to ask how to take them. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Ako to mám užívať?",
+            "Je potrebný predpis?",
+            "Čo vás trápi?",
+            "Som objednaný."
+          ],
+          "answer": "Ako to mám užívať?",
+          "answerMeaning": "Ako to mám užívať? = How should I take it?"
+        },
+        {
+          "situation": "The pharmacist says: Dvakrát denne. What does it mean?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Twice a day",
+            "Once a week",
+            "Before meals",
+            "After meals"
+          ],
+          "answer": "Twice a day",
+          "answerMeaning": "Dvakrát denne = twice a day."
+        },
+        {
+          "situation": "The label says: Pred jedlom. When do you take it?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Before meals",
+            "After meals",
+            "At night",
+            "Once a week"
+          ],
+          "answer": "Before meals",
+          "answerMeaning": "Pred jedlom = before meals."
+        },
+        {
+          "situation": "You want to know unwanted reactions before taking a new medicine. What do you ask about?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Vedľajšie účinky",
+            "Karta poistenca",
+            "Čakáreň",
+            "Náplasť"
+          ],
+          "answer": "Vedľajšie účinky",
+          "answerMeaning": "Vedľajšie účinky = side effects."
+        },
+        {
+          "situation": "You do not understand the instructions. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Nerozumiem. Môžete zopakovať?",
+            "Dvakrát denne.",
+            "Po jedle.",
+            "Som vonku."
+          ],
+          "answer": "Nerozumiem. Môžete zopakovať?",
+          "answerMeaning": "Nerozumiem. Môžete zopakovať? = I don't understand. Can you repeat?"
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Ako to mám ___?",
+          "translation": "How should I take it?",
+          "choices": [
+            "užívať",
+            "platiť",
+            "čakať",
+            "volať"
+          ],
+          "answer": "užívať",
+          "answerMeaning": "Ako to mám užívať? = How should I take it?"
+        },
+        {
+          "sentence": "Berte tieto tabletky ___ denne.",
+          "translation": "Take these pills twice a day.",
+          "choices": [
+            "dvakrát",
+            "raz",
+            "trikrát",
+            "nikdy"
+          ],
+          "answer": "dvakrát",
+          "answerMeaning": "Dvakrát denne = twice a day."
+        },
+        {
+          "sentence": "Užívajte liek ___ jedlom, nie po ňom.",
+          "translation": "Take the medicine before meals, not after.",
+          "choices": [
+            "pred",
+            "po",
+            "na",
+            "do"
+          ],
+          "answer": "pred",
+          "answerMeaning": "Pred jedlom = before meals."
+        },
+        {
+          "sentence": "Aké sú ___ účinky?",
+          "translation": "What are the side effects?",
+          "choices": [
+            "vedľajšie",
+            "hlavné",
+            "rýchle",
+            "dobré"
+          ],
+          "answer": "vedľajšie",
+          "answerMeaning": "Vedľajšie účinky = side effects."
+        },
+        {
+          "sentence": "Nerozumiem. Môžete ___?",
+          "translation": "I don't understand. Can you repeat?",
+          "choices": [
+            "zopakovať",
+            "zaplatiť",
+            "čakať",
+            "ísť"
+          ],
+          "answer": "zopakovať",
+          "answerMeaning": "Môžete zopakovať? = Can you repeat?"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

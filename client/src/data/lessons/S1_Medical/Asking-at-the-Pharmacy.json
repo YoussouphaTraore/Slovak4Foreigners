@@ -1,0 +1,306 @@
+{
+  "id": "s1-asking-at-pharmacy",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Asking at the Pharmacy",
+  "description": "Ask for medicine and whether a prescription is needed",
+  "icon": "🧾",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Pharmacy Requests",
+      "rows": [
+        {
+          "label": "Do you have something for...?",
+          "slovak": "Máte niečo na...?",
+          "english": "Do you have something for...?"
+        },
+        {
+          "label": "For a headache",
+          "slovak": "Niečo na bolesť hlavy",
+          "english": "Something for a headache"
+        },
+        {
+          "label": "For a cold",
+          "slovak": "Niečo na nádchu",
+          "english": "Something for a cold"
+        },
+        {
+          "label": "For a cough",
+          "slovak": "Niečo na kašeľ",
+          "english": "Something for a cough"
+        },
+        {
+          "label": "Over the counter",
+          "slovak": "Voľne predajné",
+          "english": "Over the counter"
+        },
+        {
+          "label": "Prescription needed?",
+          "slovak": "Je potrebný predpis?",
+          "english": "Is a prescription needed?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Máte niečo na...?",
+          "english": "Do you have something for...?"
+        },
+        {
+          "slovak": "Niečo na bolesť hlavy",
+          "english": "Something for a headache"
+        },
+        {
+          "slovak": "Niečo na nádchu",
+          "english": "Something for a cold"
+        },
+        {
+          "slovak": "Niečo na kašeľ",
+          "english": "Something for a cough"
+        },
+        {
+          "slovak": "Voľne predajné",
+          "english": "Over the counter"
+        },
+        {
+          "slovak": "Je potrebný predpis?",
+          "english": "Is a prescription needed?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Máte niečo na...?",
+          "english": "Do you have something for...?"
+        },
+        {
+          "slovak": "Niečo na bolesť hlavy",
+          "english": "Something for a headache"
+        },
+        {
+          "slovak": "Niečo na nádchu",
+          "english": "Something for a cold"
+        },
+        {
+          "slovak": "Niečo na kašeľ",
+          "english": "Something for a cough"
+        },
+        {
+          "slovak": "Voľne predajné",
+          "english": "Over the counter"
+        },
+        {
+          "slovak": "Je potrebný predpis?",
+          "english": "Is a prescription needed?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Máte niečo na...?",
+          "english": "Do you have something for...?"
+        },
+        {
+          "slovak": "Niečo na bolesť hlavy",
+          "english": "Something for a headache"
+        },
+        {
+          "slovak": "Niečo na nádchu",
+          "english": "Something for a cold"
+        },
+        {
+          "slovak": "Niečo na kašeľ",
+          "english": "Something for a cough"
+        },
+        {
+          "slovak": "Voľne predajné",
+          "english": "Over the counter"
+        },
+        {
+          "slovak": "Je potrebný predpis?",
+          "english": "Is a prescription needed?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Máte niečo na...?",
+          "english": "Do you have something for...?"
+        },
+        {
+          "slovak": "Niečo na bolesť hlavy",
+          "english": "Something for a headache"
+        },
+        {
+          "slovak": "Niečo na nádchu",
+          "english": "Something for a cold"
+        },
+        {
+          "slovak": "Niečo na kašeľ",
+          "english": "Something for a cough"
+        },
+        {
+          "slovak": "Voľne predajné",
+          "english": "Over the counter"
+        },
+        {
+          "slovak": "Je potrebný predpis?",
+          "english": "Is a prescription needed?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You have a headache and walk into the pharmacy. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Máte niečo na bolesť hlavy?",
+            "Je potrebný predpis?",
+            "Dvakrát denne.",
+            "Som objednaný."
+          ],
+          "answer": "Máte niečo na bolesť hlavy?",
+          "answerMeaning": "Máte niečo na bolesť hlavy? = Do you have something for a headache?"
+        },
+        {
+          "situation": "You want medicine for a cold. Which phrase do you need?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Máte niečo na nádchu?",
+            "Máte niečo na bolesť hlavy?",
+            "Ako to mám užívať?",
+            "Karta poistenca."
+          ],
+          "answer": "Máte niečo na nádchu?",
+          "answerMeaning": "Nádcha = cold / runny nose."
+        },
+        {
+          "situation": "You have a cough. What do you ask for?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Niečo na kašeľ",
+            "Niečo na nádchu",
+            "Bez objednania",
+            "Urgentný príjem"
+          ],
+          "answer": "Niečo na kašeľ",
+          "answerMeaning": "Kašeľ = cough."
+        },
+        {
+          "situation": "You want to know if you can buy it without seeing a doctor. What do you ask?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Je potrebný predpis?",
+            "Čo vás trápi?",
+            "Som bez objednania.",
+            "Od včera."
+          ],
+          "answer": "Je potrebný predpis?",
+          "answerMeaning": "Je potrebný predpis? = Is a prescription needed?"
+        },
+        {
+          "situation": "The pharmacist says it is voľne predajné. What does that mean?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Over the counter",
+            "Emergency room",
+            "Waiting room",
+            "Insurance card"
+          ],
+          "answer": "Over the counter",
+          "answerMeaning": "Voľne predajné = over the counter."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Máte niečo na ___ hlavy?",
+          "translation": "Do you have something for a headache?",
+          "choices": [
+            "bolesť",
+            "nádchu",
+            "kašeľ",
+            "predpis"
+          ],
+          "answer": "bolesť",
+          "answerMeaning": "Bolesť hlavy = headache."
+        },
+        {
+          "sentence": "Máte niečo na ___?",
+          "translation": "Do you have something for a cold?",
+          "choices": [
+            "nádchu",
+            "predpis",
+            "čakáreň",
+            "recepciu"
+          ],
+          "answer": "nádchu",
+          "answerMeaning": "Nádcha = cold / runny nose."
+        },
+        {
+          "sentence": "Niečo na ___. Veľa kašlem.",
+          "translation": "Something for a cough. I cough a lot.",
+          "choices": [
+            "kašeľ",
+            "bolesť",
+            "predpis",
+            "kartu"
+          ],
+          "answer": "kašeľ",
+          "answerMeaning": "Kašeľ = cough."
+        },
+        {
+          "sentence": "Je potrebný ___?",
+          "translation": "Is a prescription needed?",
+          "choices": [
+            "predpis",
+            "sirup",
+            "lekár",
+            "vchod"
+          ],
+          "answer": "predpis",
+          "answerMeaning": "Predpis = prescription."
+        },
+        {
+          "sentence": "Je to voľne ___.",
+          "translation": "It is over the counter.",
+          "choices": [
+            "predajné",
+            "urgentné",
+            "objednané",
+            "zranené"
+          ],
+          "answer": "predajné",
+          "answerMeaning": "Voľne predajné = over the counter."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

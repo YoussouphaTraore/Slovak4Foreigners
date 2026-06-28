@@ -1,0 +1,324 @@
+{
+  "id": "s1-pet-care-rules",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Pet Care & Rules",
+  "description": "Ask if pets are allowed and talk about feeding, walking, and the vet",
+  "icon": "🐾",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Pet Care & Housing",
+      "rows": [
+        {
+          "label": "Are pets allowed?",
+          "slovak": "Sú povolené zvieratá?",
+          "english": "Are pets allowed?"
+        },
+        {
+          "label": "To feed",
+          "slovak": "Kŕmiť",
+          "english": "To feed"
+        },
+        {
+          "label": "To walk a dog",
+          "slovak": "Venčiť psa",
+          "english": "To walk a dog"
+        },
+        {
+          "label": "Vet",
+          "slovak": "Veterinár",
+          "english": "Vet"
+        },
+        {
+          "label": "The cat is sick",
+          "slovak": "Mačka je chorá.",
+          "english": "The cat is sick."
+        },
+        {
+          "label": "I'm going to the vet",
+          "slovak": "Idem k veterinárovi.",
+          "english": "I'm going to the vet."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Sú povolené zvieratá?",
+          "english": "Are pets allowed?"
+        },
+        {
+          "slovak": "Kŕmiť",
+          "english": "To feed"
+        },
+        {
+          "slovak": "Venčiť psa",
+          "english": "To walk a dog"
+        },
+        {
+          "slovak": "Veterinár",
+          "english": "Vet"
+        },
+        {
+          "slovak": "Mačka je chorá.",
+          "english": "The cat is sick."
+        },
+        {
+          "slovak": "Idem k veterinárovi.",
+          "english": "I'm going to the vet."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Sú povolené zvieratá?",
+          "english": "Are pets allowed?"
+        },
+        {
+          "slovak": "Kŕmiť",
+          "english": "To feed"
+        },
+        {
+          "slovak": "Venčiť psa",
+          "english": "To walk a dog"
+        },
+        {
+          "slovak": "Veterinár",
+          "english": "Vet"
+        },
+        {
+          "slovak": "Mačka je chorá.",
+          "english": "The cat is sick."
+        },
+        {
+          "slovak": "Idem k veterinárovi.",
+          "english": "I'm going to the vet."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Sú povolené zvieratá?",
+          "english": "Are pets allowed?"
+        },
+        {
+          "slovak": "Kŕmiť",
+          "english": "To feed"
+        },
+        {
+          "slovak": "Venčiť psa",
+          "english": "To walk a dog"
+        },
+        {
+          "slovak": "Veterinár",
+          "english": "Vet"
+        },
+        {
+          "slovak": "Mačka je chorá.",
+          "english": "The cat is sick."
+        },
+        {
+          "slovak": "Idem k veterinárovi.",
+          "english": "I'm going to the vet."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Sú povolené zvieratá?",
+          "english": "Are pets allowed?"
+        },
+        {
+          "slovak": "Kŕmiť",
+          "english": "To feed"
+        },
+        {
+          "slovak": "Venčiť psa",
+          "english": "To walk a dog"
+        },
+        {
+          "slovak": "Veterinár",
+          "english": "Vet"
+        },
+        {
+          "slovak": "Mačka je chorá.",
+          "english": "The cat is sick."
+        },
+        {
+          "slovak": "Idem k veterinárovi.",
+          "english": "I'm going to the vet."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are looking at a flat to rent. You have a cat. What is the most important question to ask the landlord?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Ako sa volá?",
+            "Sú povolené zvieratá?",
+            "Mám psa.",
+            "Kŕmiť?"
+          ],
+          "answer": "Sú povolené zvieratá?",
+          "answerMeaning": "Sú povolené zvieratá? = Are pets allowed? Ask this before signing if you have a pet."
+        },
+        {
+          "situation": "Your dog hasn't eaten yet today. What do you need to do?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Venčiť",
+            "Kŕmiť",
+            "Volá sa",
+            "Veterinár"
+          ],
+          "answer": "Kŕmiť",
+          "answerMeaning": "Kŕmiť = To feed."
+        },
+        {
+          "situation": "Your dog needs its evening walk. What do you need to do?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Kŕmiť psa",
+            "Venčiť psa",
+            "Idem k veterinárovi.",
+            "Mám zviera."
+          ],
+          "answer": "Venčiť psa",
+          "answerMeaning": "Venčiť psa = To walk a dog."
+        },
+        {
+          "situation": "Your cat is sick. Where do you need to take it?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Lekáreň",
+            "Nemocnica",
+            "Veterinár",
+            "Recepcia"
+          ],
+          "answer": "Veterinár",
+          "answerMeaning": "Veterinár = Vet. Animals go to the vet, not the hospital."
+        },
+        {
+          "situation": "You are explaining that your cat is ill. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Mačka je chorá.",
+            "Mačka je doma.",
+            "Pes je veľký.",
+            "Nemám zviera."
+          ],
+          "answer": "Mačka je chorá.",
+          "answerMeaning": "Mačka je chorá. = The cat is sick."
+        },
+        {
+          "situation": "You are leaving because the cat needs a vet. What do you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Idem k veterinárovi.",
+            "Idem do obchodu.",
+            "Volá sa Rex.",
+            "Sú povolené zvieratá?"
+          ],
+          "answer": "Idem k veterinárovi.",
+          "answerMeaning": "Idem k veterinárovi. = I'm going to the vet."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ povolené zvieratá v tomto byte?",
+          "translation": "Are pets allowed in this flat?",
+          "choices": [
+            "Sú",
+            "Je",
+            "Mám",
+            "Volá"
+          ],
+          "answer": "Sú"
+        },
+        {
+          "sentence": "Musím ___ psa, ešte nejedol.",
+          "translation": "I must feed the dog, he hasn't eaten yet.",
+          "choices": [
+            "venčiť",
+            "kŕmiť",
+            "kúpiť",
+            "volať"
+          ],
+          "answer": "kŕmiť"
+        },
+        {
+          "sentence": "Idem ___ psa. Potrebuje prechádzku.",
+          "translation": "I'm going to walk the dog. He needs a walk.",
+          "choices": [
+            "kŕmiť",
+            "venčiť",
+            "kúpiť",
+            "nájsť"
+          ],
+          "answer": "venčiť"
+        },
+        {
+          "sentence": "Mačka je chorá. Idem k ___.",
+          "translation": "The cat is sick. I'm going to the vet.",
+          "choices": [
+            "lekárovi",
+            "veterinárovi",
+            "recepcii",
+            "doktorovi"
+          ],
+          "answer": "veterinárovi"
+        },
+        {
+          "sentence": "Mačka je ___. Potrebuje pomoc.",
+          "translation": "The cat is sick. It needs help.",
+          "choices": [
+            "chorá",
+            "povolená",
+            "veľká",
+            "doma"
+          ],
+          "answer": "chorá"
+        },
+        {
+          "sentence": "Mám psa. Musím ho ___.",
+          "translation": "I have a dog. I must walk him.",
+          "choices": [
+            "venčiť",
+            "volať",
+            "bývať",
+            "stáť"
+          ],
+          "answer": "venčiť"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -5,6 +5,7 @@ export interface ConversationListenExercise {
   audioUrl: string;
   conversationTranscriptSk?: string;
   speakers: { name: string; avatar: string }[];
+  dynamic?: 'countries';
 }
 
 export interface ConversationWordRecognitionExercise {
@@ -14,6 +15,7 @@ export interface ConversationWordRecognitionExercise {
   passThresholdPercent: number;
   correctWords: string[];
   distractorWords: string[];
+  dynamic?: 'countries';
 }
 
 export interface ComprehensionAnswer {
@@ -33,9 +35,12 @@ export interface ComprehensionQuestion {
 export interface ConversationComprehensionExercise {
   id: string;
   type: 'CONVERSATION_COMPREHENSION';
+  topicId?: string;
   coverImage?: string;
   audioUrl: string;
+  xpReward?: number;
   conversationTranscriptSk?: string;
   speakers: { name: string; avatar: string }[];
   questions: ComprehensionQuestion[];
+  dynamic?: 'countries';
 }

@@ -10,7 +10,7 @@
   },
   "icon": "🎧",
   "xpReward": 15,
-  "coming_soon": false,
+  "coming_soon": true,
   "exercises": [
     {
       "id": "ex1",
@@ -200,7 +200,7 @@
               "isCorrect": false
             }
           ],
-          "answerMeaning": "Pracujem tu od septembra = I have been working here since September. Od + month, the same pattern from the Months of the Year lesson.",
+          "answerMeaning": "Pracujem tu od septembra = I have been working here since September. Od + month, the same pattern from the Talking About Months lesson.",
           "reviewPair": {
             "slovak": "Pracujem tu od septembra",
             "english": "I work here since September"

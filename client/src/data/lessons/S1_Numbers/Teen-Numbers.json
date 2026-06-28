@@ -1,0 +1,365 @@
+{
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "icon": "🔢",
+  "xpReward": 10,
+  "coming_soon": false,
+  "id": "s1-teen-numbers",
+  "title": "Teen Numbers",
+  "description": "Learn eleven through fifteen plus twenty",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Teen Numbers",
+      "headers": [
+        "Number",
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "label": "11",
+          "slovak": "jedenásť",
+          "english": "Eleven"
+        },
+        {
+          "label": "12",
+          "slovak": "dvanásť",
+          "english": "Twelve"
+        },
+        {
+          "label": "13",
+          "slovak": "trinásť",
+          "english": "Thirteen"
+        },
+        {
+          "label": "14",
+          "slovak": "štrnásť",
+          "english": "Fourteen"
+        },
+        {
+          "label": "15",
+          "slovak": "pätnásť",
+          "english": "Fifteen"
+        },
+        {
+          "label": "20",
+          "slovak": "dvadsať",
+          "english": "Twenty"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "jedenásť",
+          "english": "Eleven"
+        },
+        {
+          "slovak": "dvanásť",
+          "english": "Twelve"
+        },
+        {
+          "slovak": "trinásť",
+          "english": "Thirteen"
+        },
+        {
+          "slovak": "štrnásť",
+          "english": "Fourteen"
+        },
+        {
+          "slovak": "pätnásť",
+          "english": "Fifteen"
+        },
+        {
+          "slovak": "dvadsať",
+          "english": "Twenty"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "jedenásť",
+          "english": "Eleven"
+        },
+        {
+          "slovak": "dvanásť",
+          "english": "Twelve"
+        },
+        {
+          "slovak": "trinásť",
+          "english": "Thirteen"
+        },
+        {
+          "slovak": "štrnásť",
+          "english": "Fourteen"
+        },
+        {
+          "slovak": "pätnásť",
+          "english": "Fifteen"
+        },
+        {
+          "slovak": "dvadsať",
+          "english": "Twenty"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "jedenásť",
+          "english": "Eleven"
+        },
+        {
+          "slovak": "dvanásť",
+          "english": "Twelve"
+        },
+        {
+          "slovak": "trinásť",
+          "english": "Thirteen"
+        },
+        {
+          "slovak": "štrnásť",
+          "english": "Fourteen"
+        },
+        {
+          "slovak": "pätnásť",
+          "english": "Fifteen"
+        },
+        {
+          "slovak": "dvadsať",
+          "english": "Twenty"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "NUMBER_TO_WORDS",
+      "items": [
+        {
+          "number": "11",
+          "choices": [
+            "jedenásť",
+            "dvanásť",
+            "trinásť",
+            "desať"
+          ],
+          "answer": "jedenásť"
+        },
+        {
+          "number": "12",
+          "choices": [
+            "jedenásť",
+            "dvanásť",
+            "trinásť",
+            "desať"
+          ],
+          "answer": "dvanásť"
+        },
+        {
+          "number": "13",
+          "choices": [
+            "dvanásť",
+            "trinásť",
+            "štrnásť",
+            "pätnásť"
+          ],
+          "answer": "trinásť"
+        },
+        {
+          "number": "14",
+          "choices": [
+            "trinásť",
+            "štrnásť",
+            "pätnásť",
+            "dvadsať"
+          ],
+          "answer": "štrnásť"
+        },
+        {
+          "number": "15",
+          "choices": [
+            "trinásť",
+            "štrnásť",
+            "pätnásť",
+            "dvadsať"
+          ],
+          "answer": "pätnásť"
+        },
+        {
+          "number": "20",
+          "choices": [
+            "dvanásť",
+            "pätnásť",
+            "dvadsať",
+            "desať"
+          ],
+          "answer": "dvadsať"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need to buy twenty stamps at the post office. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "desať",
+            "dvanásť",
+            "pätnásť",
+            "dvadsať"
+          ],
+          "answer": "dvadsať",
+          "answerMeaning": "Dvadsať = twenty. Dvadsať známok = twenty stamps."
+        },
+        {
+          "situation": "The house number is twelve. Which Slovak word means twelve?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "jedenásť",
+            "dvanásť",
+            "trinásť",
+            "pätnásť"
+          ],
+          "answer": "dvanásť",
+          "answerMeaning": "Dvanásť = twelve."
+        },
+        {
+          "situation": "The price is fifteen euros. Which word means fifteen?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "trinásť",
+            "štrnásť",
+            "pätnásť",
+            "dvadsať"
+          ],
+          "answer": "pätnásť",
+          "answerMeaning": "Pätnásť = fifteen."
+        },
+        {
+          "situation": "The bus is number eleven. Which word means eleven?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "jedenásť",
+            "dvanásť",
+            "trinásť",
+            "štrnásť"
+          ],
+          "answer": "jedenásť",
+          "answerMeaning": "Jedenásť = eleven."
+        },
+        {
+          "situation": "You see counter number fourteen. Which word means fourteen?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "trinásť",
+            "štrnásť",
+            "pätnásť",
+            "dvadsať"
+          ],
+          "answer": "štrnásť",
+          "answerMeaning": "Štrnásť = fourteen."
+        },
+        {
+          "situation": "Room number thirteen is on your form. Which word means thirteen?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "jedenásť",
+            "dvanásť",
+            "trinásť",
+            "pätnásť"
+          ],
+          "answer": "trinásť",
+          "answerMeaning": "Trinásť = thirteen."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Stojí to ___ eur.",
+          "translation": "It costs fifteen euros.",
+          "choices": [
+            "jedenásť",
+            "dvanásť",
+            "pätnásť",
+            "dvadsať"
+          ],
+          "answer": "pätnásť"
+        },
+        {
+          "sentence": "Dom číslo ___.",
+          "translation": "House number twelve.",
+          "choices": [
+            "jedenásť",
+            "dvanásť",
+            "trinásť",
+            "štrnásť"
+          ],
+          "answer": "dvanásť"
+        },
+        {
+          "sentence": "Potrebujem ___ známok.",
+          "translation": "I need twenty stamps.",
+          "choices": [
+            "desať",
+            "pätnásť",
+            "dvadsať",
+            "trinásť"
+          ],
+          "answer": "dvadsať"
+        },
+        {
+          "sentence": "Izba číslo ___.",
+          "translation": "Room number thirteen.",
+          "choices": [
+            "jedenásť",
+            "dvanásť",
+            "trinásť",
+            "štrnásť"
+          ],
+          "answer": "trinásť"
+        },
+        {
+          "sentence": "Prepážka číslo ___.",
+          "translation": "Counter number fourteen.",
+          "choices": [
+            "trinásť",
+            "štrnásť",
+            "pätnásť",
+            "dvadsať"
+          ],
+          "answer": "štrnásť"
+        },
+        {
+          "sentence": "Linka číslo ___.",
+          "translation": "Line number eleven.",
+          "choices": [
+            "jedenásť",
+            "dvanásť",
+            "trinásť",
+            "pätnásť"
+          ],
+          "answer": "jedenásť"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

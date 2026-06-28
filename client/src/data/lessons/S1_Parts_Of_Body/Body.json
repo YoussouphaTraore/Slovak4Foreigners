@@ -1,0 +1,267 @@
+{
+  "id": "s1-body",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Body",
+  "description": "Chest, heart, stomach, back, sides and thigh",
+  "icon": "🫀",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Body",
+      "rows": [
+        {
+          "label": "Chest",
+          "slovak": "Hruď",
+          "english": "Chest"
+        },
+        {
+          "label": "Heart",
+          "slovak": "Srdce",
+          "english": "Heart"
+        },
+        {
+          "label": "Stomach / Belly",
+          "slovak": "Brucho",
+          "english": "Stomach / Belly"
+        },
+        {
+          "label": "Side / Sides",
+          "slovak": "Bok / Boky",
+          "english": "Side · Sides"
+        },
+        {
+          "label": "Thigh",
+          "slovak": "Stehno",
+          "english": "Thigh"
+        },
+        {
+          "label": "Back",
+          "slovak": "Chrbát",
+          "english": "Back"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Hruď",
+          "english": "Chest"
+        },
+        {
+          "slovak": "Srdce",
+          "english": "Heart"
+        },
+        {
+          "slovak": "Brucho",
+          "english": "Stomach"
+        },
+        {
+          "slovak": "Bok",
+          "english": "Side"
+        },
+        {
+          "slovak": "Stehno",
+          "english": "Thigh"
+        },
+        {
+          "slovak": "Chrbát",
+          "english": "Back"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Hruď",
+          "english": "Chest"
+        },
+        {
+          "slovak": "Srdce",
+          "english": "Heart"
+        },
+        {
+          "slovak": "Brucho",
+          "english": "Stomach"
+        },
+        {
+          "slovak": "Bok",
+          "english": "Side"
+        },
+        {
+          "slovak": "Stehno",
+          "english": "Thigh"
+        },
+        {
+          "slovak": "Chrbát",
+          "english": "Back"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Hruď",
+          "english": "Chest"
+        },
+        {
+          "slovak": "Srdce",
+          "english": "Heart"
+        },
+        {
+          "slovak": "Brucho",
+          "english": "Stomach"
+        },
+        {
+          "slovak": "Bok",
+          "english": "Side"
+        },
+        {
+          "slovak": "Stehno",
+          "english": "Thigh"
+        },
+        {
+          "slovak": "Chrbát",
+          "english": "Back"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Hruď",
+          "english": "Chest"
+        },
+        {
+          "slovak": "Srdce",
+          "english": "Heart"
+        },
+        {
+          "slovak": "Brucho",
+          "english": "Stomach"
+        },
+        {
+          "slovak": "Bok",
+          "english": "Side"
+        },
+        {
+          "slovak": "Stehno",
+          "english": "Thigh"
+        },
+        {
+          "slovak": "Chrbát",
+          "english": "Back"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You have chest pressure and pain. You are calling 155. Which word tells the dispatcher where it hurts?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Chrbát",
+            "Brucho",
+            "Hruď",
+            "Bok"
+          ],
+          "answer": "Hruď",
+          "answerMeaning": "Hruď = Chest. Bolí ma hruď = My chest hurts. Chest pain is a 155 emergency — say this word clearly and immediately."
+        },
+        {
+          "situation": "A doctor asks whether the pain is in your chest or your heart. Which Slovak word means heart?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Hruď",
+            "Brucho",
+            "Srdce",
+            "Chrbát"
+          ],
+          "answer": "Srdce",
+          "answerMeaning": "Srdce = Heart. Hruď is the chest wall. Srdce is the organ. A Slovak doctor will ask 'Hruď alebo srdce?' — this distinction matters."
+        },
+        {
+          "situation": "You have been sitting at the computer all day and your back is aching. What do you tell your doctor?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Stehno",
+            "Bok",
+            "Srdce",
+            "Chrbát"
+          ],
+          "answer": "Chrbát",
+          "answerMeaning": "Chrbát = Back. Bolí ma chrbát = My back hurts. One of the most common complaints at a Slovak GP."
+        },
+        {
+          "situation": "You ate something bad and now have stomach pain. Which word do you need at the pharmacy?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Srdce",
+            "Hruď",
+            "Brucho",
+            "Stehno"
+          ],
+          "answer": "Brucho",
+          "answerMeaning": "Brucho = Stomach / belly. Bolí ma brucho = My stomach hurts. The pharmacist will ask 'Bolí vás brucho?' very often."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Bolí ma ___. Tlačí ma to za hrudnou kosťou.",
+          "translation": "My ___ hurts. There is pressure behind my breastbone.",
+          "choices": [
+            "brucho",
+            "hruď",
+            "stehno",
+            "nos"
+          ],
+          "answer": "hruď"
+        },
+        {
+          "sentence": "Celý deň sedím za počítačom. Bolí ma ___.",
+          "translation": "I sit at the computer all day. My ___ hurts.",
+          "choices": [
+            "Srdce",
+            "Brucho",
+            "Chrbát",
+            "Prst"
+          ],
+          "answer": "Chrbát"
+        },
+        {
+          "sentence": "Bolí ma ___ na ľavej strane.",
+          "translation": "My ___ hurts on the left side.",
+          "choices": [
+            "Srdce",
+            "Bok",
+            "Hruď",
+            "Stehno"
+          ],
+          "answer": "Bok"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

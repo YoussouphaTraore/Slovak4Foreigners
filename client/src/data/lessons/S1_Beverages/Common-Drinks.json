@@ -1,0 +1,324 @@
+{
+  "id": "s1-common-drinks",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Common Drinks",
+  "description": "Learn the everyday drink words you need at home and outside",
+  "icon": "☕",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Common Drinks",
+      "rows": [
+        {
+          "label": "Water",
+          "slovak": "Voda",
+          "english": "Water"
+        },
+        {
+          "label": "Coffee",
+          "slovak": "Káva",
+          "english": "Coffee"
+        },
+        {
+          "label": "Tea",
+          "slovak": "Čaj",
+          "english": "Tea"
+        },
+        {
+          "label": "Milk",
+          "slovak": "Mlieko",
+          "english": "Milk"
+        },
+        {
+          "label": "Juice",
+          "slovak": "Džús",
+          "english": "Juice"
+        },
+        {
+          "label": "Beer",
+          "slovak": "Pivo",
+          "english": "Beer"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Voda",
+          "english": "Water"
+        },
+        {
+          "slovak": "Káva",
+          "english": "Coffee"
+        },
+        {
+          "slovak": "Čaj",
+          "english": "Tea"
+        },
+        {
+          "slovak": "Mlieko",
+          "english": "Milk"
+        },
+        {
+          "slovak": "Džús",
+          "english": "Juice"
+        },
+        {
+          "slovak": "Pivo",
+          "english": "Beer"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Voda",
+          "english": "Water"
+        },
+        {
+          "slovak": "Káva",
+          "english": "Coffee"
+        },
+        {
+          "slovak": "Čaj",
+          "english": "Tea"
+        },
+        {
+          "slovak": "Mlieko",
+          "english": "Milk"
+        },
+        {
+          "slovak": "Džús",
+          "english": "Juice"
+        },
+        {
+          "slovak": "Pivo",
+          "english": "Beer"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Voda",
+          "english": "Water"
+        },
+        {
+          "slovak": "Káva",
+          "english": "Coffee"
+        },
+        {
+          "slovak": "Čaj",
+          "english": "Tea"
+        },
+        {
+          "slovak": "Mlieko",
+          "english": "Milk"
+        },
+        {
+          "slovak": "Džús",
+          "english": "Juice"
+        },
+        {
+          "slovak": "Pivo",
+          "english": "Beer"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Voda",
+          "english": "Water"
+        },
+        {
+          "slovak": "Káva",
+          "english": "Coffee"
+        },
+        {
+          "slovak": "Čaj",
+          "english": "Tea"
+        },
+        {
+          "slovak": "Mlieko",
+          "english": "Milk"
+        },
+        {
+          "slovak": "Džús",
+          "english": "Juice"
+        },
+        {
+          "slovak": "Pivo",
+          "english": "Beer"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You want plain water. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Voda",
+            "Káva",
+            "Čaj",
+            "Pivo"
+          ],
+          "answer": "Voda",
+          "answerMeaning": "Voda = Water."
+        },
+        {
+          "situation": "You want coffee in the morning. Which word fits?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Káva",
+            "Čaj",
+            "Mlieko",
+            "Džús"
+          ],
+          "answer": "Káva",
+          "answerMeaning": "Káva = Coffee."
+        },
+        {
+          "situation": "Someone offers tea. Which Slovak word means tea?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Čaj",
+            "Káva",
+            "Pivo",
+            "Voda"
+          ],
+          "answer": "Čaj",
+          "answerMeaning": "Čaj = Tea."
+        },
+        {
+          "situation": "You need milk for coffee. Which word means milk?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Mlieko",
+            "Džús",
+            "Voda",
+            "Pivo"
+          ],
+          "answer": "Mlieko",
+          "answerMeaning": "Mlieko = Milk."
+        },
+        {
+          "situation": "You want orange juice. Which word means juice?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Džús",
+            "Čaj",
+            "Mlieko",
+            "Káva"
+          ],
+          "answer": "Džús",
+          "answerMeaning": "Džús = Juice."
+        },
+        {
+          "situation": "Your colleagues invite you for an evening drink after work. Which Slovak drink might they suggest?",
+          "instruction": "Choose the most likely word",
+          "choices": [
+            "Mlieko",
+            "Pivo",
+            "Čaj",
+            "Voda"
+          ],
+          "answer": "Pivo",
+          "answerMeaning": "Pivo = Beer. It is common for after-work socializing."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Chcem ___.",
+          "translation": "I want water.",
+          "choices": [
+            "vodu",
+            "kávu",
+            "čaj",
+            "pivo"
+          ],
+          "answer": "vodu"
+        },
+        {
+          "sentence": "Ráno pijem ___.",
+          "translation": "In the morning I drink coffee.",
+          "choices": [
+            "kávu",
+            "vodu",
+            "mlieko",
+            "pivo"
+          ],
+          "answer": "kávu"
+        },
+        {
+          "sentence": "Prosím si ___.",
+          "translation": "I would like tea.",
+          "choices": [
+            "čaj",
+            "džús",
+            "pivo",
+            "mlieko"
+          ],
+          "answer": "čaj"
+        },
+        {
+          "sentence": "Do kávy chcem ___.",
+          "translation": "I want milk in the coffee.",
+          "choices": [
+            "mlieko",
+            "džús",
+            "pivo",
+            "vodu"
+          ],
+          "answer": "mlieko"
+        },
+        {
+          "sentence": "Dieťa pije ___.",
+          "translation": "The child drinks juice.",
+          "choices": [
+            "džús",
+            "pivo",
+            "kávu",
+            "čaj"
+          ],
+          "answer": "džús"
+        },
+        {
+          "sentence": "Po práci ideme na ___ s kolegami.",
+          "translation": "After work we're going for a beer with colleagues.",
+          "choices": [
+            "kávu",
+            "čaj",
+            "pivo",
+            "mlieko"
+          ],
+          "answer": "pivo"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { HashRouter, Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
+import { MemoryRouter, Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { HomePage } from './pages/HomePage';
 import { LessonPage } from './pages/LessonPage';
@@ -16,6 +16,8 @@ import { ForeignerExclusiveLessonPage } from './pages/ForeignerExclusiveLessonPa
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsOfServicePage } from './pages/TermsOfServicePage';
 import { BlockDialoguePage } from './pages/BlockDialoguePage';
+import { TopicPage } from './pages/TopicPage';
+import { TopicRacePage } from './pages/TopicRacePage';
 import { DialogueSession } from './components/dialogue/DialogueSession';
 import { EmergencyDialogueSession } from './components/dialogue/EmergencyDialogueSession';
 import { SaveProgressModal, SOFT_DISMISS_KEY, REGRESSION_DISMISS_KEY } from './components/auth/SaveProgressModal';
@@ -144,6 +146,8 @@ function AppRoutes() {
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsOfServicePage />} />
         <Route path="/admin" element={<AdminPage />} />
+        <Route path="/topic/:topicId" element={<TopicPage />} />
+<Route path="/topic-race/:topicId" element={<TopicRacePage />} />
         <Route path="/block-dialogue/:blockId" element={<BlockDialoguePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
@@ -415,10 +419,10 @@ function AppShell() {
 
   return (
     <>
-      <HashRouter>
+      <MemoryRouter>
         <AppRoutes />
         <Analytics />
-      </HashRouter>
+      </MemoryRouter>
       {showAliasPicker && userId && (
         <AliasPickerModal
           userId={userId}

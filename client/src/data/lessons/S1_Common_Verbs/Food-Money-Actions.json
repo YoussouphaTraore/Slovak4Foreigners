@@ -1,0 +1,100 @@
+{
+  "id": "s1-food-money-actions",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Food & Money Actions",
+  "description": "Eat, drink, pay, buy, and cash phrases",
+  "icon": "\u26A1",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Food & Money Verbs",
+      "subtitle": "Everyday actions for shops, cafés, and doctors.",
+      "rows": [
+        { "label": "I eat", "slovak": "Jem", "english": "I eat" },
+        { "label": "I drink", "slovak": "Pijem", "english": "I drink" },
+        { "label": "I don't drink", "slovak": "Nepijem", "english": "I don't drink" },
+        { "label": "I pay", "slovak": "Platím", "english": "I pay" },
+        { "label": "I will buy", "slovak": "Kúpim", "english": "I will buy" },
+        { "label": "I don't have cash", "slovak": "Nemám hotovosť", "english": "I don't have cash" }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        { "slovak": "Jem", "english": "I eat" },
+        { "slovak": "Pijem", "english": "I drink" },
+        { "slovak": "Nepijem", "english": "I don't drink" },
+        { "slovak": "Platím", "english": "I pay" },
+        { "slovak": "Kúpim", "english": "I will buy" },
+        { "slovak": "Nemám hotovosť", "english": "I don't have cash" }
+      ]
+    },
+    {
+      "id": "ex2b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        { "slovak": "Jem", "english": "I eat" },
+        { "slovak": "Pijem", "english": "I drink" },
+        { "slovak": "Nepijem", "english": "I don't drink" },
+        { "slovak": "Platím", "english": "I pay" },
+        { "slovak": "Kúpim", "english": "I will buy" },
+        { "slovak": "Nemám hotovosť", "english": "I don't have cash" }
+      ]
+    },
+    {
+      "id": "ex2c",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        { "slovak": "Jem", "english": "I eat" },
+        { "slovak": "Pijem", "english": "I drink" },
+        { "slovak": "Nepijem", "english": "I don't drink" },
+        { "slovak": "Platím", "english": "I pay" },
+        { "slovak": "Kúpim", "english": "I will buy" },
+        { "slovak": "Nemám hotovosť", "english": "I don't have cash" }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        { "slovak": "Jem", "english": "I eat" },
+        { "slovak": "Pijem", "english": "I drink" },
+        { "slovak": "Nepijem", "english": "I don't drink" },
+        { "slovak": "Platím", "english": "I pay" },
+        { "slovak": "Kúpim", "english": "I will buy" },
+        { "slovak": "Nemám hotovosť", "english": "I don't have cash" }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        { "situation": "Kai asks: 'What are you eating?' You answer: 'I eat soup.' Which starts the sentence?", "instruction": "Choose the correct word", "choices": ["Jem", "Pijem", "Platím", "Kúpim"], "answer": "Jem", "answerMeaning": "Jem = I eat." },
+        { "situation": "The doctor asks if you drink coffee. You do. What starts the answer?", "instruction": "Choose the correct word", "choices": ["Jem", "Pijem", "Nepijem", "Kúpim"], "answer": "Pijem", "answerMeaning": "Pijem = I drink." },
+        { "situation": "The doctor asks if you drink alcohol. You don't. What starts the answer?", "instruction": "Choose the correct word", "choices": ["Pijem", "Nepijem", "Jem", "Platím"], "answer": "Nepijem", "answerMeaning": "Nepijem = I don't drink." },
+        { "situation": "You are at the supermarket checkout. You want to say: 'I pay by card.'", "instruction": "Choose the correct word", "choices": ["Platím", "Kúpim", "Pijem", "Jem"], "answer": "Platím", "answerMeaning": "Platím = I pay." },
+        { "situation": "You point to bread and say: 'I will buy this.' Which starts the sentence?", "instruction": "Choose the correct word", "choices": ["Kúpim", "Platím", "Jem", "Pijem"], "answer": "Kúpim", "answerMeaning": "Kúpim = I will buy." },
+        { "situation": "The cashier asks for cash, but you only have a card. What do you say?", "instruction": "Choose the correct phrase", "choices": ["Mám hotovosť.", "Nemám hotovosť.", "Kúpim hotovosť.", "Pijem hotovosť."], "answer": "Nemám hotovosť.", "answerMeaning": "Nemám hotovosť = I don't have cash." }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        { "sentence": "___ polievku.", "translation": "I eat soup.", "choices": ["Jem", "Pijem", "Platím", "Kúpim"], "answer": "Jem" },
+        { "sentence": "___ vodu.", "translation": "I drink water.", "choices": ["Jem", "Pijem", "Nepijem", "Platím"], "answer": "Pijem" },
+        { "sentence": "___ alkohol.", "translation": "I don't drink alcohol.", "choices": ["Pijem", "Nepijem", "Jem", "Kúpim"], "answer": "Nepijem" },
+        { "sentence": "___ kartou.", "translation": "I pay by card.", "choices": ["Kúpim", "Platím", "Jem", "Pijem"], "answer": "Platím" },
+        { "sentence": "___ chlieb.", "translation": "I will buy bread.", "choices": ["Kúpim", "Platím", "Pijem", "Jem"], "answer": "Kúpim" },
+        { "sentence": "___ hotovosť.", "translation": "I don't have cash.", "choices": ["Mám", "Nemám", "Kúpim", "Platím"], "answer": "Nemám" }
+      ]
+    },
+    { "id": "ex-review", "type": "WORD_MATCH_REVIEW" }
+  ]
+}

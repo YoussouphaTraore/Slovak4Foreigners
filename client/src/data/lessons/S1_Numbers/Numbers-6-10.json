@@ -1,0 +1,315 @@
+{
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "icon": "🔢",
+  "xpReward": 10,
+  "coming_soon": false,
+  "id": "s1-numbers-6-10",
+  "title": "Numbers 6-10",
+  "description": "Continue counting from six to ten",
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Numbers 6-10",
+      "headers": [
+        "Number",
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "label": "6",
+          "slovak": "šesť",
+          "english": "Six"
+        },
+        {
+          "label": "7",
+          "slovak": "sedem",
+          "english": "Seven"
+        },
+        {
+          "label": "8",
+          "slovak": "osem",
+          "english": "Eight"
+        },
+        {
+          "label": "9",
+          "slovak": "deväť",
+          "english": "Nine"
+        },
+        {
+          "label": "10",
+          "slovak": "desať",
+          "english": "Ten"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "šesť",
+          "english": "Six"
+        },
+        {
+          "slovak": "sedem",
+          "english": "Seven"
+        },
+        {
+          "slovak": "osem",
+          "english": "Eight"
+        },
+        {
+          "slovak": "deväť",
+          "english": "Nine"
+        },
+        {
+          "slovak": "desať",
+          "english": "Ten"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "šesť",
+          "english": "Six"
+        },
+        {
+          "slovak": "sedem",
+          "english": "Seven"
+        },
+        {
+          "slovak": "osem",
+          "english": "Eight"
+        },
+        {
+          "slovak": "deväť",
+          "english": "Nine"
+        },
+        {
+          "slovak": "desať",
+          "english": "Ten"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "šesť",
+          "english": "Six"
+        },
+        {
+          "slovak": "sedem",
+          "english": "Seven"
+        },
+        {
+          "slovak": "osem",
+          "english": "Eight"
+        },
+        {
+          "slovak": "deväť",
+          "english": "Nine"
+        },
+        {
+          "slovak": "desať",
+          "english": "Ten"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "NUMBER_TO_WORDS",
+      "items": [
+        {
+          "number": "6",
+          "choices": [
+            "päť",
+            "šesť",
+            "sedem",
+            "osem"
+          ],
+          "answer": "šesť"
+        },
+        {
+          "number": "7",
+          "choices": [
+            "šesť",
+            "sedem",
+            "osem",
+            "deväť"
+          ],
+          "answer": "sedem"
+        },
+        {
+          "number": "8",
+          "choices": [
+            "sedem",
+            "osem",
+            "deväť",
+            "desať"
+          ],
+          "answer": "osem"
+        },
+        {
+          "number": "9",
+          "choices": [
+            "šesť",
+            "osem",
+            "deväť",
+            "desať"
+          ],
+          "answer": "deväť"
+        },
+        {
+          "number": "10",
+          "choices": [
+            "sedem",
+            "osem",
+            "deväť",
+            "desať"
+          ],
+          "answer": "desať"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your appointment is at ten. Which Slovak word means ten?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "sedem",
+            "osem",
+            "deväť",
+            "desať"
+          ],
+          "answer": "desať",
+          "answerMeaning": "Desať = ten."
+        },
+        {
+          "situation": "The flat number is seven. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "šesť",
+            "sedem",
+            "osem",
+            "deväť"
+          ],
+          "answer": "sedem",
+          "answerMeaning": "Sedem = seven."
+        },
+        {
+          "situation": "You need eight tickets. Which word means eight?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "sedem",
+            "osem",
+            "deväť",
+            "desať"
+          ],
+          "answer": "osem",
+          "answerMeaning": "Osem = eight."
+        },
+        {
+          "situation": "A child is nine years old. Which word means nine?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "šesť",
+            "osem",
+            "deväť",
+            "desať"
+          ],
+          "answer": "deväť",
+          "answerMeaning": "Deväť = nine."
+        },
+        {
+          "situation": "Your group has six people. Which word means six?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "šesť",
+            "sedem",
+            "osem",
+            "desať"
+          ],
+          "answer": "šesť",
+          "answerMeaning": "Šesť = six."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Byt číslo ___.",
+          "translation": "Flat number seven.",
+          "choices": [
+            "šesť",
+            "sedem",
+            "osem",
+            "desať"
+          ],
+          "answer": "sedem"
+        },
+        {
+          "sentence": "Mám ___ eur.",
+          "translation": "I have ten euros.",
+          "choices": [
+            "sedem",
+            "osem",
+            "deväť",
+            "desať"
+          ],
+          "answer": "desať"
+        },
+        {
+          "sentence": "Potrebujem ___ lístkov.",
+          "translation": "I need eight tickets.",
+          "choices": [
+            "šesť",
+            "sedem",
+            "osem",
+            "deväť"
+          ],
+          "answer": "osem"
+        },
+        {
+          "sentence": "Je nás ___.",
+          "translation": "There are six of us.",
+          "choices": [
+            "šesť",
+            "sedem",
+            "osem",
+            "desať"
+          ],
+          "answer": "šesť"
+        },
+        {
+          "sentence": "Dieťa má ___ rokov.",
+          "translation": "The child is nine years old.",
+          "choices": [
+            "sedem",
+            "osem",
+            "deväť",
+            "desať"
+          ],
+          "answer": "deväť"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

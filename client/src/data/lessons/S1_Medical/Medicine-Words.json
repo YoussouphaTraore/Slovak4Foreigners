@@ -1,0 +1,306 @@
+{
+  "id": "s1-medicine-words",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Medicine Words",
+  "description": "Recognize common medicine forms at the pharmacy",
+  "icon": "💊",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Medicine Forms",
+      "rows": [
+        {
+          "label": "Medicine",
+          "slovak": "Lieky",
+          "english": "Medicine"
+        },
+        {
+          "label": "Pills",
+          "slovak": "Tabletky",
+          "english": "Pills"
+        },
+        {
+          "label": "Syrup",
+          "slovak": "Sirup",
+          "english": "Syrup"
+        },
+        {
+          "label": "Ointment",
+          "slovak": "Masť",
+          "english": "Ointment"
+        },
+        {
+          "label": "Plaster",
+          "slovak": "Náplasť",
+          "english": "Plaster / Band-aid"
+        },
+        {
+          "label": "Drops",
+          "slovak": "Kvapky",
+          "english": "Drops"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Lieky",
+          "english": "Medicine"
+        },
+        {
+          "slovak": "Tabletky",
+          "english": "Pills"
+        },
+        {
+          "slovak": "Sirup",
+          "english": "Syrup"
+        },
+        {
+          "slovak": "Masť",
+          "english": "Ointment"
+        },
+        {
+          "slovak": "Náplasť",
+          "english": "Plaster"
+        },
+        {
+          "slovak": "Kvapky",
+          "english": "Drops"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Lieky",
+          "english": "Medicine"
+        },
+        {
+          "slovak": "Tabletky",
+          "english": "Pills"
+        },
+        {
+          "slovak": "Sirup",
+          "english": "Syrup"
+        },
+        {
+          "slovak": "Masť",
+          "english": "Ointment"
+        },
+        {
+          "slovak": "Náplasť",
+          "english": "Plaster"
+        },
+        {
+          "slovak": "Kvapky",
+          "english": "Drops"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Lieky",
+          "english": "Medicine"
+        },
+        {
+          "slovak": "Tabletky",
+          "english": "Pills"
+        },
+        {
+          "slovak": "Sirup",
+          "english": "Syrup"
+        },
+        {
+          "slovak": "Masť",
+          "english": "Ointment"
+        },
+        {
+          "slovak": "Náplasť",
+          "english": "Plaster / Band-aid"
+        },
+        {
+          "slovak": "Kvapky",
+          "english": "Drops"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Lieky",
+          "english": "Medicine"
+        },
+        {
+          "slovak": "Tabletky",
+          "english": "Pills"
+        },
+        {
+          "slovak": "Sirup",
+          "english": "Syrup"
+        },
+        {
+          "slovak": "Masť",
+          "english": "Ointment"
+        },
+        {
+          "slovak": "Náplasť",
+          "english": "Plaster"
+        },
+        {
+          "slovak": "Kvapky",
+          "english": "Drops"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The pharmacist gives you tabletky. What did you receive?",
+          "instruction": "Choose the meaning",
+          "choices": [
+            "Pills",
+            "Drops",
+            "Syrup",
+            "Plaster"
+          ],
+          "answer": "Pills",
+          "answerMeaning": "Tabletky = pills."
+        },
+        {
+          "situation": "You cut your finger and need something to cover it. What do you ask for?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Náplasť",
+            "Sirup",
+            "Kvapky",
+            "Masť"
+          ],
+          "answer": "Náplasť",
+          "answerMeaning": "Náplasť = plaster / band-aid."
+        },
+        {
+          "situation": "You need liquid medicine for a cough. Which word is syrup?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Sirup",
+            "Tabletky",
+            "Masť",
+            "Náplasť"
+          ],
+          "answer": "Sirup",
+          "answerMeaning": "Sirup = syrup."
+        },
+        {
+          "situation": "You need cream for your skin. Which word means ointment?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Masť",
+            "Kvapky",
+            "Lieky",
+            "Predpis"
+          ],
+          "answer": "Masť",
+          "answerMeaning": "Masť = ointment."
+        },
+        {
+          "situation": "The doctor recommends drops. Which word do you look for?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Kvapky",
+            "Tabletky",
+            "Náplasť",
+            "Sirup"
+          ],
+          "answer": "Kvapky",
+          "answerMeaning": "Kvapky = drops."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Berte tieto ___ dvakrát denne.",
+          "translation": "Take these pills twice a day.",
+          "choices": [
+            "tabletky",
+            "náplasť",
+            "masť",
+            "kvapky"
+          ],
+          "answer": "tabletky",
+          "answerMeaning": "Tabletky = pills."
+        },
+        {
+          "sentence": "Potrebujem ___ na ranu na prste.",
+          "translation": "I need a plaster for the cut on my finger.",
+          "choices": [
+            "náplasť",
+            "sirup",
+            "tabletky",
+            "kvapky"
+          ],
+          "answer": "náplasť",
+          "answerMeaning": "Náplasť = plaster."
+        },
+        {
+          "sentence": "Máte ___ na kašeľ?",
+          "translation": "Do you have syrup for a cough?",
+          "choices": [
+            "sirup",
+            "masť",
+            "náplasť",
+            "kartu"
+          ],
+          "answer": "sirup",
+          "answerMeaning": "Sirup = syrup."
+        },
+        {
+          "sentence": "Potrebujem ___ na kožu.",
+          "translation": "I need ointment for the skin.",
+          "choices": [
+            "masť",
+            "sirup",
+            "predpis",
+            "čakáreň"
+          ],
+          "answer": "masť",
+          "answerMeaning": "Masť = ointment."
+        },
+        {
+          "sentence": "Lekár mi dal ___ do očí.",
+          "translation": "The doctor gave me eye drops.",
+          "choices": [
+            "kvapky",
+            "tabletky",
+            "náplasť",
+            "sirup"
+          ],
+          "answer": "kvapky",
+          "answerMeaning": "Kvapky = drops."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

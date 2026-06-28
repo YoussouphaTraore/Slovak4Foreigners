@@ -1,0 +1,301 @@
+{
+  "id": "s1-today-plans",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Today & Plans",
+  "description": "Use today, tomorrow, yesterday, and planning words",
+  "icon": "📅",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Today and Plans",
+      "rows": [
+        {
+          "label": "Today",
+          "slovak": "Dnes",
+          "english": "Today"
+        },
+        {
+          "label": "Tomorrow",
+          "slovak": "Zajtra",
+          "english": "Tomorrow"
+        },
+        {
+          "label": "Yesterday",
+          "slovak": "Včera",
+          "english": "Yesterday"
+        },
+        {
+          "label": "This week",
+          "slovak": "Tento týždeň",
+          "english": "This week"
+        },
+        {
+          "label": "Working day",
+          "slovak": "Pracovný deň",
+          "english": "Working day / weekday"
+        },
+        {
+          "label": "Every day",
+          "slovak": "Každý deň",
+          "english": "Every day"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Dnes",
+          "english": "Today"
+        },
+        {
+          "slovak": "Zajtra",
+          "english": "Tomorrow"
+        },
+        {
+          "slovak": "Včera",
+          "english": "Yesterday"
+        },
+        {
+          "slovak": "Tento týždeň",
+          "english": "This week"
+        },
+        {
+          "slovak": "Pracovný deň",
+          "english": "Working day"
+        },
+        {
+          "slovak": "Každý deň",
+          "english": "Every day"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Dnes",
+          "english": "Today"
+        },
+        {
+          "slovak": "Zajtra",
+          "english": "Tomorrow"
+        },
+        {
+          "slovak": "Včera",
+          "english": "Yesterday"
+        },
+        {
+          "slovak": "Tento týždeň",
+          "english": "This week"
+        },
+        {
+          "slovak": "Pracovný deň",
+          "english": "Working day"
+        },
+        {
+          "slovak": "Každý deň",
+          "english": "Every day"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Dnes",
+          "english": "Today"
+        },
+        {
+          "slovak": "Zajtra",
+          "english": "Tomorrow"
+        },
+        {
+          "slovak": "Včera",
+          "english": "Yesterday"
+        },
+        {
+          "slovak": "Tento týždeň",
+          "english": "This week"
+        },
+        {
+          "slovak": "Pracovný deň",
+          "english": "Workday"
+        },
+        {
+          "slovak": "Každý deň",
+          "english": "Every day"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Dnes",
+          "english": "Today"
+        },
+        {
+          "slovak": "Zajtra",
+          "english": "Tomorrow"
+        },
+        {
+          "slovak": "Včera",
+          "english": "Yesterday"
+        },
+        {
+          "slovak": "Tento týždeň",
+          "english": "This week"
+        },
+        {
+          "slovak": "Pracovný deň",
+          "english": "Working day"
+        },
+        {
+          "slovak": "Každý deň",
+          "english": "Every day"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You want to confirm a meeting for tomorrow. What word do you use?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Dnes",
+            "Zajtra",
+            "Včera",
+            "Víkend"
+          ],
+          "answer": "Zajtra",
+          "answerMeaning": "Zajtra = tomorrow."
+        },
+        {
+          "situation": "You missed a delivery yesterday. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Dnes",
+            "Zajtra",
+            "Včera",
+            "Pondelok"
+          ],
+          "answer": "Včera",
+          "answerMeaning": "Včera = yesterday."
+        },
+        {
+          "situation": "Your colleague asks what day it is today. Which word means today?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "Dnes",
+            "Zajtra",
+            "Včera",
+            "Týždeň"
+          ],
+          "answer": "Dnes",
+          "answerMeaning": "Dnes = today."
+        },
+        {
+          "situation": "You work Monday to Friday. How do you describe this routine?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Každý víkend",
+            "Každý pracovný deň",
+            "Každú nedeľu",
+            "Zajtra"
+          ],
+          "answer": "Každý pracovný deň",
+          "answerMeaning": "Každý pracovný deň = every working day."
+        },
+        {
+          "situation": "You need to do something this week, not next week. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "Tento týždeň",
+            "Minulý týždeň",
+            "Budúci týždeň",
+            "Včera"
+          ],
+          "answer": "Tento týždeň",
+          "answerMeaning": "Tento týždeň = this week."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ idem k doktorovi. Dnes nie.",
+          "translation": "Tomorrow I am going to the doctor. Not today.",
+          "choices": [
+            "Dnes",
+            "Zajtra",
+            "Včera",
+            "Víkend"
+          ],
+          "answer": "Zajtra"
+        },
+        {
+          "sentence": "___ som bol chorý. Dnes je mi lepšie.",
+          "translation": "Yesterday I was sick. Today I feel better.",
+          "choices": [
+            "Dnes",
+            "Zajtra",
+            "Včera",
+            "Týždeň"
+          ],
+          "answer": "Včera"
+        },
+        {
+          "sentence": "Pracujem ___ deň okrem víkendu.",
+          "translation": "I work every day except the weekend.",
+          "choices": [
+            "každý",
+            "tento",
+            "zajtra",
+            "dnes"
+          ],
+          "answer": "každý"
+        },
+        {
+          "sentence": "Musím to vybaviť ___ týždeň.",
+          "translation": "I must handle it this week.",
+          "choices": [
+            "tento",
+            "včera",
+            "zajtra",
+            "každý"
+          ],
+          "answer": "tento"
+        },
+        {
+          "sentence": "___ je dnes deň?",
+          "translation": "What day is it today?",
+          "choices": [
+            "Aký",
+            "Kedy",
+            "Koľko",
+            "Kde"
+          ],
+          "answer": "Aký"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

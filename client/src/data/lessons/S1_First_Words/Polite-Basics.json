@@ -1,0 +1,216 @@
+{
+  "id": "s1-polite-basics",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Polite Basics",
+  "description": "Yes, no, please, and thank you",
+  "icon": "💬",
+  "xpReward": 10,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Áno",
+          "english": "Yes"
+        },
+        {
+          "slovak": "Nie",
+          "english": "No"
+        },
+        {
+          "slovak": "Prosím",
+          "english": "Please / You're welcome"
+        },
+        {
+          "slovak": "Ďakujem",
+          "english": "Thank you"
+        }
+      ]
+    },
+    {
+      "id": "ex1b",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Áno",
+          "english": "Yes"
+        },
+        {
+          "slovak": "Nie",
+          "english": "No"
+        },
+        {
+          "slovak": "Prosím",
+          "english": "Please / You're welcome"
+        },
+        {
+          "slovak": "Ďakujem",
+          "english": "Thank you"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Áno",
+          "english": "Yes"
+        },
+        {
+          "slovak": "Nie",
+          "english": "No"
+        },
+        {
+          "slovak": "Prosím",
+          "english": "Please"
+        },
+        {
+          "slovak": "Ďakujem",
+          "english": "Thank you"
+        },
+        {
+          "slovak": "Dobre",
+          "english": "Good / Well"
+        },
+        {
+          "slovak": "Zle",
+          "english": "Bad / Badly"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Áno",
+          "english": "Yes"
+        },
+        {
+          "slovak": "Nie",
+          "english": "No"
+        },
+        {
+          "slovak": "Prosím",
+          "english": "Please / You're welcome"
+        },
+        {
+          "slovak": "Ďakujem",
+          "english": "Thank you"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The waiter brings your coffee. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Nie",
+            "Ďakujem",
+            "Prosím",
+            "Áno"
+          ],
+          "answer": "Ďakujem",
+          "answerMeaning": "Thank you"
+        },
+        {
+          "situation": "Your neighbor asks: 'Do you want to join us for dinner?' You'd love to. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Nie",
+            "Prosím",
+            "Áno",
+            "Ďakujem"
+          ],
+          "answer": "Áno",
+          "answerMeaning": "Yes"
+        },
+        {
+          "situation": "A street vendor offers you a flyer. You don't want it. What do you say?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Áno",
+            "Nie",
+            "Ďakujem",
+            "Prosím"
+          ],
+          "answer": "Nie",
+          "answerMeaning": "No"
+        },
+        {
+          "situation": "You want the baker to hand you a loaf of bread. What do you say politely?",
+          "instruction": "Choose the most appropriate phrase",
+          "choices": [
+            "Ďakujem",
+            "Áno",
+            "Nie",
+            "Prosím"
+          ],
+          "answer": "Prosím",
+          "answerMeaning": "Please / You're welcome"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "— Hovoríte po anglicky? — ___, nehovorím.",
+          "translation": "Do you speak English? — ___, I don't.",
+          "choices": [
+            "Áno",
+            "Nie",
+            "Prosím",
+            "Ďakujem"
+          ],
+          "answer": "Nie"
+        },
+        {
+          "sentence": "— Chcete kávu? — ___, ďakujem.",
+          "translation": "Do you want coffee? — ___, thank you.",
+          "choices": [
+            "Nie",
+            "Áno",
+            "Prosím",
+            "Ďakujem"
+          ],
+          "answer": "Áno"
+        },
+        {
+          "sentence": "Priniesli mi jedlo. ___!",
+          "translation": "They brought me food. ___!",
+          "choices": [
+            "Prosím",
+            "Áno",
+            "Ďakujem",
+            "Nie"
+          ],
+          "answer": "Ďakujem"
+        },
+        {
+          "sentence": "— Chcete ešte kávu? — ___, ďakujem.",
+          "translation": "Would you like more coffee? — ___, thank you.",
+          "choices": [
+            "Áno",
+            "Nie",
+            "Prosím",
+            "Ďakujem"
+          ],
+          "answer": "Prosím"
+        }
+      ]
+    },
+    {
+      "id": "ex-review",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}
