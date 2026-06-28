@@ -265,7 +265,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     status === 'mic_error'  ? 'Mic not available — tap "Can\'t speak?"' :
     status === 'fail' && attempts >= MAX_ATTEMPTS ? 'Moving on...' :
     status === 'fail'       ? 'Try again!' :
-    micPermission === 'blocked' ? 'Microphone blocked — enable it in browser settings.' :
+    micPermission === 'blocked' ? 'Microphone blocked — enable it in browser settings if you are using the browser or App settings if you have downloaded as app.' :
     micPermission === 'denied'  ? 'Tap the mic to allow microphone access.' :
     'Tap the mic and say the highlighted word!';
 
