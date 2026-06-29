@@ -418,12 +418,13 @@ function AppShell() {
   }
 
   return (
-    <>
-      <DesktopBanner />
-      <MemoryRouter>
-        <AppRoutes />
-        <Analytics />
-      </MemoryRouter>
+    <div className="min-h-dvh bg-[#DCECCF]">
+      <div className="relative mx-auto min-h-dvh w-full max-w-[430px] bg-[#E8F4DC] shadow-[0_0_0_1px_rgba(114,122,106,0.12)]">
+        <DesktopBanner />
+        <MemoryRouter>
+          <AppRoutes />
+          <Analytics />
+        </MemoryRouter>
       {showAliasPicker && userId && (
         <AliasPickerModal
           userId={userId}
@@ -463,7 +464,8 @@ function AppShell() {
           {magicBoxToast}
         </div>
       )}
-    </>
+      </div>
+    </div>
   );
 }
 
