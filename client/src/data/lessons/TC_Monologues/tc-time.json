@@ -7,7 +7,7 @@
   "_voiceScript": { "voice": null, "script": "" },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": false,
+  "coming_soon": true,
   "exercises": [
     {
       "id": "ex1",

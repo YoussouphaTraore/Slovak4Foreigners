@@ -184,7 +184,8 @@ export function TopicPage() {
           {/* Comprehension node — unlocked when all lessons complete */}
           {hasComprehensionExercise && (() => {
             const allComplete = completedCount === totalCount && totalCount > 0;
-            const comprehensionUnlocked = isDev || allComplete;
+            const isComingSoon = !!comprehensionLesson?.coming_soon;
+            const comprehensionUnlocked = !isComingSoon && (isDev || allComplete);
             const comprehensionEnabled = comprehensionUnlocked;
 
             return (
@@ -211,6 +212,8 @@ export function TopicPage() {
                       title={
                         comprehensionComplete
                           ? 'Comprehension done! Tap to redo'
+                          : isComingSoon
+                          ? 'Coming soon'
                           : comprehensionEnabled
                           ? 'Answer questions about what you learned'
                           : 'Complete all lessons to unlock'
@@ -226,6 +229,8 @@ export function TopicPage() {
                     <p className={`text-xs ${comprehensionEnabled || comprehensionComplete ? 'text-blue-500' : 'text-gray-300'}`}>
                       {comprehensionComplete
                         ? '+25 XP earned'
+                        : isComingSoon
+                        ? 'Coming soon'
                         : comprehensionEnabled
                         ? 'Listen & answer questions'
                         : 'Complete all lessons first'}

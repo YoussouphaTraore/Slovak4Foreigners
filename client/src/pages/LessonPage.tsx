@@ -143,6 +143,14 @@ export function LessonPage() {
 
   const currentExercise = exercises[exerciseIndex];
 
+  if (!currentExercise) {
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-[#E8F4DC]">
+        <div className="w-8 h-8 rounded-full border-4 border-brand-green border-t-transparent animate-spin" />
+      </div>
+    );
+  }
+
   const isStage1 = lesson.stageId === 'survival';
   const snailSuccess = isStage1 ? '/snailExcited.png' : '/snailExcitedListening.png';
   const snailFail    = isStage1 ? '/snailPerplexed.png' : '/snailPerplexedListening.png';

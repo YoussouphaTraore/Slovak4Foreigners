@@ -69,3 +69,7 @@ audio/
 # Playwright test screenshots (local QA artifacts)
 client/test-ss-*.png
 
+# Local scratch test scripts
+client/topic_*.mjs
+client/topic_page_test.mjs
+
