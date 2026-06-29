@@ -8,7 +8,7 @@ import { stage1Blocks, getBlockLessonIds } from '../config/stageBlocks';
 import { foreignPoliceLessons } from '../data/foreigner-exclusive/foreign-police';
 import { getAvatarUrl } from '../lib/supabase/aliasUtils';
 import { BottomNav } from '../components/ui/BottomNav';
-import { canInstall, triggerInstall, markInstalled, markShown } from '../lib/pwaInstall';
+import { canInstall, triggerInstall, markInstalled, markDismissed } from '../lib/pwaInstall';
 
 // ── Sub-components ─────────────────────────────────────────────────────────────
 
@@ -162,7 +162,7 @@ export function ProfilePage() {
   const handleInstall = async () => {
     const outcome = await triggerInstall();
     if (outcome === 'accepted') markInstalled();
-    else markShown();
+    else markDismissed();
     setInstallAvailable(false);
   };
 

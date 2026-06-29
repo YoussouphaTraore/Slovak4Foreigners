@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 
 interface Props {
   isIOS?: boolean;
@@ -7,13 +7,7 @@ interface Props {
 }
 
 export function PwaInstallSheet({ isIOS, onInstall, onDismiss }: Props) {
-  const tapCountRef = useRef(0);
   const [showIOSSteps, setShowIOSSteps] = useState(false);
-
-  const handleBackdropTap = () => {
-    tapCountRef.current += 1;
-    if (tapCountRef.current >= 3) onDismiss();
-  };
 
   const handleInstall = () => {
     if (isIOS) {
@@ -26,7 +20,7 @@ export function PwaInstallSheet({ isIOS, onInstall, onDismiss }: Props) {
   return (
     <div
       className="fixed inset-0 z-[150] flex items-end justify-center bg-black/40"
-      onClick={handleBackdropTap}
+      onClick={onDismiss}
     >
       <div
         className="w-full max-w-sm bg-white rounded-t-3xl shadow-2xl px-6 pt-6 pb-10 animate-slide-up"
@@ -39,7 +33,7 @@ export function PwaInstallSheet({ isIOS, onInstall, onDismiss }: Props) {
           className="w-16 h-16 rounded-2xl mx-auto mb-4 shadow-sm"
         />
         <h2 className="text-lg font-extrabold text-gray-800 text-center mb-1">
-          Install Slovak for Foreigners
+          Add to Home Screen
         </h2>
 
         {showIOSSteps ? (
@@ -78,14 +72,21 @@ export function PwaInstallSheet({ isIOS, onInstall, onDismiss }: Props) {
         ) : (
           <>
             <p className="text-sm text-gray-500 text-center mb-6">
-              Download the App for the best experience 📲
+              Add to your Home Screen for quick access 📲
             </p>
             <button
               type="button"
               onClick={handleInstall}
-              className="w-full bg-brand-green text-white font-bold py-3 rounded-xl text-sm cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all"
+              className="w-full bg-brand-green text-white font-bold py-3 rounded-xl text-sm cursor-pointer hover:opacity-90 active:scale-[0.98] transition-all mb-3"
             >
-              Install
+              Add to Home Screen
+            </button>
+            <button
+              type="button"
+              onClick={onDismiss}
+              className="w-full bg-white border-2 border-gray-200 text-gray-500 font-semibold py-3 rounded-xl text-sm cursor-pointer hover:border-gray-300 active:scale-[0.98] transition-all"
+            >
+              Not now
             </button>
           </>
         )}

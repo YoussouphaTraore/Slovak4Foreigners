@@ -107,6 +107,25 @@ export function HomePage() {
     const isComplete = completedCount === totalCount;
     const hasProgress = completedCount > 0 && !isComplete;
 
+    // Progress ring data
+    const tcLessonId = `tc-${topic.id.replace('topic-', '')}`;
+    const hasTC = lessons.some(l => l.id === tcLessonId);
+    const tcComplete = completedLessons.includes(tcLessonId);
+    const racePassed = passedTopics.includes(topic.id);
+
+    const R = 44;
+    const CIRC = 2 * Math.PI * R;
+    const LESSON_SEG = CIRC * (hasTC ? 0.65 : 0.80);
+    const COMP_SEG   = CIRC * (hasTC ? 0.18 : 0);
+    const RACE_SEG   = CIRC * (hasTC ? 0.17 : 0.20);
+
+    const lessonFill = totalCount > 0 ? (completedCount / totalCount) * LESSON_SEG : 0;
+    const compFill   = tcComplete ? COMP_SEG : 0;
+    const raceFill   = racePassed ? RACE_SEG : 0;
+
+    const compStartAngle = -90 + (LESSON_SEG / CIRC * 360);
+    const raceStartAngle = -90 + ((LESSON_SEG + COMP_SEG) / CIRC * 360);
+
     return (
       <div key={topic.id} className="flex flex-col items-center">
         <div className="w-0.5 h-8 border-l-2 border-dashed border-gray-300" />
@@ -128,13 +147,50 @@ export function HomePage() {
                   ? 'bg-brand-green text-white hover:opacity-90'
                   : isLocked
                   ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                  : hasProgress
-                  ? 'bg-brand-green text-white hover:opacity-90'
-                  : 'bg-brand-green text-white hover:opacity-90 ring-4 ring-brand-green/30 animate-pulse'
+                  : 'bg-brand-green text-white hover:opacity-90'
                 }`}
             >
-              {isComplete ? '✓' : isLocked ? '🔒' : topic.icon}
+              {isLocked ? '🔒' : topic.icon}
             </button>
+
+            {/* Progress ring */}
+            {!isLocked && (
+              <svg
+                className="absolute pointer-events-none"
+                style={{ inset: -7, width: 'calc(100% + 14px)', height: 'calc(100% + 14px)' }}
+                viewBox="0 0 94 94"
+              >
+                {/* Background track */}
+                <circle cx="47" cy="47" r={R} fill="none" stroke="#D1D5DB" strokeWidth="4" />
+                {/* Lesson arc — green */}
+                {lessonFill > 0 && (
+                  <circle
+                    cx="47" cy="47" r={R}
+                    fill="none" stroke="#22c55e" strokeWidth="4" strokeLinecap="round"
+                    strokeDasharray={`${lessonFill} ${CIRC}`}
+                    transform="rotate(-90 47 47)"
+                  />
+                )}
+                {/* Comprehension arc — blue */}
+                {hasTC && compFill > 0 && (
+                  <circle
+                    cx="47" cy="47" r={R}
+                    fill="none" stroke="#3b82f6" strokeWidth="4" strokeLinecap="butt"
+                    strokeDasharray={`${compFill} ${CIRC}`}
+                    transform={`rotate(${compStartAngle} 47 47)`}
+                  />
+                )}
+                {/* Race arc — amber */}
+                {raceFill > 0 && (
+                  <circle
+                    cx="47" cy="47" r={R}
+                    fill="none" stroke="#f59e0b" strokeWidth="4" strokeLinecap="butt"
+                    strokeDasharray={`${raceFill} ${CIRC}`}
+                    transform={`rotate(${raceStartAngle} 47 47)`}
+                  />
+                )}
+              </svg>
+            )}
 
             {!isLocked && (
               <span className={`absolute -bottom-1 -right-1 min-w-[22px] h-[22px] rounded-full border-2 flex items-center justify-center text-[9px] font-extrabold px-1

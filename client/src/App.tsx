@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { MemoryRouter, Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { HomePage } from './pages/HomePage';
@@ -37,7 +37,8 @@ import { WeeklyWinnerModal } from './components/WeeklyWinnerModal';
 import { PwaInstallSheet } from './components/PwaInstallSheet';
 import {
   setDeferredPrompt, clearDeferredPrompt,
-  markInstalled, markShown, shouldAutoShow, shouldShowIOSPrompt, isIOS, triggerInstall,
+  markInstalled, markDismissed, shouldAutoShow, shouldShowIOSPrompt,
+  isIOS, isMobileDevice, triggerInstall,
 } from './lib/pwaInstall';
 
 function DialogueSessionRoute() {
@@ -296,38 +297,31 @@ function AppShell() {
   // ── PWA install prompt ────────────────────────────────────────────────────────
   const [showInstallSheet, setShowInstallSheet] = useState(false);
   const [isIOSInstall, setIsIOSInstall] = useState(false);
-  const installTimerRef  = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const prevUserIdRef    = useRef<string | null | undefined>(undefined);
+  const installShownRef = useRef(false); // show at most once per session
 
-  function scheduleInstall() {
-    if (installTimerRef.current) clearTimeout(installTimerRef.current);
-    installTimerRef.current = setTimeout(() => {
-      if (shouldAutoShow()) {
-        markShown();
-        setIsIOSInstall(false);
-        setShowInstallSheet(true);
-      }
-    }, 10_000);
-  }
-
-  // iOS: schedule the "Add to Home Screen" instructions sheet on mount
-  useEffect(() => {
-    if (!isIOS()) return;
-    const timer = setTimeout(() => {
-      if (shouldShowIOSPrompt()) {
-        markShown();
-        setIsIOSInstall(true);
-        setShowInstallSheet(true);
-      }
-    }, 10_000);
-    return () => clearTimeout(timer);
+  const maybeTriggerInstall = useCallback(() => {
+    if (installShownRef.current) return;
+    if (!isMobileDevice()) return;
+    if (useProgressStore.getState().completedLessons.length < 1) return;
+    if (isIOS()) {
+      if (!shouldShowIOSPrompt()) return;
+      installShownRef.current = true;
+      setIsIOSInstall(true);
+      setShowInstallSheet(true);
+    } else {
+      if (!shouldAutoShow()) return;
+      installShownRef.current = true;
+      setIsIOSInstall(false);
+      setShowInstallSheet(true);
+    }
   }, []);
 
+  // Listen for deferred prompt (Android/Chrome) and lesson completions
   useEffect(() => {
     const handlePrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e);
-      scheduleInstall();
+      maybeTriggerInstall();
     };
     const handleInstalled = () => {
       markInstalled();
@@ -339,30 +333,31 @@ function AppShell() {
     return () => {
       window.removeEventListener('beforeinstallprompt', handlePrompt);
       window.removeEventListener('appinstalled', handleInstalled);
-      if (installTimerRef.current) clearTimeout(installTimerRef.current);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [maybeTriggerInstall]);
 
-  // Trigger on new sign-in (userId: null → value)
+  // iOS: check on mount (no deferred prompt needed)
   useEffect(() => {
-    if (!isInitialized) return;
-    const prev = prevUserIdRef.current;
-    prevUserIdRef.current = userId ?? null;
-    if (prev === undefined) return; // first render
-    if (!prev && userId) scheduleInstall();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInitialized, userId]);
+    if (isIOS()) maybeTriggerInstall();
+  }, [maybeTriggerInstall]);
+
+  // Trigger after first lesson is completed
+  useEffect(() => {
+    const unsub = useProgressStore.subscribe((state) => {
+      if (state.completedLessons.length >= 1) maybeTriggerInstall();
+    });
+    return unsub;
+  }, [maybeTriggerInstall]);
 
   const handleInstallTap = async () => {
     const outcome = await triggerInstall();
     if (outcome === 'accepted') markInstalled();
-    else markShown();
+    else markDismissed();
     setShowInstallSheet(false);
   };
 
   const handleInstallDismiss = () => {
-    markShown();
+    markDismissed();
     setShowInstallSheet(false);
     setIsIOSInstall(false);
   };
