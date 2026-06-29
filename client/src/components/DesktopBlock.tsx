@@ -1,34 +1,28 @@
-const isMobile =
+import { useState } from 'react';
+
+export const isMobile =
   /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent) ||
   window.matchMedia('(max-width: 768px)').matches;
 
-export function DesktopBlock() {
-  if (isMobile) return null;
+export function DesktopBanner() {
+  const [dismissed, setDismissed] = useState(false);
+
+  if (isMobile || dismissed) return null;
 
   return (
-    <div style={{ width: '100vw', height: '100vh', overflow: 'hidden', position: 'relative' }}>
-      <img
-        src="/DesktopPageRedircting.png"
-        alt=""
-        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-      />
-      <div style={{
-        position: 'absolute',
-        bottom: '2.5%',
-        left: '50%',
-        transform: 'translateX(-50%)',
-        color: '#ffffff',
-        fontWeight: 800,
-        fontSize: 'clamp(1rem, 2vw, 1.75rem)',
-        letterSpacing: '0.02em',
-        whiteSpace: 'nowrap',
-        textShadow: '0 1px 4px rgba(0,0,0,0.4)',
-        pointerEvents: 'none',
-      }}>
-        www.slovakforforeigners.eu
-      </div>
+    <div className="w-full bg-amber-50 border-b border-amber-200 px-4 py-3 flex items-center gap-3 flex-none">
+      <span className="text-lg flex-none">📱</span>
+      <p className="text-sm text-amber-800 font-medium flex-1 leading-snug">
+        This app is designed for mobile. For the best experience, open{' '}
+        <span className="font-bold">slovakforforeigners.eu</span> on your phone.
+      </p>
+      <button
+        type="button"
+        onClick={() => setDismissed(true)}
+        className="flex-none text-xs font-bold text-amber-700 border border-amber-300 rounded-lg px-3 py-1.5 hover:bg-amber-100 active:scale-95 transition-all cursor-pointer whitespace-nowrap"
+      >
+        Continue anyway
+      </button>
     </div>
   );
 }
-
-export { isMobile };

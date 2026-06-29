@@ -22,7 +22,7 @@ import { DialogueSession } from './components/dialogue/DialogueSession';
 import { EmergencyDialogueSession } from './components/dialogue/EmergencyDialogueSession';
 import { SaveProgressModal, SOFT_DISMISS_KEY, REGRESSION_DISMISS_KEY } from './components/auth/SaveProgressModal';
 import { ConsentPopup } from './components/ConsentPopup';
-import { DesktopBlock, isMobile } from './components/DesktopBlock';
+import { DesktopBanner } from './components/DesktopBlock';
 import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
 import { useAuthStore } from './store/useAuthStore';
@@ -419,6 +419,7 @@ function AppShell() {
 
   return (
     <>
+      <DesktopBanner />
       <MemoryRouter>
         <AppRoutes />
         <Analytics />
@@ -467,7 +468,6 @@ function AppShell() {
 }
 
 function App() {
-  if (!isMobile) return <DesktopBlock />;
   return <AppShell />;
 }
 
