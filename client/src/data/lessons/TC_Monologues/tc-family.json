@@ -4,40 +4,335 @@
   "stageName": "",
   "title": "Family — Monologue",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Sara: Peter, pozri. Toto je moja rodina. Peter: Kto je toto na fotke? Sara: To je moja mama a toto je môj otec. Bývajú v Taliansku. Peter: A toto sú tvoji súrodenci? Sara: Áno. Toto je môj brat a toto je moja sestra. Peter: Máš veľkú rodinu. Sara: Áno. Mám aj babičku, dedka, tetu a strýka. Peter: A deti? Máš deti? Sara: Nie. Som slobodná. Nemám manžela a nemám deti. Peter: Ja som ženatý. Moja manželka sa volá Anna. Máme syna a dcéru. Sara: A tvoji svokrovci? Peter: Moja svokra a môj svokor bývajú blízko. Prídu v nedeľu."
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Family.mp3",
+      "conversationTranscriptSk": "Sara: Peter, pozri. Toto je moja rodina. Peter: Kto je toto na fotke? Sara: To je moja mama a toto je môj otec. Bývajú v Taliansku. Peter: A toto sú tvoji súrodenci? Sara: Áno. Toto je môj brat a toto je moja sestra. Peter: Máš veľkú rodinu. Sara: Áno. Mám aj babičku, dedka, tetu a strýka. Peter: A deti? Máš deti? Sara: Nie. Som slobodná. Nemám manžela a nemám deti. Peter: Ja som ženatý. Moja manželka sa volá Anna. Máme syna a dcéru. Sara: A tvoji svokrovci? Peter: Moja svokra a môj svokor bývajú blízko. Prídu v nedeľu.",
+      "speakers": [
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        },
+        {
+          "name": "Peter",
+          "avatar": "👨"
+        }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "moja rodina",
+        "na fotke",
+        "moja mama",
+        "môj otec",
+        "Bývajú v Taliansku",
+        "tvoji súrodenci",
+        "môj brat",
+        "moja sestra",
+        "veľkú rodinu",
+        "babičku",
+        "dedka",
+        "tetu",
+        "strýka",
+        "Máš deti?",
+        "Som slobodná",
+        "Nemám manžela",
+        "nemám deti",
+        "Ja som ženatý",
+        "Moja manželka",
+        "syna a dcéru",
+        "tvoji svokrovci",
+        "Moja svokra",
+        "môj svokor",
+        "Prídu v nedeľu"
+      ],
+      "distractorWords": [
+        "môj dedko je lekár",
+        "mám zelené oči",
+        "moja dcéra je mačka",
+        "som rozvedená",
+        "nemám súrodencov",
+        "moja teta je svokra"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Family.mp3",
+      "conversationTranscriptSk": "Sara: Peter, pozri. Toto je moja rodina. Peter: Kto je toto na fotke? Sara: To je moja mama a toto je môj otec. Bývajú v Taliansku. Peter: A toto sú tvoji súrodenci? Sara: Áno. Toto je môj brat a toto je moja sestra. Peter: Máš veľkú rodinu. Sara: Áno. Mám aj babičku, dedka, tetu a strýka. Peter: A deti? Máš deti? Sara: Nie. Som slobodná. Nemám manžela a nemám deti. Peter: Ja som ženatý. Moja manželka sa volá Anna. Máme syna a dcéru. Sara: A tvoji svokrovci? Peter: Moja svokra a môj svokor bývajú blízko. Prídu v nedeľu.",
+      "speakers": [
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        },
+        {
+          "name": "Peter",
+          "avatar": "👨"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Sara says \"Toto je moja rodina.\" What is she showing Peter?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Her family",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Her school",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Her wallet",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Toto je moja rodina\" = This is my family. Rodina is the key family word in this scene.",
+          "reviewPair": {
+            "slovak": "Moja rodina",
+            "english": "My family"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Who are in the first picture Sara explains?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Her aunt and uncle",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Her mother and father",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Her son and daughter",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Sara says: \"To je moja mama a toto je môj otec\" = This is my mother and this is my father.",
+          "reviewPair": {
+            "slovak": "Mama / otec",
+            "english": "Mother / father"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Peter asks \"A toto sú tvoji súrodenci?\" What is he asking about?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Sara’s parents",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Sara’s in-laws",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Sara’s siblings",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Súrodenci\" = siblings. Sara answers with \"môj brat\" and \"moja sestra\" = my brother and my sister.",
+          "reviewPair": {
+            "slovak": "Súrodenci / brat / sestra",
+            "english": "Siblings / brother / sister"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Which extended family members does Sara mention?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Grandma, grandpa, aunt, and uncle",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Mother-in-law and father-in-law",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Husband, son, and daughter",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Sara says: \"Mám aj babičku, dedka, tetu a strýka\" = I also have a grandma, grandpa, aunt, and uncle.",
+          "reviewPair": {
+            "slovak": "Babička / dedko / teta / strýko",
+            "english": "Grandma / grandpa / aunt / uncle"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "What does Sara say about her relationship status and children?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "She is married and has two children",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "She is divorced and has one daughter",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "She is single and has no husband or children",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Som slobodná. Nemám manžela a nemám deti\" = I am single. I do not have a husband and I do not have children.",
+          "reviewPair": {
+            "slovak": "Som slobodná. Nemám deti.",
+            "english": "I am single. I do not have children."
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "What does Peter say about Anna and his children?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Anna is his sister, and they have no children",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Anna is his wife, and they have a son and daughter",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Anna is his mother-in-law, and they have cousins",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Peter says: \"Moja manželka sa volá Anna. Máme syna a dcéru\" = My wife is called Anna. We have a son and a daughter.",
+          "reviewPair": {
+            "slovak": "Manželka / syn / dcéra",
+            "english": "Wife / son / daughter"
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "This is my family. Who is this in the picture?",
+          "targetSk": [
+            "Toto je moja rodina",
+            "Kto je toto na fotke?"
+          ],
+          "bankChunks": [
+            "Toto je moja rodina",
+            "Kto je toto na fotke?",
+            "Moja manželka sa volá Anna"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "This is my mother and this is my father.",
+          "targetSk": [
+            "To je moja mama",
+            "a toto je môj otec"
+          ],
+          "bankChunks": [
+            "To je moja mama",
+            "a toto je môj otec",
+            "a toto je moja dcéra"
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "This is my brother and this is my sister.",
+          "targetSk": [
+            "Toto je môj brat",
+            "a toto je moja sestra"
+          ],
+          "bankChunks": [
+            "Toto je môj brat",
+            "a toto je moja sestra",
+            "a toto je môj syn"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "I also have a grandma, grandpa, aunt, and uncle.",
+          "targetSk": [
+            "Mám aj babičku",
+            "dedka",
+            "tetu a strýka"
+          ],
+          "bankChunks": [
+            "Mám aj babičku",
+            "dedka",
+            "tetu a strýka",
+            "syna a dcéru"
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "I am single. I do not have a husband and I do not have children.",
+          "targetSk": [
+            "Som slobodná",
+            "Nemám manžela",
+            "a nemám deti"
+          ],
+          "bankChunks": [
+            "Som slobodná",
+            "Nemám manžela",
+            "a nemám deti",
+            "Ja som ženatý"
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "My wife is called Anna. We have a son and a daughter.",
+          "targetSk": [
+            "Moja manželka sa volá Anna",
+            "Máme syna",
+            "a dcéru"
+          ],
+          "bankChunks": [
+            "Moja manželka sa volá Anna",
+            "Máme syna",
+            "a dcéru",
+            "Moja svokra býva blízko"
+          ]
+        }
+      ]
     },
     {
       "id": "ex5",

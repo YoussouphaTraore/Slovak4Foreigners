@@ -4,40 +4,335 @@
   "stageName": "",
   "title": "Colors — Monologue",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Marek: Ahoj. Volám sa Marek. Mám hnedé vlasy a modré oči. Moja obľúbená farba je modrá. Páči sa mi aj šedá. Môj pes Rex je hnedý zlatý retriever. Má čierne oči a bielu hruď. Nepáči sa mi žltá. Sara: Ahoj. Volám sa Sara. Mám blond vlasy a hnedé oči. Moja mačka Luna je biela. Má zelené oči. Moja obľúbená farba je ružová. Ale páči sa mi aj červená. Nepáči sa mi oranžová."
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Colors.mp3",
+      "conversationTranscriptSk": "Marek: Ahoj. Volám sa Marek. Mám hnedé vlasy a modré oči. Moja obľúbená farba je modrá. Páči sa mi aj šedá. Môj pes Rex je hnedý zlatý retriever. Má čierne oči a bielu hruď. Nepáči sa mi žltá. Sara: Ahoj. Volám sa Sara. Mám blond vlasy a hnedé oči. Moja mačka Luna je biela. Má zelené oči. Moja obľúbená farba je ružová. Ale páči sa mi aj červená. Nepáči sa mi oranžová.",
+      "speakers": [
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "Volám sa Marek",
+        "hnedé vlasy",
+        "modré oči",
+        "obľúbená farba",
+        "modrá",
+        "šedá",
+        "pes Rex",
+        "hnedý zlatý retriever",
+        "čierne oči",
+        "bielu hruď",
+        "žltá",
+        "Volám sa Sara",
+        "blond vlasy",
+        "hnedé oči",
+        "mačka Luna",
+        "biela",
+        "zelené oči",
+        "ružová",
+        "červená",
+        "oranžová"
+      ],
+      "distractorWords": [
+        "zelená taška",
+        "čierna peňaženka",
+        "biele vlasy",
+        "modrá mačka",
+        "žlté oči",
+        "hnedá obálka"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Colors.mp3",
+      "conversationTranscriptSk": "Marek: Ahoj. Volám sa Marek. Mám hnedé vlasy a modré oči. Moja obľúbená farba je modrá. Páči sa mi aj šedá. Môj pes Rex je hnedý zlatý retriever. Má čierne oči a bielu hruď. Nepáči sa mi žltá. Sara: Ahoj. Volám sa Sara. Mám blond vlasy a hnedé oči. Moja mačka Luna je biela. Má zelené oči. Moja obľúbená farba je ružová. Ale páči sa mi aj červená. Nepáči sa mi oranžová.",
+      "speakers": [
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Marek says \"Mám hnedé vlasy a modré oči.\" What does this mean?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "I have black hair and green eyes",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "I have brown hair and blue eyes",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "I have blond hair and brown eyes",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Mám hnedé vlasy a modré oči\" = I have brown hair and blue eyes. Hnedé vlasy and modré oči come from Describing Colors.",
+          "reviewPair": {
+            "slovak": "Hnedé vlasy / modré oči",
+            "english": "Brown hair / blue eyes"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "What does Marek say about blue and grey?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "He does not like blue, but he likes yellow",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "His dog is blue and grey",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "His favorite color is blue, and he also likes grey",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "\"Moja obľúbená farba je modrá. Páči sa mi aj šedá\" = My favorite color is blue. I also like grey.",
+          "reviewPair": {
+            "slovak": "Modrá / šedá",
+            "english": "Blue / grey"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "How does Marek describe Rex?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Rex is a brown golden retriever with black eyes and a white chest",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Rex is a white cat with green eyes",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Rex is a black dog with yellow eyes",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Marek says: \"Môj pes Rex je hnedý zlatý retriever. Má čierne oči a bielu hruď.\" Hnedý = brown, čierne = black, bielu = white.",
+          "reviewPair": {
+            "slovak": "Hnedý pes / čierne oči / bielu hruď",
+            "english": "Brown dog / black eyes / white chest"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Sara says \"Mám blond vlasy a hnedé oči.\" What does this mean?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "I have red hair and blue eyes",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "I have blond hair and brown eyes",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "I have brown hair and green eyes",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Mám blond vlasy a hnedé oči\" = I have blond hair and brown eyes. Blond vlasy and hnedé oči are description phrases.",
+          "reviewPair": {
+            "slovak": "Blond vlasy / hnedé oči",
+            "english": "Blond hair / brown eyes"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "How does Sara describe Luna?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Luna is brown and has black eyes",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Luna is orange and has blue eyes",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Luna is white and has green eyes",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Sara says: \"Moja mačka Luna je biela. Má zelené oči\" = My cat Luna is white. She has green eyes.",
+          "reviewPair": {
+            "slovak": "Biela / zelené oči",
+            "english": "White / green eyes"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Which colors does Sara like, and which color does she not like?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "She likes pink and red, but she does not like orange",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "She likes yellow and grey, but she does not like blue",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "She likes orange and black, but she does not like white",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "\"Moja obľúbená farba je ružová. Ale páči sa mi aj červená. Nepáči sa mi oranžová\" = My favorite color is pink. I also like red. I do not like orange.",
+          "reviewPair": {
+            "slovak": "Ružová / červená / oranžová",
+            "english": "Pink / red / orange"
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "My name is Marek. I have brown hair and blue eyes.",
+          "targetSk": [
+            "Volám sa Marek",
+            "Mám hnedé vlasy",
+            "a modré oči"
+          ],
+          "bankChunks": [
+            "Volám sa Marek",
+            "Mám hnedé vlasy",
+            "a modré oči",
+            "Mám blond vlasy"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "My favorite color is blue. I also like grey.",
+          "targetSk": [
+            "Moja obľúbená farba",
+            "je modrá",
+            "Páči sa mi aj šedá"
+          ],
+          "bankChunks": [
+            "Moja obľúbená farba",
+            "je modrá",
+            "Páči sa mi aj šedá",
+            "Nepáči sa mi žltá"
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "My dog Rex is brown. He has black eyes and a white chest.",
+          "targetSk": [
+            "Môj pes Rex je hnedý",
+            "Má čierne oči",
+            "a bielu hruď"
+          ],
+          "bankChunks": [
+            "Môj pes Rex je hnedý",
+            "Má čierne oči",
+            "a bielu hruď",
+            "Moja mačka Luna je biela"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "My name is Sara. I have blond hair and brown eyes.",
+          "targetSk": [
+            "Volám sa Sara",
+            "Mám blond vlasy",
+            "a hnedé oči"
+          ],
+          "bankChunks": [
+            "Volám sa Sara",
+            "Mám blond vlasy",
+            "a hnedé oči",
+            "a modré oči"
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "My cat Luna is white. She has green eyes.",
+          "targetSk": [
+            "Moja mačka Luna je biela",
+            "Má zelené oči"
+          ],
+          "bankChunks": [
+            "Moja mačka Luna je biela",
+            "Má zelené oči",
+            "Má čierne oči"
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "My favorite color is pink. I also like red. I do not like orange.",
+          "targetSk": [
+            "Moja obľúbená farba je ružová",
+            "Páči sa mi aj červená",
+            "Nepáči sa mi oranžová"
+          ],
+          "bankChunks": [
+            "Moja obľúbená farba je ružová",
+            "Páči sa mi aj červená",
+            "Nepáči sa mi oranžová",
+            "Nepáči sa mi žltá"
+          ]
+        }
+      ]
     },
     {
       "id": "ex5",
