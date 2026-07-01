@@ -133,7 +133,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
           </span>
           {slovAfter}
         </p>
-        {/* English translation â€” blank stays as ___ */}
+        {/* English translation - blank stays as ___ */}
         {engBefore !== undefined && (
           <p className="text-sm italic text-gray-400 mt-2 leading-relaxed">
             {engBefore}
@@ -155,7 +155,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
               className={getChoiceStyle(choice)}
             >
               {toSlovakLabel(choice)}
-              {feedback !== null && isCorrectChoice(choice) && ' âœ“'}
+              {feedback !== null && isCorrectChoice(choice) && ' \u2713'}
             </button>
           ))}
         </div>
@@ -171,7 +171,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
           <div className="flex items-start justify-between gap-3">
             <div className="flex-1 min-w-0">
               <p className={`font-semibold text-sm mb-1 ${feedback === 'correct' ? 'text-brand-green' : 'text-brand-red'}`}>
-                {feedback === 'correct' ? 'âœ“ Correct!' : 'âœ— Not quite'}
+                {feedback === 'correct' ? '\u2713 Correct!' : '\u2715 Not quite'}
               </p>
               <p className={`text-xs leading-snug ${feedback === 'correct' ? 'text-green-700' : 'text-red-700'}`}>
                 {feedback === 'correct'

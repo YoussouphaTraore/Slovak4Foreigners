@@ -10,6 +10,7 @@ import s1Greetings from './S1_Greetings/Greetings.json';
 import s1HowAreYou from './S1_Greetings/How-Are-You.json';
 import s1DontUnderstand from './S1_Dont_Understand/I-Dont-Understand.json';
 import s1DontUnderstand2 from './S1_Dont_Understand/Make-It-Clearer.json';
+import s1QuestionWords from './S1_Basic_Questions/Question-Words.json';
 import s1WhoIAm from './S1_Who_I_Am/Name-Origin.json';
 import s1WhoIAm2 from './S1_Who_I_Am/Country-of-Origin.json';
 import s1DescribingYourself from './S1_Who_I_Am/Gender-Age-Status.json';
@@ -31,6 +32,7 @@ import s1TeenNumbers from './S1_Numbers/Teen-Numbers.json';
 import s1BiggerNumbers from './S1_Numbers/Bigger-Numbers.json';
 import s1Order15 from './S1_Numbers/Order-1-5.json';
 import s1Order610 from './S1_Numbers/Order-6-10.json';
+import s1SayYourAge from './S1_Numbers/Say-Your-Age.json';
 import s1PricesCost from './S1_Money/Prices-Cost.json';
 import s1Paying from './S1_Money/Paying.json';
 import s1BillsReceipts from './S1_Money/Bills-Receipts.json';
@@ -107,11 +109,13 @@ import tcFirstWords from './TC_Monologues/tc-first-words.json';
 import tcCommonVerbs from './TC_Monologues/tc-common-verbs.json';
 import tcGreetings from './TC_Monologues/tc-greetings.json';
 import tcDontUnderstand from './TC_Monologues/tc-dont-understand.json';
+import tcBasicQuestions from './TC_Monologues/tc-basic-questions.json';
 import tcWhoIAm from './TC_Monologues/tc-who-i-am.json';
 import tcBody from './TC_Monologues/tc-body.json';
 import tcColors from './TC_Monologues/tc-colors.json';
 import tcFamily from './TC_Monologues/tc-family.json';
 import tcNumbers from './TC_Monologues/tc-numbers.json';
+import tcSayYourAge from './TC_Monologues/tc-say-your-age.json';
 import tcMoney from './TC_Monologues/tc-money.json';
 import tcTime from './TC_Monologues/tc-time.json';
 import tcCalendar from './TC_Monologues/tc-calendar.json';
@@ -149,6 +153,7 @@ export const lessons: Lesson[] = [
   s1HowAreYou as unknown as Lesson,
   s1DontUnderstand as unknown as Lesson,
   s1DontUnderstand2 as unknown as Lesson,
+  s1QuestionWords as unknown as Lesson,
   s1WhoIAm as unknown as Lesson,
   s1WhoIAm2 as unknown as Lesson,
   s1DescribingYourself as unknown as Lesson,
@@ -170,6 +175,7 @@ export const lessons: Lesson[] = [
   s1BiggerNumbers as unknown as Lesson,
   s1Order15 as unknown as Lesson,
   s1Order610 as unknown as Lesson,
+  s1SayYourAge as unknown as Lesson,
   s1PricesCost as unknown as Lesson,
   s1Paying as unknown as Lesson,
   s1BillsReceipts as unknown as Lesson,
@@ -246,11 +252,13 @@ export const lessons: Lesson[] = [
   tcCommonVerbs as unknown as Lesson,
   tcGreetings as unknown as Lesson,
   tcDontUnderstand as unknown as Lesson,
+  tcBasicQuestions as unknown as Lesson,
   tcWhoIAm as unknown as Lesson,
   tcBody as unknown as Lesson,
   tcColors as unknown as Lesson,
   tcFamily as unknown as Lesson,
   tcNumbers as unknown as Lesson,
+  tcSayYourAge as unknown as Lesson,
   tcMoney as unknown as Lesson,
   tcTime as unknown as Lesson,
   tcCalendar as unknown as Lesson,

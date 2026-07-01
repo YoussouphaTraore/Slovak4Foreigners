@@ -11,6 +11,7 @@ export const stage1Topics: LessonTopic[] = [
   { id: 'topic-common-verbs',    title: 'Common Verbs',       icon: '\u{26A1}',  lessonIds: ['s1-to-be', 's1-need-want', 's1-speak-understand', 's1-moving-living', 's1-food-money-actions'] },
   { id: 'topic-greetings',       title: 'Greetings',          icon: '\u{1F44B}', lessonIds: ['s1-greetings', 's1-how-are-you'] },
   { id: 'topic-dont-understand', title: "I Don't Understand", icon: '\u{1F937}', lessonIds: ['s1-i-dont-understand', 's1-make-it-clearer'] },
+  { id: 'topic-basic-questions', title: 'Basic Questions',    icon: '\u{2753}',  lessonIds: ['s1-question-words'] },
 
   // Block 2 - Identity
   { id: 'topic-who-i-am',            title: 'About Me',           icon: '\u{1F64B}', lessonIds: ['s1-name-origin', 's1-country-of-origin', 's1-gender-age-status', 's1-height-appearance'] },
@@ -22,8 +23,9 @@ export const stage1Topics: LessonTopic[] = [
   { id: 'topic-numbers', title: 'Numbers',         icon: '\u{1F522}', lessonIds: ['s1-numbers-0-5', 's1-numbers-6-10', 's1-teen-numbers', 's1-bigger-numbers', 's1-order-1-5', 's1-order-6-10'] },
   { id: 'topic-money',   title: 'Money',           icon: '\u{1F4B6}', lessonIds: ['s1-prices-cost', 's1-paying', 's1-bills-receipts'] },
   { id: 'topic-time',     title: 'Time',     icon: '\u{1F551}', lessonIds: ['s1-parts-of-day', 's1-clock-time', 's1-today-plans'] },
-  { id: 'topic-calendar', title: 'Calendar', icon: '\u{1F4C5}', lessonIds: ['s1-days', 's1-weeks', 's1-weeks-in-month', 's1-months-jan-jun', 's1-months-jul-dec', 's1-talking-about-months'] },
   { id: 'topic-speaking-time', title: 'Speaking in Time', icon: '\u{23F3}', lessonIds: ['s1-speaking-future', 's1-speaking-past'] },
+  { id: 'topic-calendar', title: 'Calendar', icon: '\u{1F4C5}', lessonIds: ['s1-days', 's1-weeks', 's1-weeks-in-month', 's1-months-jan-jun', 's1-months-jul-dec', 's1-talking-about-months'] },
+  { id: 'topic-say-your-age', title: 'Say Your Age',     icon: '\u{1F382}', lessonIds: ['s1-say-your-age'] },
   { id: 'topic-weather',  title: 'Weather',  icon: '\u{1F327}', lessonIds: ['s1-weather-words', 's1-weather-outside'] },
 
   // Block 4 - Where You Are
@@ -61,9 +63,9 @@ export const topicById: Record<string, LessonTopic> = Object.fromEntries(
   stage1Topics.map(t => [t.id, t]),
 );
 
-export const block1TopicIds = ['topic-first-words', 'topic-common-verbs', 'topic-greetings', 'topic-dont-understand'];
+export const block1TopicIds = ['topic-first-words', 'topic-common-verbs', 'topic-greetings', 'topic-dont-understand', 'topic-basic-questions'];
 export const block2TopicIds = ['topic-who-i-am', 'topic-body', 'topic-colors', 'topic-family'];
-export const block3TopicIds = ['topic-numbers', 'topic-money', 'topic-time', 'topic-speaking-time', 'topic-calendar', 'topic-weather'];
+export const block3TopicIds = ['topic-numbers', 'topic-money', 'topic-time', 'topic-speaking-time', 'topic-calendar', 'topic-say-your-age', 'topic-weather'];
 export const block4TopicIds = ['topic-address', 'topic-directions', 'topic-positions'];
 export const block5TopicIds = ['topic-emergency', 'topic-medical'];
 export const block6TopicIds = ['topic-food', 'topic-ordering-food', 'topic-supermarket'];

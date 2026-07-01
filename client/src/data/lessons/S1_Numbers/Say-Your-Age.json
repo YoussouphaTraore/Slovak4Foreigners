@@ -1,0 +1,322 @@
+{
+  "id": "s1-say-your-age",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Say Your Age",
+  "description": "Ask and answer how old someone is",
+  "icon": "🎂",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Say Your Age",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "Koľko máš rokov?",
+          "english": "How old are you? (informal)"
+        },
+        {
+          "slovak": "Koľko máte rokov?",
+          "english": "How old are you? (formal)"
+        },
+        {
+          "slovak": "Mám 25 rokov.",
+          "english": "I am 25 years old."
+        },
+        {
+          "slovak": "Má 10 rokov.",
+          "english": "He/she is 10 years old."
+        },
+        {
+          "slovak": "Koľko rokov má vaše dieťa?",
+          "english": "How old is your child?"
+        },
+        {
+          "slovak": "Moja dcéra má 6 rokov.",
+          "english": "My daughter is 6 years old."
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Koľko máš rokov?",
+          "english": "How old are you? (informal)"
+        },
+        {
+          "slovak": "Koľko máte rokov?",
+          "english": "How old are you? (formal)"
+        },
+        {
+          "slovak": "Mám 25 rokov.",
+          "english": "I am 25 years old."
+        },
+        {
+          "slovak": "Má 10 rokov.",
+          "english": "He/she is 10 years old."
+        },
+        {
+          "slovak": "Koľko rokov má vaše dieťa?",
+          "english": "How old is your child?"
+        },
+        {
+          "slovak": "Moja dcéra má 6 rokov.",
+          "english": "My daughter is 6 years old."
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Koľko máš rokov?",
+          "english": "How old are you? (informal)"
+        },
+        {
+          "slovak": "Koľko máte rokov?",
+          "english": "How old are you? (formal)"
+        },
+        {
+          "slovak": "Mám 25 rokov.",
+          "english": "I am 25 years old."
+        },
+        {
+          "slovak": "Má 10 rokov.",
+          "english": "He/she is 10 years old."
+        },
+        {
+          "slovak": "Koľko rokov má vaše dieťa?",
+          "english": "How old is your child?"
+        },
+        {
+          "slovak": "Moja dcéra má 6 rokov.",
+          "english": "My daughter is 6 years old."
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Koľko máš rokov?",
+          "english": "How old are you? (informal)"
+        },
+        {
+          "slovak": "Koľko máte rokov?",
+          "english": "How old are you? (formal)"
+        },
+        {
+          "slovak": "Mám 25 rokov.",
+          "english": "I am 25 years old."
+        },
+        {
+          "slovak": "Má 10 rokov.",
+          "english": "He/she is 10 years old."
+        },
+        {
+          "slovak": "Koľko rokov má vaše dieťa?",
+          "english": "How old is your child?"
+        },
+        {
+          "slovak": "Moja dcéra má 6 rokov.",
+          "english": "My daughter is 6 years old."
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Koľko máš rokov?",
+          "english": "How old are you? (informal)"
+        },
+        {
+          "slovak": "Koľko máte rokov?",
+          "english": "How old are you? (formal)"
+        },
+        {
+          "slovak": "Mám 25 rokov.",
+          "english": "I am 25 years old."
+        },
+        {
+          "slovak": "Má 10 rokov.",
+          "english": "He/she is 10 years old."
+        },
+        {
+          "slovak": "Koľko rokov má vaše dieťa?",
+          "english": "How old is your child?"
+        },
+        {
+          "slovak": "Moja dcéra má 6 rokov.",
+          "english": "My daughter is 6 years old."
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You ask a friend their age. What do you say?",
+          "instruction": "Choose the informal question",
+          "choices": [
+            "Koľko máš rokov?",
+            "Koľko máte rokov?",
+            "Mám 25 rokov.",
+            "Má 10 rokov."
+          ],
+          "answer": "Koľko máš rokov?",
+          "answerMeaning": "Koľko máš rokov? = How old are you? Use máš with one person you know well."
+        },
+        {
+          "situation": "You ask an adult at an office their age politely. What do you say?",
+          "instruction": "Choose the formal question",
+          "choices": [
+            "Koľko máš rokov?",
+            "Koľko máte rokov?",
+            "Koľko rokov má vaše dieťa?",
+            "Moja dcéra má 6 rokov."
+          ],
+          "answer": "Koľko máte rokov?",
+          "answerMeaning": "Koľko máte rokov? = How old are you? Use máte for formal or polite speech."
+        },
+        {
+          "situation": "You want to say your age: 25. What do you say?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Mám 25 rokov.",
+            "Má 10 rokov.",
+            "Mám 6 rokov.",
+            "Koľko máte rokov?"
+          ],
+          "answer": "Mám 25 rokov.",
+          "answerMeaning": "Mám 25 rokov = I am 25 years old. Slovak uses I have + years."
+        },
+        {
+          "situation": "A parent says their daughter is 6 years old. Which sentence fits?",
+          "instruction": "Choose the correct sentence",
+          "choices": [
+            "Moja dcéra má 6 rokov.",
+            "Mám 25 rokov.",
+            "Koľko máš rokov?",
+            "Má 10 rokov."
+          ],
+          "answer": "Moja dcéra má 6 rokov.",
+          "answerMeaning": "Moja dcéra má 6 rokov = My daughter is 6 years old."
+        },
+        {
+          "situation": "You need to ask how old someone’s child is. What do you say?",
+          "instruction": "Choose the child-age question",
+          "choices": [
+            "Koľko rokov má vaše dieťa?",
+            "Koľko máte rokov?",
+            "Mám 25 rokov.",
+            "Moja dcéra má 6 rokov."
+          ],
+          "answer": "Koľko rokov má vaše dieťa?",
+          "answerMeaning": "Koľko rokov má vaše dieťa? = How old is your child?"
+        },
+        {
+          "situation": "You want to say a child is 10 years old. Which phrase works?",
+          "instruction": "Choose the correct answer",
+          "choices": [
+            "Má 10 rokov.",
+            "Mám 25 rokov.",
+            "Koľko máš rokov?",
+            "Koľko rokov má vaše dieťa?"
+          ],
+          "answer": "Má 10 rokov.",
+          "answerMeaning": "Má 10 rokov = He/she is 10 years old."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Koľko ___ rokov?",
+          "choices": [
+            "máš",
+            "mám",
+            "má",
+            "ste"
+          ],
+          "answer": "máš",
+          "answerMeaning": "Koľko máš rokov? = How old are you? (informal)"
+        },
+        {
+          "sentence": "Koľko ___ rokov?",
+          "choices": [
+            "máte",
+            "máš",
+            "mám",
+            "má"
+          ],
+          "answer": "máte",
+          "answerMeaning": "Koľko máte rokov? = How old are you? (formal)"
+        },
+        {
+          "sentence": "___ 25 rokov.",
+          "choices": [
+            "Mám",
+            "Má",
+            "Máš",
+            "Máte"
+          ],
+          "answer": "Mám",
+          "answerMeaning": "Mám 25 rokov = I am 25 years old."
+        },
+        {
+          "sentence": "Dieťa ___ 10 rokov.",
+          "choices": [
+            "má",
+            "mám",
+            "máš",
+            "máte"
+          ],
+          "answer": "má",
+          "answerMeaning": "Dieťa má 10 rokov = The child is 10 years old."
+        },
+        {
+          "sentence": "Moja dcéra ___ 6 rokov.",
+          "choices": [
+            "má",
+            "mám",
+            "máš",
+            "máte"
+          ],
+          "answer": "má",
+          "answerMeaning": "Moja dcéra má 6 rokov = My daughter is 6 years old."
+        },
+        {
+          "sentence": "Koľko rokov má vaše ___?",
+          "choices": [
+            "dieťa",
+            "rokov",
+            "dcéra",
+            "mám"
+          ],
+          "answer": "dieťa",
+          "answerMeaning": "Koľko rokov má vaše dieťa? = How old is your child?"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

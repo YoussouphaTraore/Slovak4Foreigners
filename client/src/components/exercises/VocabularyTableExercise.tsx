@@ -26,12 +26,12 @@ export function VocabularyTableExercise({ exercise, onDone }: Props) {
   // For small tables require all rows; for large tables cap at MAX_REQUIRED
   const required = Math.min(MAX_REQUIRED, exercise.rows.length);
 
-  const handleTap = (label: string, slovak: string) => {
+  const handleTap = (id: string, slovak: string) => {
     speak(slovak);
     setHeard((prev) => {
-      if (prev.has(label)) return prev;
+      if (prev.has(id)) return prev;
       const next = new Set(prev);
-      next.add(label);
+      next.add(id);
       return next;
     });
   };
@@ -70,12 +70,13 @@ export function VocabularyTableExercise({ exercise, onDone }: Props) {
         </div>
 
         {exercise.rows.map((row) => {
-          const tapped = heard.has(row.label);
+          const id = row.label ?? row.slovak;
+          const tapped = heard.has(id);
           return (
             <button
-              key={row.label}
+              key={id}
               type="button"
-              onClick={() => handleTap(row.label, row.slovak)}
+              onClick={() => handleTap(id, row.slovak)}
               className={`grid grid-cols-[minmax(80px,_120px)_1fr_1fr] gap-x-3 items-center rounded-2xl border-2 px-3 py-3.5 text-left active:scale-[0.98] transition-all cursor-pointer shadow-sm ${
                 tapped
                   ? 'bg-green-50 border-brand-green'

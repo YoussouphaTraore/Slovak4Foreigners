@@ -1,0 +1,328 @@
+{
+  "id": "s1-question-words",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Question Words",
+  "description": "Ask basic who, what, where, when, why, and how questions",
+  "icon": "❓",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Question Words",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "Kto?",
+          "english": "Who?"
+        },
+        {
+          "slovak": "Čo?",
+          "english": "What?"
+        },
+        {
+          "slovak": "Kde?",
+          "english": "Where?"
+        },
+        {
+          "slovak": "Kedy?",
+          "english": "When?"
+        },
+        {
+          "slovak": "Prečo?",
+          "english": "Why?"
+        },
+        {
+          "slovak": "Ako?",
+          "english": "How?"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "Kto?",
+          "english": "Who?"
+        },
+        {
+          "slovak": "Čo?",
+          "english": "What?"
+        },
+        {
+          "slovak": "Kde?",
+          "english": "Where?"
+        },
+        {
+          "slovak": "Kedy?",
+          "english": "When?"
+        },
+        {
+          "slovak": "Prečo?",
+          "english": "Why?"
+        },
+        {
+          "slovak": "Ako?",
+          "english": "How?"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "Kto?",
+          "english": "Who?"
+        },
+        {
+          "slovak": "Čo?",
+          "english": "What?"
+        },
+        {
+          "slovak": "Kde?",
+          "english": "Where?"
+        },
+        {
+          "slovak": "Kedy?",
+          "english": "When?"
+        },
+        {
+          "slovak": "Prečo?",
+          "english": "Why?"
+        },
+        {
+          "slovak": "Ako?",
+          "english": "How?"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "Kto?",
+          "english": "Who?"
+        },
+        {
+          "slovak": "Čo?",
+          "english": "What?"
+        },
+        {
+          "slovak": "Kde?",
+          "english": "Where?"
+        },
+        {
+          "slovak": "Kedy?",
+          "english": "When?"
+        },
+        {
+          "slovak": "Prečo?",
+          "english": "Why?"
+        },
+        {
+          "slovak": "Ako?",
+          "english": "How?"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "Kto?",
+          "english": "Who?"
+        },
+        {
+          "slovak": "Čo?",
+          "english": "What?"
+        },
+        {
+          "slovak": "Kde?",
+          "english": "Where?"
+        },
+        {
+          "slovak": "Kedy?",
+          "english": "When?"
+        },
+        {
+          "slovak": "Prečo?",
+          "english": "Why?"
+        },
+        {
+          "slovak": "Ako?",
+          "english": "How?"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You point at a person and ask who it is. Which word do you need?",
+          "instruction": "Choose the question word",
+          "choices": [
+            "Kto?",
+            "Čo?",
+            "Kde?",
+            "Ako?"
+          ],
+          "answer": "Kto?",
+          "answerMeaning": "Kto? = Who? Use it when asking about a person."
+        },
+        {
+          "situation": "You point at a thing and ask what it is. Which word do you need?",
+          "instruction": "Choose the question word",
+          "choices": [
+            "Čo?",
+            "Kto?",
+            "Kedy?",
+            "Prečo?"
+          ],
+          "answer": "Čo?",
+          "answerMeaning": "Čo? = What? Use it when asking about a thing or action."
+        },
+        {
+          "situation": "You need to ask where the toilet is. Which word starts the question?",
+          "instruction": "Choose the question word",
+          "choices": [
+            "Kde?",
+            "Kedy?",
+            "Ako?",
+            "Prečo?"
+          ],
+          "answer": "Kde?",
+          "answerMeaning": "Kde? = Where? Example: Kde je toaleta? = Where is the toilet?"
+        },
+        {
+          "situation": "You want to ask when someone is coming. Which word do you need?",
+          "instruction": "Choose the question word",
+          "choices": [
+            "Kedy?",
+            "Kde?",
+            "Kto?",
+            "Čo?"
+          ],
+          "answer": "Kedy?",
+          "answerMeaning": "Kedy? = When? Example: Kedy prídeš? = When will you come?"
+        },
+        {
+          "situation": "You want to ask why something happened. Which word do you need?",
+          "instruction": "Choose the question word",
+          "choices": [
+            "Prečo?",
+            "Ako?",
+            "Kde?",
+            "Kto?"
+          ],
+          "answer": "Prečo?",
+          "answerMeaning": "Prečo? = Why? Use it when asking for a reason."
+        },
+        {
+          "situation": "You want to ask how to say a word in Slovak. Which word starts the question?",
+          "instruction": "Choose the question word",
+          "choices": [
+            "Ako?",
+            "Čo?",
+            "Kedy?",
+            "Kde?"
+          ],
+          "answer": "Ako?",
+          "answerMeaning": "Ako? = How? Example: Ako sa povie...? = How do you say...?"
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "___ si ty?",
+          "translation": "___ are you?",
+          "choices": [
+            "Kto",
+            "Čo",
+            "Kde",
+            "Ako"
+          ],
+          "answer": "Kto",
+          "answerMeaning": "Kto si ty? = Who are you?"
+        },
+        {
+          "sentence": "___ robíš?",
+          "translation": "___ are you doing?",
+          "choices": [
+            "Čo",
+            "Kto",
+            "Kedy",
+            "Prečo"
+          ],
+          "answer": "Čo",
+          "answerMeaning": "Čo robíš? = What are you doing?"
+        },
+        {
+          "sentence": "___ je toaleta?",
+          "translation": "___ is the toilet?",
+          "choices": [
+            "Kde",
+            "Kedy",
+            "Ako",
+            "Kto"
+          ],
+          "answer": "Kde",
+          "answerMeaning": "Kde je toaleta? = Where is the toilet?"
+        },
+        {
+          "sentence": "___ prídeš?",
+          "translation": "___ will you come?",
+          "choices": [
+            "Kedy",
+            "Kde",
+            "Čo",
+            "Prečo"
+          ],
+          "answer": "Kedy",
+          "answerMeaning": "Kedy prídeš? = When will you come?"
+        },
+        {
+          "sentence": "___ je to tak?",
+          "translation": "___ is it like that?",
+          "choices": [
+            "Prečo",
+            "Ako",
+            "Kde",
+            "Kto"
+          ],
+          "answer": "Prečo",
+          "answerMeaning": "Prečo je to tak? = Why is it like that?"
+        },
+        {
+          "sentence": "___ sa povie voda?",
+          "translation": "___ do you say water?",
+          "choices": [
+            "Ako",
+            "Čo",
+            "Kedy",
+            "Kde"
+          ],
+          "answer": "Ako",
+          "answerMeaning": "Ako sa povie voda? = How do you say water?"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

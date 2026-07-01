@@ -1,0 +1,342 @@
+{
+  "id": "tc-say-your-age",
+  "stageId": "topic-comprehension",
+  "stageName": "",
+  "title": "Say Your Age - Doctor Visit",
+  "description": "Listen, then prove you were listening",
+  "_voiceScript": {
+    "voice": null,
+    "script": "Lekár: Dobrý deň. Koľko máte rokov?\nAna: Mám 38 rokov.\nLekár: Ďakujem. Koľko rokov má vaša dcéra?\nAna: Moja dcéra má 8 rokov.\nLekár: A váš syn?\nAna: Môj syn má 5 rokov.\nLekár: A vy, Peter, koľko máte rokov?\nPeter: Mám 41 rokov."
+  },
+  "icon": "🎧",
+  "xpReward": 25,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "CONVERSATION_LISTEN",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Say-Your-Age.mp3",
+      "conversationTranscriptSk": "Lekár: Dobrý deň. Koľko máte rokov?\nAna: Mám 38 rokov.\nLekár: Ďakujem. Koľko rokov má vaša dcéra?\nAna: Moja dcéra má 8 rokov.\nLekár: A váš syn?\nAna: Môj syn má 5 rokov.\nLekár: A vy, Peter, koľko máte rokov?\nPeter: Mám 41 rokov.",
+      "speakers": [
+        {
+          "name": "Lekár",
+          "avatar": "👨‍⚕️"
+        },
+        {
+          "name": "Ana",
+          "avatar": "👩"
+        },
+        {
+          "name": "Peter",
+          "avatar": "👨"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "CONVERSATION_WORD_RECOGNITION",
+      "instruction": "Tap every word or expression you heard in the conversation.",
+      "passThresholdPercent": 76,
+      "correctWords": [
+        "Dobrý deň",
+        "Koľko máte rokov?",
+        "Mám 38 rokov",
+        "ďakujem",
+        "Koľko rokov má vaša dcéra?",
+        "Moja dcéra má 8 rokov",
+        "váš syn",
+        "Môj syn má 5 rokov",
+        "A vy, Peter",
+        "Mám 41 rokov",
+        "38 rokov",
+        "8 rokov",
+        "5 rokov",
+        "41 rokov"
+      ],
+      "distractorWords": [
+        "Koľko to stojí?",
+        "Mám 25 rokov",
+        "Moja dcéra má 6 rokov",
+        "Môj syn má 10 rokov",
+        "Kde je izba?",
+        "heslo na Wi-Fi"
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "CONVERSATION_COMPREHENSION",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Say-Your-Age.mp3",
+      "conversationTranscriptSk": "Lekár: Dobrý deň. Koľko máte rokov?\nAna: Mám 38 rokov.\nLekár: Ďakujem. Koľko rokov má vaša dcéra?\nAna: Moja dcéra má 8 rokov.\nLekár: A váš syn?\nAna: Môj syn má 5 rokov.\nLekár: A vy, Peter, koľko máte rokov?\nPeter: Mám 41 rokov.",
+      "speakers": [
+        {
+          "name": "Lekár",
+          "avatar": "👨‍⚕️"
+        },
+        {
+          "name": "Ana",
+          "avatar": "👩"
+        },
+        {
+          "name": "Peter",
+          "avatar": "👨"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "The doctor asks Ana \"Koľko máte rokov?\" What does this mean?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "How old is your daughter?",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "How old are you?",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "How much does it cost?",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Koľko máte rokov? = How old are you? Máte is the polite/formal form used by the doctor.",
+          "reviewPair": {
+            "slovak": "Koľko máte rokov?",
+            "english": "How old are you? (formal)"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Ana says \"Mám 38 rokov.\" How old is Ana?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "She is 38 years old",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "She is 8 years old",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "She is 41 years old",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Mám 38 rokov = I am 38 years old. Slovak uses mám, literally I have, for age.",
+          "reviewPair": {
+            "slovak": "Mám 38 rokov.",
+            "english": "I am 38 years old."
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "The doctor asks \"Koľko rokov má vaša dcéra?\" What is he asking about?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "Ana’s son’s age",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Ana’s daughter’s age",
+              "isCorrect": true
+            },
+            {
+              "id": "a",
+              "textEn": "Peter’s age",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Koľko rokov má vaša dcéra? = How old is your daughter? Dcéra means daughter.",
+          "reviewPair": {
+            "slovak": "Koľko rokov má vaša dcéra?",
+            "english": "How old is your daughter?"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Ana says \"Moja dcéra má 8 rokov.\" Who is 8 years old?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Her son",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Peter",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Her daughter",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Moja dcéra má 8 rokov = My daughter is 8 years old.",
+          "reviewPair": {
+            "slovak": "Moja dcéra má 8 rokov.",
+            "english": "My daughter is 8 years old."
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "How old is Ana’s son?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "He is 5 years old",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "He is 8 years old",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "He is 41 years old",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Môj syn má 5 rokov = My son is 5 years old. Syn means son.",
+          "reviewPair": {
+            "slovak": "Môj syn má 5 rokov.",
+            "english": "My son is 5 years old."
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Peter says \"Mám 41 rokov.\" What does this mean?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "I am 14 years old",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "I am 41 years old",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "I have 41 euros",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Mám 41 rokov = I am 41 years old. In age sentences, mám means I am / I have years.",
+          "reviewPair": {
+            "slovak": "Mám 41 rokov.",
+            "english": "I am 41 years old."
+          }
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "CONVERSATION_SENTENCE_BUILDER",
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "How old are you? (formal)",
+          "targetSk": [
+            "Koľko",
+            "máte",
+            "rokov?"
+          ],
+          "bankChunks": [
+            "Koľko",
+            "máte",
+            "rokov?",
+            "máš"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "I am 38 years old.",
+          "targetSk": [
+            "Mám",
+            "38 rokov."
+          ],
+          "bankChunks": [
+            "Mám",
+            "38 rokov.",
+            "8 rokov."
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "How old is your daughter?",
+          "targetSk": [
+            "Koľko rokov",
+            "má",
+            "vaša dcéra?"
+          ],
+          "bankChunks": [
+            "Koľko rokov",
+            "má",
+            "vaša dcéra?",
+            "váš syn?"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "My daughter is 8 years old.",
+          "targetSk": [
+            "Moja dcéra",
+            "má",
+            "8 rokov."
+          ],
+          "bankChunks": [
+            "Moja dcéra",
+            "má",
+            "8 rokov.",
+            "5 rokov."
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "My son is 5 years old.",
+          "targetSk": [
+            "Môj syn",
+            "má",
+            "5 rokov."
+          ],
+          "bankChunks": [
+            "Môj syn",
+            "má",
+            "5 rokov.",
+            "41 rokov."
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "I am 41 years old.",
+          "targetSk": [
+            "Mám",
+            "41 rokov."
+          ],
+          "bankChunks": [
+            "Mám",
+            "41 rokov.",
+            "38 rokov."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

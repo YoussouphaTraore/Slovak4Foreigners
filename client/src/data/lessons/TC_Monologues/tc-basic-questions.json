@@ -1,0 +1,339 @@
+{
+  "id": "tc-basic-questions",
+  "stageId": "topic-comprehension",
+  "stageName": "",
+  "title": "Basic Questions - Hotel",
+  "description": "Listen, then prove you were listening",
+  "_voiceScript": {
+    "voice": null,
+    "script": "Recepčný: Dobrý deň. Ako sa máte?\nOmar: Mám sa dobre, ďakujem.\nRecepčný: Tu sú vaše kľúče od izby.\nOmar: A čo je tento kód?\nRecepčný: Tento kód je heslo na Wi-Fi.\nOmar: Ďakujem. Kde je izba?\nRecepčný: Izba je hore.\nOmar: Kedy môžem ísť?\nRecepčný: Môžete ísť o 30 minút.\nOmar: Prečo nemôžem ísť teraz?\nRecepčný: Pretože Lisa je ešte hore.\nOmar: Kto je Lisa?\nRecepčný: Lisa je upratovačka.\nOmar: Rozumiem."
+  },
+  "icon": "🎧",
+  "xpReward": 25,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "CONVERSATION_LISTEN",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Basic-Questions.mp3",
+      "conversationTranscriptSk": "Recepčný: Dobrý deň. Ako sa máte?\nOmar: Mám sa dobre, ďakujem.\nRecepčný: Tu sú vaše kľúče od izby.\nOmar: A čo je tento kód?\nRecepčný: Tento kód je heslo na Wi-Fi.\nOmar: Ďakujem. Kde je izba?\nRecepčný: Izba je hore.\nOmar: Kedy môžem ísť?\nRecepčný: Môžete ísť o 30 minút.\nOmar: Prečo nemôžem ísť teraz?\nRecepčný: Pretože Lisa je ešte hore.\nOmar: Kto je Lisa?\nRecepčný: Lisa je upratovačka.\nOmar: Rozumiem.",
+      "speakers": [
+        {
+          "name": "Recepčný",
+          "avatar": "👨"
+        },
+        {
+          "name": "Omar",
+          "avatar": "👨"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "CONVERSATION_WORD_RECOGNITION",
+      "instruction": "Tap every word or expression you heard in the conversation.",
+      "passThresholdPercent": 76,
+      "correctWords": [
+        "Dobrý deň",
+        "Ako sa máte?",
+        "Mám sa dobre",
+        "ďakujem",
+        "kľúče od izby",
+        "Čo je tento kód?",
+        "heslo na Wi-Fi",
+        "Kde je izba?",
+        "hore",
+        "Kedy môžem ísť?",
+        "o 30 minút",
+        "Prečo nemôžem ísť teraz?",
+        "Kto je Lisa?",
+        "upratovačka",
+        "Rozumiem"
+      ],
+      "distractorWords": [
+        "kde je vlak",
+        "koľko rokov",
+        "bolí ma hlava",
+        "nemám hotovosť",
+        "dole",
+        "zajtra ráno"
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "CONVERSATION_COMPREHENSION",
+      "coverImage": "",
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Basic-Questions.mp3",
+      "conversationTranscriptSk": "Recepčný: Dobrý deň. Ako sa máte?\nOmar: Mám sa dobre, ďakujem.\nRecepčný: Tu sú vaše kľúče od izby.\nOmar: A čo je tento kód?\nRecepčný: Tento kód je heslo na Wi-Fi.\nOmar: Ďakujem. Kde je izba?\nRecepčný: Izba je hore.\nOmar: Kedy môžem ísť?\nRecepčný: Môžete ísť o 30 minút.\nOmar: Prečo nemôžem ísť teraz?\nRecepčný: Pretože Lisa je ešte hore.\nOmar: Kto je Lisa?\nRecepčný: Lisa je upratovačka.\nOmar: Rozumiem.",
+      "speakers": [
+        {
+          "name": "Recepčný",
+          "avatar": "👨"
+        },
+        {
+          "name": "Omar",
+          "avatar": "👨"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "The receptionist asks \"Ako sa máte?\" What does this mean?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Where is the room?",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "How are you?",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Who is Lisa?",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Ako sa máte? = How are you? Ako? means how, and máte is the polite/formal form.",
+          "reviewPair": {
+            "slovak": "Ako?",
+            "english": "How?"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Omar asks \"Čo je tento kód?\" What does he want to know?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "What the code is",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Where the room is",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "When he can go",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Čo je tento kód? = What is this code? Čo? means what. The receptionist says it is the Wi-Fi password.",
+          "reviewPair": {
+            "slovak": "Čo?",
+            "english": "What?"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Omar asks \"Kde je izba?\" What answer does the receptionist give?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "Izba je dole.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Izba je hore.",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Izba je tu.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Kde je izba? = Where is the room? Izba je hore = The room is upstairs.",
+          "reviewPair": {
+            "slovak": "Kde?",
+            "english": "Where?"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Omar asks \"Kedy môžem ísť?\" What does the receptionist say?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Môžete ísť teraz.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Môžete ísť zajtra.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Môžete ísť o 30 minút.",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Kedy môžem ísť? = When can I go? Môžete ísť o 30 minút = You can go in 30 minutes.",
+          "reviewPair": {
+            "slovak": "Kedy?",
+            "english": "When?"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "Why can Omar not go now?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Because Lisa is still upstairs",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Because he has no keys",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Because the Wi-Fi password is wrong",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Prečo nemôžem ísť teraz? = Why can I not go now? Pretože Lisa je ešte hore = Because Lisa is still upstairs.",
+          "reviewPair": {
+            "slovak": "Prečo?",
+            "english": "Why?"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Omar asks \"Kto je Lisa?\" Who is Lisa?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "Lisa is the receptionist",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Lisa is the cleaning lady",
+              "isCorrect": true
+            },
+            {
+              "id": "a",
+              "textEn": "Lisa is a guest",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Kto je Lisa? = Who is Lisa? Lisa je upratovačka = Lisa is the cleaning lady.",
+          "reviewPair": {
+            "slovak": "Kto?",
+            "english": "Who?"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "CONVERSATION_SENTENCE_BUILDER",
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "How are you?",
+          "targetSk": [
+            "Ako",
+            "sa",
+            "máte?"
+          ],
+          "bankChunks": [
+            "Ako",
+            "sa",
+            "máte?",
+            "Kde"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "What is this code?",
+          "targetSk": [
+            "Čo",
+            "je",
+            "tento kód?"
+          ],
+          "bankChunks": [
+            "Čo",
+            "je",
+            "tento kód?",
+            "Kto"
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "Where is the room?",
+          "targetSk": [
+            "Kde",
+            "je",
+            "izba?"
+          ],
+          "bankChunks": [
+            "Kde",
+            "je",
+            "izba?",
+            "Kedy"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "When can I go?",
+          "targetSk": [
+            "Kedy",
+            "môžem",
+            "ísť?"
+          ],
+          "bankChunks": [
+            "Kedy",
+            "môžem",
+            "ísť?",
+            "Prečo"
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "Why can I not go now?",
+          "targetSk": [
+            "Prečo",
+            "nemôžem",
+            "ísť teraz?"
+          ],
+          "bankChunks": [
+            "Prečo",
+            "nemôžem",
+            "ísť teraz?",
+            "Ako"
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "Who is Lisa?",
+          "targetSk": [
+            "Kto",
+            "je",
+            "Lisa?"
+          ],
+          "bankChunks": [
+            "Kto",
+            "je",
+            "Lisa?",
+            "Čo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}
