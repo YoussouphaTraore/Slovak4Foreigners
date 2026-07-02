@@ -2,42 +2,339 @@
   "id": "tc-speaking-time",
   "stageId": "topic-comprehension",
   "stageName": "",
-  "title": "Speaking in Time — Monologue",
+  "title": "Speaking in Time - Lost & Found",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Marek: Ahoj. Kde ste boli včera?\nOmar: Bol som doma. Bol som chorý.\nSara: Bola som v meste.\nMarek: Omar, stratil si niečo?\nOmar: Áno! Stratil som peňaženku.\nSara: Stratila som peňaženku minulý týždeň tiež!\nOmar: Kde mám ísť?\nMarek: Na políciu. Dnes bude otvorené.\nOmar: Koľko to bude stáť?\nMarek: Je zadarmo. Ale zajtra bude pršať.\nSara: Ako dlho to bude trvať?\nMarek: Asi hodinu. Vezmi dáždnik!"
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Speak-In-Time.mp3",
+      "conversationTranscriptSk": "Marek: Ahoj. Kde ste boli včera?\nOmar: Bol som doma. Bol som chorý.\nSara: Bola som v meste.\nMarek: Omar, stratil si niečo?\nOmar: Áno! Stratil som peňaženku.\nSara: Stratila som peňaženku minulý týždeň tiež!\nOmar: Kde mám ísť?\nMarek: Na políciu. Dnes bude otvorené.\nOmar: Koľko to bude stáť?\nMarek: Je zadarmo. Ale zajtra bude pršať.\nSara: Ako dlho to bude trvať?\nMarek: Asi hodinu. Vezmi dáždnik!",
+      "speakers": [
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        },
+        {
+          "name": "Omar",
+          "avatar": "👨"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "Bol som doma",
+        "Bol som chorý",
+        "Bola som v meste",
+        "Stratil som peňaženku",
+        "Stratila som peňaženku",
+        "Dnes bude otvorené",
+        "Koľko to bude stáť?",
+        "zadarmo",
+        "bude pršať",
+        "Ako dlho to bude trvať?",
+        "Asi hodinu",
+        "Áno!"
+      ],
+      "distractorWords": [
+        "Bola som doma",
+        "Bude snežiť",
+        "Stratil som kľúče",
+        "Bude zatvorené",
+        "Bola som chorá",
+        "Ako dlho to stojí?"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Speak-In-Time.mp3",
+      "conversationTranscriptSk": "Marek: Ahoj. Kde ste boli včera?\nOmar: Bol som doma. Bol som chorý.\nSara: Bola som v meste.\nMarek: Omar, stratil si niečo?\nOmar: Áno! Stratil som peňaženku.\nSara: Stratila som peňaženku minulý týždeň tiež!\nOmar: Kde mám ísť?\nMarek: Na políciu. Dnes bude otvorené.\nOmar: Koľko to bude stáť?\nMarek: Je zadarmo. Ale zajtra bude pršať.\nSara: Ako dlho to bude trvať?\nMarek: Asi hodinu. Vezmi dáždnik!",
+      "speakers": [
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        },
+        {
+          "name": "Omar",
+          "avatar": "👨"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Marek asks where Omar was yesterday. How does Omar answer?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Bola som v meste. Bola som chorá.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Bol som doma. Bol som chorý.",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Bol som v práci. Bol som zdravý.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Bol som doma. Bol som chorý = I was at home. I was sick. Male past tense forms. Chorý = sick (male).",
+          "reviewPair": {
+            "slovak": "Bol som chorý.",
+            "english": "I was sick. (male speaker)"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Sara says \"Bola som v meste.\" Where was Sara yesterday?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "She was in the city",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "She was at home",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "She was at the police station",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Bola som v meste = I was in the city. Bola som is the female past form of byť (to be).",
+          "reviewPair": {
+            "slovak": "Bola som v meste.",
+            "english": "I was in the city. (female speaker)"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Omar tells Marek what he lost. What does he say?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Stratil som kľúče.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Stratil som telefón.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Stratil som peňaženku.",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Stratil som peňaženku = I lost my wallet. Stratil = lost (male past). Peňaženku = wallet (accusative).",
+          "reviewPair": {
+            "slovak": "Stratil som peňaženku.",
+            "english": "I lost my wallet. (male speaker)"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Marek says \"Dnes bude otvorené.\" What does this tell Omar?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "The police station is closed today",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "The police station will be open today",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "The police station was open yesterday",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Dnes bude otvorené = Today it will be open. Bude = will be. Otvorené = open.",
+          "reviewPair": {
+            "slovak": "Dnes bude otvorené.",
+            "english": "Today it will be open."
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "Omar asks \"Koľko to bude stáť?\" What is he asking?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "How long will it take?",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "How much will it cost?",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "When will it be open?",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Koľko to bude stáť? = How much will it cost? Koľko = how much, bude stáť = will cost.",
+          "reviewPair": {
+            "slovak": "Koľko to bude stáť?",
+            "english": "How much will it cost?"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Sara asks \"Ako dlho to bude trvať?\" Marek says \"Asi hodinu.\" What does this mean?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "It will cost about an hour",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "It will take about a day",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "It will take about an hour",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Ako dlho to bude trvať? = How long will it take? Asi hodinu = about an hour.",
+          "reviewPair": {
+            "slovak": "Ako dlho to bude trvať?",
+            "english": "How long will it take?"
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "I was at home. (male speaker)",
+          "targetSk": [
+            "Bol",
+            "som",
+            "doma."
+          ],
+          "bankChunks": [
+            "Bol",
+            "som",
+            "doma.",
+            "Bola"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "I was sick. (female speaker)",
+          "targetSk": [
+            "Bola",
+            "som",
+            "chorá."
+          ],
+          "bankChunks": [
+            "Bola",
+            "som",
+            "chorá.",
+            "chorý."
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "I lost my wallet. (male speaker)",
+          "targetSk": [
+            "Stratil",
+            "som",
+            "peňaženku."
+          ],
+          "bankChunks": [
+            "Stratil",
+            "som",
+            "peňaženku.",
+            "Stratila"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "It will be open today.",
+          "targetSk": [
+            "Dnes",
+            "bude",
+            "otvorené."
+          ],
+          "bankChunks": [
+            "Dnes",
+            "bude",
+            "otvorené.",
+            "zatvorené."
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "How much will it cost?",
+          "targetSk": [
+            "Koľko",
+            "to bude",
+            "stáť?"
+          ],
+          "bankChunks": [
+            "Koľko",
+            "to bude",
+            "stáť?",
+            "trvať?"
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "Tomorrow it will rain.",
+          "targetSk": [
+            "Zajtra",
+            "bude",
+            "pršať."
+          ],
+          "bankChunks": [
+            "Zajtra",
+            "bude",
+            "pršať.",
+            "snežiť."
+          ]
+        }
+      ]
     },
     {
       "id": "ex5",

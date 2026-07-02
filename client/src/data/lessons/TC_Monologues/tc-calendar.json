@@ -2,42 +2,331 @@
   "id": "tc-calendar",
   "stageId": "topic-comprehension",
   "stageName": "",
-  "title": "Calendar — Monologue",
+  "title": "Calendar - The Language Course",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Marek: Amina, kedy začína tvoj kurz?\nAmina: V pondelok. Budúci týždeň.\nMarek: Ktorý mesiac?\nAmina: Jún. Ale skončí v auguste.\nMarek: Každý týždeň?\nAmina: Áno, každý utorok a štvrtok.\nMarek: A cez víkend nie?\nAmina: Nie. Len pracovné dni.\nMarek: A Omar? Príde tiež?\nAmina: Omar začína v septembri. Minulý mesiac nemal čas.\nMarek: Rozumiem. To je dobrá správa!\nAmina: Áno! Teším sa!"
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Calendar.mp3",
+      "conversationTranscriptSk": "Marek: Amina, kedy začína tvoj kurz?\nAmina: V pondelok. Budúci týždeň.\nMarek: Ktorý mesiac?\nAmina: Jún. Ale skončí v auguste.\nMarek: Každý týždeň?\nAmina: Áno, každý utorok a štvrtok.\nMarek: A cez víkend nie?\nAmina: Nie. Len pracovné dni.\nMarek: A Omar? Príde tiež?\nAmina: Omar začína v septembri. Minulý mesiac nemal čas.\nMarek: Rozumiem. To je dobrá správa!\nAmina: Áno! Teším sa!",
+      "speakers": [
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        },
+        {
+          "name": "Amina",
+          "avatar": "👩🏾‍🦱"
+        }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "V pondelok",
+        "Budúci týždeň",
+        "Jún",
+        "v auguste",
+        "Každý týždeň",
+        "každý utorok a štvrtok",
+        "cez víkend",
+        "pracovné dni",
+        "v septembri",
+        "Minulý mesiac",
+        "Teším sa",
+        "Rozumiem"
+      ],
+      "distractorWords": [
+        "Minulý týždeň",
+        "V piatok",
+        "v júli",
+        "Každý mesiac",
+        "Budúci mesiac",
+        "cez pondelok"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Calendar.mp3",
+      "conversationTranscriptSk": "Marek: Amina, kedy začína tvoj kurz?\nAmina: V pondelok. Budúci týždeň.\nMarek: Ktorý mesiac?\nAmina: Jún. Ale skončí v auguste.\nMarek: Každý týždeň?\nAmina: Áno, každý utorok a štvrtok.\nMarek: A cez víkend nie?\nAmina: Nie. Len pracovné dni.\nMarek: A Omar? Príde tiež?\nAmina: Omar začína v septembri. Minulý mesiac nemal čas.\nMarek: Rozumiem. To je dobrá správa!\nAmina: Áno! Teším sa!",
+      "speakers": [
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        },
+        {
+          "name": "Amina",
+          "avatar": "👩🏾‍🦱"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Marek asks when the course starts. How does Amina answer?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "V utorok. Tento týždeň.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "V sobotu. Minulý týždeň.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "V pondelok. Budúci týždeň.",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "V pondelok. Budúci týždeň = On Monday. Next week. Pondelok = Monday, Budúci týždeň = next week.",
+          "reviewPair": {
+            "slovak": "Budúci týždeň",
+            "english": "Next week"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Amina says the course starts in June and finishes \"v auguste\". When does it finish?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "In July",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "In September",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "In August",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "V auguste = in August. August becomes v auguste when used with v (in).",
+          "reviewPair": {
+            "slovak": "v auguste",
+            "english": "in August"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Marek asks \"Každý týždeň?\" Amina confirms the days. What exactly does she say?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Každý pondelok a streda.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Každý utorok a štvrtok.",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Každý piatok a sobota.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Každý utorok a štvrtok = Every Tuesday and Thursday. Utorok = Tuesday, Štvrtok = Thursday.",
+          "reviewPair": {
+            "slovak": "utorok a štvrtok",
+            "english": "Tuesday and Thursday"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Marek asks \"A cez víkend nie?\" What does víkend mean?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Weekday",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Week",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Weekend",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Víkend = weekend. Cez víkend = over the weekend. Amina answers Nie — no classes on the weekend.",
+          "reviewPair": {
+            "slovak": "cez víkend",
+            "english": "over the weekend"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "When does Omar start his course?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "In June",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "In September",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Next week",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Omar začína v septembri = Omar starts in September. V septembri = in September.",
+          "reviewPair": {
+            "slovak": "v septembri",
+            "english": "in September"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Amina says Omar \"Minulý mesiac nemal čas.\" What does minulý mesiac mean?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "Next month",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Last month",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "This month",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Minulý mesiac = last month. Minulý = last/previous, mesiac = month.",
+          "reviewPair": {
+            "slovak": "Minulý mesiac",
+            "english": "Last month"
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "On Monday. Next week.",
+          "targetSk": [
+            "V pondelok.",
+            "Budúci",
+            "týždeň."
+          ],
+          "bankChunks": [
+            "V pondelok.",
+            "Budúci",
+            "týždeň.",
+            "mesiac."
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "It finishes in August.",
+          "targetSk": [
+            "Skončí",
+            "v",
+            "auguste."
+          ],
+          "bankChunks": [
+            "Skončí",
+            "v",
+            "auguste.",
+            "júni."
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "Every Tuesday and Thursday.",
+          "targetSk": [
+            "Každý",
+            "utorok",
+            "a štvrtok."
+          ],
+          "bankChunks": [
+            "Každý",
+            "utorok",
+            "a štvrtok.",
+            "a piatok."
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "Not on the weekend.",
+          "targetSk": [
+            "Nie",
+            "cez",
+            "víkend."
+          ],
+          "bankChunks": [
+            "Nie",
+            "cez",
+            "víkend.",
+            "pondelok."
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "Omar starts in September.",
+          "targetSk": [
+            "Omar začína",
+            "v",
+            "septembri."
+          ],
+          "bankChunks": [
+            "Omar začína",
+            "v",
+            "septembri.",
+            "auguste."
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "Last month he had no time.",
+          "targetSk": [
+            "Minulý mesiac",
+            "nemal",
+            "čas."
+          ],
+          "bankChunks": [
+            "Minulý mesiac",
+            "nemal",
+            "čas.",
+            "Budúci mesiac"
+          ]
+        }
+      ]
     },
     {
       "id": "ex5",

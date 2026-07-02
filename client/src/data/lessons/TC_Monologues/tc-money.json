@@ -2,42 +2,324 @@
   "id": "tc-money",
   "stageId": "topic-comprehension",
   "stageName": "",
-  "title": "Money — Monologue",
+  "title": "Money - Ice Cream",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Predavačka: Dobrý deň.\nSara: Dobrý deň. Koľko stojí zmrzlina?\nPredavačka: Zmrzlina stojí tri eurá päťdesiat centov.\nSara: Dobre. Chcem zaplatiť.\nPredavačka: Kartou alebo v hotovosti?\nSara: Platím kartou.\nPredavačka: Moment, prosím. Priložte kartu k terminálu, prosím.\nSara: Ďakujem.\nPredavačka: Chcete účtenku?\nSara: Nie, ďakujem."
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Money.mp3",
+      "conversationTranscriptSk": "Predavačka: Dobrý deň.\nSara: Dobrý deň. Koľko stojí zmrzlina?\nPredavačka: Zmrzlina stojí tri eurá päťdesiat centov.\nSara: Dobre. Chcem zaplatiť.\nPredavačka: Kartou alebo v hotovosti?\nSara: Platím kartou.\nPredavačka: Moment, prosím. Priložte kartu k terminálu, prosím.\nSara: Ďakujem.\nPredavačka: Chcete účtenku?\nSara: Nie, ďakujem.",
+      "speakers": [
+        {
+          "name": "Predavačka",
+          "avatar": "👩"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👱‍♀️"
+        }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "Koľko stojí zmrzlina?",
+        "tri eurá",
+        "päťdesiat centov",
+        "Chcem zaplatiť",
+        "Kartou alebo v hotovosti?",
+        "Platím kartou",
+        "Moment, prosím",
+        "Priložte kartu",
+        "k terminálu",
+        "Chcete účtenku?",
+        "Nie, ďakujem"
+      ],
+      "distractorWords": [
+        "zadarmo",
+        "platím v hotovosti",
+        "Môžem dostať účet?",
+        "Máte drobné?",
+        "desať eur",
+        "presná suma"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Money.mp3",
+      "conversationTranscriptSk": "Predavačka: Dobrý deň.\nSara: Dobrý deň. Koľko stojí zmrzlina?\nPredavačka: Zmrzlina stojí tri eurá päťdesiat centov.\nSara: Dobre. Chcem zaplatiť.\nPredavačka: Kartou alebo v hotovosti?\nSara: Platím kartou.\nPredavačka: Moment, prosím. Priložte kartu k terminálu, prosím.\nSara: Ďakujem.\nPredavačka: Chcete účtenku?\nSara: Nie, ďakujem.",
+      "speakers": [
+        {
+          "name": "Predavačka",
+          "avatar": "👩"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👱‍♀️"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Sara asks \"Koľko stojí zmrzlina?\" What does she want to know?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Whether the shop is open",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "How much the ice cream costs",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Whether she can get a receipt",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Koľko stojí zmrzlina? = How much does an ice cream cost? Koľko stojí...? asks about price.",
+          "reviewPair": {
+            "slovak": "Koľko stojí?",
+            "english": "How much does it cost?"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Sara asks how much the ice cream costs. What does the worker say?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Zmrzlina stojí tri eurá päťdesiat centov.",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Zmrzlina stojí desať eur.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Zmrzlina stojí päť centov.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Zmrzlina stojí tri eurá päťdesiat centov = The ice cream costs three euros and fifty cents. Stojí = costs.",
+          "reviewPair": {
+            "slovak": "tri eurá päťdesiat centov",
+            "english": "three euros and fifty cents"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Sara says \"Chcem zaplatiť.\" What does this mean?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "I want a receipt",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "I want to pay",
+              "isCorrect": true
+            },
+            {
+              "id": "a",
+              "textEn": "I have cash",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Chcem zaplatiť = I want to pay. This phrase starts the payment part of the conversation.",
+          "reviewPair": {
+            "slovak": "Chcem zaplatiť.",
+            "english": "I want to pay."
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "The worker asks 'Kartou alebo v hotovosti?' Sara answers. What does she say?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Platím v hotovosti.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Nemám kartu.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Platím kartou.",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Platím kartou = I am paying by card. Kartou = by card (instrumental case). V hotovosti = in cash.",
+          "reviewPair": {
+            "slovak": "Platím kartou.",
+            "english": "I am paying by card."
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "What does the shop assistant ask Sara to do with her card?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Tap the card on the terminal",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Pay in cash",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Ask for change",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Priložte kartu k terminálu = Tap/place the card to the terminal. Terminál is the payment terminal.",
+          "reviewPair": {
+            "slovak": "Priložte kartu k terminálu.",
+            "english": "Tap your card on the terminal."
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Does Sara want the receipt?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "Yes, she wants the bill",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "No, she says no thank you",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "She asks for small change",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Chcete účtenku? = Do you want the receipt? Sara answers Nie, ďakujem = No, thank you.",
+          "reviewPair": {
+            "slovak": "účtenka",
+            "english": "receipt"
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "How much does an ice cream cost?",
+          "targetSk": [
+            "Koľko",
+            "stojí",
+            "zmrzlina?"
+          ],
+          "bankChunks": [
+            "Koľko",
+            "stojí",
+            "zmrzlina?",
+            "účtenka?"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "The ice cream costs three euros and fifty cents.",
+          "targetSk": [
+            "Zmrzlina stojí",
+            "tri eurá",
+            "päťdesiat centov."
+          ],
+          "bankChunks": [
+            "Zmrzlina stojí",
+            "tri eurá",
+            "päťdesiat centov.",
+            "desať eur."
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "I want to pay.",
+          "targetSk": [
+            "Chcem",
+            "zaplatiť."
+          ],
+          "bankChunks": [
+            "Chcem",
+            "zaplatiť.",
+            "účtenku."
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "Card or cash?",
+          "targetSk": [
+            "Kartou",
+            "alebo",
+            "v hotovosti?"
+          ],
+          "bankChunks": [
+            "Kartou",
+            "alebo",
+            "v hotovosti?",
+            "zadarmo?"
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "I am paying by card.",
+          "targetSk": [
+            "Platím",
+            "kartou."
+          ],
+          "bankChunks": [
+            "Platím",
+            "kartou.",
+            "v hotovosti."
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "Do you want the receipt?",
+          "targetSk": [
+            "Chcete",
+            "účtenku?"
+          ],
+          "bankChunks": [
+            "Chcete",
+            "účtenku?",
+            "drobné?"
+          ]
+        }
+      ]
     },
     {
       "id": "ex5",

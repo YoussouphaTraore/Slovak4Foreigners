@@ -2,42 +2,339 @@
   "id": "tc-numbers",
   "stageId": "topic-comprehension",
   "stageName": "",
-  "title": "Numbers — Monologue",
+  "title": "Numbers - Foreign Police",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Policajt: Ste číslo jeden?\nOmar: Nie. Mám číslo päť.\nPolicajt: Číslo päť, choďte k okienku číslo sedem.\nOmar: Ďakujem.\nPracovníčka pri okienku: Ste prvý?\nOmar: Nie, som piaty.\nPracovníčka pri okienku: Dobre. Koľko máte formulárov?\nOmar: Mám tri formuláre.\nPracovníčka pri okienku: A koľko máte fotiek?\nOmar: Mám dve fotky.\nPracovníčka pri okienku: Dobre. Zaplaťte desať eur.\nOmar: Desať eur? Dobre."
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Numbers.mp3",
+      "conversationTranscriptSk": "Policajt: Ste číslo jeden?\nOmar: Nie. Mám číslo päť.\nPolicajt: Číslo päť, choďte k okienku číslo sedem.\nOmar: Ďakujem.\nPracovníčka pri okienku: Ste prvý?\nOmar: Nie, som piaty.\nPracovníčka pri okienku: Dobre. Koľko máte formulárov?\nOmar: Mám tri formuláre.\nPracovníčka pri okienku: A koľko máte fotiek?\nOmar: Mám dve fotky.\nPracovníčka pri okienku: Dobre. Zaplaťte desať eur.\nOmar: Desať eur? Dobre.",
+      "speakers": [
+        {
+          "name": "Policajt",
+          "avatar": "👮"
+        },
+        {
+          "name": "Omar",
+          "avatar": "👨"
+        },
+        {
+          "name": "Pracovníčka",
+          "avatar": "👩"
+        }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "číslo jeden",
+        "číslo päť",
+        "číslo sedem",
+        "okienku číslo sedem",
+        "prvý",
+        "piaty",
+        "Koľko máte formulárov?",
+        "tri formuláre",
+        "koľko máte fotiek",
+        "dve fotky",
+        "desať eur",
+        "Ďakujem"
+      ],
+      "distractorWords": [
+        "číslo dva",
+        "číslo osem",
+        "som prvý",
+        "päť fotiek",
+        "tri eurá",
+        "dvadsať eur"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Numbers.mp3",
+      "conversationTranscriptSk": "Policajt: Ste číslo jeden?\nOmar: Nie. Mám číslo päť.\nPolicajt: Číslo päť, choďte k okienku číslo sedem.\nOmar: Ďakujem.\nPracovníčka pri okienku: Ste prvý?\nOmar: Nie, som piaty.\nPracovníčka pri okienku: Dobre. Koľko máte formulárov?\nOmar: Mám tri formuláre.\nPracovníčka pri okienku: A koľko máte fotiek?\nOmar: Mám dve fotky.\nPracovníčka pri okienku: Dobre. Zaplaťte desať eur.\nOmar: Desať eur? Dobre.",
+      "speakers": [
+        {
+          "name": "Policajt",
+          "avatar": "👮"
+        },
+        {
+          "name": "Omar",
+          "avatar": "👨"
+        },
+        {
+          "name": "Pracovníčka",
+          "avatar": "👩"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "The police officer asks \"Ste číslo jeden?\" What is he asking Omar?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Are you number five?",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Are you number one?",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Are you first?",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Ste číslo jeden? = Are you number one? Číslo means number, and jeden means one.",
+          "reviewPair": {
+            "slovak": "číslo jeden",
+            "english": "number one"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Omar says \"Mám číslo päť.\" What number does Omar have?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Number five",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Number seven",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Number one",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Mám číslo päť = I have number five. Päť means five.",
+          "reviewPair": {
+            "slovak": "číslo päť",
+            "english": "number five"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Where does the police officer tell Omar to go?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "To desk number one",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "To desk number seven",
+              "isCorrect": true
+            },
+            {
+              "id": "a",
+              "textEn": "To desk number five",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Choďte k okienku číslo sedem = Go to desk/window number seven. Sedem means seven.",
+          "reviewPair": {
+            "slovak": "číslo sedem",
+            "english": "number seven"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "The desk assistant asks \"Ste prvý?\" How does Omar answer?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Áno, som prvý.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Nie, som siedmy.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Nie, som piaty.",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Nie, som piaty = No, I am fifth. Prvý means first, piaty means fifth.",
+          "reviewPair": {
+            "slovak": "piaty",
+            "english": "fifth"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "How many forms does Omar have?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Three forms",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Two forms",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Ten forms",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Mám tri formuláre = I have three forms. Tri means three.",
+          "reviewPair": {
+            "slovak": "tri",
+            "english": "three"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "The worker tells Omar how much to pay. What does she say?",
+          "answers": [
+            {
+              "id": "c",
+              "textEn": "Zaplaťte päť eur.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Zaplaťte desať eur.",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Zaplaťte sedem eur.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Zaplaťte desať eur = Pay ten euros. Zaplaťte = pay (formal command), desať = ten.",
+          "reviewPair": {
+            "slovak": "desať eur",
+            "english": "ten euros"
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "Are you number one?",
+          "targetSk": [
+            "Ste",
+            "číslo",
+            "jeden?"
+          ],
+          "bankChunks": [
+            "Ste",
+            "číslo",
+            "jeden?",
+            "päť?"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "I have number five.",
+          "targetSk": [
+            "Mám",
+            "číslo",
+            "päť."
+          ],
+          "bankChunks": [
+            "Mám",
+            "číslo",
+            "päť.",
+            "sedem."
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "Go to desk number seven.",
+          "targetSk": [
+            "Choďte",
+            "k okienku",
+            "číslo sedem."
+          ],
+          "bankChunks": [
+            "Choďte",
+            "k okienku",
+            "číslo sedem.",
+            "číslo päť."
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "No, I am fifth.",
+          "targetSk": [
+            "Nie",
+            "som",
+            "piaty."
+          ],
+          "bankChunks": [
+            "Nie",
+            "som",
+            "piaty.",
+            "prvý."
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "I have three forms.",
+          "targetSk": [
+            "Mám",
+            "tri",
+            "formuláre."
+          ],
+          "bankChunks": [
+            "Mám",
+            "tri",
+            "formuláre.",
+            "fotky."
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "I have two photos.",
+          "targetSk": [
+            "Mám",
+            "dve",
+            "fotky."
+          ],
+          "bankChunks": [
+            "Mám",
+            "dve",
+            "fotky.",
+            "formuláre."
+          ]
+        }
+      ]
     },
     {
       "id": "ex5",

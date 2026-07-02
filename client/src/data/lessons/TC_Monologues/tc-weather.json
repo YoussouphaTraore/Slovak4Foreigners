@@ -2,42 +2,331 @@
   "id": "tc-weather",
   "stageId": "topic-comprehension",
   "stageName": "",
-  "title": "Weather — Monologue",
+  "title": "Weather - Weekend Plans",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Anna: Peter, aké je dnes počasie?\nPeter: Je slnečno, ale je veterno.\nAnna: A cez víkend?\nPeter: Cez víkend bude búrka. V sobotu bude pršať.\nAnna: Naozaj? Chcela som ísť s deťmi do parku.\nPeter: Radšej nie. V nedeľu bude zamračené. Asi pätnásť stupňov.\nAnna: Je to teplo alebo chladno?\nPeter: Chladno. Vezmi deťom bundy.\nAnna: A budúci týždeň?\nPeter: Bude krajšie. Bude slnečno a teplo.\nAnna: Super! Pôjdeme do parku budúci týždeň.\nPeter: Áno. Deti budú šťastné!"
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Weather.mp3",
+      "conversationTranscriptSk": "Anna: Peter, aké je dnes počasie?\nPeter: Je slnečno, ale je veterno.\nAnna: A cez víkend?\nPeter: Cez víkend bude búrka. V sobotu bude pršať.\nAnna: Naozaj? Chcela som ísť s deťmi do parku.\nPeter: Radšej nie. V nedeľu bude zamračené. Asi pätnásť stupňov.\nAnna: Je to teplo alebo chladno?\nPeter: Chladno. Vezmi deťom bundy.\nAnna: A budúci týždeň?\nPeter: Bude krajšie. Bude slnečno a teplo.\nAnna: Super! Pôjdeme do parku budúci týždeň.\nPeter: Áno. Deti budú šťastné!",
+      "speakers": [
+        {
+          "name": "Anna",
+          "avatar": "👩"
+        },
+        {
+          "name": "Peter",
+          "avatar": "👨"
+        }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "počasie",
+        "slnečno",
+        "veterno",
+        "Cez víkend",
+        "búrka",
+        "bude pršať",
+        "V sobotu",
+        "zamračené",
+        "pätnásť stupňov",
+        "Chladno",
+        "Vezmi deťom bundy",
+        "budúci týždeň"
+      ],
+      "distractorWords": [
+        "Sneží",
+        "Je hmla",
+        "dáždnik",
+        "Bude mrznúť",
+        "V stredu",
+        "horúco"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Weather.mp3",
+      "conversationTranscriptSk": "Anna: Peter, aké je dnes počasie?\nPeter: Je slnečno, ale je veterno.\nAnna: A cez víkend?\nPeter: Cez víkend bude búrka. V sobotu bude pršať.\nAnna: Naozaj? Chcela som ísť s deťmi do parku.\nPeter: Radšej nie. V nedeľu bude zamračené. Asi pätnásť stupňov.\nAnna: Je to teplo alebo chladno?\nPeter: Chladno. Vezmi deťom bundy.\nAnna: A budúci týždeň?\nPeter: Bude krajšie. Bude slnečno a teplo.\nAnna: Super! Pôjdeme do parku budúci týždeň.\nPeter: Áno. Deti budú šťastné!",
+      "speakers": [
+        {
+          "name": "Anna",
+          "avatar": "👩"
+        },
+        {
+          "name": "Peter",
+          "avatar": "👨"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Anna asks about the weather. How does Peter describe today?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Je slnečno, ale je veterno.",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Je zamračené a chladno.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Bude búrka a prší.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Je slnečno = It's sunny. Je veterno = It's windy. Peter describes today as sunny but windy.",
+          "reviewPair": {
+            "slovak": "Je slnečno, ale je veterno.",
+            "english": "It's sunny, but it's windy."
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Peter says 'Cez víkend bude búrka.' What does búrka mean?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Sunshine",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Snow",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Storm",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Búrka = storm. Cez víkend = on the weekend. Peter warns there will be a storm on the weekend.",
+          "reviewPair": {
+            "slovak": "búrka",
+            "english": "storm"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Peter tells Anna not to go to the park. What does he say about Saturday?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "V sobotu bude zamračené.",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "V sobotu bude pršať.",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "V sobotu bude búrka.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "V sobotu bude pršať = On Saturday it will rain. V sobotu = on Saturday, bude pršať = it will rain.",
+          "reviewPair": {
+            "slovak": "V sobotu bude pršať.",
+            "english": "On Saturday it will rain."
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Peter says it will be 'Asi pätnásť stupňov' on Sunday. What does this mean?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "About fifteen degrees",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "About fifty degrees",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "About five degrees",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Pätnásť stupňov = fifteen degrees. Asi = about / approximately. So: about fifteen degrees.",
+          "reviewPair": {
+            "slovak": "pätnásť stupňov",
+            "english": "fifteen degrees"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "Anna asks 'Je to teplo alebo chladno?' What is Peter's one-word answer?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Warm",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Hot",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Cold",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Chladno = cold. Teplo = warm. Peter answers with one word — Chladno — telling Anna it will be cold.",
+          "reviewPair": {
+            "slovak": "Chladno.",
+            "english": "Cold."
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Anna asks about next week. What does Peter say the weather will be like?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "It will rain and be windy",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "It will be sunny and warm",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "It will be stormy and cold",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Bude slnečno a teplo = It will be sunny and warm. Peter also says Bude krajšie = It will be nicer.",
+          "reviewPair": {
+            "slovak": "Bude slnečno a teplo.",
+            "english": "It will be sunny and warm."
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "What's the weather like today?",
+          "targetSk": [
+            "Aké je",
+            "dnes",
+            "počasie?"
+          ],
+          "bankChunks": [
+            "Aké je",
+            "dnes",
+            "počasie?",
+            "zajtra"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "On Saturday it will rain.",
+          "targetSk": [
+            "V sobotu",
+            "bude",
+            "pršať."
+          ],
+          "bankChunks": [
+            "V sobotu",
+            "bude",
+            "pršať.",
+            "snežiť."
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "It's sunny, but it's windy.",
+          "targetSk": [
+            "Je slnečno,",
+            "ale",
+            "je veterno."
+          ],
+          "bankChunks": [
+            "Je slnečno,",
+            "ale",
+            "je veterno.",
+            "je chladno."
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "On Sunday it will be cloudy.",
+          "targetSk": [
+            "V nedeľu",
+            "bude",
+            "zamračené."
+          ],
+          "bankChunks": [
+            "V nedeľu",
+            "bude",
+            "zamračené.",
+            "slnečno."
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "About fifteen degrees.",
+          "targetSk": [
+            "Asi",
+            "pätnásť",
+            "stupňov."
+          ],
+          "bankChunks": [
+            "Asi",
+            "pätnásť",
+            "stupňov.",
+            "dvadsať"
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "We'll go to the park next week.",
+          "targetSk": [
+            "Pôjdeme",
+            "do parku",
+            "budúci týždeň."
+          ],
+          "bankChunks": [
+            "Pôjdeme",
+            "do parku",
+            "budúci týždeň.",
+            "tento týždeň."
+          ]
+        }
+      ]
     },
     {
       "id": "ex5",

@@ -6,7 +6,7 @@
   "description": "Listen, then prove you were listening",
   "_voiceScript": {
     "voice": null,
-    "script": "Lekár: Dobrý deň. Koľko máte rokov?\nAna: Mám 38 rokov.\nLekár: Ďakujem. Koľko rokov má vaša dcéra?\nAna: Moja dcéra má 8 rokov.\nLekár: A váš syn?\nAna: Môj syn má 5 rokov.\nLekár: A vy, Peter, koľko máte rokov?\nPeter: Mám 41 rokov."
+    "script": "Lekár: Dobrý deň. Koľko máte rokov?\nAnna: Mám 38 rokov.\nLekár: Ďakujem. Koľko rokov má vaša dcéra?\nAnna: Moja dcéra má 8 rokov.\nLekár: A váš syn?\nAnna: Môj syn má 5 rokov.\nLekár: A vy, Peter, koľko máte rokov?\nPeter: Mám 41 rokov."
   },
   "icon": "🎧",
   "xpReward": 25,
@@ -17,14 +17,14 @@
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
       "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Say-Your-Age.mp3",
-      "conversationTranscriptSk": "Lekár: Dobrý deň. Koľko máte rokov?\nAna: Mám 38 rokov.\nLekár: Ďakujem. Koľko rokov má vaša dcéra?\nAna: Moja dcéra má 8 rokov.\nLekár: A váš syn?\nAna: Môj syn má 5 rokov.\nLekár: A vy, Peter, koľko máte rokov?\nPeter: Mám 41 rokov.",
+      "conversationTranscriptSk": "Lekár: Dobrý deň. Koľko máte rokov?\nAnna: Mám 38 rokov.\nLekár: Ďakujem. Koľko rokov má vaša dcéra?\nAnna: Moja dcéra má 8 rokov.\nLekár: A váš syn?\nAnna: Môj syn má 5 rokov.\nLekár: A vy, Peter, koľko máte rokov?\nPeter: Mám 41 rokov.",
       "speakers": [
         {
           "name": "Lekár",
           "avatar": "👨‍⚕️"
         },
         {
-          "name": "Ana",
+          "name": "Anna",
           "avatar": "👩"
         },
         {
@@ -42,7 +42,7 @@
         "Dobrý deň",
         "Koľko máte rokov?",
         "Mám 38 rokov",
-        "ďakujem",
+        "Ďakujem",
         "Koľko rokov má vaša dcéra?",
         "Moja dcéra má 8 rokov",
         "váš syn",
@@ -68,14 +68,14 @@
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
       "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Say-Your-Age.mp3",
-      "conversationTranscriptSk": "Lekár: Dobrý deň. Koľko máte rokov?\nAna: Mám 38 rokov.\nLekár: Ďakujem. Koľko rokov má vaša dcéra?\nAna: Moja dcéra má 8 rokov.\nLekár: A váš syn?\nAna: Môj syn má 5 rokov.\nLekár: A vy, Peter, koľko máte rokov?\nPeter: Mám 41 rokov.",
+      "conversationTranscriptSk": "Lekár: Dobrý deň. Koľko máte rokov?\nAnna: Mám 38 rokov.\nLekár: Ďakujem. Koľko rokov má vaša dcéra?\nAnna: Moja dcéra má 8 rokov.\nLekár: A váš syn?\nAnna: Môj syn má 5 rokov.\nLekár: A vy, Peter, koľko máte rokov?\nPeter: Mám 41 rokov.",
       "speakers": [
         {
           "name": "Lekár",
           "avatar": "👨‍⚕️"
         },
         {
-          "name": "Ana",
+          "name": "Anna",
           "avatar": "👩"
         },
         {
@@ -86,7 +86,7 @@
       "questions": [
         {
           "id": "q1",
-          "questionEn": "The doctor asks Ana \"Koľko máte rokov?\" What does this mean?",
+          "questionEn": "The doctor asks Anna \"Koľko máte rokov?\" What does this mean?",
           "answers": [
             {
               "id": "b",
@@ -112,21 +112,21 @@
         },
         {
           "id": "q2",
-          "questionEn": "Ana says \"Mám 38 rokov.\" How old is Ana?",
+          "questionEn": "The doctor asks Anna her age. How does she answer?",
           "answers": [
             {
               "id": "a",
-              "textEn": "She is 38 years old",
+              "textEn": "Mám 38 rokov.",
               "isCorrect": true
             },
             {
               "id": "b",
-              "textEn": "She is 8 years old",
+              "textEn": "Mám 8 rokov.",
               "isCorrect": false
             },
             {
               "id": "c",
-              "textEn": "She is 41 years old",
+              "textEn": "Mám 41 rokov.",
               "isCorrect": false
             }
           ],
@@ -142,12 +142,12 @@
           "answers": [
             {
               "id": "c",
-              "textEn": "Ana’s son’s age",
+              "textEn": "Anna’s son’s age",
               "isCorrect": false
             },
             {
               "id": "b",
-              "textEn": "Ana’s daughter’s age",
+              "textEn": "Anna’s daughter’s age",
               "isCorrect": true
             },
             {
@@ -164,25 +164,25 @@
         },
         {
           "id": "q4",
-          "questionEn": "Ana says \"Moja dcéra má 8 rokov.\" Who is 8 years old?",
+          "questionEn": "Anna tells the doctor how old her daughter is. What does she say?",
           "answers": [
             {
               "id": "b",
-              "textEn": "Her son",
+              "textEn": "Môj syn má 5 rokov.",
               "isCorrect": false
             },
             {
               "id": "c",
-              "textEn": "Peter",
+              "textEn": "Mám 38 rokov.",
               "isCorrect": false
             },
             {
               "id": "a",
-              "textEn": "Her daughter",
+              "textEn": "Moja dcéra má 8 rokov.",
               "isCorrect": true
             }
           ],
-          "answerMeaning": "Moja dcéra má 8 rokov = My daughter is 8 years old.",
+          "answerMeaning": "Moja dcéra má 8 rokov = My daughter is 8 years old. Dcéra = daughter, má = has/is.",
           "reviewPair": {
             "slovak": "Moja dcéra má 8 rokov.",
             "english": "My daughter is 8 years old."
@@ -190,7 +190,7 @@
         },
         {
           "id": "q5",
-          "questionEn": "How old is Ana’s son?",
+          "questionEn": "How old is Anna’s son?",
           "answers": [
             {
               "id": "a",

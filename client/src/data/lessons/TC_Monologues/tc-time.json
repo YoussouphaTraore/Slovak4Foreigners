@@ -2,42 +2,330 @@
   "id": "tc-time",
   "stageId": "topic-comprehension",
   "stageName": "",
-  "title": "Time — Monologue",
+  "title": "Time - Making Plans",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Marek: Ahoj Sara. Koľko je hodín?\nSara: Je pol tretej.\nMarek: Čo robíš dnes večer?\nSara: Dnes večer som doma. Prečo?\nMarek: Chcem ísť na kávu. O koľkej máš čas?\nSara: O siedmej môžem.\nMarek: Dobre. A zajtra?\nSara: Zajtra ráno idem k doktorovi. O deviatej.\nMarek: A popoludní?\nSara: Popoludní som voľná.\nMarek: Super. Dovidenia večer!\nSara: Dovidenia!"
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Time.mp3",
+      "conversationTranscriptSk": "Marek: Ahoj Sara. Koľko je hodín?\nSara: Je pol tretej.\nMarek: Čo robíš dnes večer?\nSara: Dnes večer som doma. Prečo?\nMarek: Chcem ísť na kávu. O koľkej máš čas?\nSara: O siedmej môžem.\nMarek: Dobre. A zajtra?\nSara: Zajtra ráno idem k doktorovi. O deviatej.\nMarek: A popoludní?\nSara: Popoludní som voľná.\nMarek: Super. Dovidenia večer!\nSara: Dovidenia!",
+      "speakers": [
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "Koľko je hodín?",
+        "Je pol tretej.",
+        "dnes večer",
+        "som doma",
+        "O koľkej",
+        "O siedmej",
+        "Zajtra ráno",
+        "k doktorovi",
+        "O deviatej.",
+        "Popoludní",
+        "som voľná",
+        "Dovidenia"
+      ],
+      "distractorWords": [
+        "Je pol štvrtej.",
+        "dnes ráno",
+        "O ôsmej",
+        "Zajtra večer",
+        "som chorá",
+        "O desiatej."
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Time.mp3",
+      "conversationTranscriptSk": "Marek: Ahoj Sara. Koľko je hodín?\nSara: Je pol tretej.\nMarek: Čo robíš dnes večer?\nSara: Dnes večer som doma. Prečo?\nMarek: Chcem ísť na kávu. O koľkej máš čas?\nSara: O siedmej môžem.\nMarek: Dobre. A zajtra?\nSara: Zajtra ráno idem k doktorovi. O deviatej.\nMarek: A popoludní?\nSara: Popoludní som voľná.\nMarek: Super. Dovidenia večer!\nSara: Dovidenia!",
+      "speakers": [
+        {
+          "name": "Marek",
+          "avatar": "👨"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👩"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Marek asks the time. How does Sara answer?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Je pol štvrtej.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Je tretia hodina.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Je pol tretej.",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Je pol tretej = It is half past two. In Slovak, pol tretej literally means half of three — the half hour before three.",
+          "reviewPair": {
+            "slovak": "Je pol tretej.",
+            "english": "It is half past two."
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Marek asks what Sara is doing this evening. What does she say?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "She is at home",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "She is going to the doctor",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "She is going for coffee",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Dnes večer som doma = This evening I am at home. Večer = evening, doma = at home.",
+          "reviewPair": {
+            "slovak": "dnes večer",
+            "english": "this evening"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Marek asks \"O koľkej máš čas?\" What does this mean?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "What time is it?",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "At what time are you free?",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "When are you going home?",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "O koľkej máš čas? = At what time are you free? O koľkej? = at what time? Čas = time / free time.",
+          "reviewPair": {
+            "slovak": "O koľkej?",
+            "english": "At what time?"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Sara tells Marek when she can meet for coffee. What does she say?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "O deviatej môžem.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "O šiestej môžem.",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "O siedmej môžem.",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "O siedmej môžem = I can at seven. Môžem = I can, o siedmej = at seven (time form of sedem).",
+          "reviewPair": {
+            "slovak": "O siedmej",
+            "english": "At seven o'clock"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "Sara says \"Zajtra ráno idem k doktorovi. O deviatej.\" What is she doing tomorrow morning?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "Going for coffee at nine",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "Going to the doctor at nine",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Staying home in the morning",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Zajtra ráno idem k doktorovi. O deviatej = Tomorrow morning I am going to the doctor. At nine. Zajtra = tomorrow, ráno = morning.",
+          "reviewPair": {
+            "slovak": "Zajtra ráno",
+            "english": "Tomorrow morning"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Marek asks \"A popoludní?\" What is Sara doing in the afternoon?",
+          "answers": [
+            {
+              "id": "b",
+              "textEn": "She is at home",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "She has a doctor appointment",
+              "isCorrect": false
+            },
+            {
+              "id": "a",
+              "textEn": "She is free",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Popoludní som voľná = In the afternoon I am free. Popoludní = in the afternoon, voľná = free.",
+          "reviewPair": {
+            "slovak": "Popoludní",
+            "english": "In the afternoon"
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "What time is it?",
+          "targetSk": [
+            "Koľko",
+            "je",
+            "hodín?"
+          ],
+          "bankChunks": [
+            "Koľko",
+            "je",
+            "hodín?",
+            "O koľkej?"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "It is half past two.",
+          "targetSk": [
+            "Je",
+            "pol",
+            "tretej."
+          ],
+          "bankChunks": [
+            "Je",
+            "pol",
+            "tretej.",
+            "štvrtej."
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "What are you doing this evening?",
+          "targetSk": [
+            "Čo robíš",
+            "dnes",
+            "večer?"
+          ],
+          "bankChunks": [
+            "Čo robíš",
+            "dnes",
+            "večer?",
+            "ráno?"
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "I can at seven.",
+          "targetSk": [
+            "O siedmej",
+            "môžem."
+          ],
+          "bankChunks": [
+            "O siedmej",
+            "môžem.",
+            "O deviatej",
+            "nie."
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "Tomorrow morning I am going to the doctor.",
+          "targetSk": [
+            "Zajtra ráno",
+            "idem",
+            "k doktorovi."
+          ],
+          "bankChunks": [
+            "Zajtra ráno",
+            "idem",
+            "k doktorovi.",
+            "domov."
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "In the afternoon I am free.",
+          "targetSk": [
+            "Popoludní",
+            "som",
+            "voľná."
+          ],
+          "bankChunks": [
+            "Popoludní",
+            "som",
+            "voľná.",
+            "doma."
+          ]
+        }
+      ]
     },
     {
       "id": "ex5",
