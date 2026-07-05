@@ -92,8 +92,8 @@ function intervalDaysForStage(stage: number): number {
 
 // Returns all lesson records that are currently due for review, sorted by priority.
 // Priority score: more strikesInLastReview → worse; fewer timesReviewed → worse; older completedAt → worse.
-// Caps at 4 lessons so a single session is never overwhelming.
-const MAX_LESSONS_PER_SESSION = 4;
+// Caps at 3 lessons (3 × 2 exercises = 6 max) so a single session is never overwhelming.
+const MAX_LESSONS_PER_SESSION = 3;
 
 export function getDueLessons(lessonRecords: LessonRecord[], nowMs: number = Date.now()): LessonRecord[] {
   return lessonRecords

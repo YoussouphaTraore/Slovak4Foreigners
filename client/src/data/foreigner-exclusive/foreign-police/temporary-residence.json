@@ -111,7 +111,7 @@
             "Only if the business makes less than €500/month"
           ],
           "answer": "No — the permit is for one purpose only",
-          "answerMeaning": "A temporary residence permit is bound to ONE purpose. Employment â‰  business. You would need a separate permit for business activity."
+          "answerMeaning": "A temporary residence permit is bound to ONE purpose. Employment ≠ business. You would need a separate permit for business activity."
         },
         {
           "situation": "The officer asks: 'Doklad o ubytovaní, prosím.' Your landlord has not given you anything yet. What should you do?",
@@ -561,7 +561,7 @@
           "instruction": "Choose the correct answer",
           "choices": ["Call the Foreign Police by phone", "Walk in on any working day", "Book online at cudzinec.minv.sk", "Ask your employer to book it"],
           "answer": "Book online at cudzinec.minv.sk",
-          "answerMeaning": "The official appointment booking system is at cudzinec.minv.sk. Walk-ins are rarely accepted — always book in advance. Waiting times in Bratislava can be 4â€“8 weeks."
+          "answerMeaning": "The official appointment booking system is at cudzinec.minv.sk. Walk-ins are rarely accepted — always book in advance. Waiting times in Bratislava can be 4–8 weeks."
         },
         {
           "situation": "The officer says: 'Dokument musí byť apostilovaný a úradne preložený.' What must you do?",

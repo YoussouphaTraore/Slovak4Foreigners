@@ -1,4 +1,4 @@
-﻿import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { saveOnboarding } from '../lib/supabase/progressSync';
 import { type Country } from '../data/countries';
 import { fetchCountries } from '../utils/fetchCountries';
@@ -56,7 +56,7 @@ export function OnboardingModal({ userId, onDone }: Props) {
     }
   };
 
-  // â”€â”€ Step 1: Country â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Step 1: Country ──────────────────────────────────────────────────────────
   if (step === 'country') {
     return (
       <div className="fixed inset-0 z-[85] bg-[#E8F4DC] flex flex-col">
@@ -71,7 +71,7 @@ export function OnboardingModal({ userId, onDone }: Props) {
         <div className="px-4 pb-3 flex-none">
           <input
             type="text"
-            placeholder="Search countryâ€¦"
+            placeholder="Search country…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full px-4 py-2.5 rounded-xl border-2 border-gray-200 bg-white text-sm outline-none focus:border-brand-green transition-colors"
@@ -116,7 +116,7 @@ export function OnboardingModal({ userId, onDone }: Props) {
     );
   }
 
-  // â”€â”€ Step 2: Gender â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+  // ── Step 2: Gender ───────────────────────────────────────────────────────────
   return (
     <div className="fixed inset-0 z-[85] bg-[#E8F4DC] flex flex-col items-center justify-center px-6">
       <img src="/snail.png" alt="" className="w-16 h-16 mb-4 object-contain" />
@@ -130,7 +130,7 @@ export function OnboardingModal({ userId, onDone }: Props) {
         onClick={() => setStep('country')}
         className="mb-6 flex items-center gap-1.5 text-xs text-brand-green font-semibold cursor-pointer hover:underline"
       >
-        â† {country?.en}
+        ← {country?.en}
       </button>
 
       <div className="w-full max-w-sm space-y-3">
@@ -162,7 +162,7 @@ export function OnboardingModal({ userId, onDone }: Props) {
             : 'bg-gray-200 text-gray-400 cursor-not-allowed'
         }`}
       >
-        {saving ? 'Savingâ€¦' : 'Continue'}
+        {saving ? 'Saving…' : 'Continue'}
       </button>
     </div>
   );

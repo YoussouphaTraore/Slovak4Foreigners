@@ -63,10 +63,8 @@ function AppRoutes() {
   const regressionLessonTitle = useProgressStore((s) => s.regressionLessonTitle);
   const applyGuestRegression = useProgressStore((s) => s.applyGuestRegression);
   const completedLessons = useProgressStore((s) => s.completedLessons);
-  const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const userId = useAuthStore((s) => s.user?.id);
-  const navigate = useNavigate();
 
   function handleConsentAccepted() {
     // Only prompt guests — logged-in users already have an account
@@ -79,7 +77,6 @@ function AppRoutes() {
   }
 
   const regressionChecked = useRef(false);
-  const autoReviewChecked = useRef(false);
 
   useEffect(() => {
     if (!isInitialized || regressionChecked.current) return;
@@ -105,28 +102,7 @@ function AppRoutes() {
     applyGuestRegression();
   }, [isInitialized, userId, completedLessons.length, applyGuestRegression]);
 
-  // Auto-trigger review when 12 hours have passed since the last review session
-  useEffect(() => {
-    if (!isInitialized || autoReviewChecked.current) return;
-    autoReviewChecked.current = true;
-
-    try {
-      if (sessionStorage.getItem('autoReviewShown')) return;
-    } catch { /* */ }
-
-    const hasEnoughProgress = !!userId || completedLessons.length >= 3;
-    if (!hasEnoughProgress) return;
-
-    // Auto-redirect only when at least one lesson is actually due
-    if (reviewTargetIds.length === 0) return;
-
-    // Don't conflict with a regression modal that may have just been set
-    const { showSaveProgressModal: modalState } = useProgressStore.getState();
-    if (modalState !== null) return;
-
-    try { sessionStorage.setItem('autoReviewShown', 'true'); } catch { /* */ }
-    navigate('/review', { state: { autoTriggered: true } });
-  }, [isInitialized, userId, completedLessons.length, reviewTargetIds.length, navigate]);
+  // Auto-redirect to review removed — review is now surfaced as an inline node on the skill path.
 
   return (
     <>

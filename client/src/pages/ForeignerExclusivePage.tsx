@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useProgressStore, computeStrength } from '../store/useProgressStore';
+import { useProgressStore } from '../store/useProgressStore';
 import { BottomNav } from '../components/ui/BottomNav';
 
 interface CategoryCard {
@@ -12,8 +11,6 @@ interface CategoryCard {
   available: boolean;
   route?: string;
 }
-
-const isDev = import.meta.env.DEV;
 
 const CATEGORIES: CategoryCard[] = [
   {
@@ -65,22 +62,7 @@ export function ForeignerExclusivePage() {
   const streak = useProgressStore((s) => s.streak);
   const streakMultiplier = useProgressStore((s) => s.streakMultiplier);
   const isSyncing = useProgressStore((s) => s.isSyncing);
-  const lessonRecords = useProgressStore((s) => s.lessonRecords);
-  const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
-  const completedLessons = useProgressStore((s) => s.completedLessons);
 
-  const [nowMs, setNowMs] = useState(() => Date.now());
-  useEffect(() => {
-    const t = setInterval(() => setNowMs(Date.now()), 60_000);
-    return () => clearInterval(t);
-  }, []);
-
-  const reviewCount = reviewTargetIds.length;
-  const reviewOverdue = reviewTargetIds.some((id) => {
-    const r = lessonRecords.find((rec) => rec.lessonId === id);
-    return r && computeStrength(r, nowMs) === 0;
-  });
-  const showReviewBanner = isDev ? completedLessons.length > 0 : reviewCount > 0;
 
   return (
     <div className="min-h-screen bg-[#E8F4DC] flex flex-col max-w-lg mx-auto w-full">
@@ -119,34 +101,8 @@ export function ForeignerExclusivePage() {
             </div>
           </div>
 
-          {/* Review widget */}
-          {showReviewBanner && (
-            <button
-              type="button"
-              onClick={() => navigate('/review')}
-              className="flex items-center gap-1 px-2.5 py-0.5 bg-amber-50 border border-amber-200 rounded-xl cursor-pointer hover:bg-amber-100 active:scale-[0.97] transition-all animate-pulse"
-            >
-              <span className="text-sm leading-none">{reviewOverdue ? '🔴' : '⚠️'}</span>
-              {reviewCount > 0 && (
-                <span className={`text-xs font-extrabold tabular-nums ${reviewOverdue ? 'text-red-600' : 'text-amber-600'}`}>
-                  {reviewCount}+
-                </span>
-              )}
-              <span className="text-[8px] font-bold text-amber-800">Review</span>
-            </button>
-          )}
-
           {/* Join a Physical Session */}
-          {showReviewBanner ? (
-            <button
-              type="button"
-              title="Join Our Physical Sessions"
-              className="ml-auto flex items-center justify-center bg-amber-50 border border-amber-200 rounded-xl p-1 cursor-pointer hover:bg-amber-100 active:scale-[0.97] transition-all"
-            >
-              <span className="w-6 h-6 rounded-md bg-amber-400 flex items-center justify-center text-sm">👥</span>
-            </button>
-          ) : (
-            <button
+          <button
               type="button"
               className="ml-auto flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl pl-1.5 pr-3 py-0.5 cursor-pointer hover:bg-amber-100 active:scale-[0.98] transition-all"
             >
@@ -156,7 +112,6 @@ export function ForeignerExclusivePage() {
                 <p className="text-[7px] text-amber-600 leading-tight">Register →</p>
               </div>
             </button>
-          )}
         </div>
       </div>
 

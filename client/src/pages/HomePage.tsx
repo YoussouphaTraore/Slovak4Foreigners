@@ -48,11 +48,6 @@ export function HomePage() {
 
   // reviewTargetIds = all currently-due lesson IDs (pre-computed by decayLessonStrengths)
   const reviewCount = reviewTargetIds.length;
-  const reviewDisplayCount = Math.min(reviewCount, 3);
-  const reviewBannerLabel = reviewCount >= 3 ? 'Keep these fresh' : 'Quick warm-up';
-  const showReviewBanner = isDev
-    ? completedLessons.length > 0
-    : reviewCount > 0;
 
   const finalStage1BlockId = stage1Blocks[stage1Blocks.length - 1]?.blockId;
 
@@ -218,6 +213,32 @@ export function HomePage() {
     );
   }
 
+  function renderReviewNode(nodeKey: string) {
+    return (
+      <div key={`review-after-${nodeKey}`} className="flex flex-col items-center">
+        <div className="w-0.5 h-8 border-l-2 border-dashed border-gray-300" />
+        <div className="relative flex flex-col items-center">
+          <span className="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full text-xs font-bold uppercase tracking-widest text-amber-500">
+            REVIEW DUE
+          </span>
+          <button
+            type="button"
+            onClick={() => go('/review')}
+            className="w-16 h-16 rounded-full bg-amber-400 text-white flex items-center justify-center text-2xl shadow-md hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer"
+          >
+            🔁
+          </button>
+          <div className="mt-3 text-center">
+            <p className="text-sm font-semibold text-gray-700">Quick Review</p>
+            <p className="text-xs text-gray-400">
+              {reviewCount} lesson{reviewCount !== 1 ? 's' : ''} due
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-[#E8F4DC] flex flex-col max-w-lg mx-auto w-full">
       {/* Header */}
@@ -257,35 +278,7 @@ export function HomePage() {
             </div>
           </div>
 
-          {showReviewBanner && (
-            <button
-              type="button"
-              onClick={() => go('/review')}
-              className="flex items-center gap-1 px-2.5 py-0.5 bg-emerald-50 border border-emerald-200 rounded-xl cursor-pointer hover:bg-emerald-100 active:scale-[0.97] transition-all"
-            >
-              <span className="text-sm leading-none">🐌</span>
-              {reviewCount > 0 && (
-                <span className="text-xs font-extrabold tabular-nums text-emerald-700">
-                  {reviewDisplayCount}
-                </span>
-              )}
-              <span className="text-[8px] font-bold text-emerald-800">{reviewBannerLabel}</span>
-            </button>
-          )}
-
-          {showReviewBanner ? (
-            <button
-              type="button"
-              title={isSessionRegistered ? 'Already registered!' : 'Join Our Physical Sessions'}
-              onClick={() => setShowSessionModal(true)}
-              className="ml-auto flex items-center justify-center bg-amber-50 border border-amber-200 rounded-xl p-1 cursor-pointer hover:bg-amber-100 active:scale-[0.97] transition-all"
-            >
-              <span className={`w-6 h-6 rounded-md flex items-center justify-center text-sm ${isSessionRegistered ? 'bg-brand-green' : 'bg-amber-400'}`}>
-                {isSessionRegistered ? '✓' : '👥'}
-              </span>
-            </button>
-          ) : (
-            <button
+          <button
               type="button"
               onClick={() => setShowSessionModal(true)}
               className="ml-auto flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl pl-1.5 pr-3 py-0.5 cursor-pointer hover:bg-amber-100 active:scale-[0.98] transition-all"
@@ -307,7 +300,6 @@ export function HomePage() {
                 )}
               </div>
             </button>
-          )}
         </div>
       </div>
 
@@ -323,6 +315,16 @@ export function HomePage() {
             const blockTopics = (block.topicIds ?? [])
               .map(id => topicById[id])
               .filter(Boolean) as LessonTopic[];
+
+            const prevBlock = blockIdx > 0 ? stage1Blocks[blockIdx - 1] : null;
+            const prevBlockLastTopic = prevBlock
+              ? (((prevBlock.topicIds ?? []).map(id => topicById[id]).filter(Boolean) as LessonTopic[]).at(-1) ?? null)
+              : null;
+            const prevBlockLastTopicPassed = prevBlockLastTopic ? passedTopics.includes(prevBlockLastTopic.id) : false;
+            const firstTopicOfThisBlock = blockTopics[0];
+            const firstTopicNotPassed = firstTopicOfThisBlock ? !passedTopics.includes(firstTopicOfThisBlock.id) : false;
+            const showCrossBlockReview = prevBlockLastTopicPassed && firstTopicNotPassed && reviewCount > 0;
+
             const allBlockLessonsCompleted =
               completableLessonIds.length > 0
                 ? completableLessonIds.every((id) => completedLessons.includes(id))
@@ -347,12 +349,23 @@ export function HomePage() {
                   <div className="flex-1 h-px bg-gray-200" />
                 </div>
 
+                {/* Cross-block review node — shown before first topic when previous block's last topic is passed */}
+                {showCrossBlockReview && renderReviewNode(`cross-block-${block.blockId}`)}
+
                 {/* Topic nodes in this block */}
-                {blockTopics.map((topic, topicIdx) => {
+                {blockTopics.flatMap((topic, topicIdx) => {
                   const isLast = topicIdx === blockTopics.length - 1;
                   const prevTopicId = topicIdx > 0 ? blockTopics[topicIdx - 1].id : null;
                   const isTopicGateLocked = !isDev && prevTopicId !== null && !passedTopics.includes(prevTopicId);
-                  return renderTopicNode(topic, isLast, isTopicGateLocked);
+
+                  const thisTopicComplete = passedTopics.includes(topic.id);
+                  const nextTopic = blockTopics[topicIdx + 1];
+                  const nextTopicNotComplete = nextTopic ? !passedTopics.includes(nextTopic.id) : false;
+                  const showReview = thisTopicComplete && !!nextTopic && nextTopicNotComplete && reviewCount > 0;
+
+                  const nodes = [renderTopicNode(topic, isLast, isTopicGateLocked)];
+                  if (showReview) nodes.push(renderReviewNode(topic.id));
+                  return nodes;
                 })}
 
                 {/* Block Dialogue node */}

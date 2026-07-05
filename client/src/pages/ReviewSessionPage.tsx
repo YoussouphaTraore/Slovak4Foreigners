@@ -87,7 +87,7 @@ const EXERCISES_PER_LESSON = 2;
 function buildSession(
   completedLessonIds: string[],
   lessonRecords: LessonRecord[],
-  reviewTargetIds: string[], // due lesson IDs, pre-sorted by priority, pre-capped at 4
+  reviewTargetIds: string[], // due lesson IDs, pre-sorted by priority, pre-capped at 3
 ): {
   items: ReviewItem[];
   reviewed: ReviewedLesson[];
