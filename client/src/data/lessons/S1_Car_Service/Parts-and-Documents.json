@@ -1,0 +1,328 @@
+{
+  "id": "s1-parts-documents",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Parts & Documents",
+  "description": "Use basic words for car documents, insurance, keys, and replacement parts",
+  "icon": "📋",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Parts & Documents",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "doklady",
+          "english": "documents"
+        },
+        {
+          "slovak": "vodičský preukaz",
+          "english": "driver's license"
+        },
+        {
+          "slovak": "technický preukaz",
+          "english": "vehicle registration document"
+        },
+        {
+          "slovak": "poistenie",
+          "english": "insurance"
+        },
+        {
+          "slovak": "náhradný diel",
+          "english": "replacement part"
+        },
+        {
+          "slovak": "kľúč od auta",
+          "english": "car key"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "doklady",
+          "english": "documents"
+        },
+        {
+          "slovak": "vodičský preukaz",
+          "english": "driver's license"
+        },
+        {
+          "slovak": "technický preukaz",
+          "english": "vehicle registration document"
+        },
+        {
+          "slovak": "poistenie",
+          "english": "insurance"
+        },
+        {
+          "slovak": "náhradný diel",
+          "english": "replacement part"
+        },
+        {
+          "slovak": "kľúč od auta",
+          "english": "car key"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "doklady",
+          "english": "documents"
+        },
+        {
+          "slovak": "vodičský preukaz",
+          "english": "driver's license"
+        },
+        {
+          "slovak": "technický preukaz",
+          "english": "vehicle registration document"
+        },
+        {
+          "slovak": "poistenie",
+          "english": "insurance"
+        },
+        {
+          "slovak": "náhradný diel",
+          "english": "replacement part"
+        },
+        {
+          "slovak": "kľúč od auta",
+          "english": "car key"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "doklady",
+          "english": "documents"
+        },
+        {
+          "slovak": "vodičský preukaz",
+          "english": "driver's license"
+        },
+        {
+          "slovak": "technický preukaz",
+          "english": "vehicle registration document"
+        },
+        {
+          "slovak": "poistenie",
+          "english": "insurance"
+        },
+        {
+          "slovak": "náhradný diel",
+          "english": "replacement part"
+        },
+        {
+          "slovak": "kľúč od auta",
+          "english": "car key"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "doklady",
+          "english": "documents"
+        },
+        {
+          "slovak": "vodičský preukaz",
+          "english": "driver's license"
+        },
+        {
+          "slovak": "technický preukaz",
+          "english": "vehicle registration document"
+        },
+        {
+          "slovak": "poistenie",
+          "english": "insurance"
+        },
+        {
+          "slovak": "náhradný diel",
+          "english": "replacement part"
+        },
+        {
+          "slovak": "kľúč od auta",
+          "english": "car key"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The garage desk asks for your car documents. Which word means documents?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "doklady",
+            "poistenie",
+            "náhradný diel",
+            "kľúč od auta"
+          ],
+          "answer": "doklady",
+          "answerMeaning": "doklady = documents. This is a general word for official papers or IDs."
+        },
+        {
+          "situation": "Someone asks for your driver's license. Which phrase do you need?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "vodičský preukaz",
+            "technický preukaz",
+            "poistenie",
+            "doklady"
+          ],
+          "answer": "vodičský preukaz",
+          "answerMeaning": "vodičský preukaz = driver's license. Vodič means driver."
+        },
+        {
+          "situation": "The mechanic asks for the vehicle registration document. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "technický preukaz",
+            "vodičský preukaz",
+            "náhradný diel",
+            "kľúč od auta"
+          ],
+          "answer": "technický preukaz",
+          "answerMeaning": "technický preukaz = vehicle registration document / technical certificate for the car."
+        },
+        {
+          "situation": "You need to say insurance. Which word fits?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "poistenie",
+            "doklady",
+            "technický preukaz",
+            "náhradný diel"
+          ],
+          "answer": "poistenie",
+          "answerMeaning": "poistenie = insurance. Useful for car damage, accidents, or documents."
+        },
+        {
+          "situation": "The mechanic says the car needs a replacement part. Which phrase means replacement part?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "náhradný diel",
+            "poistenie",
+            "doklady",
+            "vodičský preukaz"
+          ],
+          "answer": "náhradný diel",
+          "answerMeaning": "náhradný diel = replacement part / spare part. You may hear this during repairs."
+        },
+        {
+          "situation": "You need to give the car key to the mechanic. Which phrase means car key?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "kľúč od auta",
+            "náhradný diel",
+            "poistenie",
+            "technický preukaz"
+          ],
+          "answer": "kľúč od auta",
+          "answerMeaning": "kľúč od auta = car key. Od auta means of/from the car."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Toto sú ___.",
+          "translation": "These are documents.",
+          "choices": [
+            "doklady",
+            "poistenie",
+            "náhradný diel",
+            "kľúč od auta"
+          ],
+          "answer": "doklady",
+          "answerMeaning": "Toto sú doklady. = These are documents."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a driver's license.",
+          "choices": [
+            "vodičský preukaz",
+            "technický preukaz",
+            "poistenie",
+            "doklady"
+          ],
+          "answer": "vodičský preukaz",
+          "answerMeaning": "Toto je vodičský preukaz. = This is a driver's license."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a vehicle registration document.",
+          "choices": [
+            "technický preukaz",
+            "vodičský preukaz",
+            "náhradný diel",
+            "kľúč od auta"
+          ],
+          "answer": "technický preukaz",
+          "answerMeaning": "Toto je technický preukaz. = This is a vehicle registration document."
+        },
+        {
+          "sentence": "Mám ___.",
+          "translation": "I have insurance.",
+          "choices": [
+            "poistenie",
+            "doklady",
+            "technický preukaz",
+            "náhradný diel"
+          ],
+          "answer": "poistenie",
+          "answerMeaning": "Mám poistenie. = I have insurance."
+        },
+        {
+          "sentence": "Potrebujem ___.",
+          "translation": "I need a replacement part.",
+          "choices": [
+            "náhradný diel",
+            "poistenie",
+            "doklady",
+            "vodičský preukaz"
+          ],
+          "answer": "náhradný diel",
+          "answerMeaning": "Potrebujem náhradný diel. = I need a replacement part."
+        },
+        {
+          "sentence": "Mám ___.",
+          "translation": "I have the car key.",
+          "choices": [
+            "kľúč od auta",
+            "náhradný diel",
+            "poistenie",
+            "technický preukaz"
+          ],
+          "answer": "kľúč od auta",
+          "answerMeaning": "Mám kľúč od auta. = I have the car key."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

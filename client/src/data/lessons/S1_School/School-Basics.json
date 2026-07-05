@@ -1,0 +1,328 @@
+{
+  "id": "s1-school-basics",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "School Basics",
+  "description": "Learn basic school people and places",
+  "icon": "🏫",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "School Basics",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "škola",
+          "english": "school"
+        },
+        {
+          "slovak": "trieda",
+          "english": "class / classroom"
+        },
+        {
+          "slovak": "učiteľ",
+          "english": "male teacher"
+        },
+        {
+          "slovak": "učiteľka",
+          "english": "female teacher"
+        },
+        {
+          "slovak": "žiak",
+          "english": "male pupil / student"
+        },
+        {
+          "slovak": "žiačka",
+          "english": "female pupil / student"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "škola",
+          "english": "school"
+        },
+        {
+          "slovak": "trieda",
+          "english": "class / classroom"
+        },
+        {
+          "slovak": "učiteľ",
+          "english": "male teacher"
+        },
+        {
+          "slovak": "učiteľka",
+          "english": "female teacher"
+        },
+        {
+          "slovak": "žiak",
+          "english": "male pupil / student"
+        },
+        {
+          "slovak": "žiačka",
+          "english": "female pupil / student"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "škola",
+          "english": "school"
+        },
+        {
+          "slovak": "trieda",
+          "english": "class / classroom"
+        },
+        {
+          "slovak": "učiteľ",
+          "english": "male teacher"
+        },
+        {
+          "slovak": "učiteľka",
+          "english": "female teacher"
+        },
+        {
+          "slovak": "žiak",
+          "english": "male pupil / student"
+        },
+        {
+          "slovak": "žiačka",
+          "english": "female pupil / student"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "škola",
+          "english": "school"
+        },
+        {
+          "slovak": "trieda",
+          "english": "class / classroom"
+        },
+        {
+          "slovak": "učiteľ",
+          "english": "male teacher"
+        },
+        {
+          "slovak": "učiteľka",
+          "english": "female teacher"
+        },
+        {
+          "slovak": "žiak",
+          "english": "male pupil / student"
+        },
+        {
+          "slovak": "žiačka",
+          "english": "female pupil / student"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "škola",
+          "english": "school"
+        },
+        {
+          "slovak": "trieda",
+          "english": "class / classroom"
+        },
+        {
+          "slovak": "učiteľ",
+          "english": "male teacher"
+        },
+        {
+          "slovak": "učiteľka",
+          "english": "female teacher"
+        },
+        {
+          "slovak": "žiak",
+          "english": "male pupil / student"
+        },
+        {
+          "slovak": "žiačka",
+          "english": "female pupil / student"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are standing outside the school building. Which Slovak word means school?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "škola",
+            "trieda",
+            "učiteľ",
+            "žiak"
+          ],
+          "answer": "škola",
+          "answerMeaning": "škola = school. Use this for the school building or school as a place."
+        },
+        {
+          "situation": "You need to find your class or classroom. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "trieda",
+            "škola",
+            "učiteľka",
+            "žiačka"
+          ],
+          "answer": "trieda",
+          "answerMeaning": "trieda = class / classroom. It can mean the group of students or the classroom."
+        },
+        {
+          "situation": "A man teaches the class. Which Slovak word fits?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "učiteľ",
+            "učiteľka",
+            "žiak",
+            "trieda"
+          ],
+          "answer": "učiteľ",
+          "answerMeaning": "učiteľ = male teacher. Use it for a man who teaches."
+        },
+        {
+          "situation": "A woman teaches the class. Which Slovak word fits?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "učiteľka",
+            "učiteľ",
+            "žiačka",
+            "škola"
+          ],
+          "answer": "učiteľka",
+          "answerMeaning": "učiteľka = female teacher. The ending -ka often marks a female person."
+        },
+        {
+          "situation": "A boy is learning in school. Which Slovak word fits?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "žiak",
+            "žiačka",
+            "učiteľ",
+            "trieda"
+          ],
+          "answer": "žiak",
+          "answerMeaning": "žiak = male pupil / student. Use it for a boy or male student at school."
+        },
+        {
+          "situation": "A girl is learning in school. Which Slovak word fits?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "žiačka",
+            "žiak",
+            "učiteľka",
+            "škola"
+          ],
+          "answer": "žiačka",
+          "answerMeaning": "žiačka = female pupil / student. Use it for a girl or female student at school."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a school.",
+          "choices": [
+            "škola",
+            "trieda",
+            "učiteľ",
+            "žiak"
+          ],
+          "answer": "škola",
+          "answerMeaning": "Toto je škola. = This is a school."
+        },
+        {
+          "sentence": "Toto je moja ___.",
+          "translation": "This is my class / classroom.",
+          "choices": [
+            "trieda",
+            "škola",
+            "učiteľka",
+            "žiačka"
+          ],
+          "answer": "trieda",
+          "answerMeaning": "Toto je moja trieda. = This is my class / classroom."
+        },
+        {
+          "sentence": "On je ___.",
+          "translation": "He is a teacher.",
+          "choices": [
+            "učiteľ",
+            "učiteľka",
+            "žiak",
+            "škola"
+          ],
+          "answer": "učiteľ",
+          "answerMeaning": "On je učiteľ. = He is a teacher."
+        },
+        {
+          "sentence": "Ona je ___.",
+          "translation": "She is a teacher.",
+          "choices": [
+            "učiteľka",
+            "učiteľ",
+            "žiačka",
+            "trieda"
+          ],
+          "answer": "učiteľka",
+          "answerMeaning": "Ona je učiteľka. = She is a teacher."
+        },
+        {
+          "sentence": "Chlapec je ___.",
+          "translation": "The boy is a pupil / student.",
+          "choices": [
+            "žiak",
+            "žiačka",
+            "učiteľ",
+            "škola"
+          ],
+          "answer": "žiak",
+          "answerMeaning": "Chlapec je žiak. = The boy is a pupil / student."
+        },
+        {
+          "sentence": "Dievča je ___.",
+          "translation": "The girl is a pupil / student.",
+          "choices": [
+            "žiačka",
+            "žiak",
+            "učiteľka",
+            "trieda"
+          ],
+          "answer": "žiačka",
+          "answerMeaning": "Dievča je žiačka. = The girl is a pupil / student."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

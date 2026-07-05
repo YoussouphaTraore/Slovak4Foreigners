@@ -1,0 +1,328 @@
+{
+  "id": "s1-school-communication",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "School Communication",
+  "description": "Parent meetings, messages, excuse notes, and absence",
+  "icon": "✉️",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "School Communication",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "rodič",
+          "english": "parent"
+        },
+        {
+          "slovak": "stretnutie",
+          "english": "meeting"
+        },
+        {
+          "slovak": "správa",
+          "english": "message"
+        },
+        {
+          "slovak": "ospravedlnenie",
+          "english": "excuse note"
+        },
+        {
+          "slovak": "moje dieťa chýba",
+          "english": "my child is absent"
+        },
+        {
+          "slovak": "prosím, zavolajte mi",
+          "english": "please call me"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "rodič",
+          "english": "parent"
+        },
+        {
+          "slovak": "stretnutie",
+          "english": "meeting"
+        },
+        {
+          "slovak": "správa",
+          "english": "message"
+        },
+        {
+          "slovak": "ospravedlnenie",
+          "english": "excuse note"
+        },
+        {
+          "slovak": "moje dieťa chýba",
+          "english": "my child is absent"
+        },
+        {
+          "slovak": "prosím, zavolajte mi",
+          "english": "please call me"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "rodič",
+          "english": "parent"
+        },
+        {
+          "slovak": "stretnutie",
+          "english": "meeting"
+        },
+        {
+          "slovak": "správa",
+          "english": "message"
+        },
+        {
+          "slovak": "ospravedlnenie",
+          "english": "excuse note"
+        },
+        {
+          "slovak": "moje dieťa chýba",
+          "english": "my child is absent"
+        },
+        {
+          "slovak": "prosím, zavolajte mi",
+          "english": "please call me"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "rodič",
+          "english": "parent"
+        },
+        {
+          "slovak": "stretnutie",
+          "english": "meeting"
+        },
+        {
+          "slovak": "správa",
+          "english": "message"
+        },
+        {
+          "slovak": "ospravedlnenie",
+          "english": "excuse note"
+        },
+        {
+          "slovak": "moje dieťa chýba",
+          "english": "my child is absent"
+        },
+        {
+          "slovak": "prosím, zavolajte mi",
+          "english": "please call me"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "rodič",
+          "english": "parent"
+        },
+        {
+          "slovak": "stretnutie",
+          "english": "meeting"
+        },
+        {
+          "slovak": "správa",
+          "english": "message"
+        },
+        {
+          "slovak": "ospravedlnenie",
+          "english": "excuse note"
+        },
+        {
+          "slovak": "moje dieťa chýba",
+          "english": "my child is absent"
+        },
+        {
+          "slovak": "prosím, zavolajte mi",
+          "english": "please call me"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The school asks who you are in relation to the child. Which word means parent?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "rodič",
+            "správa",
+            "stretnutie",
+            "ospravedlnenie"
+          ],
+          "answer": "rodič",
+          "answerMeaning": "rodič = parent. Use it when the school asks who you are."
+        },
+        {
+          "situation": "The teacher wants to meet you. Which word means meeting?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "stretnutie",
+            "správa",
+            "rodič",
+            "prosím, zavolajte mi"
+          ],
+          "answer": "stretnutie",
+          "answerMeaning": "stretnutie = meeting. You may hear it for a parent-teacher meeting."
+        },
+        {
+          "situation": "You receive text from school. Which word means message?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "správa",
+            "stretnutie",
+            "ospravedlnenie",
+            "rodič"
+          ],
+          "answer": "správa",
+          "answerMeaning": "správa = message. Use it for a text, app message, or written notice."
+        },
+        {
+          "situation": "Your child was away and the school needs a note. Which word means excuse note?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "ospravedlnenie",
+            "správa",
+            "stretnutie",
+            "rodič"
+          ],
+          "answer": "ospravedlnenie",
+          "answerMeaning": "ospravedlnenie = excuse note / explanation for absence. Schools may ask for this after a child misses class."
+        },
+        {
+          "situation": "You need to tell the school your child is absent today. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "moje dieťa chýba",
+            "prosím, zavolajte mi",
+            "stretnutie",
+            "správa"
+          ],
+          "answer": "moje dieťa chýba",
+          "answerMeaning": "moje dieťa chýba = my child is absent. Chýba can mean is missing or is absent from class."
+        },
+        {
+          "situation": "You want the school to phone you back. Which phrase do you use?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "prosím, zavolajte mi",
+            "moje dieťa chýba",
+            "ospravedlnenie",
+            "rodič"
+          ],
+          "answer": "prosím, zavolajte mi",
+          "answerMeaning": "prosím, zavolajte mi = please call me. This is polite and formal."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Som ___.",
+          "translation": "I am a parent.",
+          "choices": [
+            "rodič",
+            "správa",
+            "stretnutie",
+            "ospravedlnenie"
+          ],
+          "answer": "rodič",
+          "answerMeaning": "Som rodič. = I am a parent."
+        },
+        {
+          "sentence": "Mám ___.",
+          "translation": "I have a meeting.",
+          "choices": [
+            "stretnutie",
+            "správa",
+            "rodič",
+            "prosím, zavolajte mi"
+          ],
+          "answer": "stretnutie",
+          "answerMeaning": "Mám stretnutie. = I have a meeting."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a message.",
+          "choices": [
+            "správa",
+            "stretnutie",
+            "ospravedlnenie",
+            "rodič"
+          ],
+          "answer": "správa",
+          "answerMeaning": "Toto je správa. = This is a message."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is an excuse note.",
+          "choices": [
+            "ospravedlnenie",
+            "správa",
+            "stretnutie",
+            "moje dieťa chýba"
+          ],
+          "answer": "ospravedlnenie",
+          "answerMeaning": "Toto je ospravedlnenie. = This is an excuse note."
+        },
+        {
+          "sentence": "Dnes ___.",
+          "translation": "Today my child is absent.",
+          "choices": [
+            "moje dieťa chýba",
+            "prosím, zavolajte mi",
+            "rodič",
+            "stretnutie"
+          ],
+          "answer": "moje dieťa chýba",
+          "answerMeaning": "Dnes moje dieťa chýba. = Today my child is absent."
+        },
+        {
+          "sentence": "___.",
+          "translation": "Please call me.",
+          "choices": [
+            "prosím, zavolajte mi",
+            "moje dieťa chýba",
+            "správa",
+            "rodič"
+          ],
+          "answer": "prosím, zavolajte mi",
+          "answerMeaning": "Prosím, zavolajte mi. = Please call me."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

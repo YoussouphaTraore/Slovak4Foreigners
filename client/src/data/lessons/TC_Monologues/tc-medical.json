@@ -4,40 +4,194 @@
   "stageName": "",
   "title": "Medical — Monologue",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Lekárka: Dobrý deň. Čo vás trápi?\nAmina: Dobrý deň. Bolí ma krk a mám horúčku.\nLekárka: Odkedy máte tieto ťažkosti?\nAmina: Od včera večera. Aj hlava ma bolí.\nLekárka: Otvorte ústa, prosím. Povedzite aaah.\nAmina: Aaah.\nLekárka: Hrdlo máte červené. Zhlboka dýchajte.\nAmina: Je to vážne?\nLekárka: Nie. Máte angínu. Predpíšem vám antibiotiká.\nAmina: Ako ich mám užívať?\nLekárka: Trikrát denne, po jedle. A pite veľa vody.\nAmina: Smiem ísť do školy? Študujem medicínu.\nLekárka: Nie. Zostante doma tri dni. Odpočívajte.\nAmina: Dobre. Kedy mám prísť znova?\nLekárka: O týždeň. Alebo skôr, ak vám bude horšie.\nAmina: Ďakujem, pani doktorka. Dovidenia."
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Medical.mp3",
+      "conversationTranscriptSk": "Lekárka: Dobrý deň. Čo vás trápi?\nAmina: Dobrý deň. Bolí ma krk a mám horúčku.\nLekárka: Odkedy máte tieto ťažkosti?\nAmina: Od včera večera. Aj hlava ma bolí.\nLekárka: Otvorte ústa, prosím. Povedzite aaah.\nAmina: Aaah.\nLekárka: Hrdlo máte červené. Zhlboka dýchajte.\nAmina: Je to vážne?\nLekárka: Nie. Máte angínu. Predpíšem vám antibiotiká.\nAmina: Ako ich mám užívať?\nLekárka: Trikrát denne, po jedle. A pite veľa vody.\nAmina: Smiem ísť do školy? Študujem medicínu.\nLekárka: Nie. Zostante doma tri dni. Odpočívajte.\nAmina: Dobre. Kedy mám prísť znova?\nLekárka: O týždeň. Alebo skôr, ak vám bude horšie.\nAmina: Ďakujem, pani doktorka. Dovidenia.",
+      "speakers": [
+        { "name": "Lekárka", "avatar": "👩‍⚕️" },
+        { "name": "Amina", "avatar": "👩🏾‍🦱" }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "Čo vás trápi?",
+        "Bolí ma krk",
+        "mám horúčku",
+        "Odkedy máte tieto ťažkosti?",
+        "Aj hlava ma bolí",
+        "Otvorte ústa",
+        "Hrdlo máte červené",
+        "Zhlboka dýchajte",
+        "Máte angínu",
+        "Predpíšem vám antibiotiká",
+        "Trikrát denne, po jedle",
+        "pite veľa vody",
+        "Zostante doma tri dni",
+        "Kedy mám prísť znova?",
+        "O týždeň"
+      ],
+      "distractorWords": [
+        "Bolí ma brucho",
+        "Máte chrípku",
+        "Predpíšem vám sirup",
+        "Dvakrát denne, pred jedlom",
+        "Choďte do nemocnice",
+        "Prídite zajtra"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Medical.mp3",
+      "conversationTranscriptSk": "Lekárka: Dobrý deň. Čo vás trápi?\nAmina: Dobrý deň. Bolí ma krk a mám horúčku.\nLekárka: Odkedy máte tieto ťažkosti?\nAmina: Od včera večera. Aj hlava ma bolí.\nLekárka: Otvorte ústa, prosím. Povedzite aaah.\nAmina: Aaah.\nLekárka: Hrdlo máte červené. Zhlboka dýchajte.\nAmina: Je to vážne?\nLekárka: Nie. Máte angínu. Predpíšem vám antibiotiká.\nAmina: Ako ich mám užívať?\nLekárka: Trikrát denne, po jedle. A pite veľa vody.\nAmina: Smiem ísť do školy? Študujem medicínu.\nLekárka: Nie. Zostante doma tri dni. Odpočívajte.\nAmina: Dobre. Kedy mám prísť znova?\nLekárka: O týždeň. Alebo skôr, ak vám bude horšie.\nAmina: Ďakujem, pani doktorka. Dovidenia.",
+      "speakers": [
+        { "name": "Lekárka", "avatar": "👩‍⚕️" },
+        { "name": "Amina", "avatar": "👩🏾‍🦱" }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "The doctor asks what is wrong. What does Amina say?",
+          "answers": [
+            { "id": "a", "textEn": "Bolí ma brucho a mám horúčku.", "isCorrect": false },
+            { "id": "b", "textEn": "Bolí ma krk a mám horúčku.", "isCorrect": true },
+            { "id": "c", "textEn": "Bolí ma hlava a mám nádchu.", "isCorrect": false }
+          ],
+          "answerMeaning": "Bolí ma krk a mám horúčku. = My throat hurts and I have a fever. Bolieť = to hurt, krk = throat/neck, horúčka = fever.",
+          "reviewPair": {
+            "slovak": "Bolí ma krk a mám horúčku.",
+            "english": "My throat hurts and I have a fever."
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "The doctor examines Amina's throat. What does she say about it?",
+          "answers": [
+            { "id": "a", "textEn": "Hrdlo máte červené.", "isCorrect": true },
+            { "id": "b", "textEn": "Hrdlo máte zdravé.", "isCorrect": false },
+            { "id": "c", "textEn": "Hrdlo máte biele.", "isCorrect": false }
+          ],
+          "answerMeaning": "Hrdlo máte červené. = Your throat is red. Hrdlo = throat, červený = red.",
+          "reviewPair": {
+            "slovak": "Hrdlo máte červené.",
+            "english": "Your throat is red."
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "What does the doctor diagnose Amina with?",
+          "answers": [
+            { "id": "a", "textEn": "The flu", "isCorrect": false },
+            { "id": "b", "textEn": "A cold", "isCorrect": false },
+            { "id": "c", "textEn": "Tonsillitis", "isCorrect": true }
+          ],
+          "answerMeaning": "Máte angínu. = You have tonsillitis. Angína in Slovak means tonsillitis or strep throat — not cardiac angina.",
+          "reviewPair": {
+            "slovak": "Máte angínu.",
+            "english": "You have tonsillitis."
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "How and when must Amina take the antibiotics?",
+          "answers": [
+            { "id": "a", "textEn": "Three times a day, after meals", "isCorrect": true },
+            { "id": "b", "textEn": "Twice a day, before meals", "isCorrect": false },
+            { "id": "c", "textEn": "Once a day, in the morning", "isCorrect": false }
+          ],
+          "answerMeaning": "Trikrát denne, po jedle. = Three times a day, after meals. Trikrát = three times, denne = daily, po jedle = after meals.",
+          "reviewPair": {
+            "slovak": "Trikrát denne, po jedle.",
+            "english": "Three times a day, after meals."
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "Amina asks if she can go to school. What does she reveal about herself?",
+          "answers": [
+            { "id": "a", "textEn": "She teaches Slovak at the school", "isCorrect": false },
+            { "id": "b", "textEn": "She is studying medicine", "isCorrect": true },
+            { "id": "c", "textEn": "She has an important exam that day", "isCorrect": false }
+          ],
+          "answerMeaning": "Amina says Študujem medicínu. = I am studying medicine. Študovať = to study, medicína = medicine.",
+          "reviewPair": {
+            "slovak": "Študujem medicínu.",
+            "english": "I am studying medicine."
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "When does the doctor tell Amina to come back?",
+          "answers": [
+            { "id": "a", "textEn": "The next day", "isCorrect": false },
+            { "id": "b", "textEn": "In three days", "isCorrect": false },
+            { "id": "c", "textEn": "In a week", "isCorrect": true }
+          ],
+          "answerMeaning": "O týždeň. = In a week. Týždeň = week. She can also come sooner — Alebo skôr, ak vám bude horšie = or sooner if you get worse.",
+          "reviewPair": {
+            "slovak": "O týždeň.",
+            "english": "In a week."
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "My throat hurts and I have a fever.",
+          "targetSk": ["Bolí ma krk", "a mám horúčku."],
+          "bankChunks": ["Bolí ma krk", "a mám horúčku.", "a mám nádchu."]
+        },
+        {
+          "id": "s2",
+          "promptEn": "Open your mouth, please.",
+          "targetSk": ["Otvorte ústa,", "prosím."],
+          "bankChunks": ["Otvorte ústa,", "prosím.", "Zatvorte ústa,"]
+        },
+        {
+          "id": "s3",
+          "promptEn": "You have tonsillitis. I will prescribe you antibiotics.",
+          "targetSk": ["Máte angínu.", "Predpíšem vám antibiotiká."],
+          "bankChunks": ["Máte angínu.", "Predpíšem vám antibiotiká.", "Predpíšem vám sirup."]
+        },
+        {
+          "id": "s4",
+          "promptEn": "Three times a day, after meals.",
+          "targetSk": ["Trikrát denne,", "po jedle."],
+          "bankChunks": ["Trikrát denne,", "po jedle.", "pred jedlom."]
+        },
+        {
+          "id": "s5",
+          "promptEn": "Stay home for three days. Rest.",
+          "targetSk": ["Zostante doma", "tri dni.", "Odpočívajte."],
+          "bankChunks": ["Zostante doma", "tri dni.", "Odpočívajte.", "dva dni."]
+        },
+        {
+          "id": "s6",
+          "promptEn": "In a week. Or sooner if you get worse.",
+          "targetSk": ["O týždeň.", "Alebo skôr,", "ak vám bude horšie."],
+          "bankChunks": ["O týždeň.", "Alebo skôr,", "ak vám bude horšie.", "ak vám bude lepšie."]
+        }
+      ]
     },
     {
       "id": "ex5",

@@ -1,0 +1,328 @@
+{
+  "id": "s1-car-problems",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Car Problems",
+  "description": "Say common car problems at a garage or roadside service",
+  "icon": "⚠️",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Car Problems",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "problém",
+          "english": "problem"
+        },
+        {
+          "slovak": "pokazené",
+          "english": "broken"
+        },
+        {
+          "slovak": "nefunguje",
+          "english": "does not work"
+        },
+        {
+          "slovak": "svieti kontrolka",
+          "english": "warning light is on"
+        },
+        {
+          "slovak": "batéria",
+          "english": "battery"
+        },
+        {
+          "slovak": "olej",
+          "english": "oil"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "problém",
+          "english": "problem"
+        },
+        {
+          "slovak": "pokazené",
+          "english": "broken"
+        },
+        {
+          "slovak": "nefunguje",
+          "english": "does not work"
+        },
+        {
+          "slovak": "svieti kontrolka",
+          "english": "warning light is on"
+        },
+        {
+          "slovak": "batéria",
+          "english": "battery"
+        },
+        {
+          "slovak": "olej",
+          "english": "oil"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "problém",
+          "english": "problem"
+        },
+        {
+          "slovak": "pokazené",
+          "english": "broken"
+        },
+        {
+          "slovak": "nefunguje",
+          "english": "does not work"
+        },
+        {
+          "slovak": "svieti kontrolka",
+          "english": "warning light is on"
+        },
+        {
+          "slovak": "batéria",
+          "english": "battery"
+        },
+        {
+          "slovak": "olej",
+          "english": "oil"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "problém",
+          "english": "problem"
+        },
+        {
+          "slovak": "pokazené",
+          "english": "broken"
+        },
+        {
+          "slovak": "nefunguje",
+          "english": "does not work"
+        },
+        {
+          "slovak": "svieti kontrolka",
+          "english": "warning light is on"
+        },
+        {
+          "slovak": "batéria",
+          "english": "battery"
+        },
+        {
+          "slovak": "olej",
+          "english": "oil"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "problém",
+          "english": "problem"
+        },
+        {
+          "slovak": "pokazené",
+          "english": "broken"
+        },
+        {
+          "slovak": "nefunguje",
+          "english": "does not work"
+        },
+        {
+          "slovak": "svieti kontrolka",
+          "english": "warning light is on"
+        },
+        {
+          "slovak": "batéria",
+          "english": "battery"
+        },
+        {
+          "slovak": "olej",
+          "english": "oil"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Something is wrong with your car. Which word means problem?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "problém",
+            "olej",
+            "batéria",
+            "pokazené"
+          ],
+          "answer": "problém",
+          "answerMeaning": "problém = problem. You can say Mám problém. = I have a problem."
+        },
+        {
+          "situation": "Your car is broken. Which Slovak word fits with auto?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "pokazené",
+            "nefunguje",
+            "olej",
+            "batéria"
+          ],
+          "answer": "pokazené",
+          "answerMeaning": "pokazené = broken. Auto je pokazené. = The car is broken."
+        },
+        {
+          "situation": "The car does not work. Which phrase do you need?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "nefunguje",
+            "svieti kontrolka",
+            "problém",
+            "olej"
+          ],
+          "answer": "nefunguje",
+          "answerMeaning": "nefunguje = does not work. Auto nefunguje. = The car does not work."
+        },
+        {
+          "situation": "A warning light is on in the car. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "svieti kontrolka",
+            "nefunguje",
+            "batéria",
+            "pokazené"
+          ],
+          "answer": "svieti kontrolka",
+          "answerMeaning": "svieti kontrolka = warning light is on. Kontrolka is an indicator or warning light."
+        },
+        {
+          "situation": "The mechanic asks about the car battery. Which word means battery?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "batéria",
+            "olej",
+            "problém",
+            "kontrolka"
+          ],
+          "answer": "batéria",
+          "answerMeaning": "batéria = battery. This can be a car battery or another battery."
+        },
+        {
+          "situation": "The mechanic checks the oil. Which word means oil?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "olej",
+            "batéria",
+            "nefunguje",
+            "problém"
+          ],
+          "answer": "olej",
+          "answerMeaning": "olej = oil. This is useful for car maintenance and engine problems."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Mám ___.",
+          "translation": "I have a problem.",
+          "choices": [
+            "problém",
+            "olej",
+            "batéria",
+            "pokazené"
+          ],
+          "answer": "problém",
+          "answerMeaning": "Mám problém. = I have a problem."
+        },
+        {
+          "sentence": "Auto je ___.",
+          "translation": "The car is broken.",
+          "choices": [
+            "pokazené",
+            "nefunguje",
+            "olej",
+            "batéria"
+          ],
+          "answer": "pokazené",
+          "answerMeaning": "Auto je pokazené. = The car is broken."
+        },
+        {
+          "sentence": "Auto ___.",
+          "translation": "The car does not work.",
+          "choices": [
+            "nefunguje",
+            "svieti kontrolka",
+            "problém",
+            "olej"
+          ],
+          "answer": "nefunguje",
+          "answerMeaning": "Auto nefunguje. = The car does not work."
+        },
+        {
+          "sentence": "V aute ___.",
+          "translation": "A warning light is on in the car.",
+          "choices": [
+            "svieti kontrolka",
+            "nefunguje",
+            "batéria",
+            "pokazené"
+          ],
+          "answer": "svieti kontrolka",
+          "answerMeaning": "V aute svieti kontrolka. = A warning light is on in the car."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a battery.",
+          "choices": [
+            "batéria",
+            "olej",
+            "problém",
+            "kontrolka"
+          ],
+          "answer": "batéria",
+          "answerMeaning": "Toto je batéria. = This is a battery."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is oil.",
+          "choices": [
+            "olej",
+            "batéria",
+            "nefunguje",
+            "problém"
+          ],
+          "answer": "olej",
+          "answerMeaning": "Toto je olej. = This is oil."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

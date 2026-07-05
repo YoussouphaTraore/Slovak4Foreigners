@@ -1,0 +1,328 @@
+{
+  "id": "s1-school-schedule",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "School Schedule",
+  "description": "Starts, finishes, mornings, afternoons, and school days",
+  "icon": "📅",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "School Schedule",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "začína",
+          "english": "starts"
+        },
+        {
+          "slovak": "končí",
+          "english": "finishes"
+        },
+        {
+          "slovak": "ráno",
+          "english": "in the morning"
+        },
+        {
+          "slovak": "poobede",
+          "english": "in the afternoon"
+        },
+        {
+          "slovak": "dnes",
+          "english": "today"
+        },
+        {
+          "slovak": "zajtra",
+          "english": "tomorrow"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "začína",
+          "english": "starts"
+        },
+        {
+          "slovak": "končí",
+          "english": "finishes"
+        },
+        {
+          "slovak": "ráno",
+          "english": "in the morning"
+        },
+        {
+          "slovak": "poobede",
+          "english": "in the afternoon"
+        },
+        {
+          "slovak": "dnes",
+          "english": "today"
+        },
+        {
+          "slovak": "zajtra",
+          "english": "tomorrow"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "začína",
+          "english": "starts"
+        },
+        {
+          "slovak": "končí",
+          "english": "finishes"
+        },
+        {
+          "slovak": "ráno",
+          "english": "in the morning"
+        },
+        {
+          "slovak": "poobede",
+          "english": "in the afternoon"
+        },
+        {
+          "slovak": "dnes",
+          "english": "today"
+        },
+        {
+          "slovak": "zajtra",
+          "english": "tomorrow"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "začína",
+          "english": "starts"
+        },
+        {
+          "slovak": "končí",
+          "english": "finishes"
+        },
+        {
+          "slovak": "ráno",
+          "english": "in the morning"
+        },
+        {
+          "slovak": "poobede",
+          "english": "in the afternoon"
+        },
+        {
+          "slovak": "dnes",
+          "english": "today"
+        },
+        {
+          "slovak": "zajtra",
+          "english": "tomorrow"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "začína",
+          "english": "starts"
+        },
+        {
+          "slovak": "končí",
+          "english": "finishes"
+        },
+        {
+          "slovak": "ráno",
+          "english": "in the morning"
+        },
+        {
+          "slovak": "poobede",
+          "english": "in the afternoon"
+        },
+        {
+          "slovak": "dnes",
+          "english": "today"
+        },
+        {
+          "slovak": "zajtra",
+          "english": "tomorrow"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "The school day begins at eight. Which word means starts?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "začína",
+            "končí",
+            "ráno",
+            "zajtra"
+          ],
+          "answer": "začína",
+          "answerMeaning": "začína = starts. Example: Škola začína ráno. = School starts in the morning."
+        },
+        {
+          "situation": "The school day is over. Which word means finishes?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "končí",
+            "začína",
+            "poobede",
+            "dnes"
+          ],
+          "answer": "končí",
+          "answerMeaning": "končí = finishes. Example: Škola končí poobede. = School finishes in the afternoon."
+        },
+        {
+          "situation": "Your child goes to school before lunch. Which word means in the morning?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "ráno",
+            "poobede",
+            "dnes",
+            "zajtra"
+          ],
+          "answer": "ráno",
+          "answerMeaning": "ráno = in the morning. It is useful for school start times."
+        },
+        {
+          "situation": "Your child comes home after lunch. Which word means in the afternoon?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "poobede",
+            "ráno",
+            "končí",
+            "začína"
+          ],
+          "answer": "poobede",
+          "answerMeaning": "poobede = in the afternoon. It is useful for school finish times."
+        },
+        {
+          "situation": "You mean this day, not another day. Which word means today?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "dnes",
+            "zajtra",
+            "ráno",
+            "poobede"
+          ],
+          "answer": "dnes",
+          "answerMeaning": "dnes = today. Use it for something happening on this day."
+        },
+        {
+          "situation": "You mean the next day. Which word means tomorrow?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "zajtra",
+            "dnes",
+            "začína",
+            "končí"
+          ],
+          "answer": "zajtra",
+          "answerMeaning": "zajtra = tomorrow. Use it for something happening the next day."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Škola ___ ráno.",
+          "translation": "School starts in the morning.",
+          "choices": [
+            "začína",
+            "končí",
+            "dnes",
+            "zajtra"
+          ],
+          "answer": "začína",
+          "answerMeaning": "Škola začína ráno. = School starts in the morning."
+        },
+        {
+          "sentence": "Škola ___ poobede.",
+          "translation": "School finishes in the afternoon.",
+          "choices": [
+            "končí",
+            "začína",
+            "ráno",
+            "zajtra"
+          ],
+          "answer": "končí",
+          "answerMeaning": "Škola končí poobede. = School finishes in the afternoon."
+        },
+        {
+          "sentence": "Škola začína ___.",
+          "translation": "School starts in the morning.",
+          "choices": [
+            "ráno",
+            "poobede",
+            "dnes",
+            "zajtra"
+          ],
+          "answer": "ráno",
+          "answerMeaning": "Ráno = in the morning."
+        },
+        {
+          "sentence": "Škola končí ___.",
+          "translation": "School finishes in the afternoon.",
+          "choices": [
+            "poobede",
+            "ráno",
+            "začína",
+            "končí"
+          ],
+          "answer": "poobede",
+          "answerMeaning": "Poobede = in the afternoon."
+        },
+        {
+          "sentence": "___ je škola.",
+          "translation": "Today there is school.",
+          "choices": [
+            "Dnes",
+            "Zajtra",
+            "Ráno",
+            "Poobede"
+          ],
+          "answer": "Dnes",
+          "answerMeaning": "Dnes je škola. = Today there is school."
+        },
+        {
+          "sentence": "___ je škola.",
+          "translation": "Tomorrow there is school.",
+          "choices": [
+            "Zajtra",
+            "Dnes",
+            "Ráno",
+            "Poobede"
+          ],
+          "answer": "Zajtra",
+          "answerMeaning": "Zajtra je škola. = Tomorrow there is school."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

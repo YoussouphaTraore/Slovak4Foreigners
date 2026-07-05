@@ -73,3 +73,4 @@ client/test-ss-*.png
 client/topic_*.mjs
 client/topic_page_test.mjs
 
+.vercel

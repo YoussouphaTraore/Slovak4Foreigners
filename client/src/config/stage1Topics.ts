@@ -46,6 +46,7 @@ export const stage1Topics: LessonTopic[] = [
   { id: 'topic-transport',        title: 'Getting Around',    icon: '\u{1F68C}', lessonIds: ['s1-transport-modes', 's1-going-by', 's1-travel-basics'] },
   { id: 'topic-public-transport', title: 'Public Transport',  icon: '\u{1F68A}', lessonIds: ['s1-tickets-passes', 's1-stops-routes', 's1-on-board'] },
   { id: 'topic-taxi',             title: 'Taxi',              icon: '\u{1F695}', lessonIds: ['s1-booking-taxi', 's1-taxi-destination-price', 's1-during-taxi-ride'] },
+  { id: 'topic-car-service',      title: 'Car Service',       icon: '\u{1F527}', lessonIds: ['s1-car-basics', 's1-tires-fuel', 's1-car-problems', 's1-at-the-garage', 's1-parts-documents'] },
 
   // Block 8 - At Home
   { id: 'topic-home',        title: 'Home Items',  icon: '\u{1F3E1}', lessonIds: ['s1-rooms-at-home', 's1-furniture-appliances', 's1-home-problems'] },
@@ -57,6 +58,10 @@ export const stage1Topics: LessonTopic[] = [
   { id: 'topic-clothes',         title: 'Clothes',         icon: '\u{1F455}', lessonIds: ['s1-common-clothes', 's1-shoes-accessories'] },
   { id: 'topic-size-fit',        title: 'Size & Fit',      icon: '\u{1F4CF}', lessonIds: ['s1-sizes-fit'] },
   { id: 'topic-returns',         title: 'Returns',         icon: '\u{21A9}',  lessonIds: ['s1-returns-receipts'] },
+
+  // Block 10 - Education & Work
+  { id: 'topic-school', title: 'School', icon: '\u{1F3EB}', lessonIds: ['s1-school-basics', 's1-school-types', 's1-child-at-school', 's1-school-communication', 's1-school-schedule', 's1-school-problems'] },
+  { id: 'topic-work',     title: 'Work',     icon: '\u{1F4BC}', lessonIds: [] },
 ];
 
 export const topicById: Record<string, LessonTopic> = Object.fromEntries(
@@ -69,9 +74,10 @@ export const block3TopicIds = ['topic-numbers', 'topic-money', 'topic-time', 'to
 export const block4TopicIds = ['topic-address', 'topic-directions', 'topic-positions'];
 export const block5TopicIds = ['topic-emergency', 'topic-medical'];
 export const block6TopicIds = ['topic-food', 'topic-ordering-food', 'topic-supermarket'];
-export const block7TopicIds = ['topic-transport', 'topic-public-transport', 'topic-taxi'];
+export const block7TopicIds = ['topic-transport', 'topic-public-transport', 'topic-taxi', 'topic-car-service'];
 export const block8TopicIds = ['topic-home', 'topic-pets', 'topic-beverages'];
-export const block9TopicIds = ['topic-shopping-basics', 'topic-clothes', 'topic-size-fit', 'topic-returns'];
+export const block9TopicIds  = ['topic-shopping-basics', 'topic-clothes', 'topic-size-fit', 'topic-returns'];
+export const block10TopicIds = ['topic-school', 'topic-work'];
 
 
 

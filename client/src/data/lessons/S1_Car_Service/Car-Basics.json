@@ -1,0 +1,328 @@
+{
+  "id": "s1-car-basics",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Car Basics",
+  "description": "Learn basic car words for service and repairs",
+  "icon": "🚗",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Car Basics",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "auto",
+          "english": "car"
+        },
+        {
+          "slovak": "kľúč",
+          "english": "key"
+        },
+        {
+          "slovak": "motor",
+          "english": "engine"
+        },
+        {
+          "slovak": "koleso",
+          "english": "wheel"
+        },
+        {
+          "slovak": "pneumatika",
+          "english": "tire"
+        },
+        {
+          "slovak": "brzdy",
+          "english": "brakes"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "auto",
+          "english": "car"
+        },
+        {
+          "slovak": "kľúč",
+          "english": "key"
+        },
+        {
+          "slovak": "motor",
+          "english": "engine"
+        },
+        {
+          "slovak": "koleso",
+          "english": "wheel"
+        },
+        {
+          "slovak": "pneumatika",
+          "english": "tire"
+        },
+        {
+          "slovak": "brzdy",
+          "english": "brakes"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "auto",
+          "english": "car"
+        },
+        {
+          "slovak": "kľúč",
+          "english": "key"
+        },
+        {
+          "slovak": "motor",
+          "english": "engine"
+        },
+        {
+          "slovak": "koleso",
+          "english": "wheel"
+        },
+        {
+          "slovak": "pneumatika",
+          "english": "tire"
+        },
+        {
+          "slovak": "brzdy",
+          "english": "brakes"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "auto",
+          "english": "car"
+        },
+        {
+          "slovak": "kľúč",
+          "english": "key"
+        },
+        {
+          "slovak": "motor",
+          "english": "engine"
+        },
+        {
+          "slovak": "koleso",
+          "english": "wheel"
+        },
+        {
+          "slovak": "pneumatika",
+          "english": "tire"
+        },
+        {
+          "slovak": "brzdy",
+          "english": "brakes"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "auto",
+          "english": "car"
+        },
+        {
+          "slovak": "kľúč",
+          "english": "key"
+        },
+        {
+          "slovak": "motor",
+          "english": "engine"
+        },
+        {
+          "slovak": "koleso",
+          "english": "wheel"
+        },
+        {
+          "slovak": "pneumatika",
+          "english": "tire"
+        },
+        {
+          "slovak": "brzdy",
+          "english": "brakes"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are at a garage and need to say car. Which Slovak word fits?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "auto",
+            "motor",
+            "koleso",
+            "brzdy"
+          ],
+          "answer": "auto",
+          "answerMeaning": "auto = car. This is the basic everyday word."
+        },
+        {
+          "situation": "You cannot open or start the car because you lost this. Which word means key?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "kľúč",
+            "auto",
+            "pneumatika",
+            "motor"
+          ],
+          "answer": "kľúč",
+          "answerMeaning": "kľúč = key. Use it for a house key or car key."
+        },
+        {
+          "situation": "The car does not start. You want to point to the engine. Which word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "motor",
+            "koleso",
+            "brzdy",
+            "auto"
+          ],
+          "answer": "motor",
+          "answerMeaning": "motor = engine. It is one of the first words to know at a car service."
+        },
+        {
+          "situation": "You point to one wheel of the car. Which word means wheel?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "koleso",
+            "pneumatika",
+            "kľúč",
+            "motor"
+          ],
+          "answer": "koleso",
+          "answerMeaning": "koleso = wheel. Pneumatika is the tire on the wheel."
+        },
+        {
+          "situation": "The rubber part on the wheel is flat. Which word means tire?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "pneumatika",
+            "koleso",
+            "brzdy",
+            "auto"
+          ],
+          "answer": "pneumatika",
+          "answerMeaning": "pneumatika = tire. Use it for a flat tire or tire change."
+        },
+        {
+          "situation": "The car has trouble stopping. Which word means brakes?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "brzdy",
+            "motor",
+            "pneumatika",
+            "kľúč"
+          ],
+          "answer": "brzdy",
+          "answerMeaning": "brzdy = brakes. This is important safety vocabulary."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a car.",
+          "choices": [
+            "auto",
+            "motor",
+            "koleso",
+            "brzdy"
+          ],
+          "answer": "auto",
+          "answerMeaning": "Toto je auto. = This is a car."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a key.",
+          "choices": [
+            "kľúč",
+            "auto",
+            "pneumatika",
+            "motor"
+          ],
+          "answer": "kľúč",
+          "answerMeaning": "Toto je kľúč. = This is a key."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is an engine.",
+          "choices": [
+            "motor",
+            "koleso",
+            "brzdy",
+            "auto"
+          ],
+          "answer": "motor",
+          "answerMeaning": "Toto je motor. = This is an engine."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a wheel.",
+          "choices": [
+            "koleso",
+            "pneumatika",
+            "kľúč",
+            "motor"
+          ],
+          "answer": "koleso",
+          "answerMeaning": "Toto je koleso. = This is a wheel."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a tire.",
+          "choices": [
+            "pneumatika",
+            "koleso",
+            "brzdy",
+            "auto"
+          ],
+          "answer": "pneumatika",
+          "answerMeaning": "Toto je pneumatika. = This is a tire."
+        },
+        {
+          "sentence": "Toto sú ___.",
+          "translation": "These are brakes.",
+          "choices": [
+            "brzdy",
+            "motor",
+            "pneumatika",
+            "kľúč"
+          ],
+          "answer": "brzdy",
+          "answerMeaning": "Toto sú brzdy. = These are brakes. Brzdy is plural."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

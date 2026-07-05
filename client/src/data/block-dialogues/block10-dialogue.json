@@ -1,0 +1,186 @@
+{
+  "id": "block10-education-work-dialogue",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "blockId": "stage1-block10",
+  "type": "BLOCK_DIALOGUE",
+  "title": "First Week — Work & School",
+  "description": "Anna and Peter help you settle into your new job and enrol your child at the local school.",
+  "icon": "🏫",
+  "xpReward": 25,
+  "contact": {
+    "name": "Anna",
+    "initials": "AN",
+    "role": "Your neighbour & colleague",
+    "avatar": "👩"
+  },
+  "context": "It is your first week in Slovakia. Anna is your neighbour and works nearby. She and her husband Peter have kids at the local school and offer to help you settle in — both at work and with enrolling your child.",
+  "speakers": {
+    "anna": { "name": "Anna", "initials": "AN", "avatar": "👩" },
+    "peter": { "name": "Peter", "initials": "PE", "avatar": "👨" },
+    "riaditelka": { "name": "Riaditeľka", "initials": "RI", "avatar": "👩‍🏫" }
+  },
+  "exchanges": [
+    {
+      "id": "ex1",
+      "speaker": "anna",
+      "text": "Dobrý deň! Vitajte v práci. Som Anna, vaša kolegyňa.",
+      "translation": "Good day! Welcome to work. I am Anna, your colleague.",
+      "prompt": "Greet Sara and say you are pleased to be here.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Dobrý deň. Teším sa.", "translation": "Good day. I am pleased.", "isCorrect": true },
+        { "id": "b", "text": "Dobrý deň. Kde je škola?", "translation": "Good day. Where is the school?", "isCorrect": false },
+        { "id": "c", "text": "Dobrý deň. Mám hlad.", "translation": "Good day. I am hungry.", "isCorrect": false },
+        { "id": "d", "text": "Dobrý deň. Chcem odísť.", "translation": "Good day. I want to leave.", "isCorrect": false }
+      ],
+      "correctFeedback": "Teším sa is a natural response when meeting a new colleague.",
+      "wrongFeedback": "Use Teším sa to say you are pleased to meet someone."
+    },
+    {
+      "id": "ex2",
+      "speaker": "anna",
+      "text": "Pracujeme od ôsmej do štvrtej. Je to pre vás v poriadku?",
+      "translation": "We work from eight to four. Is that okay for you?",
+      "prompt": "Confirm the schedule is fine.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Áno, je to v poriadku.", "translation": "Yes, that is fine.", "isCorrect": true },
+        { "id": "b", "text": "Nie, chcem pracovať v noci.", "translation": "No, I want to work at night.", "isCorrect": false },
+        { "id": "c", "text": "Neviem kde pracovať.", "translation": "I do not know where to work.", "isCorrect": false },
+        { "id": "d", "text": "Chcem prestávku.", "translation": "I want a break.", "isCorrect": false }
+      ],
+      "correctFeedback": "Je to v poriadku confirms the schedule is acceptable.",
+      "wrongFeedback": "Use Je to v poriadku to say something is fine."
+    },
+    {
+      "id": "ex3",
+      "speaker": "anna",
+      "text": "Kde ste pracovali predtým?",
+      "translation": "Where did you work before?",
+      "prompt": "Say you worked in your home country.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Pracoval som vo svojej krajine.", "translation": "I worked in my home country.", "isCorrect": true },
+        { "id": "b", "text": "Pracoval som tu celý život.", "translation": "I worked here my whole life.", "isCorrect": false },
+        { "id": "c", "text": "Nikdy som nepracoval.", "translation": "I never worked.", "isCorrect": false },
+        { "id": "d", "text": "Pracujem v škole.", "translation": "I work at school.", "isCorrect": false }
+      ],
+      "correctFeedback": "Pracoval som vo svojej krajine explains your previous work location.",
+      "wrongFeedback": "Use Pracoval som to talk about where you worked before."
+    },
+    {
+      "id": "ex4",
+      "speaker": "anna",
+      "text": "Máte deti? Majú školu?",
+      "translation": "Do you have children? Do they have school?",
+      "prompt": "Say yes and that you need to enrol your child at school.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Áno, potrebujem zapísať dieťa do školy.", "translation": "Yes, I need to enrol my child at school.", "isCorrect": true },
+        { "id": "b", "text": "Áno, moje dieťa je v práci.", "translation": "Yes, my child is at work.", "isCorrect": false },
+        { "id": "c", "text": "Nie, nemám deti.", "translation": "No, I have no children.", "isCorrect": false },
+        { "id": "d", "text": "Áno, deti majú auto.", "translation": "Yes, the children have a car.", "isCorrect": false }
+      ],
+      "correctFeedback": "Potrebujem zapísať dieťa do školy is the key phrase for school enrolment.",
+      "wrongFeedback": "Use Potrebujem zapísať dieťa do školy when you need to enrol your child."
+    },
+    {
+      "id": "ex5",
+      "speaker": "anna",
+      "text": "Škola je blízko. Musíte ísť k riaditeľke. Máte rodný list dieťaťa?",
+      "translation": "The school is nearby. You must go to the principal. Do you have your child's birth certificate?",
+      "prompt": "Say you have the birth certificate.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Áno, mám rodný list.", "translation": "Yes, I have the birth certificate.", "isCorrect": true },
+        { "id": "b", "text": "Nie, nemám žiadne dokumenty.", "translation": "No, I have no documents.", "isCorrect": false },
+        { "id": "c", "text": "Mám len pas.", "translation": "I only have a passport.", "isCorrect": false },
+        { "id": "d", "text": "Čo je rodný list?", "translation": "What is a birth certificate?", "isCorrect": false }
+      ],
+      "correctFeedback": "Mám rodný list confirms you have the required document.",
+      "wrongFeedback": "Use Mám rodný list to confirm you have the birth certificate."
+    },
+    {
+      "id": "ex6",
+      "speaker": "riaditelka",
+      "text": "Dobrý deň. Chcete zapísať dieťa k nám?",
+      "translation": "Good day. Do you want to enrol your child here?",
+      "prompt": "Confirm yes, you want to enrol your child here.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Áno, chcem zapísať dieťa.", "translation": "Yes, I want to enrol my child.", "isCorrect": true },
+        { "id": "b", "text": "Nie, idem domov.", "translation": "No, I am going home.", "isCorrect": false },
+        { "id": "c", "text": "Koľko stojí škola?", "translation": "How much does school cost?", "isCorrect": false },
+        { "id": "d", "text": "Kde je jedáleň?", "translation": "Where is the canteen?", "isCorrect": false }
+      ],
+      "correctFeedback": "Áno, chcem zapísať dieťa is the direct confirmation the principal needs.",
+      "wrongFeedback": "Use Chcem zapísať dieťa to express your intention to enrol."
+    },
+    {
+      "id": "ex7",
+      "speaker": "riaditelka",
+      "text": "Koľko má dieťa rokov?",
+      "translation": "How old is the child?",
+      "prompt": "Tell the principal your child is 7 years old.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Má sedem rokov.", "translation": "He/She is seven years old.", "isCorrect": true },
+        { "id": "b", "text": "Má tridsať rokov.", "translation": "He/She is thirty years old.", "isCorrect": false },
+        { "id": "c", "text": "Neviem koľko má rokov.", "translation": "I do not know how old he/she is.", "isCorrect": false },
+        { "id": "d", "text": "Má desať mesiacov.", "translation": "He/She is ten months old.", "isCorrect": false }
+      ],
+      "correctFeedback": "Má sedem rokov gives the child's age correctly.",
+      "wrongFeedback": "Use Má sedem rokov to say the child is seven years old."
+    },
+    {
+      "id": "ex8",
+      "speaker": "riaditelka",
+      "text": "Hovorí dieťa po slovensky?",
+      "translation": "Does the child speak Slovak?",
+      "prompt": "Say not yet but the child is learning.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Zatiaľ nie, ale učí sa.", "translation": "Not yet, but he/she is learning.", "isCorrect": true },
+        { "id": "b", "text": "Áno, hovorí perfektne.", "translation": "Yes, perfectly.", "isCorrect": false },
+        { "id": "c", "text": "Dieťa nechodí do školy.", "translation": "The child does not go to school.", "isCorrect": false },
+        { "id": "d", "text": "Hovorí len po anglicky.", "translation": "He/She only speaks English.", "isCorrect": false }
+      ],
+      "correctFeedback": "Zatiaľ nie, ale učí sa is honest and positive — a perfect answer.",
+      "wrongFeedback": "Use Zatiaľ nie, ale učí sa to say not yet but learning."
+    },
+    {
+      "id": "ex9",
+      "speaker": "riaditelka",
+      "text": "Škola začína o ôsmej. Obedná prestávka je od dvanástej do jednej.",
+      "translation": "School starts at eight. Lunch break is from twelve to one.",
+      "prompt": "Say you understand and ask which day school finishes early.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Rozumiem. Ktorý deň končí skôr?", "translation": "I understand. Which day does it finish early?", "isCorrect": true },
+        { "id": "b", "text": "Nerozumiem. Kde je jedáleň?", "translation": "I do not understand. Where is the canteen?", "isCorrect": false },
+        { "id": "c", "text": "Dobre. Dieťa nebude jesť.", "translation": "Good. The child will not eat.", "isCorrect": false },
+        { "id": "d", "text": "O ôsmej? To je neskoro.", "translation": "At eight? That is late.", "isCorrect": false }
+      ],
+      "correctFeedback": "Rozumiem plus a follow-up question shows you understood and want to know more.",
+      "wrongFeedback": "Use Rozumiem to confirm you understood, then ask Ktorý deň končí skôr?"
+    },
+    {
+      "id": "ex10",
+      "speaker": "anna",
+      "text": "Výborne! Dieťa začína v pondelok. Peter a ja sme radi, že vám pomohli. Ako sa cítite po prvom týždni?",
+      "translation": "Excellent! The child starts on Monday. Peter and I are glad we could help. How do you feel after the first week?",
+      "prompt": "Say you feel good and thank Anna for her help.",
+      "isOpenQuestion": false,
+      "choices": [
+        { "id": "a", "text": "Cítim sa dobre. Ďakujem za pomoc.", "translation": "I feel good. Thank you for the help.", "isCorrect": true },
+        { "id": "b", "text": "Cítim sa zle. Chcem domov.", "translation": "I feel bad. I want to go home.", "isCorrect": false },
+        { "id": "c", "text": "Neviem ako sa cítim.", "translation": "I do not know how I feel.", "isCorrect": false },
+        { "id": "d", "text": "Som unavený. Kde je autobus?", "translation": "I am tired. Where is the bus?", "isCorrect": false }
+      ],
+      "correctFeedback": "Cítim sa dobre. Ďakujem za pomoc is a warm and natural close.",
+      "wrongFeedback": "Use Cítim sa dobre to say you feel good and Ďakujem za pomoc to thank her."
+    }
+  ],
+  "completionMessage": "Excellent! You navigated your first week in Slovakia with Anna and Peter's help — confirmed your work schedule, enrolled your child at school, and spoke with the principal. You are settling in well!"
+}

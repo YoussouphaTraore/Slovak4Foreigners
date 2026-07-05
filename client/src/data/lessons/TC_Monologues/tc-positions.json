@@ -4,40 +4,194 @@
   "stageName": "",
   "title": "Positions — Monologue",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Sara: Omar, čo hľadáš?\nOmar: Hľadám svoje kľúče. Neviem, kde sú.\nSara: Pozri, či sú na stole. Sú tam?\nOmar: Nie, na stole nie sú.\nSara: A pod stolom? Alebo za pohovkou?\nOmar: Moment... Áno! Sú za pohovkou!\nSara: Výborne. Čo ešte hľadáš?\nOmar: Hľadám aj pas. Je v kufri?\nSara: Kufor je vonku, pred dverami.\nOmar: Nie, pas nie je vonku. Je niekde vnútri.\nSara: Pozri hore. Je na poličke nad stolom?\nOmar: Áno! Pas je hore na poličke!\nSara: A doklady sú v zásuvke, medzi zápisníkmi.\nOmar: Nájdem ich. Ďakujem, Sara!\nSara: Niet za čo. Teraz máš všetko!"
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Positions.mp3",
+      "conversationTranscriptSk": "Sara: Omar, čo hľadáš?\nOmar: Hľadám svoje kľúče. Neviem, kde sú.\nSara: Pozri, či sú na stole. Sú tam?\nOmar: Nie, na stole nie sú.\nSara: A pod stolom? Alebo za pohovkou?\nOmar: Moment... Áno! Sú za pohovkou!\nSara: Výborne. Čo ešte hľadáš?\nOmar: Hľadám aj pas. Je v kufri?\nSara: Kufor je vonku, pred dverami.\nOmar: Nie, pas nie je vonku. Je niekde vnútri.\nSara: Pozri hore. Je na poličke nad stolom?\nOmar: Áno! Pas je hore na poličke!\nSara: A doklady sú v zásuvke, medzi zápisníkmi.\nOmar: Nájdem ich. Ďakujem, Sara!\nSara: Niet za čo. Teraz máš všetko!",
+      "speakers": [
+        { "name": "Sara", "avatar": "👱‍♀️" },
+        { "name": "Omar", "avatar": "🧔🏻" }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "Hľadám svoje kľúče",
+        "Neviem, kde sú",
+        "na stole nie sú",
+        "pod stolom",
+        "za pohovkou",
+        "Hľadám aj pas",
+        "vonku, pred dverami",
+        "niekde vnútri",
+        "Pozri hore",
+        "na poličke nad stolom",
+        "Pas je hore na poličke",
+        "v zásuvke",
+        "medzi zápisníkmi",
+        "Nájdem ich",
+        "Teraz máš všetko"
+      ],
+      "distractorWords": [
+        "pod pohovkou",
+        "na polici v kúpeľni",
+        "vonku za domom",
+        "v taške",
+        "nad dverami",
+        "pred stolom"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Positions.mp3",
+      "conversationTranscriptSk": "Sara: Omar, čo hľadáš?\nOmar: Hľadám svoje kľúče. Neviem, kde sú.\nSara: Pozri, či sú na stole. Sú tam?\nOmar: Nie, na stole nie sú.\nSara: A pod stolom? Alebo za pohovkou?\nOmar: Moment... Áno! Sú za pohovkou!\nSara: Výborne. Čo ešte hľadáš?\nOmar: Hľadám aj pas. Je v kufri?\nSara: Kufor je vonku, pred dverami.\nOmar: Nie, pas nie je vonku. Je niekde vnútri.\nSara: Pozri hore. Je na poličke nad stolom?\nOmar: Áno! Pas je hore na poličke!\nSara: A doklady sú v zásuvke, medzi zápisníkmi.\nOmar: Nájdem ich. Ďakujem, Sara!\nSara: Niet za čo. Teraz máš všetko!",
+      "speakers": [
+        { "name": "Sara", "avatar": "👱‍♀️" },
+        { "name": "Omar", "avatar": "🧔🏻" }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Omar finds his keys. Where does he say they are?",
+          "answers": [
+            { "id": "a", "textEn": "Sú na stole!", "isCorrect": false },
+            { "id": "b", "textEn": "Sú za pohovkou!", "isCorrect": true },
+            { "id": "c", "textEn": "Sú pod stolom!", "isCorrect": false }
+          ],
+          "answerMeaning": "Sú za pohovkou! = They are behind the sofa! Za = behind. Pohovka = sofa.",
+          "reviewPair": {
+            "slovak": "za pohovkou",
+            "english": "behind the sofa"
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Sara tells Omar where the suitcase is. What does she say?",
+          "answers": [
+            { "id": "a", "textEn": "Kufor je vonku, pred dverami.", "isCorrect": true },
+            { "id": "b", "textEn": "Kufor je vnútri, za stolom.", "isCorrect": false },
+            { "id": "c", "textEn": "Kufor je dole, vedľa dverí.", "isCorrect": false }
+          ],
+          "answerMeaning": "Kufor je vonku, pred dverami. = The suitcase is outside, in front of the door. Vonku = outside, pred = in front of.",
+          "reviewPair": {
+            "slovak": "vonku, pred dverami",
+            "english": "outside, in front of the door"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Omar is looking for two things. What are they?",
+          "answers": [
+            { "id": "a", "textEn": "His phone and his documents", "isCorrect": false },
+            { "id": "b", "textEn": "His keys and his phone", "isCorrect": false },
+            { "id": "c", "textEn": "His keys and his passport", "isCorrect": true }
+          ],
+          "answerMeaning": "Omar says Hľadám svoje kľúče and then Hľadám aj pas. Kľúče = keys, pas = passport.",
+          "reviewPair": {
+            "slovak": "kľúče a pas",
+            "english": "keys and passport"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Where does Sara suggest Omar look first for the keys?",
+          "answers": [
+            { "id": "a", "textEn": "On the table", "isCorrect": true },
+            { "id": "b", "textEn": "Under the sofa", "isCorrect": false },
+            { "id": "c", "textEn": "In the drawer", "isCorrect": false }
+          ],
+          "answerMeaning": "Sara says Pozri, či sú na stole. = Check if they are on the table. Na stole = on the table.",
+          "reviewPair": {
+            "slovak": "na stole",
+            "english": "on the table"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "Where does Omar find his passport?",
+          "answers": [
+            { "id": "a", "textEn": "In the suitcase outside", "isCorrect": false },
+            { "id": "b", "textEn": "On the shelf above the table", "isCorrect": true },
+            { "id": "c", "textEn": "In the drawer between the notebooks", "isCorrect": false }
+          ],
+          "answerMeaning": "Pas je hore na poličke. The shelf is nad stolom = above the table. Hore = up/above.",
+          "reviewPair": {
+            "slovak": "na poličke nad stolom",
+            "english": "on the shelf above the table"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "Where are Omar's documents?",
+          "answers": [
+            { "id": "a", "textEn": "On the shelf above the table", "isCorrect": false },
+            { "id": "b", "textEn": "Behind the sofa", "isCorrect": false },
+            { "id": "c", "textEn": "In the drawer between the notebooks", "isCorrect": true }
+          ],
+          "answerMeaning": "A doklady sú v zásuvke, medzi zápisníkmi. = The documents are in the drawer, between the notebooks. V zásuvke = in the drawer, medzi = between.",
+          "reviewPair": {
+            "slovak": "v zásuvke, medzi zápisníkmi",
+            "english": "in the drawer, between the notebooks"
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "I am looking for my keys. I don't know where they are.",
+          "targetSk": ["Hľadám svoje kľúče.", "Neviem, kde sú."],
+          "bankChunks": ["Hľadám svoje kľúče.", "Neviem, kde sú.", "Viem, kde sú."]
+        },
+        {
+          "id": "s2",
+          "promptEn": "They are behind the sofa!",
+          "targetSk": ["Sú", "za pohovkou!"],
+          "bankChunks": ["Sú", "za pohovkou!", "pod stolom!"]
+        },
+        {
+          "id": "s3",
+          "promptEn": "The suitcase is outside, in front of the door.",
+          "targetSk": ["Kufor je vonku,", "pred dverami."],
+          "bankChunks": ["Kufor je vonku,", "pred dverami.", "za dverami."]
+        },
+        {
+          "id": "s4",
+          "promptEn": "The passport is not outside. It is somewhere inside.",
+          "targetSk": ["Pas nie je vonku.", "Je niekde vnútri."],
+          "bankChunks": ["Pas nie je vonku.", "Je niekde vnútri.", "Je niekde vonku."]
+        },
+        {
+          "id": "s5",
+          "promptEn": "Look up. Is it on the shelf above the table?",
+          "targetSk": ["Pozri hore.", "Je na poličke", "nad stolom?"],
+          "bankChunks": ["Pozri hore.", "Je na poličke", "nad stolom?", "pod stolom?"]
+        },
+        {
+          "id": "s6",
+          "promptEn": "The documents are in the drawer, between the notebooks.",
+          "targetSk": ["A doklady sú", "v zásuvke,", "medzi zápisníkmi."],
+          "bankChunks": ["A doklady sú", "v zásuvke,", "medzi zápisníkmi.", "medzi knihami."]
+        }
+      ]
     },
     {
       "id": "ex5",

@@ -1,0 +1,328 @@
+{
+  "id": "s1-school-types",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "School Types",
+  "description": "Learn names for nursery, kindergarten, primary school, secondary school, college, and university",
+  "icon": "🏫",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "School Types",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "jasle",
+          "english": "nursery / daycare"
+        },
+        {
+          "slovak": "materská škola",
+          "english": "kindergarten"
+        },
+        {
+          "slovak": "základná škola",
+          "english": "primary / elementary school"
+        },
+        {
+          "slovak": "stredná škola",
+          "english": "secondary school / high school"
+        },
+        {
+          "slovak": "vysoká škola",
+          "english": "college / higher education"
+        },
+        {
+          "slovak": "univerzita",
+          "english": "university"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "jasle",
+          "english": "nursery / daycare"
+        },
+        {
+          "slovak": "materská škola",
+          "english": "kindergarten"
+        },
+        {
+          "slovak": "základná škola",
+          "english": "primary / elementary school"
+        },
+        {
+          "slovak": "stredná škola",
+          "english": "secondary school / high school"
+        },
+        {
+          "slovak": "vysoká škola",
+          "english": "college / higher education"
+        },
+        {
+          "slovak": "univerzita",
+          "english": "university"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "jasle",
+          "english": "nursery / daycare"
+        },
+        {
+          "slovak": "materská škola",
+          "english": "kindergarten"
+        },
+        {
+          "slovak": "základná škola",
+          "english": "primary / elementary school"
+        },
+        {
+          "slovak": "stredná škola",
+          "english": "secondary school / high school"
+        },
+        {
+          "slovak": "vysoká škola",
+          "english": "college / higher education"
+        },
+        {
+          "slovak": "univerzita",
+          "english": "university"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "jasle",
+          "english": "nursery / daycare"
+        },
+        {
+          "slovak": "materská škola",
+          "english": "kindergarten"
+        },
+        {
+          "slovak": "základná škola",
+          "english": "primary / elementary school"
+        },
+        {
+          "slovak": "stredná škola",
+          "english": "secondary school / high school"
+        },
+        {
+          "slovak": "vysoká škola",
+          "english": "college / higher education"
+        },
+        {
+          "slovak": "univerzita",
+          "english": "university"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "jasle",
+          "english": "nursery / daycare"
+        },
+        {
+          "slovak": "materská škola",
+          "english": "kindergarten"
+        },
+        {
+          "slovak": "základná škola",
+          "english": "primary / elementary school"
+        },
+        {
+          "slovak": "stredná škola",
+          "english": "secondary school / high school"
+        },
+        {
+          "slovak": "vysoká škola",
+          "english": "college / higher education"
+        },
+        {
+          "slovak": "univerzita",
+          "english": "university"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "A very small child goes to daycare before kindergarten. Which Slovak word fits?",
+          "instruction": "Choose the correct school type",
+          "choices": [
+            "jasle",
+            "materská škola",
+            "základná škola",
+            "univerzita"
+          ],
+          "answer": "jasle",
+          "answerMeaning": "jasle = nursery / daycare. It is for very young children before kindergarten."
+        },
+        {
+          "situation": "A young child goes to kindergarten. Which Slovak phrase fits?",
+          "instruction": "Choose the correct school type",
+          "choices": [
+            "materská škola",
+            "jasle",
+            "stredná škola",
+            "vysoká škola"
+          ],
+          "answer": "materská škola",
+          "answerMeaning": "materská škola = kindergarten. People often shorten it to škôlka in everyday speech."
+        },
+        {
+          "situation": "A child starts normal school around age six. Which phrase means primary school?",
+          "instruction": "Choose the correct school type",
+          "choices": [
+            "základná škola",
+            "materská škola",
+            "univerzita",
+            "jasle"
+          ],
+          "answer": "základná škola",
+          "answerMeaning": "základná škola = primary / elementary school. It is often abbreviated as ZŠ."
+        },
+        {
+          "situation": "A teenager studies after primary school. Which phrase means secondary school?",
+          "instruction": "Choose the correct school type",
+          "choices": [
+            "stredná škola",
+            "základná škola",
+            "materská škola",
+            "jasle"
+          ],
+          "answer": "stredná škola",
+          "answerMeaning": "stredná škola = secondary school / high school. It is often abbreviated as SŠ."
+        },
+        {
+          "situation": "Someone talks about higher education after secondary school. Which phrase can mean college or higher education?",
+          "instruction": "Choose the correct school type",
+          "choices": [
+            "vysoká škola",
+            "stredná škola",
+            "základná škola",
+            "jasle"
+          ],
+          "answer": "vysoká škola",
+          "answerMeaning": "vysoká škola = college / higher education institution. It is a broad term for study after secondary school."
+        },
+        {
+          "situation": "You need the word for university. Which word fits?",
+          "instruction": "Choose the correct school type",
+          "choices": [
+            "univerzita",
+            "vysoká škola",
+            "stredná škola",
+            "materská škola"
+          ],
+          "answer": "univerzita",
+          "answerMeaning": "univerzita = university. A university is one type of vysoká škola."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Toto sú ___.",
+          "translation": "These are nursery / daycare facilities.",
+          "choices": [
+            "jasle",
+            "materská škola",
+            "základná škola",
+            "univerzita"
+          ],
+          "answer": "jasle",
+          "answerMeaning": "Toto sú jasle. = These are nursery / daycare facilities. Jasle is usually plural."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a kindergarten.",
+          "choices": [
+            "materská škola",
+            "jasle",
+            "stredná škola",
+            "vysoká škola"
+          ],
+          "answer": "materská škola",
+          "answerMeaning": "Toto je materská škola. = This is a kindergarten."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a primary school.",
+          "choices": [
+            "základná škola",
+            "materská škola",
+            "univerzita",
+            "jasle"
+          ],
+          "answer": "základná škola",
+          "answerMeaning": "Toto je základná škola. = This is a primary / elementary school."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a secondary school.",
+          "choices": [
+            "stredná škola",
+            "základná škola",
+            "materská škola",
+            "jasle"
+          ],
+          "answer": "stredná škola",
+          "answerMeaning": "Toto je stredná škola. = This is a secondary school / high school."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a college / higher education institution.",
+          "choices": [
+            "vysoká škola",
+            "stredná škola",
+            "základná škola",
+            "jasle"
+          ],
+          "answer": "vysoká škola",
+          "answerMeaning": "Toto je vysoká škola. = This is a college / higher education institution."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a university.",
+          "choices": [
+            "univerzita",
+            "vysoká škola",
+            "stredná škola",
+            "materská škola"
+          ],
+          "answer": "univerzita",
+          "answerMeaning": "Toto je univerzita. = This is a university."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

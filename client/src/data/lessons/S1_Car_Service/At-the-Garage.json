@@ -1,0 +1,328 @@
+{
+  "id": "s1-at-the-garage",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "At the Garage",
+  "description": "Use basic words for a visit to a mechanic or car service",
+  "icon": "🔧",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "At the Garage",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "mechanik",
+          "english": "mechanic"
+        },
+        {
+          "slovak": "autoservis",
+          "english": "car service / garage"
+        },
+        {
+          "slovak": "termín",
+          "english": "appointment"
+        },
+        {
+          "slovak": "oprava",
+          "english": "repair"
+        },
+        {
+          "slovak": "skontrolovať",
+          "english": "to check"
+        },
+        {
+          "slovak": "čakať",
+          "english": "to wait"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "mechanik",
+          "english": "mechanic"
+        },
+        {
+          "slovak": "autoservis",
+          "english": "car service / garage"
+        },
+        {
+          "slovak": "termín",
+          "english": "appointment"
+        },
+        {
+          "slovak": "oprava",
+          "english": "repair"
+        },
+        {
+          "slovak": "skontrolovať",
+          "english": "to check"
+        },
+        {
+          "slovak": "čakať",
+          "english": "to wait"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "mechanik",
+          "english": "mechanic"
+        },
+        {
+          "slovak": "autoservis",
+          "english": "car service / garage"
+        },
+        {
+          "slovak": "termín",
+          "english": "appointment"
+        },
+        {
+          "slovak": "oprava",
+          "english": "repair"
+        },
+        {
+          "slovak": "skontrolovať",
+          "english": "to check"
+        },
+        {
+          "slovak": "čakať",
+          "english": "to wait"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "mechanik",
+          "english": "mechanic"
+        },
+        {
+          "slovak": "autoservis",
+          "english": "car service / garage"
+        },
+        {
+          "slovak": "termín",
+          "english": "appointment"
+        },
+        {
+          "slovak": "oprava",
+          "english": "repair"
+        },
+        {
+          "slovak": "skontrolovať",
+          "english": "to check"
+        },
+        {
+          "slovak": "čakať",
+          "english": "to wait"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "mechanik",
+          "english": "mechanic"
+        },
+        {
+          "slovak": "autoservis",
+          "english": "car service / garage"
+        },
+        {
+          "slovak": "termín",
+          "english": "appointment"
+        },
+        {
+          "slovak": "oprava",
+          "english": "repair"
+        },
+        {
+          "slovak": "skontrolovať",
+          "english": "to check"
+        },
+        {
+          "slovak": "čakať",
+          "english": "to wait"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You need the person who repairs cars. Which word means mechanic?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "mechanik",
+            "autoservis",
+            "termín",
+            "oprava"
+          ],
+          "answer": "mechanik",
+          "answerMeaning": "mechanik = mechanic. This is the person who checks or repairs the car."
+        },
+        {
+          "situation": "You are looking for a car service or garage. Which word fits?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "autoservis",
+            "mechanik",
+            "čakať",
+            "skontrolovať"
+          ],
+          "answer": "autoservis",
+          "answerMeaning": "autoservis = car service / garage. Use it for the place where cars are checked and repaired."
+        },
+        {
+          "situation": "You want to book a time at the garage. Which word means appointment?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "termín",
+            "oprava",
+            "autoservis",
+            "mechanik"
+          ],
+          "answer": "termín",
+          "answerMeaning": "termín = appointment. Useful when booking a service visit."
+        },
+        {
+          "situation": "The car needs a repair. Which word means repair?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "oprava",
+            "termín",
+            "čakať",
+            "mechanik"
+          ],
+          "answer": "oprava",
+          "answerMeaning": "oprava = repair. You may hear it when the car needs work."
+        },
+        {
+          "situation": "You ask the mechanic to check the car. Which word means to check?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "skontrolovať",
+            "čakať",
+            "oprava",
+            "autoservis"
+          ],
+          "answer": "skontrolovať",
+          "answerMeaning": "skontrolovať = to check. Example: Prosím, skontrolovať auto. = Please check the car."
+        },
+        {
+          "situation": "The mechanic says you must wait. Which word means to wait?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "čakať",
+            "skontrolovať",
+            "termín",
+            "mechanik"
+          ],
+          "answer": "čakať",
+          "answerMeaning": "čakať = to wait. At a garage you may need to wait for the check or repair."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a mechanic.",
+          "choices": [
+            "mechanik",
+            "autoservis",
+            "termín",
+            "oprava"
+          ],
+          "answer": "mechanik",
+          "answerMeaning": "Toto je mechanik. = This is a mechanic."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a car service / garage.",
+          "choices": [
+            "autoservis",
+            "mechanik",
+            "čakať",
+            "skontrolovať"
+          ],
+          "answer": "autoservis",
+          "answerMeaning": "Toto je autoservis. = This is a car service / garage."
+        },
+        {
+          "sentence": "Mám ___.",
+          "translation": "I have an appointment.",
+          "choices": [
+            "termín",
+            "oprava",
+            "autoservis",
+            "mechanik"
+          ],
+          "answer": "termín",
+          "answerMeaning": "Mám termín. = I have an appointment."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is a repair.",
+          "choices": [
+            "oprava",
+            "termín",
+            "čakať",
+            "mechanik"
+          ],
+          "answer": "oprava",
+          "answerMeaning": "Toto je oprava. = This is a repair."
+        },
+        {
+          "sentence": "Potrebujem ___ auto.",
+          "translation": "I need to check the car.",
+          "choices": [
+            "skontrolovať",
+            "čakať",
+            "oprava",
+            "autoservis"
+          ],
+          "answer": "skontrolovať",
+          "answerMeaning": "Potrebujem skontrolovať auto. = I need to check the car."
+        },
+        {
+          "sentence": "Musím ___.",
+          "translation": "I must wait.",
+          "choices": [
+            "čakať",
+            "skontrolovať",
+            "termín",
+            "mechanik"
+          ],
+          "answer": "čakať",
+          "answerMeaning": "Musím čakať. = I must wait."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

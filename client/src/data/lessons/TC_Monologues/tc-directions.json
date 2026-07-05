@@ -4,40 +4,194 @@
   "stageName": "",
   "title": "Directions — Monologue",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Omar: Marek, mám list na pošte. Musím tam ísť.\nMarek: Odkiaľ vieš?\nOmar: Dostali sme upozornenie. Čakajú ma tam.\nOmar: Zavolám si taxi.\nMarek: Taxi? Pošta je tu blízko! Päť minút pešo.\nOmar: Vážne? Neviem kde je.\nMarek: Choďte priamo po tejto ulici.\nOmar: Po tejto ulici?\nMarek: Áno. Na prvej križovatke odbočte vpravo.\nOmar: Vpravo pri semaforoch?\nMarek: Presne. Potom choďte rovno. Pošta je oproti parku, vedľa banky.\nOmar: Oproti parku, vedľa banky. Dobre.\nMarek: Nemôžete sa minúť. Je to veľká budova.\nOmar: Ďakujem. Idem hneď!\nMarek: Dobrú cestu!"
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Directions.mp3",
+      "conversationTranscriptSk": "Omar: Marek, mám list na pošte. Musím tam ísť.\nMarek: Odkiaľ vieš?\nOmar: Dostali sme upozornenie. Čakajú ma tam.\nOmar: Zavolám si taxi.\nMarek: Taxi? Pošta je tu blízko! Päť minút pešo.\nOmar: Vážne? Neviem kde je.\nMarek: Choďte priamo po tejto ulici.\nOmar: Po tejto ulici?\nMarek: Áno. Na prvej križovatke odbočte vpravo.\nOmar: Vpravo pri semaforoch?\nMarek: Presne. Potom choďte rovno. Pošta je oproti parku, vedľa banky.\nOmar: Oproti parku, vedľa banky. Dobre.\nMarek: Nemôžete sa minúť. Je to veľká budova.\nOmar: Ďakujem. Idem hneď!\nMarek: Dobrú cestu!",
+      "speakers": [
+        { "name": "Omar", "avatar": "🧔🏻" },
+        { "name": "Marek", "avatar": "👨" }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "mám list na pošte",
+        "Musím tam ísť",
+        "Čakajú ma tam",
+        "Zavolám si taxi",
+        "je tu blízko",
+        "Päť minút pešo",
+        "Choďte priamo",
+        "Na prvej križovatke",
+        "odbočte vpravo",
+        "pri semaforoch",
+        "choďte rovno",
+        "oproti parku",
+        "vedľa banky",
+        "Nemôžete sa minúť",
+        "Idem hneď"
+      ],
+      "distractorWords": [
+        "Zavolám si autobus",
+        "veľmi ďaleko",
+        "odbočte vľavo",
+        "oproti škole",
+        "vedľa nemocnice",
+        "Choďte späť"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Directions.mp3",
+      "conversationTranscriptSk": "Omar: Marek, mám list na pošte. Musím tam ísť.\nMarek: Odkiaľ vieš?\nOmar: Dostali sme upozornenie. Čakajú ma tam.\nOmar: Zavolám si taxi.\nMarek: Taxi? Pošta je tu blízko! Päť minút pešo.\nOmar: Vážne? Neviem kde je.\nMarek: Choďte priamo po tejto ulici.\nOmar: Po tejto ulici?\nMarek: Áno. Na prvej križovatke odbočte vpravo.\nOmar: Vpravo pri semaforoch?\nMarek: Presne. Potom choďte rovno. Pošta je oproti parku, vedľa banky.\nOmar: Oproti parku, vedľa banky. Dobre.\nMarek: Nemôžete sa minúť. Je to veľká budova.\nOmar: Ďakujem. Idem hneď!\nMarek: Dobrú cestu!",
+      "speakers": [
+        { "name": "Omar", "avatar": "🧔🏻" },
+        { "name": "Marek", "avatar": "👨" }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Marek tells Omar the post office is nearby. What does Marek say?",
+          "answers": [
+            { "id": "a", "textEn": "Pošta je tu blízko!", "isCorrect": true },
+            { "id": "b", "textEn": "Pošta je tam ďaleko!", "isCorrect": false },
+            { "id": "c", "textEn": "Pošta je za rohom!", "isCorrect": false }
+          ],
+          "answerMeaning": "Pošta je tu blízko! = The post office is close by! Blízko = close/nearby.",
+          "reviewPair": {
+            "slovak": "Pošta je tu blízko.",
+            "english": "The post office is close by."
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Omar repeats Marek's directions to confirm. What does Omar say?",
+          "answers": [
+            { "id": "a", "textEn": "Oproti parku, vedľa nemocnice. Dobre.", "isCorrect": false },
+            { "id": "b", "textEn": "Oproti parku, vedľa banky. Dobre.", "isCorrect": true },
+            { "id": "c", "textEn": "Vedľa banky, oproti škole. Dobre.", "isCorrect": false }
+          ],
+          "answerMeaning": "Oproti parku, vedľa banky. = Opposite the park, next to the bank. Oproti = opposite, vedľa = next to.",
+          "reviewPair": {
+            "slovak": "oproti parku, vedľa banky",
+            "english": "opposite the park, next to the bank"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Why does Omar want to call a taxi?",
+          "answers": [
+            { "id": "a", "textEn": "Because the post office is too far to walk", "isCorrect": false },
+            { "id": "b", "textEn": "Because it is raining outside", "isCorrect": false },
+            { "id": "c", "textEn": "Because he does not know where the post office is", "isCorrect": true }
+          ],
+          "answerMeaning": "Omar says Vážne? Neviem kde je. = Really? I don't know where it is. He wanted a taxi because he didn't know the way.",
+          "reviewPair": {
+            "slovak": "Neviem kde je.",
+            "english": "I don't know where it is."
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "At the first junction, which way does Marek tell Omar to turn?",
+          "answers": [
+            { "id": "a", "textEn": "Right", "isCorrect": true },
+            { "id": "b", "textEn": "Left", "isCorrect": false },
+            { "id": "c", "textEn": "Straight ahead", "isCorrect": false }
+          ],
+          "answerMeaning": "Na prvej križovatke odbočte vpravo. = At the first junction turn right. Vpravo = right.",
+          "reviewPair": {
+            "slovak": "Na prvej križovatke odbočte vpravo.",
+            "english": "At the first junction turn right."
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "Where exactly is the post office?",
+          "answers": [
+            { "id": "a", "textEn": "Opposite the station, next to the supermarket", "isCorrect": false },
+            { "id": "b", "textEn": "Opposite the park, next to the bank", "isCorrect": true },
+            { "id": "c", "textEn": "Opposite the school, next to the pharmacy", "isCorrect": false }
+          ],
+          "answerMeaning": "Pošta je oproti parku, vedľa banky. = The post office is opposite the park, next to the bank.",
+          "reviewPair": {
+            "slovak": "Pošta je oproti parku, vedľa banky.",
+            "english": "The post office is opposite the park, next to the bank."
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "How does Marek reassure Omar he won't get lost?",
+          "answers": [
+            { "id": "a", "textEn": "He says it has a big sign outside", "isCorrect": false },
+            { "id": "b", "textEn": "He says it is the only yellow building", "isCorrect": false },
+            { "id": "c", "textEn": "He says you cannot miss it — it is a big building", "isCorrect": true }
+          ],
+          "answerMeaning": "Nemôžete sa minúť. Je to veľká budova. = You cannot miss it. It is a big building.",
+          "reviewPair": {
+            "slovak": "Nemôžete sa minúť.",
+            "english": "You cannot miss it."
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "I have a letter at the post office.",
+          "targetSk": ["Mám list", "na pošte."],
+          "bankChunks": ["Mám list", "na pošte.", "na stanici."]
+        },
+        {
+          "id": "s2",
+          "promptEn": "The post office is close by. Five minutes on foot.",
+          "targetSk": ["Pošta je tu blízko!", "Päť minút pešo."],
+          "bankChunks": ["Pošta je tu blízko!", "Päť minút pešo.", "Desať minút pešo."]
+        },
+        {
+          "id": "s3",
+          "promptEn": "Go straight along this street.",
+          "targetSk": ["Choďte priamo", "po tejto ulici."],
+          "bankChunks": ["Choďte priamo", "po tejto ulici.", "po tej ceste."]
+        },
+        {
+          "id": "s4",
+          "promptEn": "At the first junction turn right.",
+          "targetSk": ["Na prvej križovatke", "odbočte vpravo."],
+          "bankChunks": ["Na prvej križovatke", "odbočte vpravo.", "odbočte vľavo."]
+        },
+        {
+          "id": "s5",
+          "promptEn": "The post office is opposite the park, next to the bank.",
+          "targetSk": ["Pošta je", "oproti parku,", "vedľa banky."],
+          "bankChunks": ["Pošta je", "oproti parku,", "vedľa banky.", "vedľa školy."]
+        },
+        {
+          "id": "s6",
+          "promptEn": "You cannot miss it. It is a big building.",
+          "targetSk": ["Nemôžete sa minúť.", "Je to veľká budova."],
+          "bankChunks": ["Nemôžete sa minúť.", "Je to veľká budova.", "Je to malá budova."]
+        }
+      ]
     },
     {
       "id": "ex5",

@@ -88,6 +88,11 @@ import s1OnBoard from './S1_Public_Transport/On-Board.json';
 import s1BookingTaxi from './S1_Taxi/Booking-a-Taxi.json';
 import s1TaxiDestinationPrice from './S1_Taxi/Destination-and-Price.json';
 import s1DuringTaxiRide from './S1_Taxi/During-the-Ride.json';
+import s1CarBasics from './S1_Car_Service/Car-Basics.json';
+import s1TiresFuel from './S1_Car_Service/Tires-and-Fuel.json';
+import s1CarProblems from './S1_Car_Service/Car-Problems.json';
+import s1AtTheGarage from './S1_Car_Service/At-the-Garage.json';
+import s1PartsDocuments from './S1_Car_Service/Parts-and-Documents.json';
 import s1RoomsAtHome from './S1_Home_Items/Rooms-at-Home.json';
 import s1FurnitureAppliances from './S1_Home_Items/Furniture-Appliances.json';
 import s1HomeProblems from './S1_Home_Items/Home-Problems.json';
@@ -101,6 +106,12 @@ import s1CommonClothes from './S1_Clothes/Common-Clothes.json';
 import s1ShoesAccessories from './S1_Clothes/Shoes-Accessories.json';
 import s1SizesFit from './S1_Size_Fit/Sizes-and-Fit.json';
 import s1ReturnsReceipts from './S1_Returns/Returns-Receipts.json';
+import s1SchoolBasics from './S1_School/School-Basics.json';
+import s1SchoolTypes from './S1_School/School-Types.json';
+import s1ChildAtSchool from './S1_School/Child-at-School.json';
+import s1SchoolCommunication from './S1_School/School-Communication.json';
+import s1SchoolSchedule from './S1_School/School-Schedule.json';
+import s1SchoolProblems from './S1_School/School-Problems.json';
 import s2MarekIntroduction from './s2-marek-introduction.json';
 import s2SaraIntroduction from './s2-sara-introduction.json';
 import s2MarekSaraMeeting from './s2-marek-sara-meeting.json';
@@ -231,6 +242,11 @@ export const lessons: Lesson[] = [
   s1BookingTaxi as unknown as Lesson,
   s1TaxiDestinationPrice as unknown as Lesson,
   s1DuringTaxiRide as unknown as Lesson,
+  s1CarBasics as unknown as Lesson,
+  s1TiresFuel as unknown as Lesson,
+  s1CarProblems as unknown as Lesson,
+  s1AtTheGarage as unknown as Lesson,
+  s1PartsDocuments as unknown as Lesson,
   s1RoomsAtHome as unknown as Lesson,
   s1FurnitureAppliances as unknown as Lesson,
   s1HomeProblems as unknown as Lesson,
@@ -244,6 +260,12 @@ export const lessons: Lesson[] = [
   s1ShoesAccessories as unknown as Lesson,
   s1SizesFit as unknown as Lesson,
   s1ReturnsReceipts as unknown as Lesson,
+  s1SchoolBasics as unknown as Lesson,
+  s1SchoolTypes as unknown as Lesson,
+  s1ChildAtSchool as unknown as Lesson,
+  s1SchoolCommunication as unknown as Lesson,
+  s1SchoolSchedule as unknown as Lesson,
+  s1SchoolProblems as unknown as Lesson,
   s2MarekIntroduction as unknown as Lesson,
   s2SaraIntroduction as unknown as Lesson,
   s2MarekSaraMeeting as unknown as Lesson,

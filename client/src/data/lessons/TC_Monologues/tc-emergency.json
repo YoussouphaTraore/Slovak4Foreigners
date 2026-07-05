@@ -4,40 +4,194 @@
   "stageName": "",
   "title": "Emergency — Monologue",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Peter: Dobrý deň, volám 112. Tu je nehoda!\nDispečerka: Kde ste?\nPeter: Som na Hlavnej ulici, pred bankou.\nDispečerka: Čo sa stalo?\nPeter: Dve autá sa zrazili. Jeden muž je zranený.\nDispečerka: Je pri vedomí?\nPeter: Áno, ale bolí ho noha.\nDispečerka: Zavolali ste políciu?\nPeter: Nie. Prosím, zavolajte políciu aj záchranku!\nDispečerka: Dobre. Záchranári idú. Číslo záchranky je 155.\nPeter: A hasiči? Jedno auto horí!\nDispečerka: Zavolám aj hasičov. Ich číslo je 150.\nPeter: Čo mám robiť teraz?\nDispečerka: Nestojte pri autách. Čakajte v bezpečnosti.\nPeter: Rozumiem. Ďakujem za pomoc!"
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Emergency.mp3",
+      "conversationTranscriptSk": "Peter: Dobrý deň, volám 112. Tu je nehoda!\nDispečerka: Kde ste?\nPeter: Som na Hlavnej ulici, pred bankou.\nDispečerka: Čo sa stalo?\nPeter: Dve autá sa zrazili. Jeden muž je zranený.\nDispečerka: Je pri vedomí?\nPeter: Áno, ale bolí ho noha.\nDispečerka: Zavolali ste políciu?\nPeter: Nie. Prosím, zavolajte políciu aj záchranku!\nDispečerka: Dobre. Záchranári idú. Číslo záchranky je 155.\nPeter: A hasiči? Jedno auto horí!\nDispečerka: Zavolám aj hasičov. Ich číslo je 150.\nPeter: Čo mám robiť teraz?\nDispečerka: Nestojte pri autách. Čakajte v bezpečnosti.\nPeter: Rozumiem. Ďakujem za pomoc!",
+      "speakers": [
+        { "name": "Peter", "avatar": "👨" },
+        { "name": "Dispečerka", "avatar": "👩" }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "volám 112",
+        "Tu je nehoda",
+        "Kde ste?",
+        "na Hlavnej ulici",
+        "Čo sa stalo?",
+        "sa zrazili",
+        "je zranený",
+        "Je pri vedomí?",
+        "bolí ho noha",
+        "zavolajte políciu aj záchranku",
+        "Záchranári idú",
+        "Číslo záchranky je 155",
+        "Jedno auto horí",
+        "Ich číslo je 150",
+        "Čakajte v bezpečnosti"
+      ],
+      "distractorWords": [
+        "volám 158",
+        "Kde je nemocnica?",
+        "Niekto ukradol auto",
+        "Číslo záchranky je 112",
+        "Počkajte v aute",
+        "oheň v budove"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Emergency.mp3",
+      "conversationTranscriptSk": "Peter: Dobrý deň, volám 112. Tu je nehoda!\nDispečerka: Kde ste?\nPeter: Som na Hlavnej ulici, pred bankou.\nDispečerka: Čo sa stalo?\nPeter: Dve autá sa zrazili. Jeden muž je zranený.\nDispečerka: Je pri vedomí?\nPeter: Áno, ale bolí ho noha.\nDispečerka: Zavolali ste políciu?\nPeter: Nie. Prosím, zavolajte políciu aj záchranku!\nDispečerka: Dobre. Záchranári idú. Číslo záchranky je 155.\nPeter: A hasiči? Jedno auto horí!\nDispečerka: Zavolám aj hasičov. Ich číslo je 150.\nPeter: Čo mám robiť teraz?\nDispečerka: Nestojte pri autách. Čakajte v bezpečnosti.\nPeter: Rozumiem. Ďakujem za pomoc!",
+      "speakers": [
+        { "name": "Peter", "avatar": "👨" },
+        { "name": "Dispečerka", "avatar": "👩" }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "The dispatcher asks what happened. What does Peter say about the cars?",
+          "answers": [
+            { "id": "a", "textEn": "Dve autá sa zrazili.", "isCorrect": true },
+            { "id": "b", "textEn": "Jedno auto horí.", "isCorrect": false },
+            { "id": "c", "textEn": "Dve autá stoja.", "isCorrect": false }
+          ],
+          "answerMeaning": "Dve autá sa zrazili. = Two cars collided. Zraziť sa = to collide.",
+          "reviewPair": {
+            "slovak": "Dve autá sa zrazili.",
+            "english": "Two cars collided."
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Peter notices something else dangerous. What does he say?",
+          "answers": [
+            { "id": "a", "textEn": "Jeden muž je zranený!", "isCorrect": false },
+            { "id": "b", "textEn": "Jedno auto horí!", "isCorrect": true },
+            { "id": "c", "textEn": "Dve autá sa zrazili!", "isCorrect": false }
+          ],
+          "answerMeaning": "Jedno auto horí! = One car is on fire! Horieť = to burn / be on fire.",
+          "reviewPair": {
+            "slovak": "Jedno auto horí!",
+            "english": "One car is on fire!"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "What number does Peter call?",
+          "answers": [
+            { "id": "a", "textEn": "112", "isCorrect": true },
+            { "id": "b", "textEn": "155", "isCorrect": false },
+            { "id": "c", "textEn": "150", "isCorrect": false }
+          ],
+          "answerMeaning": "Peter says volám 112. In Slovakia 112 is the main emergency number.",
+          "reviewPair": {
+            "slovak": "volám 112",
+            "english": "I am calling 112"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "The dispatcher asks about the injured man. What does she want to know?",
+          "answers": [
+            { "id": "a", "textEn": "Whether he is alone", "isCorrect": false },
+            { "id": "b", "textEn": "How old he is", "isCorrect": false },
+            { "id": "c", "textEn": "Whether he is conscious", "isCorrect": true }
+          ],
+          "answerMeaning": "Je pri vedomí? = Is he conscious? Pri vedomí = conscious. This is a key emergency phrase.",
+          "reviewPair": {
+            "slovak": "Je pri vedomí?",
+            "english": "Is he conscious?"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "What two emergency numbers does the dispatcher give Peter?",
+          "answers": [
+            { "id": "a", "textEn": "112 and 158", "isCorrect": false },
+            { "id": "b", "textEn": "155 and 150", "isCorrect": true },
+            { "id": "c", "textEn": "112 and 150", "isCorrect": false }
+          ],
+          "answerMeaning": "155 = záchranná služba (ambulance), 150 = hasiči (fire brigade).",
+          "reviewPair": {
+            "slovak": "záchranári 155, hasiči 150",
+            "english": "ambulance 155, fire brigade 150"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "What does the dispatcher tell Peter to do while he waits?",
+          "answers": [
+            { "id": "a", "textEn": "Stand near the cars to help", "isCorrect": false },
+            { "id": "b", "textEn": "Call the police himself", "isCorrect": false },
+            { "id": "c", "textEn": "Stay away from the cars and wait somewhere safe", "isCorrect": true }
+          ],
+          "answerMeaning": "Nestojte pri autách. Čakajte v bezpečnosti. = Do not stand near the cars. Wait somewhere safe.",
+          "reviewPair": {
+            "slovak": "Čakajte v bezpečnosti.",
+            "english": "Wait somewhere safe."
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "There is an accident here!",
+          "targetSk": ["Tu je", "nehoda!"],
+          "bankChunks": ["Tu je", "nehoda!", "požiar!"]
+        },
+        {
+          "id": "s2",
+          "promptEn": "Two cars collided. One man is injured.",
+          "targetSk": ["Dve autá sa zrazili.", "Jeden muž je zranený."],
+          "bankChunks": ["Dve autá sa zrazili.", "Jeden muž je zranený.", "Jeden muž je v bezpečnosti."]
+        },
+        {
+          "id": "s3",
+          "promptEn": "Please call the police and an ambulance!",
+          "targetSk": ["Prosím,", "zavolajte políciu", "aj záchranku!"],
+          "bankChunks": ["Prosím,", "zavolajte políciu", "aj záchranku!", "aj hasičov!"]
+        },
+        {
+          "id": "s4",
+          "promptEn": "The paramedics are on the way. The ambulance number is 155.",
+          "targetSk": ["Záchranári idú.", "Číslo záchranky je 155."],
+          "bankChunks": ["Záchranári idú.", "Číslo záchranky je 155.", "Číslo záchranky je 150."]
+        },
+        {
+          "id": "s5",
+          "promptEn": "One car is on fire!",
+          "targetSk": ["Jedno auto", "horí!"],
+          "bankChunks": ["Jedno auto", "horí!", "stojí!"]
+        },
+        {
+          "id": "s6",
+          "promptEn": "Do not stand near the cars. Wait somewhere safe.",
+          "targetSk": ["Nestojte pri autách.", "Čakajte v bezpečnosti."],
+          "bankChunks": ["Nestojte pri autách.", "Čakajte v bezpečnosti.", "Čakajte pri autách."]
+        }
+      ]
     },
     {
       "id": "ex5",

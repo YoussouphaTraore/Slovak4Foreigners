@@ -8,6 +8,7 @@ import block6Dialogue from './block6-dialogue.json';
 import block7Dialogue from './block7-dialogue.json';
 import block8Dialogue from './block8-dialogue.json';
 import block9Dialogue from './block9-dialogue.json';
+import block10Dialogue from './block10-dialogue.json';
 
 export const blockDialogues: BlockDialogue[] = [
   block1DialogueData as unknown as BlockDialogue,
@@ -19,6 +20,7 @@ export const blockDialogues: BlockDialogue[] = [
   block7Dialogue as unknown as BlockDialogue,
   block8Dialogue as unknown as BlockDialogue,
   block9Dialogue as unknown as BlockDialogue,
+  block10Dialogue as unknown as BlockDialogue,
 ];
 
 export function getBlockDialogueById(blockId: string): BlockDialogue | undefined {

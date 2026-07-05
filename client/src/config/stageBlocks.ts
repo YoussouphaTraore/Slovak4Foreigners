@@ -1,4 +1,4 @@
-import { topicById, block1TopicIds, block2TopicIds, block3TopicIds, block4TopicIds, block5TopicIds, block6TopicIds, block7TopicIds, block8TopicIds, block9TopicIds } from './stage1Topics';
+import { topicById, block1TopicIds, block2TopicIds, block3TopicIds, block4TopicIds, block5TopicIds, block6TopicIds, block7TopicIds, block8TopicIds, block9TopicIds, block10TopicIds } from './stage1Topics';
 
 export interface BlockConfig {
   blockId: string;
@@ -25,7 +25,8 @@ export const stage1Blocks: BlockConfig[] = [
   { blockId: 'stage1-block6', blockName: 'Food',           topicIds: block6TopicIds },
   { blockId: 'stage1-block7', blockName: 'Getting Around', topicIds: block7TopicIds },
   { blockId: 'stage1-block8', blockName: 'At Home',        topicIds: block8TopicIds },
-  { blockId: 'stage1-block9', blockName: 'Shopping & Clothes', topicIds: block9TopicIds },
+  { blockId: 'stage1-block9',  blockName: 'Shopping & Clothes', topicIds: block9TopicIds },
+  { blockId: 'stage1-block10', blockName: 'Education & Work',   topicIds: block10TopicIds },
 ];
 
 export const stage1LessonOrder = stage1Blocks.flatMap(b => getBlockLessonIds(b));

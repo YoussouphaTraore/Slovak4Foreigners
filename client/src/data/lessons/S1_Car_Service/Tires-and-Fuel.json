@@ -1,0 +1,328 @@
+{
+  "id": "s1-tires-fuel",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Tires & Fuel",
+  "description": "Say basic tire and fuel words for car problems and refueling",
+  "icon": "⛽",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Tires & Fuel",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "defekt",
+          "english": "flat tire / puncture"
+        },
+        {
+          "slovak": "rezervné koleso",
+          "english": "spare wheel"
+        },
+        {
+          "slovak": "palivo",
+          "english": "fuel"
+        },
+        {
+          "slovak": "benzín",
+          "english": "petrol / gasoline"
+        },
+        {
+          "slovak": "nafta",
+          "english": "diesel"
+        },
+        {
+          "slovak": "čerpacia stanica",
+          "english": "gas station"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "defekt",
+          "english": "flat tire / puncture"
+        },
+        {
+          "slovak": "rezervné koleso",
+          "english": "spare wheel"
+        },
+        {
+          "slovak": "palivo",
+          "english": "fuel"
+        },
+        {
+          "slovak": "benzín",
+          "english": "petrol / gasoline"
+        },
+        {
+          "slovak": "nafta",
+          "english": "diesel"
+        },
+        {
+          "slovak": "čerpacia stanica",
+          "english": "gas station"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "defekt",
+          "english": "flat tire / puncture"
+        },
+        {
+          "slovak": "rezervné koleso",
+          "english": "spare wheel"
+        },
+        {
+          "slovak": "palivo",
+          "english": "fuel"
+        },
+        {
+          "slovak": "benzín",
+          "english": "petrol / gasoline"
+        },
+        {
+          "slovak": "nafta",
+          "english": "diesel"
+        },
+        {
+          "slovak": "čerpacia stanica",
+          "english": "gas station"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "defekt",
+          "english": "flat tire / puncture"
+        },
+        {
+          "slovak": "rezervné koleso",
+          "english": "spare wheel"
+        },
+        {
+          "slovak": "palivo",
+          "english": "fuel"
+        },
+        {
+          "slovak": "benzín",
+          "english": "petrol / gasoline"
+        },
+        {
+          "slovak": "nafta",
+          "english": "diesel"
+        },
+        {
+          "slovak": "čerpacia stanica",
+          "english": "gas station"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "defekt",
+          "english": "flat tire / puncture"
+        },
+        {
+          "slovak": "rezervné koleso",
+          "english": "spare wheel"
+        },
+        {
+          "slovak": "palivo",
+          "english": "fuel"
+        },
+        {
+          "slovak": "benzín",
+          "english": "petrol / gasoline"
+        },
+        {
+          "slovak": "nafta",
+          "english": "diesel"
+        },
+        {
+          "slovak": "čerpacia stanica",
+          "english": "gas station"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your tire is flat on the road. Which Slovak word do you need?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "defekt",
+            "palivo",
+            "benzín",
+            "nafta"
+          ],
+          "answer": "defekt",
+          "answerMeaning": "defekt = flat tire / puncture. It is the natural word when a tire is flat or damaged."
+        },
+        {
+          "situation": "You need the spare wheel from the car. Which phrase means spare wheel?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "rezervné koleso",
+            "čerpacia stanica",
+            "defekt",
+            "palivo"
+          ],
+          "answer": "rezervné koleso",
+          "answerMeaning": "rezervné koleso = spare wheel. Rezervné means spare or reserve."
+        },
+        {
+          "situation": "The car has no fuel. Which word means fuel?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "palivo",
+            "benzín",
+            "nafta",
+            "defekt"
+          ],
+          "answer": "palivo",
+          "answerMeaning": "palivo = fuel. It is the general word before choosing petrol or diesel."
+        },
+        {
+          "situation": "Your car uses petrol / gasoline. Which word do you ask for?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "benzín",
+            "nafta",
+            "palivo",
+            "rezervné koleso"
+          ],
+          "answer": "benzín",
+          "answerMeaning": "benzín = petrol / gasoline. Use it at a gas station for petrol cars."
+        },
+        {
+          "situation": "Your car uses diesel. Which Slovak word means diesel?",
+          "instruction": "Choose the correct word",
+          "choices": [
+            "nafta",
+            "benzín",
+            "palivo",
+            "defekt"
+          ],
+          "answer": "nafta",
+          "answerMeaning": "nafta = diesel. Do not confuse it with benzín."
+        },
+        {
+          "situation": "You need a place to refuel. Which phrase means gas station?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "čerpacia stanica",
+            "rezervné koleso",
+            "defekt",
+            "nafta"
+          ],
+          "answer": "čerpacia stanica",
+          "answerMeaning": "čerpacia stanica = gas station / petrol station. You can also hear benzínka informally."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Mám ___.",
+          "translation": "I have a flat tire.",
+          "choices": [
+            "defekt",
+            "palivo",
+            "benzín",
+            "nafta"
+          ],
+          "answer": "defekt",
+          "answerMeaning": "Mám defekt. = I have a flat tire / puncture."
+        },
+        {
+          "sentence": "Mám ___.",
+          "translation": "I have a spare wheel.",
+          "choices": [
+            "rezervné koleso",
+            "čerpacia stanica",
+            "defekt",
+            "palivo"
+          ],
+          "answer": "rezervné koleso",
+          "answerMeaning": "Mám rezervné koleso. = I have a spare wheel."
+        },
+        {
+          "sentence": "Nemám ___.",
+          "translation": "I do not have fuel.",
+          "choices": [
+            "palivo",
+            "benzín",
+            "nafta",
+            "defekt"
+          ],
+          "answer": "palivo",
+          "answerMeaning": "Nemám palivo. = I do not have fuel."
+        },
+        {
+          "sentence": "Potrebujem ___.",
+          "translation": "I need petrol / gasoline.",
+          "choices": [
+            "benzín",
+            "nafta",
+            "palivo",
+            "rezervné koleso"
+          ],
+          "answer": "benzín",
+          "answerMeaning": "Potrebujem benzín. = I need petrol / gasoline."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is diesel.",
+          "choices": [
+            "nafta",
+            "benzín",
+            "palivo",
+            "defekt"
+          ],
+          "answer": "nafta",
+          "answerMeaning": "Toto je nafta. = This is diesel."
+        },
+        {
+          "sentence": "Kde je ___?",
+          "translation": "Where is the gas station?",
+          "choices": [
+            "čerpacia stanica",
+            "rezervné koleso",
+            "defekt",
+            "nafta"
+          ],
+          "answer": "čerpacia stanica",
+          "answerMeaning": "Kde je čerpacia stanica? = Where is the gas station?"
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

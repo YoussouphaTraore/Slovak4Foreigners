@@ -1,0 +1,328 @@
+{
+  "id": "s1-child-at-school",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "Child at School",
+  "description": "Talk about your son or daughter at school",
+  "icon": "🎒",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "Child at School",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "môj syn",
+          "english": "my son"
+        },
+        {
+          "slovak": "moja dcéra",
+          "english": "my daughter"
+        },
+        {
+          "slovak": "moje dieťa",
+          "english": "my child"
+        },
+        {
+          "slovak": "chodí do školy",
+          "english": "goes to school"
+        },
+        {
+          "slovak": "je v škole",
+          "english": "is at school"
+        },
+        {
+          "slovak": "chodí do prvej triedy",
+          "english": "goes to first grade"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "môj syn",
+          "english": "my son"
+        },
+        {
+          "slovak": "moja dcéra",
+          "english": "my daughter"
+        },
+        {
+          "slovak": "moje dieťa",
+          "english": "my child"
+        },
+        {
+          "slovak": "chodí do školy",
+          "english": "goes to school"
+        },
+        {
+          "slovak": "je v škole",
+          "english": "is at school"
+        },
+        {
+          "slovak": "chodí do prvej triedy",
+          "english": "goes to first grade"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "môj syn",
+          "english": "my son"
+        },
+        {
+          "slovak": "moja dcéra",
+          "english": "my daughter"
+        },
+        {
+          "slovak": "moje dieťa",
+          "english": "my child"
+        },
+        {
+          "slovak": "chodí do školy",
+          "english": "goes to school"
+        },
+        {
+          "slovak": "je v škole",
+          "english": "is at school"
+        },
+        {
+          "slovak": "chodí do prvej triedy",
+          "english": "goes to first grade"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "môj syn",
+          "english": "my son"
+        },
+        {
+          "slovak": "moja dcéra",
+          "english": "my daughter"
+        },
+        {
+          "slovak": "moje dieťa",
+          "english": "my child"
+        },
+        {
+          "slovak": "chodí do školy",
+          "english": "goes to school"
+        },
+        {
+          "slovak": "je v škole",
+          "english": "is at school"
+        },
+        {
+          "slovak": "chodí do prvej triedy",
+          "english": "goes to first grade"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "môj syn",
+          "english": "my son"
+        },
+        {
+          "slovak": "moja dcéra",
+          "english": "my daughter"
+        },
+        {
+          "slovak": "moje dieťa",
+          "english": "my child"
+        },
+        {
+          "slovak": "chodí do školy",
+          "english": "goes to school"
+        },
+        {
+          "slovak": "je v škole",
+          "english": "is at school"
+        },
+        {
+          "slovak": "chodí do prvej triedy",
+          "english": "goes to first grade"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "You are talking about your boy at school. Which phrase means my son?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "môj syn",
+            "moja dcéra",
+            "moje dieťa",
+            "je v škole"
+          ],
+          "answer": "môj syn",
+          "answerMeaning": "môj syn = my son. Use it when speaking about your boy."
+        },
+        {
+          "situation": "You are talking about your girl at school. Which phrase means my daughter?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "moja dcéra",
+            "môj syn",
+            "moje dieťa",
+            "chodí do školy"
+          ],
+          "answer": "moja dcéra",
+          "answerMeaning": "moja dcéra = my daughter. Use it when speaking about your girl."
+        },
+        {
+          "situation": "You want a neutral phrase for your child. Which phrase do you need?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "moje dieťa",
+            "môj syn",
+            "moja dcéra",
+            "chodí do prvej triedy"
+          ],
+          "answer": "moje dieťa",
+          "answerMeaning": "moje dieťa = my child. It works when you do not need to say son or daughter."
+        },
+        {
+          "situation": "A teacher asks if your child attends school. Which phrase means goes to school?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "chodí do školy",
+            "je v škole",
+            "môj syn",
+            "moja dcéra"
+          ],
+          "answer": "chodí do školy",
+          "answerMeaning": "chodí do školy = goes to school. Chodí is used for he/she goes or attends."
+        },
+        {
+          "situation": "Someone asks where your child is right now. Which phrase means is at school?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "je v škole",
+            "chodí do školy",
+            "moje dieťa",
+            "môj syn"
+          ],
+          "answer": "je v škole",
+          "answerMeaning": "je v škole = is at school. Use it for where the child is now."
+        },
+        {
+          "situation": "You need to say your child goes to first grade. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "chodí do prvej triedy",
+            "chodí do školy",
+            "je v škole",
+            "moja dcéra"
+          ],
+          "answer": "chodí do prvej triedy",
+          "answerMeaning": "chodí do prvej triedy = goes to first grade. Trieda can mean class or grade in school context."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is my son.",
+          "choices": [
+            "môj syn",
+            "moja dcéra",
+            "moje dieťa",
+            "je v škole"
+          ],
+          "answer": "môj syn",
+          "answerMeaning": "Toto je môj syn. = This is my son."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is my daughter.",
+          "choices": [
+            "moja dcéra",
+            "môj syn",
+            "moje dieťa",
+            "chodí do školy"
+          ],
+          "answer": "moja dcéra",
+          "answerMeaning": "Toto je moja dcéra. = This is my daughter."
+        },
+        {
+          "sentence": "Toto je ___.",
+          "translation": "This is my child.",
+          "choices": [
+            "moje dieťa",
+            "môj syn",
+            "moja dcéra",
+            "chodí do prvej triedy"
+          ],
+          "answer": "moje dieťa",
+          "answerMeaning": "Toto je moje dieťa. = This is my child."
+        },
+        {
+          "sentence": "Moja dcéra ___.",
+          "translation": "My daughter goes to school.",
+          "choices": [
+            "chodí do školy",
+            "je v škole",
+            "môj syn",
+            "moje dieťa"
+          ],
+          "answer": "chodí do školy",
+          "answerMeaning": "Moja dcéra chodí do školy. = My daughter goes to school."
+        },
+        {
+          "sentence": "Môj syn ___.",
+          "translation": "My son is at school.",
+          "choices": [
+            "je v škole",
+            "chodí do školy",
+            "moja dcéra",
+            "moje dieťa"
+          ],
+          "answer": "je v škole",
+          "answerMeaning": "Môj syn je v škole. = My son is at school."
+        },
+        {
+          "sentence": "Moje dieťa ___.",
+          "translation": "My child goes to first grade.",
+          "choices": [
+            "chodí do prvej triedy",
+            "je v škole",
+            "môj syn",
+            "moja dcéra"
+          ],
+          "answer": "chodí do prvej triedy",
+          "answerMeaning": "Moje dieťa chodí do prvej triedy. = My child goes to first grade."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

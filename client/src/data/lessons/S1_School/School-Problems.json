@@ -1,0 +1,328 @@
+{
+  "id": "s1-school-problems",
+  "stageId": "survival",
+  "stageName": "Stage 1 · Survival",
+  "title": "School Problems",
+  "description": "Say when a child does not understand, is sick, needs help, or is missing school items",
+  "icon": "🆘",
+  "xpReward": 10,
+  "coming_soon": false,
+  "exercises": [
+    {
+      "id": "ex1",
+      "type": "VOCABULARY_TABLE",
+      "title": "School Problems",
+      "headers": [
+        "Slovak",
+        "English"
+      ],
+      "rows": [
+        {
+          "slovak": "nerozumie",
+          "english": "does not understand"
+        },
+        {
+          "slovak": "je choré",
+          "english": "is sick"
+        },
+        {
+          "slovak": "potrebuje pomoc",
+          "english": "needs help"
+        },
+        {
+          "slovak": "nemá domácu úlohu",
+          "english": "does not have homework"
+        },
+        {
+          "slovak": "nemá pomôcky",
+          "english": "does not have school materials"
+        },
+        {
+          "slovak": "neviem",
+          "english": "I do not know"
+        }
+      ]
+    },
+    {
+      "id": "ex2",
+      "type": "LISTEN_AND_PICK",
+      "words": [
+        {
+          "slovak": "nerozumie",
+          "english": "does not understand"
+        },
+        {
+          "slovak": "je choré",
+          "english": "is sick"
+        },
+        {
+          "slovak": "potrebuje pomoc",
+          "english": "needs help"
+        },
+        {
+          "slovak": "nemá domácu úlohu",
+          "english": "does not have homework"
+        },
+        {
+          "slovak": "nemá pomôcky",
+          "english": "does not have school materials"
+        },
+        {
+          "slovak": "neviem",
+          "english": "I do not know"
+        }
+      ]
+    },
+    {
+      "id": "ex3",
+      "type": "LISTEN_AND_PICK",
+      "speakLanguage": "en",
+      "words": [
+        {
+          "slovak": "nerozumie",
+          "english": "does not understand"
+        },
+        {
+          "slovak": "je choré",
+          "english": "is sick"
+        },
+        {
+          "slovak": "potrebuje pomoc",
+          "english": "needs help"
+        },
+        {
+          "slovak": "nemá domácu úlohu",
+          "english": "does not have homework"
+        },
+        {
+          "slovak": "nemá pomôcky",
+          "english": "does not have school materials"
+        },
+        {
+          "slovak": "neviem",
+          "english": "I do not know"
+        }
+      ]
+    },
+    {
+      "id": "ex-speak",
+      "type": "SPEAK_THE_WORD",
+      "words": [
+        {
+          "slovak": "nerozumie",
+          "english": "does not understand"
+        },
+        {
+          "slovak": "je choré",
+          "english": "is sick"
+        },
+        {
+          "slovak": "potrebuje pomoc",
+          "english": "needs help"
+        },
+        {
+          "slovak": "nemá domácu úlohu",
+          "english": "does not have homework"
+        },
+        {
+          "slovak": "nemá pomôcky",
+          "english": "does not have school materials"
+        },
+        {
+          "slovak": "neviem",
+          "english": "I do not know"
+        }
+      ]
+    },
+    {
+      "id": "ex4",
+      "type": "PICK_TRANSLATION",
+      "words": [
+        {
+          "slovak": "nerozumie",
+          "english": "does not understand"
+        },
+        {
+          "slovak": "je choré",
+          "english": "is sick"
+        },
+        {
+          "slovak": "potrebuje pomoc",
+          "english": "needs help"
+        },
+        {
+          "slovak": "nemá domácu úlohu",
+          "english": "does not have homework"
+        },
+        {
+          "slovak": "nemá pomôcky",
+          "english": "does not have school materials"
+        },
+        {
+          "slovak": "neviem",
+          "english": "I do not know"
+        }
+      ]
+    },
+    {
+      "id": "ex5",
+      "type": "SITUATIONAL_CHOICE",
+      "scenarios": [
+        {
+          "situation": "Your child does not understand the lesson. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "nerozumie",
+            "je choré",
+            "potrebuje pomoc",
+            "neviem"
+          ],
+          "answer": "nerozumie",
+          "answerMeaning": "nerozumie = does not understand. Use it when the child does not understand something at school."
+        },
+        {
+          "situation": "Your child feels unwell and cannot learn today. Which phrase means is sick?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "je choré",
+            "nerozumie",
+            "nemá pomôcky",
+            "potrebuje pomoc"
+          ],
+          "answer": "je choré",
+          "answerMeaning": "je choré = is sick. This form works naturally with dieťa, meaning child."
+        },
+        {
+          "situation": "Your child needs support from the teacher. Which phrase do you need?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "potrebuje pomoc",
+            "neviem",
+            "je choré",
+            "nemá domácu úlohu"
+          ],
+          "answer": "potrebuje pomoc",
+          "answerMeaning": "potrebuje pomoc = needs help. It is useful when asking the school to support the child."
+        },
+        {
+          "situation": "Your child came without homework. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "nemá domácu úlohu",
+            "nemá pomôcky",
+            "nerozumie",
+            "je choré"
+          ],
+          "answer": "nemá domácu úlohu",
+          "answerMeaning": "nemá domácu úlohu = does not have homework. Domáca úloha means homework."
+        },
+        {
+          "situation": "Your child forgot books, pens, or other school things. Which phrase fits?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "nemá pomôcky",
+            "nemá domácu úlohu",
+            "potrebuje pomoc",
+            "neviem"
+          ],
+          "answer": "nemá pomôcky",
+          "answerMeaning": "nemá pomôcky = does not have school materials. Pomôcky are tools or materials used in school."
+        },
+        {
+          "situation": "The teacher asks a question and you do not know the answer. What can you say?",
+          "instruction": "Choose the correct phrase",
+          "choices": [
+            "neviem",
+            "nerozumie",
+            "je choré",
+            "potrebuje pomoc"
+          ],
+          "answer": "neviem",
+          "answerMeaning": "neviem = I do not know. It is simple and useful when you cannot answer."
+        }
+      ]
+    },
+    {
+      "id": "ex6",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Moje dieťa ___.",
+          "translation": "My child does not understand.",
+          "choices": [
+            "nerozumie",
+            "je choré",
+            "potrebuje pomoc",
+            "neviem"
+          ],
+          "answer": "nerozumie",
+          "answerMeaning": "Moje dieťa nerozumie. = My child does not understand."
+        },
+        {
+          "sentence": "Moje dieťa ___.",
+          "translation": "My child is sick.",
+          "choices": [
+            "je choré",
+            "nerozumie",
+            "nemá pomôcky",
+            "potrebuje pomoc"
+          ],
+          "answer": "je choré",
+          "answerMeaning": "Moje dieťa je choré. = My child is sick."
+        },
+        {
+          "sentence": "Moje dieťa ___.",
+          "translation": "My child needs help.",
+          "choices": [
+            "potrebuje pomoc",
+            "neviem",
+            "je choré",
+            "nemá domácu úlohu"
+          ],
+          "answer": "potrebuje pomoc",
+          "answerMeaning": "Moje dieťa potrebuje pomoc. = My child needs help."
+        },
+        {
+          "sentence": "Moje dieťa ___.",
+          "translation": "My child does not have homework.",
+          "choices": [
+            "nemá domácu úlohu",
+            "nemá pomôcky",
+            "nerozumie",
+            "je choré"
+          ],
+          "answer": "nemá domácu úlohu",
+          "answerMeaning": "Moje dieťa nemá domácu úlohu. = My child does not have homework."
+        },
+        {
+          "sentence": "Moje dieťa ___.",
+          "translation": "My child does not have school materials.",
+          "choices": [
+            "nemá pomôcky",
+            "nemá domácu úlohu",
+            "potrebuje pomoc",
+            "neviem"
+          ],
+          "answer": "nemá pomôcky",
+          "answerMeaning": "Moje dieťa nemá pomôcky. = My child does not have school materials."
+        },
+        {
+          "sentence": "___.",
+          "translation": "I do not know.",
+          "choices": [
+            "Neviem",
+            "Nerozumie",
+            "Je choré",
+            "Potrebuje pomoc"
+          ],
+          "answer": "Neviem",
+          "answerMeaning": "Neviem. = I do not know."
+        }
+      ]
+    },
+    {
+      "id": "ex7",
+      "type": "WORD_MATCH_REVIEW"
+    }
+  ]
+}

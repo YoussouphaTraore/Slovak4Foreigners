@@ -4,40 +4,194 @@
   "stageName": "",
   "title": "My Address — Monologue",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Marek: Omar, kde teraz bývaš?\nOmar: Bývam na Hlavnej ulici. Číslo sedem.\nMarek: To je blízko centra. Na ktorom poschodí?\nOmar: Na treťom poschodí. Byt číslo pätnásť.\nMarek: Je tam výťah?\nOmar: Áno, je tam výťah. Veľmi praktické.\nMarek: Musíš nahlásiť adresu na cudzineckej polícii.\nOmar: Čo musím vyplniť?\nMarek: Ulicu, číslo domu, číslo bytu a PSČ.\nOmar: Aké je PSČ?\nMarek: Osem nula nula nula jeden. Bratislava.\nOmar: A vchod?\nMarek: Vchod B. Nezabudni na vchod!\nOmar: Dobre. Ďakujem za pomoc!\nMarek: Nie je za čo. Dovidenia!\nOmar: Dovidenia!"
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-My-Address.mp3",
+      "conversationTranscriptSk": "Marek: Omar, kde teraz bývaš?\nOmar: Bývam na Hlavnej ulici. Číslo sedem.\nMarek: To je blízko centra. Na ktorom poschodí?\nOmar: Na treťom poschodí. Byt číslo pätnásť.\nMarek: Je tam výťah?\nOmar: Áno, je tam výťah. Veľmi praktické.\nMarek: Musíš nahlásiť adresu na cudzineckej polícii.\nOmar: Čo musím vyplniť?\nMarek: Ulicu, číslo domu, číslo bytu a PSČ.\nOmar: Aké je PSČ?\nMarek: Osem nula nula nula jeden. Bratislava.\nOmar: A vchod?\nMarek: Vchod B. Nezabudni na vchod!\nOmar: Dobre. Ďakujem za pomoc!\nMarek: Nie je za čo. Dovidenia!\nOmar: Dovidenia!",
+      "speakers": [
+        { "name": "Marek", "avatar": "👨" },
+        { "name": "Omar", "avatar": "🧔🏻" }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "kde teraz bývaš?",
+        "Bývam na Hlavnej ulici",
+        "Číslo sedem",
+        "Na treťom poschodí",
+        "Byt číslo pätnásť",
+        "Je tam výťah?",
+        "Veľmi praktické",
+        "nahlásiť adresu",
+        "cudzineckej polícii",
+        "číslo domu",
+        "číslo bytu",
+        "Aké je PSČ?",
+        "Osem nula nula nula jeden",
+        "Nezabudni na vchod!",
+        "Nie je za čo"
+      ],
+      "distractorWords": [
+        "Aká je adresa?",
+        "kde je pošta?",
+        "piaty poschodie",
+        "prvý vchod",
+        "šesťciferné PSČ",
+        "zaplaťte teraz"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-My-Address.mp3",
+      "conversationTranscriptSk": "Marek: Omar, kde teraz bývaš?\nOmar: Bývam na Hlavnej ulici. Číslo sedem.\nMarek: To je blízko centra. Na ktorom poschodí?\nOmar: Na treťom poschodí. Byt číslo pätnásť.\nMarek: Je tam výťah?\nOmar: Áno, je tam výťah. Veľmi praktické.\nMarek: Musíš nahlásiť adresu na cudzineckej polícii.\nOmar: Čo musím vyplniť?\nMarek: Ulicu, číslo domu, číslo bytu a PSČ.\nOmar: Aké je PSČ?\nMarek: Osem nula nula nula jeden. Bratislava.\nOmar: A vchod?\nMarek: Vchod B. Nezabudni na vchod!\nOmar: Dobre. Ďakujem za pomoc!\nMarek: Nie je za čo. Dovidenia!\nOmar: Dovidenia!",
+      "speakers": [
+        { "name": "Marek", "avatar": "👨" },
+        { "name": "Omar", "avatar": "🧔🏻" }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Marek asks Omar where he lives. What does Omar say?",
+          "answers": [
+            { "id": "a", "textEn": "Bývam na Novej ulici.", "isCorrect": false },
+            { "id": "b", "textEn": "Bývam na Hlavnej ulici.", "isCorrect": true },
+            { "id": "c", "textEn": "Bývam v meste.", "isCorrect": false }
+          ],
+          "answerMeaning": "Bývam na Hlavnej ulici. = I live on Hlavná Street. Bývam = I live, ulica = street.",
+          "reviewPair": {
+            "slovak": "Bývam na Hlavnej ulici.",
+            "english": "I live on Hlavná Street."
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Marek asks which floor Omar is on. What does Omar say?",
+          "answers": [
+            { "id": "a", "textEn": "Na treťom poschodí.", "isCorrect": true },
+            { "id": "b", "textEn": "Na piatom poschodí.", "isCorrect": false },
+            { "id": "c", "textEn": "Na prvom poschodí.", "isCorrect": false }
+          ],
+          "answerMeaning": "Na treťom poschodí. = On the third floor. Tretí = third. Poschodie = floor/storey.",
+          "reviewPair": {
+            "slovak": "Na treťom poschodí.",
+            "english": "On the third floor."
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "Is there a lift in the building? What does Omar say about it?",
+          "answers": [
+            { "id": "a", "textEn": "There is no lift in the building", "isCorrect": false },
+            { "id": "b", "textEn": "There is a lift but it is out of order", "isCorrect": false },
+            { "id": "c", "textEn": "Yes, there is a lift — it is very practical", "isCorrect": true }
+          ],
+          "answerMeaning": "Áno, je tam výťah. Veľmi praktické. = Yes, there is a lift. Very practical. Výťah = lift.",
+          "reviewPair": {
+            "slovak": "Veľmi praktické.",
+            "english": "Very practical."
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "What does Marek say Omar must do about his address?",
+          "answers": [
+            { "id": "a", "textEn": "Register it at the foreign police", "isCorrect": true },
+            { "id": "b", "textEn": "Send a letter with it to the city office", "isCorrect": false },
+            { "id": "c", "textEn": "Show it at the local bank", "isCorrect": false }
+          ],
+          "answerMeaning": "Musíš nahlásiť adresu na cudzineckej polícii. = You need to register your address at the foreign police. Cudzinecká polícia = foreign police.",
+          "reviewPair": {
+            "slovak": "nahlásiť adresu na cudzineckej polícii",
+            "english": "register the address at the foreign police"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "What four things does Marek say Omar needs to fill in?",
+          "answers": [
+            { "id": "a", "textEn": "Name, date of birth, nationality and phone number", "isCorrect": false },
+            { "id": "b", "textEn": "Street, house number, apartment number and postcode", "isCorrect": true },
+            { "id": "c", "textEn": "First name, surname, ID number and city", "isCorrect": false }
+          ],
+          "answerMeaning": "Ulicu, číslo domu, číslo bytu a PSČ. = The street, house number, apartment number and postcode.",
+          "reviewPair": {
+            "slovak": "Ulicu, číslo domu, číslo bytu a PSČ.",
+            "english": "Street, house number, apartment number and postcode."
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "What does Marek warn Omar not to forget?",
+          "answers": [
+            { "id": "a", "textEn": "The postcode", "isCorrect": false },
+            { "id": "b", "textEn": "The apartment number", "isCorrect": false },
+            { "id": "c", "textEn": "The entrance letter — Vchod B", "isCorrect": true }
+          ],
+          "answerMeaning": "Vchod B. Nezabudni na vchod! = Entrance B. Don't forget the entrance! Vchod = entrance.",
+          "reviewPair": {
+            "slovak": "Nezabudni na vchod!",
+            "english": "Don't forget the entrance!"
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "I live on Hlavná Street.",
+          "targetSk": ["Bývam", "na Hlavnej ulici."],
+          "bankChunks": ["Bývam", "na Hlavnej ulici.", "na Novej ulici."]
+        },
+        {
+          "id": "s2",
+          "promptEn": "On the third floor.",
+          "targetSk": ["Na treťom", "poschodí."],
+          "bankChunks": ["Na treťom", "poschodí.", "Na piatom"]
+        },
+        {
+          "id": "s3",
+          "promptEn": "You need to register your address at the foreign police.",
+          "targetSk": ["Musíš", "nahlásiť adresu", "na cudzineckej polícii."],
+          "bankChunks": ["Musíš", "nahlásiť adresu", "na cudzineckej polícii.", "na miestnom úrade."]
+        },
+        {
+          "id": "s4",
+          "promptEn": "The street, house number, apartment number and postcode.",
+          "targetSk": ["Ulicu,", "číslo domu,", "číslo bytu", "a PSČ."],
+          "bankChunks": ["Ulicu,", "číslo domu,", "číslo bytu", "a PSČ.", "a vchod."]
+        },
+        {
+          "id": "s5",
+          "promptEn": "Don't forget the entrance!",
+          "targetSk": ["Nezabudni", "na vchod!"],
+          "bankChunks": ["Nezabudni", "na vchod!", "na PSČ!"]
+        },
+        {
+          "id": "s6",
+          "promptEn": "Don't mention it.",
+          "targetSk": ["Nie je", "za čo."],
+          "bankChunks": ["Nie je", "za čo.", "ďakujem."]
+        }
+      ]
     },
     {
       "id": "ex5",
