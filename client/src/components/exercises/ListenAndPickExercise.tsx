@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import type { ListenAndPickExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
-import { cleanForSpeech } from '../../utils/speak';
 import { slovakifyNumbers } from '../../utils/numberToSlovak';
 
 interface WordEntry { id: number; slovak: string; english: string }
@@ -15,6 +14,20 @@ const FEEDBACK_DELAY = 1300;
 const RADIUS = 18;
 const CIRC = 2 * Math.PI * RADIUS;
 
+const SUPABASE_AUDIO_BASE = 'https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/Audio_ListenAndPickExercise';
+
+function toSlug(word: string): string {
+  return word
+    .toLowerCase()
+    .replace(/\s*\/\s*/g, '_or_')
+    .replace(/[áä]/g, 'a').replace(/é/g, 'e').replace(/í/g, 'i')
+    .replace(/[óô]/g, 'o').replace(/ú/g, 'u').replace(/ý/g, 'y')
+    .replace(/ď/g, 'd').replace(/ť/g, 't').replace(/[ľĺ]/g, 'l')
+    .replace(/ň/g, 'n').replace(/š/g, 's').replace(/č/g, 'c')
+    .replace(/ž/g, 'z').replace(/ŕ/g, 'r')
+    .replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
+}
+
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
@@ -22,14 +35,6 @@ function shuffle<T>(arr: T[]): T[] {
     [a[i], a[j]] = [a[j], a[i]];
   }
   return a;
-}
-
-function speak(text: string, lang: 'sk-SK' | 'en-US' = 'sk-SK') {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(cleanForSpeech(text));
-  u.lang = lang;
-  window.speechSynthesis.speak(u);
 }
 
 interface Props {
@@ -63,6 +68,15 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
 
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const timeoutHandledRef = useRef(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const playAudio = (text: string, audioLang: 'sk-SK' | 'en-US' = 'sk-SK') => {
+    audioRef.current?.pause();
+    const prefix = audioLang === 'sk-SK' ? 'sk' : 'en';
+    const audio = new Audio(`${SUPABASE_AUDIO_BASE}/${prefix}_${toSlug(text)}.mp3`);
+    audioRef.current = audio;
+    audio.play().catch(() => {});
+  };
 
   // ── onAnswer for timeout fires outside the countdown updater ─────────────
   useEffect(() => {
@@ -76,7 +90,7 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
   useEffect(() => {
     if (phase !== 'listening') return;
 
-    speak(getSpokenText(currentWord), lang);
+    playAudio(getSpokenText(currentWord), lang);
     setTimeLeft(COUNTDOWN);
     timeoutHandledRef.current = false;
 
@@ -86,6 +100,7 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
+      audioRef.current?.pause();
     };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
@@ -206,7 +221,7 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
         {/* Replay button */}
         <button
           type="button"
-          onClick={() => speak(getSpokenText(currentWord), lang)}
+          onClick={() => playAudio(getSpokenText(currentWord), lang)}
           className="w-10 h-10 rounded-full bg-brand-blue flex items-center justify-center text-white shrink-0 hover:opacity-80 active:scale-90 cursor-pointer transition-all"
         >
           🔊

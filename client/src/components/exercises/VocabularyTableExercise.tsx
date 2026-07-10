@@ -1,33 +1,45 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import type { VocabularyTableExercise as TExercise } from '../../types/lesson';
 import { MascotSpeech } from '../ui/MascotSpeech';
-import { cleanForSpeech } from '../../utils/speak';
 import { slovakifyNumbers } from '../../utils/numberToSlovak';
 
 const MAX_REQUIRED = 11;
+
+const SUPABASE_AUDIO_BASE = 'https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/Audio_VocabularyTableExercise';
+
+function toSlug(word: string): string {
+  return word
+    .toLowerCase()
+    .replace(/\s*\/\s*/g, '_or_')
+    .replace(/[áä]/g, 'a').replace(/é/g, 'e').replace(/í/g, 'i')
+    .replace(/[óô]/g, 'o').replace(/ú/g, 'u').replace(/ý/g, 'y')
+    .replace(/ď/g, 'd').replace(/ť/g, 't').replace(/[ľĺ]/g, 'l')
+    .replace(/ň/g, 'n').replace(/š/g, 's').replace(/č/g, 'c')
+    .replace(/ž/g, 'z').replace(/ŕ/g, 'r')
+    .replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, '');
+}
 
 interface Props {
   exercise: TExercise;
   onDone: () => void;
 }
 
-function speak(text: string) {
-  if (!window.speechSynthesis) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(cleanForSpeech(text));
-  u.lang = 'sk-SK';
-  u.rate = 0.85;
-  window.speechSynthesis.speak(u);
-}
-
 export function VocabularyTableExercise({ exercise, onDone }: Props) {
   const [heard, setHeard] = useState<Set<string>>(new Set());
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const playAudio = (slovak: string) => {
+    audioRef.current?.pause();
+    const audio = new Audio(`${SUPABASE_AUDIO_BASE}/sk_${toSlug(slovak)}.mp3`);
+    audioRef.current = audio;
+    audio.play().catch(() => {});
+  };
 
   // For small tables require all rows; for large tables cap at MAX_REQUIRED
   const required = Math.min(MAX_REQUIRED, exercise.rows.length);
 
   const handleTap = (id: string, slovak: string) => {
-    speak(slovak);
+    playAudio(slovak);
     setHeard((prev) => {
       if (prev.has(id)) return prev;
       const next = new Set(prev);
