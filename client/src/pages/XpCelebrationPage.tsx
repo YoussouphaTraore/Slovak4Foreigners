@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import confetti from 'canvas-confetti';
 import { useProgressStore } from '../store/useProgressStore';
+import { stage1LessonOrder, stage2LessonOrder } from '../config/stageBlocks';
+import { stage1Topics } from '../config/stage1Topics';
 
 interface LocationState {
   xpEarned: number;
@@ -43,8 +45,19 @@ export function XpCelebrationPage() {
   const xpToNextLevel = 100 - xpInLevel;
   const progressPct = Math.min(100, Math.max(0, xpInLevel));
   const hasStreakBoost = state.streakMultiplier > 1;
-  const buttonLabel = state.alreadyMastered || state.isFirstMastery ? 'Practice Again' : 'Play Again';
   const displayTarget = showPerfectBonus ? state.baseXP + state.perfectBonusXP : state.baseXP;
+
+  const stage1Idx = stage1LessonOrder.indexOf(lessonId ?? '');
+  const stage2Idx = stage2LessonOrder.indexOf(lessonId ?? '');
+  let nextLessonId: string | null = null;
+  if (stage1Idx !== -1 && stage1Idx < stage1LessonOrder.length - 1) {
+    nextLessonId = stage1LessonOrder[stage1Idx + 1];
+  } else if (stage2Idx !== -1 && stage2Idx < stage2LessonOrder.length - 1) {
+    nextLessonId = stage2LessonOrder[stage2Idx + 1];
+  }
+
+  const parentTopic = stage1Topics.find(t => t.lessonIds.includes(lessonId ?? ''));
+  const backPath = parentTopic ? `/topic/${parentTopic.id}` : '/';
 
   const subtitle = state.isFirstMastery
     ? 'Perfect - not a single mistake.'
@@ -89,7 +102,15 @@ export function XpCelebrationPage() {
   }, [state.baseXP, state.isFirstMastery, state.perfectBonusXP]);
 
   return (
-    <div className="min-h-screen bg-white flex flex-col items-center justify-center px-4 py-8 text-center">
+    <div className="relative min-h-screen bg-white flex flex-col items-center justify-center px-4 py-8 text-center">
+      <button
+        type="button"
+        onClick={() => navigate(backPath)}
+        className="absolute top-4 left-4 w-10 h-10 rounded-full bg-gray-100 flex items-center justify-center text-gray-500 hover:bg-gray-200 active:scale-95 transition-all cursor-pointer"
+        aria-label="Back to topic"
+      >
+        ←
+      </button>
       <img src="/snailTurbo.png" alt="" className="w-32 h-32 object-contain mb-4 animate-bounce-once" />
       <h1 className="text-4xl font-bold text-gray-800 mb-2">Lesson Complete!</h1>
       <p className="text-gray-500 mb-8">{subtitle}</p>
@@ -140,16 +161,16 @@ export function XpCelebrationPage() {
 
       <div className="grid grid-cols-2 gap-3 w-full max-w-sm">
         <button
-          onClick={() => navigate('/')}
+          onClick={() => navigate(lessonId ? `/lesson/${lessonId}` : '/')}
           className="border-2 border-gray-200 bg-white text-gray-600 font-bold py-4 rounded-xl text-base hover:bg-gray-50 active:scale-[0.98] transition-all cursor-pointer"
         >
-          Go Home
+          Practice Again
         </button>
         <button
-          onClick={() => navigate(lessonId ? `/lesson/${lessonId}` : '/')}
+          onClick={() => navigate(nextLessonId ? `/lesson/${nextLessonId}` : '/')}
           className="bg-brand-green text-white font-bold py-4 rounded-xl text-base hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer"
         >
-          {buttonLabel}
+          Next Lesson
         </button>
       </div>
     </div>
