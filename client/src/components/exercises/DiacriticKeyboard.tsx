@@ -47,8 +47,7 @@ export function DiacriticKeyboard({ targetRef, onChange }: Props) {
   const holdTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const didLongPress = useRef(false);
 
-  popupRef.current = popup;
-  highlightedRef.current = highlighted;
+  useEffect(() => { popupRef.current = popup; highlightedRef.current = highlighted; });
 
   const insertChar = useCallback((char: string) => {
     const el = targetRef.current;

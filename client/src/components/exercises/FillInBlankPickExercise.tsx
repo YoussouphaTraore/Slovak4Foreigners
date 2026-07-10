@@ -40,7 +40,6 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
   // Lock choice order per item
   const shuffledChoices = useMemo(
     () => shuffle([...current.choices]),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [current]
   );
 

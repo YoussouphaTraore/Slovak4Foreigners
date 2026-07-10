@@ -82,7 +82,7 @@ function normalizeText(value: string, stripDiacritics: boolean): string {
   const base = stripDiacritics ? stripSlovakDiacritics(value) : value;
   return base
     .toLowerCase()
-    .replace(/[.,!?;:()""“”„…—–\-]/g, ' ')
+    .replace(/[.,!?;:()””””„…—–-]/g, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -588,6 +588,7 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
 
   useEffect(() => {
     if (!introAccepted) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     resetAnswerFeedback();
     setYesNoChoice(null);
     setChoiceId(null);
@@ -899,6 +900,7 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
                     <span className="text-xs text-gray-300">/</span>
                     <span className="text-xs font-bold text-gray-500">Similarity {formatPercent(matchResult.charScore)}</span>
                   </div>
+                  {/* eslint-disable-next-line react-hooks/refs */}
                   {renderMatchedWords()}
                   {status === 'wrong' && (
                     <div className="mt-3 grid gap-2 text-xs">

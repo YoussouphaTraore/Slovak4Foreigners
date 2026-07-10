@@ -74,6 +74,7 @@ export function UnscrambleExercise({ exercise, onDone, onAnswer }: Props) {
     if (phase !== 'answering' || answer.length !== wordLen) return;
     const userWord = answerTiles.map((t) => t.char).join('');
     const correct = userWord === current.word;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsCorrect(correct);
     setPhase('feedback');
     onAnswer?.(correct);

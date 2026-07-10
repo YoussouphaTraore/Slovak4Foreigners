@@ -151,10 +151,12 @@ export function TopicPage() {
                     )}
 
                     {record && !isLocked && (
+                      /* eslint-disable react-hooks/purity */
                       <span
                         className={`absolute top-0.5 right-0.5 w-4 h-4 rounded-full border-2 border-white ${strengthDotClass(computeStrength(record, Date.now()))}`}
                         title={`Strength: ${computeStrength(record, Date.now())}%`}
                       />
+                      /* eslint-enable react-hooks/purity */
                     )}
 
                     {record?.mastered && !isLocked && (

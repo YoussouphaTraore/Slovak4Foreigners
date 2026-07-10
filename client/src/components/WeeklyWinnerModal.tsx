@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useState } from 'react';
 
 const ANIMATIONS = `
 @keyframes confetti-burst {
@@ -24,7 +24,7 @@ export interface WeeklyWinnerModalProps {
 // ── Confetti ──────────────────────────────────────────────────────────────────
 
 function Confetti() {
-  const particles = useMemo(() =>
+  const [particles] = useState(() =>
     Array.from({ length: 40 }, (_, i) => {
       const angle = (i / 40) * 360 + Math.random() * 9;
       const dist = 60 + Math.random() * 100;
@@ -38,7 +38,7 @@ function Confetti() {
         round: Math.random() > 0.5,
         delay: Math.random() * 0.35,
       };
-    }), [],
+    }),
   );
 
   return (

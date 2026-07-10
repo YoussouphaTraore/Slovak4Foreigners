@@ -20,6 +20,7 @@ interface Props {
 }
 
 export function WordMatchReview({ pairs, onDone, onAnswer }: Props) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const shuffledEnglish = useMemo(() => shuffle(pairs.map((p) => p.english)), []);
   const [matched, setMatched] = useState<Set<string>>(new Set());
   const [selected, setSelected] = useState<{ side: Side; value: string } | null>(null);

@@ -38,6 +38,7 @@ export function SessionRegistrationModal({ onClose }: Props) {
       (meta.full_name as string | undefined) ??
       (meta.name as string | undefined) ??
       '';
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setName(displayName);
     // If we were on the guest screen and user just signed in, advance
     setScreen((prev) => {

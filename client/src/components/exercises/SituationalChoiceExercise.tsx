@@ -39,7 +39,6 @@ export function SituationalChoiceExercise({ exercise, onDone, onAnswer }: Props)
 
   const choices = useMemo(
     () => shuffle([...current.choices]),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [current]
   );
 

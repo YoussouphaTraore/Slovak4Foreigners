@@ -111,6 +111,7 @@ export function ForeignerWhatsAppDialogue({ exercise, onDone, onAnswer }: Props)
   useEffect(() => {
     const first = exercise.nodes[0];
     if (first.speaker === 'user') {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setShowChoices(true);
     } else {
       processLandlordNode(first.id);

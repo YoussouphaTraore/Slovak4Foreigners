@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { BASE_ALIASES } from '../data/aliases';
 import { changeAlias, getAvatarUrl } from '../lib/supabase/aliasUtils';
 
@@ -18,7 +18,7 @@ const ANIMATIONS = `
 const CONFETTI_COLORS = ['#FFD700', '#FF6B6B', '#4ECDC4', '#96CEB4', '#FFEAA7', '#DDA0DD', '#FF8C94', '#45B7D1'];
 
 function Confetti() {
-  const particles = useMemo(() =>
+  const [particles] = useState(() =>
     Array.from({ length: 36 }, (_, i) => {
       const angle = (i / 36) * 360 + Math.random() * 10;
       const dist = 55 + Math.random() * 90;
@@ -32,7 +32,7 @@ function Confetti() {
         round: Math.random() > 0.5,
         delay: Math.random() * 0.3,
       };
-    }), [],
+    }),
   );
 
   return (

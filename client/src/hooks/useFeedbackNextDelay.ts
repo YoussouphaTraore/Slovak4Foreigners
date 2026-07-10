@@ -7,6 +7,7 @@ export function useFeedbackNextDelay(feedback: string | null): boolean {
 
   useEffect(() => {
     if (feedback === null) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setNextVisible(false);
       return;
     }

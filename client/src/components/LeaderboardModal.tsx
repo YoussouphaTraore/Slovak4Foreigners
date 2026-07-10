@@ -137,8 +137,8 @@ export function LeaderboardModal({ onClose }: Props) {
   }, [loading]);
 
   // Banner text + style
-  let bannerText = '';
-  let bannerClass = 'bg-gray-50 text-gray-500';
+  let bannerText: string;
+  let bannerClass: string;
 
   if (!user) {
     bannerText = 'Sign in to join the leaderboard!';

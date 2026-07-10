@@ -59,7 +59,7 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
   // Session = which word in the play queue + how many times it has replayed
   const [session, setSession] = useState({ wordIdx: 0, retryCount: 0 });
   const sessionRef = useRef(session);
-  sessionRef.current = session;
+  useEffect(() => { sessionRef.current = session; });
 
   const [phase, setPhase] = useState<Phase>('listening');
   const [timeLeft, setTimeLeft] = useState(COUNTDOWN);
@@ -91,6 +91,7 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
     if (phase !== 'listening') return;
 
     playAudio(getSpokenText(currentWord), lang);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTimeLeft(COUNTDOWN);
     timeoutHandledRef.current = false;
 
@@ -120,7 +121,6 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
       setFeedback('timeout');
       setPhase('feedback');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [timeLeft, phase]);
 
   // ── Advance to next word after feedback delay ─────────────────────────────

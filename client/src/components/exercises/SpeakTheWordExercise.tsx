@@ -86,8 +86,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
 
   const activeIdxRef = useRef(0);
   const attemptsRef = useRef(0);
-  activeIdxRef.current = activeIdx;
-  attemptsRef.current = attempts;
+  useEffect(() => { activeIdxRef.current = activeIdx; attemptsRef.current = attempts; });
 
   const recognitionRef = useRef<WSR | null>(null);
   const hasResultRef = useRef(false);
@@ -100,7 +99,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
 
   const stopRecognition = useCallback(() => {
     clearSafety();
-    try { (recognitionRef.current as unknown as { abort(): void } | null)?.abort(); } catch {}
+    try { (recognitionRef.current as unknown as { abort(): void } | null)?.abort(); } catch { /* no-op */ }
     recognitionRef.current = null;
   }, []);
 

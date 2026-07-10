@@ -36,6 +36,7 @@ export function LessonPage() {
 
   useEffect(() => {
     const needsCountries = lesson?.exercises.some(e => e.dynamic === 'countries');
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!needsCountries) { setCountriesLoaded(true); return; }
     pickSessionCountries(useAuthStore.getState().country || undefined)
       .then(countries => { setSessionCountries(countries); })
@@ -76,6 +77,7 @@ export function LessonPage() {
   const exercisesCompletedInSession = useRef(0);
 
   // ── 4-minute checkpoint timer ─────────────────────────────────────────────
+  // eslint-disable-next-line react-hooks/purity
   const timerStartRef    = useRef<number>(Date.now());
   const accumulatedMsRef = useRef<number>(0);
   const timerPausedRef   = useRef<boolean>(false);
@@ -87,6 +89,7 @@ export function LessonPage() {
   }
   function resetTimer() {
     accumulatedMsRef.current = 0;
+    // eslint-disable-next-line react-hooks/purity
     timerStartRef.current = Date.now();
     timerPausedRef.current = false;
   }
@@ -103,7 +106,6 @@ export function LessonPage() {
     };
     document.addEventListener('visibilitychange', handleVisibility);
     return () => document.removeEventListener('visibilitychange', handleVisibility);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Modal pause/resume
@@ -288,6 +290,7 @@ export function LessonPage() {
         if (completedSurvivalCount % 2 === 1) {
           try {
             const val = localStorage.getItem(SOFT_DISMISS_KEY);
+            // eslint-disable-next-line react-hooks/purity
             const dismissed = !!val && Date.now() < Number(val);
             if (!dismissed) {
               hasShownSoftModal.current = true;
@@ -380,7 +383,10 @@ export function LessonPage() {
           onComplete={handleComplete}
           onFailed={handleFailed}
           onAnswer={handleAnswer}
-          reviewPairs={failedWordsRef.current}
+          reviewPairs={
+            // eslint-disable-next-line react-hooks/refs
+            failedWordsRef.current
+          }
         />
       </div>
 

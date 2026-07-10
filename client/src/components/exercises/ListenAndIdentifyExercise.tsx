@@ -38,13 +38,15 @@ export function ListenAndIdentifyExercise({ exercise, onDone, onAnswer }: Props)
     ? 'Which word(s) did you hear?'
     : 'Pick the Slovak word(s) for what you hear!';
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const shuffledPool = useMemo(() => shuffle([...exercise.wordPool]), []);
 
   const [currentIdx, setCurrentIdx] = useState(0);
   const [selected, setSelected] = useState<Set<string>>(new Set());
   const [phase, setPhase] = useState<Phase>('listening');
   const [isCorrect, setIsCorrect] = useState(false);
-  const [hasPlayed, setHasPlayed] = useState(false);
+  const [playedIdx, setPlayedIdx] = useState(-1);
+  const hasPlayed = playedIdx === currentIdx;
   const nextVisible = useFeedbackNextDelay(phase === 'feedback' ? (isCorrect ? 'correct' : 'wrong') : null);
 
   const current = exercise.items[currentIdx];
@@ -52,10 +54,9 @@ export function ListenAndIdentifyExercise({ exercise, onDone, onAnswer }: Props)
 
   // Auto-play sentence when item changes
   useEffect(() => {
-    setHasPlayed(false);
     const t = setTimeout(() => {
       speak(current.sentence, lang);
-      setHasPlayed(true);
+      setPlayedIdx(currentIdx);
     }, 400);
     return () => clearTimeout(t);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -63,7 +64,7 @@ export function ListenAndIdentifyExercise({ exercise, onDone, onAnswer }: Props)
 
   const handleReplay = () => {
     speak(current.sentence, lang);
-    setHasPlayed(true);
+    setPlayedIdx(currentIdx);
   };
 
   const toggleWord = (word: string) => {

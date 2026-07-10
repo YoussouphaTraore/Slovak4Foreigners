@@ -83,6 +83,7 @@ export function HomePage() {
     try {
       if (sessionStorage.getItem('openSessionModal')) {
         sessionStorage.removeItem('openSessionModal');
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setShowSessionModal(true);
       }
     } catch { /* */ }

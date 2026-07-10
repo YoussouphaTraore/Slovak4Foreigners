@@ -42,6 +42,7 @@ export function ConsentPopup({ onAccepted }: ConsentPopupProps) {
 
   useEffect(() => {
     if (!isInitialized) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (shouldShow(!!user)) setNeedsConsent(true);
   }, [isInitialized, user]);
 

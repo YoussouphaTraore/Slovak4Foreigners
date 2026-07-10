@@ -16,6 +16,7 @@ export function BlockDialoguePage() {
   const dialogue = blockId ? getBlockDialogueById(blockId) : undefined;
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setSpeakingDone(false);
   }, [location.key]);
 

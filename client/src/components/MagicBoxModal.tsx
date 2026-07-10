@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 // ── CSS animations ─────────────────────────────────────────────────────────────
 
@@ -133,7 +133,7 @@ function playVictoryFanfare() {
 // ── Confetti ──────────────────────────────────────────────────────────────────
 
 function Confetti() {
-  const particles = useMemo(() =>
+  const [particles] = useState(() =>
     Array.from({ length: 26 }, (_, i) => {
       const angle = (i / 26) * 360 + Math.random() * 14;
       const dist = 45 + Math.random() * 65;
@@ -147,7 +147,7 @@ function Confetti() {
         round: Math.random() > 0.5,
         delay: Math.random() * 0.25,
       };
-    }), [],
+    }),
   );
 
   return (

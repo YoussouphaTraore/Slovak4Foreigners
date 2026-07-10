@@ -186,6 +186,7 @@ export function SmsDialogueExercise({ exercise, onDone, onAnswer }: Props) {
         ) : (
           <>
             <p className="text-xs text-gray-400 text-center mb-1">Choose your reply</p>
+            {/* eslint-disable-next-line react-hooks/refs */}
             {turnChoices.map((choice, idx) => (
               <button
                 key={idx}

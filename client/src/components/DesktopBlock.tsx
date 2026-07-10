@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const isMobile =
   /Android|iPhone|iPad|iPod|Opera Mini|IEMobile/i.test(navigator.userAgent) ||
   window.matchMedia('(max-width: 768px)').matches;

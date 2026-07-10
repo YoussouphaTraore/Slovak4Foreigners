@@ -173,7 +173,11 @@ function AppShell() {
   const [showAliasPicker, setShowAliasPicker] = useState(false);
   const [showOnboarding, setShowOnboarding] = useState(false);
   useEffect(() => {
-    if (!userId) { setShowAliasPicker(false); setShowOnboarding(false); return; }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (!userId) { setShowAliasPicker(false); setShowOnboarding(false); }
+  }, [userId]);
+  useEffect(() => {
+    if (!userId) return;
     loadAlias(userId).then((result) => {
       if (result === null) {
         setShowAliasPicker(true); // no alias — must pick (onboarding follows after)
@@ -186,7 +190,7 @@ function AppShell() {
       }
       // '' = DB error — don't show picker, alias stays empty
     });
-  }, [userId, setAlias]);
+  }, [userId, setAlias, setProfileData]);
 
   // Load weekly XP from Supabase on login (cron may have reset it)
   useEffect(() => {
@@ -314,6 +318,7 @@ function AppShell() {
 
   // iOS: check on mount (no deferred prompt needed)
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (isIOS()) maybeTriggerInstall();
   }, [maybeTriggerInstall]);
 

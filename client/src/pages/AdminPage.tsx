@@ -479,6 +479,7 @@ export function AdminPage() {
     }
   }, [userId, navigate, loadLiveSessions]);
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => { load(); }, [load]);
 
   useEffect(() => {

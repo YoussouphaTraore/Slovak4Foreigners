@@ -108,6 +108,15 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
   const [feedback, setFeedback] = useState<{ correct: boolean; correctAnswer: string } | null>(null);
   const [kbReg, setKbReg] = useState<KbReg>(null);
 
+  const handleRegisterInput = useCallback((reg: KbReg) => setKbReg(reg), []);
+
+  const submitAnswer = useCallback((ans: string) => {
+    const result = validate(exercise, ans);
+    setFeedback(result);
+    setPhase('feedback');
+    onAnswer?.(result.correct);
+  }, [exercise, onAnswer]);
+
   if (exercise.type === 'WORD_MATCH_REVIEW') {
     const pairs = reviewPairs ?? [];
     return (
@@ -248,15 +257,6 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
   const needsCheckButton = !isListenAndPick && !isWordMatch;
   const hasAnswer = answer.trim().length > 0;
   const disabled = phase === 'feedback';
-
-  const handleRegisterInput = useCallback((reg: KbReg) => setKbReg(reg), []);
-
-  const submitAnswer = useCallback((ans: string) => {
-    const result = validate(exercise, ans);
-    setFeedback(result);
-    setPhase('feedback');
-    onAnswer?.(result.correct);
-  }, [exercise, onAnswer]);
 
   if (isListenAndPick) {
     return (

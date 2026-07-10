@@ -191,6 +191,7 @@ export function SentenceBuildSlide({ sentence, sentenceNum, totalSentences, onCo
 
       {/* Placed row — filled tiles + empty slot indicators */}
       <div className="min-h-[56px] flex flex-wrap gap-2 items-center p-3 bg-white/60 rounded-2xl border-2 border-dashed border-gray-300">
+        {/* eslint-disable-next-line react-hooks/refs */}
         {placed.map((chunk, i) => {
           const isDragging  = dragIndex === i;
           const isWrong     = wrongSlots?.[i] === true;

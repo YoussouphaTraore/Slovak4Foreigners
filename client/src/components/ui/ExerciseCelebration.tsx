@@ -19,7 +19,7 @@ function playCelebrationSound() {
       osc.start(t);
       osc.stop(t + 0.4);
     });
-  } catch (_) {
+  } catch {
     // AudioContext blocked or unavailable — silent fallback
   }
 }
