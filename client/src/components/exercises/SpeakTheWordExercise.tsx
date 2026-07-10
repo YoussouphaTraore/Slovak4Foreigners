@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { SpeakTheWordExercise as TExercise } from '../../types/lesson';
 
 type SpeakStatus = 'idle' | 'recording' | 'pass' | 'fail' | 'mic_error';
@@ -86,7 +86,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
 
   const activeIdxRef = useRef(0);
   const attemptsRef = useRef(0);
-  useEffect(() => { activeIdxRef.current = activeIdx; attemptsRef.current = attempts; });
+  useLayoutEffect(() => { activeIdxRef.current = activeIdx; attemptsRef.current = attempts; });
 
   const recognitionRef = useRef<WSR | null>(null);
   const hasResultRef = useRef(false);
@@ -145,6 +145,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
 
   const handleNoSpeech = useCallback(() => {
     if (hasResultRef.current) return;
+    hasResultRef.current = true;
     clearSafety();
     stopRecognition();
     const next = attemptsRef.current + 1;
