@@ -40,10 +40,6 @@ export function XpCelebrationPage() {
   const bonusTimeoutRef = useRef<number>(0);
   const startRef = useRef<number | null>(null);
 
-  const xpForLevel = store.xp;
-  const xpInLevel = (xpForLevel - 1) % 100;
-  const xpToNextLevel = 100 - xpInLevel;
-  const progressPct = Math.min(100, Math.max(0, xpInLevel));
   const hasStreakBoost = state.streakMultiplier > 1;
   const displayTarget = showPerfectBonus ? state.baseXP + state.perfectBonusXP : state.baseXP;
 
@@ -143,19 +139,6 @@ export function XpCelebrationPage() {
         <div className="bg-gray-50 rounded-xl px-3 py-3 text-center">
           <p className="text-[11px] text-gray-400 uppercase font-semibold tracking-wider">Total XP</p>
           <p className="text-xl font-bold text-gray-700">{store.xp}</p>
-        </div>
-      </div>
-
-      <div className="w-full max-w-sm mb-8">
-        <div className="flex justify-between text-sm text-gray-400 mb-1">
-          <span>Level {store.level}</span>
-          <span>{xpToNextLevel} XP to Level {store.level + 1}</span>
-        </div>
-        <div className="h-4 bg-gray-200 rounded-full overflow-hidden">
-          <div
-            className="h-full bg-brand-green rounded-full transition-all duration-1000"
-            style={{ width: `${progressPct}%` }}
-          />
         </div>
       </div>
 

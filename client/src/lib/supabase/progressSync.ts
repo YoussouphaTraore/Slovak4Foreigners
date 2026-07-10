@@ -12,10 +12,7 @@ export interface ProgressSnapshot {
   completedLessons: string[];
   lessonRecords: LessonRecord[];
   snailRaceRecords: SnailRaceRecord[];
-}
-
-function calcLevel(xp: number): number {
-  return Math.floor(xp / 200) + 1;
+  passedBlocks: string[];
 }
 
 // ── Writes ────────────────────────────────────────────────────────────────────
@@ -36,6 +33,7 @@ export async function syncProgressToSupabase(
           last_played_date: s.lastPlayedDate,
           streak_multiplier: s.streakMultiplier,
           tried_emergency_scenarios: s.triedEmergencyScenarios,
+          passed_blocks: s.passedBlocks,
         },
         { onConflict: 'user_id' },
       );
@@ -152,6 +150,7 @@ export async function loadProgressFromSupabase(
       completedLessons: lessonRecords.map((r) => r.lessonId),
       lessonRecords,
       snailRaceRecords,
+      passedBlocks: (p.passed_blocks as string[]) ?? [],
     };
   } catch (e) {
     console.error('[sync] loadProgressFromSupabase error:', e);
@@ -379,7 +378,8 @@ export function mergeProgress(
   cloud: ProgressSnapshot,
 ): ProgressSnapshot {
   const xp = Math.max(local.xp, cloud.xp);
-  const level = calcLevel(xp);
+  const passedBlocks = [...new Set([...local.passedBlocks, ...cloud.passedBlocks])];
+  const level = passedBlocks.length + 1;
   const streak = Math.max(local.streak, cloud.streak);
 
   // More recent date wins; treat null as oldest
@@ -437,5 +437,6 @@ export function mergeProgress(
     completedLessons,
     lessonRecords: [...lessonMap.values()],
     snailRaceRecords: [...raceMap.values()],
+    passedBlocks,
   };
 }

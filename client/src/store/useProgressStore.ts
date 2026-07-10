@@ -65,10 +65,6 @@ export interface PartialLessonProgress {
 
 // ── Constants ────────────────────────────────────────────────────────────────
 
-function calcLevel(xp: number): number {
-  return Math.floor(xp / 200) + 1;
-}
-
 function todayStr(): string {
   return new Date().toISOString().split('T')[0];
 }
@@ -309,17 +305,11 @@ export const useProgressStore = create<ProgressStore>()(
       // ── XP ────────────────────────────────────────────────────────────────
 
       addXP: (amount) =>
-        set((s) => {
-          const newXp = Math.max(0, s.xp + amount);
-          return { xp: newXp, level: calcLevel(newXp) };
-        }),
+        set((s) => ({ xp: Math.max(0, s.xp + amount) })),
 
       spendXP: (amount) => {
         if (get().xp < amount) return false;
-        set((s) => {
-          const newXp = Math.max(0, s.xp - amount);
-          return { xp: newXp, level: calcLevel(newXp) };
-        });
+        set((s) => ({ xp: Math.max(0, s.xp - amount) }));
         return true;
       },
 
@@ -385,7 +375,6 @@ export const useProgressStore = create<ProgressStore>()(
           lessonRecords: updatedRecords,
           completedLessons: newCompleted,
           xp: newXp,
-          level: calcLevel(newXp),
           weeklyXp: newWeeklyXp,
         });
 
@@ -442,7 +431,7 @@ export const useProgressStore = create<ProgressStore>()(
           : [...s.snailRaceRecords, newRecord];
 
         const newWeeklyXpRace = s.weeklyXp + xpEarned;
-        set({ xp: newXp, level: calcLevel(newXp), snailRaceRecords: updatedRecords, weeklyXp: newWeeklyXpRace });
+        set({ xp: newXp, snailRaceRecords: updatedRecords, weeklyXp: newWeeklyXpRace });
 
         const { user } = useAuthStore.getState();
         if (user) {
@@ -492,7 +481,7 @@ export const useProgressStore = create<ProgressStore>()(
 
         set({
           xp: newXp,
-          level: calcLevel(newXp),
+          level: updatedPassedBlocks.length + 1,
           weeklyXp: newWeeklyXp,
           blockRaceRecords: updatedRecords,
           blockRaceAttemptsToday: newAttemptsToday,
@@ -512,14 +501,18 @@ export const useProgressStore = create<ProgressStore>()(
       },
 
       passBlock: (blockId) =>
-        set((s) => ({
-          passedBlocks: s.passedBlocks.includes(blockId)
+        set((s) => {
+          const updatedPassedBlocks = s.passedBlocks.includes(blockId)
             ? s.passedBlocks
-            : [...s.passedBlocks, blockId],
-          blockRaceRecords: s.blockRaceRecords.map((r) =>
-            r.blockId === blockId ? { ...r, passed: true } : r,
-          ),
-        })),
+            : [...s.passedBlocks, blockId];
+          return {
+            passedBlocks: updatedPassedBlocks,
+            level: updatedPassedBlocks.length + 1,
+            blockRaceRecords: s.blockRaceRecords.map((r) =>
+              r.blockId === blockId ? { ...r, passed: true } : r,
+            ),
+          };
+        }),
 
       getBlockRaceAttemptsLeft: () => {
         const s = get();
@@ -566,7 +559,6 @@ export const useProgressStore = create<ProgressStore>()(
 
         set({
           xp: newXp,
-          level: calcLevel(newXp),
           weeklyXp: newWeeklyXp,
           topicRaceRecords: updatedRecords,
           topicRaceAttemptsToday: newAttemptsToday,
@@ -696,7 +688,6 @@ export const useProgressStore = create<ProgressStore>()(
           const reviewTargetIds = getDueLessons(updatedRecords, nowMs).map((r) => r.lessonId);
           return {
             xp: newXp,
-            level: calcLevel(newXp),
             lastReviewedAt: now,
             lessonRecords: updatedRecords,
             reviewTargetIds,
@@ -783,7 +774,7 @@ export const useProgressStore = create<ProgressStore>()(
         const applyCloud = (cloud: NonNullable<Awaited<ReturnType<typeof loadProgressFromSupabase>>>) => {
           set({
             xp: cloud.xp,
-            level: cloud.level,
+            level: cloud.passedBlocks.length + 1,
             streak: cloud.streak,
             lastPlayedDate: cloud.lastPlayedDate,
             streakMultiplier: cloud.streakMultiplier,
@@ -791,6 +782,7 @@ export const useProgressStore = create<ProgressStore>()(
             completedLessons: cloud.completedLessons,
             lessonRecords: cloud.lessonRecords,
             snailRaceRecords: cloud.snailRaceRecords,
+            passedBlocks: cloud.passedBlocks,
           });
         };
 
@@ -843,12 +835,13 @@ export const useProgressStore = create<ProgressStore>()(
                   completedLessons: s.completedLessons,
                   lessonRecords: s.lessonRecords,
                   snailRaceRecords: s.snailRaceRecords,
+                  passedBlocks: s.passedBlocks,
                 },
                 cloud,
               );
               set({
                 xp: merged.xp,
-                level: merged.level,
+                level: merged.passedBlocks.length + 1,
                 streak: merged.streak,
                 lastPlayedDate: merged.lastPlayedDate,
                 streakMultiplier: merged.streakMultiplier,
@@ -856,6 +849,7 @@ export const useProgressStore = create<ProgressStore>()(
                 completedLessons: merged.completedLessons,
                 lessonRecords: merged.lessonRecords,
                 snailRaceRecords: merged.snailRaceRecords,
+                passedBlocks: merged.passedBlocks,
               });
               await syncProgressToSupabase(userId, get());
             }
@@ -882,12 +876,13 @@ export const useProgressStore = create<ProgressStore>()(
                   completedLessons: s.completedLessons,
                   lessonRecords: s.lessonRecords,
                   snailRaceRecords: s.snailRaceRecords,
+                  passedBlocks: s.passedBlocks,
                 },
                 cloud,
               );
               set({
                 xp: merged.xp,
-                level: merged.level,
+                level: merged.passedBlocks.length + 1,
                 streak: merged.streak,
                 lastPlayedDate: merged.lastPlayedDate,
                 streakMultiplier: merged.streakMultiplier,
@@ -895,6 +890,7 @@ export const useProgressStore = create<ProgressStore>()(
                 completedLessons: merged.completedLessons,
                 lessonRecords: merged.lessonRecords,
                 snailRaceRecords: merged.snailRaceRecords,
+                passedBlocks: merged.passedBlocks,
               });
               await syncProgressToSupabase(userId, get());
             }
@@ -994,7 +990,7 @@ export const useProgressStore = create<ProgressStore>()(
     }),
     {
       name: 'slovak-progress',
-      version: 19,
+      version: 20,
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
@@ -1127,6 +1123,11 @@ export const useProgressStore = create<ProgressStore>()(
           const { unlockedStages: _dropped, ...rest } = old as Record<string, unknown>;
           void _dropped;
           old = rest;
+        }
+
+        if (version < 20) {
+          const passedBlocks = (old.passedBlocks as string[]) ?? [];
+          old = { ...old, level: passedBlocks.length + 1 };
         }
 
         return old as unknown as ProgressStore;

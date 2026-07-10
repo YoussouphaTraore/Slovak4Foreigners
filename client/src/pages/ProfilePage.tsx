@@ -184,11 +184,6 @@ export function ProfilePage() {
     ? `Member since ${new Date(user.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}`
     : '';
 
-  // XP progress through current level (each level = 200 XP)
-  const xpIntoLevel = xp % 200;
-  const xpProgress = Math.round((xpIntoLevel / 200) * 100);
-  const xpToNext = 200 - xpIntoLevel;
-
   // Learning stats
   const bestSnailScore =
     snailRaceRecords.length > 0
@@ -279,27 +274,7 @@ export function ProfilePage() {
           </div>
         </div>
 
-        {/* ── 3. XP progress bar ─────────────────────────────────────────────── */}
-        <div>
-          <SectionLabel>Progress</SectionLabel>
-          <Card>
-            <div className="px-4 py-4">
-              <p className="text-xs text-gray-400 text-center mb-3">Progress to next level</p>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-xs font-semibold text-gray-600">Level {level}</span>
-                <span className="text-xs text-gray-400">{xpToNext} XP to Level {level + 1}</span>
-              </div>
-              <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                <div
-                  className="h-full bg-brand-green rounded-full transition-all duration-500"
-                  style={{ width: `${xpProgress}%` }}
-                />
-              </div>
-            </div>
-          </Card>
-        </div>
-
-        {/* ── 4. Learning stats ──────────────────────────────────────────────── */}
+        {/* ── 3. Learning stats ──────────────────────────────────────────────── */}
         <div>
           <SectionLabel>Learning</SectionLabel>
           <Card>
