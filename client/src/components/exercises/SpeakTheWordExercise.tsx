@@ -72,7 +72,7 @@ function getSpeechRecognition(): (new () => WSR) | null {
 }
 
 const MAX_ATTEMPTS = 2;
-const SAFETY_TIMEOUT_MS = 6_000;
+const SAFETY_TIMEOUT_MS = 3_000;
 
 export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   const words = exercise.words;
@@ -84,14 +84,27 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   const [showModal, setShowModal] = useState(false);
   const [micPermission, setMicPermission] = useState<'unknown' | 'denied' | 'blocked'>('unknown');
 
+  // Refs kept in sync before paint — avoids stale closures in speech callbacks
   const activeIdxRef = useRef(0);
   const attemptsRef = useRef(0);
-  useLayoutEffect(() => { activeIdxRef.current = activeIdx; attemptsRef.current = attempts; });
+  const statusRef = useRef<SpeakStatus>('idle');
+  // words accessed via ref so it never needs to be in a dep array
+  const wordsRef = useRef(words);
+  wordsRef.current = words;
+
+  useLayoutEffect(() => {
+    activeIdxRef.current = activeIdx;
+    attemptsRef.current = attempts;
+    statusRef.current = status;
+  });
 
   const recognitionRef = useRef<WSR | null>(null);
   const hasResultRef = useRef(false);
   const doneRef = useRef(false);
   const safetyTimerRef = useRef<number | null>(null);
+  // Incremented each time a new recognition session starts; handlers check it to
+  // ignore events from a previous (stale) session.
+  const sessionRef = useRef(0);
 
   const clearSafety = () => {
     if (safetyTimerRef.current) { clearTimeout(safetyTimerRef.current); safetyTimerRef.current = null; }
@@ -120,17 +133,18 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     }
   }, [words.length, onAnswer, onDone]);
 
-  const handleTranscripts = useCallback((transcripts: string[]) => {
+  const handleTranscripts = useCallback((transcripts: string[], session: number) => {
+    if (session !== sessionRef.current) return;
     hasResultRef.current = true;
     clearSafety();
     stopRecognition();
 
-    const matched = wordMatches(transcripts, words[activeIdxRef.current].slovak);
+    const matched = wordMatches(transcripts, wordsRef.current[activeIdxRef.current].slovak);
 
     if (matched) {
       setPassedSet(prev => new Set(prev).add(activeIdxRef.current));
       setStatus('pass');
-      window.setTimeout(() => advance(true), 900);
+      window.setTimeout(() => advance(true), 700);
     } else {
       const next = attemptsRef.current + 1;
       setAttempts(next);
@@ -138,12 +152,13 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
       if (next >= MAX_ATTEMPTS) {
         window.setTimeout(() => advance(false), 1_000);
       } else {
-        window.setTimeout(() => setStatus('idle'), 1_200);
+        window.setTimeout(() => setStatus('idle'), 600);
       }
     }
-  }, [advance, stopRecognition, words]);
+  }, [advance, stopRecognition]);
 
-  const handleNoSpeech = useCallback(() => {
+  const handleNoSpeech = useCallback((session: number) => {
+    if (session !== sessionRef.current) return;
     if (hasResultRef.current) return;
     hasResultRef.current = true;
     clearSafety();
@@ -154,12 +169,23 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     if (next >= MAX_ATTEMPTS) {
       window.setTimeout(() => advance(false), 1_000);
     } else {
-      window.setTimeout(() => setStatus('idle'), 1_200);
+      window.setTimeout(() => setStatus('idle'), 600);
     }
   }, [advance, stopRecognition]);
 
+  // Manual stop: user tapped to cancel mid-recording.
+  // Sets hasResultRef so the pending onerror('aborted') / onend don't penalise the attempt.
+  const cancelRecording = useCallback(() => {
+    clearSafety();
+    hasResultRef.current = true;
+    try { (recognitionRef.current as unknown as { abort(): void } | null)?.abort(); } catch { /* no-op */ }
+    recognitionRef.current = null;
+    setStatus('idle');
+  }, []);
+
   const startRecording = useCallback(() => {
-    if (status !== 'idle') return;
+    // Read via ref so status state isn't in the dep array (avoids stale-closure churn)
+    if (statusRef.current !== 'idle') return;
 
     const Ctor = getSpeechRecognition();
     if (!Ctor) {
@@ -176,18 +202,19 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     rec.maxAlternatives = 3;
 
     hasResultRef.current = false;
+    const session = ++sessionRef.current;
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     rec.onresult = (event: any) => {
       const transcripts: string[] = Array.from(event.results[0] as Iterable<{ transcript: string }>)
         .map((r) => r.transcript);
-      handleTranscripts(transcripts);
+      handleTranscripts(transcripts, session);
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     rec.onerror = (event: any) => {
       if (event.error === 'no-speech' || event.error === 'aborted') {
-        handleNoSpeech();
+        handleNoSpeech(session);
       } else if (event.error === 'not-allowed') {
         clearSafety();
         stopRecognition();
@@ -209,7 +236,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     };
 
     rec.onend = () => {
-      if (!hasResultRef.current) handleNoSpeech();
+      if (!hasResultRef.current) handleNoSpeech(session);
     };
 
     recognitionRef.current = recognition;
@@ -218,9 +245,9 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     setStatus('recording');
 
     safetyTimerRef.current = window.setTimeout(() => {
-      if (!hasResultRef.current) { stopRecognition(); handleNoSpeech(); }
+      if (!hasResultRef.current) { stopRecognition(); handleNoSpeech(session); }
     }, SAFETY_TIMEOUT_MS);
-  }, [status, handleTranscripts, handleNoSpeech, stopRecognition]);
+  }, [handleTranscripts, handleNoSpeech, stopRecognition]);
 
   // When mic is amber (denied), check the real permission state first.
   // If already 'denied' at browser level → go straight to blocked (grey) without
@@ -257,14 +284,15 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   }, [stopRecognition, onDone]);
 
   const isRecording = status === 'recording';
+  const isFail = status === 'fail';
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   const prompt =
     isRecording             ? 'Listening...' :
     status === 'pass'       ? '✓ Well done!' :
     status === 'mic_error'  ? 'Mic not available — tap "Can\'t speak?"' :
-    status === 'fail' && attempts >= MAX_ATTEMPTS ? 'Moving on...' :
-    status === 'fail'       ? 'Try again!' :
+    isFail && attempts >= MAX_ATTEMPTS ? 'Moving on...' :
+    isFail                  ? 'Try again!' :
     micPermission === 'blocked' ? 'Microphone blocked — enable it in browser settings if you are using the browser or App settings if you have downloaded as app.' :
     micPermission === 'denied'  ? 'Tap the mic to allow microphone access.' :
     'Tap the mic and say the highlighted word!';
@@ -287,7 +315,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
         {words.map((word, idx) => {
           const isActive = idx === activeIdx;
           const isPassing = isActive && status === 'pass';
-          const isFailing = isActive && status === 'fail';
+          const isFailingActive = isActive && isFail;
           const isPassed = passedSet.has(idx);
 
           return (
@@ -299,7 +327,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
                   ? 'border-green-400 bg-green-50'
                   : isPassed
                   ? 'border-green-300 bg-green-50/50'
-                  : isFailing
+                  : isFailingActive
                   ? 'border-red-400 bg-red-50'
                   : isActive
                   ? 'border-brand-blue bg-white shadow-md'
@@ -310,7 +338,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
               <span className={[
                 'text-base font-bold',
                 isPassing || isPassed ? 'text-green-700' :
-                isFailing ? 'text-red-600' :
+                isFailingActive ? 'text-red-600' :
                 isActive ? 'text-brand-blue' :
                 'text-gray-700',
               ].join(' ')}>
@@ -336,14 +364,16 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
       <div className="flex flex-col items-center gap-2 flex-none pb-1">
         <button
           type="button"
-          onClick={isRecording ? stopRecognition : micPermission === 'denied' ? () => { void requestPermission(); } : startRecording}
-          disabled={status === 'pass' || micPermission === 'blocked'}
+          onClick={isRecording ? cancelRecording : micPermission === 'denied' ? () => { void requestPermission(); } : startRecording}
+          disabled={status === 'pass' || isFail || micPermission === 'blocked'}
           className={[
             'w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all active:scale-95 cursor-pointer',
             isRecording
               ? 'bg-red-500 animate-pulse'
               : status === 'pass'
               ? 'bg-green-400 cursor-not-allowed'
+              : isFail
+              ? 'bg-gray-300 cursor-not-allowed'
               : micPermission === 'blocked'
               ? 'bg-gray-400 cursor-not-allowed'
               : micPermission === 'denied'
