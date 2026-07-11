@@ -82,7 +82,7 @@ export function VocabularyTableExercise({ exercise, onDone }: Props) {
         </div>
 
         {exercise.rows.map((row) => {
-          const id = row.label ?? row.slovak;
+          const id = row.slovak;
           const tapped = heard.has(id);
           return (
             <button

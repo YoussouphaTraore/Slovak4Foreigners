@@ -43,7 +43,7 @@
         { "slovak": "Si", "english": "You are" },
         { "slovak": "Je", "english": "He / She is" },
         { "slovak": "Sme", "english": "We are" },
-        { "slovak": "Ste", "english": "You are formal / plural" },
+        { "slovak": "Ste", "english": "You are, formal" },
         { "slovak": "Sú", "english": "They are" }
       ]
     },
