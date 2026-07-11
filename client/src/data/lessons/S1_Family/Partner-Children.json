@@ -24,9 +24,14 @@
           "english": "Wife"
         },
         {
-          "label": "Spouse",
-          "slovak": "Partner / Partnerka",
-          "english": "Partner / spouse"
+          "label": "Spouse (m)",
+          "slovak": "Partner",
+          "english": "Partner (male)"
+        },
+        {
+          "label": "Spouse (f)",
+          "slovak": "Partnerka",
+          "english": "Partner (female)"
         },
         {
           "label": "Son",

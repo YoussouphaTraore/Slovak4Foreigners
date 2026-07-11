@@ -57,9 +57,14 @@
           "english": "Still water"
         },
         {
-          "label": "Hot / cold",
-          "slovak": "Teplé / studené",
-          "english": "Hot / cold"
+          "label": "Hot",
+          "slovak": "Teplé",
+          "english": "Hot"
+        },
+        {
+          "label": "Cold",
+          "slovak": "Studené",
+          "english": "Cold"
         },
         {
           "label": "I'm out of milk",

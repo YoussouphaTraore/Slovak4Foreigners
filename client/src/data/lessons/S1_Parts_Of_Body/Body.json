@@ -29,9 +29,14 @@
           "english": "Stomach / Belly"
         },
         {
-          "label": "Side / Sides",
-          "slovak": "Bok / Boky",
-          "english": "Side · Sides"
+          "label": "Side",
+          "slovak": "Bok",
+          "english": "Side"
+        },
+        {
+          "label": "Sides",
+          "slovak": "Boky",
+          "english": "Sides"
         },
         {
           "label": "Thigh",

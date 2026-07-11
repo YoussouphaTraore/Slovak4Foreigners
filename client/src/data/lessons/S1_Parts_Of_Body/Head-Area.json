@@ -34,14 +34,24 @@
           "english": "Face"
         },
         {
-          "label": "Eye / Eyes",
-          "slovak": "Oko / Oči",
-          "english": "Eye / Eyes"
+          "label": "Eye",
+          "slovak": "Oko",
+          "english": "Eye"
         },
         {
-          "label": "Ear / Ears",
-          "slovak": "Ucho / Uši",
-          "english": "Ear / Ears"
+          "label": "Eyes",
+          "slovak": "Oči",
+          "english": "Eyes"
+        },
+        {
+          "label": "Ear",
+          "slovak": "Ucho",
+          "english": "Ear"
+        },
+        {
+          "label": "Ears",
+          "slovak": "Uši",
+          "english": "Ears"
         },
         {
           "label": "Nose",

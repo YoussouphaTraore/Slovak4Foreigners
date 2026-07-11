@@ -14,34 +14,64 @@
       "title": "Limbs",
       "rows": [
         {
-          "label": "Hand / Arm  ·  Hands / Arms",
-          "slovak": "Ruka / Ruky",
-          "english": "Hand / Arm  ·  Hands / Arms. One word for both."
+          "label": "Hand / Arm",
+          "slovak": "Ruka",
+          "english": "Hand / Arm (one word for both)"
         },
         {
-          "label": "Shoulder  ·  Shoulders",
-          "slovak": "Rameno / Ramená",
-          "english": "Shoulder · Shoulders"
+          "label": "Hands / Arms",
+          "slovak": "Ruky",
+          "english": "Hands / Arms"
         },
         {
-          "label": "Finger  ·  Fingers",
-          "slovak": "Prst / Prsty",
-          "english": "Finger · Fingers"
+          "label": "Shoulder",
+          "slovak": "Rameno",
+          "english": "Shoulder"
         },
         {
-          "label": "Toe  ·  Toes",
-          "slovak": "Prst na nohe / Prsty na nohách",
-          "english": "Toe · Toes"
+          "label": "Shoulders",
+          "slovak": "Ramená",
+          "english": "Shoulders"
         },
         {
-          "label": "Leg / Foot  ·  Legs / Feet",
-          "slovak": "Noha / Nohy",
-          "english": "Leg / Foot  ·  Legs / Feet. One word for both."
+          "label": "Finger",
+          "slovak": "Prst",
+          "english": "Finger"
         },
         {
-          "label": "Foot  ·  Feet (anatomical)",
-          "slovak": "Chodidlo / Chodidlá",
-          "english": "Sole of the foot · Soles. More anatomically exact than Noha."
+          "label": "Fingers",
+          "slovak": "Prsty",
+          "english": "Fingers"
+        },
+        {
+          "label": "Toe",
+          "slovak": "Prst na nohe",
+          "english": "Toe"
+        },
+        {
+          "label": "Toes",
+          "slovak": "Prsty na nohách",
+          "english": "Toes"
+        },
+        {
+          "label": "Leg / Foot",
+          "slovak": "Noha",
+          "english": "Leg / Foot (one word for both)"
+        },
+        {
+          "label": "Legs / Feet",
+          "slovak": "Nohy",
+          "english": "Legs / Feet"
+        },
+        {
+          "label": "Foot sole",
+          "slovak": "Chodidlo",
+          "english": "Sole of the foot (more anatomically exact)"
+        },
+        {
+          "label": "Foot soles",
+          "slovak": "Chodidlá",
+          "english": "Soles of the feet"
         }
       ]
     },

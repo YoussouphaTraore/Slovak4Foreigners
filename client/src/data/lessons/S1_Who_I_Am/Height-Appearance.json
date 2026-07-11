@@ -33,14 +33,24 @@
           "english": "I am short. (female)"
         },
         {
-          "label": "White",
-          "slovak": "Som biely / biela.",
-          "english": "I am white. (m/f)"
+          "label": "White (m)",
+          "slovak": "Som biely.",
+          "english": "I am white. (male)"
         },
         {
-          "label": "Black",
-          "slovak": "Som čierny / čierna.",
-          "english": "I am Black. (m/f)"
+          "label": "White (f)",
+          "slovak": "Som biela.",
+          "english": "I am white. (female)"
+        },
+        {
+          "label": "Black (m)",
+          "slovak": "Som čierny.",
+          "english": "I am Black. (male)"
+        },
+        {
+          "label": "Black (f)",
+          "slovak": "Som čierna.",
+          "english": "I am Black. (female)"
         }
       ]
     },

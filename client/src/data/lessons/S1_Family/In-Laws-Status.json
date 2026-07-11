@@ -29,19 +29,34 @@
           "english": "In-laws"
         },
         {
-          "label": "Single",
-          "slovak": "Slobodný / Slobodná",
-          "english": "Single (male/female)"
+          "label": "Single (m)",
+          "slovak": "Slobodný",
+          "english": "Single (male)"
         },
         {
-          "label": "Married",
-          "slovak": "Ženatý / Vydatá",
-          "english": "Married (male/female)"
+          "label": "Single (f)",
+          "slovak": "Slobodná",
+          "english": "Single (female)"
         },
         {
-          "label": "Divorced",
-          "slovak": "Rozvedený / Rozvedená",
-          "english": "Divorced (male/female)"
+          "label": "Married (m)",
+          "slovak": "Ženatý",
+          "english": "Married (man)"
+        },
+        {
+          "label": "Married (f)",
+          "slovak": "Vydatá",
+          "english": "Married (woman)"
+        },
+        {
+          "label": "Divorced (m)",
+          "slovak": "Rozvedený",
+          "english": "Divorced (male)"
+        },
+        {
+          "label": "Divorced (f)",
+          "slovak": "Rozvedená",
+          "english": "Divorced (female)"
         }
       ]
     },

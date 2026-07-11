@@ -245,6 +245,48 @@
       ]
     },
     {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Chcem ___.",
+          "translation": "I want bread.",
+          "choices": ["chlieb", "mäso", "rybu", "syr"],
+          "answer": "chlieb"
+        },
+        {
+          "sentence": "Nejem ___. Som vegetarián.",
+          "translation": "I don't eat meat. I am vegetarian.",
+          "choices": ["mäso", "chlieb", "ovocie", "syr"],
+          "answer": "mäso"
+        },
+        {
+          "sentence": "Prosím si ___.",
+          "translation": "I would like fish.",
+          "choices": ["rybu", "zeleninu", "chlieb", "mäso"],
+          "answer": "rybu"
+        },
+        {
+          "sentence": "Jem ___ každý deň.",
+          "translation": "I eat vegetables every day.",
+          "choices": ["zeleninu", "ovocie", "mäso", "rybu"],
+          "answer": "zeleninu"
+        },
+        {
+          "sentence": "Kupujem ___.",
+          "translation": "I am buying fruit.",
+          "choices": ["ovocie", "chlieb", "syr", "mäso"],
+          "answer": "ovocie"
+        },
+        {
+          "sentence": "Daj mi ___.",
+          "translation": "Give me cheese.",
+          "choices": ["syr", "chlieb", "mäso", "rybu"],
+          "answer": "syr"
+        }
+      ]
+    },
+    {
       "id": "ex-review",
       "type": "WORD_MATCH_REVIEW"
     }

@@ -28,9 +28,14 @@
           "english": "Good evening"
         },
         {
-          "label": "Casual",
-          "slovak": "Ahoj / Čau",
-          "english": "Hi / Bye (informal)"
+          "label": "Hi (informal)",
+          "slovak": "Ahoj",
+          "english": "Hi (informal)"
+        },
+        {
+          "label": "Bye (informal)",
+          "slovak": "Čau",
+          "english": "Bye (informal)"
         },
         {
           "label": "Goodbye",

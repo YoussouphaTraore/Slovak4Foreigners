@@ -24,9 +24,14 @@
           "english": "Insurance card"
         },
         {
-          "label": "I have an appointment",
-          "slovak": "Som objednaný / objednaná.",
-          "english": "I have an appointment. (m/f)"
+          "label": "Appointment (m)",
+          "slovak": "Som objednaný.",
+          "english": "I have an appointment. (male)"
+        },
+        {
+          "label": "Appointment (f)",
+          "slovak": "Som objednaná.",
+          "english": "I have an appointment. (female)"
         },
         {
           "label": "Without appointment",

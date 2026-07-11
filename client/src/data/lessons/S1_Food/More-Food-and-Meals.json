@@ -245,6 +245,48 @@
       ]
     },
     {
+      "id": "ex5",
+      "type": "FILL_IN_BLANK_PICK",
+      "items": [
+        {
+          "sentence": "Jem ___ na raňajky.",
+          "translation": "I eat an egg for breakfast.",
+          "choices": ["vajce", "ryžu", "cestoviny", "večeru"],
+          "answer": "vajce"
+        },
+        {
+          "sentence": "Chcem ___.",
+          "translation": "I want rice.",
+          "choices": ["ryžu", "cestoviny", "vajce", "obed"],
+          "answer": "ryžu"
+        },
+        {
+          "sentence": "Prosím si ___.",
+          "translation": "I would like pasta.",
+          "choices": ["cestoviny", "ryžu", "vajce", "večeru"],
+          "answer": "cestoviny"
+        },
+        {
+          "sentence": "Dám si ___ o ôsmej.",
+          "translation": "I will have breakfast at eight.",
+          "choices": ["raňajky", "obed", "večeru", "ryžu"],
+          "answer": "raňajky"
+        },
+        {
+          "sentence": "Mám ___ o dvanástej.",
+          "translation": "I have lunch at twelve.",
+          "choices": ["obed", "večeru", "raňajky", "cestoviny"],
+          "answer": "obed"
+        },
+        {
+          "sentence": "Na ___ chcem polievku.",
+          "translation": "For dinner I want soup.",
+          "choices": ["večeru", "obed", "raňajky", "vajce"],
+          "answer": "večeru"
+        }
+      ]
+    },
+    {
       "id": "ex-review",
       "type": "WORD_MATCH_REVIEW"
     }

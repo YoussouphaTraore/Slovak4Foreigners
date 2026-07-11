@@ -23,24 +23,44 @@
           "english": "I am a woman."
         },
         {
-          "label": "Young",
-          "slovak": "Som mladý / mladá.",
-          "english": "I am young. (m/f)"
+          "label": "Young (m)",
+          "slovak": "Som mladý.",
+          "english": "I am young. (male)"
         },
         {
-          "label": "Adult",
-          "slovak": "Som dospelý / dospelá.",
-          "english": "I am an adult. (m/f)"
+          "label": "Young (f)",
+          "slovak": "Som mladá.",
+          "english": "I am young. (female)"
         },
         {
-          "label": "Married",
-          "slovak": "Som ženatý / vydatá.",
-          "english": "I am married. (man/woman)"
+          "label": "Adult (m)",
+          "slovak": "Som dospelý.",
+          "english": "I am an adult. (male)"
         },
         {
-          "label": "Single",
-          "slovak": "Som slobodný / slobodná.",
-          "english": "I am single. (m/f)"
+          "label": "Adult (f)",
+          "slovak": "Som dospelá.",
+          "english": "I am an adult. (female)"
+        },
+        {
+          "label": "Married (m)",
+          "slovak": "Som ženatý.",
+          "english": "I am married. (man)"
+        },
+        {
+          "label": "Married (f)",
+          "slovak": "Som vydatá.",
+          "english": "I am married. (woman)"
+        },
+        {
+          "label": "Single (m)",
+          "slovak": "Som slobodný.",
+          "english": "I am single. (male)"
+        },
+        {
+          "label": "Single (f)",
+          "slovak": "Som slobodná.",
+          "english": "I am single. (female)"
         }
       ]
     },

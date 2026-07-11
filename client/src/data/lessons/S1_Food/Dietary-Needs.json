@@ -14,14 +14,24 @@
       "title": "Dietary Needs",
       "rows": [
         {
-          "label": "Vegetarian (m/f)",
-          "slovak": "Vegetarián / Vegetariánka",
-          "english": "Vegetarian (male/female)"
+          "label": "Vegetarian (m)",
+          "slovak": "Vegetarián",
+          "english": "Vegetarian (male)"
         },
         {
-          "label": "Allergic to...",
-          "slovak": "Som alergický / alergická na...",
-          "english": "I am allergic to... (m/f)"
+          "label": "Vegetarian (f)",
+          "slovak": "Vegetariánka",
+          "english": "Vegetarian (female)"
+        },
+        {
+          "label": "Allergic to... (m)",
+          "slovak": "Som alergický na...",
+          "english": "I am allergic to... (male)"
+        },
+        {
+          "label": "Allergic to... (f)",
+          "slovak": "Som alergická na...",
+          "english": "I am allergic to... (female)"
         },
         {
           "label": "I don't eat...",
@@ -35,12 +45,20 @@
       "type": "LISTEN_AND_PICK",
       "words": [
         {
-          "slovak": "Vegetarián / Vegetariánka",
-          "english": "Vegetarian (male/female)"
+          "slovak": "Vegetarián",
+          "english": "Vegetarian (male)"
         },
         {
-          "slovak": "Som alergický / alergická na...",
-          "english": "I am allergic to... (m/f)"
+          "slovak": "Vegetariánka",
+          "english": "Vegetarian (female)"
+        },
+        {
+          "slovak": "Som alergický na...",
+          "english": "I am allergic to... (male)"
+        },
+        {
+          "slovak": "Som alergická na...",
+          "english": "I am allergic to... (female)"
         },
         {
           "slovak": "Nejem...",
@@ -54,12 +72,20 @@
       "speakLanguage": "en",
       "words": [
         {
-          "slovak": "Vegetarián / Vegetariánka",
-          "english": "Vegetarian (male/female)"
+          "slovak": "Vegetarián",
+          "english": "Vegetarian (male)"
         },
         {
-          "slovak": "Som alergický / alergická na...",
-          "english": "I am allergic to... (m/f)"
+          "slovak": "Vegetariánka",
+          "english": "Vegetarian (female)"
+        },
+        {
+          "slovak": "Som alergický na...",
+          "english": "I am allergic to... (male)"
+        },
+        {
+          "slovak": "Som alergická na...",
+          "english": "I am allergic to... (female)"
         },
         {
           "slovak": "Nejem...",
@@ -94,12 +120,20 @@
       "type": "PICK_TRANSLATION",
       "words": [
         {
-          "slovak": "Vegetarián / Vegetariánka",
-          "english": "Vegetarian (male/female)"
+          "slovak": "Vegetarián",
+          "english": "Vegetarian (male)"
         },
         {
-          "slovak": "Som alergický / alergická na...",
-          "english": "I am allergic to... (m/f)"
+          "slovak": "Vegetariánka",
+          "english": "Vegetarian (female)"
+        },
+        {
+          "slovak": "Som alergický na...",
+          "english": "I am allergic to... (male)"
+        },
+        {
+          "slovak": "Som alergická na...",
+          "english": "I am allergic to... (female)"
         },
         {
           "slovak": "Nejem...",

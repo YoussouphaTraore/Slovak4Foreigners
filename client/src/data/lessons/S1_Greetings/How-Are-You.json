@@ -73,14 +73,24 @@
           "english": "Not very well."
         },
         {
-          "label": "Tired",
-          "slovak": "Som unavený / unavená.",
-          "english": "I am tired. (m/f)"
+          "label": "Tired (m)",
+          "slovak": "Som unavený.",
+          "english": "I am tired. (male)"
         },
         {
-          "label": "Sick",
-          "slovak": "Som chorý / chorá.",
-          "english": "I am sick. (m/f)"
+          "label": "Tired (f)",
+          "slovak": "Som unavená.",
+          "english": "I am tired. (female)"
+        },
+        {
+          "label": "Sick (m)",
+          "slovak": "Som chorý.",
+          "english": "I am sick. (male)"
+        },
+        {
+          "label": "Sick (f)",
+          "slovak": "Som chorá.",
+          "english": "I am sick. (female)"
         }
       ]
     },

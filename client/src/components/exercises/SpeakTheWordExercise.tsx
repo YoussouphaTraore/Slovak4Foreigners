@@ -90,9 +90,9 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   const statusRef = useRef<SpeakStatus>('idle');
   // words accessed via ref so it never needs to be in a dep array
   const wordsRef = useRef(words);
-  wordsRef.current = words;
 
   useLayoutEffect(() => {
+    wordsRef.current = words;
     activeIdxRef.current = activeIdx;
     attemptsRef.current = attempts;
     statusRef.current = status;

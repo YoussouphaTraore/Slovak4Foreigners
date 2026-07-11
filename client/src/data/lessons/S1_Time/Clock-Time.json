@@ -41,14 +41,24 @@
       "title": "Time Words",
       "rows": [
         {
-          "label": "Hour",
-          "slovak": "Hodina / Hodín",
-          "english": "Hour / o'clock"
+          "label": "Hour (1)",
+          "slovak": "Hodina",
+          "english": "One hour"
         },
         {
-          "label": "Minute",
-          "slovak": "Minúta / Minút",
-          "english": "Minute / minutes"
+          "label": "Hours (5+)",
+          "slovak": "Hodín",
+          "english": "Hours (used with 5, 10, etc.)"
+        },
+        {
+          "label": "Minute (1)",
+          "slovak": "Minúta",
+          "english": "One minute"
+        },
+        {
+          "label": "Minutes (5+)",
+          "slovak": "Minút",
+          "english": "Minutes (used with 5, 10, etc.)"
         },
         {
           "label": "Half past",
