@@ -128,7 +128,11 @@ function getSpeechRecognition(): (new () => WSR) | null {
 }
 
 const MAX_ATTEMPTS = 2;
-const SAFETY_TIMEOUT_MS = 3_000;
+// Last-resort cutoff. Must leave room for: user reaction time (~1–2s) +
+// speaking + the recognizer's own processing (~1–2s after speech ends).
+// The old 3s value aborted recognition mid-transcription on real phones,
+// producing false "we couldn't hear you" results.
+const SAFETY_TIMEOUT_MS = 6_500;
 
 export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   const words = exercise.words;
@@ -138,9 +142,8 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   const [attempts, setAttempts] = useState(0);
   // Last attempt's pronunciation score (0–100), shown as a chip; null = no scored attempt yet
   const [lastScore, setLastScore] = useState<number | null>(null);
-  const [passedSet, setPassedSet] = useState<Set<number>>(new Set());
-  // Words passed on effort rather than pronunciation — 💪 badge instead of ✓
-  const [effortSet, setEffortSet] = useState<Set<number>>(new Set());
+  // Word index → level icon earned: 🌟 native, 💪 good, 👍 effort, 🔃 silent skip
+  const [badges, setBadges] = useState<Map<number, string>>(new Map());
   const [showModal, setShowModal] = useState(false);
   const [micPermission, setMicPermission] = useState<'unknown' | 'denied' | 'blocked'>('unknown');
 
@@ -213,19 +216,19 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
 
     if (score >= 0.6) {
       // Earned pass — 80+ gets the native celebration, 60–79 a solid "great job"
-      setPassedSet(prev => new Set(prev).add(activeIdxRef.current));
+      const icon = score >= 0.8 ? '🌟' : '💪';
+      setBadges(prev => new Map(prev).set(activeIdxRef.current, icon));
       setStatus(score >= 0.8 ? 'pass_native' : 'pass_good');
-      window.setTimeout(() => advance(), 1_200);
+      window.setTimeout(() => advance(), 2_300);
     } else if (next >= MAX_ATTEMPTS) {
-      // No-fail floor: they spoke twice — that's what counts. Pass with 💪.
-      setPassedSet(prev => new Set(prev).add(activeIdxRef.current));
-      setEffortSet(prev => new Set(prev).add(activeIdxRef.current));
+      // No-fail floor: they spoke twice — that's what counts. Pass with 👍.
+      setBadges(prev => new Map(prev).set(activeIdxRef.current, '👍'));
       setStatus('effort_pass');
-      window.setTimeout(() => advance(), 1_400);
+      window.setTimeout(() => advance(), 2_500);
     } else {
       // Encouraging retry, banded by how close they were
       setStatus(score >= 0.3 ? 'retry_close' : 'retry_unclear');
-      window.setTimeout(() => setStatus('idle'), 1_400);
+      window.setTimeout(() => setStatus('idle'), 2_500);
     }
   }, [advance, stopRecognition]);
 
@@ -241,12 +244,12 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     const next = attemptsRef.current + 1;
     setAttempts(next);
     if (next >= MAX_ATTEMPTS) {
-      setPassedSet(prev => new Set(prev).add(activeIdxRef.current));
+      setBadges(prev => new Map(prev).set(activeIdxRef.current, '🔃'));
       setStatus('silent_skip');
-      window.setTimeout(() => advance(), 1_100);
+      window.setTimeout(() => advance(), 2_200);
     } else {
       setStatus('silent_retry');
-      window.setTimeout(() => setStatus('idle'), 1_100);
+      window.setTimeout(() => setStatus('idle'), 2_200);
     }
   }, [advance, stopRecognition]);
 
@@ -275,17 +278,37 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const rec = recognition as any;
     rec.lang = 'sk-SK';
-    rec.interimResults = false;
+    // Interim results arrive WHILE the user speaks — they double as proof of
+    // speech and as scoreable text when the final result never lands (slow
+    // service, cutoff, flaky connection).
+    rec.interimResults = true;
     rec.maxAlternatives = 5;
 
     hasResultRef.current = false;
     const session = ++sessionRef.current;
+    let interimText = '';
+
+    // Called when recognition ends without a final result: score whatever
+    // interim text we heard rather than falsely claiming silence.
+    const finishWithoutFinal = () => {
+      if (interimText.trim()) handleTranscripts([interimText], session);
+      else handleNoSpeech(session);
+    };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     rec.onresult = (event: any) => {
-      const transcripts: string[] = Array.from(event.results[0] as Iterable<{ transcript: string }>)
-        .map((r) => r.transcript);
-      handleTranscripts(transcripts, session);
+      const finals: string[] = [];
+      let interim = '';
+      for (let i = 0; i < event.results.length; i++) {
+        const res = event.results[i];
+        if (res.isFinal) {
+          for (let j = 0; j < res.length; j++) finals.push(res[j].transcript);
+        } else {
+          interim += res[0]?.transcript ?? '';
+        }
+      }
+      if (interim.trim()) interimText = interim;
+      if (finals.length > 0) handleTranscripts(finals, session);
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -303,15 +326,15 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
           setMicPermission('blocked');
         }
       } else {
-        // no-speech, aborted, network, audio-capture, service errors — all take
-        // the gentle "couldn't hear you" path; recognizer failures never
-        // surface as error screens or punish the user
-        handleNoSpeech(session);
+        // no-speech, aborted, network, audio-capture, service errors — score
+        // any interim speech we caught; only true silence takes the gentle
+        // "couldn't hear you" path. Never an error screen.
+        finishWithoutFinal();
       }
     };
 
     rec.onend = () => {
-      if (!hasResultRef.current) handleNoSpeech(session);
+      if (!hasResultRef.current) finishWithoutFinal();
     };
 
     recognitionRef.current = recognition;
@@ -321,9 +344,9 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
 
     // Longer phrases get more speaking time before the safety cutoff
     const nWords = wordsRef.current[activeIdxRef.current].slovak.split(/\s+/).length;
-    const timeoutMs = Math.min(SAFETY_TIMEOUT_MS + 700 * (nWords - 1), 9_000);
+    const timeoutMs = Math.min(SAFETY_TIMEOUT_MS + 700 * (nWords - 1), 12_000);
     safetyTimerRef.current = window.setTimeout(() => {
-      if (!hasResultRef.current) { stopRecognition(); handleNoSpeech(session); }
+      if (!hasResultRef.current) { stopRecognition(); finishWithoutFinal(); }
     }, timeoutMs);
   }, [handleTranscripts, handleNoSpeech, stopRecognition]);
 
@@ -370,12 +393,12 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   const prompt =
     isRecording                ? 'Listening...' :
     status === 'pass_native'   ? '🌟 Like a native!' :
-    status === 'pass_good'     ? '👍 Great job — that\'s good Slovak!' :
-    status === 'effort_pass'   ? 'Great effort! 💪 Moving on!' :
-    status === 'retry_close'   ? 'Close enough — let\'s try it again!' :
-    status === 'retry_unclear' ? 'Hmm, that wasn\'t clear. One more time!' :
-    status === 'silent_retry'  ? 'We couldn\'t hear you — speak up a little!' :
-    status === 'silent_skip'   ? 'No sound came through — moving on!' :
+    status === 'pass_good'     ? '💪 Great job — that\'s good Slovak!' :
+    status === 'effort_pass'   ? '👍 Great effort! Moving on!' :
+    status === 'retry_close'   ? '🤏 Close enough — let\'s try it again!' :
+    status === 'retry_unclear' ? '🤔 Hmm, that wasn\'t clear. One more time!' :
+    status === 'silent_retry'  ? '👂 We couldn\'t hear you — speak up a little!' :
+    status === 'silent_skip'   ? '🔃 No sound came through — moving on!' :
     status === 'mic_error'     ? 'Mic not available — tap "Can\'t speak?"' :
     micPermission === 'blocked' ? 'Microphone blocked — enable it in browser settings if you are using the browser or App settings if you have downloaded as app.' :
     micPermission === 'denied'  ? 'Tap the mic to allow microphone access.' :
@@ -415,8 +438,13 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
           const isActive = idx === activeIdx;
           const isPassing = isActive && isSettled;
           const isRetrying = isActive && isRetry;
-          const isPassed = passedSet.has(idx);
-          const marker = effortSet.has(idx) ? ' 💪' : ' ✓';
+          const isPassed = badges.has(idx);
+          const marker = badges.has(idx) ? ` ${badges.get(idx)}` : '';
+          // Transient icon on the active tile while a retry message is showing
+          const retryIcon =
+            status === 'retry_close'   ? ' 🤏' :
+            status === 'retry_unclear' ? ' 🤔' :
+            status === 'silent_retry'  ? ' 👂' : '';
 
           return (
             <div
@@ -445,6 +473,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
                 {word.slovak}
                 {isPassing && marker}
                 {isPassed && !isActive && marker}
+                {isRetrying && retryIcon}
               </span>
               <span className="text-xs text-gray-400 mt-0.5">{word.english}</span>
             </div>

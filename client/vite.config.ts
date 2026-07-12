@@ -7,5 +7,8 @@ export default defineConfig({
   server: {
     port: 5173,
     strictPort: true,
+    // Allow phone testing through a Cloudflare quick tunnel (HTTPS is required
+    // for mic/speech APIs on mobile browsers)
+    allowedHosts: ['.trycloudflare.com'],
   },
 })
