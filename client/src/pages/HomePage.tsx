@@ -49,6 +49,24 @@ export function HomePage() {
   // reviewTargetIds = all currently-due lesson IDs (pre-computed by decayLessonStrengths)
   const reviewCount = reviewTargetIds.length;
 
+  // While a review is due, topic taps don't navigate — they redirect attention
+  // to the Quick Review node: scroll it into view, then hard-pulse + shake it.
+  const reviewNodeRef = useRef<HTMLDivElement | null>(null);
+  const [reviewNudging, setReviewNudging] = useState(false);
+  const nudgeTimerRef = useRef<number | null>(null);
+  useEffect(() => () => { if (nudgeTimerRef.current) clearTimeout(nudgeTimerRef.current); }, []);
+
+  function triggerReviewNudge() {
+    reviewNodeRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (nudgeTimerRef.current) clearTimeout(nudgeTimerRef.current);
+    setReviewNudging(false);
+    // Restart the CSS animation on the next frame even if it was already running
+    requestAnimationFrame(() => {
+      setReviewNudging(true);
+      nudgeTimerRef.current = window.setTimeout(() => setReviewNudging(false), 1_900);
+    });
+  }
+
   const finalStage1BlockId = stage1Blocks[stage1Blocks.length - 1]?.blockId;
 
   // All non-coming_soon Stage 1 lessons complete + final Stage 1 block race passed
@@ -137,7 +155,12 @@ export function HomePage() {
             <button
               type="button"
               disabled={isLocked}
-              onClick={() => !isLocked && go(`/topic/${topic.id}`)}
+              onClick={() => {
+                if (isLocked) return;
+                // Review gate: topics look normal but taps bounce to the review node
+                if (reviewCount > 0) { triggerReviewNudge(); return; }
+                go(`/topic/${topic.id}`);
+              }}
               className={`relative w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold shadow-md transition-all duration-200 cursor-pointer
                 ${isComplete
                   ? 'bg-brand-green text-white hover:opacity-90'
@@ -216,16 +239,15 @@ export function HomePage() {
 
   function renderReviewNode(nodeKey: string) {
     return (
-      <div key={`review-after-${nodeKey}`} className="flex flex-col items-center">
+      <div key={`review-after-${nodeKey}`} ref={reviewNodeRef} className="flex flex-col items-center">
         <div className="w-0.5 h-8 border-l-2 border-dashed border-gray-300" />
         <div className="relative flex flex-col items-center">
-          <span className="absolute -top-1 left-1/2 -translate-x-1/2 -translate-y-full text-xs font-bold uppercase tracking-widest text-amber-500">
-            REVIEW DUE
-          </span>
           <button
             type="button"
             onClick={() => go('/review')}
-            className="w-16 h-16 rounded-full bg-amber-400 text-white flex items-center justify-center text-2xl shadow-md hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer"
+            className={`w-16 h-16 rounded-full bg-amber-400 text-white flex items-center justify-center text-2xl shadow-md hover:opacity-90 active:scale-[0.98] transition-all cursor-pointer ${
+              reviewNudging ? 'animate-review-nudge' : 'animate-review-pulse'
+            }`}
           >
             🔁
           </button>

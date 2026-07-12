@@ -155,7 +155,7 @@ interface ProgressStore {
   lastSyncedAt: string | null;
 
   // Save-progress modal
-  showSaveProgressModal: 'soft' | 'hard_stage' | 'hard_unlock' | 'regression' | null;
+  showSaveProgressModal: 'soft' | 'hard_lesson2' | 'regression' | null;
   regressionLessonTitle: string | null;
 
   // Review cycle — ISO timestamp of last completed review session

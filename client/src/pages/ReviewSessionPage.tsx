@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { lessons } from '../data/lessons';
 import { useProgressStore, computeStrength } from '../store/useProgressStore';
 import type { LessonRecord } from '../store/useProgressStore';
@@ -167,12 +167,9 @@ type Screen = 'intro' | 'session' | 'complete';
 
 export function ReviewSessionPage() {
   const navigate = useNavigate();
-  const location = useLocation();
   const store = useProgressStore();
   const lessonRecords = useProgressStore((s) => s.lessonRecords);
   const reviewTargetIds = useProgressStore((s) => s.reviewTargetIds);
-
-  const autoTriggered = (location.state as { autoTriggered?: boolean } | null)?.autoTriggered ?? false;
 
   const [session] = useState(() =>
     buildSession(store.completedLessons, store.lessonRecords, reviewTargetIds)
@@ -242,16 +239,6 @@ export function ReviewSessionPage() {
         >
           Start Review
         </button>
-
-        {!autoTriggered && (
-          <button
-            type="button"
-            onClick={() => navigate('/')}
-            className="text-gray-400 text-sm py-1 cursor-pointer hover:text-gray-600 transition-colors"
-          >
-            Maybe Later
-          </button>
-        )}
       </div>
     );
   }

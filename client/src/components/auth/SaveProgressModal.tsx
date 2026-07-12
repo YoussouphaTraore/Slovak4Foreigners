@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useAuthStore } from '../../store/useAuthStore';
 
-export type SaveModalTrigger = 'soft' | 'hard_stage' | 'hard_unlock' | 'hard_dialogue' | 'regression';
+export type SaveModalTrigger = 'soft' | 'hard_dialogue' | 'hard_lesson2' | 'regression';
 
 // Keys written to localStorage so the store can check before showing
 export const SOFT_DISMISS_KEY = 'save-modal-dismissed-soft';
@@ -27,17 +27,13 @@ const CONTENT: Record<SaveModalTrigger, { title: string; body?: string }> = {
     title: "You're making great progress!",
     body: "Sign in to make sure none of it gets lost between sessions.",
   },
-  hard_stage: {
-    title: 'You\'ve completed Stage 1! 🎉',
-    body: 'Sign in to unlock Stage 2 and keep your progress safe forever.',
-  },
-  hard_unlock: {
-    title: 'Ready for Stage 2?',
-    body: 'Create a free account to unlock new stages and keep all your hard-earned XP safe.',
-  },
   hard_dialogue: {
     title: 'Sign in to continue',
     body: 'Sign in to unlock all conversation scenarios and keep your progress safe.',
+  },
+  hard_lesson2: {
+    title: 'Great start! 🎉',
+    body: 'Create a free account to unlock the next lesson and keep your XP and streak safe forever.',
   },
   regression: {
     title: 'Welcome back, Guest Learner!',
@@ -55,7 +51,7 @@ export function SaveProgressModal({ trigger, onDismiss, regressionLessonTitle }:
   const [maybeLaterOpacity, setMaybeLaterOpacity] = useState(0);
 
   useEffect(() => {
-    const isHardTrigger = trigger === 'hard_stage' || trigger === 'hard_unlock' || trigger === 'hard_dialogue';
+    const isHardTrigger = trigger === 'hard_dialogue' || trigger === 'hard_lesson2';
     if (isHardTrigger) return;
     // Delay start so the transition is visible, then fade in over 6s
     const start = performance.now() + 100;
@@ -72,12 +68,15 @@ export function SaveProgressModal({ trigger, onDismiss, regressionLessonTitle }:
     return () => cancelAnimationFrame(raf);
   }, [trigger]);
 
-  const isHard = trigger === 'hard_stage' || trigger === 'hard_unlock' || trigger === 'hard_dialogue';
+  const isHard = trigger === 'hard_dialogue' || trigger === 'hard_lesson2';
   const { title, body } = CONTENT[trigger];
 
   const handleDismiss = () => {
-    const key = trigger === 'soft' ? SOFT_DISMISS_KEY : REGRESSION_DISMISS_KEY;
-    try { localStorage.setItem(key, String(Date.now() + DISMISS_MS)); } catch { /* */ }
+    // Snooze keys only apply to the re-firing prompts; hard gates re-show every time
+    if (trigger === 'soft' || trigger === 'regression') {
+      const key = trigger === 'soft' ? SOFT_DISMISS_KEY : REGRESSION_DISMISS_KEY;
+      try { localStorage.setItem(key, String(Date.now() + DISMISS_MS)); } catch { /* */ }
+    }
     onDismiss();
   };
 
@@ -86,8 +85,10 @@ export function SaveProgressModal({ trigger, onDismiss, regressionLessonTitle }:
     await signInWithGoogle();
   };
 
+  // hard_lesson2 blocks the lesson but must not trap the user on the modal —
+  // backdrop click closes it (they stay where they are, lesson stays locked)
   const handleBackdrop = () => {
-    if (!isHard) handleDismiss();
+    if (!isHard || trigger === 'hard_lesson2') handleDismiss();
   };
 
   return (

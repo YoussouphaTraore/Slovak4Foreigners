@@ -45,3 +45,13 @@ export function getLessonState(
   if (prevIndex < 0 || completedLessons.includes(lessons[prevIndex].id)) return 'available';
   return 'locked';
 }
+
+// Hard auth gate: guests get exactly one lesson. Once anything is completed,
+// starting a NEW lesson requires an account; replaying completed lessons stays open.
+export function isGuestLessonLocked(
+  isLoggedIn: boolean,
+  completedLessons: string[],
+  lessonId: string,
+): boolean {
+  return !isLoggedIn && completedLessons.length >= 1 && !completedLessons.includes(lessonId);
+}

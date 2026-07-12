@@ -1,9 +1,9 @@
 import { useState, useRef, useEffect, useMemo } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
-import { getLessonById, lessons } from '../data/lessons';
+import { getLessonById } from '../data/lessons';
 import { useProgressStore } from '../store/useProgressStore';
 import { useAuthStore } from '../store/useAuthStore';
-import { SOFT_DISMISS_KEY } from '../components/auth/SaveProgressModal';
+import { isGuestLessonLocked } from '../utils/lessonState';
 import { ExerciseShell } from '../components/exercises/ExerciseShell';
 import { ProgressBar } from '../components/ui/ProgressBar';
 import { ConfirmModal } from '../components/ui/ConfirmModal';
@@ -73,8 +73,6 @@ export function LessonPage() {
   const [strikesDisplay, setStrikesDisplay] = useState({ total: 0, consecutive: 0 });
   const penaltyRef   = useRef(false);
   const failedWordsRef = useRef<{ slovak: string; english: string }[]>([]);
-  const hasShownSoftModal = useRef(false);
-  const exercisesCompletedInSession = useRef(0);
 
   // ── 4-minute checkpoint timer ─────────────────────────────────────────────
   // eslint-disable-next-line react-hooks/purity
@@ -108,24 +106,22 @@ export function LessonPage() {
     return () => document.removeEventListener('visibilitychange', handleVisibility);
   }, []);
 
-  // Modal pause/resume
-  const isModalOpen = useProgressStore((s) => s.showSaveProgressModal !== null);
-  const pendingAdvance = useRef(false);
-  const prevModalOpenRef = useRef(false);
+  // Hard auth gate — guests get exactly one lesson; deep links can't bypass
+  // the TopicPage check, so it's enforced here too
+  const authUser = useAuthStore((s) => s.user);
+  const guestLocked = !!lesson && isGuestLessonLocked(!!authUser, store.completedLessons, lesson.id);
 
-  // When modal closes, execute any deferred advance
   useEffect(() => {
-    const wasOpen = prevModalOpenRef.current;
-    prevModalOpenRef.current = isModalOpen;
-    if (wasOpen && !isModalOpen && pendingAdvance.current) {
-      pendingAdvance.current = false;
-      const lessonTotal = strikesRef.current.lessonTotal;
-      strikesRef.current = { total: 0, consecutive: 0, lessonTotal };
-      setStrikesDisplay({ total: 0, consecutive: 0 });
-      setExerciseIndex((i) => i + 1);
-      setExerciseKey((k) => k + 1);
+    if (guestLocked) {
+      useProgressStore.setState({ showSaveProgressModal: 'hard_lesson2' });
+      navigate('/', { replace: true });
     }
-  }, [isModalOpen]);
+  }, [guestLocked, navigate]);
+
+  // Ignore answers while an app-level modal is covering the lesson
+  const isModalOpen = useProgressStore((s) => s.showSaveProgressModal !== null);
+
+  if (guestLocked) return null;
 
   if (!lesson) {
     return (
@@ -272,35 +268,6 @@ export function LessonPage() {
       }
       const nc = correctCount + 1;
       setCorrectCount(nc);
-
-      exercisesCompletedInSession.current += 1;
-
-      // Soft login prompt — fires at exercise 5 of every even-numbered survival lesson
-      // (i.e. 2nd, 4th, 6th) for guest users only. completedSurvivalCount is odd when
-      // the user has finished 1, 3 or 5 survival lessons (meaning they're now on #2, #4, #6).
-      if (
-        !hasShownSoftModal.current &&
-        nc === 5 &&
-        lesson.stageId === 'survival' &&
-        !useAuthStore.getState().user
-      ) {
-        const completedSurvivalCount = store.completedLessons.filter((id) =>
-          lessons.some((l) => l.id === id && l.stageId === 'survival')
-        ).length;
-        if (completedSurvivalCount % 2 === 1) {
-          try {
-            const val = localStorage.getItem(SOFT_DISMISS_KEY);
-            // eslint-disable-next-line react-hooks/purity
-            const dismissed = !!val && Date.now() < Number(val);
-            if (!dismissed) {
-              hasShownSoftModal.current = true;
-              useProgressStore.setState({ showSaveProgressModal: 'soft' });
-              pendingAdvance.current = true;
-              return; // Pause here — useEffect resumes after modal closes
-            }
-          } catch { /* */ }
-        }
-      }
 
       if (isLast) { finishLesson(); return; }
       const nextEx = exercises[exerciseIndex + 1];

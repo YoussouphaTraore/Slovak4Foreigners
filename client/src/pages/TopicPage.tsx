@@ -4,7 +4,8 @@ import { lessons } from '../data/lessons';
 import { topicById } from '../config/stage1Topics';
 import { useProgressStore, computeStrength } from '../store/useProgressStore';
 import type { LessonRecord } from '../store/useProgressStore';
-import { getLessonState } from '../utils/lessonState';
+import { useAuthStore } from '../store/useAuthStore';
+import { getLessonState, isGuestLessonLocked } from '../utils/lessonState';
 import { BottomNav } from '../components/ui/BottomNav';
 
 const isDev = import.meta.env.DEV;
@@ -39,6 +40,16 @@ export function TopicPage() {
       lessonRecords.find((r) => r.lessonId === lessonId),
     [lessonRecords],
   );
+
+  // Guests get exactly one lesson — starting any new one opens the account gate.
+  // Auth/progress are read at click time, so no subscription is needed here.
+  const openLesson = useCallback((lessonId: string) => {
+    if (isGuestLessonLocked(!!useAuthStore.getState().user, useProgressStore.getState().completedLessons, lessonId)) {
+      useProgressStore.setState({ showSaveProgressModal: 'hard_lesson2' });
+      return;
+    }
+    navigate(`/lesson/${lessonId}`, { state: { topicId } });
+  }, [navigate, topicId]);
 
   if (!topic) return <Navigate to="/" replace />;
 
@@ -110,7 +121,7 @@ export function TopicPage() {
                     <button
                       type="button"
                       disabled={isLocked}
-                      onClick={() => !isLocked && navigate(`/lesson/${lesson.id}`, { state: { topicId } })}
+                      onClick={() => !isLocked && openLesson(lesson.id)}
                       title={
                         state === 'block_locked'
                           ? 'Complete the Block Race to unlock'
@@ -203,7 +214,7 @@ export function TopicPage() {
                     <button
                       type="button"
                       disabled={!comprehensionEnabled}
-                      onClick={() => comprehensionEnabled && comprehensionLessonId && navigate(`/lesson/${comprehensionLessonId}`, { state: { topicId } })}
+                      onClick={() => comprehensionEnabled && comprehensionLessonId && openLesson(comprehensionLessonId)}
                       className={`w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold shadow-md transition-all duration-200
                         ${comprehensionComplete
                           ? 'bg-blue-500 text-white hover:opacity-90 cursor-pointer'
