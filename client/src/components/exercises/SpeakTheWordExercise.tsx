@@ -168,6 +168,10 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   // Volume meter — detects that the user spoke out loud even when the
   // recognizer returns nothing (the old-phone / bad-mic rescue path).
   const spokeRef = useRef(false);
+  // True only while the meter is verifiably producing data. If the meter never
+  // comes alive (mic contention with SpeechRecognition on some Androids,
+  // permission quirks), we must NOT claim the user was silent.
+  const meterAliveRef = useRef(false);
   const volStreamRef = useRef<MediaStream | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const volRafRef = useRef<number | null>(null);
@@ -181,12 +185,14 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   }, []);
 
   const startVolumeMeter = useCallback(async () => {
+    meterAliveRef.current = false;
     if (!navigator.mediaDevices?.getUserMedia) return;
     try {
       const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
       volStreamRef.current = stream;
       const ctx = new AudioContext();
       audioCtxRef.current = ctx;
+      if (ctx.state === 'suspended') void ctx.resume().catch(() => { /* no-op */ });
       const source = ctx.createMediaStreamSource(stream);
       const analyser = ctx.createAnalyser();
       analyser.fftSize = 512;
@@ -194,6 +200,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
       const buf = new Float32Array(analyser.fftSize);
       const tick = () => {
         if (!audioCtxRef.current) return;
+        if (audioCtxRef.current.state === 'running') meterAliveRef.current = true;
         analyser.getFloatTimeDomainData(buf);
         let sum = 0;
         for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
@@ -201,7 +208,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
         volRafRef.current = requestAnimationFrame(tick);
       };
       volRafRef.current = requestAnimationFrame(tick);
-    } catch { /* meter unavailable — spokeRef stays false; transcripts still count as spoke */ }
+    } catch { /* meter unavailable — meterAliveRef stays false → benefit of the doubt */ }
   }, []);
 
   const clearSafety = () => {
@@ -277,16 +284,18 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     hasResultRef.current = true;
     clearSafety();
     const spoke = spokeRef.current;
+    const meterAlive = meterAliveRef.current;
     stopRecognition();
 
-    if (spoke) {
-      // Volume detected but recognizer gave nothing (old phone / bad mic) —
-      // the user DID speak out loud, so take the encouraging path.
+    // Take the encouraging path when volume was detected — OR when the meter
+    // never came alive (mic contention / old device): silence must be PROVEN
+    // by a working meter, never assumed. Benefit of the doubt goes to the user.
+    if (spoke || !meterAlive) {
       effortOutcome();
       return;
     }
 
-    // Genuine silence: gentle retry, then neutral skip — never a red fail.
+    // Proven silence: gentle retry, then neutral skip — never a red fail.
     const next = attemptsRef.current + 1;
     setAttempts(next);
     if (next >= MAX_ATTEMPTS) {
@@ -306,8 +315,9 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     hasResultRef.current = true;
     try { (recognitionRef.current as unknown as { abort(): void } | null)?.abort(); } catch { /* no-op */ }
     recognitionRef.current = null;
+    stopVolumeMeter();
     setStatus('idle');
-  }, []);
+  }, [stopVolumeMeter]);
 
   const startRecording = useCallback(() => {
     // Read via ref so status state isn't in the dep array (avoids stale-closure churn)
@@ -320,63 +330,78 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
       return;
     }
 
-    const recognition = new Ctor();
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const rec = recognition as any;
-    rec.lang = 'sk-SK';
-    rec.interimResults = false;
-    rec.maxAlternatives = 5;
-
     hasResultRef.current = false;
-    const session = ++sessionRef.current;
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    rec.onresult = (event: any) => {
-      const transcripts: string[] = Array.from(event.results[0] as Iterable<{ transcript: string }>)
-        .map((r) => r.transcript);
-      handleTranscripts(transcripts, session);
-    };
-
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    rec.onerror = (event: any) => {
-      if (event.error === 'not-allowed') {
-        clearSafety();
-        stopRecognition();
-        setStatus('idle');
-        if (navigator.permissions) {
-          navigator.permissions.query({ name: 'microphone' as PermissionName }).then((result) => {
-            // 'denied' = permanently blocked; 'prompt' = user dismissed the dialog
-            setMicPermission(result.state === 'denied' ? 'blocked' : 'denied');
-          }).catch(() => setMicPermission('blocked'));
-        } else {
-          setMicPermission('blocked');
-        }
-      } else {
-        // no-speech, aborted, network, audio-capture, service errors — all go
-        // through handleNoSpeech, where the volume meter decides whether the
-        // user actually spoke (recognizer failures must never punish the user)
-        handleNoSpeech(session);
-      }
-    };
-
-    rec.onend = () => {
-      if (!hasResultRef.current) handleNoSpeech(session);
-    };
-
-    recognitionRef.current = recognition;
     spokeRef.current = false;
-    void startVolumeMeter();
-    rec.start();
+    const session = ++sessionRef.current;
     setMicPermission('unknown');
     setStatus('recording');
 
-    // Longer phrases get more speaking time before the safety cutoff
-    const nWords = wordsRef.current[activeIdxRef.current].slovak.split(/\s+/).length;
-    const timeoutMs = Math.min(SAFETY_TIMEOUT_MS + 700 * (nWords - 1), 9_000);
-    safetyTimerRef.current = window.setTimeout(() => {
-      if (!hasResultRef.current) { stopRecognition(); handleNoSpeech(session); }
-    }, timeoutMs);
-  }, [handleTranscripts, handleNoSpeech, stopRecognition, startVolumeMeter]);
+    void (async () => {
+      // Acquire the volume-meter stream BEFORE starting recognition — if the
+      // recognizer grabs the mic first, getUserMedia can fail on some Androids
+      // and the meter would be dead. Cap the wait so a slow permission prompt
+      // can't stall the exercise.
+      await Promise.race([
+        startVolumeMeter(),
+        new Promise((r) => setTimeout(r, 1_500)),
+      ]);
+      // User cancelled (or something else changed state) while we waited
+      if (sessionRef.current !== session || statusRef.current !== 'recording') {
+        stopVolumeMeter();
+        return;
+      }
+
+      const recognition = new Ctor();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const rec = recognition as any;
+      rec.lang = 'sk-SK';
+      rec.interimResults = false;
+      rec.maxAlternatives = 5;
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      rec.onresult = (event: any) => {
+        const transcripts: string[] = Array.from(event.results[0] as Iterable<{ transcript: string }>)
+          .map((r) => r.transcript);
+        handleTranscripts(transcripts, session);
+      };
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      rec.onerror = (event: any) => {
+        if (event.error === 'not-allowed') {
+          clearSafety();
+          stopRecognition();
+          setStatus('idle');
+          if (navigator.permissions) {
+            navigator.permissions.query({ name: 'microphone' as PermissionName }).then((result) => {
+              // 'denied' = permanently blocked; 'prompt' = user dismissed the dialog
+              setMicPermission(result.state === 'denied' ? 'blocked' : 'denied');
+            }).catch(() => setMicPermission('blocked'));
+          } else {
+            setMicPermission('blocked');
+          }
+        } else {
+          // no-speech, aborted, network, audio-capture, service errors — all go
+          // through handleNoSpeech, where the volume meter decides whether the
+          // user actually spoke (recognizer failures must never punish the user)
+          handleNoSpeech(session);
+        }
+      };
+
+      rec.onend = () => {
+        if (!hasResultRef.current) handleNoSpeech(session);
+      };
+
+      recognitionRef.current = recognition;
+      rec.start();
+
+      // Longer phrases get more speaking time before the safety cutoff
+      const nWords = wordsRef.current[activeIdxRef.current].slovak.split(/\s+/).length;
+      const timeoutMs = Math.min(SAFETY_TIMEOUT_MS + 700 * (nWords - 1), 9_000);
+      safetyTimerRef.current = window.setTimeout(() => {
+        if (!hasResultRef.current) { stopRecognition(); handleNoSpeech(session); }
+      }, timeoutMs);
+    })();
+  }, [handleTranscripts, handleNoSpeech, stopRecognition, startVolumeMeter, stopVolumeMeter]);
 
   // When mic is amber (denied), check the real permission state first.
   // If already 'denied' at browser level → go straight to blocked (grey) without
