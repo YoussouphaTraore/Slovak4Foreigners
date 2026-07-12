@@ -2,7 +2,15 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react
 import type { SpeakTheWordExercise as TExercise } from '../../types/lesson';
 import { slovakifyNumbers } from '../../utils/numberToSlovak';
 
-type SpeakStatus = 'idle' | 'recording' | 'pass' | 'fail' | 'mic_error';
+// No fail state by design: this exercise builds speaking confidence.
+// 'pass' = recognizer matched (celebrate), 'effort_*' = user audibly spoke but
+// no match (encourage, then pass), 'silent_*' = nothing heard (gentle retry,
+// then neutral skip). Wrong answers never produce strikes here.
+type SpeakStatus =
+  | 'idle' | 'recording' | 'mic_error'
+  | 'pass'
+  | 'effort_retry' | 'effort_pass'
+  | 'silent_retry' | 'silent_skip';
 
 interface Props {
   exercise: TExercise;
@@ -118,6 +126,10 @@ function getSpeechRecognition(): (new () => WSR) | null {
 
 const MAX_ATTEMPTS = 2;
 const SAFETY_TIMEOUT_MS = 3_000;
+// RMS above this on the mic input counts as "the user spoke out loud" —
+// independent of whether the recognizer understood anything (old phones,
+// bad mics, strong accents all still register volume).
+const SPOKE_RMS_THRESHOLD = 0.04;
 
 export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   const words = exercise.words;
@@ -125,8 +137,9 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [status, setStatus] = useState<SpeakStatus>('idle');
   const [attempts, setAttempts] = useState(0);
-  const [nearMiss, setNearMiss] = useState(false);
   const [passedSet, setPassedSet] = useState<Set<number>>(new Set());
+  // Words passed on effort (spoke, but pronunciation didn't match) — 💪 badge
+  const [effortSet, setEffortSet] = useState<Set<number>>(new Set());
   const [showModal, setShowModal] = useState(false);
   const [micPermission, setMicPermission] = useState<'unknown' | 'denied' | 'blocked'>('unknown');
 
@@ -152,6 +165,45 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   // ignore events from a previous (stale) session.
   const sessionRef = useRef(0);
 
+  // Volume meter — detects that the user spoke out loud even when the
+  // recognizer returns nothing (the old-phone / bad-mic rescue path).
+  const spokeRef = useRef(false);
+  const volStreamRef = useRef<MediaStream | null>(null);
+  const audioCtxRef = useRef<AudioContext | null>(null);
+  const volRafRef = useRef<number | null>(null);
+
+  const stopVolumeMeter = useCallback(() => {
+    if (volRafRef.current) { cancelAnimationFrame(volRafRef.current); volRafRef.current = null; }
+    volStreamRef.current?.getTracks().forEach(t => t.stop());
+    volStreamRef.current = null;
+    void audioCtxRef.current?.close().catch(() => { /* no-op */ });
+    audioCtxRef.current = null;
+  }, []);
+
+  const startVolumeMeter = useCallback(async () => {
+    if (!navigator.mediaDevices?.getUserMedia) return;
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      volStreamRef.current = stream;
+      const ctx = new AudioContext();
+      audioCtxRef.current = ctx;
+      const source = ctx.createMediaStreamSource(stream);
+      const analyser = ctx.createAnalyser();
+      analyser.fftSize = 512;
+      source.connect(analyser);
+      const buf = new Float32Array(analyser.fftSize);
+      const tick = () => {
+        if (!audioCtxRef.current) return;
+        analyser.getFloatTimeDomainData(buf);
+        let sum = 0;
+        for (let i = 0; i < buf.length; i++) sum += buf[i] * buf[i];
+        if (Math.sqrt(sum / buf.length) > SPOKE_RMS_THRESHOLD) spokeRef.current = true;
+        volRafRef.current = requestAnimationFrame(tick);
+      };
+      volRafRef.current = requestAnimationFrame(tick);
+    } catch { /* meter unavailable — spokeRef stays false; transcripts still count as spoke */ }
+  }, []);
+
   const clearSafety = () => {
     if (safetyTimerRef.current) { clearTimeout(safetyTimerRef.current); safetyTimerRef.current = null; }
   };
@@ -160,13 +212,15 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     clearSafety();
     try { (recognitionRef.current as unknown as { abort(): void } | null)?.abort(); } catch { /* no-op */ }
     recognitionRef.current = null;
-  }, []);
+    stopVolumeMeter();
+  }, [stopVolumeMeter]);
 
   useEffect(() => () => { stopRecognition(); }, [stopRecognition]);
 
-  const advance = useCallback((passed: boolean) => {
+  // Always reports success upward — this exercise never generates strikes.
+  const advance = useCallback(() => {
     if (doneRef.current) return;
-    onAnswer?.(passed);
+    onAnswer?.(true);
     const next = activeIdxRef.current + 1;
     if (next >= words.length) {
       doneRef.current = true;
@@ -175,10 +229,25 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     } else {
       setActiveIdx(next);
       setAttempts(0);
-      setNearMiss(false);
       setStatus('idle');
     }
   }, [words.length, onAnswer, onDone]);
+
+  // User spoke but the recognizer didn't match: one encouraging retry,
+  // then pass anyway — effort is the goal, accuracy is the bonus.
+  const effortOutcome = useCallback(() => {
+    const next = attemptsRef.current + 1;
+    setAttempts(next);
+    if (next >= MAX_ATTEMPTS) {
+      setPassedSet(prev => new Set(prev).add(activeIdxRef.current));
+      setEffortSet(prev => new Set(prev).add(activeIdxRef.current));
+      setStatus('effort_pass');
+      window.setTimeout(() => advance(), 1_400);
+    } else {
+      setStatus('effort_retry');
+      window.setTimeout(() => setStatus('idle'), 1_100);
+    }
+  }, [advance]);
 
   const handleTranscripts = useCallback((transcripts: string[], session: number) => {
     if (session !== sessionRef.current) return;
@@ -195,38 +264,40 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
 
     if (result === 'pass') {
       setPassedSet(prev => new Set(prev).add(activeIdxRef.current));
-      setNearMiss(false);
       setStatus('pass');
-      window.setTimeout(() => advance(true), 700);
+      window.setTimeout(() => advance(), 1_000);
     } else {
-      setNearMiss(result === 'close');
-      const next = attemptsRef.current + 1;
-      setAttempts(next);
-      setStatus('fail');
-      if (next >= MAX_ATTEMPTS) {
-        window.setTimeout(() => advance(false), 1_000);
-      } else {
-        window.setTimeout(() => setStatus('idle'), 600);
-      }
+      effortOutcome();
     }
-  }, [advance, stopRecognition]);
+  }, [advance, effortOutcome, stopRecognition]);
 
   const handleNoSpeech = useCallback((session: number) => {
     if (session !== sessionRef.current) return;
     if (hasResultRef.current) return;
     hasResultRef.current = true;
     clearSafety();
+    const spoke = spokeRef.current;
     stopRecognition();
-    setNearMiss(false);
+
+    if (spoke) {
+      // Volume detected but recognizer gave nothing (old phone / bad mic) —
+      // the user DID speak out loud, so take the encouraging path.
+      effortOutcome();
+      return;
+    }
+
+    // Genuine silence: gentle retry, then neutral skip — never a red fail.
     const next = attemptsRef.current + 1;
     setAttempts(next);
-    setStatus('fail');
     if (next >= MAX_ATTEMPTS) {
-      window.setTimeout(() => advance(false), 1_000);
+      setPassedSet(prev => new Set(prev).add(activeIdxRef.current));
+      setStatus('silent_skip');
+      window.setTimeout(() => advance(), 1_100);
     } else {
-      window.setTimeout(() => setStatus('idle'), 600);
+      setStatus('silent_retry');
+      window.setTimeout(() => setStatus('idle'), 1_100);
     }
-  }, [advance, stopRecognition]);
+  }, [advance, effortOutcome, stopRecognition]);
 
   // Manual stop: user tapped to cancel mid-recording.
   // Sets hasResultRef so the pending onerror('aborted') / onend don't penalise the attempt.
@@ -268,9 +339,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     rec.onerror = (event: any) => {
-      if (event.error === 'no-speech' || event.error === 'aborted') {
-        handleNoSpeech(session);
-      } else if (event.error === 'not-allowed') {
+      if (event.error === 'not-allowed') {
         clearSafety();
         stopRecognition();
         setStatus('idle');
@@ -283,10 +352,10 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
           setMicPermission('blocked');
         }
       } else {
-        clearSafety();
-        stopRecognition();
-        setStatus('mic_error');
-        window.setTimeout(() => setStatus('idle'), 2_000);
+        // no-speech, aborted, network, audio-capture, service errors — all go
+        // through handleNoSpeech, where the volume meter decides whether the
+        // user actually spoke (recognizer failures must never punish the user)
+        handleNoSpeech(session);
       }
     };
 
@@ -295,6 +364,8 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     };
 
     recognitionRef.current = recognition;
+    spokeRef.current = false;
+    void startVolumeMeter();
     rec.start();
     setMicPermission('unknown');
     setStatus('recording');
@@ -305,7 +376,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     safetyTimerRef.current = window.setTimeout(() => {
       if (!hasResultRef.current) { stopRecognition(); handleNoSpeech(session); }
     }, timeoutMs);
-  }, [handleTranscripts, handleNoSpeech, stopRecognition]);
+  }, [handleTranscripts, handleNoSpeech, stopRecognition, startVolumeMeter]);
 
   // When mic is amber (denied), check the real permission state first.
   // If already 'denied' at browser level → go straight to blocked (grey) without
@@ -342,16 +413,19 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   }, [stopRecognition, onDone]);
 
   const isRecording = status === 'recording';
-  const isFail = status === 'fail';
+  // Amber "keep going" states — never rendered as failure
+  const isRetry = status === 'effort_retry' || status === 'silent_retry';
+  const isSettled = status === 'pass' || status === 'effort_pass' || status === 'silent_skip';
   const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
   const prompt =
-    isRecording             ? 'Listening...' :
-    status === 'pass'       ? '✓ Well done!' :
-    status === 'mic_error'  ? 'Mic not available — tap "Can\'t speak?"' :
-    isFail && attempts >= MAX_ATTEMPTS ? 'Moving on...' :
-    isFail && nearMiss      ? 'So close! Once more...' :
-    isFail                  ? 'Try again!' :
+    isRecording                    ? 'Listening...' :
+    status === 'pass'              ? '🌟 Well pronounced — like a native!' :
+    status === 'effort_pass'       ? 'Great effort! 💪 You spoke — that\'s what counts!' :
+    status === 'effort_retry'      ? 'Almost! Say it once more!' :
+    status === 'silent_retry'      ? 'We couldn\'t hear you — speak up a little!' :
+    status === 'silent_skip'       ? 'No sound came through — moving on!' :
+    status === 'mic_error'         ? 'Mic not available — tap "Can\'t speak?"' :
     micPermission === 'blocked' ? 'Microphone blocked — enable it in browser settings if you are using the browser or App settings if you have downloaded as app.' :
     micPermission === 'denied'  ? 'Tap the mic to allow microphone access.' :
     'Tap the mic and say the highlighted word!';
@@ -373,9 +447,10 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
       <div className="grid grid-cols-2 gap-2.5 flex-1 min-h-0">
         {words.map((word, idx) => {
           const isActive = idx === activeIdx;
-          const isPassing = isActive && status === 'pass';
-          const isFailingActive = isActive && isFail;
+          const isPassing = isActive && (status === 'pass' || status === 'effort_pass' || status === 'silent_skip');
+          const isRetrying = isActive && isRetry;
           const isPassed = passedSet.has(idx);
+          const marker = effortSet.has(idx) ? ' 💪' : ' ✓';
 
           return (
             <div
@@ -386,8 +461,8 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
                   ? 'border-green-400 bg-green-50'
                   : isPassed
                   ? 'border-green-300 bg-green-50/50'
-                  : isFailingActive
-                  ? 'border-red-400 bg-red-50'
+                  : isRetrying
+                  ? 'border-amber-400 bg-amber-50'
                   : isActive
                   ? 'border-brand-blue bg-white shadow-md'
                   : 'border-gray-200 bg-white opacity-60',
@@ -397,13 +472,13 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
               <span className={[
                 'text-base font-bold',
                 isPassing || isPassed ? 'text-green-700' :
-                isFailingActive ? 'text-red-600' :
+                isRetrying ? 'text-amber-600' :
                 isActive ? 'text-brand-blue' :
                 'text-gray-700',
               ].join(' ')}>
                 {word.slovak}
-                {isPassing && ' ✓'}
-                {isPassed && !isActive && ' ✓'}
+                {isPassing && marker}
+                {isPassed && !isActive && marker}
               </span>
               <span className="text-xs text-gray-400 mt-0.5">{word.english}</span>
             </div>
@@ -424,15 +499,15 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
         <button
           type="button"
           onClick={isRecording ? cancelRecording : micPermission === 'denied' ? () => { void requestPermission(); } : startRecording}
-          disabled={status === 'pass' || isFail || micPermission === 'blocked'}
+          disabled={isSettled || isRetry || micPermission === 'blocked'}
           className={[
             'w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all active:scale-95 cursor-pointer',
             isRecording
               ? 'bg-red-500 animate-pulse'
-              : status === 'pass'
+              : isSettled
               ? 'bg-green-400 cursor-not-allowed'
-              : isFail
-              ? 'bg-gray-300 cursor-not-allowed'
+              : isRetry
+              ? 'bg-amber-400 cursor-not-allowed'
               : micPermission === 'blocked'
               ? 'bg-gray-400 cursor-not-allowed'
               : micPermission === 'denied'
