@@ -153,7 +153,7 @@ export function PickTranslationExercise({ exercise, onDone, onAnswer }: Props) {
           const display = slovakifyNumbers(currentWord.slovak);
           const size = display.length > 35 ? 'text-xl' : display.length > 18 ? 'text-2xl' : 'text-4xl';
           return (
-            <p className={`${size} font-bold text-gray-800 text-center leading-snug break-all`}>
+            <p lang="sk" className={`${size} font-bold text-gray-800 text-center leading-snug break-words hyphens-auto`}>
               {display}
             </p>
           );

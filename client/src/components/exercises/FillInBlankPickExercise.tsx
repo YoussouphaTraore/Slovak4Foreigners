@@ -96,7 +96,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
   const getChoiceStyle = (choice: string): string => {
     const size = choice.length > 16 ? 'text-xs' : choice.length > 10 ? 'text-sm' : 'text-base';
     const base =
-      `border-2 rounded-2xl px-3 py-4 ${size} font-bold text-center transition-all duration-200 active:scale-95 cursor-pointer break-words`;
+      `border-2 rounded-2xl px-3 py-4 ${size} font-bold text-center transition-all duration-200 active:scale-95 cursor-pointer break-words hyphens-auto`;
     if (feedback !== null) {
       if (isCorrectChoice(choice))    return `${base} border-brand-green bg-green-50 text-brand-green`;
       if (choice === tappedChoice)    return `${base} border-brand-red bg-red-50 text-brand-red animate-shake`;
@@ -149,6 +149,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
             <button
               key={choice}
               type="button"
+              lang="sk"
               disabled={feedback !== null}
               onClick={() => handleChoice(choice)}
               className={getChoiceStyle(choice)}

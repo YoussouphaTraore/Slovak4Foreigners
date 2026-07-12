@@ -72,7 +72,7 @@ export function WordMatchExercise({ exercise, onAllMatched }: Props) {
   };
 
   const getStyle = (side: Side, value: string) => {
-    const base = 'border-2 rounded-xl px-3 py-3 text-sm font-medium cursor-pointer transition-all duration-200 text-left';
+    const base = 'border-2 rounded-xl px-3 py-3 text-sm font-medium cursor-pointer transition-all duration-200 text-left break-words';
 
     if (matched.has(value)) {
       return `${base} border-brand-green bg-green-50 text-brand-green opacity-60 pointer-events-none`;
@@ -104,6 +104,7 @@ export function WordMatchExercise({ exercise, onAllMatched }: Props) {
             <button
               key={p.slovak}
               type="button"
+              lang="sk"
               onClick={() => handleSelect('slovak', p.slovak)}
               className={getStyle('slovak', p.slovak)}
             >

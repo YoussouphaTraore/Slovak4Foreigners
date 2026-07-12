@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { SpeakTheWordExercise as TExercise } from '../../types/lesson';
+import { slovakifyNumbers } from '../../utils/numberToSlovak';
 
 type SpeakStatus = 'idle' | 'recording' | 'pass' | 'fail' | 'mic_error';
 
@@ -25,7 +26,16 @@ function stripDiacritics(s: string) {
     .normalize('NFD').replace(/[̀-ͯ]/g, '');
 }
 
-function norm(s: string) { return stripDiacritics(s).toLowerCase().trim(); }
+// Phonetic folding on top of diacritic stripping: y/i are identical sounds in
+// Slovak, w≈v for foreign spellings, and doubled letters collapse. Both the
+// target and the transcript go through the same fold, so comparisons stay fair.
+function norm(s: string) {
+  return stripDiacritics(s).toLowerCase().trim()
+    .replace(/[^a-z0-9\s]/g, '')
+    .replace(/y/g, 'i')
+    .replace(/w/g, 'v')
+    .replace(/(.)\1+/g, '$1');
+}
 
 function lev(a: string, b: string): number {
   if (a === b) return 0;
@@ -40,23 +50,58 @@ function lev(a: string, b: string): number {
   return prev[b.length];
 }
 
-function wordMatches(transcripts: string[], target: string): boolean {
-  const t = norm(target);
-  const tWords = t.split(/\s+/);
+function similarity(a: string, b: string): number {
+  return 1 - lev(a, b) / Math.max(a.length, b.length, 1);
+}
 
-  return transcripts.some(transcript => {
-    const trWords = norm(transcript).split(/\s+/);
+// Edit budget scales with target length (~75% of the word must be right at any
+// length). Very short words demand a matching first letter so "to" can't pass
+// for "sto". `lenient` (second attempt) grants one extra edit on longer words.
+function wordPass(w: string, t: string, lenient: boolean): boolean {
+  const d = lev(w, t);
+  if (t.length <= 3) return d === 0 || (d === 1 && w[0] === t[0]);
+  let budget = t.length <= 6 ? 1 : t.length <= 10 ? 2 : 3;
+  if (lenient && t.length >= 7) budget += 1;
+  return d <= budget;
+}
+
+type MatchResult = 'pass' | 'close' | 'fail';
+
+function matchTarget(transcripts: string[], target: string, lenient: boolean): MatchResult {
+  const t = norm(target);
+  const tWords = t.split(/\s+/).filter(Boolean);
+  const tJoined = tWords.join('');
+  let best = 0;
+
+  for (const raw of transcripts) {
+    // Recognizers often return digits ("155") for spoken numbers — expand them
+    // to Slovak words before comparing.
+    const tr = norm(slovakifyNumbers(raw));
+    const trWords = tr.split(/\s+/).filter(Boolean);
+    const trJoined = trWords.join('');
+
+    // Space-insensitive whole-utterance comparison: handles digit expansion
+    // ("stopäťdesiatpäť" vs "sto päťdesiatpäť") and recognizer spacing quirks.
+    if (wordPass(trJoined, tJoined, lenient)) return 'pass';
+    best = Math.max(best, similarity(trJoined, tJoined));
+
     if (tWords.length === 1) {
-      return trWords.some(w => w === t || lev(w, t) <= 1);
+      for (const w of trWords) {
+        if (wordPass(w, t, lenient)) return 'pass';
+        best = Math.max(best, similarity(w, t));
+      }
+    } else {
+      // Phrase: key words (>2 chars) must appear; long phrases may miss one.
+      const keyWords = tWords.filter(w => w.length > 2);
+      if (keyWords.length > 0) {
+        const hits = keyWords.filter(kw => trWords.some(w => wordPass(w, kw, lenient))).length;
+        const allowedMisses = keyWords.length >= 4 ? 1 : 0;
+        if (hits >= keyWords.length - allowedMisses) return 'pass';
+        best = Math.max(best, hits / keyWords.length);
+      }
     }
-    // Phrase: all key words (length > 2) must appear in transcript
-    const keyWords = tWords.filter(w => w.length > 2);
-    if (keyWords.length === 0) {
-      // All very short words — full phrase comparison
-      return lev(trWords.join(' '), t) <= Math.max(1, Math.floor(t.length * 0.3));
-    }
-    return keyWords.every(kw => trWords.some(w => w === kw || lev(w, kw) <= 1));
-  });
+  }
+  return best >= 0.6 ? 'close' : 'fail';
 }
 
 // ── Web Speech API ─────────────────────────────────────────────────────────────
@@ -80,6 +125,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
   const [activeIdx, setActiveIdx] = useState(0);
   const [status, setStatus] = useState<SpeakStatus>('idle');
   const [attempts, setAttempts] = useState(0);
+  const [nearMiss, setNearMiss] = useState(false);
   const [passedSet, setPassedSet] = useState<Set<number>>(new Set());
   const [showModal, setShowModal] = useState(false);
   const [micPermission, setMicPermission] = useState<'unknown' | 'denied' | 'blocked'>('unknown');
@@ -129,6 +175,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     } else {
       setActiveIdx(next);
       setAttempts(0);
+      setNearMiss(false);
       setStatus('idle');
     }
   }, [words.length, onAnswer, onDone]);
@@ -139,13 +186,20 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     clearSafety();
     stopRecognition();
 
-    const matched = wordMatches(transcripts, wordsRef.current[activeIdxRef.current].slovak);
+    // Second attempt gets a slightly looser edit budget on longer words
+    const result = matchTarget(
+      transcripts,
+      wordsRef.current[activeIdxRef.current].slovak,
+      attemptsRef.current >= 1
+    );
 
-    if (matched) {
+    if (result === 'pass') {
       setPassedSet(prev => new Set(prev).add(activeIdxRef.current));
+      setNearMiss(false);
       setStatus('pass');
       window.setTimeout(() => advance(true), 700);
     } else {
+      setNearMiss(result === 'close');
       const next = attemptsRef.current + 1;
       setAttempts(next);
       setStatus('fail');
@@ -163,6 +217,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     hasResultRef.current = true;
     clearSafety();
     stopRecognition();
+    setNearMiss(false);
     const next = attemptsRef.current + 1;
     setAttempts(next);
     setStatus('fail');
@@ -199,7 +254,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     const rec = recognition as any;
     rec.lang = 'sk-SK';
     rec.interimResults = false;
-    rec.maxAlternatives = 3;
+    rec.maxAlternatives = 5;
 
     hasResultRef.current = false;
     const session = ++sessionRef.current;
@@ -244,9 +299,12 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     setMicPermission('unknown');
     setStatus('recording');
 
+    // Longer phrases get more speaking time before the safety cutoff
+    const nWords = wordsRef.current[activeIdxRef.current].slovak.split(/\s+/).length;
+    const timeoutMs = Math.min(SAFETY_TIMEOUT_MS + 700 * (nWords - 1), 9_000);
     safetyTimerRef.current = window.setTimeout(() => {
       if (!hasResultRef.current) { stopRecognition(); handleNoSpeech(session); }
-    }, SAFETY_TIMEOUT_MS);
+    }, timeoutMs);
   }, [handleTranscripts, handleNoSpeech, stopRecognition]);
 
   // When mic is amber (denied), check the real permission state first.
@@ -292,6 +350,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
     status === 'pass'       ? '✓ Well done!' :
     status === 'mic_error'  ? 'Mic not available — tap "Can\'t speak?"' :
     isFail && attempts >= MAX_ATTEMPTS ? 'Moving on...' :
+    isFail && nearMiss      ? 'So close! Once more...' :
     isFail                  ? 'Try again!' :
     micPermission === 'blocked' ? 'Microphone blocked — enable it in browser settings if you are using the browser or App settings if you have downloaded as app.' :
     micPermission === 'denied'  ? 'Tap the mic to allow microphone access.' :

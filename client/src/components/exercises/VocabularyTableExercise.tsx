@@ -75,7 +75,7 @@ export function VocabularyTableExercise({ exercise, onDone }: Props) {
       {/* Table */}
       <div className="flex-1 flex flex-col gap-2 overflow-y-auto">
         {/* Header */}
-        <div className="grid grid-cols-[minmax(80px,_120px)_1fr_1fr] gap-x-3 px-2 pb-1 border-b border-gray-200">
+        <div className="grid grid-cols-[minmax(64px,_120px)_minmax(0,1fr)_minmax(0,1fr)] gap-x-3 px-2 pb-1 border-b border-gray-200">
           <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">{h0}</span>
           <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">{h1}</span>
           <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">{h2}</span>
@@ -89,7 +89,7 @@ export function VocabularyTableExercise({ exercise, onDone }: Props) {
               key={id}
               type="button"
               onClick={() => handleTap(id, row.slovak)}
-              className={`grid grid-cols-[minmax(80px,_120px)_1fr_1fr] gap-x-3 items-center rounded-2xl border-2 px-3 py-3.5 text-left active:scale-[0.98] transition-all cursor-pointer shadow-sm ${
+              className={`grid grid-cols-[minmax(64px,_120px)_minmax(0,1fr)_minmax(0,1fr)] gap-x-3 items-center rounded-2xl border-2 px-3 py-3.5 text-left active:scale-[0.98] transition-all cursor-pointer shadow-sm ${
                 tapped
                   ? 'bg-green-50 border-brand-green'
                   : 'bg-white border-gray-100 hover:border-brand-blue hover:bg-blue-50'
@@ -98,10 +98,10 @@ export function VocabularyTableExercise({ exercise, onDone }: Props) {
               <span className={`text-xs font-medium leading-tight ${tapped ? 'text-green-600' : 'text-gray-400'}`}>
                 {row.label}
               </span>
-              <span className={`text-base font-bold leading-snug ${tapped ? 'text-green-800' : 'text-gray-800'}`}>
+              <span lang="sk" className={`text-base font-bold leading-snug break-words hyphens-auto ${tapped ? 'text-green-800' : 'text-gray-800'}`}>
                 {slovakifyNumbers(row.slovak)}
               </span>
-              <span className={`text-sm leading-snug ${tapped ? 'text-green-700' : 'text-gray-500'}`}>
+              <span className={`text-sm leading-snug break-words ${tapped ? 'text-green-700' : 'text-gray-500'}`}>
                 {row.english}
               </span>
             </button>
