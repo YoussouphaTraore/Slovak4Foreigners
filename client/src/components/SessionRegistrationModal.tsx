@@ -107,7 +107,7 @@ export function SessionRegistrationModal({ onClose }: Props) {
               Register your interest and we'll email you when the next session is planned.
             </p>
 
-            <div className="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-2xl px-4 py-3 mb-2">
+            <div className="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-2xl px-4 py-3 mb-5">
               <img
                 src={alias ? getAvatarUrl(alias) : '/pp/FrogySnail.png'}
                 alt=""
@@ -118,9 +118,6 @@ export function SessionRegistrationModal({ onClose }: Props) {
                 <p className="text-xs text-gray-400 truncate">{user?.email ?? ''}</p>
               </div>
             </div>
-            <p className="text-xs text-gray-400 leading-relaxed mb-5">
-              We only record that your account is interested — no name or phone number.
-            </p>
 
             {error && <p className="text-xs text-red-500 mb-2">{error}</p>}
             <button
