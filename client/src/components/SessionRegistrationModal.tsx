@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { useAuthStore } from '../store/useAuthStore';
 import { useProgressStore } from '../store/useProgressStore';
 import { insertSessionRegistration } from '../lib/supabase/progressSync';
+import { getAvatarUrl } from '../lib/supabase/aliasUtils';
 
-type Screen = 'guest' | 'form' | 'success';
+type Screen = 'guest' | 'confirm' | 'success';
 
 interface Props {
   onClose: () => void;
@@ -11,6 +12,7 @@ interface Props {
 
 export function SessionRegistrationModal({ onClose }: Props) {
   const user = useAuthStore((s) => s.user);
+  const alias = useAuthStore((s) => s.alias);
   const signInWithGoogle = useAuthStore((s) => s.signInWithGoogle);
   const isLoading = useAuthStore((s) => s.isLoading);
   const isSessionRegistered = useProgressStore((s) => s.isSessionRegistered);
@@ -19,52 +21,33 @@ export function SessionRegistrationModal({ onClose }: Props) {
   const initialScreen = (): Screen => {
     if (!user) return 'guest';
     if (isSessionRegistered) return 'success';
-    return 'form';
+    return 'confirm';
   };
 
   const [screen, setScreen] = useState<Screen>(initialScreen);
   const [justRegistered, setJustRegistered] = useState(false);
-  const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
 
-  // Pre-fill name from Google metadata when user is available
+  // Advance past the guest screen once the user signs in (e.g. after the OAuth
+  // redirect reopens this modal).
   useEffect(() => {
     if (!user) return;
-    const meta = user.user_metadata ?? {};
-    const displayName =
-      (meta.display_name as string | undefined) ??
-      (meta.full_name as string | undefined) ??
-      (meta.name as string | undefined) ??
-      '';
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setName(displayName);
-    // If we were on the guest screen and user just signed in, advance
-    setScreen((prev) => {
-      if (prev === 'guest') return isSessionRegistered ? 'success' : 'form';
-      return prev;
-    });
+    setScreen((prev) => (prev === 'guest' ? (isSessionRegistered ? 'success' : 'confirm') : prev));
   }, [user, isSessionRegistered]);
 
   const handleSignIn = () => {
-    // Store flag so HomePage can re-open modal after OAuth redirect
+    // Remember to reopen this modal after the OAuth redirect + onboarding
     try { sessionStorage.setItem('openSessionModal', 'true'); } catch { /* */ }
     signInWithGoogle();
   };
 
-  const handleSubmit = async () => {
+  const handleRegister = async () => {
     if (!user) return;
-    const trimmedName = name.trim();
-    if (!trimmedName) { setError('Please enter your name.'); return; }
     setError('');
     setSubmitting(true);
-    const { error: submitError } = await insertSessionRegistration(
-      user.id,
-      trimmedName,
-      user.email ?? '',
-      phone.trim() || null,
-    );
+    const { error: submitError } = await insertSessionRegistration(user.id);
     setSubmitting(false);
     if (submitError) {
       setError('Something went wrong. Please try again.');
@@ -76,8 +59,8 @@ export function SessionRegistrationModal({ onClose }: Props) {
   };
 
   const successMessage = justRegistered
-    ? 'Your registration has been recorded. We will contact you once our next Physical Session is planned.'
-    : "You're already registered! We will contact you once our next Physical Session is planned.";
+    ? 'Your registration has been recorded. We will contact you by email once our next Physical Session is planned.'
+    : "You're already registered! We will contact you by email once our next Physical Session is planned.";
 
   return (
     <div
@@ -113,55 +96,38 @@ export function SessionRegistrationModal({ onClose }: Props) {
           </div>
         )}
 
-        {/* ── State 2: Registration form ───────────────────────────────────── */}
-        {screen === 'form' && (
+        {/* ── State 2: One-tap confirmation (no form, no data collection) ───── */}
+        {screen === 'confirm' && (
           <div className="p-6">
             <div className="flex items-start justify-between mb-2">
               <h2 className="text-lg font-extrabold text-gray-800">Join Our Physical Session</h2>
               <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl cursor-pointer leading-none">✕</button>
             </div>
             <p className="text-sm text-gray-500 mb-5 leading-relaxed">
-              Register your interest and we'll reach out when the next session is planned.
+              Register your interest and we'll email you when the next session is planned.
             </p>
-            <div className="space-y-3">
-              <div>
-                <label className="text-xs font-semibold text-gray-600 mb-1 block">Name</label>
-                <input
-                  type="text"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-300"
-                  maxLength={100}
-                />
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-600 mb-1 block">Email</label>
-                <input
-                  type="email"
-                  value={user?.email ?? ''}
-                  readOnly
-                  className="w-full border border-gray-100 rounded-xl px-4 py-2.5 text-sm text-gray-400 bg-gray-50 cursor-not-allowed"
-                />
-              </div>
-              <div>
-                <label className="text-xs font-semibold text-gray-600 mb-1 block">
-                  Phone <span className="text-gray-400 font-normal">(optional)</span>
-                </label>
-                <input
-                  type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+421 or your local number"
-                  className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm text-gray-800 focus:outline-none focus:ring-2 focus:ring-amber-300"
-                />
+
+            <div className="flex items-center gap-3 bg-gray-50 border border-gray-100 rounded-2xl px-4 py-3 mb-2">
+              <img
+                src={alias ? getAvatarUrl(alias) : '/pp/FrogySnail.png'}
+                alt=""
+                className="w-11 h-11 rounded-full object-cover flex-none"
+              />
+              <div className="min-w-0">
+                <p className="text-sm font-bold text-gray-800 truncate">{alias || 'Your account'}</p>
+                <p className="text-xs text-gray-400 truncate">{user?.email ?? ''}</p>
               </div>
             </div>
-            {error && <p className="text-xs text-red-500 mt-2">{error}</p>}
+            <p className="text-xs text-gray-400 leading-relaxed mb-5">
+              We only record that your account is interested — no name or phone number.
+            </p>
+
+            {error && <p className="text-xs text-red-500 mb-2">{error}</p>}
             <button
               type="button"
-              onClick={handleSubmit}
+              onClick={handleRegister}
               disabled={submitting}
-              className="mt-5 w-full bg-amber-400 text-white font-bold py-3 rounded-xl hover:bg-amber-500 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-60"
+              className="w-full bg-amber-400 text-white font-bold py-3 rounded-xl hover:bg-amber-500 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-60"
             >
               {submitting ? 'Registering…' : 'Register Interest'}
             </button>

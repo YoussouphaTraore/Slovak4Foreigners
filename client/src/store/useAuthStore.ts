@@ -52,7 +52,14 @@ export const useAuthStore = create<AuthStore>((set) => ({
     try {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
-        options: { redirectTo: window.location.origin },
+        options: {
+          redirectTo: window.location.origin,
+          // Data minimisation: request only the email address. Dropping the
+          // default 'profile' scope means Google no longer sends name or
+          // profile picture. Identity is the snail alias; support uses email.
+          scopes: 'email',
+          queryParams: { prompt: 'select_account' },
+        },
       });
       if (error) return { error: error.message };
       return { error: null };

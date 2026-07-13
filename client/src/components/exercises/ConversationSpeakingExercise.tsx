@@ -271,12 +271,8 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
   const bankedRef = useRef<Set<number>>(new Set());
 
   const profileTokens = useMemo<TokenMap>(() => {
-    const displayName =
-      (user?.user_metadata?.display_name as string | undefined) ??
-      (user?.user_metadata?.full_name as string | undefined) ??
-      (user?.user_metadata?.name as string | undefined) ??
-      (alias || user?.email?.split('@')[0]) ??
-      'friend';
+    // Alias-first: personalise speaking prompts with the alias, not a real name
+    const displayName = alias || user?.email?.split('@')[0] || 'friend';
     const countrySkGenitive = (countrySkGenitiveRaw || countrySk || 'tvojej krajiny')
       .replace(/^zo\s+/i, '')
       .replace(/^z\s+/i, '');

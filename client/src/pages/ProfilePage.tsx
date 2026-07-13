@@ -171,15 +171,6 @@ export function ProfilePage() {
 
   // ── Derived values ───────────────────────────────────────────────────────────
 
-  const rawName =
-    (user.user_metadata?.display_name as string | undefined) ??
-    (user.user_metadata?.full_name as string | undefined) ??
-    (user.user_metadata?.name as string | undefined) ??
-    user.email?.split('@')[0] ??
-    '?';
-  const displayName = String(rawName);
-  const displayLetter = displayName[0].toUpperCase();
-
   const memberSince = user.created_at
     ? `Member since ${new Date(user.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}`
     : '';
@@ -241,15 +232,14 @@ export function ProfilePage() {
 
         {/* ── 1. Hero ────────────────────────────────────────────────────────── */}
         <div className="flex flex-col items-center text-center pb-2">
-          <div
-            className="rounded-full bg-brand-green flex items-center justify-center text-white font-extrabold mb-4 shrink-0"
-            style={{ width: 72, height: 72, fontSize: 30 }}
-          >
-            {displayLetter}
-          </div>
-          <h1 className="text-xl font-extrabold text-gray-800 leading-tight">{displayName}</h1>
+          <img
+            src={alias ? getAvatarUrl(alias) : '/pp/FrogySnail.png'}
+            alt=""
+            className="rounded-full object-cover mb-4 shrink-0 bg-gray-100"
+            style={{ width: 72, height: 72 }}
+          />
+          <h1 className="text-xl font-extrabold text-gray-800 leading-tight">{alias || 'Snail Learner'}</h1>
           <p className="text-sm text-gray-400 mt-1">{user.email}</p>
-          <p className="text-xs text-gray-500 mt-1">User Alias: <span className="font-semibold text-gray-700">{alias || '—'}</span></p>
           {memberSince && <p className="text-xs text-gray-400 mt-1">{memberSince}</p>}
         </div>
 
@@ -363,16 +353,6 @@ export function ProfilePage() {
                 <p className="text-xs text-gray-400 leading-none mb-0.5">Your alias</p>
                 <p className="text-[10px] text-gray-400 leading-none mb-1">This is how others see you</p>
                 <p className="text-sm font-semibold text-gray-800 truncate">{alias || '—'}</p>
-              </div>
-            </Row>
-
-            {/* Display name — read-only, sourced from Google */}
-            <Row>
-              <span className="text-xl w-7 flex-none text-center leading-none">🔑</span>
-              <div className="flex-1 min-w-0">
-                <p className="text-xs text-gray-400 leading-none mb-0.5">Your name</p>
-                <p className="text-[10px] text-gray-400 leading-none mb-1">From your Google account</p>
-                <p className="text-sm font-semibold text-gray-800 truncate">{displayName}</p>
               </div>
             </Row>
 

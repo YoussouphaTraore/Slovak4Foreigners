@@ -355,16 +355,17 @@ export async function checkSessionRegistration(userId: string): Promise<boolean>
   }
 }
 
+// Registers the logged-in account's interest in a physical session. We store
+// only the account link — no name/email/phone. The organiser reaches
+// registrants via their account email, and the real name is written on paper
+// on-site (then destroyed), never held digitally.
 export async function insertSessionRegistration(
   userId: string,
-  name: string,
-  email: string,
-  phone: string | null,
 ): Promise<{ error: string | null }> {
   try {
     const { error } = await supabase
       .from('physical_session_regist')
-      .insert({ user_id: userId, name, email, phone: phone || null });
+      .insert({ user_id: userId });
     return { error: error?.message ?? null };
   } catch (e) {
     return { error: String(e) };

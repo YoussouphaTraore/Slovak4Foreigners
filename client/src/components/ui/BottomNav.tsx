@@ -15,14 +15,9 @@ export function BottomNav({ active }: Props) {
   const user = useAuthStore((s) => s.user);
   const alias = useAuthStore((s) => s.alias);
 
-  const displayName =
-    (user?.user_metadata?.display_name as string | undefined) ??
-    (user?.user_metadata?.full_name as string | undefined) ??
-    (user?.user_metadata?.name as string | undefined) ??
-    user?.email ??
-    '?';
-
-  const displayLetter = displayName[0].toUpperCase();
+  // Alias-first: the letter shown behind the avatar comes from the alias
+  // (falling back to email), never a real name.
+  const displayLetter = (alias || user?.email || '?')[0].toUpperCase();
 
   const avatarSrc = alias ? getAvatarUrl(alias) : '/pp/FrogySnail.png';
 
