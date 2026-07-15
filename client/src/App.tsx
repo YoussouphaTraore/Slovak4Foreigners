@@ -15,6 +15,7 @@ import { ForeignerExclusiveCategoryPage } from './pages/ForeignerExclusiveCatego
 import { ForeignerExclusiveLessonPage } from './pages/ForeignerExclusiveLessonPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
 import { TermsOfServicePage } from './pages/TermsOfServicePage';
+import { LegalNoticePage } from './pages/LegalNoticePage';
 import { BlockDialoguePage } from './pages/BlockDialoguePage';
 import { TopicPage } from './pages/TopicPage';
 import { TopicRacePage } from './pages/TopicRacePage';
@@ -122,6 +123,7 @@ function AppRoutes() {
         <Route path="/foreigner-exclusive/lesson/:lessonId" element={<ForeignerExclusiveLessonPage />} />
         <Route path="/privacy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsOfServicePage />} />
+        <Route path="/legal" element={<LegalNoticePage />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/topic/:topicId" element={<TopicPage />} />
 <Route path="/topic-race/:topicId" element={<TopicRacePage />} />

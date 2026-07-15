@@ -483,6 +483,24 @@ export function HomePage() {
             </div>
           )}
         </div>
+
+        {/* Legal footer — operator identification (SK zákon č. 22/2004 §4) +
+            legal links, permanently accessible to all visitors incl. guests.
+            Distinct grey band, full width, anchored to the bottom so it reads
+            unmistakably as a footer. -mx-6 cancels the container's px-6, -mb-24
+            cancels its pb-24, and pb-28 keeps the links clear of the fixed nav. */}
+        <footer className="-mx-6 -mb-24 mt-10 border-t border-gray-200 bg-gray-100 px-6 pt-4 pb-24 text-center">
+          <div className="flex items-center justify-center gap-2 text-[11px]">
+            <button type="button" onClick={() => go('/legal')} className="text-gray-500 hover:text-gray-700 underline cursor-pointer">Legal Notice</button>
+            <span className="text-gray-400">·</span>
+            <button type="button" onClick={() => go('/privacy')} className="text-gray-500 hover:text-gray-700 underline cursor-pointer">Privacy</button>
+            <span className="text-gray-400">·</span>
+            <button type="button" onClick={() => go('/terms')} className="text-gray-500 hover:text-gray-700 underline cursor-pointer">Terms</button>
+          </div>
+          <p className="text-[11px] text-gray-500 leading-relaxed mt-1.5">
+            Mgr. Youssoupha Traore · IČO 55111432 · Bratislava
+          </p>
+        </footer>
       </div>
 
       <BottomNav active="home" />

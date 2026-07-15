@@ -417,9 +417,14 @@ export function ProfilePage() {
               <span className="text-sm text-gray-700 flex-1">Privacy Policy</span>
               <span className="text-xs text-gray-400">›</span>
             </Row>
-            <Row last onClick={() => navigate('/terms')}>
+            <Row onClick={() => navigate('/terms')}>
               <span className="text-xl w-7 flex-none text-center leading-none">📄</span>
               <span className="text-sm text-gray-700 flex-1">Terms of Service</span>
+              <span className="text-xs text-gray-400">›</span>
+            </Row>
+            <Row last onClick={() => navigate('/legal')}>
+              <span className="text-xl w-7 flex-none text-center leading-none">🏛️</span>
+              <span className="text-sm text-gray-700 flex-1">Legal Notice</span>
               <span className="text-xs text-gray-400">›</span>
             </Row>
           </Card>
