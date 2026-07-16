@@ -125,6 +125,16 @@ export function PrivacyPolicyPage() {
               speaking. This is covered in section 4. We do not keep the audio.
             </P>
 
+            <SubHeading>When you report a problem</SubHeading>
+            <P>
+              If you use the in-app <strong>"Report a problem"</strong> button, we store your message, the
+              category, your alias, and a few <strong>technical details</strong> (the screen you were on,
+              your device/browser, and the app version) so we can diagnose and fix the issue. If you're
+              signed in we link it to your account so we can reply; if you're a guest, you may optionally
+              add an email so we can get back to you. This support data is stored with Supabase (section 6)
+              and kept only as long as needed to resolve the request.
+            </P>
+
             <SubHeading>Gender &amp; country of origin — anonymous only</SubHeading>
             <P>
               Some exercises adapt Slovak grammar to your gender and country. We handle these as

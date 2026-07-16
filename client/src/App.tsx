@@ -23,6 +23,7 @@ import { DialogueSession } from './components/dialogue/DialogueSession';
 import { EmergencyDialogueSession } from './components/dialogue/EmergencyDialogueSession';
 import { SaveProgressModal, SOFT_DISMISS_KEY, REGRESSION_DISMISS_KEY } from './components/auth/SaveProgressModal';
 import { ConsentPopup } from './components/ConsentPopup';
+import { ReportIssueButton } from './components/ReportIssueButton';
 import { DesktopBanner } from './components/DesktopBlock';
 import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
@@ -179,6 +180,7 @@ function AppRoutes() {
         />
       )}
       <ConsentPopup onAccepted={handleConsentAccepted} />
+      <ReportIssueButton />
     </>
   );
 }
