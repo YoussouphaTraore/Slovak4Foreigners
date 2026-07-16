@@ -34,7 +34,7 @@ export function TranslateExercise({ exercise, value, onChange, disabled, onInput
           <span className="absolute -left-2.5 top-5 w-4 h-4 bg-white border-l-2 border-b-2 border-gray-200 rotate-45" />
           <p className="text-base font-semibold text-gray-800 leading-snug">{exercise.prompt}</p>
           {exercise.hint && (
-            <p className="text-xs text-gray-400 mt-1">{exercise.hint}</p>
+            <p className="text-xs text-gray-600 mt-1">{exercise.hint}</p>
           )}
         </div>
       </div>
@@ -44,6 +44,7 @@ export function TranslateExercise({ exercise, value, onChange, disabled, onInput
         value={value}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
+        aria-label="Type your answer in Slovak"
         placeholder="Type in Slovak…"
         rows={2}
         className="w-full border-b-2 border-gray-300 bg-transparent px-1 py-2 text-base resize-none focus:outline-none focus:border-brand-blue disabled:text-gray-500 transition-colors"

@@ -72,7 +72,7 @@ export function ListenAndTypeExercise({ exercise, value, onChange, disabled, onI
       </div>
 
       {exercise.hint && (
-        <p className="text-xs text-gray-400 italic">{exercise.hint}</p>
+        <p className="text-xs text-gray-600 italic">{exercise.hint}</p>
       )}
 
       <textarea
@@ -80,6 +80,7 @@ export function ListenAndTypeExercise({ exercise, value, onChange, disabled, onI
         value={value}
         onChange={(e) => onChange(e.target.value)}
         disabled={disabled}
+        aria-label="Type what you hear"
         placeholder="Type what you hear..."
         rows={2}
         className="w-full border-2 border-gray-200 rounded-xl p-3 text-base resize-none focus:outline-none focus:border-brand-blue disabled:bg-gray-50 disabled:text-gray-500 transition-colors"

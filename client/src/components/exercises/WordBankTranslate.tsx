@@ -82,16 +82,17 @@ export function WordBankTranslate({ exercise, onChange, disabled }: Props) {
             <button
               type="button"
               onClick={() => speak(exercise.prompt)}
+              aria-label="Play the prompt aloud"
               className="w-9 h-9 rounded-full bg-brand-blue flex items-center justify-center text-white shrink-0 hover:opacity-80 active:scale-90 cursor-pointer transition-all"
             >
-              🔊
+              <span aria-hidden="true">🔊</span>
             </button>
             <p className="text-base font-semibold text-gray-800 leading-snug">
               {exercise.prompt}
             </p>
           </div>
           {exercise.hint && (
-            <p className="text-xs text-gray-400 mt-1 ml-11">{exercise.hint}</p>
+            <p className="text-xs text-gray-600 mt-1 ml-11">{exercise.hint}</p>
           )}
         </div>
       </div>

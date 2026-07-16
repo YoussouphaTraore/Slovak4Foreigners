@@ -58,7 +58,7 @@ export function BlockDialoguePage() {
 
           <div className="bg-white rounded-2xl border border-gray-200 px-6 py-4 shadow-sm w-full max-w-xs text-center">
             <p className="text-3xl font-extrabold text-brand-green">+{dialogue.xpReward} XP</p>
-            <p className="text-xs text-gray-400 mt-1">Block Dialogue reward</p>
+            <p className="text-xs text-gray-600 mt-1">Block Dialogue reward</p>
           </div>
 
           <button
@@ -83,7 +83,7 @@ export function BlockDialoguePage() {
             <button
               type="button"
               onClick={() => navigate('/')}
-              className="text-gray-400 hover:text-gray-600 text-xl leading-none cursor-pointer"
+              className="text-gray-600 hover:text-gray-600 text-xl leading-none cursor-pointer"
             >
               ←
             </button>
@@ -92,7 +92,7 @@ export function BlockDialoguePage() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-sm font-bold text-gray-800 leading-tight">{dialogue.contact.name}</p>
-              <p className="text-xs text-gray-400 leading-tight truncate">{dialogue.contact.role}</p>
+              <p className="text-xs text-gray-600 leading-tight truncate">{dialogue.contact.role}</p>
             </div>
           </div>
         </div>
@@ -131,7 +131,7 @@ export function BlockDialoguePage() {
           <button
             type="button"
             onClick={() => navigate('/')}
-            className="text-gray-400 hover:text-gray-600 text-xl leading-none cursor-pointer"
+            className="text-gray-600 hover:text-gray-600 text-xl leading-none cursor-pointer"
           >
             ←
           </button>
@@ -140,7 +140,7 @@ export function BlockDialoguePage() {
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-bold text-gray-800 leading-tight">{dialogue.contact.name}</p>
-            <p className="text-xs text-gray-400 leading-tight truncate">{dialogue.contact.role}</p>
+            <p className="text-xs text-gray-600 leading-tight truncate">{dialogue.contact.role}</p>
           </div>
           <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide shrink-0 bg-purple-100 text-purple-700">
             Speaking

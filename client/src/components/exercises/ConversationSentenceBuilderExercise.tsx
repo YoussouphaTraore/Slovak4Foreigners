@@ -175,7 +175,7 @@ export function SentenceBuildSlide({ sentence, sentenceNum, totalSentences, onCo
     <div className="flex flex-col gap-4">
       {/* Counter + error hint */}
       <div className="flex items-center justify-between">
-        <span className="text-xs text-gray-400 font-medium">
+        <span className="text-xs text-gray-600 font-medium">
           Sentence {sentenceNum} of {totalSentences}
         </span>
         {wrongSlots !== null && !done && (
@@ -185,7 +185,7 @@ export function SentenceBuildSlide({ sentence, sentenceNum, totalSentences, onCo
 
       {/* English prompt */}
       <div className="bg-white rounded-2xl border-2 border-gray-100 shadow-sm px-5 py-4">
-        <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1">Say it in Slovak</p>
+        <p className="text-[11px] font-semibold text-gray-600 uppercase tracking-widest mb-1">Say it in Slovak</p>
         <p className="text-base font-bold text-gray-800 leading-snug">{sentence.promptEn}</p>
       </div>
 

@@ -99,7 +99,7 @@ export function WordMatchReview({ pairs, onDone, onAnswer }: Props) {
 
       {/* Progress */}
       <div className="flex-none">
-        <div className="flex justify-between text-xs text-gray-400 mb-1.5">
+        <div className="flex justify-between text-xs text-gray-600 mb-1.5">
           <span>Matched {matchedPairs} of {pairs.length}</span>
         </div>
         <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -118,6 +118,7 @@ export function WordMatchReview({ pairs, onDone, onAnswer }: Props) {
               <button
                 key={p.slovak}
                 type="button"
+                lang="sk"
                 onClick={() => handleSelect('slovak', p.slovak)}
                 className={getStyle('slovak', p.slovak)}
               >

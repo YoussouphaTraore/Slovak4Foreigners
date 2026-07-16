@@ -120,7 +120,7 @@ export function SaveProgressModal({ trigger, onDismiss, regressionLessonTitle }:
             <p className="text-sm text-gray-600 leading-snug">
               Your guest account has hit its limit — some of your progress couldn't be saved.
             </p>
-            <p className="text-xs text-gray-400 leading-snug">
+            <p className="text-xs text-gray-600 leading-snug">
               Sign in to keep everything safe and never lose your place again.
             </p>
             {regressionLessonTitle && (

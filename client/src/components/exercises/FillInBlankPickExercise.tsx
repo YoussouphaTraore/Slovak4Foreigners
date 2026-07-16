@@ -100,7 +100,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
     if (feedback !== null) {
       if (isCorrectChoice(choice))    return `${base} border-brand-green bg-green-50 text-brand-green`;
       if (choice === tappedChoice)    return `${base} border-brand-red bg-red-50 text-brand-red animate-shake`;
-      return `${base} border-gray-200 bg-white text-gray-400 opacity-40 pointer-events-none`;
+      return `${base} border-gray-200 bg-white text-gray-600 opacity-40 pointer-events-none`;
     }
     return `${base} border-gray-200 bg-white text-gray-700 hover:border-brand-blue hover:bg-blue-50`;
   };
@@ -111,7 +111,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
 
       {/* Progress */}
       <div className="flex-none">
-        <div className="flex justify-between text-xs text-gray-400 mb-1.5">
+        <div className="flex justify-between text-xs text-gray-600 mb-1.5">
           <span>Mastered {masteredCount} of {total}</span>
         </div>
         <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -125,7 +125,7 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
       {/* Sentence card */}
       <div className="flex-none bg-white rounded-3xl border-2 border-gray-100 shadow-sm px-5 py-5">
         {/* Slovak sentence with fillable blank */}
-        <p className="text-base font-semibold text-gray-800 leading-relaxed">
+        <p lang="sk" className="text-base font-semibold text-gray-800 leading-relaxed">
           {skovBefore}
           <span className={`font-bold border-b-2 px-1 ${tappedChoice ? blankColor : 'border-gray-300 text-gray-300'}`}>
             {tappedChoice ? slovakifyNumbers(blankWord) : blankWord}
@@ -134,9 +134,9 @@ export function FillInBlankPickExercise({ exercise, onDone, onAnswer }: Props) {
         </p>
         {/* English translation - blank stays as ___ */}
         {engBefore !== undefined && (
-          <p className="text-sm italic text-gray-400 mt-2 leading-relaxed">
+          <p className="text-sm italic text-gray-600 mt-2 leading-relaxed">
             {engBefore}
-            <span className="not-italic font-medium text-gray-400">___</span>
+            <span className="not-italic font-medium text-gray-600">___</span>
             {engAfter}
           </p>
         )}

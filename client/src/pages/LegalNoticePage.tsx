@@ -38,7 +38,7 @@ export function LegalNoticePage() {
           ‹ Back
         </button>
         <h1 className="text-lg font-extrabold text-gray-800">Legal Notice</h1>
-        <p className="text-xs text-gray-400 mt-0.5">Prevádzkovateľ · Slovak for Foreigners</p>
+        <p className="text-xs text-gray-600 mt-0.5">Prevádzkovateľ · Slovak for Foreigners</p>
       </div>
 
       {/* Content */}
@@ -48,7 +48,7 @@ export function LegalNoticePage() {
           {/* Operator identification (§4 zákona č. 22/2004 Z. z. o elektronickom obchode) */}
           <section>
             <h2 className="text-base font-bold text-gray-800 mb-1">Operator / Prevádzkovateľ</h2>
-            <p className="text-xs text-gray-400 mb-3 leading-relaxed">
+            <p className="text-xs text-gray-600 mb-3 leading-relaxed">
               This website and application are operated by the following sole trader
               (živnostník) registered in the Slovak Republic.
             </p>
@@ -76,7 +76,7 @@ export function LegalNoticePage() {
           {/* Supervisory authority for consumer matters */}
           <section>
             <h2 className="text-base font-bold text-gray-800 mb-1">Supervisory Authority / Dozorný orgán</h2>
-            <p className="text-xs text-gray-400 mb-3 leading-relaxed">
+            <p className="text-xs text-gray-600 mb-3 leading-relaxed">
               For consumer-protection matters, the competent supervisory authority is the
               Slovak Trade Inspection (Slovenská obchodná inšpekcia).
             </p>

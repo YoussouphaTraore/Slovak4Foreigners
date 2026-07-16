@@ -186,7 +186,7 @@ export function DiacriticKeyboard({ targetRef, onChange }: Props) {
             <button
               type="button"
               onPointerDown={(e) => { e.preventDefault(); insertChar(' '); }}
-              className={`${btn} h-9 flex-1 text-xs text-gray-400 tracking-widest`}
+              className={`${btn} h-9 flex-1 text-xs text-gray-600 tracking-widest`}
             >
               SPACE
             </button>

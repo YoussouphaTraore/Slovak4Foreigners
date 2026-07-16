@@ -2,42 +2,331 @@
   "id": "tc-food",
   "stageId": "topic-comprehension",
   "stageName": "",
-  "title": "Food — Monologue",
+  "title": "Food - Dinner at Anna's",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Anna: Sara, dnes večer varím večeru. Čo ješ rada?\nSara: Ďakujem, Anna! Ale som vegetariánka. Nejem mäso a nejem ryby.\nAnna: Aha, dobre. A syr? Vajcia?\nSara: Syr a vajcia jem. Ale pozor — som alergická na cesnak.\nAnna: Žiadny cesnak, rozumiem. Urobím cestoviny so zeleninou.\nSara: Mňam! Aká zelenina?\nAnna: Paprika, paradajka, cibuľa a mrkva.\nSara: Výborne. Cibuľu mám veľmi rada.\nAnna: A na dezert máme ovocie — jahody a hrozno.\nSara: Sladké! To bude chutné.\nAnna: Prinesieš chlieb?\nSara: Áno, kúpim chlieb. Dovidenia večer!"
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Food.mp3",
+      "conversationTranscriptSk": "Anna: Sara, dnes večer varím večeru. Čo ješ rada?\nSara: Ďakujem, Anna! Ale som vegetariánka. Nejem mäso a nejem ryby.\nAnna: Aha, dobre. A syr? Vajcia?\nSara: Syr a vajcia jem. Ale pozor — som alergická na cesnak.\nAnna: Žiadny cesnak, rozumiem. Urobím cestoviny so zeleninou.\nSara: Mňam! Aká zelenina?\nAnna: Paprika, paradajka, cibuľa a mrkva.\nSara: Výborne. Cibuľu mám veľmi rada.\nAnna: A na dezert máme ovocie — jahody a hrozno.\nSara: Sladké! To bude chutné.\nAnna: Prinesieš chlieb?\nSara: Áno, kúpim chlieb. Dovidenia večer!",
+      "speakers": [
+        {
+          "name": "Anna",
+          "avatar": "👩"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👱‍♀️"
+        }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "vegetariánka",
+        "Nejem mäso",
+        "ryby",
+        "syr",
+        "vajcia",
+        "alergická na cesnak",
+        "cestoviny",
+        "zelenina",
+        "paradajka",
+        "cibuľa",
+        "jahody",
+        "chlieb"
+      ],
+      "distractorWords": [
+        "zemiaky",
+        "banán",
+        "raňajky",
+        "pikantné",
+        "polievka",
+        "mlieko"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Food.mp3",
+      "conversationTranscriptSk": "Anna: Sara, dnes večer varím večeru. Čo ješ rada?\nSara: Ďakujem, Anna! Ale som vegetariánka. Nejem mäso a nejem ryby.\nAnna: Aha, dobre. A syr? Vajcia?\nSara: Syr a vajcia jem. Ale pozor — som alergická na cesnak.\nAnna: Žiadny cesnak, rozumiem. Urobím cestoviny so zeleninou.\nSara: Mňam! Aká zelenina?\nAnna: Paprika, paradajka, cibuľa a mrkva.\nSara: Výborne. Cibuľu mám veľmi rada.\nAnna: A na dezert máme ovocie — jahody a hrozno.\nSara: Sladké! To bude chutné.\nAnna: Prinesieš chlieb?\nSara: Áno, kúpim chlieb. Dovidenia večer!",
+      "speakers": [
+        {
+          "name": "Anna",
+          "avatar": "👩"
+        },
+        {
+          "name": "Sara",
+          "avatar": "👱‍♀️"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "Anna asks what Sara likes to eat. What does Sara say she doesn't eat?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Nejem mäso a nejem ryby.",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Nejem syr a vajcia.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Nejem chlieb a cestoviny.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Nejem = I don't eat. Sara is a vegetarian (vegetariánka) — she doesn't eat meat (mäso) or fish (ryby).",
+          "reviewPair": {
+            "slovak": "Nejem mäso a nejem ryby.",
+            "english": "I don't eat meat and I don't eat fish."
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Sara says 'som alergická na cesnak.' What is she allergic to?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Onion",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Garlic",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Cheese",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Cesnak = garlic. Som alergická na... = I am allergic to... (the feminine form — Sara is a woman).",
+          "reviewPair": {
+            "slovak": "Som alergická na cesnak.",
+            "english": "I am allergic to garlic."
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "What will Anna cook for dinner?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Mäso so zemiakmi.",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Cestoviny so zeleninou.",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Rybu s ryžou.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Cestoviny = pasta, so zeleninou = with vegetables. Anna will make pasta with vegetables — and no garlic!",
+          "reviewPair": {
+            "slovak": "cestoviny so zeleninou",
+            "english": "pasta with vegetables"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "Anna lists the vegetables. Which one does Sara say she really likes?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Carrot",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Pepper",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Onion",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Cibuľa = onion. Cibuľu mám veľmi rada = I really like onion (rada — feminine form).",
+          "reviewPair": {
+            "slovak": "cibuľa",
+            "english": "onion"
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "What fruit will they have for dessert?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Strawberries and grapes",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Apples and bananas",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Pears and oranges",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Jahody = strawberries, hrozno = grapes. Na dezert = for dessert. Ovocie = fruit.",
+          "reviewPair": {
+            "slovak": "jahody a hrozno",
+            "english": "strawberries and grapes"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "What will Sara bring in the evening?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Wine",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Cheese",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Bread",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Chlieb = bread. Kúpim chlieb = I will buy bread. Anna asks Prinesieš chlieb? = Will you bring bread?",
+          "reviewPair": {
+            "slovak": "Kúpim chlieb.",
+            "english": "I will buy bread."
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "But I am a vegetarian. (Sara — feminine)",
+          "targetSk": [
+            "Ale",
+            "som",
+            "vegetariánka."
+          ],
+          "bankChunks": [
+            "Ale",
+            "som",
+            "vegetariánka.",
+            "vegetarián."
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "I am allergic to garlic.",
+          "targetSk": [
+            "Som alergická",
+            "na",
+            "cesnak."
+          ],
+          "bankChunks": [
+            "Som alergická",
+            "na",
+            "cesnak.",
+            "cibuľu."
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "I don't eat meat and I don't eat fish.",
+          "targetSk": [
+            "Nejem mäso",
+            "a nejem",
+            "ryby."
+          ],
+          "bankChunks": [
+            "Nejem mäso",
+            "a nejem",
+            "ryby.",
+            "vajcia."
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "I'll make pasta with vegetables.",
+          "targetSk": [
+            "Urobím",
+            "cestoviny",
+            "so zeleninou."
+          ],
+          "bankChunks": [
+            "Urobím",
+            "cestoviny",
+            "so zeleninou.",
+            "s mäsom."
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "That will be tasty.",
+          "targetSk": [
+            "To",
+            "bude",
+            "chutné."
+          ],
+          "bankChunks": [
+            "To",
+            "bude",
+            "chutné.",
+            "sladké."
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "Yes, I'll buy bread.",
+          "targetSk": [
+            "Áno,",
+            "kúpim",
+            "chlieb."
+          ],
+          "bankChunks": [
+            "Áno,",
+            "kúpim",
+            "chlieb.",
+            "syr."
+          ]
+        }
+      ]
     },
     {
       "id": "ex5",

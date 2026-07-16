@@ -13,7 +13,7 @@ export function ReferenceCardScreen({ card, onDone }: Props) {
         <div className="max-w-lg mx-auto">
           <p className="text-[10px] font-bold uppercase tracking-widest text-brand-green mb-0.5">Reference Card Unlocked</p>
           <h1 className="text-base font-extrabold text-gray-800 leading-tight">{card.title}</h1>
-          <p className="text-xs text-gray-400">{card.titleSlovak}</p>
+          <p className="text-xs text-gray-600">{card.titleSlovak}</p>
         </div>
       </div>
 
@@ -28,7 +28,7 @@ export function ReferenceCardScreen({ card, onDone }: Props) {
 
           {/* Document checklist */}
           <div>
-            <p className="text-xs uppercase tracking-widest font-bold text-gray-400 mb-2 px-1">What to bring</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-gray-600 mb-2 px-1">What to bring</p>
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
               {card.checklist.map((item, i) => (
                 <div
@@ -39,7 +39,7 @@ export function ReferenceCardScreen({ card, onDone }: Props) {
                     <span className="text-brand-green mt-0.5 shrink-0 text-sm">✓</span>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-semibold text-gray-800 leading-snug">{item.item}</p>
-                      <p className="text-xs text-gray-400 mt-0.5">{item.slovak}</p>
+                      <p lang="sk" className="text-xs text-gray-600 mt-0.5">{item.slovak}</p>
                       {item.warning && (
                         <div className="flex items-start gap-1 mt-1.5">
                           <span className="text-amber-500 text-xs shrink-0">⚠️</span>
@@ -55,7 +55,7 @@ export function ReferenceCardScreen({ card, onDone }: Props) {
 
           {/* Key facts */}
           <div>
-            <p className="text-xs uppercase tracking-widest font-bold text-gray-400 mb-2 px-1">Key facts</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-gray-600 mb-2 px-1">Key facts</p>
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
               {card.keyFacts.map((fact, i) => (
                 <div
@@ -71,16 +71,16 @@ export function ReferenceCardScreen({ card, onDone }: Props) {
 
           {/* Key phrase */}
           <div>
-            <p className="text-xs uppercase tracking-widest font-bold text-gray-400 mb-2 px-1">Key phrase</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-gray-600 mb-2 px-1">Key phrase</p>
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-4 py-4">
-              <p className="text-base font-bold text-gray-800 leading-snug mb-1">{card.keyPhrase.slovak}</p>
-              <p className="text-sm text-gray-400 italic">{card.keyPhrase.english}</p>
+              <p lang="sk" className="text-base font-bold text-gray-800 leading-snug mb-1">{card.keyPhrase.slovak}</p>
+              <p className="text-sm text-gray-600 italic">{card.keyPhrase.english}</p>
             </div>
           </div>
 
           {/* Where to apply */}
           <div>
-            <p className="text-xs uppercase tracking-widest font-bold text-gray-400 mb-2 px-1">Where to apply</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-gray-600 mb-2 px-1">Where to apply</p>
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-4 py-3.5">
               <div className="flex items-start gap-2.5">
                 <span className="text-lg shrink-0">🌐</span>
@@ -91,7 +91,7 @@ export function ReferenceCardScreen({ card, onDone }: Props) {
 
           {/* Free help */}
           <div>
-            <p className="text-xs uppercase tracking-widest font-bold text-gray-400 mb-2 px-1">Free help</p>
+            <p className="text-xs uppercase tracking-widest font-bold text-gray-600 mb-2 px-1">Free help</p>
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-4 py-3.5">
               <div className="flex items-start gap-2.5">
                 <span className="text-lg shrink-0">🤝</span>

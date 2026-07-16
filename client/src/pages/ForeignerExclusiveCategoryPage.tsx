@@ -30,14 +30,14 @@ export function ForeignerExclusiveCategoryPage() {
           <span className="text-3xl">🛂</span>
           <div>
             <h1 className="text-base font-extrabold text-gray-800 leading-tight">Foreign Police</h1>
-            <p className="text-xs text-gray-400">Residence permits, documents & bureaucracy</p>
+            <p className="text-xs text-gray-600">Residence permits, documents & bureaucracy</p>
           </div>
         </div>
       </div>
 
       {/* Lesson list */}
       <div className="flex-1 px-4 py-5 pb-24 space-y-3">
-        <p className="text-xs uppercase tracking-widest font-bold text-gray-400 px-1">Lessons</p>
+        <p className="text-xs uppercase tracking-widest font-bold text-gray-600 px-1">Lessons</p>
 
         {foreignPoliceLessons.map((lesson, i) => {
           const isCompleted = completedLessons.includes(lesson.id);
@@ -79,11 +79,11 @@ export function ForeignerExclusiveCategoryPage() {
               {/* Text */}
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <p className={`text-sm font-extrabold leading-tight ${isAvailable ? 'text-gray-800' : 'text-gray-400'}`}>
+                  <p className={`text-sm font-extrabold leading-tight ${isAvailable ? 'text-gray-800' : 'text-gray-600'}`}>
                     {lesson.title}
                   </p>
                   {lesson.coming_soon && (
-                    <span className="text-[10px] font-bold uppercase tracking-wide bg-gray-100 text-gray-400 px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-bold uppercase tracking-wide bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
                       Coming Soon
                     </span>
                   )}
@@ -93,8 +93,8 @@ export function ForeignerExclusiveCategoryPage() {
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-gray-400 mt-0.5 italic">{lesson.titleSlovak}</p>
-                <p className="text-xs text-gray-400 mt-0.5 leading-snug line-clamp-2">{lesson.description}</p>
+                <p className="text-xs text-gray-600 mt-0.5 italic">{lesson.titleSlovak}</p>
+                <p className="text-xs text-gray-600 mt-0.5 leading-snug line-clamp-2">{lesson.description}</p>
                 {isAvailable && (
                   <p className="text-xs text-gray-300 mt-1">{lesson.exercises.length} exercises · {lesson.xpReward} XP</p>
                 )}

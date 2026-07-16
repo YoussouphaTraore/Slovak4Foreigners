@@ -35,7 +35,7 @@ export function MultipleChoiceExercise({ exercise, onDone, onAnswer }: Props) {
     if (choice === selected && choice !== exercise.answer) {
       return `${base} border-brand-red bg-red-50 text-brand-red animate-shake`;
     }
-    return `${base} border-gray-200 bg-white text-gray-400 opacity-60`;
+    return `${base} border-gray-200 bg-white text-gray-600 opacity-60`;
   };
 
   const bannerMessage = feedback === 'correct'

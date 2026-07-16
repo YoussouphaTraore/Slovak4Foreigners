@@ -74,7 +74,7 @@ export function ExerciseCelebration({ onDone, image = '/snailExcited.png' }: Pro
           style={{ animationDelay: '300ms' }}
         />
         <p className="text-2xl font-extrabold text-gray-800 mt-1">Good Job!</p>
-        <p className="text-sm text-gray-400 mt-1">Keep going!</p>
+        <p className="text-sm text-gray-600 mt-1">Keep going!</p>
       </div>
     </div>
   );

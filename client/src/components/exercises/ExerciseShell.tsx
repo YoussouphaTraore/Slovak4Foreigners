@@ -125,13 +125,13 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
           <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800">
             Quick Review
           </span>
-          <span className="text-sm text-gray-400">Ex {exerciseIndex + 1}</span>
+          <span className="text-sm text-gray-600">Ex {exerciseIndex + 1}</span>
         </div>
         {pairs.length === 0 ? (
           <div className="flex flex-col flex-1 min-h-0 items-center justify-center gap-4 text-center px-6">
             <img src="/snailExcited.png" alt="" className="w-28 h-28 object-contain" />
             <p className="text-2xl font-extrabold text-gray-800">Nothing to Review — You Nailed Everything!</p>
-            <p className="text-sm text-gray-400">Every word in this lesson was answered correctly first time.</p>
+            <p className="text-sm text-gray-600">Every word in this lesson was answered correctly first time.</p>
             <button
               type="button"
               onClick={() => onComplete(true)}
@@ -278,7 +278,7 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
         <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800">
           {getTypeBadge(exercise)}
         </span>
-        <span className="text-sm text-gray-400">Ex {exerciseIndex + 1}</span>
+        <span className="text-sm text-gray-600">Ex {exerciseIndex + 1}</span>
       </div>
 
       {/* Exercise content */}
@@ -340,7 +340,7 @@ export function ExerciseShell({ exercise, exerciseIndex, onComplete, onFailed, o
             className={`w-full font-bold py-3.5 rounded-xl text-sm uppercase tracking-widest transition-all cursor-pointer ${
               hasAnswer
                 ? 'bg-brand-green text-white hover:opacity-90 active:scale-[0.98] shadow-md'
-                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-gray-200 text-gray-600 cursor-not-allowed'
             }`}
           >
             Check

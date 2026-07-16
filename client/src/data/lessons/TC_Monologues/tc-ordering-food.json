@@ -2,42 +2,331 @@
   "id": "tc-ordering-food",
   "stageId": "topic-comprehension",
   "stageName": "",
-  "title": "Ordering Food — Monologue",
+  "title": "Ordering Food - Lunch with Paolo",
   "description": "Listen, then prove you were listening",
-  "_voiceScript": { "voice": null, "script": "" },
+  "_voiceScript": {
+    "voice": null,
+    "script": "Paolo: Dobrý deň! Stôl pre dvoch, prosím.\nAmina: Paolo, toto je pekná reštaurácia!\nPaolo: Áno. Tu je jedálny lístok. Čo si dáš?\nAmina: Hmm, neviem... Čo odporúčate?\nPaolo: Cestoviny sú tu veľmi chutné. Ja si dám rybu.\nAmina: Dobre, dám si cestoviny.\nPaolo: A niečo na pitie?\nAmina: Vodu, prosím.\nPaolo: Bolo to chutné?\nAmina: Áno, veľmi chutné!\nPaolo: Môžem dostať účet? Zaplatím kartou.\nAmina: Ďakujem za obed, Paolo! Nabudúce objednáme doručenie. Dovidenia!"
+  },
   "icon": "🎧",
   "xpReward": 25,
-  "coming_soon": true,
+  "coming_soon": false,
   "exercises": [
     {
       "id": "ex1",
       "type": "CONVERSATION_LISTEN",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Ordering-Food.mp3",
+      "conversationTranscriptSk": "Paolo: Dobrý deň! Stôl pre dvoch, prosím.\nAmina: Paolo, toto je pekná reštaurácia!\nPaolo: Áno. Tu je jedálny lístok. Čo si dáš?\nAmina: Hmm, neviem... Čo odporúčate?\nPaolo: Cestoviny sú tu veľmi chutné. Ja si dám rybu.\nAmina: Dobre, dám si cestoviny.\nPaolo: A niečo na pitie?\nAmina: Vodu, prosím.\nPaolo: Bolo to chutné?\nAmina: Áno, veľmi chutné!\nPaolo: Môžem dostať účet? Zaplatím kartou.\nAmina: Ďakujem za obed, Paolo! Nabudúce objednáme doručenie. Dovidenia!",
+      "speakers": [
+        {
+          "name": "Paolo",
+          "avatar": "👨"
+        },
+        {
+          "name": "Amina",
+          "avatar": "👩🏾‍🦱"
+        }
+      ]
     },
     {
       "id": "ex2",
       "type": "CONVERSATION_WORD_RECOGNITION",
       "instruction": "Tap every word or expression you heard in the conversation.",
       "passThresholdPercent": 76,
-      "correctWords": [],
-      "distractorWords": []
+      "correctWords": [
+        "Stôl pre dvoch",
+        "jedálny lístok",
+        "Čo si dáš?",
+        "Čo odporúčate?",
+        "Cestoviny",
+        "veľmi chutné",
+        "rybu",
+        "Dám si",
+        "niečo na pitie",
+        "Vodu",
+        "účet",
+        "Zaplatím kartou"
+      ],
+      "distractorWords": [
+        "polievka",
+        "pivo",
+        "raňajky",
+        "kuriér",
+        "zemiaky",
+        "káva"
+      ]
     },
     {
       "id": "ex3",
       "type": "CONVERSATION_COMPREHENSION",
       "coverImage": "",
-      "audioUrl": "",
-      "conversationTranscriptSk": "",
-      "speakers": [],
-      "questions": []
+      "audioUrl": "https://mfkeiyiukwvycrjgyjll.supabase.co/storage/v1/object/public/audio/TC_Monologues_tc-Ordering-Food.mp3",
+      "conversationTranscriptSk": "Paolo: Dobrý deň! Stôl pre dvoch, prosím.\nAmina: Paolo, toto je pekná reštaurácia!\nPaolo: Áno. Tu je jedálny lístok. Čo si dáš?\nAmina: Hmm, neviem... Čo odporúčate?\nPaolo: Cestoviny sú tu veľmi chutné. Ja si dám rybu.\nAmina: Dobre, dám si cestoviny.\nPaolo: A niečo na pitie?\nAmina: Vodu, prosím.\nPaolo: Bolo to chutné?\nAmina: Áno, veľmi chutné!\nPaolo: Môžem dostať účet? Zaplatím kartou.\nAmina: Ďakujem za obed, Paolo! Nabudúce objednáme doručenie. Dovidenia!",
+      "speakers": [
+        {
+          "name": "Paolo",
+          "avatar": "👨"
+        },
+        {
+          "name": "Amina",
+          "avatar": "👩🏾‍🦱"
+        }
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "questionEn": "What does Paolo ask for when they arrive at the restaurant?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Stôl pre dvoch, prosím.",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Stôl pre jedného, prosím.",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Účet, prosím.",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Stôl pre dvoch = a table for two — Paolo and Amina are two people. Stôl pre jedného = a table for one.",
+          "reviewPair": {
+            "slovak": "Stôl pre dvoch, prosím.",
+            "english": "A table for two, please."
+          }
+        },
+        {
+          "id": "q2",
+          "questionEn": "Amina doesn't know what to order. What does she ask?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Kde ste?",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Čo odporúčate?",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Bolo to chutné?",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Čo odporúčate? = What do you recommend? — the polite way to ask for a recommendation in a restaurant.",
+          "reviewPair": {
+            "slovak": "Čo odporúčate?",
+            "english": "What do you recommend?"
+          }
+        },
+        {
+          "id": "q3",
+          "questionEn": "What does Paolo say is very tasty at this restaurant?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "The fish",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "The soup",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "The pasta",
+              "isCorrect": true
+            }
+          ],
+          "answerMeaning": "Cestoviny sú tu veľmi chutné = The pasta here is very tasty. Paolo himself orders the fish (ryba).",
+          "reviewPair": {
+            "slovak": "cestoviny",
+            "english": "pasta"
+          }
+        },
+        {
+          "id": "q4",
+          "questionEn": "What does Amina order to drink?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Water",
+              "isCorrect": true
+            },
+            {
+              "id": "b",
+              "textEn": "Wine",
+              "isCorrect": false
+            },
+            {
+              "id": "c",
+              "textEn": "Coffee",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Vodu, prosím = Water, please. Voda = water (vodu is the form used when ordering).",
+          "reviewPair": {
+            "slovak": "Vodu, prosím.",
+            "english": "Water, please."
+          }
+        },
+        {
+          "id": "q5",
+          "questionEn": "After the meal, Paolo asks 'Bolo to chutné?' What does this mean?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "Was it expensive?",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "Was it tasty?",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Are you still hungry?",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Bolo to chutné? = Was it tasty? Amina answers: Áno, veľmi chutné! = Yes, very tasty!",
+          "reviewPair": {
+            "slovak": "Bolo to chutné?",
+            "english": "Was it tasty?"
+          }
+        },
+        {
+          "id": "q6",
+          "questionEn": "How will Paolo pay the bill?",
+          "answers": [
+            {
+              "id": "a",
+              "textEn": "In cash",
+              "isCorrect": false
+            },
+            {
+              "id": "b",
+              "textEn": "By card",
+              "isCorrect": true
+            },
+            {
+              "id": "c",
+              "textEn": "Amina will pay",
+              "isCorrect": false
+            }
+          ],
+          "answerMeaning": "Zaplatím kartou = I will pay by card. He first asks: Môžem dostať účet? = Can I get the bill?",
+          "reviewPair": {
+            "slovak": "Zaplatím kartou.",
+            "english": "I will pay by card."
+          }
+        }
+      ]
     },
     {
       "id": "ex4",
       "type": "CONVERSATION_SENTENCE_BUILDER",
-      "sentences": []
+      "sentences": [
+        {
+          "id": "s1",
+          "promptEn": "A table for two, please.",
+          "targetSk": [
+            "Stôl",
+            "pre dvoch,",
+            "prosím."
+          ],
+          "bankChunks": [
+            "Stôl",
+            "pre dvoch,",
+            "prosím.",
+            "pre jedného,"
+          ]
+        },
+        {
+          "id": "s2",
+          "promptEn": "I don't know... What do you recommend?",
+          "targetSk": [
+            "Neviem...",
+            "Čo",
+            "odporúčate?"
+          ],
+          "bankChunks": [
+            "Neviem...",
+            "Čo",
+            "odporúčate?",
+            "platíte?"
+          ]
+        },
+        {
+          "id": "s3",
+          "promptEn": "Okay, I'll have the pasta.",
+          "targetSk": [
+            "Dobre,",
+            "dám si",
+            "cestoviny."
+          ],
+          "bankChunks": [
+            "Dobre,",
+            "dám si",
+            "cestoviny.",
+            "rybu."
+          ]
+        },
+        {
+          "id": "s4",
+          "promptEn": "And something to drink?",
+          "targetSk": [
+            "A niečo",
+            "na",
+            "pitie?"
+          ],
+          "bankChunks": [
+            "A niečo",
+            "na",
+            "pitie?",
+            "obed?"
+          ]
+        },
+        {
+          "id": "s5",
+          "promptEn": "Can I get the bill?",
+          "targetSk": [
+            "Môžem",
+            "dostať",
+            "účet?"
+          ],
+          "bankChunks": [
+            "Môžem",
+            "dostať",
+            "účet?",
+            "lístok?"
+          ]
+        },
+        {
+          "id": "s6",
+          "promptEn": "Thank you for the lunch, Paolo!",
+          "targetSk": [
+            "Ďakujem",
+            "za obed,",
+            "Paolo!"
+          ],
+          "bankChunks": [
+            "Ďakujem",
+            "za obed,",
+            "Paolo!",
+            "za večeru,"
+          ]
+        }
+      ]
     },
     {
       "id": "ex5",

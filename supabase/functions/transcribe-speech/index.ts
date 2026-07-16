@@ -1,33 +1,60 @@
-import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-};
+// Only reflect CORS for known app origins (local dev, Vercel deploys, the
+// phone-testing tunnel). The real protection is the JWT check below — CORS
+// alone never stops non-browser callers.
+const ALLOWED_ORIGIN =
+  /^(https?:\/\/localhost(:\d+)?|https:\/\/([a-z0-9-]+\.)?slovakforforeigners\.eu|https:\/\/[a-z0-9-]+\.vercel\.app|https:\/\/[a-z0-9-]+\.trycloudflare\.com)$/;
 
-serve(async (req) => {
-  if (req.method === 'OPTIONS') {
-    return new Response('ok', { headers: corsHeaders });
-  }
+const MAX_AUDIO_BYTES = 5 * 1024 * 1024; // 5 MB — a spoken clip is a few dozen KB
+
+function corsHeaders(origin: string | null): Record<string, string> {
+  return {
+    'Access-Control-Allow-Origin': origin && ALLOWED_ORIGIN.test(origin) ? origin : 'null',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    Vary: 'Origin',
+  };
+}
+
+function json(body: unknown, status: number, cors: Record<string, string>): Response {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: { ...cors, 'Content-Type': 'application/json' },
+  });
+}
+
+Deno.serve(async (req) => {
+  const cors = corsHeaders(req.headers.get('origin'));
+
+  if (req.method === 'OPTIONS') return new Response('ok', { headers: cors });
+  if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405, cors);
+
+  // Require a real, logged-in Supabase user. The anon key is itself a valid JWT,
+  // so platform verify_jwt is not enough — we must resolve an actual user.
+  const authHeader = req.headers.get('Authorization') ?? '';
+  const token = authHeader.replace(/^Bearer\s+/i, '').trim();
+  if (!token) return json({ error: 'Unauthorized' }, 401, cors);
+
+  const supabase = createClient(
+    Deno.env.get('SUPABASE_URL')!,
+    Deno.env.get('SUPABASE_ANON_KEY')!,
+    { global: { headers: { Authorization: authHeader } } },
+  );
+  const { data: { user }, error: authErr } = await supabase.auth.getUser(token);
+  if (authErr || !user) return json({ error: 'Unauthorized' }, 401, cors);
 
   try {
     const apiKey = Deno.env.get('OPENAI_API_KEY');
-    if (!apiKey) {
-      return new Response(JSON.stringify({ error: 'OpenAI key not configured' }), {
-        status: 500,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
-    }
+    if (!apiKey) return json({ error: 'Service unavailable' }, 503, cors);
 
     const formData = await req.formData();
     const audioFile = formData.get('audio');
-    const expectedText = formData.get('expectedText');
-
     if (!audioFile || !(audioFile instanceof File)) {
-      return new Response(JSON.stringify({ error: 'No audio file provided' }), {
-        status: 400,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+      return json({ error: 'No audio file provided' }, 400, cors);
+    }
+    if (audioFile.size > MAX_AUDIO_BYTES) {
+      return json({ error: 'Audio too large' }, 413, cors);
     }
 
     const openAiForm = new FormData();
@@ -43,21 +70,15 @@ serve(async (req) => {
     });
 
     if (!response.ok) {
-      const err = await response.text();
-      return new Response(JSON.stringify({ error: `OpenAI error: ${err}` }), {
-        status: 502,
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-      });
+      // Log server-side; never leak upstream error bodies to the client
+      console.error('OpenAI transcription error', response.status, await response.text());
+      return json({ error: 'Transcription failed' }, 502, cors);
     }
 
     const result = await response.json();
-    return new Response(JSON.stringify({ transcript: result.text ?? '' }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    return json({ transcript: result.text ?? '' }, 200, cors);
   } catch (e) {
-    return new Response(JSON.stringify({ error: String(e) }), {
-      status: 500,
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-    });
+    console.error('transcribe-speech internal error', e);
+    return json({ error: 'Internal error' }, 500, cors);
   }
 });

@@ -165,7 +165,7 @@ export function HomePage() {
                 ${isComplete
                   ? 'bg-brand-green text-white hover:opacity-90'
                   : isLocked
-                  ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                  ? 'bg-gray-200 text-gray-600 cursor-not-allowed'
                   : 'bg-brand-green text-white hover:opacity-90'
                 }`}
             >
@@ -221,10 +221,10 @@ export function HomePage() {
           </div>
 
           <div className="mt-3 text-center">
-            <p className={`text-sm font-semibold ${isLocked ? 'text-gray-400' : 'text-gray-700'}`}>
+            <p className={`text-sm font-semibold ${isLocked ? 'text-gray-600' : 'text-gray-700'}`}>
               {topic.title}
             </p>
-            <p className={`text-xs ${isLocked ? 'text-gray-300' : 'text-gray-400'}`}>
+            <p className={`text-xs ${isLocked ? 'text-gray-300' : 'text-gray-600'}`}>
               {isTopicGateLocked ? 'Pass the Topic Race to unlock' : `${totalCount} ${totalCount === 1 ? 'lesson' : 'lessons'}`}
             </p>
           </div>
@@ -253,7 +253,7 @@ export function HomePage() {
           </button>
           <div className="mt-3 text-center">
             <p className="text-sm font-semibold text-gray-700">Quick Review</p>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-600">
               {reviewCount} lesson{reviewCount !== 1 ? 's' : ''} due
             </p>
           </div>
@@ -270,7 +270,7 @@ export function HomePage() {
           <img src="/snail.png" alt="" className="w-8 h-8 object-contain shrink-0" />
           <div className="flex-1 min-w-0">
             <h1 className="text-base font-bold text-gray-800 leading-tight">Slovak for Foreigners</h1>
-            <p className="text-xs text-gray-400 leading-tight">
+            <p className="text-xs text-gray-600 leading-tight">
               {practiceDaysThisWeek.length > 0
                 ? `This week: ${practiceDaysThisWeek.length} practice ${practiceDaysThisWeek.length === 1 ? 'day' : 'days'}`
                 : 'Learn Slovak. Live like a local.'}
@@ -278,7 +278,7 @@ export function HomePage() {
           </div>
 
           {isSyncing && (
-            <span title="Saving to cloud…" className="flex items-center gap-1 text-gray-400 shrink-0">
+            <span title="Saving to cloud…" className="flex items-center gap-1 text-gray-600 shrink-0">
               <span className="w-3 h-3 border-2 border-gray-300 border-t-brand-green rounded-full animate-spin inline-block" />
             </span>
           )}
@@ -366,7 +366,7 @@ export function HomePage() {
                 {/* Block label */}
                 <div className="w-full flex items-center gap-2 my-1">
                   <div className="flex-1 h-px bg-gray-200" />
-                  <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider px-2 whitespace-nowrap">
+                  <span className="text-[10px] font-semibold text-gray-600 uppercase tracking-wider px-2 whitespace-nowrap">
                     {block.blockName}
                   </span>
                   <div className="flex-1 h-px bg-gray-200" />
@@ -410,10 +410,10 @@ export function HomePage() {
                   >
                     <span className="text-3xl shrink-0">{blockDialogue.contact.avatar}</span>
                     <div className="text-left flex-1">
-                      <p className={`text-sm font-extrabold leading-snug ${dialogueCompleted ? 'text-green-700' : dialogueUnlocked ? 'text-blue-800' : 'text-gray-400'}`}>
+                      <p className={`text-sm font-extrabold leading-snug ${dialogueCompleted ? 'text-green-700' : dialogueUnlocked ? 'text-blue-800' : 'text-gray-600'}`}>
                         {dialogueCompleted ? '✅' : dialogueUnlocked ? '💬' : '🔒'} {blockDialogue.title}
                       </p>
-                      <p className={`text-xs mt-0.5 ${dialogueCompleted ? 'text-green-600' : dialogueUnlocked ? 'text-blue-600' : 'text-gray-400'}`}>
+                      <p className={`text-xs mt-0.5 ${dialogueCompleted ? 'text-green-600' : dialogueUnlocked ? 'text-blue-600' : 'text-gray-600'}`}>
                         {dialogueCompleted
                           ? `Completed · +${blockDialogue.xpReward} XP earned`
                           : dialogueUnlocked
@@ -440,10 +440,10 @@ export function HomePage() {
                 >
                   <img src="/snailTurbo.png" alt="" className="w-12 h-12 object-contain shrink-0" />
                   <div className="text-left flex-1">
-                    <p className={`text-sm font-extrabold leading-snug ${raceUnlocked ? 'text-amber-800' : 'text-gray-400'}`}>
+                    <p className={`text-sm font-extrabold leading-snug ${raceUnlocked ? 'text-amber-800' : 'text-gray-600'}`}>
                       {blockRacePassed ? '✅' : raceUnlocked ? '🏁' : '🔒'} Block Race — {block.blockName}
                     </p>
-                    <p className={`text-xs mt-0.5 ${raceUnlocked ? 'text-amber-600' : 'text-gray-400'}`}>
+                    <p className={`text-xs mt-0.5 ${raceUnlocked ? 'text-amber-600' : 'text-gray-600'}`}>
                       {blockRacePassed
                         ? `Turbo Snail achieved! Tap to race again (${blockAttemptsLeft}/5 today)`
                         : raceUnlocked
@@ -474,7 +474,7 @@ export function HomePage() {
                   hasReachedEnd ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-1'
                 }`}
               >
-                <p className="text-xs text-gray-400 font-medium tracking-wide">
+                <p className="text-xs text-gray-600 font-medium tracking-wide">
                   {allAvailableLessonsComplete
                     ? 'New lessons on the way soon'
                     : 'Complete the already loaded lessons on your feed first'}
@@ -492,9 +492,9 @@ export function HomePage() {
         <footer className="-mx-6 -mb-24 mt-10 border-t border-gray-200 bg-gray-100 px-6 pt-4 pb-24 text-center">
           <div className="flex items-center justify-center gap-2 text-[11px]">
             <button type="button" onClick={() => go('/legal')} className="text-gray-500 hover:text-gray-700 underline cursor-pointer">Legal Notice</button>
-            <span className="text-gray-400">·</span>
+            <span className="text-gray-600">·</span>
             <button type="button" onClick={() => go('/privacy')} className="text-gray-500 hover:text-gray-700 underline cursor-pointer">Privacy</button>
-            <span className="text-gray-400">·</span>
+            <span className="text-gray-600">·</span>
             <button type="button" onClick={() => go('/terms')} className="text-gray-500 hover:text-gray-700 underline cursor-pointer">Terms</button>
           </div>
           <p className="text-[11px] text-gray-500 leading-relaxed mt-1.5">

@@ -212,7 +212,7 @@ export function DialogueSession({ dialogue, onExit }: Props) {
           <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
             {/* Character intro chip + TTS toggle */}
             <div className="flex justify-center items-center gap-2">
-              <span className="text-xs text-gray-400 bg-white border border-gray-200 px-3 py-1 rounded-full">
+              <span className="text-xs text-gray-600 bg-white border border-gray-200 px-3 py-1 rounded-full">
                 {dialogue.character.avatar} {dialogue.character.name}
               </span>
               <button
@@ -245,7 +245,7 @@ export function DialogueSession({ dialogue, onExit }: Props) {
                         }`}
                     >
                       {isWrong && <span className="mr-1 text-red-500">✗</span>}
-                      <span className="font-medium">{msg.text}</span>
+                      <span lang="sk" className="font-medium">{msg.text}</span>
                     </div>
                   </div>
                 );
@@ -277,7 +277,7 @@ export function DialogueSession({ dialogue, onExit }: Props) {
                   >
                     <span className="font-medium">{msg.text}</span>
                     {msg.translation && (
-                      <span className={`block text-xs mt-0.5 font-normal ${isRetry ? 'text-orange-500' : 'text-gray-400'}`}>
+                      <span className={`block text-xs mt-0.5 font-normal ${isRetry ? 'text-orange-500' : 'text-gray-600'}`}>
                         {msg.translation}
                       </span>
                     )}
@@ -292,7 +292,7 @@ export function DialogueSession({ dialogue, onExit }: Props) {
           {/* Choice buttons */}
           {phase !== 'auto-advancing' && visibleChoices.length > 0 && (
             <div className="flex-none px-4 py-4 space-y-2">
-              <p className="text-xs text-gray-400 text-center mb-1">Choose your reply</p>
+              <p className="text-xs text-gray-600 text-center mb-1">Choose your reply</p>
               {visibleChoices.map((choice) => (
                 <button
                   key={choice.id}
@@ -301,13 +301,13 @@ export function DialogueSession({ dialogue, onExit }: Props) {
                   onClick={() => handleChoice(choice)}
                   className={`w-full text-left px-4 py-2.5 rounded-xl border text-sm font-medium transition-all cursor-pointer active:scale-[0.98] break-words
                     ${phase === 'feedback'
-                      ? 'bg-gray-50 border-gray-200 text-gray-400'
+                      ? 'bg-gray-50 border-gray-200 text-gray-600'
                       : 'bg-white border-gray-200 text-gray-800 hover:border-brand-green hover:bg-green-50'
                     }`}
                 >
-                  <span>{choice.text}</span>
+                  <span lang="sk">{choice.text}</span>
                   {choice.translation && (
-                    <span className="block text-xs text-gray-400 font-normal mt-0.5">{choice.translation}</span>
+                    <span className="block text-xs text-gray-600 font-normal mt-0.5">{choice.translation}</span>
                   )}
                 </button>
               ))}

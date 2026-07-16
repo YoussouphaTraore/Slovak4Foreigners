@@ -120,7 +120,7 @@ export function PickTranslationExercise({ exercise, onDone, onAnswer }: Props) {
     if (choice === tappedChoice) {
       return `${base} border-brand-red bg-red-50 text-brand-red animate-shake`;
     }
-    return `${base} border-gray-200 bg-white text-gray-400 opacity-50`;
+    return `${base} border-gray-200 bg-white text-gray-600 opacity-50`;
   };
 
   const progressPct = Math.round((masteredCount / total) * 100);
@@ -133,7 +133,7 @@ export function PickTranslationExercise({ exercise, onDone, onAnswer }: Props) {
     <div className="flex flex-col flex-1 min-h-0 gap-4">
       {/* Progress header */}
       <div className="flex-none">
-        <div className="flex justify-between text-xs text-gray-400 mb-1.5">
+        <div className="flex justify-between text-xs text-gray-600 mb-1.5">
           <span>Mastered {masteredCount} of {total}</span>
         </div>
         <div className="w-full h-2.5 bg-gray-200 rounded-full overflow-hidden">

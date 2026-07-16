@@ -192,7 +192,7 @@ export function TopicRacePage() {
         <p className="text-gray-500 mb-2 text-base max-w-xs leading-relaxed">
           You've used all <span className="font-bold">{MAX_ATTEMPTS}</span> attempts for today.
         </p>
-        <p className="text-sm text-gray-400 mb-8">
+        <p className="text-sm text-gray-600 mb-8">
           Best score: <span className="font-bold text-gray-600">{bestScore}</span> correct
         </p>
         <button
@@ -225,11 +225,11 @@ export function TopicRacePage() {
         <p className="text-sm text-amber-600 font-semibold mb-1">
           +{BONUS_SECONDS}s bonus for every correct answer!
         </p>
-        <p className={`text-sm font-bold mb-2 ${attemptsLeft === 1 ? 'text-orange-500' : 'text-gray-400'}`}>
+        <p className={`text-sm font-bold mb-2 ${attemptsLeft === 1 ? 'text-orange-500' : 'text-gray-600'}`}>
           Attempts today: <span>{MAX_ATTEMPTS - attemptsLeft}/{MAX_ATTEMPTS}</span>
         </p>
         {bestScore > 0 && (
-          <p className="text-sm text-gray-400 mb-6">
+          <p className="text-sm text-gray-600 mb-6">
             Best: <span className="font-bold text-gray-700">{bestScore} correct</span>
           </p>
         )}
@@ -243,7 +243,7 @@ export function TopicRacePage() {
         <button
           type="button"
           onClick={() => navigate(backTarget)}
-          className="text-sm text-gray-400 hover:text-gray-600 cursor-pointer transition-colors"
+          className="text-sm text-gray-600 hover:text-gray-600 cursor-pointer transition-colors"
         >
           Back to topic
         </button>
@@ -287,15 +287,15 @@ export function TopicRacePage() {
 
         <div className="flex gap-3 mb-5">
           <div className="bg-white rounded-2xl px-5 py-4 text-center shadow-sm">
-            <p className="text-xs text-gray-400 uppercase font-semibold tracking-wider mb-1">Correct</p>
+            <p className="text-xs text-gray-600 uppercase font-semibold tracking-wider mb-1">Correct</p>
             <p className="text-3xl font-black text-brand-green">{correct}</p>
           </div>
           <div className="bg-white rounded-2xl px-5 py-4 text-center shadow-sm">
-            <p className="text-xs text-gray-400 uppercase font-semibold tracking-wider mb-1">Wrong</p>
+            <p className="text-xs text-gray-600 uppercase font-semibold tracking-wider mb-1">Wrong</p>
             <p className="text-3xl font-black text-red-500">{wrong}</p>
           </div>
           <div className="bg-white rounded-2xl px-5 py-4 text-center shadow-sm">
-            <p className="text-xs text-gray-400 uppercase font-semibold tracking-wider mb-1">Accuracy</p>
+            <p className="text-xs text-gray-600 uppercase font-semibold tracking-wider mb-1">Accuracy</p>
             <p className="text-3xl font-black text-gray-800">{accuracy}%</p>
           </div>
         </div>
@@ -305,7 +305,7 @@ export function TopicRacePage() {
           <p className="text-4xl font-black text-amber-500">+{xpEarned}</p>
         </div>
 
-        <p className={`text-sm mb-6 ${attLeft === 1 ? 'text-orange-500 font-bold' : attLeft === 0 ? 'text-red-500 font-bold' : 'text-gray-400'}`}>
+        <p className={`text-sm mb-6 ${attLeft === 1 ? 'text-orange-500 font-bold' : attLeft === 0 ? 'text-red-500 font-bold' : 'text-gray-600'}`}>
           Best score: <span className="font-bold text-gray-700">{bestScore}</span>
           {' · '}Attempts used today: <span className="font-bold">{MAX_ATTEMPTS - attLeft}/{MAX_ATTEMPTS}</span>
         </p>
@@ -343,7 +343,7 @@ export function TopicRacePage() {
         <button
           type="button"
           onClick={() => navigate(backTarget)}
-          className="text-sm text-gray-400 hover:text-gray-600 cursor-pointer transition-colors"
+          className="text-sm text-gray-600 hover:text-gray-600 cursor-pointer transition-colors"
         >
           Back to topic
         </button>
@@ -387,7 +387,7 @@ export function TopicRacePage() {
                 {currentQuestion.prompt}
               </p>
               {currentQuestion.subPrompt && (
-                <p className="text-sm text-gray-400 mt-2 italic leading-snug">
+                <p className="text-sm text-gray-600 mt-2 italic leading-snug">
                   {currentQuestion.subPrompt}
                 </p>
               )}

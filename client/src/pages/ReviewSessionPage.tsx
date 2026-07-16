@@ -148,7 +148,7 @@ function AllCaughtUpScreen({ lessonRecords, onBack }: { lessonRecords: LessonRec
       </div>
       {ms > 0 && (
         <div className="bg-white rounded-2xl px-8 py-5 shadow-sm border border-gray-100">
-          <p className="text-xs text-gray-400 mb-1">Next review due in</p>
+          <p className="text-xs text-gray-600 mb-1">Next review due in</p>
           <p className="text-3xl font-extrabold text-brand-green tabular-nums">{formatCountdown(ms)}</p>
         </div>
       )}
@@ -208,7 +208,7 @@ export function ReviewSessionPage() {
           <p className="text-sm text-gray-600 leading-relaxed mb-2">
             Answer every exercise correctly to finish — wrong answers come back until you get them right.
           </p>
-          <p className="text-xs text-gray-400 leading-relaxed">
+          <p className="text-xs text-gray-600 leading-relaxed">
             After completing it, all your lesson indicators will turn green.
           </p>
         </div>
@@ -222,7 +222,7 @@ export function ReviewSessionPage() {
                 <div className="flex items-center gap-2 mb-1.5">
                   <span className="text-sm">{dot}</span>
                   <span className="text-sm font-semibold text-gray-700 flex-1 min-w-0 truncate">{r.title}</span>
-                  <span className="text-xs text-gray-400 tabular-nums shrink-0">{r.strengthBefore}%</span>
+                  <span className="text-xs text-gray-600 tabular-nums shrink-0">{r.strengthBefore}%</span>
                 </div>
                 <div className="h-1.5 bg-gray-100 rounded-full overflow-hidden">
                   <div className={`h-full rounded-full ${barColor}`} style={{ width: `${r.strengthBefore}%` }} />
@@ -250,7 +250,7 @@ export function ReviewSessionPage() {
         <h1 className="text-2xl font-extrabold text-gray-800">Review Complete! 📚</h1>
 
         <div className="bg-white rounded-2xl px-6 py-4 shadow-sm border border-gray-100 text-center">
-          <p className="text-xs text-gray-400 mb-1">XP earned</p>
+          <p className="text-xs text-gray-600 mb-1">XP earned</p>
           <p className="text-3xl font-extrabold text-brand-green">+{xpResult}</p>
           {/* eslint-disable-next-line react-hooks/refs */}
           {totalStrikesRef.current === 0 && (
@@ -266,7 +266,7 @@ export function ReviewSessionPage() {
                 <div className="flex-1 h-2 bg-gray-100 rounded-full overflow-hidden">
                   <div className="h-full bg-brand-green rounded-full w-full" />
                 </div>
-                <span className="text-xs text-gray-400 shrink-0 tabular-nums">
+                <span className="text-xs text-gray-600 shrink-0 tabular-nums">
                   {r.strengthBefore}% → 100%
                 </span>
               </div>
@@ -274,9 +274,9 @@ export function ReviewSessionPage() {
           ))}
         </div>
 
-        <p className="text-xs text-gray-400 text-center">All lessons restored to full strength 🟢</p>
+        <p className="text-xs text-gray-600 text-center">All lessons restored to full strength 🟢</p>
 
-        <p className="text-xs text-gray-400 text-center mt-1">This counts toward your weekly practice days ✓</p>
+        <p className="text-xs text-gray-600 text-center mt-1">This counts toward your weekly practice days ✓</p>
 
         <button
           type="button"
@@ -353,7 +353,7 @@ export function ReviewSessionPage() {
         <button
           type="button"
           onClick={() => setShowExit(true)}
-          className="w-9 h-9 border-2 border-dashed border-gray-400 rounded-lg flex items-center justify-center text-gray-400 hover:border-gray-600 hover:text-gray-600 cursor-pointer transition-colors shrink-0"
+          className="w-9 h-9 border-2 border-dashed border-gray-400 rounded-lg flex items-center justify-center text-gray-600 hover:border-gray-600 hover:text-gray-600 cursor-pointer transition-colors shrink-0"
         >
           ✕
         </button>
@@ -364,7 +364,7 @@ export function ReviewSessionPage() {
 
       {/* "From: Lesson Title" + retry indicator */}
       <div className="flex-none px-4 pb-1 flex items-center justify-between">
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-gray-600">
           {/* eslint-disable-next-line react-hooks/refs */}
           From: <span className="font-semibold text-gray-500">{currentItem.lessonTitle}</span>
         </p>

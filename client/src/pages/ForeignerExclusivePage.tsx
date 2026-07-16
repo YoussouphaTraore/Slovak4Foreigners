@@ -73,10 +73,10 @@ export function ForeignerExclusivePage() {
           <img src="/snail.png" alt="" className="w-8 h-8 object-contain shrink-0" />
           <div className="flex-1 min-w-0">
             <h1 className="text-base font-bold text-gray-800 leading-tight">Foreigner Exclusive</h1>
-            <p className="text-xs text-gray-400 leading-tight">Practical lessons built exclusively for foreigners in SK</p>
+            <p className="text-xs text-gray-600 leading-tight">Practical lessons built exclusively for foreigners in SK</p>
           </div>
           {isSyncing && (
-            <span title="Saving to cloud…" className="flex items-center gap-1 text-gray-400 shrink-0">
+            <span title="Saving to cloud…" className="flex items-center gap-1 text-gray-600 shrink-0">
               <span className="w-3 h-3 border-2 border-gray-300 border-t-brand-green rounded-full animate-spin inline-block" />
             </span>
           )}
@@ -117,7 +117,7 @@ export function ForeignerExclusivePage() {
 
       {/* Content */}
       <div className="flex-1 px-4 py-5 pb-24 space-y-3">
-        <p className="text-xs uppercase tracking-widest font-bold text-gray-400 px-1">Categories</p>
+        <p className="text-xs uppercase tracking-widest font-bold text-gray-600 px-1">Categories</p>
 
         {CATEGORIES.map((cat) => (
           <button
@@ -134,16 +134,16 @@ export function ForeignerExclusivePage() {
             <span className="text-3xl shrink-0">{cat.icon}</span>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <p className={`text-sm font-extrabold leading-tight ${cat.available ? 'text-gray-800' : 'text-gray-400'}`}>
+                <p className={`text-sm font-extrabold leading-tight ${cat.available ? 'text-gray-800' : 'text-gray-600'}`}>
                   {cat.title}
                 </p>
                 {!cat.available && (
-                  <span className="text-[10px] font-bold uppercase tracking-wide bg-gray-100 text-gray-400 px-2 py-0.5 rounded-full">
+                  <span className="text-[10px] font-bold uppercase tracking-wide bg-gray-100 text-gray-600 px-2 py-0.5 rounded-full">
                     Coming Soon
                   </span>
                 )}
               </div>
-              <p className="text-xs text-gray-400 mt-0.5 leading-snug">{cat.subtitle}</p>
+              <p className="text-xs text-gray-600 mt-0.5 leading-snug">{cat.subtitle}</p>
               <p className="text-xs text-gray-300 mt-1">{cat.lessonCount} lessons</p>
             </div>
             {cat.available && (

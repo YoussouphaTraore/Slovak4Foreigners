@@ -38,11 +38,12 @@ export function BottomNav({ active }: Props) {
 
   return (
     <>
-    <div className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white border-t border-gray-100 flex z-30">
+    <nav aria-label="Primary" className="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[430px] bg-white border-t border-gray-100 flex z-30">
       <button
         type="button"
         onClick={() => navigate('/')}
-        className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'home' ? 'text-brand-green' : 'text-gray-400 hover:text-gray-600'}`}
+        aria-current={active === 'home' ? 'page' : undefined}
+        className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'home' ? 'text-brand-green' : 'text-gray-600 hover:text-gray-600'}`}
       >
         <span className="text-2xl">🏠</span>
         <span className="text-xs font-semibold">Home</span>
@@ -51,7 +52,8 @@ export function BottomNav({ active }: Props) {
       <button
         type="button"
         onClick={() => navigate('/practice/dialogue')}
-        className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'practice' ? 'text-brand-green' : 'text-gray-400 hover:text-gray-600'}`}
+        aria-current={active === 'practice' ? 'page' : undefined}
+        className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'practice' ? 'text-brand-green' : 'text-gray-600 hover:text-gray-600'}`}
       >
         <span className="text-2xl">💬</span>
         <span className="text-[9px] font-semibold text-center leading-tight">Practice<br />Dialogue</span>
@@ -60,7 +62,8 @@ export function BottomNav({ active }: Props) {
       <button
         type="button"
         onClick={() => navigate('/foreigner-exclusive')}
-        className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'exclusive' ? 'text-brand-green' : 'text-gray-400 hover:text-gray-600'}`}
+        aria-current={active === 'exclusive' ? 'page' : undefined}
+        className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'exclusive' ? 'text-brand-green' : 'text-gray-600 hover:text-gray-600'}`}
       >
         <span className="text-2xl">🇸🇰</span>
         <span className="text-[9px] font-semibold text-center leading-tight">Foreigner<br />Exclusive</span>
@@ -69,7 +72,7 @@ export function BottomNav({ active }: Props) {
       <button
         type="button"
         onClick={() => { setShowLeaderboard(true); useAuthStore.getState().setLeaderboardPulse(false); }}
-        className="flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors text-gray-400 hover:text-gray-600"
+        className="flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors text-gray-600 hover:text-gray-600"
       >
         <span
           className="text-2xl inline-block"
@@ -95,7 +98,8 @@ export function BottomNav({ active }: Props) {
         <button
           type="button"
           onClick={() => navigate('/profile')}
-          className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'profile' ? 'text-brand-green' : 'text-gray-400 hover:text-gray-600'}`}
+          aria-current={active === 'profile' ? 'page' : undefined}
+          className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'profile' ? 'text-brand-green' : 'text-gray-600 hover:text-gray-600'}`}
         >
           <div className={`relative w-7 h-7 rounded-full ${active === 'profile' ? 'ring-2 ring-brand-green/40' : ''}`}>
             {/* State 1: initial letter */}
@@ -119,13 +123,13 @@ export function BottomNav({ active }: Props) {
         <button
           type="button"
           onClick={() => navigate('/auth')}
-          className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'profile' ? 'text-brand-green' : 'text-gray-400 hover:text-gray-600'}`}
+          className={`flex-1 flex flex-col items-center py-3 gap-0.5 cursor-pointer transition-colors ${active === 'profile' ? 'text-brand-green' : 'text-gray-600 hover:text-gray-600'}`}
         >
           <span className="text-2xl">👤</span>
           <span className="text-xs font-semibold">Sign in</span>
         </button>
       )}
-    </div>
+    </nav>
 
     {showLeaderboard && (
       <LeaderboardModal onClose={() => setShowLeaderboard(false)} />

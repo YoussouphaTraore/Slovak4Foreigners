@@ -31,7 +31,7 @@ export function AuthPage() {
         <h1 className="text-xl font-extrabold text-gray-800 text-center leading-tight mb-1">
           Slovak for Foreigners
         </h1>
-        <p className="text-sm text-gray-400 text-center mb-8">
+        <p className="text-sm text-gray-600 text-center mb-8">
           Save your progress. Keep your streak.
         </p>
 
@@ -49,7 +49,7 @@ export function AuthPage() {
           <p className="text-base font-bold text-gray-800 mb-1">
             Don't lose what you've learned.
           </p>
-          <p className="text-[13px] text-gray-400 leading-relaxed">
+          <p className="text-[13px] text-gray-600 leading-relaxed">
             Thousands of learners use this app daily —{' '}
             sign in so your progress is always saved.
           </p>
@@ -58,7 +58,7 @@ export function AuthPage() {
         <button
           type="button"
           onClick={() => navigate('/')}
-          className="text-sm text-gray-400 hover:text-gray-600 cursor-pointer transition-colors"
+          className="text-sm text-gray-600 hover:text-gray-600 cursor-pointer transition-colors"
         >
           Maybe later
         </button>

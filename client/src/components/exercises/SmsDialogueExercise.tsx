@@ -130,7 +130,7 @@ export function SmsDialogueExercise({ exercise, onDone, onAnswer }: Props) {
   return (
     <div className="flex flex-col flex-1 min-h-0">
       {exercise.scenario && (
-        <p className="text-xs text-center text-gray-400 italic px-4 pt-2 pb-1 flex-none">
+        <p className="text-xs text-center text-gray-600 italic px-4 pt-2 pb-1 flex-none">
           {exercise.scenario}
         </p>
       )}
@@ -157,11 +157,11 @@ export function SmsDialogueExercise({ exercise, onDone, onAnswer }: Props) {
                 }`}
             >
               {msg.isWrong && <span className="mr-1 text-red-500">✗</span>}
-              <span className="font-medium">{slovakifyNumbers(msg.text)}</span>
+              <span lang="sk" className="font-medium">{slovakifyNumbers(msg.text)}</span>
               {msg.english && (
                 <span
                   className={`block text-xs mt-0.5 font-normal ${
-                    msg.from === 'snail' ? 'text-gray-400' : msg.isWrong ? 'text-red-400' : 'text-green-100'
+                    msg.from === 'snail' ? 'text-gray-600' : msg.isWrong ? 'text-red-400' : 'text-green-100'
                   }`}
                 >
                   {msg.english}
@@ -185,7 +185,7 @@ export function SmsDialogueExercise({ exercise, onDone, onAnswer }: Props) {
           </button>
         ) : (
           <>
-            <p className="text-xs text-gray-400 text-center mb-1">Choose your reply</p>
+            <p className="text-xs text-gray-600 text-center mb-1">Choose your reply</p>
             {/* eslint-disable-next-line react-hooks/refs */}
             {turnChoices.map((choice, idx) => (
               <button
@@ -195,13 +195,13 @@ export function SmsDialogueExercise({ exercise, onDone, onAnswer }: Props) {
                 onClick={() => handleChoice(choice)}
                 className={`w-full text-left px-4 py-2.5 rounded-xl border text-sm font-medium transition-all cursor-pointer active:scale-[0.98] break-words
                   ${awaitingReply
-                    ? 'bg-gray-50 border-gray-200 text-gray-400'
+                    ? 'bg-gray-50 border-gray-200 text-gray-600'
                     : 'bg-white border-gray-200 text-gray-800 hover:border-brand-green hover:bg-green-50'
                   }`}
               >
-                <span>{slovakifyNumbers(choice.slovak)}</span>
+                <span lang="sk">{slovakifyNumbers(choice.slovak)}</span>
                 {choice.english && (
-                  <span className="block text-xs text-gray-400 font-normal mt-0.5">{choice.english}</span>
+                  <span className="block text-xs text-gray-600 font-normal mt-0.5">{choice.english}</span>
                 )}
               </button>
             ))}

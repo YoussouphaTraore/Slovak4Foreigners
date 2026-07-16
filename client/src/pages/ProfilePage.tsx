@@ -7,6 +7,7 @@ import { lessons } from '../data/lessons';
 import { stage1Blocks, getBlockLessonIds } from '../config/stageBlocks';
 import { foreignPoliceLessons } from '../data/foreigner-exclusive/foreign-police';
 import { getAvatarUrl } from '../lib/supabase/aliasUtils';
+import { exportUserData, downloadUserData } from '../lib/supabase/dataExport';
 import { BottomNav } from '../components/ui/BottomNav';
 import { canInstall, triggerInstall, markInstalled, markDismissed } from '../lib/pwaInstall';
 
@@ -14,7 +15,7 @@ import { canInstall, triggerInstall, markInstalled, markDismissed } from '../lib
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs uppercase tracking-widest text-gray-400 font-semibold px-1 mb-2">
+    <p className="text-xs uppercase tracking-widest text-gray-600 font-semibold px-1 mb-2">
       {children}
     </p>
   );
@@ -106,7 +107,7 @@ function ConfirmDeleteModal({
           type="button"
           onClick={onCancel}
           disabled={deleting}
-          className="w-full text-gray-400 text-sm py-1.5 cursor-pointer hover:text-gray-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-full text-gray-600 text-sm py-1.5 cursor-pointer hover:text-gray-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           Cancel
         </button>
@@ -144,6 +145,24 @@ export function ProfilePage() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
+
+  // GDPR Art. 15/20 — download my data
+  const [exporting, setExporting] = useState(false);
+  const [exportError, setExportError] = useState<string | null>(null);
+  const handleExportData = async () => {
+    if (exporting) return;
+    setExporting(true);
+    setExportError(null);
+    try {
+      const data = await exportUserData();
+      downloadUserData(data);
+    } catch (e) {
+      console.error('[data-export] failed:', e);
+      setExportError('Could not export your data. Please try again.');
+    } finally {
+      setExporting(false);
+    }
+  };
 
   // PWA install prompt — reads from shared module (captured in AppShell)
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
@@ -201,6 +220,10 @@ export function ProfilePage() {
 
   // ── Handlers ─────────────────────────────────────────────────────────────────
 
+  // NOTE: this is a device-local preference ONLY. No reminders/notifications/emails
+  // are actually sent, so there is no data processing to consent to. If reminder
+  // sending is ever built, it must be gated on explicit server-side opt-in (GDPR
+  // Art. 7) and disclosed in the Privacy Policy first.
   const handleToggleReminders = (val: boolean) => {
     setStreakReminders(val);
     try { localStorage.setItem('streak_reminders_enabled', String(val)); } catch { /* */ }
@@ -239,8 +262,8 @@ export function ProfilePage() {
             style={{ width: 72, height: 72 }}
           />
           <h1 className="text-xl font-extrabold text-gray-800 leading-tight">{alias || 'Snail Learner'}</h1>
-          <p className="text-sm text-gray-400 mt-1">{user.email}</p>
-          {memberSince && <p className="text-xs text-gray-400 mt-1">{memberSince}</p>}
+          <p className="text-sm text-gray-600 mt-1">{user.email}</p>
+          {memberSince && <p className="text-xs text-gray-600 mt-1">{memberSince}</p>}
         </div>
 
         {/* ── 2. Stats grid ──────────────────────────────────────────────────── */}
@@ -258,7 +281,7 @@ export function ProfilePage() {
               >
                 <span className="text-2xl leading-none">{icon}</span>
                 <span className="text-lg font-extrabold text-gray-800 mt-1">{value}</span>
-                <span className="text-xs text-gray-400 text-center leading-tight">{label}</span>
+                <span className="text-xs text-gray-600 text-center leading-tight">{label}</span>
               </div>
             ))}
           </div>
@@ -322,15 +345,15 @@ export function ProfilePage() {
                       {hasCard ? '📋' : '🔒'}
                     </span>
                     <div className="flex-1 min-w-0">
-                      <p className={`text-sm font-semibold truncate ${hasCard ? 'text-gray-800' : 'text-gray-400'}`}>
+                      <p className={`text-sm font-semibold truncate ${hasCard ? 'text-gray-800' : 'text-gray-600'}`}>
                         {l.title}
                       </p>
-                      <p className="text-xs text-gray-400 italic truncate">{l.titleSlovak}</p>
+                      <p className="text-xs text-gray-600 italic truncate">{l.titleSlovak}</p>
                     </div>
                     {hasCard ? (
                       <span className="text-xs bg-green-100 text-green-700 px-2.5 py-0.5 rounded-full font-semibold shrink-0">Unlocked</span>
                     ) : (
-                      <span className="text-xs bg-gray-100 text-gray-400 px-2.5 py-0.5 rounded-full font-semibold shrink-0">Locked</span>
+                      <span className="text-xs bg-gray-100 text-gray-600 px-2.5 py-0.5 rounded-full font-semibold shrink-0">Locked</span>
                     )}
                   </Row>
                 );
@@ -350,8 +373,8 @@ export function ProfilePage() {
                 className="w-10 h-10 rounded-full object-cover flex-none"
               />
               <div className="flex-1 min-w-0">
-                <p className="text-xs text-gray-400 leading-none mb-0.5">Your alias</p>
-                <p className="text-[10px] text-gray-400 leading-none mb-1">This is how others see you</p>
+                <p className="text-xs text-gray-600 leading-none mb-0.5">Your alias</p>
+                <p className="text-[10px] text-gray-600 leading-none mb-1">This is how others see you</p>
                 <p className="text-sm font-semibold text-gray-800 truncate">{alias || '—'}</p>
               </div>
             </Row>
@@ -360,10 +383,10 @@ export function ProfilePage() {
             <Row>
               <span className="text-xl w-7 flex-none text-center leading-none">🌍</span>
               <div className="flex-1 min-w-0">
-                <p className="text-xs text-gray-400 leading-none mb-0.5">Country of origin</p>
+                <p className="text-xs text-gray-600 leading-none mb-0.5">Country of origin</p>
                 <p className="text-sm font-semibold text-gray-800 truncate">{country || '—'}</p>
                 {country_sk && (
-                  <p className="text-xs text-gray-400 truncate">{country_sk}</p>
+                  <p className="text-xs text-gray-600 truncate">{country_sk}</p>
                 )}
               </div>
             </Row>
@@ -372,7 +395,7 @@ export function ProfilePage() {
             <Row>
               <span className="text-xl w-7 flex-none text-center leading-none">👤</span>
               <div className="flex-1 min-w-0">
-                <p className="text-xs text-gray-400 leading-none mb-0.5">Gender</p>
+                <p className="text-xs text-gray-600 leading-none mb-0.5">Gender</p>
                 <p className="text-sm font-semibold text-gray-800">{gender || '—'}</p>
               </div>
             </Row>
@@ -393,7 +416,7 @@ export function ProfilePage() {
               <span className="text-xl w-7 flex-none text-center leading-none">📲</span>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold text-gray-800">Install App</p>
-                <p className="text-xs text-gray-400">Add to your home screen</p>
+                <p className="text-xs text-gray-600">Add to your home screen</p>
               </div>
               <span className="text-xs text-brand-green font-semibold">Install</span>
             </Row>
@@ -415,17 +438,17 @@ export function ProfilePage() {
             <Row onClick={() => navigate('/privacy')}>
               <span className="text-xl w-7 flex-none text-center leading-none">🔏</span>
               <span className="text-sm text-gray-700 flex-1">Privacy Policy</span>
-              <span className="text-xs text-gray-400">›</span>
+              <span className="text-xs text-gray-600">›</span>
             </Row>
             <Row onClick={() => navigate('/terms')}>
               <span className="text-xl w-7 flex-none text-center leading-none">📄</span>
               <span className="text-sm text-gray-700 flex-1">Terms of Service</span>
-              <span className="text-xs text-gray-400">›</span>
+              <span className="text-xs text-gray-600">›</span>
             </Row>
             <Row last onClick={() => navigate('/legal')}>
               <span className="text-xl w-7 flex-none text-center leading-none">🏛️</span>
               <span className="text-sm text-gray-700 flex-1">Legal Notice</span>
-              <span className="text-xs text-gray-400">›</span>
+              <span className="text-xs text-gray-600">›</span>
             </Row>
           </Card>
         </div>
@@ -441,11 +464,33 @@ export function ProfilePage() {
           </button>
         )}
 
-        {/* ── 11. Delete account — plain text, no card ───────────────────────── */}
+        {/* ── 11. Your data (GDPR export) ────────────────────────────────────── */}
+        <div>
+          <SectionLabel>Your data</SectionLabel>
+          <Card>
+            <Row last onClick={exporting ? undefined : handleExportData}>
+              <span className="text-xl w-7 flex-none text-center leading-none">⬇️</span>
+              <span className="text-sm text-gray-700 flex-1">
+                {exporting ? 'Preparing your data…' : 'Download my data'}
+              </span>
+              {exporting
+                ? <span className="w-4 h-4 border-2 border-gray-300 border-t-brand-green rounded-full animate-spin" />
+                : <span className="text-xs text-gray-600">›</span>}
+            </Row>
+          </Card>
+          <p className="text-[11px] text-gray-600 px-1 mt-1.5 leading-snug">
+            Downloads everything we hold about your account as a JSON file.
+          </p>
+          {exportError && (
+            <p className="text-[11px] text-red-500 px-1 mt-1">{exportError}</p>
+          )}
+        </div>
+
+        {/* ── 12. Delete account — plain text, no card ───────────────────────── */}
         <button
           type="button"
           onClick={() => setShowDeleteConfirm(true)}
-          className="w-full text-center text-xs text-gray-400 py-2 cursor-pointer hover:text-gray-500 transition-colors"
+          className="w-full text-center text-xs text-gray-600 py-2 cursor-pointer hover:text-gray-500 transition-colors"
         >
           Delete account
         </button>

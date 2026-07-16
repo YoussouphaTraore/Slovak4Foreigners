@@ -28,6 +28,13 @@ export function ConversationListenExercise({ exercise, onDone }: Props) {
 
   const [hasCompletedPlay, setHasCompletedPlay] = useState(!hasAudio);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [showTranscript, setShowTranscript] = useState(false);
+
+  const hasTranscript = Boolean(exercise.conversationTranscriptSk);
+  // Accessibility (WCAG 1.2.1 / 1.2.2): audio-only content needs a text
+  // alternative, and Continue must not be gated on *hearing* the audio.
+  // Revealing the transcript provides that alternative and unlocks Continue.
+  const canContinue = hasCompletedPlay || showTranscript;
 
   const handlePlayPause = () => {
     const audio = audioRef.current;
@@ -78,23 +85,34 @@ export function ConversationListenExercise({ exercise, onDone }: Props) {
             <button
               type="button"
               onClick={handlePlayPause}
+              aria-label={isPlaying ? 'Pause audio' : 'Play audio'}
               className="w-20 h-20 rounded-full bg-brand-green text-white flex items-center justify-center shadow-lg hover:opacity-90 active:scale-95 transition-all cursor-pointer"
             >
               {isPlaying ? (
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <rect x="6" y="4" width="4" height="16" rx="1" />
                   <rect x="14" y="4" width="4" height="16" rx="1" />
                 </svg>
               ) : (
-                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               )}
             </button>
-            {!hasCompletedPlay && (
-              <p className="text-xs text-gray-400 text-center">
+            {!hasCompletedPlay && !showTranscript && (
+              <p className="text-xs text-gray-600 text-center">
                 Listen to the full conversation before continuing
               </p>
+            )}
+            {hasTranscript && (
+              <button
+                type="button"
+                onClick={() => setShowTranscript((v) => !v)}
+                aria-expanded={showTranscript}
+                className="text-xs font-semibold text-brand-blue underline underline-offset-2 cursor-pointer"
+              >
+                {showTranscript ? 'Hide transcript' : 'Show transcript'}
+              </button>
             )}
           </>
         ) : (
@@ -107,10 +125,10 @@ export function ConversationListenExercise({ exercise, onDone }: Props) {
           </div>
         )}
 
-        {exercise.conversationTranscriptSk && !hasAudio && (
+        {exercise.conversationTranscriptSk && (showTranscript || !hasAudio) && (
           <div className="w-full px-4 py-4 bg-gray-50 rounded-2xl border border-gray-200">
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Transcript</p>
-            <p className="text-sm text-gray-700 leading-relaxed">{exercise.conversationTranscriptSk}</p>
+            <p className="text-xs font-semibold text-gray-600 uppercase tracking-wide mb-2">Transcript</p>
+            <p lang="sk" className="text-sm text-gray-700 leading-relaxed">{exercise.conversationTranscriptSk}</p>
           </div>
         )}
       </div>
@@ -118,12 +136,12 @@ export function ConversationListenExercise({ exercise, onDone }: Props) {
       <div className="flex-none pb-1">
         <button
           type="button"
-          disabled={!hasCompletedPlay}
+          disabled={!canContinue}
           onClick={() => onDone(true)}
           className={`w-full font-bold py-3.5 rounded-xl text-sm uppercase tracking-widest transition-all ${
-            hasCompletedPlay
+            canContinue
               ? 'bg-brand-green text-white hover:opacity-90 active:scale-[0.98] shadow-md cursor-pointer'
-              : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              : 'bg-gray-200 text-gray-600 cursor-not-allowed'
           }`}
         >
           Continue

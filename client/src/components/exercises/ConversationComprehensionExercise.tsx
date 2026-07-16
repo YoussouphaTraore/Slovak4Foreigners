@@ -89,7 +89,7 @@ export function ConversationComprehensionExercise({ exercise, onDone, onAnswer, 
     if (answer.id === tappedId) {
       return `${base} border-brand-red bg-red-50 text-brand-red animate-shake`;
     }
-    return `${base} border-gray-200 bg-white text-gray-400 opacity-50`;
+    return `${base} border-gray-200 bg-white text-gray-600 opacity-50`;
   };
 
   return (
@@ -123,7 +123,7 @@ export function ConversationComprehensionExercise({ exercise, onDone, onAnswer, 
             🎧 Audio coming soon
           </span>
         )}
-        <span className="text-xs text-gray-400 ml-auto">
+        <span className="text-xs text-gray-600 ml-auto">
           {questionIdx + 1} / {exercise.questions.length}
         </span>
       </div>

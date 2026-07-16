@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { saveOnboarding } from '../lib/supabase/progressSync';
+import { recordDemographics, saveLocalDemographics, applyDemographicsToStore } from '../lib/demographics';
 import { type Country } from '../data/countries';
 import { fetchCountries } from '../utils/fetchCountries';
 
@@ -41,19 +41,12 @@ export function OnboardingModal({ userId, onDone }: Props) {
     if (!country || !gender || saving) return;
     setSaving(true);
     setError(null);
-    try {
-      await saveOnboarding(
-        userId,
-        country.en, country.sk,
-        country.gen, country.loc,
-        country.adj_m, country.adj_f, country.adj_n, country.adv,
-        gender,
-      );
-      onDone();
-    } catch {
-      setError('Something went wrong. Please try again.');
-      setSaving(false);
-    }
+    // Anonymous only: bump the aggregate tally (no user_id), keep the choice on
+    // THIS DEVICE for grammar personalisation, and never write it to our DB.
+    await recordDemographics(gender, country.en);
+    saveLocalDemographics(userId, country, gender);
+    applyDemographicsToStore({ country, gender });
+    onDone();
   };
 
   // ── Step 1: Country ──────────────────────────────────────────────────────────
@@ -71,6 +64,7 @@ export function OnboardingModal({ userId, onDone }: Props) {
         <div className="px-4 pb-3 flex-none">
           <input
             type="text"
+            aria-label="Search for your country"
             placeholder="Search country…"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -84,7 +78,7 @@ export function OnboardingModal({ userId, onDone }: Props) {
               <div className="w-7 h-7 rounded-full border-4 border-brand-green border-t-transparent animate-spin" />
             </div>
           ) : filtered.length === 0 ? (
-            <p className="text-sm text-gray-400 text-center pt-6">No results for "{search}"</p>
+            <p className="text-sm text-gray-600 text-center pt-6">No results for "{search}"</p>
           ) : (
             filtered.map((c) =>
               c.disabled ? (
@@ -93,10 +87,10 @@ export function OnboardingModal({ userId, onDone }: Props) {
                   className="w-full px-4 py-3 rounded-xl border-2 border-dashed border-gray-200 bg-gray-50 flex items-center justify-between"
                 >
                   <div>
-                    <span className="block text-sm font-semibold text-gray-400">{c.en}</span>
-                    <span className="block text-xs text-gray-400 mt-0.5">{c.sk}</span>
+                    <span className="block text-sm font-semibold text-gray-600">{c.en}</span>
+                    <span lang="sk" className="block text-xs text-gray-600 mt-0.5">{c.sk}</span>
                   </div>
-                  <span className="text-xs text-gray-400 font-medium shrink-0 ml-2">Host country</span>
+                  <span className="text-xs text-gray-600 font-medium shrink-0 ml-2">Host country</span>
                 </div>
               ) : (
                 <button
@@ -106,7 +100,7 @@ export function OnboardingModal({ userId, onDone }: Props) {
                   className="w-full text-left px-4 py-3 rounded-xl border-2 border-gray-100 bg-white hover:border-brand-green hover:bg-green-50 active:scale-[0.98] transition-all cursor-pointer"
                 >
                   <span className="block text-sm font-semibold text-gray-800">{c.en}</span>
-                  <span className="block text-xs text-gray-400 mt-0.5">{c.sk}</span>
+                  <span lang="sk" className="block text-xs text-gray-600 mt-0.5">{c.sk}</span>
                 </button>
               )
             )
@@ -121,8 +115,11 @@ export function OnboardingModal({ userId, onDone }: Props) {
     <div className="fixed inset-0 z-[85] bg-[#E8F4DC] flex flex-col items-center justify-center px-6">
       <img src="/snail.png" alt="" className="w-16 h-16 mb-4 object-contain" />
       <h2 className="text-xl font-extrabold text-gray-800 mb-1 text-center">What's your gender?</h2>
-      <p className="text-xs text-gray-500 mb-2 text-center leading-snug">
+      <p className="text-xs text-gray-500 mb-1 text-center leading-snug">
         Used to personalise lesson dialogue and examples
+      </p>
+      <p className="text-[11px] text-gray-600 mb-2 text-center leading-snug max-w-xs">
+        We only keep an anonymous count — this is never saved to your account.
       </p>
 
       <button
@@ -159,7 +156,7 @@ export function OnboardingModal({ userId, onDone }: Props) {
         className={`mt-8 w-full max-w-sm py-3.5 rounded-xl font-extrabold text-sm transition-all ${
           gender && !saving
             ? 'bg-brand-green text-white hover:opacity-90 active:scale-[0.98] cursor-pointer shadow-md'
-            : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+            : 'bg-gray-200 text-gray-600 cursor-not-allowed'
         }`}
       >
         {saving ? 'Saving…' : 'Continue'}

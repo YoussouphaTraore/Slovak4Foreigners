@@ -302,7 +302,7 @@ export function LessonPage() {
 
       {/* Strike indicators */}
       <div className="flex-none flex items-center justify-end gap-1.5 px-4 pb-1">
-        <span className="text-xs text-gray-400 mr-1">strikes</span>
+        <span className="text-xs text-gray-600 mr-1">strikes</span>
         {Array.from({ length: MAX_TOTAL }).map((_, i) => (
           <div
             key={i}
@@ -337,7 +337,7 @@ export function LessonPage() {
               {i + 1}
             </button>
           ))}
-          <span className="text-xs text-gray-400 ml-1">dev</span>
+          <span className="text-xs text-gray-600 ml-1">dev</span>
         </div>
       )}
 

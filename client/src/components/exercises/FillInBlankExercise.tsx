@@ -40,8 +40,9 @@ export function FillInBlankExercise({ exercise, value, onChange, disabled, onInp
             value={value}
             onChange={(e) => onChange(e.target.value)}
             disabled={disabled}
+            aria-label="Fill in the missing word"
             placeholder="___"
-            className="border-b-2 border-brand-blue bg-transparent text-brand-blue text-center focus:outline-none disabled:text-gray-500 w-28 mx-1"
+            className="border-b-2 border-brand-blue bg-transparent text-brand-blue text-center focus-visible:ring-2 focus-visible:ring-brand-gold focus-visible:outline-none rounded-sm disabled:text-gray-500 w-28 mx-1"
             style={{ minWidth: `${Math.max(value.length, 6) * 12}px`, maxWidth: '160px' }}
           />
           <span>{after}</span>

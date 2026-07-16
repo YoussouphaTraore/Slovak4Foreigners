@@ -84,7 +84,7 @@ export function PwaInstallSheet({ isIOS, onInstall, onDismiss }: Props) {
             <button
               type="button"
               onClick={onDismiss}
-              className="w-full text-gray-400 text-sm underline cursor-pointer py-2"
+              className="w-full text-gray-600 text-sm underline cursor-pointer py-2"
             >
               Not now
             </button>

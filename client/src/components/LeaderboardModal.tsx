@@ -181,12 +181,12 @@ export function LeaderboardModal({ onClose }: Props) {
           <div className="flex items-center justify-between">
             <div>
               <h2 className="text-base font-extrabold text-gray-800">Top 100 · Weekly Leaderboard</h2>
-              <p className="text-[10px] text-gray-400 leading-none mt-0.5">Resets every Monday</p>
+              <p className="text-[10px] text-gray-600 leading-none mt-0.5">Resets every Monday</p>
             </div>
             <button
               type="button"
               onClick={onClose}
-              className="text-gray-400 hover:text-gray-600 text-xl cursor-pointer leading-none"
+              className="text-gray-600 hover:text-gray-600 text-xl cursor-pointer leading-none"
             >
               ✕
             </button>
@@ -210,7 +210,7 @@ export function LeaderboardModal({ onClose }: Props) {
             <span className="text-5xl">🏆</span>
             <div>
               <p className="text-base font-extrabold text-gray-800 leading-snug">Sign in to join the competition</p>
-              <p className="text-sm text-gray-400 mt-1 leading-snug">Create a free account to earn XP and compete on the weekly leaderboard.</p>
+              <p className="text-sm text-gray-600 mt-1 leading-snug">Create a free account to earn XP and compete on the weekly leaderboard.</p>
             </div>
             <button
               type="button"
@@ -235,7 +235,7 @@ export function LeaderboardModal({ onClose }: Props) {
               <span className="w-8 h-8 border-4 border-gray-200 border-t-brand-green rounded-full animate-spin" />
             </div>
           ) : isEmpty ? (
-            <p className="text-sm text-gray-400 text-center px-6 py-12">
+            <p className="text-sm text-gray-600 text-center px-6 py-12">
               No activity this week yet. Start learning to claim #1!
             </p>
           ) : (

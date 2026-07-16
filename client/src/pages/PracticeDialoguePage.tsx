@@ -31,10 +31,10 @@ export function PracticeDialoguePage() {
           <img src="/snail.png" alt="" className="w-8 h-8 object-contain shrink-0" />
           <div className="flex-1 min-w-0">
             <h1 className="text-base font-bold text-gray-800 leading-tight">Practice Dialogue</h1>
-            <p className="text-xs text-gray-400 leading-tight">Real conversations with Slovak characters</p>
+            <p className="text-xs text-gray-600 leading-tight">Real conversations with Slovak characters</p>
           </div>
           {isSyncing && (
-            <span title="Saving to cloud…" className="flex items-center gap-1 text-gray-400 shrink-0">
+            <span title="Saving to cloud…" className="flex items-center gap-1 text-gray-600 shrink-0">
               <span className="w-3 h-3 border-2 border-gray-300 border-t-brand-green rounded-full animate-spin inline-block" />
             </span>
           )}

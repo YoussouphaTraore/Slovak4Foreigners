@@ -8,7 +8,7 @@ const KEY_VERSION = 'consentVersion';
 const KEY_DATE = 'consentDate';
 const KEY_LAST_SHOWN = 'lastConsentShown';
 const MS_24H = 24 * 60 * 60 * 1000;
-const LEGAL_PATHS = ['/terms', '/privacy'];
+const LEGAL_PATHS = ['/terms', '/privacy', '/legal'];
 
 function shouldShow(isLoggedIn: boolean): boolean {
   try {
@@ -111,7 +111,7 @@ export function ConsentPopup({ onAccepted }: ConsentPopupProps) {
             className={`w-full py-3 rounded-xl text-sm font-bold uppercase tracking-widest transition-all ${
               checked
                 ? 'bg-brand-green text-white hover:opacity-90 active:scale-[0.98] cursor-pointer shadow-md'
-                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-gray-200 text-gray-600 cursor-not-allowed'
             }`}
           >
             Accept &amp; Continue
@@ -172,7 +172,7 @@ export function ConsentPopup({ onAccepted }: ConsentPopupProps) {
           className={`w-full py-3.5 rounded-xl text-sm font-bold uppercase tracking-widest transition-all ${
             checked
               ? 'bg-brand-green text-white hover:opacity-90 active:scale-[0.98] cursor-pointer shadow-md'
-              : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              : 'bg-gray-200 text-gray-600 cursor-not-allowed'
           }`}
         >
           Accept &amp; Continue

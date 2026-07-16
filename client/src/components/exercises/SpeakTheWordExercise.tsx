@@ -418,7 +418,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
         <div className="bg-white rounded-2xl px-4 py-2 shadow-sm text-sm font-semibold text-gray-700 leading-snug">
           {prompt}
         </div>
-        <span className="ml-auto text-xs text-gray-400 whitespace-nowrap flex-none">
+        <span className="ml-auto text-xs text-gray-600 whitespace-nowrap flex-none">
           Word {activeIdx + 1} of {words.length}
         </span>
       </div>
@@ -463,7 +463,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
                 isActive && status === 'idle' ? 'animate-pulse' : '',
               ].filter(Boolean).join(' ')}
             >
-              <span className={[
+              <span lang="sk" className={[
                 'text-base font-bold',
                 isPassing || isPassed ? 'text-green-700' :
                 isRetrying ? 'text-amber-600' :
@@ -475,7 +475,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
                 {isPassed && !isActive && marker}
                 {isRetrying && retryIcon}
               </span>
-              <span className="text-xs text-gray-400 mt-0.5">{word.english}</span>
+              <span lang="en" className="text-xs text-gray-600 mt-0.5">{word.english}</span>
             </div>
           );
         })}
@@ -494,6 +494,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
         <button
           type="button"
           onClick={isRecording ? cancelRecording : micPermission === 'denied' ? () => { void requestPermission(); } : startRecording}
+          aria-label={isRecording ? 'Stop recording' : 'Tap to record your pronunciation'}
           disabled={isSettled || isRetry || micPermission === 'blocked'}
           className={[
             'w-16 h-16 rounded-full flex items-center justify-center shadow-lg transition-all active:scale-95 cursor-pointer',
@@ -525,7 +526,7 @@ export function SpeakTheWordExercise({ exercise, onDone, onAnswer }: Props) {
         <button
           type="button"
           onClick={handleCantSpeak}
-          className="text-xs text-gray-400 underline underline-offset-2 hover:text-gray-600 cursor-pointer"
+          className="text-xs text-gray-600 underline underline-offset-2 hover:text-gray-600 cursor-pointer"
         >
           Can't speak?
         </button>

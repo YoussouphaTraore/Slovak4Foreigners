@@ -120,7 +120,7 @@ export function ForeignerSmsDialogue({ exercise, onDone, onAnswer }: Props) {
         </div>
 
         <div className="flex-none mb-4">
-          <p className="text-base font-bold text-gray-800 leading-snug">
+          <p lang="sk" className="text-base font-bold text-gray-800 leading-snug">
             {slovakifyNumbers(currentQ.question)}
           </p>
         </div>
@@ -137,13 +137,14 @@ export function ForeignerSmsDialogue({ exercise, onDone, onAnswer }: Props) {
             } else if (isSelected) {
               cls += 'bg-red-50 border-red-400 text-red-700';
             } else {
-              cls += 'bg-white border-gray-200 text-gray-400 opacity-60';
+              cls += 'bg-white border-gray-200 text-gray-600 opacity-60';
             }
             return (
               <button
                 key={choice}
                 type="button"
                 onClick={() => handleChoiceSelect(choice)}
+                lang="sk"
                 className={cls}
                 disabled={revealed}
               >
@@ -163,7 +164,7 @@ export function ForeignerSmsDialogue({ exercise, onDone, onAnswer }: Props) {
               }`}>
                 {selected === currentQ.answer ? '✓ Correct!' : '✗ Not quite'}
               </p>
-              <p className="text-xs text-gray-600 leading-snug">
+              <p lang="sk" className="text-xs text-gray-600 leading-snug">
                 {slovakifyNumbers(currentQ.explanation)}
               </p>
             </div>
@@ -245,13 +246,13 @@ export function ForeignerSmsDialogue({ exercise, onDone, onAnswer }: Props) {
                     }`}
                     style={isUser ? { backgroundColor: WA_BUBBLE } : {}}
                   >
-                    <p className="text-sm leading-snug text-gray-800 break-words">
+                    <p lang="sk" className="text-sm leading-snug text-gray-800 break-words">
                       {slovakifyNumbers(msg.text)}
                     </p>
 
                     {/* Timestamp + read receipt */}
                     <div className={`flex items-center gap-1 mt-1 ${isUser ? 'justify-end' : 'justify-start'}`}>
-                      <span className="text-[10px] text-gray-400">{fakeTime(i)}</span>
+                      <span className="text-[10px] text-gray-600">{fakeTime(i)}</span>
                       {isUser && (
                         <span className="text-[11px]" style={{ color: '#4FC3F7' }}>✓✓</span>
                       )}

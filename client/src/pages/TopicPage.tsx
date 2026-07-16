@@ -79,7 +79,7 @@ export function TopicPage() {
           </div>
           <div className="flex-1 min-w-0">
             <h1 className="text-base font-bold text-gray-800 leading-tight">{topic.title}</h1>
-            <p className="text-xs text-gray-400 leading-tight">
+            <p className="text-xs text-gray-600 leading-tight">
               {completedCount === totalCount && totalCount > 0
                 ? 'All lessons complete!'
                 : `${completedCount} of ${totalCount} complete`}
@@ -136,7 +136,7 @@ export function TopicPage() {
                           ? 'bg-brand-green text-white hover:opacity-90'
                           : state === 'available'
                           ? 'bg-brand-green text-white hover:opacity-90 ring-4 ring-brand-green/30 animate-pulse'
-                          : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                          : 'bg-gray-200 text-gray-600 cursor-not-allowed'
                         }`}
                     >
                       {state === 'completed' ? '✓' : isLocked ? '🔒' : lesson.icon}
@@ -179,10 +179,10 @@ export function TopicPage() {
                   </div>
 
                   <div className="mt-2 text-center">
-                    <p className={`text-sm font-semibold ${isLocked ? 'text-gray-400' : 'text-gray-700'}`}>
+                    <p className={`text-sm font-semibold ${isLocked ? 'text-gray-600' : 'text-gray-700'}`}>
                       {lesson.title}
                     </p>
-                    <p className={`text-xs ${isLocked ? 'text-gray-300' : 'text-gray-400'} line-clamp-1`}>
+                    <p className={`text-xs ${isLocked ? 'text-gray-300' : 'text-gray-600'} line-clamp-1`}>
                       {lesson.description}
                     </p>
                     <p className={`text-xs mt-0.5 text-right ${isLocked ? 'text-gray-300' : 'text-amber-500'} font-semibold`}>
@@ -220,7 +220,7 @@ export function TopicPage() {
                           ? 'bg-blue-500 text-white hover:opacity-90 cursor-pointer'
                           : comprehensionEnabled
                           ? 'bg-blue-500 text-white hover:opacity-90 ring-4 ring-blue-300/50 animate-pulse cursor-pointer'
-                          : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                          : 'bg-gray-200 text-gray-600 cursor-not-allowed'
                         }`}
                       title={
                         comprehensionComplete
@@ -236,7 +236,7 @@ export function TopicPage() {
                     </button>
                   </div>
                   <div className="mt-2 text-center">
-                    <p className={`text-sm font-semibold ${comprehensionEnabled || comprehensionComplete ? 'text-gray-700' : 'text-gray-400'}`}>
+                    <p className={`text-sm font-semibold ${comprehensionEnabled || comprehensionComplete ? 'text-gray-700' : 'text-gray-600'}`}>
                       {comprehensionComplete ? 'Quiz Done!' : 'Comprehension'}
                     </p>
                     <p className={`text-xs ${comprehensionEnabled || comprehensionComplete ? 'text-blue-500' : 'text-gray-300'}`}>
@@ -282,7 +282,7 @@ export function TopicPage() {
                           ? 'bg-amber-400 text-white hover:opacity-90 cursor-pointer'
                           : raceEnabled
                           ? 'bg-amber-400 text-white hover:opacity-90 ring-4 ring-amber-300/50 animate-pulse cursor-pointer'
-                          : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                          : 'bg-gray-200 text-gray-600 cursor-not-allowed'
                         }`}
                       title={
                         racePassed
@@ -298,7 +298,7 @@ export function TopicPage() {
                     </button>
                   </div>
                   <div className="mt-2 text-center">
-                    <p className={`text-sm font-semibold ${raceEnabled || racePassed ? 'text-gray-700' : 'text-gray-400'}`}>
+                    <p className={`text-sm font-semibold ${raceEnabled || racePassed ? 'text-gray-700' : 'text-gray-600'}`}>
                       {racePassed ? 'Race Passed!' : 'Topic Race'}
                     </p>
                     <p className={`text-xs ${raceEnabled || racePassed ? 'text-amber-500' : 'text-gray-300'}`}>

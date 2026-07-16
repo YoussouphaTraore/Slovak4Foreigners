@@ -153,7 +153,7 @@ export function ForeignerExclusiveLessonPage() {
         <button
           type="button"
           onClick={() => setShowExit(true)}
-          className="w-9 h-9 border-2 border-dashed border-gray-400 rounded-lg flex items-center justify-center text-gray-400 hover:border-gray-600 hover:text-gray-600 cursor-pointer transition-colors shrink-0"
+          className="w-9 h-9 border-2 border-dashed border-gray-400 rounded-lg flex items-center justify-center text-gray-600 hover:border-gray-600 hover:text-gray-600 cursor-pointer transition-colors shrink-0"
         >
           ✕
         </button>
@@ -163,7 +163,7 @@ export function ForeignerExclusiveLessonPage() {
 
       {/* Strike indicators */}
       <div className="flex-none flex items-center justify-end gap-1.5 px-4 pb-1">
-        <span className="text-xs text-gray-400 mr-1">strikes</span>
+        <span className="text-xs text-gray-600 mr-1">strikes</span>
         {Array.from({ length: MAX_TOTAL }).map((_, i) => (
           <div
             key={i}
@@ -178,7 +178,7 @@ export function ForeignerExclusiveLessonPage() {
 
       {/* Lesson label */}
       <div className="flex-none px-4 pb-1">
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-gray-600">
           <span className="font-semibold text-gray-500">{lesson.title}</span>
           {' · '}
           <span className="italic">{lesson.titleSlovak}</span>
@@ -206,7 +206,7 @@ export function ForeignerExclusiveLessonPage() {
               {i + 1}
             </button>
           ))}
-          <span className="text-xs text-gray-400 ml-1">dev</span>
+          <span className="text-xs text-gray-600 ml-1">dev</span>
         </div>
       )}
 

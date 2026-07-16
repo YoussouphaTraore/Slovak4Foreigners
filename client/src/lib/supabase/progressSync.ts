@@ -200,84 +200,12 @@ export async function loadIsAdmin(userId: string): Promise<boolean> {
   }
 }
 
-// ── Onboarding (country + gender) ─────────────────────────────────────────────
-
-export async function loadNeedsOnboarding(userId: string): Promise<boolean> {
-  try {
-    const { data } = await supabase
-      .from('user_profiles')
-      .select('country, gender')
-      .eq('id', userId)
-      .single();
-    const d = data as { country?: string | null; gender?: string | null } | null;
-    return !d?.country || !d?.gender;
-  } catch {
-    return false; // on error, don't block the user
-  }
-}
-
-export async function loadProfileOnboarding(userId: string): Promise<{
-  country: string;
-  country_sk: string;
-  country_sk_genitive: string;
-  country_sk_locative: string;
-  country_sk_adj_masculine: string;
-  country_sk_adj_feminine: string;
-  country_sk_adj_neuter: string;
-  country_sk_adverb: string;
-  gender: string;
-}> {
-  try {
-    const { data } = await supabase
-      .from('user_profiles')
-      .select('country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender')
-      .eq('id', userId)
-      .single();
-    const d = data as {
-      country?: string | null;
-      country_sk?: string | null;
-      country_sk_genitive?: string | null;
-      country_sk_locative?: string | null;
-      country_sk_adj_masculine?: string | null;
-      country_sk_adj_feminine?: string | null;
-      country_sk_adj_neuter?: string | null;
-      country_sk_adverb?: string | null;
-      gender?: string | null;
-    } | null;
-    return {
-      country:                  d?.country                  ?? '',
-      country_sk:               d?.country_sk               ?? '',
-      country_sk_genitive:      d?.country_sk_genitive      ?? '',
-      country_sk_locative:      d?.country_sk_locative      ?? '',
-      country_sk_adj_masculine: d?.country_sk_adj_masculine ?? '',
-      country_sk_adj_feminine:  d?.country_sk_adj_feminine  ?? '',
-      country_sk_adj_neuter:    d?.country_sk_adj_neuter    ?? '',
-      country_sk_adverb:        d?.country_sk_adverb        ?? '',
-      gender:                   d?.gender                   ?? '',
-    };
-  } catch {
-    return { country: '', country_sk: '', country_sk_genitive: '', country_sk_locative: '', country_sk_adj_masculine: '', country_sk_adj_feminine: '', country_sk_adj_neuter: '', country_sk_adverb: '', gender: '' };
-  }
-}
-
-export async function saveOnboarding(
-  userId: string,
-  country: string,
-  country_sk: string,
-  country_sk_genitive: string,
-  country_sk_locative: string,
-  country_sk_adj_masculine: string,
-  country_sk_adj_feminine: string,
-  country_sk_adj_neuter: string,
-  country_sk_adverb: string,
-  gender: string,
-): Promise<void> {
-  const { error } = await supabase
-    .from('user_profiles')
-    .update({ country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender })
-    .eq('id', userId);
-  if (error) throw error;
-}
+// ── Onboarding demographics (gender + country) ────────────────────────────────
+// Gender + country are NO LONGER stored per-user. They're recorded only as an
+// anonymous aggregate count (record_demographics RPC) and kept device-locally for
+// grammar personalisation — see client/src/lib/demographics.ts. The old per-user
+// DB read/write helpers (loadNeedsOnboarding / loadProfileOnboarding /
+// saveOnboarding) were removed here as part of that data-minimisation change.
 
 // ── Weekly Winner ─────────────────────────────────────────────────────────────
 

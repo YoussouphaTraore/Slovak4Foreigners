@@ -76,9 +76,9 @@ export function VocabularyTableExercise({ exercise, onDone }: Props) {
       <div className="flex-1 flex flex-col gap-2 overflow-y-auto">
         {/* Header */}
         <div className="grid grid-cols-[minmax(64px,_120px)_minmax(0,1fr)_minmax(0,1fr)] gap-x-3 px-2 pb-1 border-b border-gray-200">
-          <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">{h0}</span>
-          <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">{h1}</span>
-          <span className="text-xs font-semibold uppercase tracking-widest text-gray-400">{h2}</span>
+          <span className="text-xs font-semibold uppercase tracking-widest text-gray-600">{h0}</span>
+          <span className="text-xs font-semibold uppercase tracking-widest text-gray-600">{h1}</span>
+          <span className="text-xs font-semibold uppercase tracking-widest text-gray-600">{h2}</span>
         </div>
 
         {exercise.rows.map((row) => {
@@ -95,7 +95,7 @@ export function VocabularyTableExercise({ exercise, onDone }: Props) {
                   : 'bg-white border-gray-100 hover:border-brand-blue hover:bg-blue-50'
               }`}
             >
-              <span className={`text-xs font-medium leading-tight ${tapped ? 'text-green-600' : 'text-gray-400'}`}>
+              <span className={`text-xs font-medium leading-tight ${tapped ? 'text-green-600' : 'text-gray-600'}`}>
                 {row.label}
               </span>
               <span lang="sk" className={`text-base font-bold leading-snug break-words hyphens-auto ${tapped ? 'text-green-800' : 'text-gray-800'}`}>
@@ -117,7 +117,7 @@ export function VocabularyTableExercise({ exercise, onDone }: Props) {
           className={`w-full font-bold py-3.5 rounded-xl text-sm uppercase tracking-widest transition-all ${
             ready
               ? 'bg-brand-green text-white hover:opacity-90 active:scale-[0.98] cursor-pointer shadow-md'
-              : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              : 'bg-gray-200 text-gray-600 cursor-not-allowed'
           }`}
         >
           {ready ? 'Continue' : `Tap ${remaining} more`}

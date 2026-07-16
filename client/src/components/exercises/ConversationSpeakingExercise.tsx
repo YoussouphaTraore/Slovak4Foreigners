@@ -4,6 +4,9 @@ import type { SentenceBuilderItem } from '../../types/conversationSentenceBuilde
 import { supabase } from '../../lib/supabase/client';
 import { SentenceBuildSlide } from './ConversationSentenceBuilderExercise';
 import { useAuthStore } from '../../store/useAuthStore';
+import { DemographicsPickerModal } from '../DemographicsPickerModal';
+import { applyDemographicsToStore, saveLocalDemographics } from '../../lib/demographics';
+import type { Country } from '../../data/countries';
 
 // Session-level flag — persists until page refresh, shared across all CONVERSATION_SPEAKING exercises
 let sessionForcedTyping = false;
@@ -243,13 +246,31 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
   const [attemptCount, setAttemptCount] = useState(0);
   const [yesNoChoice, setYesNoChoice] = useState<'yes' | 'no' | null>(null);
   const [choiceId, setChoiceId] = useState<string | null>(null);
+  const [showPicker, setShowPicker] = useState(false);
 
   const user = useAuthStore((s) => s.user);
   const alias = useAuthStore((s) => s.alias);
   const countryEn = useAuthStore((s) => s.country);
   const countrySk = useAuthStore((s) => s.country_sk);
   const countrySkGenitiveRaw = useAuthStore((s) => s.country_sk_genitive);
+  const countrySkLocative = useAuthStore((s) => s.country_sk_locative);
+  const countryAdjM = useAuthStore((s) => s.country_sk_adj_masculine);
+  const countryAdjF = useAuthStore((s) => s.country_sk_adj_feminine);
+  const countryAdjN = useAuthStore((s) => s.country_sk_adj_neuter);
+  const countryAdverb = useAuthStore((s) => s.country_sk_adverb);
   const gender = useAuthStore((s) => s.gender);
+
+  // Reconstruct the current Country (device-local choice) to pre-fill the picker.
+  const currentCountry: Country | null = countryEn ? {
+    en: countryEn, sk: countrySk, gen: countrySkGenitiveRaw, loc: countrySkLocative,
+    adj_m: countryAdjM, adj_f: countryAdjF, adj_n: countryAdjN, adv: countryAdverb,
+  } : null;
+
+  const handleDemographicsSave = (c: Country, g: string) => {
+    applyDemographicsToStore({ country: c, gender: g });
+    if (user?.id) saveLocalDemographics(user.id, c, g);
+    setShowPicker(false);
+  };
 
   const question = exercise.questions[questionIdx];
 
@@ -628,7 +649,7 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
             ? 'bg-green-50 text-green-600 border-green-200'
             : lenientMatch || matchResult.matchedWords[index]
             ? 'bg-amber-100 text-amber-700 border-amber-200'
-            : 'bg-gray-100 text-gray-400 border-gray-200';
+            : 'bg-gray-100 text-gray-600 border-gray-200';
           return (
             <span key={`${word}-${index}`} className={`px-2 py-1 rounded-lg border text-xs font-bold ${color}`}>
               {word}{isBankedFromPrev ? ' ✓' : ''}
@@ -664,8 +685,8 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
               }`}
             >
               <span className="block text-sm font-black">{label}</span>
-              <span className="block text-xs font-semibold leading-snug mt-1">{answer?.sk}</span>
-              <span className="block text-[11px] text-gray-400 leading-snug mt-0.5">{answer?.en}</span>
+              <span lang="sk" className="block text-xs font-semibold leading-snug mt-1">{answer?.sk}</span>
+              <span className="block text-[11px] text-gray-600 leading-snug mt-0.5">{answer?.en}</span>
             </button>
           );
         })}
@@ -694,8 +715,8 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
               }`}
             >
               <span className="block text-sm font-black">{choice.label}</span>
-              <span className="block text-xs font-semibold leading-snug mt-1">{choice.sk}</span>
-              <span className="block text-[11px] text-gray-400 leading-snug mt-0.5">{choice.en}</span>
+              <span lang="sk" className="block text-xs font-semibold leading-snug mt-1">{choice.sk}</span>
+              <span className="block text-[11px] text-gray-600 leading-snug mt-0.5">{choice.en}</span>
             </button>
           );
         })}
@@ -764,16 +785,43 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
           <PlayIcon />
           {isQuestionPlaying ? 'Playing' : `Replay ${resolvedQuestion.speakerName ?? 'Marek'}`}
         </button>
-        <span className="ml-auto text-xs text-gray-400 font-medium">
+        <span className="ml-auto text-xs text-gray-600 font-medium">
           {questionIdx + 1} / {exercise.questions.length}
         </span>
       </div>
 
+      {/* Identity bar — pick/change gender + country "in the moment". Nothing is
+          stored on our servers; it only shapes the Slovak in this exercise. */}
+      <button
+        type="button"
+        onClick={() => setShowPicker(true)}
+        className="flex-none self-start flex items-center gap-1.5 text-[11px] bg-gray-50 border border-gray-200 rounded-full px-3 py-1.5 hover:bg-gray-100 active:scale-[0.98] cursor-pointer transition-colors"
+      >
+        <span aria-hidden="true">{gender.toLowerCase() === 'female' ? '♀' : gender.toLowerCase() === 'male' ? '♂' : '🙂'}</span>
+        {countryEn && gender ? (
+          <span className="text-gray-500">
+            Answering as <b className="font-semibold text-gray-700">{gender}</b> from <b className="font-semibold text-gray-700">{countryEn}</b>
+          </span>
+        ) : (
+          <span className="font-semibold text-brand-blue">Tap to personalise this exercise</span>
+        )}
+        <span className="text-gray-600 underline ml-0.5">change</span>
+      </button>
+
       <div className="flex-none bg-white rounded-2xl border-2 border-gray-100 shadow-sm px-4 py-3">
-        <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-1">{resolvedQuestion.speakerName ?? 'Marek'} asks</p>
-        <p className="text-base font-extrabold text-gray-800 leading-snug">{resolvedQuestion.marekQuestionSk}</p>
-        <p className="text-xs text-gray-400 mt-1">{resolvedQuestion.marekQuestionEn}</p>
+        <p className="text-[11px] font-semibold text-gray-600 uppercase tracking-widest mb-1">{resolvedQuestion.speakerName ?? 'Marek'} asks</p>
+        <p lang="sk" className="text-base font-extrabold text-gray-800 leading-snug">{resolvedQuestion.marekQuestionSk}</p>
+        <p className="text-xs text-gray-600 mt-1">{resolvedQuestion.marekQuestionEn}</p>
       </div>
+
+      {showPicker && (
+        <DemographicsPickerModal
+          initialCountry={currentCountry}
+          initialGender={gender}
+          onSave={handleDemographicsSave}
+          onClose={() => setShowPicker(false)}
+        />
+      )}
 
       <div className={`flex flex-col flex-1 min-h-0 gap-4 transition-opacity duration-300 ${isQuestionPlaying ? 'opacity-30 pointer-events-none select-none' : 'opacity-100'}`}>
 
@@ -838,14 +886,14 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
       ) : (
         <div className="flex-1 min-h-0 overflow-y-auto flex flex-col gap-4">
           <div className="bg-white rounded-3xl border-2 border-gray-100 shadow-sm px-5 py-5 text-center">
-            <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-widest mb-2">Your answer</p>
+            <p className="text-[11px] font-semibold text-gray-600 uppercase tracking-widest mb-2">Your answer</p>
             {activeAnswer ? (
               <>
-                <p className="text-2xl font-black text-gray-900 leading-snug">{activeAnswer.sk}</p>
-                <p className="text-sm text-gray-400 mt-2">{activeAnswer.en}</p>
+                <p lang="sk" className="text-2xl font-black text-gray-900 leading-snug">{activeAnswer.sk}</p>
+                <p className="text-sm text-gray-600 mt-2">{activeAnswer.en}</p>
               </>
             ) : (
-              <p className="text-sm font-bold text-gray-400">Choose your answer first.</p>
+              <p className="text-sm font-bold text-gray-600">Choose your answer first.</p>
             )}
           </div>
 
@@ -853,6 +901,7 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
               <button
                 type="button"
                 onClick={isRecording ? stopRecording : startRecording}
+                aria-label={isRecording ? 'Stop recording' : 'Tap to record your pronunciation'}
                 disabled={isTranscribing || !activeAnswer}
                 className={`w-20 h-20 rounded-full flex items-center justify-center text-white shadow-lg transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${
                   isRecording
@@ -879,7 +928,7 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
                 ))}
               </div>
 
-              <p className="text-xs text-gray-400 text-center">{micInstruction}</p>
+              <p className="text-xs text-gray-600 text-center">{micInstruction}</p>
             </div>
 
           {hasFeedback && matchResult && activeAnswer && (
@@ -901,7 +950,7 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
                   {status === 'wrong' && (
                     <div className="mt-3 grid gap-2 text-xs">
                       <p className="text-gray-500"><span className="font-bold">Heard:</span> {heardText || 'No transcript'}</p>
-                      <p className="text-gray-500"><span className="font-bold">Expected:</span> {activeAnswer.sk}</p>
+                      <p className="text-gray-500"><span className="font-bold">Expected:</span> <span lang="sk">{activeAnswer.sk}</span></p>
                     </div>
                   )}
                 </>

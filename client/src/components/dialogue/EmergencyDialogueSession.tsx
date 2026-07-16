@@ -232,9 +232,9 @@ export function EmergencyDialogueSession({ dialogue, onExit }: Props) {
         <div className="flex-1 px-4 py-6 pb-10">
           <div className="bg-white rounded-2xl border-2 border-gray-200 p-4 mb-5 shadow-sm">
             <p className="text-sm font-semibold text-gray-800 leading-snug">{selectedScenario.situation}</p>
-            <p className="text-xs text-gray-400 mt-1 leading-snug">{selectedScenario.situationTranslation}</p>
+            <p className="text-xs text-gray-600 mt-1 leading-snug">{selectedScenario.situationTranslation}</p>
           </div>
-          <p className="text-xs text-gray-400 text-center mb-4 uppercase tracking-widest font-semibold">📞 Who do you call?</p>
+          <p className="text-xs text-gray-600 text-center mb-4 uppercase tracking-widest font-semibold">📞 Who do you call?</p>
           <div className="flex flex-col gap-3">
             {EMERGENCY_NUMBERS.map(({ number, label, emoji }) => (
               <button
@@ -246,7 +246,7 @@ export function EmergencyDialogueSession({ dialogue, onExit }: Props) {
                 <span className="text-3xl">{emoji}</span>
                 <div className="text-left">
                   <div className="text-2xl font-black text-gray-800">{number}</div>
-                  <div className="text-xs text-gray-400 font-medium">{label}</div>
+                  <div className="text-xs text-gray-600 font-medium">{label}</div>
                 </div>
               </button>
             ))}
@@ -277,15 +277,15 @@ export function EmergencyDialogueSession({ dialogue, onExit }: Props) {
               <span className="ml-auto text-2xl">❌</span>
             </div>
             <div className="bg-white rounded-xl p-4 mb-3 shadow-sm">
-              <p className="text-xs text-gray-400 uppercase tracking-wide font-semibold mb-1">They answer:</p>
+              <p className="text-xs text-gray-600 uppercase tracking-wide font-semibold mb-1">They answer:</p>
               <p className="text-sm font-semibold text-gray-800">{info.response}</p>
-              <p className="text-xs text-gray-400 mt-0.5 italic">{info.responseTranslation}</p>
+              <p className="text-xs text-gray-600 mt-0.5 italic">{info.responseTranslation}</p>
             </div>
             {info.redirect && (
               <div className="bg-green-50 border border-green-200 rounded-xl p-4 mb-3">
                 <p className="text-xs text-green-600 uppercase tracking-wide font-semibold mb-1">You say:</p>
                 <p className="text-sm font-semibold text-gray-800">{info.redirect}</p>
-                <p className="text-xs text-gray-400 mt-0.5 italic">{info.redirectTranslation}</p>
+                <p className="text-xs text-gray-600 mt-0.5 italic">{info.redirectTranslation}</p>
               </div>
             )}
             {info.note && (
@@ -353,7 +353,7 @@ export function EmergencyDialogueSession({ dialogue, onExit }: Props) {
 
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
         <div className="flex justify-center">
-          <span className="text-xs text-gray-400 bg-white border border-gray-200 px-3 py-1 rounded-full">
+          <span className="text-xs text-gray-600 bg-white border border-gray-200 px-3 py-1 rounded-full">
             {dialogue.character.avatar} {dialogue.character.name}
           </span>
         </div>
@@ -370,7 +370,7 @@ export function EmergencyDialogueSession({ dialogue, onExit }: Props) {
                 <div className={`max-w-[78%] px-3.5 py-2 rounded-2xl text-sm leading-snug rounded-tr-sm
                   ${isWrong ? 'bg-red-100 text-red-800' : 'bg-brand-green text-white'}`}>
                   {isWrong && <span className="mr-1 text-red-500">✗</span>}
-                  <span className="font-medium">{msg.text}</span>
+                  <span lang="sk" className="font-medium">{msg.text}</span>
                 </div>
               </div>
             );
@@ -389,7 +389,7 @@ export function EmergencyDialogueSession({ dialogue, onExit }: Props) {
               >
                 <span className="font-medium">{msg.text}</span>
                 {msg.translation && (
-                  <span className={`block text-xs mt-0.5 font-normal ${isRetry ? 'text-orange-500' : 'text-gray-400'}`}>
+                  <span className={`block text-xs mt-0.5 font-normal ${isRetry ? 'text-orange-500' : 'text-gray-600'}`}>
                     {msg.translation}
                   </span>
                 )}
@@ -402,7 +402,7 @@ export function EmergencyDialogueSession({ dialogue, onExit }: Props) {
 
       {phase !== 'auto-advancing' && phase !== 'ending' && visibleChoices.length > 0 && (
         <div className="flex-none px-4 py-4 space-y-2">
-          <p className="text-xs text-gray-400 text-center mb-1">Choose your reply</p>
+          <p className="text-xs text-gray-600 text-center mb-1">Choose your reply</p>
           {visibleChoices.map((choice) => (
             <button
               key={choice.id}
@@ -411,13 +411,13 @@ export function EmergencyDialogueSession({ dialogue, onExit }: Props) {
               onClick={() => handleChoice(choice)}
               className={`w-full text-left px-4 py-2.5 rounded-xl border text-sm font-medium transition-all cursor-pointer active:scale-[0.98] break-words
                 ${phase === 'feedback'
-                  ? 'bg-gray-50 border-gray-200 text-gray-400'
+                  ? 'bg-gray-50 border-gray-200 text-gray-600'
                   : 'bg-white border-gray-200 text-gray-800 hover:border-brand-green hover:bg-green-50'
                 }`}
             >
-              <span>{choice.text}</span>
+              <span lang="sk">{choice.text}</span>
               {choice.translation && (
-                <span className="block text-xs text-gray-400 font-normal mt-0.5">{choice.translation}</span>
+                <span className="block text-xs text-gray-600 font-normal mt-0.5">{choice.translation}</span>
               )}
             </button>
           ))}

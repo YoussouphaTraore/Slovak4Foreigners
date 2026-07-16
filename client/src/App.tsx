@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { MemoryRouter, Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
+import { MemoryRouter, Routes, Route, Navigate, useParams, useNavigate, useLocation } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 import { HomePage } from './pages/HomePage';
 import { LessonPage } from './pages/LessonPage';
@@ -27,7 +27,8 @@ import { DesktopBanner } from './components/DesktopBlock';
 import { dialogues } from './data/dialogues';
 import { useProgressStore } from './store/useProgressStore';
 import { useAuthStore } from './store/useAuthStore';
-import { checkSessionRegistration, loadWeeklyXp, loadIsAdmin, checkWeeklyWinner, markWinnerSeen, loadProfileOnboarding } from './lib/supabase/progressSync';
+import { checkSessionRegistration, loadWeeklyXp, loadIsAdmin, checkWeeklyWinner, markWinnerSeen } from './lib/supabase/progressSync';
+import { loadLocalDemographics, applyDemographicsToStore } from './lib/demographics';
 import { loadAlias } from './lib/supabase/aliasUtils';
 import { AliasPickerModal } from './components/AliasPickerModal';
 import { OnboardingModal } from './components/OnboardingModal';
@@ -41,6 +42,44 @@ import {
   markInstalled, markDismissed, shouldAutoShow, shouldShowIOSPrompt,
   isIOS, isMobileDevice, triggerInstall,
 } from './lib/pwaInstall';
+
+// ── Legal-page real URLs ────────────────────────────────────────────────────
+// The app runs on MemoryRouter (no deep-linkable URLs) BY DESIGN — lessons,
+// races, profile etc. are never bookmarkable. The three legal documents, however,
+// MUST be permanently accessible / bookmarkable / shareable for SOI compliance.
+// So we mirror ONLY these paths into the real browser URL (via replaceState),
+// while every other screen keeps the real URL at '/'.
+const LEGAL_URL_PATHS = ['/privacy', '/terms', '/legal'];
+
+function initialRouterEntry(): string {
+  try {
+    const p = window.location.pathname;
+    return LEGAL_URL_PATHS.includes(p) ? p : '/';
+  } catch {
+    return '/';
+  }
+}
+
+// Reflects the current in-app route into the real address bar, but only for the
+// legal pages. Uses replaceState (not pushState) so we never add real history
+// entries — browser back/forward behaves exactly as it does today (MemoryRouter).
+function LegalUrlSync() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    try {
+      const onLegal = LEGAL_URL_PATHS.includes(pathname);
+      const realPath = window.location.pathname;
+      if (onLegal) {
+        if (realPath !== pathname) window.history.replaceState(null, '', pathname);
+      } else if (realPath !== '/') {
+        // Not on a legal page → the real URL must be '/'. This also clears a
+        // stale bar left by directly loading a non-legal deep link.
+        window.history.replaceState(null, '', '/');
+      }
+    } catch { /* history API unavailable — non-fatal */ }
+  }, [pathname]);
+  return null;
+}
 
 function DialogueSessionRoute() {
   const { id } = useParams<{ id: string }>();
@@ -107,6 +146,7 @@ function AppRoutes() {
 
   return (
     <>
+      <main id="main-content" tabIndex={-1} className="outline-none">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/lesson/:lessonId" element={<LessonPage />} />
@@ -130,6 +170,7 @@ function AppRoutes() {
         <Route path="/block-dialogue/:blockId" element={<BlockDialoguePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      </main>
       {showSaveProgressModal && (
         <SaveProgressModal
           trigger={showSaveProgressModal}
@@ -153,7 +194,6 @@ function AppShell() {
   const alias = useAuthStore((s) => s.alias);
   const setAlias = useAuthStore((s) => s.setAlias);
   const setIsAdmin = useAuthStore((s) => s.setIsAdmin);
-  const setProfileData = useAuthStore((s) => s.setProfileData);
 
   useEffect(() => {
     decayLessonStrengths();
@@ -184,15 +224,15 @@ function AppShell() {
       if (result === null) {
         setShowAliasPicker(true); // no alias — must pick (onboarding follows after)
       } else if (result) {
-        setAlias(result); // existing alias — load profile data and check onboarding
-        loadProfileOnboarding(userId).then(({ country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender }) => {
-          setProfileData(country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender);
-          if (!country || !gender) setShowOnboarding(true);
-        });
+        setAlias(result); // existing alias — load anonymous demographics + check onboarding
+        // Gender/country are anonymous + device-local now (never in the DB).
+        const demo = loadLocalDemographics(userId);
+        applyDemographicsToStore(demo);
+        if (!demo) setShowOnboarding(true);
       }
       // '' = DB error — don't show picker, alias stays empty
     });
-  }, [userId, setAlias, setProfileData]);
+  }, [userId, setAlias]);
 
   // Load weekly XP from Supabase on login (cron may have reset it)
   useEffect(() => {
@@ -396,10 +436,26 @@ function AppShell() {
   }
 
   return (
-    <div className="min-h-dvh bg-[#DCECCF]">
-      <div className="relative mx-auto min-h-dvh w-full max-w-[430px] bg-[#E8F4DC] shadow-[0_0_0_1px_rgba(114,122,106,0.12)]">
-        <DesktopBanner />
-        <MemoryRouter>
+    <>
+      {/* Accessibility: skip-to-content (WCAG 2.4.1). Rendered as the FIRST focusable
+          element and OUTSIDE the app container, so it leads the tab order and the
+          sticky page header cannot occlude it when focused. Targets #main-content
+          by id; a button (not a #hash anchor) so it never mutates the URL. */}
+      <button
+        type="button"
+        className="skip-link"
+        onClick={() => {
+          const el = document.getElementById('main-content');
+          if (el) { el.focus(); el.scrollIntoView(); }
+        }}
+      >
+        Skip to content
+      </button>
+      <div className="min-h-dvh bg-[#DCECCF]">
+        <div className="relative mx-auto min-h-dvh w-full max-w-[430px] bg-[#E8F4DC] shadow-[0_0_0_1px_rgba(114,122,106,0.12)]">
+          <DesktopBanner />
+        <MemoryRouter initialEntries={[initialRouterEntry()]}>
+          <LegalUrlSync />
           <AppRoutes />
           <Analytics />
         </MemoryRouter>
@@ -416,12 +472,7 @@ function AppShell() {
       {showOnboarding && userId && (
         <OnboardingModal
           userId={userId}
-          onDone={() => {
-            setShowOnboarding(false);
-            loadProfileOnboarding(userId).then(({ country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender }) => {
-              setProfileData(country, country_sk, country_sk_genitive, country_sk_locative, country_sk_adj_masculine, country_sk_adj_feminine, country_sk_adj_neuter, country_sk_adverb, gender);
-            });
-          }}
+          onDone={() => setShowOnboarding(false)}
         />
       )}
       {weeklyWinner && (
@@ -444,6 +495,7 @@ function AppShell() {
       )}
       </div>
     </div>
+    </>
   );
 }
 

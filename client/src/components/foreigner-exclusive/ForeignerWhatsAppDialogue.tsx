@@ -196,7 +196,7 @@ export function ForeignerWhatsAppDialogue({ exercise, onDone, onAnswer }: Props)
         </div>
 
         <div className="flex-none mb-4">
-          <p className="text-base font-bold text-gray-800 leading-snug">
+          <p lang="sk" className="text-base font-bold text-gray-800 leading-snug">
             {slovakifyNumbers(currentQ.question)}
           </p>
         </div>
@@ -209,10 +209,10 @@ export function ForeignerWhatsAppDialogue({ exercise, onDone, onAnswer }: Props)
             if (!revealed)       cls += 'bg-white border-gray-200 text-gray-800 hover:border-[#25D366] hover:bg-green-50';
             else if (isCorr)     cls += 'bg-green-100 border-[#25D366] text-green-800';
             else if (isSel)      cls += 'bg-red-50 border-red-400 text-red-700';
-            else                 cls += 'bg-white border-gray-200 text-gray-400 opacity-60';
+            else                 cls += 'bg-white border-gray-200 text-gray-600 opacity-60';
 
             return (
-              <button key={ch} type="button" onClick={() => handleChoiceSelect(ch)} className={cls} disabled={revealed}>
+              <button key={ch} lang="sk" type="button" onClick={() => handleChoiceSelect(ch)} className={cls} disabled={revealed}>
                 {slovakifyNumbers(ch)}
               </button>
             );
@@ -225,7 +225,7 @@ export function ForeignerWhatsAppDialogue({ exercise, onDone, onAnswer }: Props)
               <p className={`text-xs font-bold mb-1 ${selected === currentQ.answer ? 'text-green-700' : 'text-red-600'}`}>
                 {selected === currentQ.answer ? '✓ Correct!' : '✗ Not quite'}
               </p>
-              <p className="text-xs text-gray-600 leading-snug">{slovakifyNumbers(currentQ.explanation)}</p>
+              <p lang="sk" className="text-xs text-gray-600 leading-snug">{slovakifyNumbers(currentQ.explanation)}</p>
             </div>
             <button
               type="button"
@@ -286,7 +286,7 @@ export function ForeignerWhatsAppDialogue({ exercise, onDone, onAnswer }: Props)
               return (
                 <div key={entry.key} className="flex justify-start animate-msg-in">
                   <div className="max-w-[78%] px-2.5 pt-1.5 pb-1 rounded-2xl rounded-tl-sm shadow-sm bg-orange-50 border border-orange-200">
-                    <p className="text-xs leading-snug text-orange-800 break-words">
+                    <p lang="sk" className="text-xs leading-snug text-orange-800 break-words">
                       {slovakifyNumbers(entry.text)}
                     </p>
                     <div className="flex items-center mt-1">
@@ -308,11 +308,11 @@ export function ForeignerWhatsAppDialogue({ exercise, onDone, onAnswer }: Props)
                     }`}
                     style={isUser ? { backgroundColor: WA_BUBBLE } : {}}
                   >
-                    <p className="text-xs leading-snug text-gray-800 break-words">
+                    <p lang="sk" className="text-xs leading-snug text-gray-800 break-words">
                       {slovakifyNumbers(entry.text)}
                     </p>
                     <div className={`flex items-center gap-1 mt-1 ${isUser ? 'justify-end' : 'justify-start'}`}>
-                      <span className="text-[10px] text-gray-400">{entry.time}</span>
+                      <span className="text-[10px] text-gray-600">{entry.time}</span>
                       {isUser && <span className="text-[11px]" style={{ color: '#4FC3F7' }}>✓✓</span>}
                     </div>
                   </div>
@@ -357,7 +357,7 @@ export function ForeignerWhatsAppDialogue({ exercise, onDone, onAnswer }: Props)
       {phase === 'chat' && showChoices && activeChoices.length > 0 && (
         <div className="flex-none bg-white border-t border-gray-100 px-2.5 py-2">
           {showPrompt && (
-            <p className="text-[10px] text-gray-400 italic mb-1.5 px-0.5">{currentNode.prompt}</p>
+            <p className="text-[10px] text-gray-600 italic mb-1.5 px-0.5">{currentNode.prompt}</p>
           )}
           <div className="space-y-1.5">
             {activeChoices.map((choice) => (
@@ -366,6 +366,7 @@ export function ForeignerWhatsAppDialogue({ exercise, onDone, onAnswer }: Props)
                 type="button"
                 onClick={() => handleChoice(choice)}
                 disabled={isLocked}
+                lang="sk"
                 className="w-full text-left px-3 py-2 rounded-xl border-2 border-gray-200 bg-white text-xs text-gray-800 font-medium hover:border-[#25D366] hover:bg-green-50 active:scale-[0.98] transition-all cursor-pointer disabled:opacity-50 disabled:cursor-default leading-snug"
               >
                 {slovakifyNumbers(choice.text)}

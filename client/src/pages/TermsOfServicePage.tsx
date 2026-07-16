@@ -30,6 +30,14 @@ function Warning({ children }: { children: React.ReactNode }) {
   );
 }
 
+function Note({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="bg-green-50 border border-green-200 rounded-xl px-4 py-3 text-sm text-green-800 leading-relaxed">
+      {children}
+    </div>
+  );
+}
+
 function MailLink({ email }: { email: string }) {
   return (
     <a href={`mailto:${email}`} className="text-brand-green underline break-all">{email}</a>
@@ -59,20 +67,28 @@ export function TermsOfServicePage() {
           ‹ Back
         </button>
         <h1 className="text-lg font-extrabold text-gray-800">Terms of Service</h1>
-        <p className="text-xs text-gray-400 mt-0.5">Slovak for Foreigners · Last updated: May 2026</p>
+        <p className="text-xs text-gray-600 mt-0.5">Slovak for Foreigners · Last updated: 15 July 2026</p>
       </div>
 
       {/* Content */}
       <div className="max-w-lg mx-auto w-full px-4 py-6 pb-36">
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm px-5 py-6 space-y-7">
 
+          <P>
+            These Terms of Service ("Terms") govern your use of the Slovak for Foreigners app. The app is
+            provided <strong>free of charge</strong>. Nothing in these Terms limits your mandatory rights as
+            a consumer under Slovak law — see section 11.
+          </P>
+
           <Section number={1} title="Introduction">
             <P>
-              Welcome to Slovak for Foreigners (also referred to as "Slovak4Foreigners", "S4F",
-              "the app", "we", "us", "our"). By accessing or using this app you agree to be bound by
-              these Terms of Service ("Terms"). Please read them carefully.
+              Welcome to Slovak for Foreigners (also "Slovak4Foreigners", "S4F", "the app", "we", "us",
+              "our"). By accessing or using the app you agree to these Terms. If you do not agree, please
+              do not use the app.
             </P>
-            <P>If you do not agree to these Terms, please do not use the app.</P>
+            <P>The app is operated by the sole trader identified in our{' '}
+              <button type="button" onClick={() => navigate('/legal')} className="text-brand-green underline cursor-pointer">Legal Notice</button>.
+            </P>
             <Ul>
               <li><strong>Website:</strong> <ELink href="https://www.slovakforforeigners.eu">www.slovakforforeigners.eu</ELink></li>
               <li><strong>Contact:</strong> <MailLink email="contact@slovakforforeigners.eu" /></li>
@@ -80,247 +96,228 @@ export function TermsOfServicePage() {
           </Section>
 
           <Section number={2} title="What the App Does">
-            <P>Slovak for Foreigners is a language learning web application that:</P>
+            <P>Slovak for Foreigners is a free language-learning web application that:</P>
             <Ul>
-              <li>Teaches the Slovak language through interactive lessons and exercises</li>
-              <li>Provides practical guides for foreigners living in Slovakia (Foreigner Exclusive section)</li>
+              <li>Teaches Slovak through interactive lessons and exercises (including pronunciation practice using your microphone)</li>
+              <li>Provides practical guides for foreigners living in Slovakia (the "Foreigner Exclusive" section)</li>
               <li>Offers conversational practice through dialogue scenarios</li>
-              <li>Organises events such as language meetups and workshops for its community</li>
-            </Ul>
-            <P>
-              The app is designed for foreigners living in or moving to Slovakia who wish to learn
-              Slovak for everyday practical use.
-            </P>
-          </Section>
-
-          <Section number={3} title="Age Requirements">
-            <P>
-              This app is intended for users who meet the minimum age required by applicable EU and
-              Slovak law to consent to data processing and use digital services.
-            </P>
-            <P>
-              Under EU law (GDPR) and Slovak law, this means you must be at least{' '}
-              <strong>16 years of age</strong> to create an account and use this app.
-            </P>
-            <P>
-              By using this app you confirm that you meet this age requirement. If you are under the
-              required age, you must not use this app. If we become aware that a user is under the
-              minimum age, we will delete their account and all associated data without notice.
-            </P>
-            <P>
-              Parents or guardians who believe their child has registered must contact us immediately
-              at <MailLink email="contact@slovakforforeigners.eu" />.
-            </P>
-          </Section>
-
-          <Section number={4} title="Accounts and Registration">
-            <SubHeading>Creating an account</SubHeading>
-            <P>
-              You may use the app as a guest without an account. To save your progress across devices
-              you must sign in using Google OAuth.
-            </P>
-            <P>By creating an account you confirm that:</P>
-            <Ul>
-              <li>You meet the minimum age requirement set out in Section 3</li>
-              <li>The information you provide is accurate</li>
-              <li>You will keep your account credentials secure</li>
-              <li>You are responsible for all activity under your account</li>
-            </Ul>
-
-            <SubHeading>Event registration</SubHeading>
-            <P>
-              We may from time to time organise events for our community. Where an event requires
-              registration, you will be asked to complete a registration form. By submitting a
-              registration form you confirm that the information you provide is accurate and that you
-              meet any requirements specified for that event.
-            </P>
-
-            <SubHeading>Account termination</SubHeading>
-            <P>We reserve the right to suspend or terminate accounts that:</P>
-            <Ul>
-              <li>Violate these Terms</li>
-              <li>Attempt to abuse, hack or disrupt the service</li>
-              <li>Are used for any unlawful purpose</li>
+              <li>May occasionally offer in-person practice sessions or meetups for its community</li>
             </Ul>
           </Section>
 
-          <Section number={5} title="Use of the App">
-            <SubHeading>Permitted use</SubHeading>
-            <P>You may use this app for personal, non-commercial language learning purposes.</P>
+          <Section number={3} title="Age Requirement">
+            <P>
+              You must be at least <strong>16 years of age</strong> to use the app, in line with EU (GDPR)
+              and Slovak law on consent to data processing. By using the app you confirm you meet this
+              requirement. If we become aware that a user is under 16, we will delete the account and its
+              data. Parents or guardians with concerns may contact{' '}
+              <MailLink email="contact@slovakforforeigners.eu" />.
+            </P>
+          </Section>
 
-            <SubHeading>Prohibited use</SubHeading>
-            <P>You must NOT:</P>
+          <Section number={4} title="Accounts">
+            <SubHeading>Guest use and sign-in</SubHeading>
+            <P>
+              You may use the app as a guest. To save your progress across devices you can sign in with
+              Google. You authenticate directly with Google — we never see your password and receive only
+              your email address (see the{' '}
+              <button type="button" onClick={() => navigate('/privacy')} className="text-brand-green underline cursor-pointer">Privacy Policy</button>).
+              You are identified in the app by a nickname (alias), not your real name.
+            </P>
+            <P>By using an account you agree to keep access to it secure and to be responsible for activity under it.</P>
+
+            <SubHeading>In-person sessions</SubHeading>
+            <P>
+              If you indicate interest in an in-person session, we record only that your account expressed
+              interest — no separate registration form or personal details are collected for this.
+            </P>
+
+            <SubHeading>Suspension or termination</SubHeading>
+            <P>We may suspend or terminate access for accounts that materially breach these Terms, attempt to abuse, hack or disrupt the service, or use it unlawfully. You can delete your account at any time from the Profile page.</P>
+          </Section>
+
+          <Section number={5} title="Acceptable Use">
+            <P>You may use the app for personal, non-commercial language learning. You must not:</P>
             <Ul>
               <li>Scrape, copy or reproduce lesson content for commercial use</li>
               <li>Attempt to reverse-engineer the app</li>
-              <li>Share your account credentials with others</li>
+              <li>Share your account access with others</li>
               <li>Use automated tools to complete lessons or earn XP</li>
-              <li>Attempt to circumvent the content or subscription system</li>
+              <li>Attempt to circumvent access controls or security measures</li>
               <li>Use the app in any way that could damage, disable or impair the service</li>
             </Ul>
           </Section>
 
-          <Section number={6} title="Content and Educational Material">
+          <Section number={6} title="Educational Content &amp; Disclaimers">
             <Warning>
-              <strong>Important disclaimer — applies to the entire app</strong>
+              <strong>All content is for educational and informational purposes only.</strong>
               <br /><br />
-              All content in this app — including but not limited to Slovak language lessons, exercise
-              content, dialogue scripts, Foreigner Exclusive guides, and any future features or content —
-              is provided for <strong>educational and informational purposes only</strong>.
+              Slovak language lessons, exercises, dialogues, and the Foreigner Exclusive guides are learning
+              material. We aim for accuracy but do not guarantee that content is complete, error-free, or
+              suitable for any specific purpose beyond general language learning. Content is updated
+              periodically, not in real time.
             </Warning>
             <P>
-              We make no representations or warranties about the accuracy, completeness or suitability
-              of any content in the app. Specifically:
+              The app is under continuous development. Content and features may change, be incomplete, or
+              contain errors, and should be treated as an evolving learning aid — not a definitive or
+              professional reference.
             </P>
-            <Ul>
-              <li>Slovak language content is created for educational purposes. Any misunderstanding, misinterpretation or incorrect application of language learned through this app is the sole responsibility of the user.</li>
-              <li>Cultural, social or practical information about Slovakia may not reflect every regional variation or individual circumstance.</li>
-              <li>Content may contain errors and is updated periodically but not in real time.</li>
-            </Ul>
-            <P><strong>This disclaimer applies to all current and future features and content of the app.</strong></P>
 
-            <SubHeading>Foreigner Exclusive content — Additional disclaimer</SubHeading>
+            <SubHeading>Foreigner Exclusive — not legal advice</SubHeading>
             <P>
-              The <strong>Foreigner Exclusive</strong> section contains practical guides about living
-              in Slovakia, including information about residence permits, Foreign Police procedures,
-              and official documents.
+              The <strong>Foreigner Exclusive</strong> section contains general guides about living in
+              Slovakia (residence permits, Foreign Police procedures, official documents).
             </P>
             <Warning>
-              <strong>This content does NOT constitute legal advice under any circumstances.</strong>
-              <br /><br />
-              Specifically:
+              <strong>This content is general information, not legal advice.</strong>
               <ul className="list-disc pl-5 mt-2 space-y-1">
-                <li>Immigration laws and requirements in Slovakia change regularly</li>
-                <li>Document requirements, fees, and procedures may have changed since our content was last updated</li>
+                <li>Immigration laws, fees and procedures change regularly and may have changed since our content was last updated</li>
                 <li>Your individual situation may differ from the general cases described</li>
                 <li>We are not immigration lawyers and cannot advise on your specific case</li>
               </ul>
             </Warning>
-            <P><strong>We strongly recommend:</strong></P>
+            <P><strong>We strongly recommend</strong> that you verify anything important with official sources before acting:</P>
             <Ul>
-              <li>Verifying all information with the official Slovak Foreign Police (<ELink href="https://www.minv.sk">minv.sk</ELink>)</li>
-              <li>Consulting a qualified Slovak immigration lawyer for your specific situation</li>
-              <li>Using the IOM Migration Information Centre (<ELink href="https://www.mic.iom.sk">mic.iom.sk</ELink>) for free legal advice</li>
+              <li>The Slovak Foreign Police / Ministry of Interior (<ELink href="https://www.minv.sk">minv.sk</ELink>)</li>
+              <li>A qualified Slovak immigration lawyer for your specific situation</li>
+              <li>The IOM Migration Information Centre (<ELink href="https://www.mic.iom.sk">mic.iom.sk</ELink>) for free advice</li>
             </Ul>
             <P>
-              We accept NO liability for any decisions made based on any content in this app, including
-              but not limited to rejected applications, missed deadlines, language misunderstandings, or
-              any other consequences arising from use of the app.
+              To the extent permitted by law, we are not responsible for decisions you make based on the
+              content of the app. This does not affect the mandatory liability we cannot exclude, or your
+              consumer rights — see sections 10 and 12.
             </P>
           </Section>
 
           <Section number={7} title="Intellectual Property">
             <SubHeading>Our content</SubHeading>
             <P>
-              All lesson content, exercise formats, dialogue scripts, app design, and branding —
-              including the names Slovak for Foreigners, Slovak4Foreigners, and S4F — are owned by
-              Slovak for Foreigners. You may not reproduce, distribute or create derivative works from
-              our content without written permission.
+              All lesson content, exercise formats, dialogue scripts, app design and branding — including
+              the names Slovak for Foreigners, Slovak4Foreigners and S4F — belong to the operator. You may
+              not reproduce, distribute or create derivative works from our content without written
+              permission.
             </P>
-
             <SubHeading>Your content</SubHeading>
             <P>
-              You retain ownership of any content you submit (such as feedback or bug reports). By
-              submitting feedback you grant us a non-exclusive licence to use it to improve the app.
+              You keep ownership of anything you submit (such as feedback or bug reports). By submitting
+              feedback you grant us a non-exclusive licence to use it to improve the app.
             </P>
           </Section>
 
-          <Section number={8} title="Premium Features and Payments">
-            <SubHeading>Current status</SubHeading>
+          <Section number={8} title="Price">
+            <Note>
+              <strong>The app is free to use.</strong> We do not charge for the features described here, and
+              you are never automatically enrolled in any paid plan.
+            </Note>
             <P>
-              As of the date of these Terms, the core language learning features of the app are
-              available free of charge.
+              If we ever introduce optional paid features, we will show clear terms and pricing
+              <strong> before</strong> you pay, ask for your agreement at that point, and never retroactively
+              charge you for features you have already used for free.
             </P>
-
-            <SubHeading>Future premium features</SubHeading>
-            <P>We reserve the right to introduce paid subscription features in the future. If we do:</P>
-            <Ul>
-              <li>Some features that are currently free may become part of a paid subscription tier</li>
-              <li>New premium content and features will be introduced over time</li>
-              <li>Any payments will be subject to a separate payment and subscription agreement presented at the time of purchase</li>
-              <li>We will make reasonable efforts to communicate changes to the feature access model through the app and by email where possible</li>
-            </Ul>
           </Section>
 
-          <Section number={9} title="Availability and Changes">
-            <SubHeading>Service availability</SubHeading>
+          <Section number={9} title="Availability &amp; Changes">
             <P>
-              We aim to keep the app available at all times but cannot guarantee 100% uptime. The app
-              may be temporarily unavailable due to maintenance, updates, or circumstances beyond our
-              control.
+              We aim to keep the app available but cannot guarantee uninterrupted uptime; it may be
+              temporarily unavailable for maintenance, updates, or reasons beyond our control. We may add,
+              change or remove features and content, and may discontinue the service. Where we discontinue
+              the service we will make reasonable efforts to give notice so you can export your data first
+              (Profile → Your data → "Download my data").
             </P>
-
-            <SubHeading>Changes to the app</SubHeading>
-            <P>We reserve the right to:</P>
-            <Ul>
-              <li>Add, modify or remove features at any time</li>
-              <li>Change the content of lessons</li>
-              <li>Update or correct information in the Foreigner Exclusive section</li>
-              <li>Move features between free and premium tiers</li>
-              <li>Discontinue the service</li>
-            </Ul>
           </Section>
 
-          <Section number={10} title="Limitation of Liability">
-            <P>To the fullest extent permitted by applicable law:</P>
+          <Section number={10} title="Liability">
+            <P>Because the app is provided free of charge, and to the extent permitted by law:</P>
             <Ul>
-              <li>We provide the app "as is" without warranties of any kind</li>
-              <li>We are not liable for any indirect, incidental or consequential damages</li>
-              <li>Our total liability to you for any claim shall not exceed €100</li>
+              <li>The app and its content are provided on an "as is" and "as available" basis for general language learning</li>
+              <li>We are not liable for indirect or consequential loss, or for loss that was not reasonably foreseeable</li>
+              <li>We are not liable for loss of progress data caused by technical issues, or for interruption, suspension or discontinuation of the service</li>
             </Ul>
             <Warning>
-              <strong>This limitation of liability applies to the entire app — all current and future
-              features and content — including but not limited to:</strong>
-              <ul className="list-disc pl-5 mt-2 space-y-1">
-                <li>Incorrect, outdated or misunderstood Slovak language content</li>
-                <li>Any language misunderstanding or misinterpretation arising from lessons, dialogues or exercises</li>
-                <li>Incorrect or outdated information in the Foreigner Exclusive section</li>
-                <li>Any immigration application that is rejected, delayed or affected</li>
-                <li>Any official Slovak process or procedure that does not go as described</li>
-                <li>Loss of progress data due to technical issues</li>
-                <li>Any interruption, suspension or termination of the service</li>
-                <li>Any decision made by the user based on any content in the app</li>
-              </ul>
+              <strong>Nothing in these Terms excludes or limits our liability where it would be unlawful to do so.</strong>
+              This includes liability for death or personal injury caused by our negligence, for fraud or
+              fraudulent misrepresentation, for gross negligence or intentional breach, and any liability that
+              cannot be excluded or limited under mandatory Slovak consumer-protection law.
             </Warning>
           </Section>
 
-          <Section number={11} title="Privacy">
+          <Section number={11} title="Indemnification">
             <P>
-              Your use of the app is also governed by our <strong>Privacy Policy</strong>, which is
-              incorporated into these Terms by reference. Please read our Privacy Policy at:{' '}
-              <a href="/#/privacy" className="text-brand-green underline">
-                slovakforforeigners.eu/#/privacy
-              </a>
+              To the extent permitted by law, you agree to compensate us for reasonable loss, damage, or
+              costs we actually incur as a direct result of: (a) your breach of these Terms; (b) your misuse
+              of the app; or (c) your unlawful use of the app or your infringement of someone else's rights.
+            </P>
+            <P>
+              This does not apply to loss caused by us, and it does not affect or reduce your mandatory
+              rights as a consumer (section 12).
             </P>
           </Section>
 
-          <Section number={12} title="Governing Law">
+          <Section number={12} title="Your Consumer Rights">
             <P>
-              These Terms are governed by the laws of the <strong>Slovak Republic</strong>. Any disputes
-              arising from these Terms shall be subject to the jurisdiction of the courts of the Slovak
-              Republic.
+              You use the app as a consumer. <strong>Nothing in these Terms limits or excludes the mandatory
+              rights you have under Slovak law</strong> — including the Consumer Protection Act
+              (zákon č. 250/2007 Z. z.) and the Civil Code — that cannot be limited or excluded by agreement.
+              Where any provision of these Terms conflicts with those mandatory rights, your statutory rights
+              prevail.
             </P>
           </Section>
 
-          <Section number={13} title="Contact">
-            <P>For any questions, concerns or legal correspondence regarding these Terms:</P>
+          <Section number={13} title="Complaints &amp; Dispute Resolution">
+            <P>
+              If you have a complaint, please contact us first at{' '}
+              <MailLink email="contact@slovakforforeigners.eu" /> — we will try to resolve it.
+            </P>
+            <P>
+              If we cannot resolve it, you have the right to turn to the competent body for
+              <strong> alternative dispute resolution (ADR)</strong> in consumer matters — the Slovak Trade
+              Inspection (Slovenská obchodná inšpekcia, SOI), <ELink href="https://www.soi.sk">soi.sk</ELink>.
+              The competent supervisory authority is identified in our{' '}
+              <button type="button" onClick={() => navigate('/legal')} className="text-brand-green underline cursor-pointer">Legal Notice</button>.
+            </P>
+          </Section>
+
+          <Section number={14} title="Privacy">
+            <P>
+              Your use of the app is also governed by our{' '}
+              <button
+                type="button"
+                onClick={() => navigate('/privacy')}
+                className="text-brand-green underline cursor-pointer"
+              >
+                Privacy Policy
+              </button>
+              , which is incorporated into these Terms by reference.
+            </P>
+          </Section>
+
+          <Section number={15} title="Governing Law">
+            <P>
+              These Terms are governed by the law of the <strong>Slovak Republic</strong>, and disputes fall
+              under the jurisdiction of the Slovak courts. This does not deprive you, as a consumer, of the
+              protection of any mandatory rules of the country where you habitually reside.
+            </P>
+          </Section>
+
+          <Section number={16} title="Changes to These Terms">
+            <P>
+              We may update these Terms from time to time. We will post the updated Terms here with a new
+              "Last updated" date, and for material changes we will notify users in the app. Continued use
+              after changes take effect constitutes acceptance of the updated Terms.
+            </P>
+          </Section>
+
+          <Section number={17} title="Severability">
+            <P>
+              If any provision of these Terms is found invalid or unenforceable, the remaining provisions
+              continue in full force and effect.
+            </P>
+          </Section>
+
+          <Section number={18} title="Contact">
+            <P>For any questions or legal correspondence regarding these Terms:</P>
             <P><strong>Email:</strong> <MailLink email="contact@slovakforforeigners.eu" /></P>
-            <P>We review all correspondence and will respond as soon as reasonably possible.</P>
-          </Section>
-
-          <Section number={14} title="Changes to These Terms">
-            <P>
-              We may update these Terms from time to time. We will post the updated Terms on this page
-              with a new "Last updated" date. Continued use of the app after changes constitutes
-              acceptance of the updated Terms.
-            </P>
-          </Section>
-
-          <Section number={15} title="Severability">
-            <P>
-              If any provision of these Terms is found to be invalid or unenforceable, the remaining
-              provisions will continue in full force and effect.
-            </P>
+            <P>We review all correspondence and respond as soon as reasonably possible.</P>
           </Section>
 
         </div>

@@ -27,7 +27,7 @@ export function DialogueOutcomeScreen({ outcome, xpEarned, vocabUsed, onTryOther
       {/* Vocab used */}
       {vocabUsed.length > 0 && (
         <div className="w-full">
-          <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2 text-center">
+          <p className="text-xs font-semibold text-gray-600 uppercase tracking-widest mb-2 text-center">
             Vocabulary you used
           </p>
           <div className="flex flex-wrap gap-2 justify-center">

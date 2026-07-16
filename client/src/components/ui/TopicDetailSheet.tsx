@@ -56,7 +56,7 @@ export function TopicDetailSheet({ topic, children, onClose, onNavigate }: Props
           </div>
           <div className="flex-1 min-w-0">
             <h2 className="text-base font-extrabold text-gray-800">{topic.title}</h2>
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-600">
               {completedCount === totalCount && totalCount > 0
                 ? 'All lessons complete!'
                 : `${completedCount} of ${totalCount} complete`}
@@ -95,7 +95,7 @@ export function TopicDetailSheet({ topic, children, onClose, onNavigate }: Props
                     ${entry.isCompleted
                       ? 'bg-brand-green text-white'
                       : entry.isLocked
-                      ? 'bg-gray-200 text-gray-400'
+                      ? 'bg-gray-200 text-gray-600'
                       : 'bg-brand-green text-white'
                     }`}
                   >
@@ -125,14 +125,14 @@ export function TopicDetailSheet({ topic, children, onClose, onNavigate }: Props
                 {/* Step number + lesson info */}
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-1.5">
-                    <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider">
+                    <span className="text-[10px] font-bold text-gray-600 uppercase tracking-wider">
                       {idx + 1}
                     </span>
-                    <p className={`text-sm font-bold leading-snug truncate ${entry.isLocked ? 'text-gray-400' : 'text-gray-800'}`}>
+                    <p className={`text-sm font-bold leading-snug truncate ${entry.isLocked ? 'text-gray-600' : 'text-gray-800'}`}>
                       {entry.title}
                     </p>
                   </div>
-                  <p className={`text-xs mt-0.5 line-clamp-1 ${entry.isLocked ? 'text-gray-300' : 'text-gray-400'}`}>
+                  <p className={`text-xs mt-0.5 line-clamp-1 ${entry.isLocked ? 'text-gray-300' : 'text-gray-600'}`}>
                     {entry.description}
                   </p>
                 </div>

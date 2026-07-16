@@ -66,7 +66,7 @@ export function NumberToWordsExercise({ exercise, onDone, onAnswer }: Props) {
 
       {/* Number prompt */}
       <div className="flex-1 flex flex-col items-center justify-center gap-2">
-        <p className="text-xs font-semibold text-gray-400 uppercase tracking-widest">
+        <p className="text-xs font-semibold text-gray-600 uppercase tracking-widest">
           Which text matches this number?
         </p>
         <p className="text-8xl font-black text-gray-800 leading-none">{item.number}</p>
@@ -93,6 +93,7 @@ export function NumberToWordsExercise({ exercise, onDone, onAnswer }: Props) {
             <button
               key={choice}
               type="button"
+              lang="sk"
               onClick={() => handleChoice(choice)}
               className={`w-full border-2 rounded-2xl px-4 py-3.5 text-center font-bold text-base transition-all cursor-pointer active:scale-[0.98] ${cls}`}
             >
@@ -112,7 +113,7 @@ export function NumberToWordsExercise({ exercise, onDone, onAnswer }: Props) {
             className={`w-full font-bold py-3.5 rounded-xl text-sm uppercase tracking-widest transition-all ${
               selected
                 ? 'bg-brand-green text-white hover:opacity-90 active:scale-[0.98] cursor-pointer shadow-md'
-                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-gray-200 text-gray-600 cursor-not-allowed'
             }`}
           >
             Check
@@ -129,7 +130,7 @@ export function NumberToWordsExercise({ exercise, onDone, onAnswer }: Props) {
           <div className="flex flex-col gap-3">
             <div className="rounded-2xl px-4 py-3 text-center bg-red-50 border border-red-300">
               <p className="font-bold text-sm text-red-600">
-                ✗ The answer is: {item.answer}
+                ✗ The answer is: <span lang="sk">{item.answer}</span>
               </p>
             </div>
             <button

@@ -138,7 +138,7 @@ export function UnscrambleExercise({ exercise, onDone, onAnswer }: Props) {
 
       {/* Progress */}
       <div className="flex-none">
-        <div className="flex justify-between text-xs text-gray-400 mb-1.5">
+        <div className="flex justify-between text-xs text-gray-600 mb-1.5">
           <span>Mastered {masteredCount} of {total}</span>
         </div>
         <div className="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -151,7 +151,7 @@ export function UnscrambleExercise({ exercise, onDone, onAnswer }: Props) {
 
       {/* Context clue card */}
       <div className="flex-none bg-white rounded-2xl border-2 border-gray-100 shadow-sm px-5 py-4">
-        <p className="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">Context</p>
+        <p className="text-xs font-semibold uppercase tracking-widest text-gray-600 mb-1">Context</p>
         <p className="text-base font-semibold text-gray-800 leading-snug">{current.context}</p>
       </div>
 

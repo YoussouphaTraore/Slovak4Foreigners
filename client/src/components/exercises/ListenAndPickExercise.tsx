@@ -66,6 +66,19 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
   const [tappedId, setTappedId] = useState<number | null>(null);
   const [feedback, setFeedback] = useState<Feedback>(null);
 
+  // Accessibility (WCAG 2.2.1): the per-word countdown is a time limit, so it must
+  // be turnable off. Preference persists across sessions.
+  const [timerOn, setTimerOn] = useState<boolean>(() => {
+    try { return localStorage.getItem('listenPickTimerOff') !== '1'; } catch { return true; }
+  });
+  const toggleTimer = () => {
+    setTimerOn((on) => {
+      const next = !on;
+      try { localStorage.setItem('listenPickTimerOff', next ? '0' : '1'); } catch { /* */ }
+      return next;
+    });
+  };
+
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const timeoutHandledRef = useRef(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -95,9 +108,12 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
     setTimeLeft(COUNTDOWN);
     timeoutHandledRef.current = false;
 
-    intervalRef.current = setInterval(() => {
-      setTimeLeft((t) => Math.max(0, t - 1));
-    }, 1000);
+    // Only run the countdown when the timer is enabled (see toggleTimer).
+    if (timerOn) {
+      intervalRef.current = setInterval(() => {
+        setTimeLeft((t) => Math.max(0, t - 1));
+      }, 1000);
+    }
 
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
@@ -106,8 +122,25 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session]);
 
+  // Toggling the timer mid-word: OFF stops the countdown immediately; ON resumes it.
+  useEffect(() => {
+    if (!timerOn) {
+      if (intervalRef.current) { clearInterval(intervalRef.current); intervalRef.current = null; }
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setTimeLeft(COUNTDOWN);
+      return;
+    }
+    // Turned back on while still listening → resume counting from where it is.
+    if (phase === 'listening' && !intervalRef.current) {
+      intervalRef.current = setInterval(() => {
+        setTimeLeft((t) => Math.max(0, t - 1));
+      }, 1000);
+    }
+  }, [timerOn, phase]);
+
   // ── Timeout handler — fires when countdown reaches zero ───────────────────
   useEffect(() => {
+    if (!timerOn) return; // no time limit → never time out
     if (timeLeft !== 0 || phase !== 'listening') return;
     if (timeoutHandledRef.current) return;
     timeoutHandledRef.current = true;
@@ -121,7 +154,7 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
       setFeedback('timeout');
       setPhase('feedback');
     }
-  }, [timeLeft, phase]);
+  }, [timeLeft, phase, timerOn]);
 
   // ── Advance to next word after feedback delay ─────────────────────────────
   useEffect(() => {
@@ -177,8 +210,8 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
   };
 
   // ── Timer ring colour ─────────────────────────────────────────────────────
-  const ringColor = timeLeft <= 3 ? '#FF4B4B' : '#1CB0F6';
-  const dashOffset = CIRC * (1 - timeLeft / COUNTDOWN);
+  const ringColor = !timerOn ? '#D1D5DB' : timeLeft <= 3 ? '#FF4B4B' : '#1CB0F6';
+  const dashOffset = timerOn ? CIRC * (1 - timeLeft / COUNTDOWN) : 0;
 
   const wordNum = session.wordIdx + 1;
   const retryLabel = session.retryCount > 0
@@ -210,21 +243,36 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
             className="absolute text-sm font-bold"
             style={{ color: ringColor }}
           >
-            {phase === 'listening' ? timeLeft : ''}
+            {!timerOn ? '∞' : phase === 'listening' ? timeLeft : ''}
           </span>
         </div>
 
-        <p className="text-xs text-gray-400 flex-1">
+        <p className="text-xs text-gray-600 flex-1">
           Word {wordNum} of {playQueue.length}{retryLabel}
         </p>
+
+        {/* Accessibility (WCAG 2.2.1): let the learner switch the countdown off. */}
+        <button
+          type="button"
+          onClick={toggleTimer}
+          aria-pressed={timerOn}
+          className={`flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1 rounded-full border shrink-0 transition-colors cursor-pointer ${
+            timerOn
+              ? 'border-brand-blue text-brand-blue bg-blue-50 hover:bg-blue-100'
+              : 'border-gray-300 text-gray-500 bg-gray-50 hover:bg-gray-100'
+          }`}
+        >
+          <span aria-hidden="true">⏱</span> {timerOn ? 'Timer on' : 'Timer off'}
+        </button>
 
         {/* Replay button */}
         <button
           type="button"
           onClick={() => playAudio(getSpokenText(currentWord), lang)}
+          aria-label="Play the word aloud"
           className="w-10 h-10 rounded-full bg-brand-blue flex items-center justify-center text-white shrink-0 hover:opacity-80 active:scale-90 cursor-pointer transition-all"
         >
-          🔊
+          <span aria-hidden="true">🔊</span>
         </button>
       </div>
 
@@ -239,11 +287,11 @@ export function ListenAndPickExercise({ exercise, onDone, onAnswer }: Props) {
               onClick={() => handleTap(card)}
               className={`flex flex-col items-center justify-center rounded-2xl border-2 px-2 py-1 shadow-sm transition-all active:scale-95 cursor-pointer disabled:cursor-default ${cardClass(card)}`}
             >
-              <span className={`font-bold text-gray-800 text-center leading-tight ${card.slovak.length > 25 ? 'text-xs' : card.slovak.length > 12 ? 'text-sm' : 'text-base'}`}>
+              <span lang="sk" className={`font-bold text-gray-800 text-center leading-tight ${card.slovak.length > 25 ? 'text-xs' : card.slovak.length > 12 ? 'text-sm' : 'text-base'}`}>
                 {slovakifyNumbers(card.slovak)}
               </span>
               {!isEnglishMode && (
-                <span className="text-[10px] text-gray-400 mt-0.5 text-center leading-tight">
+                <span lang="en" className="text-[10px] text-gray-600 mt-0.5 text-center leading-tight">
                   {card.english}
                 </span>
               )}

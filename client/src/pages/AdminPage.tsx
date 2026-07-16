@@ -114,7 +114,7 @@ function lessonName(id: string | null): string {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div className="mb-6">
-      <p className="text-xs uppercase tracking-widest text-gray-400 font-semibold px-1 mb-2">{title}</p>
+      <p className="text-xs uppercase tracking-widest text-gray-600 font-semibold px-1 mb-2">{title}</p>
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
         {children}
       </div>
@@ -157,24 +157,24 @@ function LiveNowSection({ sessions }: { sessions: LiveSession[] }) {
         <span className="flex-1 flex items-center justify-center gap-1">
           <span className="text-sm">🟢</span>
           <span className="text-sm font-bold text-green-600">{counts.active}</span>
-          <span className="text-xs text-gray-400">Active</span>
+          <span className="text-xs text-gray-600">Active</span>
         </span>
         <span className="w-px h-5 bg-gray-200 flex-none" />
         <span className="flex-1 flex items-center justify-center gap-1">
           <span className="text-sm">🟡</span>
           <span className="text-sm font-bold text-yellow-500">{counts.idle}</span>
-          <span className="text-xs text-gray-400">Idle</span>
+          <span className="text-xs text-gray-600">Idle</span>
         </span>
         <span className="w-px h-5 bg-gray-200 flex-none" />
         <span className="flex-1 flex items-center justify-center gap-1">
           <span className="text-sm">⚫</span>
-          <span className="text-sm font-bold text-gray-400">{counts.gone}</span>
-          <span className="text-xs text-gray-400">Gone</span>
+          <span className="text-sm font-bold text-gray-600">{counts.gone}</span>
+          <span className="text-xs text-gray-600">Gone</span>
         </span>
       </div>
 
       {sorted.length === 0 ? (
-        <p className="text-sm text-gray-400 px-4 py-4 text-center">No sessions</p>
+        <p className="text-sm text-gray-600 px-4 py-4 text-center">No sessions</p>
       ) : (
         sorted.map((s) => {
           const status = getSessionStatus(s, nowMs);
@@ -195,7 +195,7 @@ function LiveNowSection({ sessions }: { sessions: LiveSession[] }) {
                   <span className="text-sm leading-none">{STATUS_DOT[status]}</span>
                   <p className="text-sm font-semibold text-gray-800 truncate">{label}</p>
                 </div>
-                <p className="text-xs text-gray-400 mt-0.5">
+                <p className="text-xs text-gray-600 mt-0.5">
                   {timeAgo(s.last_active_at)} · {duration}
                 </p>
               </div>
@@ -246,7 +246,7 @@ function BoostModal({
           type="button"
           onClick={onCancel}
           disabled={boosting}
-          className="w-full text-gray-400 text-sm py-1.5 cursor-pointer hover:text-gray-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-full text-gray-600 text-sm py-1.5 cursor-pointer hover:text-gray-600 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
         >
           Cancel
         </button>
@@ -610,12 +610,12 @@ export function AdminPage() {
         {/* Physical Registrations */}
         <Section title={`Physical Session Registrations (${stats.physicalRegs.length})`}>
           {stats.physicalRegs.length === 0 ? (
-            <p className="text-sm text-gray-400 px-4 py-4 text-center">No registrations yet</p>
+            <p className="text-sm text-gray-600 px-4 py-4 text-center">No registrations yet</p>
           ) : (
             stats.physicalRegs.map((r) => (
               <div key={r.id} className="px-4 py-3 border-b border-gray-50 last:border-b-0">
                 <p className="text-sm font-semibold text-gray-800">{r.name}</p>
-                <p className="text-xs text-gray-400">{r.email}{r.phone ? ` · ${r.phone}` : ''}</p>
+                <p className="text-xs text-gray-600">{r.email}{r.phone ? ` · ${r.phone}` : ''}</p>
               </div>
             ))
           )}
@@ -625,12 +625,12 @@ export function AdminPage() {
         <Section title="Top Learners">
           {stats.topUsers.map((u, i) => (
             <div key={u.userId} className="flex items-center gap-3 px-4 py-3 border-b border-gray-50 last:border-b-0">
-              <span className="text-xs font-bold text-gray-400 w-5 text-right">{i + 1}</span>
+              <span className="text-xs font-bold text-gray-600 w-5 text-right">{i + 1}</span>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold text-gray-800 truncate">
                   {u.alias ?? u.email.split('@')[0]}
                 </p>
-                <p className="text-xs text-gray-400">{u.streak} day streak</p>
+                <p className="text-xs text-gray-600">{u.streak} day streak</p>
               </div>
               <span className="text-sm font-bold text-brand-green">{u.xp.toLocaleString()} XP</span>
             </div>
@@ -645,7 +645,7 @@ export function AdminPage() {
             </div>
           )}
           {stats.userControls.length === 0 ? (
-            <p className="text-sm text-gray-400 px-4 py-4 text-center">No users yet</p>
+            <p className="text-sm text-gray-600 px-4 py-4 text-center">No users yet</p>
           ) : (
             <div className="overflow-y-auto max-h-[560px]">
               {stats.userControls.map((u) => {
@@ -666,18 +666,18 @@ export function AdminPage() {
                             Lv {u.level}
                           </span>
                         </div>
-                        <p className="text-[11px] text-gray-400 truncate mt-0.5">
+                        <p className="text-[11px] text-gray-600 truncate mt-0.5">
                           Last: {lessonName(u.lastLessonId)}
                         </p>
                       </div>
                       <div className="text-right flex-none">
                         <p className="text-xs font-bold text-brand-green">{u.weeklyXp.toLocaleString()} wk</p>
-                        <p className="text-[10px] text-gray-400">{u.totalXp.toLocaleString()} total</p>
+                        <p className="text-[10px] text-gray-600">{u.totalXp.toLocaleString()} total</p>
                       </div>
                     </div>
                     {/* Bottom row: boost + magic box buttons */}
                     <div className="flex items-center gap-1 justify-end flex-wrap">
-                      <span className="text-[10px] text-gray-400 mr-1">Boost:</span>
+                      <span className="text-[10px] text-gray-600 mr-1">Boost:</span>
                       {[5, 10, 15, 20].map((amt) => (
                         <button
                           key={amt}
@@ -716,7 +716,7 @@ export function AdminPage() {
                 {winnerMessage.text}
               </div>
             )}
-            <p className="text-xs text-gray-400 leading-snug">
+            <p className="text-xs text-gray-600 leading-snug">
               Preview the winner notification using the most recent winner already recorded in the database. No data is changed.
             </p>
             <button
@@ -738,7 +738,7 @@ export function AdminPage() {
         {/* NPC Controls */}
         <Section title="NPC Controls">
           {stats.npcs.length === 0 ? (
-            <p className="text-sm text-gray-400 px-4 py-4 text-center">No NPCs found</p>
+            <p className="text-sm text-gray-600 px-4 py-4 text-center">No NPCs found</p>
           ) : (
             <div className="overflow-y-auto max-h-[560px]">
               {stats.npcs.map((npc) => (
@@ -749,7 +749,7 @@ export function AdminPage() {
                   <img src={npc.avatar} alt={npc.alias} className="w-8 h-8 rounded-full object-cover" />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-semibold text-gray-800 truncate">{npc.alias}</p>
-                    <p className="text-xs text-gray-400">
+                    <p className="text-xs text-gray-600">
                       {npcSaving === npc.alias ? 'Saving…' : `${npc.weekly_xp} weekly XP`}
                     </p>
                   </div>
@@ -779,7 +779,7 @@ export function AdminPage() {
         {/* Recent Sessions */}
         <Section title="Recent Sessions">
           {stats.recentSessions.length === 0 ? (
-            <p className="text-sm text-gray-400 px-4 py-4 text-center">No sessions yet</p>
+            <p className="text-sm text-gray-600 px-4 py-4 text-center">No sessions yet</p>
           ) : (
             <div className="overflow-y-auto max-h-[560px]">
             {stats.recentSessions.map((s) => (
@@ -788,10 +788,10 @@ export function AdminPage() {
                   <span className="text-xs font-semibold text-gray-700">
                     {s.user_id ? 'User' : 'Guest'} · {s.device_type ?? '?'}
                   </span>
-                  <span className="text-xs text-gray-400">{timeAgo(s.started_at)}</span>
+                  <span className="text-xs text-gray-600">{timeAgo(s.started_at)}</span>
                 </div>
                 <div className="flex items-center justify-between mt-0.5">
-                  <span className="text-xs text-gray-400 font-mono truncate max-w-[160px]">
+                  <span className="text-xs text-gray-600 font-mono truncate max-w-[160px]">
                     {s.user_id ? s.user_id.slice(0, 8) + '…' : '—'}
                   </span>
                   <span className="text-xs text-gray-500">{fmtDuration(s.duration_seconds)}</span>

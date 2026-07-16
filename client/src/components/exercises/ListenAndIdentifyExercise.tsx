@@ -110,7 +110,7 @@ export function ListenAndIdentifyExercise({ exercise, onDone, onAnswer }: Props)
       const wasSelected = selected.has(word);
       if (isTarget) return `${base} border-brand-green bg-green-50 text-brand-green`;
       if (wasSelected) return `${base} border-brand-red bg-red-50 text-brand-red animate-shake`;
-      return `${base} border-gray-200 bg-white text-gray-400 opacity-40 pointer-events-none`;
+      return `${base} border-gray-200 bg-white text-gray-600 opacity-40 pointer-events-none`;
     }
 
     if (selected.has(word)) {
@@ -132,11 +132,12 @@ export function ListenAndIdentifyExercise({ exercise, onDone, onAnswer }: Props)
         <button
           type="button"
           onClick={handleReplay}
+          aria-label="Replay the sentence"
           className="w-11 h-11 rounded-full bg-brand-blue flex items-center justify-center text-white shrink-0 hover:opacity-80 active:scale-90 cursor-pointer transition-all"
         >
-          🔊
+          <span aria-hidden="true">🔊</span>
         </button>
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-gray-600">
           Sentence {currentIdx + 1} of {total} · tap to replay
         </p>
       </div>
@@ -148,6 +149,7 @@ export function ListenAndIdentifyExercise({ exercise, onDone, onAnswer }: Props)
             <button
               key={word}
               type="button"
+              lang="sk"
               disabled={phase === 'feedback'}
               onClick={() => toggleWord(word)}
               className={getTileStyle(word)}
@@ -168,7 +170,7 @@ export function ListenAndIdentifyExercise({ exercise, onDone, onAnswer }: Props)
             className={`w-full font-bold py-3 rounded-xl text-sm uppercase tracking-widest transition-all ${
               canCheck
                 ? 'bg-brand-green text-white hover:opacity-90 active:scale-[0.98] shadow-md cursor-pointer'
-                : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                : 'bg-gray-200 text-gray-600 cursor-not-allowed'
             }`}
           >
             Check

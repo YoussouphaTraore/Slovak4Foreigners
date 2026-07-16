@@ -76,7 +76,7 @@ export function SessionRegistrationModal({ onClose }: Props) {
           <div className="p-6">
             <div className="flex items-start justify-between mb-5">
               <h2 className="text-lg font-extrabold text-gray-800">Join Our Physical Session</h2>
-              <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl cursor-pointer leading-none">✕</button>
+              <button type="button" onClick={onClose} className="text-gray-600 hover:text-gray-600 text-xl cursor-pointer leading-none">✕</button>
             </div>
             <div className="flex flex-col items-center gap-5 py-2 text-center">
               <img src="/snailReading.png" alt="" className="w-20 h-20 object-contain" />
@@ -101,7 +101,7 @@ export function SessionRegistrationModal({ onClose }: Props) {
           <div className="p-6">
             <div className="flex items-start justify-between mb-2">
               <h2 className="text-lg font-extrabold text-gray-800">Join Our Physical Session</h2>
-              <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600 text-xl cursor-pointer leading-none">✕</button>
+              <button type="button" onClick={onClose} className="text-gray-600 hover:text-gray-600 text-xl cursor-pointer leading-none">✕</button>
             </div>
             <p className="text-sm text-gray-500 mb-5 leading-relaxed">
               Register your interest and we'll email you when the next session is planned.
@@ -115,7 +115,7 @@ export function SessionRegistrationModal({ onClose }: Props) {
               />
               <div className="min-w-0">
                 <p className="text-sm font-bold text-gray-800 truncate">{alias || 'Your account'}</p>
-                <p className="text-xs text-gray-400 truncate">{user?.email ?? ''}</p>
+                <p className="text-xs text-gray-600 truncate">{user?.email ?? ''}</p>
               </div>
             </div>
 
@@ -134,7 +134,7 @@ export function SessionRegistrationModal({ onClose }: Props) {
         {/* ── State 3: Success / already registered ───────────────────────── */}
         {screen === 'success' && (
           <div className="p-6 flex flex-col items-center gap-4 text-center">
-            <button type="button" onClick={onClose} className="self-end text-gray-400 hover:text-gray-600 text-xl cursor-pointer leading-none -mb-2">✕</button>
+            <button type="button" onClick={onClose} className="self-end text-gray-600 hover:text-gray-600 text-xl cursor-pointer leading-none -mb-2">✕</button>
             <img src="/snailExcited.png" alt="" className="w-24 h-24 object-contain" />
             <h2 className="text-lg font-extrabold text-gray-800">
               {justRegistered ? 'You\'re all set! 🎉' : 'Already registered! 🎉'}

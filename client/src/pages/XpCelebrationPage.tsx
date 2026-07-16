@@ -122,22 +122,22 @@ export function XpCelebrationPage() {
             <p className="text-xs font-semibold text-amber-600/70">Includes streak boost</p>
           )}
           {state.xpEarned !== displayTarget && hasStreakBoost && (
-            <p className="text-xs text-gray-400">Total awarded: +{state.xpEarned} XP</p>
+            <p className="text-xs text-gray-600">Total awarded: +{state.xpEarned} XP</p>
           )}
         </div>
       </div>
 
       <div className="grid grid-cols-3 gap-3 w-full max-w-sm mb-7">
         <div className="bg-gray-50 rounded-xl px-3 py-3 text-center">
-          <p className="text-[11px] text-gray-400 uppercase font-semibold tracking-wider">Level</p>
+          <p className="text-[11px] text-gray-600 uppercase font-semibold tracking-wider">Level</p>
           <p className="text-xl font-bold text-gray-700">{store.level}</p>
         </div>
         <div className="bg-gray-50 rounded-xl px-3 py-3 text-center">
-          <p className="text-[11px] text-gray-400 uppercase font-semibold tracking-wider">Streak</p>
+          <p className="text-[11px] text-gray-600 uppercase font-semibold tracking-wider">Streak</p>
           <p className="text-xl font-bold text-orange-500">{store.streak}</p>
         </div>
         <div className="bg-gray-50 rounded-xl px-3 py-3 text-center">
-          <p className="text-[11px] text-gray-400 uppercase font-semibold tracking-wider">Total XP</p>
+          <p className="text-[11px] text-gray-600 uppercase font-semibold tracking-wider">Total XP</p>
           <p className="text-xl font-bold text-gray-700">{store.xp}</p>
         </div>
       </div>

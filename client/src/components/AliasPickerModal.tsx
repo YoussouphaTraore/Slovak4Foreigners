@@ -193,7 +193,7 @@ export function AliasPickerModal({ userId, onDone }: AliasPickerModalProps) {
         {/* Header — no close button */}
         <div className="px-5 pt-6 pb-3 text-center border-b border-gray-100 flex-none">
           <h2 className="text-lg font-extrabold text-gray-800">Choose Your Alias</h2>
-          <p className="text-xs text-gray-400 mt-1 leading-snug">
+          <p className="text-xs text-gray-600 mt-1 leading-snug">
             To keep our Users privacy, your Alias is what other users will see
           </p>
         </div>
