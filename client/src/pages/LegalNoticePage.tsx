@@ -85,7 +85,7 @@ export function LegalNoticePage() {
                 Slovenská obchodná inšpekcia (SOI)
               </Field>
               <Field label="Inšpektorát">
-                Inšpektorát SOI so sídlom v Bratislave pre Bratislavský kraj, Bajkalská 21/A, 827 99 Bratislava 27
+                Inšpektorát SOI so sídlom v Bratislave pre Bratislavský kraj, Bajkalská 21/A, P. O. BOX č. 5, 820 07 Bratislava
               </Field>
             </div>
           </section>

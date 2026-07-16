@@ -59,6 +59,9 @@ Desktop.ini
 CLAUDE.md
 docs/
 
+# Compliance records — signed legal contracts (DPAs), PII, signatures. NEVER commit.
+Compliance/
+
 # AGENT_QA watcher state — tracks which [OPEN] entries have already triggered a notification
 .agents/
 
