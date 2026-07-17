@@ -234,7 +234,7 @@ export function PrivacyPolicyPage() {
             <Ul>
               <li><strong>Access &amp; portability</strong> — download a machine-readable copy of your data at any time via <strong>Profile → Your data → "Download my data"</strong>, or by contacting us</li>
               <li><strong>Erasure</strong> — delete your account and all associated data via <strong>Profile → Delete account</strong></li>
-              <li><strong>Rectification</strong> — change your alias in the app at any time; gender/country choices live on your device and can be changed at any time</li>
+              <li><strong>Rectification</strong> — ask us to correct your alias by contacting us from your account; gender/country choices live on your device and can be changed at any time</li>
               <li><strong>Restriction &amp; objection</strong> — object to or restrict processing based on legitimate interests</li>
               <li><strong>Withdraw consent</strong> — where processing is based on consent</li>
             </Ul>
