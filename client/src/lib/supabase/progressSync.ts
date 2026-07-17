@@ -1,7 +1,19 @@
 import { supabase } from './client';
 import type { LessonRecord, SnailRaceRecord } from '../../store/useProgressStore';
 
-// Subset of store state needed for cloud sync
+// The cloud-syncable subset of the store — deliberately a subset, not an
+// oversight. Everything below is DEVICE-LOCAL by design and will not survive a
+// new device, a reinstall, or clearing site data:
+//
+//   practiceDaysThisWeek, passedTopics, topicRaceRecords,
+//   topicRaceAttemptsToday, topicRaceLastAttemptDate, blockRaceRecords,
+//   blockRaceAttemptsToday, completedBlockDialogues, unlockedReferenceCards,
+//   partialLessonProgress, lastReviewedAt, reviewTargetIds, isSessionRegistered
+//
+// Whether any of those SHOULD sync is a product decision, not a bug — but if one
+// is promoted, it must be added here AND to the merge in mergeProgress, or the
+// merge will silently drop it. Note passedTopics/topicRace* gate content
+// unlocks, so a user re-passing them on a new device is the current behaviour.
 export interface ProgressSnapshot {
   xp: number;
   level: number;
@@ -17,10 +29,17 @@ export interface ProgressSnapshot {
 
 // ── Writes ────────────────────────────────────────────────────────────────────
 
+// Every write reports its outcome instead of swallowing it, so callers can tell
+// a real sync from a failed one. Helpers never throw — the error travels in the
+// result so a single bad write can't abort a Promise.all of sibling writes.
+export interface SyncResult {
+  error: string | null;
+}
+
 export async function syncProgressToSupabase(
   userId: string,
   s: ProgressSnapshot,
-): Promise<void> {
+): Promise<SyncResult> {
   try {
     const { error } = await supabase
       .from('user_progress')
@@ -37,16 +56,22 @@ export async function syncProgressToSupabase(
         },
         { onConflict: 'user_id' },
       );
-    if (error) console.error('[sync] user_progress:', error.message);
+    if (error) {
+      console.error('[sync] user_progress:', error.message);
+      return { error: error.message };
+    }
+    return { error: null };
   } catch (e) {
-    console.error('[sync] user_progress error:', e);
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error('[sync] user_progress error:', msg);
+    return { error: msg };
   }
 }
 
 export async function syncLessonRecord(
   userId: string,
   record: LessonRecord,
-): Promise<void> {
+): Promise<SyncResult> {
   try {
     const { error } = await supabase.from('lesson_records').upsert(
       {
@@ -66,16 +91,22 @@ export async function syncLessonRecord(
       },
       { onConflict: 'user_id,lesson_id' },
     );
-    if (error) console.error('[sync] lesson_records:', error.message);
+    if (error) {
+      console.error('[sync] lesson_records:', error.message);
+      return { error: error.message };
+    }
+    return { error: null };
   } catch (e) {
-    console.error('[sync] lesson_records error:', e);
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error('[sync] lesson_records error:', msg);
+    return { error: msg };
   }
 }
 
 export async function syncSnailRaceRecord(
   userId: string,
   record: SnailRaceRecord,
-): Promise<void> {
+): Promise<SyncResult> {
   try {
     const { error } = await supabase.from('snail_race_records').upsert(
       {
@@ -87,25 +118,71 @@ export async function syncSnailRaceRecord(
       },
       { onConflict: 'user_id,stage_id' },
     );
-    if (error) console.error('[sync] snail_race_records:', error.message);
+    if (error) {
+      console.error('[sync] snail_race_records:', error.message);
+      return { error: error.message };
+    }
+    return { error: null };
   } catch (e) {
-    console.error('[sync] snail_race_records error:', e);
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error('[sync] snail_race_records error:', msg);
+    return { error: msg };
   }
+}
+
+// Uploads a complete snapshot: the summary row AND every lesson/race detail
+// record. Cloud `completedLessons` is reconstructed from lesson_records on read,
+// so pushing only the summary would leave another device with XP but no
+// completions. Any merge result must go up through here.
+export async function pushAllProgress(
+  userId: string,
+  s: ProgressSnapshot,
+): Promise<SyncResult> {
+  const results = await Promise.all([
+    syncProgressToSupabase(userId, s),
+    ...s.lessonRecords.map((r) => syncLessonRecord(userId, r)),
+    ...s.snailRaceRecords.map((r) => syncSnailRaceRecord(userId, r)),
+  ]);
+  const failed = results.filter((r) => r.error);
+  if (failed.length > 0) {
+    return { error: `${failed.length} of ${results.length} writes failed: ${failed[0].error}` };
+  }
+  return { error: null };
 }
 
 // ── Read ──────────────────────────────────────────────────────────────────────
 
+// "No cloud row" and "the query failed" mean opposite things and must never be
+// confused: the first says push local up, the second says touch nothing. Callers
+// that collapse both to null will happily overwrite a real account with empty
+// defaults the first time the network hiccups.
+export type ProgressLoad =
+  | { status: 'ok'; snapshot: ProgressSnapshot }
+  | { status: 'empty' }
+  | { status: 'error'; message: string };
+
 export async function loadProgressFromSupabase(
   userId: string,
-): Promise<ProgressSnapshot | null> {
+): Promise<ProgressLoad> {
   try {
     const [progressRes, lessonsRes, racesRes] = await Promise.all([
-      supabase.from('user_progress').select('*').eq('user_id', userId).single(),
+      // maybeSingle, not single: `single()` treats zero rows as an error, which
+      // is exactly the distinction this function exists to preserve.
+      supabase.from('user_progress').select('*').eq('user_id', userId).maybeSingle(),
       supabase.from('lesson_records').select('*').eq('user_id', userId),
       supabase.from('snail_race_records').select('*').eq('user_id', userId),
     ]);
 
-    if (progressRes.error || !progressRes.data) return null;
+    // A failure on ANY of the three makes the picture incomplete. Reporting a
+    // partial read as success would let a merge conclude the cloud has no
+    // lessons and mirror that emptiness back.
+    const failure = progressRes.error ?? lessonsRes.error ?? racesRes.error;
+    if (failure) {
+      console.error('[sync] loadProgressFromSupabase:', failure.message);
+      return { status: 'error', message: failure.message };
+    }
+
+    if (!progressRes.data) return { status: 'empty' };
 
     const p = progressRes.data as Record<string, unknown>;
 
@@ -140,35 +217,45 @@ export async function loadProgressFromSupabase(
     }));
 
     return {
-      xp: p.xp as number,
-      level: p.level as number,
-      streak: p.streak as number,
-      lastPlayedDate: p.last_played_date as string | null,
-      streakMultiplier: p.streak_multiplier as number,
-      triedEmergencyScenarios:
-        (p.tried_emergency_scenarios as string[]) ?? [],
-      completedLessons: lessonRecords.map((r) => r.lessonId),
-      lessonRecords,
-      snailRaceRecords,
-      passedBlocks: (p.passed_blocks as string[]) ?? [],
+      status: 'ok',
+      snapshot: {
+        xp: p.xp as number,
+        level: p.level as number,
+        streak: p.streak as number,
+        lastPlayedDate: p.last_played_date as string | null,
+        streakMultiplier: p.streak_multiplier as number,
+        triedEmergencyScenarios:
+          (p.tried_emergency_scenarios as string[]) ?? [],
+        completedLessons: lessonRecords.map((r) => r.lessonId),
+        lessonRecords,
+        snailRaceRecords,
+        passedBlocks: (p.passed_blocks as string[]) ?? [],
+      },
     };
   } catch (e) {
-    console.error('[sync] loadProgressFromSupabase error:', e);
-    return null;
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error('[sync] loadProgressFromSupabase error:', msg);
+    return { status: 'error', message: msg };
   }
 }
 
 // ── Weekly XP ─────────────────────────────────────────────────────────────────
 
-export async function syncWeeklyXp(userId: string, weeklyXp: number): Promise<void> {
+export async function syncWeeklyXp(userId: string, weeklyXp: number): Promise<SyncResult> {
   try {
     const { error } = await supabase
       .from('user_profiles')
       .update({ weekly_xp: weeklyXp })
       .eq('id', userId);
-    if (error) console.error('[sync] weekly_xp:', error.message);
+    if (error) {
+      console.error('[sync] weekly_xp:', error.message);
+      return { error: error.message };
+    }
+    return { error: null };
   } catch (e) {
-    console.error('[sync] weekly_xp error:', e);
+    const msg = e instanceof Error ? e.message : String(e);
+    console.error('[sync] weekly_xp error:', msg);
+    return { error: msg };
   }
 }
 

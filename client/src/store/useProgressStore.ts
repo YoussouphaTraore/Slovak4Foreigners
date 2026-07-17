@@ -9,6 +9,9 @@ import {
   syncWeeklyXp,
   loadProgressFromSupabase,
   mergeProgress,
+  pushAllProgress,
+  type SyncResult,
+  type ProgressSnapshot,
 } from '../lib/supabase/progressSync';
 
 // localStorage keys that belong to a specific user. Wiped when a different user signs in.
@@ -118,11 +121,61 @@ export function computeStrength(record: LessonRecord, nowMs: number = Date.now()
   return 0;                         // 🔴 overdue
 }
 
-// Fire-and-forget helper — sets isSyncing, runs promises, clears when done
-function fireSync(promises: Promise<unknown>[], setState: (patch: Partial<ProgressStore>) => void) {
-  setState({ isSyncing: true });
-  Promise.all(promises).finally(() =>
-    setState({ isSyncing: false, lastSyncedAt: new Date().toISOString() }),
+type SetFn = (fn: (s: ProgressStore) => Partial<ProgressStore>) => void;
+type GetFn = () => ProgressStore;
+
+// ── Sync bookkeeping ─────────────────────────────────────────────────────────
+// BOTH sync paths (fireSync and initializeFromCloud) must go through these, or
+// the accounting lies. Several cycles can overlap — finishing a lesson, then a
+// race, on a slow connection, or a write landing mid-sign-in. The rules:
+//   - failures stick: a success never clears a sibling's failure;
+//   - isSyncing stays true until the LAST cycle drains, not the first;
+//   - lastSyncedAt is stamped only when the last cycle drains with no failure,
+//     so it can never imply a sync that didn't happen.
+// syncInFlight is the depth; only a cycle starting from depth 0 resets syncError.
+//
+// syncEpoch scopes all of that to one signed-in session. resetToDefaults bumps
+// it, orphaning any cycle started by the previous account: without this, User A's
+// write failing after User B signs in would put A's error into B's session and
+// permanently suppress B's lastSyncedAt.
+
+function beginSyncCycle(setState: SetFn, getState: GetFn): number {
+  const epoch = getState().syncEpoch;
+  setState((s) => ({
+    syncInFlight: s.syncInFlight + 1,
+    isSyncing: true,
+    syncError: s.syncInFlight === 0 ? null : s.syncError,
+  }));
+  return epoch;
+}
+
+function endSyncCycle(setState: SetFn, getState: GetFn, epoch: number, error: string | null) {
+  // This cycle belongs to a session that has since been torn down (sign-out or a
+  // different user). Its result says nothing about the current one.
+  if (getState().syncEpoch !== epoch) return;
+
+  setState((s) => {
+    const syncInFlight = Math.max(0, s.syncInFlight - 1);
+    const syncError = error ?? s.syncError;
+    return {
+      syncInFlight,
+      isSyncing: syncInFlight > 0,
+      syncError,
+      ...(syncInFlight === 0 && !syncError
+        ? { lastSyncedAt: new Date().toISOString() }
+        : {}),
+    };
+  });
+}
+
+// Fire-and-forget helper — runs the writes and records the real outcome.
+function fireSync(promises: Promise<SyncResult>[], setState: SetFn, getState: GetFn) {
+  const epoch = beginSyncCycle(setState, getState);
+  Promise.all(promises).then(
+    (results) => endSyncCycle(setState, getState, epoch, results.find((r) => r.error)?.error ?? null),
+    // Unreachable today (the helpers never throw) but keeps the depth balanced
+    // if that ever changes.
+    (e: unknown) => endSyncCycle(setState, getState, epoch, e instanceof Error ? e.message : String(e)),
   );
 }
 
@@ -150,9 +203,19 @@ interface ProgressStore {
   triedEmergencyScenarios: string[];
   completedBlockDialogues: string[];
 
-  // Sync status (not persisted — reset via onRehydrateStorage)
+  // Sync status (not persisted — see `partialize`)
   isSyncing: boolean;
   lastSyncedAt: string | null;
+  // Last write failure, or null when the most recent sync cycle fully succeeded.
+  // lastSyncedAt is only stamped when a cycle ends with zero failures, so the two
+  // can never both read as "fine".
+  syncError: string | null;
+  // Number of sync cycles currently in flight. Guards against a fast success
+  // clearing a slow sibling's failure — see fireSync.
+  syncInFlight: number;
+  // Bumped by resetToDefaults. Cycles carry the epoch they started in and are
+  // ignored on settle if it has moved on — see endSyncCycle.
+  syncEpoch: number;
 
   // Save-progress modal
   showSaveProgressModal: 'soft' | 'hard_lesson2' | 'regression' | null;
@@ -267,40 +330,86 @@ interface ProgressStore {
   checkAndUpdateStreak: () => void;
 }
 
+// Per-session state that must never reach localStorage — see `partialize`.
+// syncError in particular carries raw Postgres/network messages.
+// `satisfies` keeps these checked against the real store keys (a typo would
+// otherwise silently persist the field) while leaving the Set string-keyed for
+// the Object.entries filter.
+const TRANSIENT_STATE_KEYS: ReadonlySet<string> = new Set([
+  'isSyncing',
+  'syncError',
+  'syncInFlight',
+  'syncEpoch',
+  'showSaveProgressModal',
+  'regressionLessonTitle',
+] satisfies (keyof ProgressStore)[]);
+
+// ── Canonical user-scoped defaults ───────────────────────────────────────────
+// Every non-action field of the store, derived automatically from ProgressStore.
+// Adding a state field makes `defaultUserState` fail to typecheck until it is
+// given a default — which is the point.
+type NonActionKeys<T> = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [K in keyof T]: T[K] extends (...args: any[]) => any ? never : K;
+}[keyof T];
+
+type UserScopedState = Pick<ProgressStore, NonActionKeys<ProgressStore>>;
+
+// The ONLY source of user-scoped defaults. Both the store's initial state and
+// resetToDefaults() use this, so the two can never drift apart.
+//
+// This matters more than it looks: resetToDefaults() is the different-user guard
+// (see wipeLocal in initializeFromCloud). A field missing here is NOT merely
+// "stale local state" — it survives into the next account on a shared device and
+// leaks the previous user's data. It previously omitted passedTopics,
+// topicRaceRecords, topicRaceAttemptsToday, topicRaceLastAttemptDate and
+// practiceDaysThisWeek, which did exactly that.
+//
+// Returns a fresh object every call — never share array/object references
+// between the initial state and a reset.
+function defaultUserState(): UserScopedState {
+  return {
+    xp: 0,
+    level: 1,
+    streak: 0,
+    lastPlayedDate: null,
+    streakMultiplier: 1.0,
+    practiceDaysThisWeek: [],
+    completedLessons: [],
+    lessonRecords: [],
+    snailRaceRecords: [],
+    blockRaceRecords: [],
+    passedBlocks: [],
+    blockRaceAttemptsToday: 0,
+    blockRaceLastAttemptDate: '',
+    topicRaceRecords: [],
+    passedTopics: [],
+    topicRaceAttemptsToday: 0,
+    topicRaceLastAttemptDate: '',
+    triedEmergencyScenarios: [],
+    completedBlockDialogues: [],
+    isSyncing: false,
+    lastSyncedAt: null,
+    syncError: null,
+    syncInFlight: 0,
+    syncEpoch: 0,
+    showSaveProgressModal: null,
+    regressionLessonTitle: null,
+    lastReviewedAt: null,
+    reviewTargetIds: [],
+    unlockedReferenceCards: [],
+    isSessionRegistered: false,
+    weeklyXp: 0,
+    partialLessonProgress: null,
+  };
+}
+
 // ── Store ────────────────────────────────────────────────────────────────────
 
 export const useProgressStore = create<ProgressStore>()(
   persist(
     (set, get) => ({
-      xp: 0,
-      level: 1,
-      streak: 0,
-      lastPlayedDate: null,
-      streakMultiplier: 1.0,
-      practiceDaysThisWeek: [],
-      completedLessons: [],
-      lessonRecords: [],
-      snailRaceRecords: [],
-      blockRaceRecords: [],
-      passedBlocks: [],
-      blockRaceAttemptsToday: 0,
-      blockRaceLastAttemptDate: '',
-      topicRaceRecords: [],
-      passedTopics: [],
-      topicRaceAttemptsToday: 0,
-      topicRaceLastAttemptDate: '',
-      triedEmergencyScenarios: [],
-      completedBlockDialogues: [],
-      isSyncing: false,
-      lastSyncedAt: null,
-      showSaveProgressModal: null,
-      regressionLessonTitle: null,
-      lastReviewedAt: null,
-      reviewTargetIds: [],
-      unlockedReferenceCards: [],
-      isSessionRegistered: false,
-      weeklyXp: 0,
-      partialLessonProgress: null,
+      ...defaultUserState(),
 
       // ── XP ────────────────────────────────────────────────────────────────
 
@@ -387,6 +496,7 @@ export const useProgressStore = create<ProgressStore>()(
               syncWeeklyXp(user.id, get().weeklyXp),
             ],
             set,
+            get,
           );
         }
 
@@ -442,6 +552,7 @@ export const useProgressStore = create<ProgressStore>()(
               syncWeeklyXp(user.id, get().weeklyXp),
             ],
             set,
+            get,
           );
         }
 
@@ -494,6 +605,7 @@ export const useProgressStore = create<ProgressStore>()(
           fireSync(
             [syncProgressToSupabase(user.id, get()), syncWeeklyXp(user.id, get().weeklyXp)],
             set,
+            get,
           );
         }
 
@@ -571,6 +683,7 @@ export const useProgressStore = create<ProgressStore>()(
           fireSync(
             [syncProgressToSupabase(user.id, get()), syncWeeklyXp(user.id, get().weeklyXp)],
             set,
+            get,
           );
         }
 
@@ -696,12 +809,21 @@ export const useProgressStore = create<ProgressStore>()(
         });
         const { user } = useAuthStore.getState();
         if (user) {
+          // A review rewrites each studied lesson's spaced-repetition schedule
+          // (intervalStage, nextReviewDue, strength). Syncing only the summary
+          // row left all of that stranded on the device — the cloud kept serving
+          // the pre-review schedule to every other device indefinitely.
+          const reviewed = get().lessonRecords.filter((r) =>
+            lessonResults.some((lr) => lr.lessonId === r.lessonId),
+          );
           fireSync(
             [
               syncProgressToSupabase(user.id, get()),
               syncWeeklyXp(user.id, get().weeklyXp),
+              ...reviewed.map((r) => syncLessonRecord(user.id, r)),
             ],
             set,
+            get,
           );
         }
       },
@@ -721,32 +843,14 @@ export const useProgressStore = create<ProgressStore>()(
 
       // ── Reset ─────────────────────────────────────────────────────────────
 
-      resetToDefaults: () => set({
-        xp: 0,
-        level: 1,
-        streak: 0,
-        lastPlayedDate: null,
-        streakMultiplier: 1.0,
-        completedLessons: [],
-        lessonRecords: [],
-        snailRaceRecords: [],
-        blockRaceRecords: [],
-        passedBlocks: [],
-        blockRaceAttemptsToday: 0,
-        blockRaceLastAttemptDate: '',
-        triedEmergencyScenarios: [],
-        completedBlockDialogues: [],
-        isSyncing: false,
-        lastSyncedAt: null,
-        showSaveProgressModal: null,
-        regressionLessonTitle: null,
-        lastReviewedAt: null,
-        reviewTargetIds: [],
-        unlockedReferenceCards: [],
-        isSessionRegistered: false,
-        weeklyXp: 0,
-        partialLessonProgress: null,
-      }),
+      resetToDefaults: () => set((s) => ({
+        ...defaultUserState(),
+        // Bumping the epoch orphans every cycle the previous session started, so
+        // their settles can neither decrement this session's depth nor report the
+        // previous account's error here. That's what makes it safe for
+        // defaultUserState() to put syncInFlight back to 0.
+        syncEpoch: s.syncEpoch + 1,
+      })),
 
       // ── Cloud sync ────────────────────────────────────────────────────────
 
@@ -771,20 +875,38 @@ export const useProgressStore = create<ProgressStore>()(
           }
         };
 
-        const applyCloud = (cloud: NonNullable<Awaited<ReturnType<typeof loadProgressFromSupabase>>>) => {
+        // The cloud-syncable subset of the store. Anything not in here is
+        // device-local by design (see ProgressSnapshot).
+        const snapshotOf = (s: ProgressStore): ProgressSnapshot => ({
+          xp: s.xp,
+          level: s.level,
+          streak: s.streak,
+          lastPlayedDate: s.lastPlayedDate,
+          streakMultiplier: s.streakMultiplier,
+          triedEmergencyScenarios: s.triedEmergencyScenarios,
+          completedLessons: s.completedLessons,
+          lessonRecords: s.lessonRecords,
+          snailRaceRecords: s.snailRaceRecords,
+          passedBlocks: s.passedBlocks,
+        });
+
+        const applySnapshot = (snap: ProgressSnapshot) => {
           set({
-            xp: cloud.xp,
-            level: cloud.passedBlocks.length + 1,
-            streak: cloud.streak,
-            lastPlayedDate: cloud.lastPlayedDate,
-            streakMultiplier: cloud.streakMultiplier,
-            triedEmergencyScenarios: cloud.triedEmergencyScenarios,
-            completedLessons: cloud.completedLessons,
-            lessonRecords: cloud.lessonRecords,
-            snailRaceRecords: cloud.snailRaceRecords,
-            passedBlocks: cloud.passedBlocks,
+            xp: snap.xp,
+            level: snap.passedBlocks.length + 1,
+            streak: snap.streak,
+            lastPlayedDate: snap.lastPlayedDate,
+            streakMultiplier: snap.streakMultiplier,
+            triedEmergencyScenarios: snap.triedEmergencyScenarios,
+            completedLessons: snap.completedLessons,
+            lessonRecords: snap.lessonRecords,
+            snailRaceRecords: snap.snailRaceRecords,
+            passedBlocks: snap.passedBlocks,
           });
         };
+
+        // Outcome of the upload below — decides whether we may stamp lastSyncedAt.
+        let pushResult: SyncResult = { error: null };
 
         if (isDifferentUser) {
           // Case 2: Different user on this device — wipe immediately before fetch
@@ -793,114 +915,66 @@ export const useProgressStore = create<ProgressStore>()(
         }
 
         // ── Cloud fetch ─────────────────────────────────────────────────────
-        set({ isSyncing: true });
+        // Same bookkeeping as fireSync: this is a sync cycle too, and one may
+        // already be in flight (or start) while we're here.
+        const epoch = beginSyncCycle(set, get);
         try {
           const cloud = await loadProgressFromSupabase(userId);
 
-          if (isDifferentUser) {
+          if (cloud.status === 'error') {
+            // We don't know what's in the cloud, so we must not write to it.
+            // Local is untrustworthy as a source here: Case 2 has already wiped
+            // it, and on a new device it's empty by definition — pushing either
+            // would overwrite a real account with defaults. Leave both sides
+            // alone and report the failure; the next sign-in reconciles.
+            console.warn('[sync] cloud load failed — skipping sync to protect cloud data:', cloud.message);
+            pushResult = { error: cloud.message };
+
+          } else if (isDifferentUser) {
             // Local is already wiped — load cloud directly or create fresh profile
-            if (cloud !== null) {
-              applyCloud(cloud);
+            if (cloud.status === 'ok') {
+              applySnapshot(cloud.snapshot);
             } else {
-              // No cloud data for this user — push fresh defaults
-              await syncProgressToSupabase(userId, get());
+              // Genuinely no row for this user — establish one from fresh defaults
+              pushResult = await syncProgressToSupabase(userId, snapshotOf(get()));
             }
 
           } else if (isUnknownDevice) {
             // Case 3: No stored_user_id — either a guest converting or a returning user on a new device.
             // The handle_new_user trigger always creates a blank user_progress row immediately on
-            // sign-up, so cloud is never null for a brand-new user. We cannot distinguish "guest
-            // converting" from "returning user on new device" by cloud null-ness alone.
+            // sign-up, so an 'empty' result is rare for a real account. We cannot distinguish "guest
+            // converting" from "returning user on new device" by emptiness alone.
             // Safe solution: always MERGE. Merging local guest data with an empty cloud row
             // preserves all guest progress. Merging empty local with a real cloud record keeps
             // the cloud data. Both cases are handled correctly.
-            if (cloud === null) {
-              // No cloud data at all (shouldn't happen given the trigger, but handle it)
-              console.log('[sync] Case 3: no cloud data — pushing local to cloud');
-              const s = get();
-              await syncProgressToSupabase(userId, s);
-              await Promise.all(s.lessonRecords.map((r) => syncLessonRecord(userId, r)));
-              await Promise.all(s.snailRaceRecords.map((r) => syncSnailRaceRecord(userId, r)));
+            if (cloud.status === 'empty') {
+              console.log('[sync] Case 3: no cloud row — pushing local to cloud');
+              pushResult = await pushAllProgress(userId, snapshotOf(get()));
             } else {
               console.log('[sync] Case 3: merging local + cloud (guest convert or new device)');
-              const s = get();
-              const merged = mergeProgress(
-                {
-                  xp: s.xp,
-                  level: s.level,
-                  streak: s.streak,
-                  lastPlayedDate: s.lastPlayedDate,
-                  streakMultiplier: s.streakMultiplier,
-                  triedEmergencyScenarios: s.triedEmergencyScenarios,
-                  completedLessons: s.completedLessons,
-                  lessonRecords: s.lessonRecords,
-                  snailRaceRecords: s.snailRaceRecords,
-                  passedBlocks: s.passedBlocks,
-                },
-                cloud,
-              );
-              set({
-                xp: merged.xp,
-                level: merged.passedBlocks.length + 1,
-                streak: merged.streak,
-                lastPlayedDate: merged.lastPlayedDate,
-                streakMultiplier: merged.streakMultiplier,
-                triedEmergencyScenarios: merged.triedEmergencyScenarios,
-                completedLessons: merged.completedLessons,
-                lessonRecords: merged.lessonRecords,
-                snailRaceRecords: merged.snailRaceRecords,
-                passedBlocks: merged.passedBlocks,
-              });
-              await syncProgressToSupabase(userId, get());
+              applySnapshot(mergeProgress(snapshotOf(get()), cloud.snapshot));
+              pushResult = await pushAllProgress(userId, snapshotOf(get()));
             }
 
           } else {
             // Case 4: Same user returning — merge cloud + local as before
             console.log('[sync] Case 4: same user returning — merging');
-            if (cloud === null) {
-              // Same user but no cloud data — push local up
-              const s = get();
-              await syncProgressToSupabase(userId, s);
-              await Promise.all(s.lessonRecords.map((r) => syncLessonRecord(userId, r)));
-              await Promise.all(s.snailRaceRecords.map((r) => syncSnailRaceRecord(userId, r)));
+            if (cloud.status === 'empty') {
+              // Same user but no cloud row — push local up
+              pushResult = await pushAllProgress(userId, snapshotOf(get()));
             } else {
-              const s = get();
-              const merged = mergeProgress(
-                {
-                  xp: s.xp,
-                  level: s.level,
-                  streak: s.streak,
-                  lastPlayedDate: s.lastPlayedDate,
-                  streakMultiplier: s.streakMultiplier,
-                  triedEmergencyScenarios: s.triedEmergencyScenarios,
-                  completedLessons: s.completedLessons,
-                  lessonRecords: s.lessonRecords,
-                  snailRaceRecords: s.snailRaceRecords,
-                  passedBlocks: s.passedBlocks,
-                },
-                cloud,
-              );
-              set({
-                xp: merged.xp,
-                level: merged.passedBlocks.length + 1,
-                streak: merged.streak,
-                lastPlayedDate: merged.lastPlayedDate,
-                streakMultiplier: merged.streakMultiplier,
-                triedEmergencyScenarios: merged.triedEmergencyScenarios,
-                completedLessons: merged.completedLessons,
-                lessonRecords: merged.lessonRecords,
-                snailRaceRecords: merged.snailRaceRecords,
-                passedBlocks: merged.passedBlocks,
-              });
-              await syncProgressToSupabase(userId, get());
+              applySnapshot(mergeProgress(snapshotOf(get()), cloud.snapshot));
+              pushResult = await pushAllProgress(userId, snapshotOf(get()));
             }
           }
         } catch (e) {
-          console.error('[initializeFromCloud] error:', e);
+          const msg = e instanceof Error ? e.message : String(e);
+          console.error('[initializeFromCloud] error:', msg);
+          pushResult = { error: msg };
         } finally {
           // Always stamp stored_user_id so future sign-ins can detect user switches
           try { localStorage.setItem('stored_user_id', userId); } catch { /* */ }
-          set({ isSyncing: false, lastSyncedAt: new Date().toISOString() });
+          endSyncCycle(set, get, epoch, pushResult.error);
         }
       },
 
@@ -991,9 +1065,29 @@ export const useProgressStore = create<ProgressStore>()(
     {
       name: 'slovak-progress',
       version: 20,
+      // Transient per-session state has no business on disk. syncError in
+      // particular carries raw Postgres/network messages, which shouldn't be
+      // written to a learner's device. Everything not listed here is still
+      // persisted exactly as before — this is a denylist, not an allowlist, so
+      // it cannot silently drop real progress.
+      partialize: (state) =>
+        Object.fromEntries(
+          Object.entries(state).filter(([key]) => !TRANSIENT_STATE_KEYS.has(key)),
+        ) as Partial<ProgressStore>,
+      // partialize only governs what we WRITE. Blobs written by earlier builds
+      // (no partialize, same version 20 → migrate never runs) still contain these
+      // keys, and zustand's default merge is `{...current, ...persisted}` — the
+      // persisted value WINS. A user whose tab closed mid-sync has isSyncing:true
+      // on disk; without this reset it rehydrates true with syncInFlight:0 and
+      // nothing can ever clear it. That's a permanent spinner. Keep this until
+      // the version is bumped and a migration strips the stale keys.
       onRehydrateStorage: () => (state) => {
         if (state) {
           state.isSyncing = false;
+          state.syncError = null;
+          state.syncInFlight = 0;
+          state.syncEpoch = 0;
+          state.showSaveProgressModal = null;
           state.regressionLessonTitle = null;
         }
       },
