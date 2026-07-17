@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store/useAuthStore';
 
@@ -18,9 +19,16 @@ function Spinner() {
 export function AuthPage() {
   const navigate = useNavigate();
   const { signInWithGoogle, isLoading } = useAuthStore();
+  const [error, setError] = useState<string | null>(null);
 
   const handleGoogle = async () => {
-    await signInWithGoogle();
+    setError(null);
+    // On success the browser navigates away, so this only ever renders when
+    // sign-in couldn't start at all — in practice, blocked cookies/site data
+    // stopping the PKCE verifier from being stored. (Not pop-ups: this is a
+    // full-page redirect.)
+    const { error: err } = await signInWithGoogle();
+    if (err) setError("Google sign-in couldn't be started. This usually means cookies or site data are blocked for this site — allow them and try again.");
   };
 
   return (
@@ -44,6 +52,12 @@ export function AuthPage() {
           {isLoading ? <Spinner /> : <GoogleIcon />}
           Continue with Google
         </button>
+
+        {error && (
+          <p role="alert" className="w-full text-[13px] text-red-600 bg-red-50 border border-red-200 rounded-xl px-3 py-2 mb-4 leading-snug">
+            {error}
+          </p>
+        )}
 
         <div className="text-center mb-4">
           <p className="text-base font-bold text-gray-800 mb-1">

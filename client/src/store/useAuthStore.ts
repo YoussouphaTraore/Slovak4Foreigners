@@ -63,6 +63,14 @@ export const useAuthStore = create<AuthStore>((set) => ({
       });
       if (error) return { error: error.message };
       return { error: null };
+    } catch (e) {
+      // The redirect flow doesn't return an error — it builds a URL, stores a
+      // PKCE verifier and navigates, returning { error: null } unconditionally.
+      // The one real failure (storage/cookies blocked, so the verifier can't be
+      // written) THROWS. Without this catch it escapes as an unhandled rejection
+      // and the caller is told nothing.
+      console.error('[auth] signInWithGoogle threw:', e);
+      return { error: e instanceof Error ? e.message : String(e) };
     } finally {
       set({ isLoading: false });
     }
