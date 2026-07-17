@@ -388,7 +388,10 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
 
   const transcribeAudio = useCallback(async (blob: Blob, expectedText: string): Promise<string> => {
     const formData = new FormData();
-    formData.append('audio', blob, `conversation-speaking-${resolvedQuestion.id}.webm`);
+    // No filename: the blob's MIME type rides along in the multipart part, and
+    // the edge function derives the extension OpenAI needs from that. Naming it
+    // here would just be a second copy of that mapping, free to drift.
+    formData.append('audio', blob);
     formData.append('language', 'sk');
     formData.append('model', 'gpt-4o-mini-transcribe');
     formData.append('expectedText', expectedText);
@@ -401,7 +404,7 @@ export function ConversationSpeakingExercise({ exercise, onDone, onAnswer }: Pro
     const transcript = (data?.transcript ?? data?.text ?? '').trim();
     if (!transcript) throw new Error('No speech was detected in the recording.');
     return transcript;
-  }, [resolvedQuestion.id]);
+  }, []);
 
   const handleRecordingStop = useCallback(async () => {
     const blob = new Blob(chunksRef.current, { type: recorderRef.current?.mimeType || 'audio/webm' });

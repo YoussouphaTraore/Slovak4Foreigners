@@ -24,6 +24,47 @@ function json(body: unknown, status: number, cors: Record<string, string>): Resp
   });
 }
 
+// OpenAI selects the decoder from the file extension, so it has to match the
+// real container rather than being hardcoded. Chrome, Firefox and Safari 18.4+
+// (Mar 2025) all record WebM/Opus; older Safari (14.1–18.3) falls back to
+// MP4/AAC, which a fixed ".webm" would misdeclare.
+//
+// Naming that MP4 honestly is necessary but NOT sufficient: Safari's AAC is
+// reported to transcribe poorly or partially even when correctly labelled, so
+// old-Safari voice input is not considered supported. Making that work would
+// need a transcode (e.g. ffmpeg → mp3) here, not a rename.
+//
+// Resolved from the MIME type against an allowlist, then from the client's
+// extension — never by interpolating the client's filename, which is untrusted
+// input bound for a multipart header.
+const MIME_EXT: Record<string, string> = {
+  'audio/webm': 'webm',
+  'video/webm': 'webm',
+  'audio/mp4': 'mp4',
+  'video/mp4': 'mp4',
+  'audio/x-m4a': 'm4a',
+  'audio/m4a': 'm4a',
+  'audio/mpeg': 'mp3',
+  'audio/mpga': 'mp3',
+  'audio/ogg': 'ogg',
+  'audio/wav': 'wav',
+  'audio/x-wav': 'wav',
+};
+
+// Formats the transcription endpoint accepts.
+const ALLOWED_EXT = new Set(['webm', 'mp4', 'm4a', 'mp3', 'mpeg', 'mpga', 'ogg', 'wav', 'flac']);
+
+function audioExtension(file: File): string {
+  const mime = (file.type || '').split(';')[0].trim().toLowerCase();
+  const fromMime = MIME_EXT[mime];
+  if (fromMime) return fromMime;
+
+  const fromName = (file.name || '').split('.').pop()?.toLowerCase() ?? '';
+  if (ALLOWED_EXT.has(fromName)) return fromName;
+
+  return 'webm';
+}
+
 Deno.serve(async (req) => {
   const cors = corsHeaders(req.headers.get('origin'));
 
@@ -58,7 +99,7 @@ Deno.serve(async (req) => {
     }
 
     const openAiForm = new FormData();
-    openAiForm.append('file', audioFile, 'recording.webm');
+    openAiForm.append('file', audioFile, `recording.${audioExtension(audioFile)}`);
     openAiForm.append('model', 'gpt-4o-mini-transcribe');
     openAiForm.append('language', 'sk');
     openAiForm.append('prompt', 'Slovenčina. Toto je cvičenie slovenského jazyka.');
