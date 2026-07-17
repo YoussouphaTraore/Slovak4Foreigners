@@ -307,15 +307,29 @@ function AppShell() {
   async function handleMagicBoxClaim(xp: number) {
     setShowMagicBox(false);
     if (!userId) return;
-    claimMagicBox(xp).then(({ error }) => {
-      if (!error) {
-        useProgressStore.getState().initializeFromCloud(userId).then(() => {
-          loadWeeklyXp(userId).then((n) => useProgressStore.getState().setWeeklyXp(n));
-        });
-      }
-    });
-    setMagicBoxToast(`You earned +${xp} XP from your Magic Box! 🐌`);
-    setTimeout(() => setMagicBoxToast(null), 4000);
+
+    // Wait for the server before claiming anything happened. This used to fire
+    // the success toast synchronously and swallow the error, so a failed claim
+    // still told the user they'd earned XP that was never awarded.
+    const { error } = await claimMagicBox(xp);
+
+    // Schedule the dismissal off the toast itself, not off the refresh below —
+    // otherwise a slow (or hung) refresh leaves the toast on screen for as long
+    // as it takes.
+    const showToast = (msg: string) => {
+      setMagicBoxToast(msg);
+      setTimeout(() => setMagicBoxToast(null), 4000);
+    };
+
+    if (error) {
+      showToast("We couldn't save your Magic Box reward — please try again later.");
+      return;
+    }
+
+    showToast(`You earned +${xp} XP from your Magic Box! 🐌`);
+    await useProgressStore.getState().initializeFromCloud(userId);
+    const n = await loadWeeklyXp(userId);
+    useProgressStore.getState().setWeeklyXp(n);
   }
 
   // ── PWA install prompt ────────────────────────────────────────────────────────
