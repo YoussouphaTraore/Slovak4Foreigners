@@ -222,9 +222,22 @@ function AppShell() {
   }, [userId]);
   useEffect(() => {
     if (!userId) return;
-    loadAlias(userId).then((result) => {
+    loadAlias(userId).then(async (result) => {
       if (result === null) {
-        setShowAliasPicker(true); // no alias — must pick (onboarding follows after)
+        // No profile/alias. Two very different causes look identical here:
+        // a genuinely new signup, or a ZOMBIE SESSION — the account was deleted
+        // on another device, but this device's access token outlives it (JWTs
+        // are stateless; deletion can't recall them). Ask the auth server,
+        // which rejects deleted users even with a valid token.
+        const { supabase } = await import('./lib/supabase/client');
+        const { data, error } = await supabase.auth.getUser();
+        if (error || !data.user) {
+          // Account no longer exists — eject cleanly instead of fake-onboarding.
+          console.warn('[auth] session belongs to a deleted account — signing out');
+          await useAuthStore.getState().signOut();
+          return;
+        }
+        setShowAliasPicker(true); // real new user — pick alias (onboarding follows)
       } else if (result) {
         setAlias(result); // existing alias — load anonymous demographics + check onboarding
         // Gender/country are anonymous + device-local now (never in the DB).
