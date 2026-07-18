@@ -6,6 +6,9 @@ import { getAvatarUrl } from '../lib/supabase/aliasUtils';
 import { lessons } from '../data/lessons';
 import { triggerMagicBoxForUser } from '../lib/supabase/magicBox';
 import { WeeklyWinnerModal } from '../components/WeeklyWinnerModal';
+import { PulseStrip, DeepInsights } from '../components/admin/InsightsSections';
+import { TicketQueue } from '../components/admin/TicketQueue';
+import { loadInsights, loadExtras, type Insights, type Extras } from '../lib/adminInsights';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -264,6 +267,8 @@ export function AdminPage() {
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
   const [stats, setStats] = useState<AdminStats | null>(null);
+  const [insights, setInsights] = useState<Insights | null | undefined>(undefined); // undefined = loading, null = failed
+  const [extras, setExtras] = useState<Extras | 'missing' | null>(null);
   const [liveSessions, setLiveSessions] = useState<LiveSession[]>([]);
 
   // NPC controls
@@ -339,6 +344,11 @@ export function AdminPage() {
         .single();
       if (!(me as { is_admin?: boolean } | null)?.is_admin) { navigate('/'); return; }
       setAuthorized(true);
+
+      // KPI layer — independent of the panel below, so it neither blocks nor
+      // breaks it. Each settles into its own state.
+      loadInsights().then(setInsights);
+      loadExtras().then(setExtras);
 
       const todayStart = new Date();
       todayStart.setHours(0, 0, 0, 0);
@@ -590,6 +600,13 @@ export function AdminPage() {
       </div>
 
       <div className="px-4 pb-24">
+        {/* Pulse — exceptions first: anything needing attention leads the page */}
+        <PulseStrip insights={insights} extras={extras} />
+
+        {/* What the pulse tile is counting — content + resolve action.
+            Resolving refreshes extras so the tile updates in step. */}
+        <TicketQueue onChanged={() => { loadExtras().then(setExtras); }} />
+
         {/* Live Now */}
         <Section title="Live Now">
           <LiveNowSection sessions={liveSessions} />
@@ -606,6 +623,9 @@ export function AdminPage() {
           <StatRow label="Sessions" value={stats.sessionsToday} />
           <StatRow label="Avg session duration" value={fmtDuration(stats.avgDurationTodaySec)} />
         </Section>
+
+        {/* Growth / learning / audience KPIs */}
+        <DeepInsights insights={insights} extras={extras} />
 
         {/* Physical Registrations */}
         <Section title={`Physical Session Registrations (${stats.physicalRegs.length})`}>
